@@ -1,0 +1,28 @@
+[
+  {
+    "slug": "genshin-impact",
+    "name": "原神",
+    "aliases": ["Genshin Impact", "Genshin", "原神Project"],
+    "sources": [
+      {
+        "kind": "weibo",
+        "account_name": "原神",
+        "account_id": "6593199887",
+        "url": "https://weibo.com/u/6593199887"
+      }
+    ]
+  },
+  {
+    "slug": "arknights",
+    "name": "明日方舟",
+    "aliases": ["Arknights", "方舟"],
+    "sources": [
+      {
+        "kind": "weibo",
+        "account_name": "明日方舟Arknights",
+        "account_id": "6279793937",
+        "url": "https://weibo.com/u/6279793937"
+      }
+    ]
+  }
+]

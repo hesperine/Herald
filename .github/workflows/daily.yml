@@ -1,0 +1,99 @@
+name: Daily collaboration scan
+
+on:
+  schedule:
+    # 08:15 in Asia/Shanghai. GitHub schedules use UTC and may start later.
+    - cron: "15 0 * * *"
+  workflow_dispatch:
+
+permissions:
+  contents: write
+
+concurrency:
+  group: herald-daily-${{ github.repository }}
+  cancel-in-progress: false
+
+jobs:
+  scan:
+    runs-on: ubuntu-latest
+    timeout-minutes: 20
+    env:
+      WATCH_IPS: ${{ vars.WATCH_IPS || '原神' }}
+      COUNTRY: ${{ vars.COUNTRY || 'CN' }}
+      EXTRA_WEIBO_UIDS: ${{ vars.EXTRA_WEIBO_UIDS }}
+      INCLUDE_IN_GAME: ${{ vars.INCLUDE_IN_GAME || 'false' }}
+      REMIND_DAY_BEFORE: ${{ vars.REMIND_DAY_BEFORE || 'true' }}
+      PUBLISH_REACHABILITY: ${{ vars.PUBLISH_REACHABILITY || 'false' }}
+      TIMEZONE: ${{ vars.TIMEZONE || 'Asia/Shanghai' }}
+      AI_PROVIDER: ${{ vars.AI_PROVIDER || 'openai_compatible' }}
+      AI_BASE_URL: ${{ vars.AI_BASE_URL || 'https://api.openai.com/v1' }}
+      AI_MODEL: ${{ vars.AI_MODEL }}
+      AI_VISION: ${{ vars.AI_VISION || 'false' }}
+      AI_JSON_MODE: ${{ vars.AI_JSON_MODE || 'true' }}
+      SMTP_HOST: ${{ vars.SMTP_HOST }}
+      SMTP_PORT: ${{ vars.SMTP_PORT || '465' }}
+      SMTP_USE_SSL: ${{ vars.SMTP_USE_SSL || 'true' }}
+      ORIGIN_CITY: ${{ secrets.ORIGIN_CITY }}
+      REACHABLE_CITIES: ${{ secrets.REACHABLE_CITIES }}
+      NOTIFY_EMAIL: ${{ secrets.NOTIFY_EMAIL }}
+      AI_API_KEY: ${{ secrets.AI_API_KEY }}
+      WEIBO_COOKIE: ${{ secrets.WEIBO_COOKIE }}
+      SMTP_USERNAME: ${{ secrets.SMTP_USERNAME }}
+      SMTP_PASSWORD: ${{ secrets.SMTP_PASSWORD }}
+
+    steps:
+      - name: Check out main
+        uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
+
+      - name: Set up Python
+        uses: actions/setup-python@v5
+        with:
+          python-version: "3.11"
+          cache: pip
+
+      - name: Install
+        run: python -m pip install .
+
+      - name: Prepare generated branches
+        shell: bash
+        run: |
+          set -euo pipefail
+          prepare_branch() {
+            local branch="$1"
+            local directory="$2"
+            if git ls-remote --exit-code --heads origin "$branch" >/dev/null 2>&1; then
+              git fetch origin "$branch:refs/remotes/origin/$branch"
+              git worktree add -B "$branch" "$directory" "origin/$branch"
+            else
+              git worktree add --detach "$directory" HEAD
+              git -C "$directory" checkout --orphan "$branch"
+              git -C "$directory" rm -rf .
+            fi
+          }
+          prepare_branch state _state
+          prepare_branch page _page
+
+      - name: Scan, notify, and build static page
+        run: python -m herald --state-dir _state --page-dir _page
+
+      - name: Commit state and page only
+        shell: bash
+        run: |
+          set -euo pipefail
+          commit_branch() {
+            local branch="$1"
+            local directory="$2"
+            git -C "$directory" config user.name "github-actions[bot]"
+            git -C "$directory" config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+            git -C "$directory" add -A
+            if git -C "$directory" diff --cached --quiet; then
+              echo "No changes for $branch"
+              return
+            fi
+            git -C "$directory" commit -m "chore: update $branch"
+            git -C "$directory" push origin "HEAD:$branch"
+          }
+          commit_branch state _state
+          commit_branch page _page

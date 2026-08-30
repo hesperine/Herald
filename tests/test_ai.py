@@ -1,0 +1,212 @@
+from __future__ import annotations
+
+import json
+import unittest
+from datetime import datetime, timezone
+
+import httpx
+
+from herald.ai import (
+    AIProviderError,
+    ExtractedAction,
+    ExtractedActivity,
+    ExtractedClaim,
+    ExtractionInput,
+    ExtractionResult,
+    MockAIProvider,
+    OpenAICompatibleProvider,
+)
+from herald.models import ActionKind, ActivityKind
+
+
+UTC = timezone.utc
+NOW = datetime(2026, 8, 30, 12, tzinfo=UTC)
+
+
+def packet() -> ExtractionInput:
+    return ExtractionInput(
+        observation_id="weibo-a",
+        platform="weibo",
+        account_name="原神官方微博",
+        published_at=NOW,
+        text="原神与示例品牌联动，9月8日10:00开售",
+        ocr_text=["品牌小程序"],
+        media_urls=["https://img.example/poster.jpg"],
+        source_url="https://weibo.com/1/a",
+        ip_slug_hint="genshin-impact",
+        ip_name_hint="原神",
+    )
+
+
+def result() -> ExtractionResult:
+    return ExtractionResult(
+        relevant=True,
+        campaign_title="原神 × 示例品牌",
+        partner="示例品牌",
+        activities=[
+            ExtractedActivity(
+                kind=ActivityKind.PRODUCT,
+                title="全国产品联动",
+                actions=[
+                    ExtractedAction(
+                        kind=ActionKind.SALE_OPEN,
+                        title="联动商品开售",
+                        at="2026-09-08T10:00:00+08:00",
+                        requires_rush=True,
+                    )
+                ],
+            )
+        ],
+        claims=[
+            ExtractedClaim(
+                field_path="activities[0].actions[0].at",
+                quote="9月8日10:00开售",
+                confidence=1,
+            )
+        ],
+    )
+
+
+class MockAIProviderTests(unittest.IsolatedAsyncioTestCase):
+    async def test_returns_stable_fixture_copy(self) -> None:
+        provider = MockAIProvider({"weibo-a": result()})
+
+        first = await provider.extract(packet())
+        second = await provider.extract(packet())
+
+        self.assertEqual(first, second)
+        self.assertIsNot(first, second)
+
+
+class OpenAICompatibleProviderTests(unittest.IsolatedAsyncioTestCase):
+    async def test_request_contains_only_public_packet_fields(self) -> None:
+        captured: dict[str, object] = {}
+
+        def handler(request: httpx.Request) -> httpx.Response:
+            captured["authorization"] = request.headers.get("Authorization")
+            captured["body"] = request.content.decode("utf-8")
+            return httpx.Response(
+                200,
+                json={
+                    "choices": [
+                        {"message": {"content": result().model_dump_json()}}
+                    ]
+                },
+            )
+
+        async with httpx.AsyncClient(
+            transport=httpx.MockTransport(handler)
+        ) as http_client:
+            provider = OpenAICompatibleProvider(
+                client=http_client,
+                base_url="https://free-api.example/v1",
+                model="free-model",
+                api_key="private-api-key",
+            )
+            extracted = await provider.extract(packet())
+
+        body = str(captured["body"])
+        self.assertEqual(extracted.partner, "示例品牌")
+        self.assertEqual(captured["authorization"], "Bearer private-api-key")
+        self.assertNotIn("private-api-key", body)
+        for forbidden in (
+            "ORIGIN_CITY",
+            "REACHABLE_CITIES",
+            "NOTIFY_EMAIL",
+            "WEIBO_COOKIE",
+            "SMTP_PASSWORD",
+        ):
+            self.assertNotIn(forbidden, body)
+
+    async def test_json_code_fence_is_accepted(self) -> None:
+        fenced = "```json\n" + result().model_dump_json() + "\n```"
+
+        def handler(request: httpx.Request) -> httpx.Response:
+            return httpx.Response(
+                200, json={"choices": [{"message": {"content": fenced}}]}
+            )
+
+        async with httpx.AsyncClient(
+            transport=httpx.MockTransport(handler)
+        ) as http_client:
+            provider = OpenAICompatibleProvider(
+                client=http_client,
+                base_url="https://api.example/v1",
+                model="model",
+                api_key="key",
+            )
+            extracted = await provider.extract(packet())
+
+        self.assertTrue(extracted.relevant)
+
+    async def test_vision_request_attaches_only_public_poster_urls(self) -> None:
+        captured: dict[str, object] = {}
+
+        def handler(request: httpx.Request) -> httpx.Response:
+            captured.update(json.loads(request.content))
+            return httpx.Response(
+                200,
+                json={"choices": [{"message": {"content": result().model_dump_json()}}]},
+            )
+
+        async with httpx.AsyncClient(
+            transport=httpx.MockTransport(handler)
+        ) as http_client:
+            provider = OpenAICompatibleProvider(
+                client=http_client,
+                base_url="https://vision.example/v1",
+                model="vision-model",
+                api_key="private-key",
+                supports_vision=True,
+            )
+            await provider.extract(packet())
+
+        content = captured["messages"][1]["content"]
+        image_parts = [part for part in content if part["type"] == "image_url"]
+        self.assertEqual(
+            image_parts[0]["image_url"]["url"],
+            "https://img.example/poster.jpg",
+        )
+
+    async def test_invalid_output_is_retried_then_redacted(self) -> None:
+        attempts = 0
+
+        def handler(request: httpx.Request) -> httpx.Response:
+            nonlocal attempts
+            attempts += 1
+            return httpx.Response(
+                200,
+                json={
+                    "choices": [
+                        {"message": {"content": "not-json with private response"}}
+                    ]
+                },
+            )
+
+        async with httpx.AsyncClient(
+            transport=httpx.MockTransport(handler)
+        ) as http_client:
+            provider = OpenAICompatibleProvider(
+                client=http_client,
+                base_url="https://api.example/v1",
+                model="model",
+                api_key="private-key",
+                max_attempts=2,
+            )
+            with self.assertRaisesRegex(AIProviderError, "redacted retries") as context:
+                await provider.extract(packet())
+
+        self.assertEqual(attempts, 2)
+        self.assertNotIn("private-key", str(context.exception))
+        self.assertNotIn("private response", str(context.exception))
+
+    def test_extraction_input_cannot_accept_private_profile_fields(self) -> None:
+        payload = packet().model_dump(mode="json")
+        payload["notify_email"] = "private@example.com"
+
+        with self.assertRaises(Exception):
+            ExtractionInput.model_validate(payload)
+
+
+if __name__ == "__main__":
+    unittest.main()

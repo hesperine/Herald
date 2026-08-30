@@ -1,0 +1,17 @@
+__pycache__/
+*.py[cod]
+*.egg-info/
+.pytest_cache/
+.coverage
+htmlcov/
+.venv/
+dist/
+build/
+.env
+.env.*
+!.env.example
+.herald-work/
+_state/
+_page/
+.herald-state/
+.herald-page/
