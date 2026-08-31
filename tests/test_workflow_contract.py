@@ -20,6 +20,17 @@ class WorkflowContractTests(unittest.TestCase):
         self.assertIn("[project.optional-dependencies]", pyproject)
         self.assertIn("dev = [", pyproject)
 
+    def test_local_debugging_instructions_cover_outputs_and_reproduction(self) -> None:
+        readme = (ROOT / "README.md").read_text(encoding="utf-8")
+
+        self.assertIn(".herald-work/local-state", readme)
+        self.assertIn(".herald-work/local-page", readme)
+        self.assertIn("python -m http.server 8000", readme)
+        self.assertIn("--now", readme)
+        self.assertIn("--state-dir", readme)
+        self.assertIn("--page-dir", readme)
+        self.assertIn("Ctrl+C", readme)
+
     def test_local_launcher_injects_env_without_changing_runtime_contract(self) -> None:
         launcher = (ROOT / "scripts/run-local.py").read_text(encoding="utf-8")
         example = (ROOT / "local.env.example").read_text(encoding="utf-8")

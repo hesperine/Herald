@@ -164,6 +164,51 @@ python scripts/run-local.py
 
 `run-local.py` 可在 Windows、macOS 和 Linux 运行。它只负责读取 `local.env` 的 `KEY=value`，为 HERALD 创建独立的子进程环境，然后调用 `python -m herald`；不会修改当前终端的环境。HERALD 本身不读取 `local.env`，GitHub Actions 也不读取它：Action 工作流直接把 Repository Variables/Secrets 注入环境。因此从 CLI 开始，本地与远端运行的是同一套逻辑。
 
+### 检查本地输出
+
+默认调试结果分别写入：
+
+- `.herald-work/local-state`：抓取游标、观察记录、活动状态、日期队列和通知回执；
+- `.herald-work/local-page`：可直接预览的静态网页。
+
+Windows PowerShell 可以这样列出文件：
+
+```powershell
+Get-ChildItem .herald-work/local-state -Recurse
+Get-ChildItem .herald-work/local-page -Recurse
+```
+
+macOS 或 Linux 可以使用：
+
+```bash
+find .herald-work/local-state -type f
+find .herald-work/local-page -type f
+```
+
+这些目录都被 Git 忽略。不要把本地调试状态或生成页面强制提交到 `main`。
+
+### 预览静态页面
+
+在项目根目录运行：
+
+```text
+python -m http.server 8000 --directory .herald-work/local-page
+```
+
+然后访问 <http://localhost:8000>。预览结束后按 `Ctrl+C` 停止临时服务器；这只用于本机检查，不改变项目正式部署时无常驻服务器的架构。
+
+### 固定时间复现
+
+需要检查“指定日期的即时通知、提前一天提醒或历史到期队列”时，可以隔离状态目录并传入带时区的时间：
+
+```text
+python scripts/run-local.py --now "2026-08-31T10:00:00+08:00" --state-dir ".herald-work/debug-state" --page-dir ".herald-work/debug-page"
+```
+
+`--now` 必须包含时区偏移。单独使用 `debug-state/debug-page` 可以避免与默认调试结果混在一起。该命令仍可能访问真实微博和 AI；如果 `local.env` 中同时配置了完整 SMTP 凭据与收件地址，也可能真实发送到期提醒。
+
+没有配置 `AI_MODEL` 或 `AI_API_KEY` 时，候选材料会进入 `pending-extraction`，不会丢失；以后补上 Key 后会从索引重新处理。若运行报告出现来源访问警告，先保留生成的 state，再检查网络、微博匿名访问限制或可选的 `WEIBO_COOKIE`。
+
 本地验证通过后，将 `local.env` 中的非敏感项逐项填入 GitHub **Repository Variables**，敏感项逐项填入 **Repository Secrets**。GitHub 不能直接导入整个文件；`local.env` 已被 `.gitignore` 排除，绝不能强制提交。
 
 默认调试状态和页面写入 `.herald-work/`，同样不会进入 Git。若填写了完整 SMTP 配置和收件地址，本地运行可能真实发送到期提醒；只想调试微博和 AI 时，请让 `NOTIFY_EMAIL` 或 SMTP 凭据保持为空。
