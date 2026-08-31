@@ -67,6 +67,72 @@ def result() -> ExtractionResult:
     )
 
 
+def historical_collaboration_packet() -> ExtractionInput:
+    return ExtractionInput(
+        observation_id="weibo-historical-collaboration",
+        platform="weibo",
+        account_name="原神",
+        published_at="2026-08-16T12:00:00+08:00",
+        text=(
+            "原神 × 美团丨大众点评联名活动正式开启："
+            "2026年8月16日美团快闪预约开启，"
+            "8月19日大众点评打卡活动开启，"
+            "8月21日美团原神专属会场开启。"
+        ),
+        source_url="https://weibo.com/6593199887/RdDIG4Sea",
+        ip_slug_hint="genshin-impact",
+        ip_name_hint="原神",
+    )
+
+
+def historical_collaboration_result() -> ExtractionResult:
+    return ExtractionResult(
+        relevant=True,
+        campaign_title="原神 × 美团丨大众点评",
+        partner="美团丨大众点评",
+        activities=[
+            ExtractedActivity(
+                kind=ActivityKind.POPUP,
+                title="美团快闪预约",
+                actions=[
+                    ExtractedAction(
+                        kind=ActionKind.RESERVATION_OPEN,
+                        title="美团快闪预约开启",
+                    )
+                ],
+            ),
+            ExtractedActivity(
+                kind=ActivityKind.ONLINE,
+                title="大众点评打卡活动",
+                actions=[
+                    ExtractedAction(
+                        kind=ActionKind.EVENT_START,
+                        title="大众点评打卡活动开启",
+                    )
+                ],
+            ),
+            ExtractedActivity(
+                kind=ActivityKind.ONLINE,
+                title="美团原神专属会场",
+                actions=[
+                    ExtractedAction(
+                        kind=ActionKind.EVENT_START,
+                        title="美团原神专属会场开启",
+                    )
+                ],
+            ),
+        ],
+        claims=[
+            ExtractedClaim(
+                field_path="partner",
+                quote="原神 × 美团丨大众点评联名活动",
+                confidence=1,
+            )
+        ],
+        uncertainties=["公告只给出日期，未给出三个节点的具体时刻。"],
+    )
+
+
 class MockAIProviderTests(unittest.IsolatedAsyncioTestCase):
     async def test_returns_stable_fixture_copy(self) -> None:
         provider = MockAIProvider({"weibo-a": result()})
@@ -76,6 +142,26 @@ class MockAIProviderTests(unittest.IsolatedAsyncioTestCase):
 
         self.assertEqual(first, second)
         self.assertIsNot(first, second)
+
+    async def test_historical_collaboration_fixture_keeps_unknown_times_null(self) -> None:
+        packet = historical_collaboration_packet()
+        provider = MockAIProvider(
+            {packet.observation_id: historical_collaboration_result()}
+        )
+
+        extracted = await provider.extract(packet)
+
+        self.assertTrue(extracted.relevant)
+        self.assertEqual(extracted.partner, "美团丨大众点评")
+        self.assertEqual(len(extracted.activities), 3)
+        self.assertTrue(
+            all(
+                action.at is None
+                for activity in extracted.activities
+                for action in activity.actions
+            )
+        )
+        self.assertIn("未给出", extracted.uncertainties[0])
 
 
 class OpenAICompatibleProviderTests(unittest.IsolatedAsyncioTestCase):
