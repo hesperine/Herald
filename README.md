@@ -215,6 +215,16 @@ AI_PROFILE=openrouter-minimax-minimax-m3
 python scripts/run-local.py --provider-file "其他位置/local-ai-providers.toml"
 ```
 
+### 只测试 AI 提取
+
+配置好 `AI_PROFILE` 后，可以只对固定的公开历史联动样本执行一次真实 AI 提取：
+
+```text
+python scripts/run-local.py --ai-smoke-test
+```
+
+该命令使用“原神 × 美团丨大众点评”的公开历史正文，不抓取微博、不运行 Campaign 合并、不读写 state/page，也不发送邮件。输出中的 `result` 是通过 `ExtractionResult` Schema 校验后的结构化结果，`checks` 会检查活动数量、原文证据、日期保守性以及是否凭空补充地点或操作链接。当前样本没有海报 URL，因此这条命令不验证视觉输入；视觉测试需要另行准备带公开图片 URL 的固定样本。
+
 ### 检查本地输出
 
 默认调试结果分别写入：
