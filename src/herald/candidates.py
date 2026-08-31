@@ -10,6 +10,7 @@ from .models import SourceObservation
 COLLABORATION_TERMS = {
     "联动",
     "联名",
+    "合作",
     "合作企划",
     "主题活动",
     "主题店",

@@ -43,6 +43,16 @@ class CandidateFilterTests(unittest.TestCase):
         self.assertTrue(decision.relevant)
         self.assertIn("联动", decision.matched_terms)
 
+    def test_official_ip_cooperation_clothing_post_is_relevant(self) -> None:
+        decision = self.filter.evaluate(
+            observation("【新增服饰】虎狼丸，女神异闻录3 Reload合作服装。"),
+            ip_names=["明日方舟", "Arknights"],
+            from_official_ip_account=True,
+        )
+
+        self.assertTrue(decision.relevant)
+        self.assertIn("合作", decision.matched_terms)
+
     def test_non_official_source_must_explicitly_name_the_ip(self) -> None:
         without_ip = self.filter.evaluate(
             observation("全新联动即将开启"),
