@@ -1,0 +1,20 @@
+# Copy this file to local-ai-providers.toml for local debugging only.
+# The copied file is ignored by Git and may contain your real AI_API_KEY values.
+# Never put real keys in this tracked example file.
+
+[openrouter-minimax-minimax-m3]
+AI_PROVIDER = "openai_compatible"
+AI_BASE_URL = "https://openrouter.ai/api/v1"
+AI_MODEL = "minimax/minimax-m3:free"
+AI_VISION = true
+AI_JSON_MODE = true
+AI_API_KEY = ""
+
+# TOML table names containing a dot must be quoted.
+["siliconflow-qwen-qwen3.5-4b"]
+AI_PROVIDER = "openai_compatible"
+AI_BASE_URL = "https://api.siliconflow.cn/v1"
+AI_MODEL = "Qwen/Qwen3.5-4B"
+AI_VISION = true
+AI_JSON_MODE = true
+AI_API_KEY = ""

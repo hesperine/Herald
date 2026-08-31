@@ -11,6 +11,8 @@ build/
 .env.*
 local.env
 !local.env.example
+local-ai-providers.toml
+!local-ai-providers.toml.example
 .herald-work/
 _state/
 _page/
