@@ -87,8 +87,8 @@ GitHub Pages 首页只列出仍有效、且属于当前关注 IP 的活动。点
 | `INCLUDE_IN_GAME` | `false` | 预留项；当前版本仍聚焦品牌/线下/商品联动 |
 | `TIMEZONE` | `Asia/Shanghai` | 日期队列和邮件时区 |
 | `PUBLISH_REACHABILITY` | `false` | 是否把地点推导的“本地/可达”发布到公开网页；默认关闭 |
-| `AI_PROVIDER` | `openai_compatible` | 第一版支持 OpenAI-compatible API |
-| `AI_BASE_URL` | `https://example.com/v1` | 免费或付费兼容服务地址 |
+| `AI_PROVIDER` | `openai_compatible` | 通用兼容服务用 `openai_compatible`；智谱用 `zhipu_openai`（也接受 `zhipu-openai`） |
+| `AI_BASE_URL` | `https://example.com/v1` | 兼容服务地址；`zhipu_openai` 未填时默认为智谱开放平台 v4 |
 | `AI_MODEL` | `your-model-name` | 模型名；不填则不调用 AI |
 | `AI_VISION` | `false` | 模型支持图片输入时设为 `true`，用于读取公告海报 |
 | `AI_JSON_MODE` | `true` | 服务不支持 `response_format` 时设为 `false` |
@@ -111,6 +111,8 @@ GitHub Pages 首页只列出仍有效、且属于当前关注 IP 的活动。点
 `codex://threads/...` 是 Codex 任务引用，不是 GitHub Actions 可调用的模型 Key。开发期间可以让 Codex/Luna处理脱敏公开样本，但每日项目运行仍使用上述使用者自配 API。
 
 没有配置 AI 时，疑似联动材料会进入 `state/pending-extraction`，不会被丢弃；以后补上 Key，即使微博已经不再返回那条旧帖，系统也会通过索引重新处理它。
+
+智谱的 OpenAI 兼容层对采样参数有额外限制，使用时请设置 `AI_PROVIDER=zhipu_openai`，不要只替换通用 Provider 的 Base URL。该适配器会使用智谱支持的非零 `temperature`，同时保留官方支持的 JSON Object 模式。智谱返回 429 时不会在短时间内连续重试；候选材料会保留在 `pending-extraction`，留待下次运行。
 
 ## 内置信息来源
 
