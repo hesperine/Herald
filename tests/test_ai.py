@@ -15,6 +15,7 @@ from herald.ai import (
     ExtractionResult,
     MockAIProvider,
     OpenAICompatibleProvider,
+    ZhipuOpenAIProvider,
 )
 from herald.models import ActionKind, ActivityKind
 
@@ -253,6 +254,59 @@ class OpenAICompatibleProviderTests(unittest.IsolatedAsyncioTestCase):
             image_parts[0]["image_url"]["url"],
             "https://img.example/poster.jpg",
         )
+
+    async def test_zhipu_dialect_uses_a_supported_nonzero_temperature(self) -> None:
+        captured: dict[str, object] = {}
+
+        def handler(request: httpx.Request) -> httpx.Response:
+            captured.update(json.loads(request.content))
+            return httpx.Response(
+                200,
+                json={"choices": [{"message": {"content": result().model_dump_json()}}]},
+            )
+
+        async with httpx.AsyncClient(
+            transport=httpx.MockTransport(handler)
+        ) as http_client:
+            provider = ZhipuOpenAIProvider(
+                client=http_client,
+                base_url="https://open.bigmodel.cn/api/paas/v4",
+                model="glm-4.6v-flash",
+                api_key="private-key",
+            )
+            extracted = await provider.extract(packet())
+
+        self.assertTrue(extracted.relevant)
+        self.assertEqual(provider.provider_name, "zhipu_openai")
+        self.assertGreater(captured["temperature"], 0)
+        self.assertLess(captured["temperature"], 1)
+        self.assertEqual(captured["response_format"], {"type": "json_object"})
+
+    async def test_zhipu_rate_limit_is_deferred_instead_of_retried_immediately(self) -> None:
+        attempts = 0
+
+        def handler(request: httpx.Request) -> httpx.Response:
+            nonlocal attempts
+            attempts += 1
+            return httpx.Response(
+                429,
+                json={"error": {"code": "1305", "message": "provider overloaded"}},
+            )
+
+        async with httpx.AsyncClient(
+            transport=httpx.MockTransport(handler)
+        ) as http_client:
+            provider = ZhipuOpenAIProvider(
+                client=http_client,
+                base_url="https://open.bigmodel.cn/api/paas/v4",
+                model="glm-4.6v-flash",
+                api_key="private-key",
+                max_attempts=3,
+            )
+            with self.assertRaisesRegex(AIProviderError, "redacted retries"):
+                await provider.extract(packet())
+
+        self.assertEqual(attempts, 1)
 
     async def test_invalid_output_is_retried_then_redacted(self) -> None:
         attempts = 0

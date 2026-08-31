@@ -11,7 +11,7 @@ from pathlib import Path
 
 import httpx
 
-from .ai import AIProvider, OpenAICompatibleProvider
+from .ai import AIProvider, OpenAICompatibleProvider, ZhipuOpenAIProvider
 from .config import RuntimeSettings, load_settings
 from .notifications import EmailSender, SmtpEmailSender
 from .runner import DailyRunner
@@ -43,14 +43,15 @@ def _make_provider(
 ) -> AIProvider | None:
     if not settings.ai_enabled:
         return None
-    if settings.public.ai_provider != "openai_compatible":
-        raise ValueError(
-            "AI_PROVIDER must be 'openai_compatible' in the first release"
-        )
     api_key = _secret(settings.private.ai_api_key)
     if api_key is None or settings.public.ai_model is None:
         return None
-    return OpenAICompatibleProvider(
+    provider_type = (
+        ZhipuOpenAIProvider
+        if settings.public.ai_provider == "zhipu_openai"
+        else OpenAICompatibleProvider
+    )
+    return provider_type(
         client=client,
         base_url=settings.public.ai_base_url,
         model=settings.public.ai_model,

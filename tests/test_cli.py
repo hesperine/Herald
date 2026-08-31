@@ -33,6 +33,24 @@ class CliTests(unittest.TestCase):
         self.assertEqual(provider.model_name, "free-model")
         self.assertEqual(provider.base_url, "https://free.example/v1")
 
+    def test_zhipu_openai_alias_selects_the_zhipu_dialect_and_default_url(self) -> None:
+        configured = load_settings(
+            {
+                "WATCH_IPS": "原神",
+                "AI_PROVIDER": "zhipu-openai",
+                "AI_MODEL": "glm-4.6v-flash",
+                "AI_API_KEY": "user-owned-key",
+            }
+        )
+
+        provider = _make_provider(configured, object())
+
+        self.assertEqual(configured.public.ai_provider, "zhipu_openai")
+        self.assertEqual(provider.provider_name, "zhipu_openai")
+        self.assertEqual(
+            provider.base_url, "https://open.bigmodel.cn/api/paas/v4"
+        )
+
     def test_email_sender_requires_a_complete_user_configuration(self) -> None:
         incomplete = load_settings(
             {"WATCH_IPS": "原神", "NOTIFY_EMAIL": "player@example.com"}

@@ -58,6 +58,10 @@ class LoadSettingsTests(unittest.TestCase):
         with self.assertRaisesRegex(ValueError, "COUNTRY=CN"):
             load_settings({"WATCH_IPS": "原神", "COUNTRY": "JP"})
 
+    def test_rejects_unknown_ai_provider(self) -> None:
+        with self.assertRaisesRegex(ValueError, "AI_PROVIDER"):
+            load_settings({"WATCH_IPS": "原神", "AI_PROVIDER": "unknown"})
+
     def test_fingerprint_does_not_contain_secret_values(self) -> None:
         settings = load_settings(
             {

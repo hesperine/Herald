@@ -10,6 +10,12 @@ from collections.abc import Mapping
 from pydantic import BaseModel, ConfigDict, Field, SecretStr, field_validator
 
 
+AI_BASE_URLS = {
+    "openai_compatible": "https://api.openai.com/v1",
+    "zhipu_openai": "https://open.bigmodel.cn/api/paas/v4",
+}
+
+
 def _split_list(value: str | None) -> list[str]:
     if not value:
         return []
@@ -75,6 +81,16 @@ class PublicSettings(BaseModel):
             raise ValueError("the first release only supports COUNTRY=CN")
         return normalized
 
+    @field_validator("ai_provider")
+    @classmethod
+    def normalize_ai_provider(cls, value: str) -> str:
+        normalized = value.strip().lower().replace("-", "_")
+        if normalized not in AI_BASE_URLS:
+            raise ValueError(
+                "AI_PROVIDER must be 'openai_compatible' or 'zhipu_openai'"
+            )
+        return normalized
+
 
 class PrivateSettings(BaseModel):
     model_config = ConfigDict(extra="forbid")
@@ -119,6 +135,12 @@ def load_settings(environ: Mapping[str, str] | None = None) -> RuntimeSettings:
     if not watched_ips:
         raise ValueError("WATCH_IPS must contain at least one built-in IP name")
 
+    ai_provider = env.get("AI_PROVIDER", "openai_compatible").strip().lower()
+    ai_provider = ai_provider.replace("-", "_")
+    ai_base_url = env.get("AI_BASE_URL") or AI_BASE_URLS.get(
+        ai_provider, AI_BASE_URLS["openai_compatible"]
+    )
+
     public = PublicSettings(
         watched_ips=watched_ips,
         country=env.get("COUNTRY", "CN"),
@@ -129,8 +151,8 @@ def load_settings(environ: Mapping[str, str] | None = None) -> RuntimeSettings:
             env.get("PUBLISH_REACHABILITY"), False
         ),
         timezone=env.get("TIMEZONE", "Asia/Shanghai"),
-        ai_provider=env.get("AI_PROVIDER", "openai_compatible"),
-        ai_base_url=env.get("AI_BASE_URL", "https://api.openai.com/v1"),
+        ai_provider=ai_provider,
+        ai_base_url=ai_base_url,
         ai_model=env.get("AI_MODEL") or None,
         ai_vision=_parse_bool(env.get("AI_VISION"), False),
         ai_json_mode=_parse_bool(env.get("AI_JSON_MODE"), True),

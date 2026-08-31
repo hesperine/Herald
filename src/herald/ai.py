@@ -129,6 +129,7 @@ class OpenAICompatibleProvider:
         api_key: str,
         supports_vision: bool = False,
         supports_json_object: bool = True,
+        temperature: float = 0,
         max_attempts: int = 3,
     ) -> None:
         self.client = client
@@ -137,6 +138,7 @@ class OpenAICompatibleProvider:
         self.api_key = api_key
         self.supports_vision = supports_vision
         self.supports_json_object = supports_json_object
+        self.temperature = temperature
         self.max_attempts = max(1, max_attempts)
 
     async def extract(self, packet: ExtractionInput) -> ExtractionResult:
@@ -159,8 +161,14 @@ class OpenAICompatibleProvider:
             except (httpx.HTTPError, ValueError, KeyError, TypeError, ValidationError) as exc:
                 last_error = exc
                 if attempt + 1 < self.max_attempts:
-                    await asyncio.sleep(0.25 * (2**attempt))
+                    retry_delay = self._retry_delay(exc, attempt)
+                    if retry_delay is None:
+                        break
+                    await asyncio.sleep(retry_delay)
         raise AIProviderError("AI extraction failed after redacted retries") from last_error
+
+    def _retry_delay(self, exc: Exception, attempt: int) -> float | None:
+        return 0.25 * (2**attempt)
 
     def _request_payload(self, packet: ExtractionInput) -> dict[str, Any]:
         public_packet = packet.model_dump(mode="json")
@@ -184,7 +192,7 @@ class OpenAICompatibleProvider:
 
         payload: dict[str, Any] = {
             "model": self.model_name,
-            "temperature": 0,
+            "temperature": self.temperature,
             "messages": [
                 {
                     "role": "system",
@@ -218,3 +226,39 @@ class OpenAICompatibleProvider:
         if stripped.startswith("```"):
             stripped = CODE_FENCE.sub("", stripped).strip()
         return stripped
+
+
+class ZhipuOpenAIProvider(OpenAICompatibleProvider):
+    """Zhipu's OpenAI-compatible dialect with provider-specific parameters."""
+
+    provider_name = "zhipu_openai"
+
+    def __init__(
+        self,
+        *,
+        client: httpx.AsyncClient,
+        base_url: str,
+        model: str,
+        api_key: str,
+        supports_vision: bool = False,
+        supports_json_object: bool = True,
+        max_attempts: int = 3,
+    ) -> None:
+        super().__init__(
+            client=client,
+            base_url=base_url,
+            model=model,
+            api_key=api_key,
+            supports_vision=supports_vision,
+            supports_json_object=supports_json_object,
+            temperature=0.1,
+            max_attempts=max_attempts,
+        )
+
+    def _retry_delay(self, exc: Exception, attempt: int) -> float | None:
+        if (
+            isinstance(exc, httpx.HTTPStatusError)
+            and exc.response.status_code == 429
+        ):
+            return None
+        return super()._retry_delay(exc, attempt)
