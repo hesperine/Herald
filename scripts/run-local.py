@@ -139,6 +139,11 @@ def _parser() -> argparse.ArgumentParser:
         "--page-dir", type=Path, default=PROJECT_ROOT / ".herald-work/local-page"
     )
     parser.add_argument("--now", help="timezone-aware ISO timestamp")
+    parser.add_argument(
+        "--ai-smoke-test",
+        action="store_true",
+        help="run only one real AI extraction against a fixed public sample",
+    )
     return parser
 
 
@@ -154,14 +159,17 @@ def main(argv: list[str] | None = None) -> int:
         return 2
 
     child_environment = build_child_environment(values)
-    command = [
-        sys.executable,
-        "-m", "herald",
-        "--state-dir", str(args.state_dir),
-        "--page-dir", str(args.page_dir),
-    ]
-    if args.now:
-        command.extend(["--now", args.now])
+    if args.ai_smoke_test:
+        command = [sys.executable, "-m", "herald.ai_smoke"]
+    else:
+        command = [
+            sys.executable,
+            "-m", "herald",
+            "--state-dir", str(args.state_dir),
+            "--page-dir", str(args.page_dir),
+        ]
+        if args.now:
+            command.extend(["--now", args.now])
     try:
         completed = subprocess.run(
             command,

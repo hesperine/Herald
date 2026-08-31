@@ -174,6 +174,26 @@ class LocalLauncherTests(unittest.TestCase):
         self.assertEqual(child_environment["AI_MODEL"], "Qwen/Qwen3.5-4B")
         self.assertEqual(child_environment["AI_API_KEY"], "child-only-key")
 
+    def test_ai_smoke_flag_launches_only_extraction_module(self) -> None:
+        launcher = _load_launcher()
+        with tempfile.TemporaryDirectory() as temporary:
+            env_file = Path(temporary) / "local.env"
+            env_file.write_text("WATCH_IPS=原神\n", encoding="utf-8")
+            completed = SimpleNamespace(returncode=0)
+
+            with patch.object(
+                launcher.subprocess, "run", return_value=completed
+            ) as run:
+                exit_code = launcher.main(
+                    ["--env-file", str(env_file), "--ai-smoke-test"]
+                )
+
+        self.assertEqual(exit_code, 0)
+        self.assertEqual(
+            run.call_args.args[0],
+            [launcher.sys.executable, "-m", "herald.ai_smoke"],
+        )
+
 
 if __name__ == "__main__":
     unittest.main()
