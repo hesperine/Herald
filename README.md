@@ -70,7 +70,7 @@ GitHub Pages 首页只列出仍有效、且属于当前关注 IP 的活动。点
 4. 打开 **Settings → Pages**，选择 **Deploy from a branch**，分支选 `page`，目录选 `/ (root)`。
 5. 以后工作流每天约在北京时间 08:15 自动运行；GitHub 定时任务可能延后几分钟。
 
-整个配置过程不要求修改或提交仓库文件。
+整个配置过程不要求修改或提交仓库文件，也不需要创建 `.env`。GitHub Actions 会在运行时把 Repository Variables/Secrets 注入为环境变量，HERALD 再从运行进程中读取；这些配置不会进入 Git 历史，因此不会妨碍 fork 同步上游。
 
 ## 清晰的关注档案
 
@@ -139,6 +139,12 @@ python -m unittest discover -s tests -v
 $env:WATCH_IPS='原神,明日方舟'
 python -m herald --state-dir .herald-state --page-dir .herald-page
 ```
+
+### `.env.example` 是什么
+
+`.env.example` **仅是本地开发时查看变量名称和示例值的可选参考**，不参与 GitHub Actions 部署，也不是 fork 后必须复制或修改的用户配置文件。HERALD 本身不会自动读取 `.env`；上面的 PowerShell 示例直接向当前进程设置环境变量。
+
+如果本地开发者选择借助 IDE、终端工具或其他环境加载器复制出 `.env`，该文件已被 `.gitignore` 排除，不应提交。正式使用者应始终在 GitHub 网页的 **Repository Variables/Secrets** 中配置关注 IP、地点、AI 和邮件信息，这些改动不会产生 commit，也不会让 fork 的 `main` 与上游分叉。
 
 真实 API、微博和 SMTP 不参与离线测试。测试使用固定响应与 Mock Provider，因此无需 Key。
 
