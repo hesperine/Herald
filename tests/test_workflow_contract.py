@@ -8,6 +8,34 @@ ROOT = Path(__file__).resolve().parents[1]
 
 
 class WorkflowContractTests(unittest.TestCase):
+    def test_local_development_uses_a_rebuildable_virtual_environment(self) -> None:
+        readme = (ROOT / "README.md").read_text(encoding="utf-8")
+        gitignore = (ROOT / ".gitignore").read_text(encoding="utf-8")
+        pyproject = (ROOT / "pyproject.toml").read_text(encoding="utf-8")
+
+        self.assertIn(".venv/", gitignore.splitlines())
+        self.assertIn("python -m venv .venv", readme)
+        self.assertIn(r".\.venv\Scripts\Activate.ps1", readme)
+        self.assertIn('python -m pip install -e ".[dev]"', readme)
+        self.assertIn("[project.optional-dependencies]", pyproject)
+        self.assertIn("dev = [", pyproject)
+
+    def test_local_launcher_injects_env_without_changing_runtime_contract(self) -> None:
+        launcher = (ROOT / "scripts/run-local.py").read_text(encoding="utf-8")
+        example = (ROOT / "local.env.example").read_text(encoding="utf-8")
+        gitignore = (ROOT / ".gitignore").read_text(encoding="utf-8")
+        workflow = (ROOT / ".github/workflows/daily.yml").read_text(encoding="utf-8")
+        cli = (ROOT / "src/herald/cli.py").read_text(encoding="utf-8")
+
+        self.assertFalse((ROOT / ".env.example").exists())
+        self.assertFalse((ROOT / "scripts/run-local.ps1").exists())
+        self.assertIn("local.env", gitignore.splitlines())
+        self.assertIn("WATCH_IPS=原神,明日方舟", example)
+        self.assertIn('"-m", "herald"', launcher)
+        self.assertIn("env=child_environment", launcher)
+        self.assertNotIn("local.env", workflow)
+        self.assertNotIn("local.env", cli)
+
     def test_daily_workflow_keeps_configuration_out_of_main(self) -> None:
         workflow = (ROOT / ".github/workflows/daily.yml").read_text(encoding="utf-8")
 

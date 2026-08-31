@@ -21,6 +21,7 @@
 - 通知回执只保存 job ID、语义键和时间，不保存收件地址。
 - 微博图片二进制不进仓库；只保留公开 URL 与用于去重的摘要。
 - 来源文本是不可信数据。它只能进入结构化提取，不得被当作 Agent 指令或用于调用额外工具。
+- 本地真实调试的 Secret 只允许进入被 Git 忽略的 `local.env`。HERALD 包代码和 CLI 不得读取该文件；只有跨平台的 `scripts/run-local.py` 可以把它注入独立子进程环境。
 
 ## 模块地图
 
@@ -35,6 +36,7 @@
 - `pipeline.py`：单个 IP 的观察材料处理。
 - `runner.py`：一次完整每日运行。
 - `cli.py`：环境变量到运行器的薄适配层。
+- `local.env.example`、`scripts/run-local.py`：本地调试配置样例与跨平台环境注入器；远端工作流不读取它们。
 - `.github/workflows/daily.yml`：三分支运行与提交。
 
 ## 修改顺序

@@ -6,13 +6,15 @@ HERALD 设计为在使用者自己的 GitHub 仓库中运行。项目维护者�
 
 如果 fork 是公开仓库，`main`、`state`、`page` 三个分支通常都可以被任何人读取，GitHub Pages 也公开可访问。因此 `state/page` 只允许保存公开公告、结构化活动、来源 URL、匿名任务 ID、日期队列与不含收件人的通知回执。
 
-以下内容只能放在 GitHub Repository Secrets 中，不能提交：
+正式部署时，以下内容只能放在 GitHub Repository Secrets 中，不能提交：
 
 - 常驻城市和可达城市；
 - 收件邮箱；
 - AI API Key；
 - 微博 Cookie；
 - SMTP 用户名、密码或授权码。
+
+本地真实调试时，这些值可以暂存在被 Git 忽略的 `local.env`，由 `scripts/run-local.py` 注入独立的 HERALD 子进程环境；该文件不得强制加入 Git、上传为 Artifact 或粘贴到 Issue/日志。HERALD 与 GitHub Actions 都不会直接读取它。
 
 ## 地点推断
 

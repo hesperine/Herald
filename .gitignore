@@ -9,7 +9,8 @@ dist/
 build/
 .env
 .env.*
-!.env.example
+local.env
+!local.env.example
 .herald-work/
 _state/
 _page/
