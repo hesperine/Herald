@@ -24,5 +24,44 @@
         "url": "https://weibo.com/u/6279793937"
       }
     ]
+  },
+  {
+    "slug": "arknights-endfield",
+    "name": "明日方舟：终末地",
+    "aliases": [
+      "Arknights: Endfield",
+      "Arknights Endfield",
+      "Endfield",
+      "终末地",
+      "明日方舟终末地"
+    ],
+    "sources": [
+      {
+        "kind": "weibo",
+        "account_name": "明日方舟终末地",
+        "account_id": "7745672941",
+        "url": "https://weibo.com/u/7745672941"
+      }
+    ]
+  },
+  {
+    "slug": "honkai-star-rail",
+    "name": "崩坏：星穹铁道",
+    "aliases": [
+      "Honkai: Star Rail",
+      "Honkai Star Rail",
+      "HSR",
+      "星穹铁道",
+      "崩坏星穹铁道",
+      "崩铁"
+    ],
+    "sources": [
+      {
+        "kind": "weibo",
+        "account_name": "崩坏星穹铁道",
+        "account_id": "7643376782",
+        "url": "https://weibo.com/u/7643376782"
+      }
+    ]
   }
 ]

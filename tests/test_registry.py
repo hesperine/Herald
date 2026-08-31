@@ -9,7 +9,14 @@ from herald.registry import IpRegistry
 class IpRegistryTests(unittest.TestCase):
     def test_builtin_ips_include_their_official_weibo_sources(self) -> None:
         resolution = IpRegistry.load_builtin().resolve(
-            PublicSettings(watched_ips=["原神", "明日方舟"])
+            PublicSettings(
+                watched_ips=[
+                    "原神",
+                    "明日方舟",
+                    "明日方舟终末地",
+                    "崩坏星穹铁道",
+                ]
+            )
         )
 
         sources = {
@@ -18,6 +25,8 @@ class IpRegistryTests(unittest.TestCase):
         }
         self.assertEqual(sources["genshin-impact"], ["6593199887"])
         self.assertEqual(sources["arknights"], ["6279793937"])
+        self.assertEqual(sources["arknights-endfield"], ["7745672941"])
+        self.assertEqual(sources["honkai-star-rail"], ["7643376782"])
 
     def setUp(self) -> None:
         self.registry = IpRegistry.load_builtin()
