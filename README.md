@@ -164,7 +164,56 @@ Copy-Item local.env.example local.env
 python scripts/run-local.py
 ```
 
-`run-local.py` 可在 Windows、macOS 和 Linux 运行。它只负责读取 `local.env` 的 `KEY=value`，为 HERALD 创建独立的子进程环境，然后调用 `python -m herald`；不会修改当前终端的环境。HERALD 本身不读取 `local.env`，GitHub Actions 也不读取它：Action 工作流直接把 Repository Variables/Secrets 注入环境。因此从 CLI 开始，本地与远端运行的是同一套逻辑。
+`run-local.py` 可在 Windows、macOS 和 Linux 运行。它负责读取 `local.env` 的 `KEY=value` 和可选的本地 AI 档案，为 HERALD 创建独立的子进程环境，然后调用 `python -m herald`；不会修改当前终端的环境。HERALD 本身不读取这些本地文件，GitHub Actions 也不读取它们：Action 工作流直接把 Repository Variables/Secrets 注入环境。因此从 CLI 开始，本地与远端运行的是同一套逻辑。
+
+### 本地 AI Provider 档案
+
+需要频繁切换不同平台或模型时，可以把完整 AI 配置（包括真实 `AI_API_KEY`）放入本地私密 TOML：
+
+```powershell
+Copy-Item local-ai-providers.toml.example local-ai-providers.toml
+```
+
+macOS 或 Linux 使用：
+
+```bash
+cp local-ai-providers.toml.example local-ai-providers.toml
+```
+
+`local-ai-providers.toml` 已被 Git 忽略，可以保存多个本地档案。仓库只跟踪不含真实 Key 的 `local-ai-providers.toml.example`。例如：
+
+```toml
+[openrouter-minimax-minimax-m3]
+AI_PROVIDER = "openai_compatible"
+AI_BASE_URL = "https://openrouter.ai/api/v1"
+AI_MODEL = "minimax/minimax-m3:free"
+AI_VISION = true
+AI_JSON_MODE = true
+AI_API_KEY = "在本地填写真实 Key"
+
+# 名称含点号时，TOML 表名必须加引号。
+["siliconflow-qwen-qwen3.5-4b"]
+AI_PROVIDER = "openai_compatible"
+AI_BASE_URL = "https://api.siliconflow.cn/v1"
+AI_MODEL = "Qwen/Qwen3.5-4B"
+AI_VISION = true
+AI_JSON_MODE = true
+AI_API_KEY = "在本地填写真实 Key"
+```
+
+然后在 `local.env` 中只选择一个档案：
+
+```dotenv
+AI_PROFILE=openrouter-minimax-minimax-m3
+```
+
+档案名区分大小写，必须与 TOML 表名完全一致。选中档案后，其中六个 `AI_*` 字段会覆盖 `local.env` 中同名字段；其他本地配置（微博 Cookie、关注 IP、SMTP 等）仍来自 `local.env`。不填写 `AI_PROFILE` 时，原来的直接 `AI_PROVIDER`、`AI_MODEL`、`AI_API_KEY` 配置方式保持不变。
+
+这套档案只由 `scripts/run-local.py` 解析，HERALD 包、正式 CLI 和 GitHub Actions 都不会读取它。若要把私密 TOML 放在其他位置，可传入 `--provider-file`：
+
+```text
+python scripts/run-local.py --provider-file "其他位置/local-ai-providers.toml"
+```
 
 ### 检查本地输出
 
