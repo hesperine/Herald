@@ -4,16 +4,16 @@
 >
 > 中文定位：游戏联动预告与提醒信使
 
-每天自动寻找你关注的游戏 IP 官方联动公告，把分散的微博材料合并成活动，提前提醒预约、开售、抽签或活动开始，并生成一份静态网页。
+每天自动寻找你关注的游戏 IP 官方联动公告，把分散的官方社区材料合并成活动，提前提醒预约、开售、抽签或活动开始，并生成一份静态网页。
 
 这是一个核心功能优先的早期版本。数据抓取、去重合并、历史提醒、邮件和静态发布已经接通；页面目前只有最低可用的 HTML，视觉布局、配色和卡片设计将在核心稳定后单独设计。
 
 ## 它每天做什么
 
 ```text
-内置 IP 官号 + 用户补充 UID
+米游社 / 森空岛内置官号 + 用户补充微博 UID
               ↓
-       读取微博最新页（中国区）
+  读取作者时间线并补全每条帖子详情（中国区）
               ↓
   来源去重 → 规则初筛 → 用户自己的 AI
               ↓
@@ -82,7 +82,7 @@ GitHub Pages 首页只列出仍有效、且属于当前关注 IP 的活动。点
 |---|---|---|
 | `WATCH_IPS` | `原神,明日方舟` | 必填；第一版只接受内置 IP 名称或别名 |
 | `COUNTRY` | `CN` | 第一版固定支持中国 |
-| `EXTRA_WEIBO_UIDS` | `原神:123456\n明日方舟:987654` | 可给已经内置的 IP 补充官方 UID，不能创建未知 IP |
+| `EXTRA_WEIBO_UIDS` | `原神:123456\n明日方舟:987654` | 可选；给已经内置的 IP 补充微博官方 UID，不能创建未知 IP |
 | `REMIND_DAY_BEFORE` | `true` | 是否生成提前一天提醒 |
 | `INCLUDE_IN_GAME` | `false` | 预留项；当前版本仍聚焦品牌/线下/商品联动 |
 | `TIMEZONE` | `Asia/Shanghai` | 日期队列和邮件时区 |
@@ -103,33 +103,36 @@ GitHub Pages 首页只列出仍有效、且属于当前关注 IP 的活动。点
 | `ORIGIN_CITY` | 常驻城市，只写城市级别 | 可选 |
 | `REACHABLE_CITIES` | 愿意前往的城市，用逗号或换行分隔 | 可选 |
 | `AI_API_KEY` | 使用者自己的模型 Key | 使用 AI 时必需 |
-| `WEIBO_COOKIE` | 使用者自己的微博 Cookie | 匿名接口受限时可选 |
+| `WEIBO_COOKIE` | 使用者自己的微博 Cookie | 只有配置额外微博 UID 且匿名接口受限时才可能需要 |
 | `NOTIFY_EMAIL` | 收件地址 | 使用邮件时必需 |
 | `SMTP_USERNAME` | SMTP 登录账号/发件地址 | 使用邮件时必需 |
 | `SMTP_PASSWORD` | SMTP 授权码或密码 | 使用邮件时必需 |
 
 `codex://threads/...` 是 Codex 任务引用，不是 GitHub Actions 可调用的模型 Key。开发期间可以让 Codex/Luna处理脱敏公开样本，但每日项目运行仍使用上述使用者自配 API。
 
-没有配置 AI 时，疑似联动材料会进入 `state/pending-extraction`，不会被丢弃；以后补上 Key，即使微博已经不再返回那条旧帖，系统也会通过索引重新处理它。
+没有配置 AI 时，疑似联动材料会进入 `state/pending-extraction`，不会被丢弃；以后补上 Key，即使来源时间线已经不再返回那条旧帖，系统也会通过索引重新处理它。
 
 智谱的 OpenAI 兼容层对采样参数有额外限制，使用时请设置 `AI_PROVIDER=zhipu_openai`，不要只替换通用 Provider 的 Base URL。该适配器会使用智谱支持的非零 `temperature`，同时保留官方支持的 JSON Object 模式。智谱返回 429 时不会在短时间内连续重试；候选材料会保留在 `pending-extraction`，留待下次运行。
 
 ## 内置信息来源
 
-第一版只监控内置 IP 的官方微博：
+默认使用不需要用户登录 Cookie 的官方社区账号：
 
-- 原神：`6593199887`
-- 明日方舟Arknights：`6279793937`
-- 明日方舟终末地：`7745672941`
-- 崩坏星穹铁道：`7643376782`
+- 原神米游社：`75276539`
+- 崩坏：星穹铁道米游社：`288909600`
+- 明日方舟森空岛“明日方舟朝陇山”：`6168723566526`
+- 明日方舟：终末地森空岛主官号：`3737967211133`
+- 明日方舟：终末地森空岛衍生品官号“山团团”：`7232373607086`
 
-微博移动接口是非官方且可能变化。程序每天从最新页开始翻页，直到遇到“上次最新微博 ID”、越过最近 72 小时的日期下界、页面为空或达到安全页数上限；只把最新微博 ID 保存为增量游标，不会把页码或响应中的 `since_id` 保存成下一次运行的游标。官号转发时，转发正文与海报也会作为公开材料保留。若匿名访问失败，可由使用者自行配置 Cookie。
+米游社先通过 `/painter/wapi/userPostList` 按 `next_offset` 翻作者时间线，再对最近 72 小时内的候选逐条调用 `/post/wapi/getPostFull`。这样不会把列表截断正文当成完整公告，也不会漏掉无图片的纯文本帖子。`next_offset` 只服务当次翻页，持久化游标只有最新帖子 ID。
 
-新浪图片直链可能因防盗链无法在 GitHub Pages 直接显示。页面生成阶段会使用微博 Referer 下载当前可见 Campaign 的公开图片，以内容 SHA-256 命名后写入 `page/assets/media`，详情页引用站内文件；`page/data/media-index.json` 保存原 URL、站内路径、Content-Type、字节数和内容摘要。已有文件会复用，过期 Campaign 不再引用的文件会清理。图片不进入 AI、`main` 或 `state`。
+森空岛通过 `/web/v2/user/items` 翻作者时间线，再用 `/web/v1/item` 补全文本和图片。公开内容不需要用户账号 Cookie，但服务要求临时设备 `dId`、临时 token 和签名；程序会匿名生成短期设备身份，并使用刷新响应中的服务器时间校准签名。`pageToken` 和随机 `listId` 同样不会写入增量游标。
 
-抓取请求使用 `https://m.weibo.cn/api/container/getIndex`，但材料中的 `source_url` 会根据官号 UID 和微博 bid 规范化为公开详情地址 `https://weibo.com/{uid}/{bid}`。前者是传输接口，后者是证据来源链接，不表示改用桌面网页抓取正文。
+两种来源每天都从最新页开始，直到遇到“上次最新帖子 ID”、整页越过最近 72 小时的日期下界、页面为空或达到安全页数上限。边界帖子会再读取一次，因此同一 ID 的公告编辑可以被识别。
 
-RSS 适配器目前只预留接口，因为多数品牌联动首先出现在社交官号，RSS 不保证覆盖这类公告。
+社区图片直链可能因防盗链无法在 GitHub Pages 直接显示。页面生成阶段会按来源设置米游社、森空岛或微博 Referer，下载当前可见 Campaign 的公开图片，以内容 SHA-256 命名后写入 `page/assets/media`，详情页引用站内文件；`page/data/media-index.json` 保存原 URL、站内路径、Content-Type、字节数和内容摘要。已有文件会复用，过期 Campaign 不再引用的文件会清理。图片不进入 AI、`main` 或 `state`。
+
+微博适配器仍然保留，但不再是内置默认来源。只有用户通过 `EXTRA_WEIBO_UIDS` 给已经关注的内置 IP 补充经过核验的官方 UID 时才会启用；匿名访问失败时可以自行提供 `WEIBO_COOKIE`。RSS 适配器目前仍只预留接口。
 
 ## 本地开发
 
@@ -288,9 +291,9 @@ python -m http.server 8000 --directory .herald-work/local-page
 python scripts/run-local.py --now "2026-08-31T10:00:00+08:00" --state-dir ".herald-work/debug-state" --page-dir ".herald-work/debug-page"
 ```
 
-`--now` 必须包含时区偏移。单独使用 `debug-state/debug-page` 可以避免与默认调试结果混在一起。该命令仍可能访问真实微博和 AI；如果 `local.env` 中同时配置了完整 SMTP 凭据与收件地址，也可能真实发送到期提醒。
+`--now` 必须包含时区偏移。单独使用 `debug-state/debug-page` 可以避免与默认调试结果混在一起。该命令仍可能访问真实官方社区、用户补充的微博来源和 AI；如果 `local.env` 中同时配置了完整 SMTP 凭据与收件地址，也可能真实发送到期提醒。
 
-没有配置 `AI_MODEL` 或 `AI_API_KEY` 时，候选材料会进入 `pending-extraction`，不会丢失；以后补上 Key 后会从索引重新处理。若运行报告出现来源访问警告，先保留生成的 state，再检查网络、微博匿名访问限制或可选的 `WEIBO_COOKIE`。
+没有配置 `AI_MODEL` 或 `AI_API_KEY` 时，候选材料会进入 `pending-extraction`，不会丢失；以后补上 Key 后会从索引重新处理。若运行报告出现来源访问警告，先保留生成的 state，再检查网络；只有警告来自用户补充的微博 UID 时才需要检查匿名访问限制或可选的 `WEIBO_COOKIE`。
 
 本地验证通过后，将 `local.env` 中的非敏感项逐项填入 GitHub **Repository Variables**，敏感项逐项填入 **Repository Secrets**。GitHub 不能直接导入整个文件；`local.env` 已被 `.gitignore` 排除，绝不能强制提交。
 
