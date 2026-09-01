@@ -11,6 +11,7 @@ from pydantic import ValidationError
 
 from .ai import AIProvider
 from .config import RuntimeSettings
+from .media import CachedMediaAsset, MediaCacheResult
 from .models import RunReport, SourceKind, SourceObservation
 from .notifications import DeliveryResult, EmailSender, NotificationService
 from .pipeline import ObservationPipeline, PipelineResult
@@ -31,6 +32,12 @@ class WeiboAccountFetcher(Protocol):
         first_seen_at: datetime,
         published_since: datetime,
     ) -> FetchBatch[WeiboCursor]: ...
+
+
+class MediaCache(Protocol):
+    async def cache(
+        self, urls: list[str], output_dir: Path | str
+    ) -> MediaCacheResult: ...
 
 
 @dataclass(frozen=True, slots=True)
@@ -63,6 +70,7 @@ class DailyRunner:
         weibo_client: WeiboAccountFetcher | None,
         provider: AIProvider | None,
         email_sender: EmailSender | None,
+        media_cache: MediaCache | None = None,
     ) -> DailyRunResult:
         if now.tzinfo is None or now.utcoffset() is None:
             raise ValueError("daily run time must include a timezone")
@@ -135,6 +143,19 @@ class DailyRunner:
                 )
 
         watched_slugs = {ip.slug for ip in resolution.supported}
+        media_assets: dict[str, CachedMediaAsset] = {}
+        if media_cache is not None:
+            media_urls = self._visible_media_urls(
+                store=store,
+                watched_ip_slugs=watched_slugs,
+                now=now,
+            )
+            cache_result = await media_cache.cache(media_urls, page_dir)
+            media_assets = cache_result.assets
+            if cache_result.failed_count:
+                warnings.append(
+                    f"{cache_result.failed_count} public image(s) could not be cached"
+                )
         origin_city = None
         reachable_cities: list[str] = []
         if settings.public.publish_reachability:
@@ -161,6 +182,7 @@ class DailyRunner:
             origin_city=origin_city,
             reachable_cities=reachable_cities,
             forbidden_values=forbidden_values,
+            media_assets=media_assets,
         )
 
         report = RunReport(
@@ -272,3 +294,21 @@ class DailyRunner:
             return []
         normalized = value.replace("\r", "\n").replace(",", "\n")
         return [item.strip() for item in normalized.split("\n") if item.strip()]
+
+    @staticmethod
+    def _visible_media_urls(
+        *,
+        store: StateStore,
+        watched_ip_slugs: set[str],
+        now: datetime,
+    ) -> list[str]:
+        return list(
+            dict.fromkeys(
+                str(url)
+                for campaign in store.list_campaigns()
+                if campaign.ip_slug in watched_ip_slugs
+                and campaign.is_visible(now)
+                for source in campaign.sources
+                for url in source.media_urls
+            )
+        )

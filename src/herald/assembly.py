@@ -129,6 +129,13 @@ class CampaignAssembler:
             )
 
         campaign_status = self._campaign_status(activities)
+        source = observation.source.model_copy(deep=True)
+        source.media_urls = list(
+            dict.fromkeys([*source.media_urls, *observation.media_urls])
+        )
+        source.media_hashes = list(
+            dict.fromkeys([*source.media_hashes, *observation.media_hashes])
+        )
         return Campaign(
             id=campaign_id,
             ip_slug=packet.ip_slug_hint,
@@ -140,7 +147,7 @@ class CampaignAssembler:
             first_seen_at=observation.source.first_seen_at,
             updated_at=now,
             activities=activities,
-            sources=[observation.source.model_copy(deep=True)],
+            sources=[source],
         )
 
     @staticmethod

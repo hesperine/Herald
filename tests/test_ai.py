@@ -1,6 +1,5 @@
 from __future__ import annotations
 
-import base64
 import json
 import unittest
 from datetime import datetime, timezone
@@ -227,18 +226,11 @@ class OpenAICompatibleProviderTests(unittest.IsolatedAsyncioTestCase):
 
         self.assertTrue(extracted.relevant)
 
-    async def test_vision_request_fetches_public_poster_into_a_data_url(self) -> None:
+    async def test_provider_strips_media_fields_from_every_request(self) -> None:
         captured: dict[str, object] = {}
 
         def handler(request: httpx.Request) -> httpx.Response:
-            if request.method == "GET":
-                captured["image_referer"] = request.headers.get("Referer")
-                captured["image_user_agent"] = request.headers.get("User-Agent")
-                return httpx.Response(
-                    200,
-                    headers={"Content-Type": "image/jpeg"},
-                    content=b"public-poster-bytes",
-                )
+            self.assertEqual(request.method, "POST")
             captured.update(json.loads(request.content))
             return httpx.Response(
                 200,
@@ -253,50 +245,14 @@ class OpenAICompatibleProviderTests(unittest.IsolatedAsyncioTestCase):
                 base_url="https://vision.example/v1",
                 model="vision-model",
                 api_key="private-key",
-                supports_vision=True,
             )
             await provider.extract(packet())
 
         content = captured["messages"][1]["content"]
-        image_parts = [part for part in content if part["type"] == "image_url"]
-        data_url = image_parts[0]["image_url"]["url"]
-        prefix, encoded = data_url.split(",", 1)
-        self.assertEqual(prefix, "data:image/jpeg;base64")
-        self.assertEqual(base64.b64decode(encoded), b"public-poster-bytes")
-        self.assertEqual(captured["image_referer"], "https://m.weibo.cn/")
-        self.assertIn(
-            "HERALD",
-            str(captured["image_user_agent"]),
-        )
-
-    async def test_vision_image_fetch_failure_is_redacted(self) -> None:
-        provider_called = False
-
-        def handler(request: httpx.Request) -> httpx.Response:
-            nonlocal provider_called
-            if request.method == "GET":
-                return httpx.Response(403, text="private upstream response")
-            provider_called = True
-            return httpx.Response(500)
-
-        async with httpx.AsyncClient(
-            transport=httpx.MockTransport(handler)
-        ) as http_client:
-            provider = OpenAICompatibleProvider(
-                client=http_client,
-                base_url="https://vision.example/v1",
-                model="vision-model",
-                api_key="private-key",
-                supports_vision=True,
-            )
-            with self.assertRaisesRegex(
-                AIProviderError, "AI image preparation failed"
-            ) as raised:
-                await provider.extract(packet())
-
-        self.assertFalse(provider_called)
-        self.assertNotIn("private upstream response", str(raised.exception))
-        self.assertNotIn("private-key", str(raised.exception))
+        self.assertIsInstance(content, str)
+        source = json.loads(content)["source"]
+        self.assertEqual(source["media_urls"], [])
+        self.assertEqual(source["ocr_text"], [])
 
     async def test_zhipu_dialect_uses_a_supported_nonzero_temperature(self) -> None:
         captured: dict[str, object] = {}

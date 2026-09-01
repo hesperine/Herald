@@ -42,8 +42,10 @@ def build_extraction_input(
         account_name=observation.source.account_name,
         published_at=observation.source.published_at,
         text=observation.text,
-        ocr_text=observation.extracted_media_text,
-        media_urls=observation.media_urls,
+        # First runnable version is deliberately text-only. Public image
+        # metadata remains on the observation and is published separately.
+        ocr_text=[],
+        media_urls=[],
         external_links=observation.outbound_urls,
         source_url=observation.source.url,
         ip_slug_hint=ip.slug,
@@ -203,7 +205,14 @@ class ObservationPipeline:
         for observation in observations:
             if observation.source.id in seen:
                 continue
-            sources.append(observation.source.model_copy(deep=True))
+            source = observation.source.model_copy(deep=True)
+            source.media_urls = list(
+                dict.fromkeys([*source.media_urls, *observation.media_urls])
+            )
+            source.media_hashes = list(
+                dict.fromkeys([*source.media_hashes, *observation.media_hashes])
+            )
+            sources.append(source)
             seen.add(observation.source.id)
         return sources
 

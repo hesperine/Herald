@@ -405,15 +405,30 @@ class CampaignMerger:
 
     @staticmethod
     def _merge_sources(existing: list[SourceRef], incoming: list[SourceRef]) -> list[str]:
-        known = {source.id for source in existing}
+        known = {source.id: source for source in existing}
         added: list[str] = []
         for source in incoming:
-            if source.id in known:
+            current = known.get(source.id)
+            if current is not None:
+                CampaignMerger._merge_source_media(current, source)
                 continue
             existing.append(source.model_copy(deep=True))
-            known.add(source.id)
+            known[source.id] = existing[-1]
             added.append(source.id)
         return added
+
+    @staticmethod
+    def _merge_source_media(existing: SourceRef, incoming: SourceRef) -> None:
+        known_urls = {str(url) for url in existing.media_urls}
+        for url in incoming.media_urls:
+            if str(url) not in known_urls:
+                existing.media_urls.append(url)
+                known_urls.add(str(url))
+        known_hashes = set(existing.media_hashes)
+        for digest in incoming.media_hashes:
+            if digest not in known_hashes:
+                existing.media_hashes.append(digest)
+                known_hashes.add(digest)
 
     @staticmethod
     def _merge_evidence(existing: list[object], incoming: list[object]) -> None:

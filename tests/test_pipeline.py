@@ -84,7 +84,7 @@ class ObservationPipelineTests(unittest.IsolatedAsyncioTestCase):
         self.pipeline = ObservationPipeline("Asia/Shanghai")
         self.ip = RegisteredIp(slug="genshin-impact", name="原神", aliases=["Genshin"])
 
-    def test_public_extraction_input_builder_matches_production_packet(self) -> None:
+    def test_public_extraction_input_builder_keeps_ai_text_only(self) -> None:
         item = observation("weibo-a", "原神", digest="public-digest")
         item.media_urls = ["https://img.example/poster.jpg"]
         item.extracted_media_text = ["海报公开文字"]
@@ -95,9 +95,10 @@ class ObservationPipelineTests(unittest.IsolatedAsyncioTestCase):
         self.assertEqual(packet.observation_id, "weibo-a")
         self.assertEqual(packet.platform, "weibo")
         self.assertEqual(packet.text, item.text)
-        self.assertEqual(packet.ocr_text, ["海报公开文字"])
+        self.assertEqual(packet.ocr_text, [])
+        self.assertEqual(packet.media_urls, [])
         self.assertEqual(
-            [str(url) for url in packet.media_urls],
+            [str(url) for url in item.media_urls],
             ["https://img.example/poster.jpg"],
         )
         self.assertEqual(

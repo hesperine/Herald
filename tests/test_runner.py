@@ -14,6 +14,7 @@ from herald.ai import (
     MockAIProvider,
 )
 from herald.config import load_settings
+from herald.media import CachedMediaAsset, MediaCacheResult
 from herald.models import (
     ActionKind,
     ActivityKind,
@@ -52,6 +53,25 @@ class MemorySender:
         self.messages.append(
             {"recipient": recipient, "subject": subject, "text": text}
         )
+
+
+class RecordingMediaCache:
+    def __init__(self) -> None:
+        self.urls: list[str] = []
+
+    async def cache(self, urls, output_dir):
+        self.urls = list(urls)
+        assets = {
+            url: CachedMediaAsset(
+                source_url=url,
+                asset_path="assets/media/cached.jpg",
+                sha256="b" * 64,
+                content_type="image/jpeg",
+                size_bytes=12,
+            )
+            for url in urls
+        }
+        return MediaCacheResult(assets=assets, failed_count=0)
 
 
 def registry() -> IpRegistry:
@@ -158,6 +178,8 @@ class DailyRunnerTests(unittest.IsolatedAsyncioTestCase):
 
     async def test_complete_run_fetches_extracts_notifies_and_publishes(self) -> None:
         item = observation()
+        item.media_urls = ["https://wx1.sinaimg.cn/mw2000/poster.jpg"]
+        item.media_hashes = ["poster-token"]
         client = FakeWeiboClient(
             [
                 FetchBatch(
@@ -168,6 +190,7 @@ class DailyRunnerTests(unittest.IsolatedAsyncioTestCase):
         )
         provider = MockAIProvider({item.id: extraction()})
         sender = MemorySender()
+        media_cache = RecordingMediaCache()
 
         result = await self.runner.run(
             settings=settings(),
@@ -177,6 +200,7 @@ class DailyRunnerTests(unittest.IsolatedAsyncioTestCase):
             weibo_client=client,
             provider=provider,
             email_sender=sender,
+            media_cache=media_cache,
         )
 
         self.assertEqual(result.report.campaigns_created, 1)
@@ -192,6 +216,14 @@ class DailyRunnerTests(unittest.IsolatedAsyncioTestCase):
         self.assertEqual(
             page["campaigns"][0]["activities"][0]["reachability"], "unknown"
         )
+        self.assertEqual(
+            media_cache.urls,
+            ["https://wx1.sinaimg.cn/mw2000/poster.jpg"],
+        )
+        detail = json.loads(
+            next((self.page / "events").glob("*.json")).read_text("utf-8")
+        )
+        self.assertEqual(detail["media"][0]["asset_path"], "assets/media/cached.jpg")
 
     async def test_public_reachability_requires_explicit_opt_in(self) -> None:
         item = observation()

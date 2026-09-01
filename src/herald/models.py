@@ -104,6 +104,8 @@ class SourceRef(StrictModel):
     updated_at: AwareDatetime | None = None
     content_hash: str
     excerpt: str = Field(default="", max_length=500)
+    media_urls: list[HttpUrl] = Field(default_factory=list)
+    media_hashes: list[str] = Field(default_factory=list)
 
 
 class SourceObservation(StrictModel):

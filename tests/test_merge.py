@@ -128,6 +128,36 @@ class CampaignMergerTests(unittest.TestCase):
         self.assertEqual(outcome.material_changes, ())
         self.assertEqual(outcome.changes[0].kind, ChangeKind.SOURCE_ADDED)
 
+    def test_existing_source_accumulates_new_public_media(self) -> None:
+        original = source("ip-official")
+        original.media_urls = ["https://img.example/first.jpg"]
+        original.media_hashes = ["first-token"]
+        updated = source("ip-official")
+        updated.media_urls = [
+            "https://img.example/first.jpg",
+            "https://img.example/second.jpg",
+        ]
+        updated.media_hashes = ["first-token", "second-token"]
+
+        outcome = self.merger.merge(
+            campaign("campaign-a", sources=[original]),
+            campaign("campaign-a", sources=[updated]),
+            BASE,
+        )
+
+        merged_source = outcome.campaign.sources[0]
+        self.assertEqual(
+            [str(url) for url in merged_source.media_urls],
+            [
+                "https://img.example/first.jpg",
+                "https://img.example/second.jpg",
+            ],
+        )
+        self.assertEqual(
+            merged_source.media_hashes,
+            ["first-token", "second-token"],
+        )
+
     def test_newer_announcement_updates_schedule_and_records_change(self) -> None:
         original_time = BASE + timedelta(days=9)
         changed_time = original_time + timedelta(days=2)

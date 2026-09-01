@@ -12,6 +12,7 @@ from datetime import datetime
 from pathlib import Path
 from zoneinfo import ZoneInfo, ZoneInfoNotFoundError
 
+from .media import CachedMediaAsset
 from .models import Campaign
 from .reachability import ReachabilityClassifier
 from .scheduler import ScheduleCompiler
@@ -58,6 +59,8 @@ DETAIL_HTML = """<main>
   <dl id="summary"></dl>
   <h2>子活动</h2>
   <div id="activities"></div>
+  <h2>公告图片</h2>
+  <div id="media"></div>
   <h2>信息来源</h2>
   <ul id="sources"></ul>
 </main>
@@ -70,6 +73,7 @@ const eventId = params.get('id') || '';
 const title = document.getElementById('title');
 const summary = document.getElementById('summary');
 const activities = document.getElementById('activities');
+const media = document.getElementById('media');
 const sources = document.getElementById('sources');
 function addDefinition(term, value) {
   if (value === null || value === undefined || value === '') return;
@@ -119,6 +123,25 @@ function render(data) {
     if (activity.actions.length) section.append(actionList);
     activities.append(section);
   }
+  for (const item of data.media || []) {
+    const figure = document.createElement('figure');
+    if (item.asset_path) {
+      const image = document.createElement('img');
+      image.src = item.asset_path;
+      image.alt = `${item.account_name} 公告图片`;
+      image.loading = 'lazy';
+      figure.append(image);
+    }
+    const caption = document.createElement('figcaption');
+    caption.append(`${item.account_name} · `);
+    const original = document.createElement('a');
+    original.href = item.source_url;
+    original.textContent = '查看原图';
+    original.rel = 'noreferrer';
+    caption.append(original);
+    figure.append(caption);
+    media.append(figure);
+  }
   for (const source of data.sources) {
     const li = document.createElement('li');
     const link = document.createElement('a'); link.href = source.url; link.textContent = `${source.account_name} · ${localTime(source.published_at)}`; link.rel = 'noreferrer';
@@ -154,6 +177,7 @@ class StaticSiteBuilder:
         origin_city: str | None = None,
         reachable_cities: list[str] | None = None,
         forbidden_values: list[str] | None = None,
+        media_assets: dict[str, CachedMediaAsset] | None = None,
     ) -> list[Campaign]:
         output = Path(output_dir)
         data_dir = output / "data"
@@ -193,6 +217,9 @@ class StaticSiteBuilder:
 
         for campaign in campaigns:
             detail = campaign.model_dump(mode="json")
+            detail["media"] = self._campaign_media(
+                campaign, media_assets or {}
+            )
             detail["reachability"] = {
                 activity.id: self.reachability.classify(
                     activity,
@@ -213,6 +240,47 @@ class StaticSiteBuilder:
         (output / ".nojekyll").write_text("", encoding="utf-8")
         self._scan_forbidden(output, forbidden_values or [])
         return campaigns
+
+    @staticmethod
+    def _campaign_media(
+        campaign: Campaign,
+        media_assets: dict[str, CachedMediaAsset],
+    ) -> list[dict[str, object]]:
+        items: list[dict[str, object]] = []
+        seen: set[tuple[str, str]] = set()
+        for source in campaign.sources:
+            for index, media_url in enumerate(source.media_urls):
+                url = str(media_url)
+                key = (source.id, url)
+                if key in seen:
+                    continue
+                seen.add(key)
+                item: dict[str, object] = {
+                    "source_id": source.id,
+                    "account_name": source.account_name,
+                    "source_url": url,
+                    "source_media_hash": (
+                        source.media_hashes[index]
+                        if index < len(source.media_hashes)
+                        else None
+                    ),
+                    "asset_path": None,
+                    "sha256": None,
+                    "content_type": None,
+                    "size_bytes": None,
+                }
+                asset = media_assets.get(url)
+                if asset is not None:
+                    item.update(
+                        {
+                            "asset_path": asset.asset_path,
+                            "sha256": asset.sha256,
+                            "content_type": asset.content_type,
+                            "size_bytes": asset.size_bytes,
+                        }
+                    )
+                items.append(item)
+        return items
 
     def _campaign_summary(
         self,
@@ -302,11 +370,15 @@ class StaticSiteBuilder:
 
     @staticmethod
     def _scan_forbidden(output: Path, forbidden_values: list[str]) -> None:
-        high_risk_values = [value for value in forbidden_values if len(value) >= 8]
+        high_risk_values = [
+            value.encode("utf-8")
+            for value in forbidden_values
+            if len(value) >= 8
+        ]
         for path in output.rglob("*"):
             if not path.is_file():
                 continue
-            content = path.read_text(encoding="utf-8")
+            content = path.read_bytes()
             for value in high_risk_values:
                 if value in content:
                     raise ValueError(f"sensitive value detected in generated site: {path.name}")

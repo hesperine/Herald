@@ -46,6 +46,11 @@ def observation() -> SourceObservation:
             content_hash=hashlib.sha256(b"material").hexdigest(),
         ),
         text="原神与示例品牌联动，9月8日10:00开售",
+        media_urls=[
+            "https://wx1.sinaimg.cn/mw2000/public-poster.jpg",
+            "https://wx2.sinaimg.cn/mw2000/public-detail.png",
+        ],
+        media_hashes=["poster-token-hash", "detail-token-hash"],
     )
 
 
@@ -95,6 +100,17 @@ class CampaignAssemblerTests(unittest.TestCase):
         action = campaign.activities[0].actions[0]
         self.assertTrue(action.requires_rush)
         self.assertEqual(action.evidence[0].quote, "9月8日10:00开售")
+        self.assertEqual(
+            [str(url) for url in campaign.sources[0].media_urls],
+            [
+                "https://wx1.sinaimg.cn/mw2000/public-poster.jpg",
+                "https://wx2.sinaimg.cn/mw2000/public-detail.png",
+            ],
+        )
+        self.assertEqual(
+            campaign.sources[0].media_hashes,
+            ["poster-token-hash", "detail-token-hash"],
+        )
 
     def test_changed_time_keeps_stable_campaign_activity_and_action_ids(self) -> None:
         first = self.assembler.assemble(

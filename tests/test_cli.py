@@ -27,11 +27,13 @@ class CliTests(unittest.TestCase):
                 "AI_MODEL": "free-model",
                 "AI_BASE_URL": "https://free.example/v1",
                 "AI_API_KEY": "user-owned-key",
+                "AI_VISION": "true",
             }
         )
         provider = _make_provider(configured, client)
         self.assertEqual(provider.model_name, "free-model")
         self.assertEqual(provider.base_url, "https://free.example/v1")
+        self.assertFalse(hasattr(provider, "supports_vision"))
 
     def test_zhipu_openai_alias_selects_the_zhipu_dialect_and_default_url(self) -> None:
         configured = load_settings(

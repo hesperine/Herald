@@ -13,6 +13,7 @@ import httpx
 
 from .ai import AIProvider, OpenAICompatibleProvider, ZhipuOpenAIProvider
 from .config import RuntimeSettings, load_settings
+from .media import PublicMediaCache
 from .notifications import EmailSender, SmtpEmailSender
 from .runner import DailyRunner
 from .sources.weibo import WeiboTimelineClient
@@ -56,7 +57,6 @@ def _make_provider(
         base_url=settings.public.ai_base_url,
         model=settings.public.ai_model,
         api_key=api_key,
-        supports_vision=settings.public.ai_vision,
         supports_json_object=settings.public.ai_json_mode,
     )
 
@@ -113,6 +113,7 @@ async def _run(args: argparse.Namespace) -> dict[str, object]:
                 weibo_client=WeiboTimelineClient(source_client, cookie=cookie),
                 provider=_make_provider(settings, ai_client),
                 email_sender=_make_email_sender(settings),
+                media_cache=PublicMediaCache(source_client),
             )
     return {
         "report": result.report.model_dump(mode="json"),

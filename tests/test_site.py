@@ -13,8 +13,11 @@ from herald.models import (
     Campaign,
     EventAction,
     EventStatus,
+    SourceKind,
+    SourceRef,
     Venue,
 )
+from herald.media import CachedMediaAsset
 from herald.site import StaticSiteBuilder
 from herald.storage import StateStore
 
@@ -122,6 +125,48 @@ class StaticSiteBuilderTests(unittest.TestCase):
         self.assertNotIn("origin_city", content)
         self.assertNotIn("reachable_cities", content)
 
+    def test_detail_uses_downloaded_media_and_keeps_source_metadata(self) -> None:
+        item = campaign("active")
+        item.sources = [
+            SourceRef(
+                id="weibo-post",
+                kind=SourceKind.WEIBO,
+                url="https://weibo.com/1/post",
+                account_name="原神",
+                published_at=NOW,
+                first_seen_at=NOW,
+                content_hash="a" * 64,
+                media_urls=["https://wx1.sinaimg.cn/mw2000/poster.jpg"],
+                media_hashes=["public-token-hash"],
+            )
+        ]
+        self.store.save_campaign(item)
+        asset = CachedMediaAsset(
+            source_url="https://wx1.sinaimg.cn/mw2000/poster.jpg",
+            asset_path="assets/media/content-digest.jpg",
+            sha256="b" * 64,
+            content_type="image/jpeg",
+            size_bytes=1234,
+        )
+
+        self.builder.build(
+            store=self.store,
+            output_dir=self.output,
+            now=NOW,
+            watched_ip_slugs={"genshin-impact"},
+            media_assets={str(asset.source_url): asset},
+        )
+
+        detail = json.loads(
+            (self.output / "events/active.json").read_text(encoding="utf-8")
+        )
+        self.assertEqual(detail["sources"][0]["media_hashes"], ["public-token-hash"])
+        self.assertEqual(detail["media"][0]["asset_path"], asset.asset_path)
+        self.assertEqual(detail["media"][0]["sha256"], "b" * 64)
+        detail_script = (self.output / "event.js").read_text(encoding="utf-8")
+        self.assertIn("createElement('img')", detail_script)
+        self.assertIn("asset_path", detail_script)
+
     def test_calendar_is_compiled_into_one_month_file(self) -> None:
         self.store.save_campaign(campaign("active"))
 
@@ -178,6 +223,22 @@ class StaticSiteBuilderTests(unittest.TestCase):
                 watched_ip_slugs={"genshin-impact"},
                 forbidden_values=[secret],
             )
+
+    def test_binary_page_media_does_not_break_secret_scan(self) -> None:
+        self.store.save_campaign(campaign("active"))
+        media_dir = self.output / "assets" / "media"
+        media_dir.mkdir(parents=True)
+        (media_dir / "poster.jpg").write_bytes(b"\xff\xd8\xff\x00public-image")
+
+        built = self.builder.build(
+            store=self.store,
+            output_dir=self.output,
+            now=NOW,
+            watched_ip_slugs={"genshin-impact"},
+            forbidden_values=["private-value"],
+        )
+
+        self.assertEqual([item.id for item in built], ["active"])
 
 
 if __name__ == "__main__":

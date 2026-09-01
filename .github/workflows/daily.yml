@@ -28,7 +28,6 @@ jobs:
       AI_PROVIDER: ${{ vars.AI_PROVIDER || 'openai_compatible' }}
       AI_BASE_URL: ${{ vars.AI_BASE_URL || 'https://api.openai.com/v1' }}
       AI_MODEL: ${{ vars.AI_MODEL }}
-      AI_VISION: ${{ vars.AI_VISION || 'false' }}
       AI_JSON_MODE: ${{ vars.AI_JSON_MODE || 'true' }}
       SMTP_HOST: ${{ vars.SMTP_HOST }}
       SMTP_PORT: ${{ vars.SMTP_PORT || '465' }}

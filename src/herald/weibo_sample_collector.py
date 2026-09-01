@@ -156,6 +156,10 @@ async def collect(args: argparse.Namespace) -> dict[str, object]:
                         {
                             "account_id": source.account_id,
                             "extraction_input": packet.model_dump(mode="json"),
+                            "source_media": {
+                                "urls": [str(url) for url in observation.media_urls],
+                                "hashes": list(observation.media_hashes),
+                            },
                             "candidate": {
                                 "relevant": decision.relevant,
                                 "score": decision.score,
@@ -166,7 +170,7 @@ async def collect(args: argparse.Namespace) -> dict[str, object]:
 
     public_items.sort(key=_sample_published_at, reverse=True)
     payload = {
-        "schema_version": 2,
+        "schema_version": 3,
         "generated_at": now.isoformat(),
         "published_from": published_from.isoformat(),
         "published_before": published_before.isoformat(),
