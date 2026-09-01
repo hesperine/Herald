@@ -259,6 +259,44 @@ class LocalLauncherTests(unittest.TestCase):
         self.assertEqual(exit_code, 2)
         run.assert_not_called()
 
+    def test_history_collection_leaves_default_page_limit_to_collector(self) -> None:
+        launcher = _load_launcher()
+        with tempfile.TemporaryDirectory() as temporary:
+            env_file = Path(temporary) / "local.env"
+            output = Path(temporary) / "samples.json"
+            env_file.write_text("WATCH_IPS=原神\n", encoding="utf-8")
+            completed = SimpleNamespace(returncode=0)
+
+            with patch.object(
+                launcher.subprocess, "run", return_value=completed
+            ) as run:
+                exit_code = launcher.main(
+                    [
+                        "--env-file",
+                        str(env_file),
+                        "--collect-weibo-samples",
+                        "--lookback-days",
+                        "5",
+                        "--sample-output",
+                        str(output),
+                    ]
+                )
+
+        self.assertEqual(exit_code, 0)
+        command = run.call_args.args[0]
+        self.assertEqual(
+            command,
+            [
+                launcher.sys.executable,
+                "-m",
+                "herald.weibo_sample_collector",
+                "--lookback-days",
+                "5",
+                "--output",
+                str(output),
+            ],
+        )
+
 
 if __name__ == "__main__":
     unittest.main()

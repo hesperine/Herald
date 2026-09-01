@@ -222,14 +222,16 @@ python scripts/run-local.py --provider-file "其他位置/local-ai-providers.tom
 以下命令只运行微博采集与候选筛选，不调用 AI、不读入 AI Provider 档案，也不运行 Campaign 合并：
 
 ```text
-python scripts/run-local.py --collect-weibo-samples --sample-start-date 2026-08-01 --sample-end-date 2026-08-31 --sample-max-pages 20
+python scripts/run-local.py --collect-weibo-samples --sample-start-date 2026-08-01 --sample-end-date 2026-08-31
 ```
 
 起止日期均按中国标准时间理解，并且包含结束日期整天；两个日期必须同时提供。也可以使用相对范围：
 
 ```text
-python scripts/run-local.py --collect-weibo-samples --lookback-days 45 --sample-max-pages 20
+python scripts/run-local.py --collect-weibo-samples --lookback-days 45
 ```
+
+`--lookback-days 45` 按中国标准时间的自然日计算：覆盖今天和此前 44 个自然日，而不是从当前时刻倒推 45×24 小时。默认每个官号最多读取“自然日数量 × 2”页；例如 45 天默认 90 页，明确指定 2026-08-01 至 2026-08-31 默认 62 页。如需人工收紧或放宽，可传入 `--sample-max-pages` 覆盖该计算值。
 
 结果默认写入被 Git 忽略的 `.herald-work/ai-sample-candidates.json`。每条记录的 `extraction_input` 由生产流水线共用的构造函数生成，形状与真实 AI Provider 收到的输入完全一致，包括爬虫得到的正文、公开图片 URL、公开外链、规范化来源链接和 IP 提示。人工 Few-shot 只能在这个对象旁边添加 `expected_output`，不能补写或替换 `extraction_input`。
 

@@ -152,7 +152,11 @@ def _parser() -> argparse.ArgumentParser:
     parser.add_argument("--lookback-days", type=int, default=45)
     parser.add_argument("--sample-start-date")
     parser.add_argument("--sample-end-date")
-    parser.add_argument("--sample-max-pages", type=int, default=20)
+    parser.add_argument(
+        "--sample-max-pages",
+        type=int,
+        help="override the default of two pages per natural day",
+    )
     parser.add_argument(
         "--sample-output",
         type=Path,
@@ -202,14 +206,9 @@ def main(argv: list[str] | None = None) -> int:
             )
         else:
             command.extend(["--lookback-days", str(args.lookback_days)])
-        command.extend(
-            [
-                "--max-pages",
-                str(args.sample_max_pages),
-                "--output",
-                str(args.sample_output),
-            ]
-        )
+        if args.sample_max_pages is not None:
+            command.extend(["--max-pages", str(args.sample_max_pages)])
+        command.extend(["--output", str(args.sample_output)])
     elif args.ai_smoke_test:
         command = [sys.executable, "-m", "herald.ai_smoke"]
     else:

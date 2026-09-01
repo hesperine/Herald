@@ -21,6 +21,7 @@ from .sources.weibo import MOBILE_API, WeiboTimelineClient
 
 
 CHINA_TIME = timezone(timedelta(hours=8))
+DEFAULT_PAGES_PER_NATURAL_DAY = 2
 
 
 def _iso_date(value: str) -> date:
@@ -37,7 +38,11 @@ def _parser() -> argparse.ArgumentParser:
     parser.add_argument("--lookback-days", type=int, default=45)
     parser.add_argument("--start-date", type=_iso_date)
     parser.add_argument("--end-date", type=_iso_date)
-    parser.add_argument("--max-pages", type=int, default=20)
+    parser.add_argument(
+        "--max-pages",
+        type=int,
+        help="per-account override; default is two pages per natural day",
+    )
     parser.add_argument("--output", type=Path, required=True)
     return parser
 
@@ -61,7 +66,41 @@ def _resolve_date_window(
         return published_from, published_before
     if args.lookback_days < 1:
         raise ValueError("--lookback-days must be at least 1")
-    return now - timedelta(days=args.lookback_days), now
+    if now.tzinfo is None:
+        raise ValueError("now must include a timezone")
+    current_china_date = now.astimezone(CHINA_TIME).date()
+    first_china_date = current_china_date - timedelta(
+        days=args.lookback_days - 1
+    )
+    published_from = datetime.combine(
+        first_china_date, time.min, tzinfo=CHINA_TIME
+    )
+    published_before = datetime.combine(
+        current_china_date + timedelta(days=1),
+        time.min,
+        tzinfo=CHINA_TIME,
+    )
+    return published_from, published_before
+
+
+def _resolve_max_pages(
+    args: argparse.Namespace,
+    *,
+    published_from: datetime,
+    published_before: datetime,
+) -> int:
+    if args.max_pages is not None:
+        if args.max_pages < 1:
+            raise ValueError("--max-pages must be at least 1")
+        return args.max_pages
+
+    natural_days = (
+        published_before.astimezone(CHINA_TIME).date()
+        - published_from.astimezone(CHINA_TIME).date()
+    ).days
+    if natural_days < 1:
+        raise ValueError("publication window must cover at least one natural day")
+    return natural_days * DEFAULT_PAGES_PER_NATURAL_DAY
 
 
 def _sample_published_at(item: dict[str, object]) -> str:
@@ -72,11 +111,13 @@ def _sample_published_at(item: dict[str, object]) -> str:
 
 
 async def collect(args: argparse.Namespace) -> dict[str, object]:
-    if args.max_pages < 1:
-        raise ValueError("--max-pages must be at least 1")
-
     now = datetime.now(timezone.utc)
     published_from, published_before = _resolve_date_window(args, now=now)
+    max_pages = _resolve_max_pages(
+        args,
+        published_from=published_from,
+        published_before=published_before,
+    )
     cookie = os.environ.get("WEIBO_COOKIE", "").strip() or None
     registry = IpRegistry.load_builtin()
     candidate_filter = CandidateFilter()
@@ -97,7 +138,7 @@ async def collect(args: argparse.Namespace) -> dict[str, object]:
                         first_seen_at=now,
                         published_from=published_from,
                         published_before=published_before,
-                        max_pages=args.max_pages,
+                        max_pages=max_pages,
                     )
                 except SourceAccessError:
                     warnings.append(f"official source fetch failed: {source.account_id}")
@@ -132,6 +173,7 @@ async def collect(args: argparse.Namespace) -> dict[str, object]:
         "lookback_days": (
             args.lookback_days if args.start_date is None else None
         ),
+        "max_pages_per_account": max_pages,
         "source_transport": MOBILE_API,
         "source_url_policy": "canonical https://weibo.com/{account_id}/{bid}",
         "items": public_items,
@@ -146,6 +188,7 @@ async def collect(args: argparse.Namespace) -> dict[str, object]:
         "candidates": sum(
             1 for item in public_items if item["candidate"]["relevant"]
         ),
+        "max_pages_per_account": max_pages,
         "output": str(args.output),
         "warnings": warnings,
     }
