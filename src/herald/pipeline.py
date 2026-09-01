@@ -31,6 +31,26 @@ class PipelineResult:
     jobs_written: int = 0
 
 
+def build_extraction_input(
+    observation: SourceObservation, ip: RegisteredIp
+) -> ExtractionInput:
+    """Build the exact public packet sent to every AI provider."""
+
+    return ExtractionInput(
+        observation_id=observation.id,
+        platform=observation.source.kind.value,
+        account_name=observation.source.account_name,
+        published_at=observation.source.published_at,
+        text=observation.text,
+        ocr_text=observation.extracted_media_text,
+        media_urls=observation.media_urls,
+        external_links=observation.outbound_urls,
+        source_url=observation.source.url,
+        ip_slug_hint=ip.slug,
+        ip_name_hint=ip.name,
+    )
+
+
 class ObservationPipeline:
     def __init__(self, timezone_name: str = "Asia/Shanghai") -> None:
         self.deduplicator = ObservationDeduplicator()
@@ -101,7 +121,7 @@ class ObservationPipeline:
                 extraction = ExtractionResult.model_validate(cached)
                 counters["extraction_cache_hits"] += 1
             else:
-                packet = self._packet(primary, ip)
+                packet = build_extraction_input(primary, ip)
                 try:
                     extraction = await provider.extract(packet)
                 except AIProviderError:
@@ -122,7 +142,7 @@ class ObservationPipeline:
                 counters["ai_calls"] += 1
             store.delete_pending_extraction(pending_id)
 
-            packet = self._packet(primary, ip)
+            packet = build_extraction_input(primary, ip)
             draft = self.assembler.assemble(
                 packet=packet,
                 observation=primary,
@@ -175,22 +195,6 @@ class ObservationPipeline:
             counters["jobs_written"] += len(future_jobs)
 
         return PipelineResult(**counters)
-
-    @staticmethod
-    def _packet(observation: SourceObservation, ip: RegisteredIp) -> ExtractionInput:
-        return ExtractionInput(
-            observation_id=observation.id,
-            platform=observation.source.kind.value,
-            account_name=observation.source.account_name,
-            published_at=observation.source.published_at,
-            text=observation.text,
-            ocr_text=observation.extracted_media_text,
-            media_urls=observation.media_urls,
-            external_links=observation.outbound_urls,
-            source_url=observation.source.url,
-            ip_slug_hint=ip.slug,
-            ip_name_hint=ip.name,
-        )
 
     @staticmethod
     def _group_sources(observations: list[SourceObservation]) -> list[SourceRef]:

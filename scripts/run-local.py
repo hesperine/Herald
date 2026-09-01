@@ -144,22 +144,73 @@ def _parser() -> argparse.ArgumentParser:
         action="store_true",
         help="run only one real AI extraction against a fixed public sample",
     )
+    parser.add_argument(
+        "--collect-weibo-samples",
+        action="store_true",
+        help="collect bounded public Weibo history without running AI",
+    )
+    parser.add_argument("--lookback-days", type=int, default=45)
+    parser.add_argument("--sample-start-date")
+    parser.add_argument("--sample-end-date")
+    parser.add_argument("--sample-max-pages", type=int, default=20)
+    parser.add_argument(
+        "--sample-output",
+        type=Path,
+        default=PROJECT_ROOT / ".herald-work/ai-sample-candidates.json",
+    )
     return parser
 
 
 def main(argv: list[str] | None = None) -> int:
     args = _parser().parse_args(argv)
+    if args.collect_weibo_samples and bool(args.sample_start_date) != bool(
+        args.sample_end_date
+    ):
+        print(
+            "run-local: --sample-start-date and --sample-end-date "
+            "must be provided together",
+            file=sys.stderr,
+        )
+        return 2
     try:
         values = load_local_env(args.env_file)
         profile_name = values.pop("AI_PROFILE", "").strip()
-        if profile_name:
+        if profile_name and not args.collect_weibo_samples:
             values.update(load_ai_profile(args.provider_file, profile_name))
     except (OSError, ValueError) as exc:
         print(f"run-local: {exc}", file=sys.stderr)
         return 2
 
+    if args.collect_weibo_samples:
+        cookie = values.get("WEIBO_COOKIE", "")
+        values = {"WEIBO_COOKIE": cookie} if cookie else {}
     child_environment = build_child_environment(values)
-    if args.ai_smoke_test:
+    if args.collect_weibo_samples:
+        command = [
+            sys.executable,
+            "-m",
+            "herald.weibo_sample_collector",
+        ]
+        if args.sample_start_date:
+            command.extend(
+                [
+                    "--start-date",
+                    args.sample_start_date,
+                    "--end-date",
+                    args.sample_end_date,
+                ]
+            )
+        else:
+            command.extend(["--lookback-days", str(args.lookback_days)])
+        command.extend(
+            [
+                "--max-pages",
+                str(args.sample_max_pages),
+                "--output",
+                str(args.sample_output),
+            ]
+        )
+    elif args.ai_smoke_test:
         command = [sys.executable, "-m", "herald.ai_smoke"]
     else:
         command = [

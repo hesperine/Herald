@@ -7,6 +7,7 @@ parsing and cursor behavior can be tested without network access.
 
 from __future__ import annotations
 
+import copy
 import hashlib
 import html
 import re
@@ -22,6 +23,7 @@ from herald.sources.base import FetchBatch, FetchedObservation, SourceAccessErro
 
 TAG_PATTERN = re.compile(r"<[^>]+>")
 MOBILE_API = "https://m.weibo.cn/api/container/getIndex"
+MOBILE_LONG_TEXT_API = "https://m.weibo.cn/statuses/extend"
 
 
 class WeiboCursor(BaseModel):
@@ -89,35 +91,60 @@ class WeiboTimelineClient:
         cursor: WeiboCursor | None,
         first_seen_at: datetime,
         published_since: datetime,
+        max_pages: int = 20,
     ) -> FetchBatch[WeiboCursor]:
+        if max_pages < 1:
+            raise ValueError("max_pages must be at least 1")
         current_cursor = cursor or WeiboCursor()
         container_id = current_cursor.container_id or await self._resolve_container(
             account_id
         )
-        parameters: dict[str, str] = {"containerid": container_id}
-        payload = await self._get_json(parameters)
-
-        data = payload.get("data") or {}
-        cards = data.get("cards") or []
         fetched: list[FetchedObservation] = []
         encountered: list[FetchedObservation] = []
-        for card in cards:
-            if card.get("card_type") != 9 or not isinstance(card.get("mblog"), dict):
-                continue
-            item = self._parse_mblog(
-                card["mblog"],
+        seen_ids: set[str] = set()
+        boundary_id = (
+            f"weibo-{current_cursor.latest_post_id}"
+            if current_cursor.latest_post_id
+            else None
+        )
+
+        for page in range(1, max_pages + 1):
+            payload = await self._get_json(
+                {"containerid": container_id, "page": str(page)}
+            )
+            page_items = await self._parse_timeline_page(
+                payload,
                 account_id=account_id,
                 account_name=account_name,
                 first_seen_at=first_seen_at,
             )
-            encountered.append(item)
-            if item.observation.source.published_at < published_since:
-                if item.observation.id == f"weibo-{current_cursor.latest_post_id}":
+            if not page_items:
+                break
+
+            new_page_items: list[FetchedObservation] = []
+            for item in page_items:
+                if item.observation.id in seen_ids:
+                    continue
+                seen_ids.add(item.observation.id)
+                new_page_items.append(item)
+            if not new_page_items:
+                # A repeated page must not consume the entire safety bound.
+                break
+
+            stop = False
+            for item in new_page_items:
+                encountered.append(item)
+                published_at = item.observation.source.published_at
+                if published_at >= published_since:
+                    fetched.append(item)
+                if item.observation.id == boundary_id:
+                    # Include the boundary once so a same-ID edit is detected.
+                    stop = True
                     break
-                continue
-            fetched.append(item)
-            if item.observation.id == f"weibo-{current_cursor.latest_post_id}":
-                # Include the boundary once so a same-ID edit is still detected.
+
+            if stop:
+                break
+            if new_page_items[-1].observation.source.published_at < published_since:
                 break
 
         fetched.sort(
@@ -140,6 +167,91 @@ class WeiboTimelineClient:
             ),
         )
 
+    async def fetch_history(
+        self,
+        *,
+        account_id: str,
+        account_name: str,
+        first_seen_at: datetime,
+        published_from: datetime,
+        published_before: datetime,
+        max_pages: int = 20,
+    ) -> tuple[FetchedObservation, ...]:
+        """Read a half-open publication-time range without changing the cursor."""
+
+        if max_pages < 1:
+            raise ValueError("max_pages must be at least 1")
+        if published_from.tzinfo is None or published_before.tzinfo is None:
+            raise ValueError("published_from and published_before must include timezones")
+        if published_from >= published_before:
+            raise ValueError("published_from must be earlier than published_before")
+        container_id = await self._resolve_container(account_id)
+        fetched: list[FetchedObservation] = []
+        seen_ids: set[str] = set()
+
+        for page in range(1, max_pages + 1):
+            payload = await self._get_json(
+                {"containerid": container_id, "page": str(page)}
+            )
+            page_items = await self._parse_timeline_page(
+                payload,
+                account_id=account_id,
+                account_name=account_name,
+                first_seen_at=first_seen_at,
+            )
+            if not page_items:
+                break
+
+            new_page_items: list[FetchedObservation] = []
+            for item in page_items:
+                if item.observation.id in seen_ids:
+                    continue
+                seen_ids.add(item.observation.id)
+                new_page_items.append(item)
+            if not new_page_items:
+                break
+
+            for item in new_page_items:
+                published_at = item.observation.source.published_at
+                if published_from <= published_at < published_before:
+                    fetched.append(item)
+
+            if new_page_items[-1].observation.source.published_at < published_from:
+                break
+
+        fetched.sort(
+            key=lambda item: item.observation.source.published_at, reverse=True
+        )
+        return tuple(fetched)
+
+    async def _parse_timeline_page(
+        self,
+        payload: dict[str, Any],
+        *,
+        account_id: str,
+        account_name: str,
+        first_seen_at: datetime,
+    ) -> list[FetchedObservation]:
+        cards = ((payload.get("data") or {}).get("cards") or [])
+        items: list[FetchedObservation] = []
+        for card in cards:
+            if not isinstance(card, dict):
+                continue
+            if card.get("card_type") != 9 or not isinstance(
+                card.get("mblog"), dict
+            ):
+                continue
+            mblog = await self._expand_long_texts(card["mblog"])
+            items.append(
+                self._parse_mblog(
+                    mblog,
+                    account_id=account_id,
+                    account_name=account_name,
+                    first_seen_at=first_seen_at,
+                )
+            )
+        return items
+
     async def _resolve_container(self, account_id: str) -> str:
         payload = await self._get_json({"type": "uid", "value": account_id})
         tabs = ((payload.get("data") or {}).get("tabsInfo") or {}).get("tabs") or []
@@ -148,7 +260,51 @@ class WeiboTimelineClient:
                 return str(tab["containerid"])
         raise SourceAccessError("Weibo account timeline container was not found")
 
-    async def _get_json(self, parameters: dict[str, str]) -> dict[str, Any]:
+    async def _expand_long_texts(
+        self, mblog: dict[str, Any]
+    ) -> dict[str, Any]:
+        """Return a copy whose original and repost text are no longer truncated."""
+
+        expanded = copy.deepcopy(mblog)
+        await self._expand_one_long_text(expanded)
+        repost = expanded.get("retweeted_status")
+        if isinstance(repost, dict):
+            await self._expand_one_long_text(repost)
+        return expanded
+
+    async def _expand_one_long_text(self, mblog: dict[str, Any]) -> None:
+        if not mblog.get("isLongText"):
+            return
+        post_id = str(mblog.get("id") or "")
+        if not post_id:
+            raise SourceAccessError("Weibo long post is missing an id")
+        payload = await self._get_json(
+            {"id": post_id}, endpoint=MOBILE_LONG_TEXT_API
+        )
+        data = payload.get("data")
+        if not isinstance(data, dict) or not isinstance(
+            data.get("longTextContent"), str
+        ):
+            raise SourceAccessError("Weibo long post content was not found")
+
+        long_text = data["longTextContent"]
+        # ``_parse_mblog`` prefers text_raw when present, so update both fields.
+        mblog["text"] = long_text
+        mblog["text_raw"] = long_text
+        extended_urls = data.get("url_struct")
+        if isinstance(extended_urls, list):
+            existing_urls = mblog.get("url_struct")
+            mblog["url_struct"] = [
+                *(existing_urls if isinstance(existing_urls, list) else []),
+                *extended_urls,
+            ]
+
+    async def _get_json(
+        self,
+        parameters: dict[str, str],
+        *,
+        endpoint: str = MOBILE_API,
+    ) -> dict[str, Any]:
         headers = {
             "Accept": "application/json, text/plain, */*",
             "Referer": "https://m.weibo.cn/",
@@ -157,7 +313,7 @@ class WeiboTimelineClient:
         if self.cookie:
             headers["Cookie"] = self.cookie
         try:
-            response = await self.client.get(MOBILE_API, params=parameters, headers=headers)
+            response = await self.client.get(endpoint, params=parameters, headers=headers)
             response.raise_for_status()
             payload = response.json()
         except (httpx.HTTPError, ValueError) as exc:

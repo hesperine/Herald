@@ -123,7 +123,9 @@ GitHub Pages 首页只列出仍有效、且属于当前关注 IP 的活动。点
 - 明日方舟终末地：`7745672941`
 - 崩坏星穹铁道：`7643376782`
 
-微博移动接口是非官方且可能变化。程序每天读取最新页、最多接受最近 72 小时的内容，并记录“上次最新微博 ID”；不会把翻页 `since_id` 错当成增量游标。官号转发时，转发正文与海报也会作为公开材料保留。若匿名访问失败，可由使用者自行配置 Cookie。
+微博移动接口是非官方且可能变化。程序每天从最新页开始翻页，直到遇到“上次最新微博 ID”、越过最近 72 小时的日期下界、页面为空或达到安全页数上限；只把最新微博 ID 保存为增量游标，不会把页码或响应中的 `since_id` 保存成下一次运行的游标。官号转发时，转发正文与海报也会作为公开材料保留。若匿名访问失败，可由使用者自行配置 Cookie。
+
+抓取请求使用 `https://m.weibo.cn/api/container/getIndex`，但材料中的 `source_url` 会根据官号 UID 和微博 bid 规范化为公开详情地址 `https://weibo.com/{uid}/{bid}`。前者是传输接口，后者是证据来源链接，不表示改用桌面网页抓取正文。
 
 RSS 适配器目前只预留接口，因为多数品牌联动首先出现在社交官号，RSS 不保证覆盖这类公告。
 
@@ -214,6 +216,22 @@ AI_PROFILE=openrouter-minimax-minimax-m3
 ```text
 python scripts/run-local.py --provider-file "其他位置/local-ai-providers.toml"
 ```
+
+### 采集指定日期范围的微博材料
+
+以下命令只运行微博采集与候选筛选，不调用 AI、不读入 AI Provider 档案，也不运行 Campaign 合并：
+
+```text
+python scripts/run-local.py --collect-weibo-samples --sample-start-date 2026-08-01 --sample-end-date 2026-08-31 --sample-max-pages 20
+```
+
+起止日期均按中国标准时间理解，并且包含结束日期整天；两个日期必须同时提供。也可以使用相对范围：
+
+```text
+python scripts/run-local.py --collect-weibo-samples --lookback-days 45 --sample-max-pages 20
+```
+
+结果默认写入被 Git 忽略的 `.herald-work/ai-sample-candidates.json`。每条记录的 `extraction_input` 由生产流水线共用的构造函数生成，形状与真实 AI Provider 收到的输入完全一致，包括爬虫得到的正文、公开图片 URL、公开外链、规范化来源链接和 IP 提示。人工 Few-shot 只能在这个对象旁边添加 `expected_output`，不能补写或替换 `extraction_input`。
 
 ### 只测试 AI 提取
 

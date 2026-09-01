@@ -8,7 +8,7 @@ from pathlib import Path
 
 from herald.ai import AIProviderError, ExtractedAction, ExtractedActivity, ExtractionResult
 from herald.models import ActionKind, ActivityKind, SourceKind, SourceObservation, SourceRef
-from herald.pipeline import ObservationPipeline
+from herald.pipeline import ObservationPipeline, build_extraction_input
 from herald.registry import RegisteredIp
 from herald.storage import StateStore
 
@@ -83,6 +83,29 @@ class ObservationPipelineTests(unittest.IsolatedAsyncioTestCase):
         self.store.initialize()
         self.pipeline = ObservationPipeline("Asia/Shanghai")
         self.ip = RegisteredIp(slug="genshin-impact", name="原神", aliases=["Genshin"])
+
+    def test_public_extraction_input_builder_matches_production_packet(self) -> None:
+        item = observation("weibo-a", "原神", digest="public-digest")
+        item.media_urls = ["https://img.example/poster.jpg"]
+        item.extracted_media_text = ["海报公开文字"]
+        item.outbound_urls = ["https://example.com/event"]
+
+        packet = build_extraction_input(item, self.ip)
+
+        self.assertEqual(packet.observation_id, "weibo-a")
+        self.assertEqual(packet.platform, "weibo")
+        self.assertEqual(packet.text, item.text)
+        self.assertEqual(packet.ocr_text, ["海报公开文字"])
+        self.assertEqual(
+            [str(url) for url in packet.media_urls],
+            ["https://img.example/poster.jpg"],
+        )
+        self.assertEqual(
+            [str(url) for url in packet.external_links],
+            ["https://example.com/event"],
+        )
+        self.assertEqual(packet.ip_slug_hint, "genshin-impact")
+        self.assertEqual(packet.ip_name_hint, "原神")
 
     async def test_duplicate_sources_use_one_ai_call_and_one_campaign(self) -> None:
         digest = hashlib.sha256(b"same-material").hexdigest()
