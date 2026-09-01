@@ -20,6 +20,8 @@ class StrictModel(BaseModel):
 
 class SourceKind(StrEnum):
     WEIBO = "weibo"
+    MIYOUSHE = "miyoushe"
+    SKLAND = "skland"
     RSS = "rss"
     WEBSITE = "website"
 
