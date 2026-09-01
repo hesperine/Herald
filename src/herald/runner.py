@@ -18,6 +18,8 @@ from .pipeline import ObservationPipeline, PipelineResult
 from .registry import IpRegistry, RegisteredIp, RegisteredSource
 from .site import StaticSiteBuilder
 from .sources.base import FetchBatch, SourceAccessError
+from .sources.miyoushe import MiyousheCursor
+from .sources.skland import SklandCursor
 from .sources.weibo import WeiboCursor
 from .storage import StateStore
 
@@ -32,6 +34,31 @@ class WeiboAccountFetcher(Protocol):
         first_seen_at: datetime,
         published_since: datetime,
     ) -> FetchBatch[WeiboCursor]: ...
+
+
+class MiyousheAccountFetcher(Protocol):
+    async def fetch_account(
+        self,
+        *,
+        account_id: str,
+        account_name: str,
+        account_url: str,
+        cursor: MiyousheCursor | None,
+        first_seen_at: datetime,
+        published_since: datetime,
+    ) -> FetchBatch[MiyousheCursor]: ...
+
+
+class SklandAccountFetcher(Protocol):
+    async def fetch_account(
+        self,
+        *,
+        account_id: str,
+        account_name: str,
+        cursor: SklandCursor | None,
+        first_seen_at: datetime,
+        published_since: datetime,
+    ) -> FetchBatch[SklandCursor]: ...
 
 
 class MediaCache(Protocol):
@@ -71,6 +98,8 @@ class DailyRunner:
         provider: AIProvider | None,
         email_sender: EmailSender | None,
         media_cache: MediaCache | None = None,
+        miyoushe_client: MiyousheAccountFetcher | None = None,
+        skland_client: SklandAccountFetcher | None = None,
     ) -> DailyRunResult:
         if now.tzinfo is None or now.utcoffset() is None:
             raise ValueError("daily run time must include a timezone")
@@ -100,6 +129,8 @@ class DailyRunner:
                     source=source,
                     now=now,
                     weibo_client=weibo_client,
+                    miyoushe_client=miyoushe_client,
+                    skland_client=skland_client,
                     warnings=warnings,
                 )
                 for observation in fetched:
@@ -212,34 +243,52 @@ class DailyRunner:
         source: RegisteredSource,
         now: datetime,
         weibo_client: WeiboAccountFetcher | None,
+        miyoushe_client: MiyousheAccountFetcher | None,
+        skland_client: SklandAccountFetcher | None,
         warnings: list[str],
     ) -> list[SourceObservation]:
-        if source.kind is not SourceKind.WEIBO:
+        cursor_type: type[WeiboCursor | MiyousheCursor | SklandCursor]
+        client: object | None
+        if source.kind is SourceKind.WEIBO:
+            cursor_type = WeiboCursor
+            client = weibo_client
+        elif source.kind is SourceKind.MIYOUSHE:
+            cursor_type = MiyousheCursor
+            client = miyoushe_client
+        elif source.kind is SourceKind.SKLAND:
+            cursor_type = SklandCursor
+            client = skland_client
+        else:
             warnings.append(
                 f"unsupported source kind for {ip.name}: {source.kind.value}"
             )
             return []
-        if weibo_client is None:
-            warnings.append(f"Weibo client is unavailable for IP: {ip.name}")
+        if client is None:
+            warnings.append(
+                f"{source.kind.value} client is unavailable for IP: {ip.name}"
+            )
             return []
 
-        source_id = f"weibo-{source.account_id}"
+        source_id = f"{source.kind.value}-{source.account_id}"
         cursor_payload = store.load_source_cursor(source_id)
-        cursor: WeiboCursor | None = None
+        cursor: WeiboCursor | MiyousheCursor | SklandCursor | None = None
         if cursor_payload is not None:
             try:
-                cursor = WeiboCursor.model_validate(cursor_payload)
+                cursor = cursor_type.model_validate(cursor_payload)
             except ValidationError:
                 warnings.append(f"invalid source cursor was ignored: {source_id}")
 
+        parameters = {
+            "account_id": source.account_id,
+            "account_name": source.account_name,
+            "cursor": cursor,
+            "first_seen_at": now,
+            "published_since": now - timedelta(hours=72),
+        }
+        if source.kind is SourceKind.MIYOUSHE:
+            parameters["account_url"] = source.url
         try:
-            batch = await weibo_client.fetch_account(
-                account_id=source.account_id,
-                account_name=source.account_name,
-                cursor=cursor,
-                first_seen_at=now,
-                published_since=now - timedelta(hours=72),
-            )
+            batch = await client.fetch_account(**parameters)  # type: ignore[union-attr]
         except SourceAccessError:
             warnings.append(f"official source fetch failed: {source_id}")
             return []

@@ -6,6 +6,7 @@ import hashlib
 import json
 from dataclasses import dataclass
 from pathlib import Path
+from urllib.parse import urlsplit
 
 import httpx
 from pydantic import BaseModel, ConfigDict, Field, HttpUrl
@@ -67,9 +68,11 @@ class PublicMediaCache:
     async def _download(self, url: str, output: Path) -> CachedMediaAsset:
         headers = {
             "Accept": "image/avif,image/webp,image/png,image/jpeg,image/gif,*/*",
-            "Referer": "https://m.weibo.cn/",
             "User-Agent": "Mozilla/5.0 HERALD/0.1",
         }
+        referer = self._referer_for(url)
+        if referer is not None:
+            headers["Referer"] = referer
         chunks: list[bytes] = []
         size = 0
         async with self.client.stream(
@@ -116,6 +119,17 @@ class PublicMediaCache:
             content_type=content_type,
             size_bytes=size,
         )
+
+    @staticmethod
+    def _referer_for(url: str) -> str | None:
+        host = (urlsplit(url).hostname or "").casefold()
+        if host.endswith((".sinaimg.cn", ".sina.cn")):
+            return "https://m.weibo.cn/"
+        if host.endswith((".miyoushe.com", ".mihoyo.com")):
+            return "https://www.miyoushe.com/"
+        if host.endswith((".hycdn.cn", ".skland.com")):
+            return "https://www.skland.com/"
+        return None
 
     @staticmethod
     def _load_existing(

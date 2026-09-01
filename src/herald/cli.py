@@ -16,6 +16,8 @@ from .config import RuntimeSettings, load_settings
 from .media import PublicMediaCache
 from .notifications import EmailSender, SmtpEmailSender
 from .runner import DailyRunner
+from .sources.miyoushe import MiyousheTimelineClient
+from .sources.skland import SklandTimelineClient
 from .sources.weibo import WeiboTimelineClient
 from .storage import StateStore
 
@@ -111,6 +113,8 @@ async def _run(args: argparse.Namespace) -> dict[str, object]:
                 page_dir=args.page_dir,
                 now=now,
                 weibo_client=WeiboTimelineClient(source_client, cookie=cookie),
+                miyoushe_client=MiyousheTimelineClient(source_client),
+                skland_client=SklandTimelineClient(source_client),
                 provider=_make_provider(settings, ai_client),
                 email_sender=_make_email_sender(settings),
                 media_cache=PublicMediaCache(source_client),

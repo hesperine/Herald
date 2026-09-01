@@ -27,6 +27,8 @@ from herald.models import (
 from herald.registry import IpRegistry, RegisteredIp, RegisteredSource
 from herald.runner import DailyRunner
 from herald.sources.base import FetchBatch, FetchedObservation
+from herald.sources.miyoushe import MiyousheCursor
+from herald.sources.skland import SklandCursor
 from herald.sources.weibo import WeiboCursor
 from herald.storage import StateStore
 
@@ -37,6 +39,16 @@ NOW = datetime(2026, 8, 30, 12, tzinfo=UTC)
 
 class FakeWeiboClient:
     def __init__(self, batches: list[FetchBatch[WeiboCursor]]) -> None:
+        self.batches = list(batches)
+        self.calls = []
+
+    async def fetch_account(self, **kwargs):
+        self.calls.append(kwargs)
+        return self.batches.pop(0)
+
+
+class FakeAccountClient:
+    def __init__(self, batches) -> None:
         self.batches = list(batches)
         self.calls = []
 
@@ -175,6 +187,88 @@ class DailyRunnerTests(unittest.IsolatedAsyncioTestCase):
 
         self.assertEqual(normalized.source.first_seen_at, NOW - timedelta(days=2))
         self.assertEqual(normalized.source.updated_at, NOW)
+
+    async def test_dispatches_cookie_free_sources_and_saves_independent_cursors(self) -> None:
+        cookie_free_registry = IpRegistry(
+            [
+                RegisteredIp(
+                    slug="genshin-impact",
+                    name="原神",
+                    sources=[
+                        RegisteredSource(
+                            kind=SourceKind.MIYOUSHE,
+                            account_name="原神",
+                            account_id="75276539",
+                            url=(
+                                "https://www.miyoushe.com/ys/accountCenter/"
+                                "postList?id=75276539"
+                            ),
+                        ),
+                        RegisteredSource(
+                            kind=SourceKind.SKLAND,
+                            account_name="示例森空岛官号",
+                            account_id="3737967211133",
+                            url="https://www.skland.com/profile?id=3737967211133",
+                        ),
+                    ],
+                )
+            ]
+        )
+        miyoushe_item = observation().model_copy(deep=True)
+        miyoushe_item.id = "miyoushe-post-1"
+        miyoushe_item.source.id = miyoushe_item.id
+        miyoushe_item.source.kind = SourceKind.MIYOUSHE
+        miyoushe_item.source.url = "https://www.miyoushe.com/ys/article/1"
+        skland_item = observation().model_copy(deep=True)
+        skland_item.id = "skland-post-2"
+        skland_item.source.id = skland_item.id
+        skland_item.source.kind = SourceKind.SKLAND
+        skland_item.source.url = "https://www.skland.com/article?id=2"
+        miyoushe = FakeAccountClient(
+            [
+                FetchBatch(
+                    items=(FetchedObservation(miyoushe_item),),
+                    cursor=MiyousheCursor(latest_post_id="1"),
+                )
+            ]
+        )
+        skland = FakeAccountClient(
+            [
+                FetchBatch(
+                    items=(FetchedObservation(skland_item),),
+                    cursor=SklandCursor(latest_post_id="2"),
+                )
+            ]
+        )
+
+        result = await DailyRunner(
+            registry=cookie_free_registry, clock=lambda: NOW
+        ).run(
+            settings=settings(with_ai=False, with_email=False),
+            store=self.store,
+            page_dir=self.page,
+            now=NOW,
+            weibo_client=None,
+            miyoushe_client=miyoushe,
+            skland_client=skland,
+            provider=None,
+            email_sender=None,
+        )
+
+        self.assertEqual(result.report.observations, 2)
+        self.assertEqual(
+            miyoushe.calls[0]["account_url"],
+            "https://www.miyoushe.com/ys/accountCenter/postList?id=75276539",
+        )
+        self.assertNotIn("account_url", skland.calls[0])
+        self.assertEqual(
+            self.store.load_source_cursor("miyoushe-75276539"),
+            {"latest_post_id": "1"},
+        )
+        self.assertEqual(
+            self.store.load_source_cursor("skland-3737967211133"),
+            {"latest_post_id": "2"},
+        )
 
     async def test_complete_run_fetches_extracts_notifies_and_publishes(self) -> None:
         item = observation()

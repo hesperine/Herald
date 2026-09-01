@@ -7,7 +7,7 @@ from herald.registry import IpRegistry
 
 
 class IpRegistryTests(unittest.TestCase):
-    def test_builtin_ips_include_their_official_weibo_sources(self) -> None:
+    def test_builtin_ips_use_verified_cookie_free_community_sources(self) -> None:
         resolution = IpRegistry.load_builtin().resolve(
             PublicSettings(
                 watched_ips=[
@@ -20,13 +20,57 @@ class IpRegistryTests(unittest.TestCase):
         )
 
         sources = {
-            item.slug: [source.account_id for source in item.sources]
+            item.slug: [
+                (source.kind, source.account_id, source.url)
+                for source in item.sources
+            ]
             for item in resolution.supported
         }
-        self.assertEqual(sources["genshin-impact"], ["6593199887"])
-        self.assertEqual(sources["arknights"], ["6279793937"])
-        self.assertEqual(sources["arknights-endfield"], ["7745672941"])
-        self.assertEqual(sources["honkai-star-rail"], ["7643376782"])
+        self.assertEqual(
+            sources["genshin-impact"],
+            [
+                (
+                    "miyoushe",
+                    "75276539",
+                    "https://www.miyoushe.com/ys/accountCenter/postList?id=75276539",
+                )
+            ],
+        )
+        self.assertEqual(
+            sources["arknights"],
+            [
+                (
+                    "skland",
+                    "6168723566526",
+                    "https://www.skland.com/profile?id=6168723566526",
+                )
+            ],
+        )
+        self.assertEqual(
+            sources["arknights-endfield"],
+            [
+                (
+                    "skland",
+                    "3737967211133",
+                    "https://www.skland.com/profile?id=3737967211133",
+                ),
+                (
+                    "skland",
+                    "7232373607086",
+                    "https://www.skland.com/profile?id=7232373607086",
+                ),
+            ],
+        )
+        self.assertEqual(
+            sources["honkai-star-rail"],
+            [
+                (
+                    "miyoushe",
+                    "288909600",
+                    "https://www.miyoushe.com/sr/accountCenter/postList?id=288909600",
+                )
+            ],
+        )
 
     def setUp(self) -> None:
         self.registry = IpRegistry.load_builtin()
@@ -64,8 +108,9 @@ class IpRegistryTests(unittest.TestCase):
         self.assertEqual(resolution.unsupported, ["未知IP"])
         sources = resolution.supported[0].sources
         self.assertEqual(
-            [source.account_id for source in sources], ["6593199887", "1001"]
+            [source.account_id for source in sources], ["75276539", "1001"]
         )
+        self.assertEqual(sources[-1].kind, "weibo")
 
 
 if __name__ == "__main__":

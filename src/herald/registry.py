@@ -74,7 +74,11 @@ class IpRegistry:
             extras_by_entry.setdefault(entry.slug, []).extend(uids)
 
         for entry in supported:
-            existing = {source.account_id for source in entry.sources}
+            existing = {
+                source.account_id
+                for source in entry.sources
+                if source.kind is SourceKind.WEIBO
+            }
             for uid in extras_by_entry.get(entry.slug, []):
                 if uid in existing:
                     continue

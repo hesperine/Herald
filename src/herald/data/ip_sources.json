@@ -5,10 +5,10 @@
     "aliases": ["Genshin Impact", "Genshin", "原神Project"],
     "sources": [
       {
-        "kind": "weibo",
+        "kind": "miyoushe",
         "account_name": "原神",
-        "account_id": "6593199887",
-        "url": "https://weibo.com/u/6593199887"
+        "account_id": "75276539",
+        "url": "https://www.miyoushe.com/ys/accountCenter/postList?id=75276539"
       }
     ]
   },
@@ -18,10 +18,10 @@
     "aliases": ["Arknights", "方舟"],
     "sources": [
       {
-        "kind": "weibo",
-        "account_name": "明日方舟Arknights",
-        "account_id": "6279793937",
-        "url": "https://weibo.com/u/6279793937"
+        "kind": "skland",
+        "account_name": "明日方舟朝陇山",
+        "account_id": "6168723566526",
+        "url": "https://www.skland.com/profile?id=6168723566526"
       }
     ]
   },
@@ -37,10 +37,16 @@
     ],
     "sources": [
       {
-        "kind": "weibo",
+        "kind": "skland",
         "account_name": "明日方舟终末地",
-        "account_id": "7745672941",
-        "url": "https://weibo.com/u/7745672941"
+        "account_id": "3737967211133",
+        "url": "https://www.skland.com/profile?id=3737967211133"
+      },
+      {
+        "kind": "skland",
+        "account_name": "明日方舟终末地山团团",
+        "account_id": "7232373607086",
+        "url": "https://www.skland.com/profile?id=7232373607086"
       }
     ]
   },
@@ -57,10 +63,10 @@
     ],
     "sources": [
       {
-        "kind": "weibo",
+        "kind": "miyoushe",
         "account_name": "崩坏星穹铁道",
-        "account_id": "7643376782",
-        "url": "https://weibo.com/u/7643376782"
+        "account_id": "288909600",
+        "url": "https://www.miyoushe.com/sr/accountCenter/postList?id=288909600"
       }
     ]
   }

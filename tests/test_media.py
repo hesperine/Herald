@@ -41,6 +41,33 @@ class PublicMediaCacheTests(unittest.IsolatedAsyncioTestCase):
             )
             self.assertEqual(index["assets"][0]["asset_path"], asset.asset_path)
 
+    async def test_uses_the_public_source_site_referer_for_community_images(self) -> None:
+        requests: list[httpx.Request] = []
+
+        def handler(request: httpx.Request) -> httpx.Response:
+            requests.append(request)
+            return httpx.Response(
+                200,
+                headers={"Content-Type": "image/webp"},
+                content=request.url.host.encode("ascii"),
+            )
+
+        urls = [
+            "https://upload-bbs.miyoushe.com/upload/poster.webp",
+            "https://bbs.hycdn.cn/image/poster.webp",
+        ]
+        with tempfile.TemporaryDirectory() as temporary:
+            async with httpx.AsyncClient(
+                transport=httpx.MockTransport(handler)
+            ) as client:
+                result = await PublicMediaCache(client).cache(urls, Path(temporary))
+
+        self.assertEqual(result.failed_count, 0)
+        self.assertEqual(
+            [request.headers.get("Referer") for request in requests],
+            ["https://www.miyoushe.com/", "https://www.skland.com/"],
+        )
+
     async def test_reuses_indexed_asset_without_another_request(self) -> None:
         calls = 0
 
