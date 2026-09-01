@@ -7,6 +7,7 @@ or any notification, location, cookie, or SMTP configuration.
 from __future__ import annotations
 
 import asyncio
+import base64
 import json
 import re
 from typing import Any, Protocol
@@ -18,6 +19,13 @@ from .models import ActionKind, ActivityKind
 
 
 CODE_FENCE = re.compile(r"^```(?:json)?\s*|\s*```$", re.IGNORECASE)
+MAX_VISION_IMAGE_BYTES = 10 * 1024 * 1024
+VISION_IMAGE_TYPES = {
+    "image/gif",
+    "image/jpeg",
+    "image/png",
+    "image/webp",
+}
 
 
 class ExtractionInput(BaseModel):
@@ -142,7 +150,10 @@ class OpenAICompatibleProvider:
         self.max_attempts = max(1, max_attempts)
 
     async def extract(self, packet: ExtractionInput) -> ExtractionResult:
-        request_payload = self._request_payload(packet)
+        try:
+            request_payload = await self._request_payload(packet)
+        except (httpx.HTTPError, ValueError) as exc:
+            raise AIProviderError("AI image preparation failed") from exc
         last_error: Exception | None = None
         for attempt in range(self.max_attempts):
             try:
@@ -170,7 +181,7 @@ class OpenAICompatibleProvider:
     def _retry_delay(self, exc: Exception, attempt: int) -> float | None:
         return 0.25 * (2**attempt)
 
-    def _request_payload(self, packet: ExtractionInput) -> dict[str, Any]:
+    async def _request_payload(self, packet: ExtractionInput) -> dict[str, Any]:
         public_packet = packet.model_dump(mode="json")
         user_payload = json.dumps(
             {
@@ -181,13 +192,16 @@ class OpenAICompatibleProvider:
         )
         user_content: str | list[dict[str, Any]] = user_payload
         if self.supports_vision and packet.media_urls:
+            image_data_urls = await asyncio.gather(
+                *(self._image_data_url(str(url)) for url in packet.media_urls)
+            )
             user_content = [{"type": "text", "text": user_payload}]
             user_content.extend(
                 {
                     "type": "image_url",
-                    "image_url": {"url": str(url)},
+                    "image_url": {"url": data_url},
                 }
-                for url in packet.media_urls
+                for data_url in image_data_urls
             )
 
         payload: dict[str, Any] = {
@@ -211,6 +225,31 @@ class OpenAICompatibleProvider:
         if self.supports_json_object:
             payload["response_format"] = {"type": "json_object"}
         return payload
+
+    async def _image_data_url(self, url: str) -> str:
+        response = await self.client.get(
+            url,
+            headers={
+                "Accept": "image/avif,image/webp,image/png,image/jpeg,image/gif,*/*",
+                "Referer": "https://m.weibo.cn/",
+                "User-Agent": "Mozilla/5.0 HERALD/0.1",
+            },
+            timeout=30,
+        )
+        response.raise_for_status()
+        content_type = (
+            response.headers.get("Content-Type", "")
+            .partition(";")[0]
+            .strip()
+            .lower()
+        )
+        if content_type not in VISION_IMAGE_TYPES:
+            raise ValueError("public poster did not return a supported image type")
+        content = response.content
+        if not content or len(content) > MAX_VISION_IMAGE_BYTES:
+            raise ValueError("public poster size is outside the supported range")
+        encoded = base64.b64encode(content).decode("ascii")
+        return f"data:{content_type};base64,{encoded}"
 
     @staticmethod
     def _response_content(payload: dict[str, Any]) -> str:
