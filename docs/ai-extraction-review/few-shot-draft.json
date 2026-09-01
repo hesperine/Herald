@@ -13,15 +13,21 @@
         "published_at": "2026-07-25T20:17:21+08:00",
         "text": "明日方舟#明日方舟##2026夏日嘉年华# 《明日方舟》× @国家图书馆 合作筹备中",
         "ocr_text": [],
-        "media_urls": [
-          "https://wx1.sinaimg.cn/mw2000/006QZngZgy1ifgha8r0fgj31hc0u0b2b.jpg"
-        ],
+        "media_urls": [],
         "external_links": [
           "https://m.weibo.cn/p/index?extparam=%E6%98%8E%E6%97%A5%E6%96%B9%E8%88%9F&containerid=10080811942aa16f6bf2089d55196b13e8c097&launchid=10000360-page_H5"
         ],
         "source_url": "https://weibo.com/6279793937/RalzCudB4",
         "ip_slug_hint": "arknights",
         "ip_name_hint": "明日方舟"
+      },
+      "source_media": {
+        "urls": [
+          "https://wx1.sinaimg.cn/mw2000/006QZngZgy1ifgha8r0fgj31hc0u0b2b.jpg"
+        ],
+        "hashes": [
+          "7a98127983ce5556b4af9a324b5541dc5a2c27d2b102f9bbe916b3e868ddabf2"
+        ]
       },
       "expected_output": {
         "relevant": true,
@@ -63,15 +69,21 @@
         "published_at": "2026-08-14T20:40:00+08:00",
         "text": "崩坏星穹铁道 #星穹铁道大白兔联名# #快乐分享甜满树庭# 亲爱的开拓者，《崩坏：星穹铁道》× 大白兔联名将于9月10日上线！与那刻夏、风堇一起分享奶糖，让甜意盈满树庭~———————————————————▉转发抽奖关注@崩坏星穹铁道 官方账号并转发本条微博，帕姆将于9月10日通过@微博抽奖平台 随机抽取10位开拓者各获得「随机角色周边」一份。 抽奖详情",
         "ocr_text": [],
-        "media_urls": [
-          "https://wx3.sinaimg.cn/mw2000/008lgPsGgy1ig3dms9l05j31z4140b2a.jpg"
-        ],
+        "media_urls": [],
         "external_links": [
           "https://lottery.media.weibo.com/lottery/h5/history/list?mid=5331915584046294&launchid=10000360-page_H5"
         ],
         "source_url": "https://weibo.com/7643376782/RdogKgYCO",
         "ip_slug_hint": "honkai-star-rail",
         "ip_name_hint": "崩坏：星穹铁道"
+      },
+      "source_media": {
+        "urls": [
+          "https://wx3.sinaimg.cn/mw2000/008lgPsGgy1ig3dms9l05j31z4140b2a.jpg"
+        ],
+        "hashes": [
+          "355ca1f5dc93fd14364b37df566508749817efc4fbf90de212ada26391fbee72"
+        ]
       },
       "expected_output": {
         "relevant": true,

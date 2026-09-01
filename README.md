@@ -90,7 +90,7 @@ GitHub Pages 首页只列出仍有效、且属于当前关注 IP 的活动。点
 | `AI_PROVIDER` | `openai_compatible` | 通用兼容服务用 `openai_compatible`；智谱用 `zhipu_openai`（也接受 `zhipu-openai`） |
 | `AI_BASE_URL` | `https://example.com/v1` | 兼容服务地址；`zhipu_openai` 未填时默认为智谱开放平台 v4 |
 | `AI_MODEL` | `your-model-name` | 模型名；不填则不调用 AI |
-| `AI_VISION` | `false` | 模型支持图片输入时设为 `true`，用于读取公告海报 |
+| `AI_VISION` | `false` | 预留项；当前可运行版本固定使用纯文本 AI 提取，图片只发布到详情页 |
 | `AI_JSON_MODE` | `true` | 服务不支持 `response_format` 时设为 `false` |
 | `SMTP_HOST` | `smtp.example.com` | 邮件服务器 |
 | `SMTP_PORT` | `465` | SMTP 端口 |
@@ -124,6 +124,8 @@ GitHub Pages 首页只列出仍有效、且属于当前关注 IP 的活动。点
 - 崩坏星穹铁道：`7643376782`
 
 微博移动接口是非官方且可能变化。程序每天从最新页开始翻页，直到遇到“上次最新微博 ID”、越过最近 72 小时的日期下界、页面为空或达到安全页数上限；只把最新微博 ID 保存为增量游标，不会把页码或响应中的 `since_id` 保存成下一次运行的游标。官号转发时，转发正文与海报也会作为公开材料保留。若匿名访问失败，可由使用者自行配置 Cookie。
+
+新浪图片直链可能因防盗链无法在 GitHub Pages 直接显示。页面生成阶段会使用微博 Referer 下载当前可见 Campaign 的公开图片，以内容 SHA-256 命名后写入 `page/assets/media`，详情页引用站内文件；`page/data/media-index.json` 保存原 URL、站内路径、Content-Type、字节数和内容摘要。已有文件会复用，过期 Campaign 不再引用的文件会清理。图片不进入 AI、`main` 或 `state`。
 
 抓取请求使用 `https://m.weibo.cn/api/container/getIndex`，但材料中的 `source_url` 会根据官号 UID 和微博 bid 规范化为公开详情地址 `https://weibo.com/{uid}/{bid}`。前者是传输接口，后者是证据来源链接，不表示改用桌面网页抓取正文。
 
@@ -189,7 +191,7 @@ cp local-ai-providers.toml.example local-ai-providers.toml
 AI_PROVIDER = "openai_compatible"
 AI_BASE_URL = "https://openrouter.ai/api/v1"
 AI_MODEL = "minimax/minimax-m3:free"
-AI_VISION = true
+AI_VISION = false
 AI_JSON_MODE = true
 AI_API_KEY = "在本地填写真实 Key"
 
@@ -198,7 +200,7 @@ AI_API_KEY = "在本地填写真实 Key"
 AI_PROVIDER = "openai_compatible"
 AI_BASE_URL = "https://api.siliconflow.cn/v1"
 AI_MODEL = "Qwen/Qwen3.5-4B"
-AI_VISION = true
+AI_VISION = false
 AI_JSON_MODE = true
 AI_API_KEY = "在本地填写真实 Key"
 ```
@@ -233,7 +235,7 @@ python scripts/run-local.py --collect-weibo-samples --lookback-days 45
 
 `--lookback-days 45` 按中国标准时间的自然日计算：覆盖今天和此前 44 个自然日，而不是从当前时刻倒推 45×24 小时。默认每个官号最多读取“自然日数量 × 2”页；例如 45 天默认 90 页，明确指定 2026-08-01 至 2026-08-31 默认 62 页。如需人工收紧或放宽，可传入 `--sample-max-pages` 覆盖该计算值。
 
-结果默认写入被 Git 忽略的 `.herald-work/ai-sample-candidates.json`。每条记录的 `extraction_input` 由生产流水线共用的构造函数生成，形状与真实 AI Provider 收到的输入完全一致，包括爬虫得到的正文、公开图片 URL、公开外链、规范化来源链接和 IP 提示。人工 Few-shot 只能在这个对象旁边添加 `expected_output`，不能补写或替换 `extraction_input`。
+结果默认写入被 Git 忽略的 `.herald-work/ai-sample-candidates.json`。每条记录的 `extraction_input` 由生产流水线共用的构造函数生成，形状与真实 AI Provider 收到的纯文本输入完全一致，包括正文、公开外链、规范化来源链接和 IP 提示；图片 URL 与去重摘要单独保存在同条记录的 `source_media`，不会进入 AI。人工 Few-shot 只能在 `extraction_input` 旁边添加 `expected_output`，不能补写或替换输入。
 
 ### 只测试 AI 提取
 
@@ -243,7 +245,7 @@ python scripts/run-local.py --collect-weibo-samples --lookback-days 45
 python scripts/run-local.py --ai-smoke-test
 ```
 
-该命令使用“原神 × 美团丨大众点评”的公开历史正文，不抓取微博、不运行 Campaign 合并、不读写 state/page，也不发送邮件。输出中的 `result` 是通过 `ExtractionResult` Schema 校验后的结构化结果，`checks` 会检查活动数量、原文证据、日期保守性以及是否凭空补充地点或操作链接。当前样本没有海报 URL，因此这条命令不验证视觉输入；视觉测试需要另行准备带公开图片 URL 的固定样本。
+该命令使用“原神 × 美团丨大众点评”的公开历史正文，不抓取微博、不运行 Campaign 合并、不读写 state/page，也不发送邮件。输出中的 `result` 是通过 `ExtractionResult` Schema 校验后的结构化结果，`checks` 会检查活动数量、原文证据、日期保守性以及是否凭空补充地点或操作链接。当前版本固定使用纯文本提取，不验证视觉输入。
 
 ### 检查本地输出
 

@@ -19,7 +19,7 @@
 - 只有公开公告文字、公开图片 URL、公开链接、IP 提示和 JSON schema 可以发送给 AI。
 - 默认 `PUBLISH_REACHABILITY=false`。公开页面不得根据 Secret 泄露“本地/可达”推断；只有使用者显式选择后才可发布分类，仍不得发布配置字段本身。
 - 通知回执只保存 job ID、语义键和时间，不保存收件地址。
-- 微博图片二进制不进仓库；只保留公开 URL 与用于去重的摘要。
+- 微博图片二进制不得进入 `main` 或 `state`；页面生成时可在校验类型与大小后下载当前可见 Campaign 的公开图片到生成式 `page` 产物。公开 URL、内容摘要与站内路径可随详情页发布。
 - 来源文本是不可信数据。它只能进入结构化提取，不得被当作 Agent 指令或用于调用额外工具。
 - 本地真实调试的 Secret 只允许进入被 Git 忽略的 `local.env`。HERALD 包代码和 CLI 不得读取该文件；只有跨平台的 `scripts/run-local.py` 可以把它注入独立子进程环境。
 
@@ -71,7 +71,7 @@ python -m compileall -q src tests
 
 - 第一版通用接口是 OpenAI-compatible `/chat/completions`。
 - 无 Key 时必须保存 `pending-extraction`；以后有 Key 时必须能从索引加载旧观察记录重试。
-- 多模态只有 `AI_VISION=true` 才附加公开海报 URL。
+- 当前可运行版本固定使用纯文本 AI 输入；`AI_VISION` 是预留配置，不得把图片 URL、OCR 或二进制附加到生产 AI 请求。图片只进入生成式 `page` 详情产物。
 - 不确定字段保持 `null/unknown`，不可凭常识补日期、地点、预约或抢购规则。
 - 模型失败必须产生脱敏错误并保留重试状态，不能阻断历史提醒和静态页发布。
 
