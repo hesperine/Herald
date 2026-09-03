@@ -86,6 +86,7 @@ GitHub Pages 首页只列出仍有效、且属于当前关注 IP 的活动。点
 | `REMIND_DAY_BEFORE` | `true` | 是否生成提前一天提醒 |
 | `INCLUDE_IN_GAME` | `false` | 预留项；当前版本仍聚焦品牌/线下/商品联动 |
 | `TIMEZONE` | `Asia/Shanghai` | 日期队列和邮件时区 |
+| `INITIAL_LOOKBACK_DAYS` | `21` | 每个来源首次成功初始化时回溯的自然日数；可设为 1–90，例如 `30` |
 | `PUBLISH_REACHABILITY` | `false` | 是否把地点推导的“本地/可达”发布到公开网页；默认关闭 |
 | `AI_PROVIDER` | `openai_compatible` | 通用兼容服务用 `openai_compatible`；智谱用 `zhipu_openai`（也接受 `zhipu-openai`） |
 | `AI_BASE_URL` | `https://example.com/v1` | 兼容服务地址；`zhipu_openai` 未填时默认为智谱开放平台 v4 |
@@ -124,11 +125,13 @@ GitHub Pages 首页只列出仍有效、且属于当前关注 IP 的活动。点
 - 明日方舟：终末地森空岛主官号：`3737967211133`
 - 明日方舟：终末地森空岛衍生品官号“山团团”：`7232373607086`
 
-米游社先通过 `/painter/wapi/userPostList` 按 `next_offset` 翻作者时间线，再对最近 72 小时内的候选逐条调用 `/post/wapi/getPostFull`。这样不会把列表截断正文当成完整公告，也不会漏掉无图片的纯文本帖子。`next_offset` 只服务当次翻页，持久化游标只有最新帖子 ID。
+米游社先通过 `/painter/wapi/userPostList` 按 `next_offset` 翻作者时间线，再对日期窗口内的帖子逐条调用 `/post/wapi/getPostFull`。这样不会把列表截断正文当成完整公告，也不会漏掉无图片的纯文本帖子。`next_offset` 只服务当次翻页，持久化游标只有最新帖子 ID。
 
 森空岛通过 `/web/v2/user/items` 翻作者时间线，再用 `/web/v1/item` 补全文本和图片。公开内容不需要用户账号 Cookie，但服务要求临时设备 `dId`、临时 token 和签名；程序会匿名生成短期设备身份，并使用刷新响应中的服务器时间校准签名。`pageToken` 和随机 `listId` 同样不会写入增量游标。
 
-两种来源每天都从最新页开始，直到遇到“上次最新帖子 ID”、整页越过最近 72 小时的日期下界、页面为空或达到安全页数上限。边界帖子会再读取一次，因此同一 ID 的公告编辑可以被识别。
+每个来源没有持久化 cursor 时会单独执行初始化：默认读取当前中国时区自然日和此前 20 个自然日，也就是三周；`INITIAL_LOOKBACK_DAYS=30` 可改为 30 天。页数上限按“自然日数量 × 2”计算，因此默认最多 42 页。初始化历史公告会照常保存、筛选、提取和合并，未来预约/开售等日期提醒也会保留，但不会把今天以前的旧公告逐条作为今日即时通知发送。
+
+来源已有 cursor 后进入日常增量：仍从最新页开始，覆盖昨天和今天两个自然日（最多 4 页），遇到持久化的 `latest_post_id`、整页越过日期下界、页面为空或页数上限即停止。边界帖子会再读取一次，因此同一 ID 的公告编辑可以被识别。`next_offset`、`pageToken` 等令牌只用于一次请求中的翻页，不充当跨日增量 cursor；某个新加入的来源没有 cursor 时，只初始化该来源，不影响其他来源继续增量。
 
 社区图片直链可能因防盗链无法在 GitHub Pages 直接显示。页面生成阶段会按来源设置米游社、森空岛或微博 Referer，下载当前可见 Campaign 的公开图片，以内容 SHA-256 命名后写入 `page/assets/media`，详情页引用站内文件；`page/data/media-index.json` 保存原 URL、站内路径、Content-Type、字节数和内容摘要。已有文件会复用，过期 Campaign 不再引用的文件会清理。图片不进入 AI、`main` 或 `state`。
 
@@ -172,6 +175,22 @@ python scripts/run-local.py
 ```
 
 `run-local.py` 可在 Windows、macOS 和 Linux 运行。它负责读取 `local.env` 的 `KEY=value` 和可选的本地 AI 档案，为 HERALD 创建独立的子进程环境，然后调用 `python -m herald`；不会修改当前终端的环境。HERALD 本身不读取这些本地文件，GitHub Actions 也不读取它们：Action 工作流直接把 Repository Variables/Secrets 注入环境。因此从 CLI 开始，本地与远端运行的是同一套逻辑。
+
+### 分阶段调试
+
+本地可以复用同一个 state，依次只检查采集、AI 提取，再运行完整流程：
+
+```powershell
+python scripts/run-local.py --phase fetch
+python scripts/run-local.py --phase extract
+python scripts/run-local.py --phase full
+```
+
+- `fetch`：只访问来源，完成分页、详情补全、规范化、落盘和不耗 token 的规则候选筛选；候选写入 `pending-extraction`，不调用 AI、不合并 Campaign、不发邮件、不生成页面。
+- `extract`：不访问米游社、森空岛或微博，只用已配置的 AI Provider 处理 `pending-extraction`，然后执行确定性的 Campaign 合并与未来提醒编排；不发邮件、不下载图片、不生成页面。缺少 AI Key 或模型配置时会明确报错。
+- `full`（默认）：抓取、候选筛选、AI 提取、Campaign 合并、到期通知、图片缓存与静态页全部执行。GitHub Actions 固定使用这个阶段，每天运行一次。
+
+首次 `fetch` 或 `full` 是否回溯历史由每个来源自己的 cursor 自动判断，不需要单独的“初始化命令”。想在本地以不同回溯天数重新验证初始化时，请在 `local.env` 修改 `INITIAL_LOOKBACK_DAYS`，并传一个新的空 state 目录，例如 `--state-dir .herald-work/init-30d-state`；已有 state 会继续走增量，不会重复回溯和群发旧公告。
 
 ### 本地 AI Provider 档案
 
