@@ -127,6 +127,23 @@ class LocalLauncherTests(unittest.TestCase):
         self.assertEqual(child_environment["WATCH_IPS"], "原神")
         self.assertEqual(child_environment["EXISTING_VALUE"], "kept")
 
+    def test_passes_selected_debug_phase_to_the_same_cli(self) -> None:
+        launcher = _load_launcher()
+        with tempfile.TemporaryDirectory() as temporary:
+            env_file = Path(temporary) / "local.env"
+            env_file.write_text("WATCH_IPS=原神\n", encoding="utf-8")
+            completed = SimpleNamespace(returncode=0)
+
+            with patch.object(
+                launcher.subprocess, "run", return_value=completed
+            ) as run:
+                exit_code = launcher.main(
+                    ["--env-file", str(env_file), "--phase", "fetch"]
+                )
+
+        self.assertEqual(exit_code, 0)
+        self.assertEqual(run.call_args.args[0][-2:], ["--phase", "fetch"])
+
     def test_selected_profile_overrides_local_ai_values_for_child(self) -> None:
         launcher = _load_launcher()
         with tempfile.TemporaryDirectory() as temporary:

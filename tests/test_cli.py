@@ -11,7 +11,8 @@ from unittest.mock import patch
 
 import httpx
 
-from herald.cli import _make_email_sender, _make_provider, _parse_now, main
+from herald.cli import _make_email_sender, _make_provider, _parse_now, _parser, main
+from herald.runner import RunPhase
 from herald.config import load_settings
 
 
@@ -74,6 +75,17 @@ class CliTests(unittest.TestCase):
         with self.assertRaisesRegex(ValueError, "timezone"):
             _parse_now("2026-08-30T20:00:00")
         self.assertEqual(_parse_now("2026-08-30T20:00:00+08:00").utcoffset().seconds, 28800)
+
+    def test_phase_argument_defaults_to_full_and_accepts_individual_stages(self) -> None:
+        self.assertEqual(_parser().parse_args([]).phase, RunPhase.FULL.value)
+        self.assertEqual(
+            _parser().parse_args(["--phase", "fetch"]).phase,
+            RunPhase.FETCH.value,
+        )
+        self.assertEqual(
+            _parser().parse_args(["--phase", "extract"]).phase,
+            RunPhase.EXTRACT.value,
+        )
 
     def test_main_builds_a_minimal_page_when_official_source_is_offline(self) -> None:
         with tempfile.TemporaryDirectory() as temporary:

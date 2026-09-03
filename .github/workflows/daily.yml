@@ -25,6 +25,7 @@ jobs:
       REMIND_DAY_BEFORE: ${{ vars.REMIND_DAY_BEFORE || 'true' }}
       PUBLISH_REACHABILITY: ${{ vars.PUBLISH_REACHABILITY || 'false' }}
       TIMEZONE: ${{ vars.TIMEZONE || 'Asia/Shanghai' }}
+      INITIAL_LOOKBACK_DAYS: ${{ vars.INITIAL_LOOKBACK_DAYS || '21' }}
       AI_PROVIDER: ${{ vars.AI_PROVIDER || 'openai_compatible' }}
       AI_BASE_URL: ${{ vars.AI_BASE_URL || 'https://api.openai.com/v1' }}
       AI_MODEL: ${{ vars.AI_MODEL }}
@@ -75,7 +76,7 @@ jobs:
           prepare_branch page _page
 
       - name: Scan, notify, and build static page
-        run: python -m herald --state-dir _state --page-dir _page
+        run: python -m herald --state-dir _state --page-dir _page --phase full
 
       - name: Commit state and page only
         shell: bash

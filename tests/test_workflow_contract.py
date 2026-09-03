@@ -42,6 +42,8 @@ class WorkflowContractTests(unittest.TestCase):
         self.assertFalse((ROOT / "scripts/run-local.ps1").exists())
         self.assertIn("local.env", gitignore.splitlines())
         self.assertIn("WATCH_IPS=原神,明日方舟", example)
+        self.assertIn("INITIAL_LOOKBACK_DAYS=21", example)
+        self.assertIn("--phase", launcher)
         self.assertIn('"-m", "herald"', launcher)
         self.assertIn("env=child_environment", launcher)
         self.assertNotIn("local.env", workflow)
@@ -55,12 +57,16 @@ class WorkflowContractTests(unittest.TestCase):
         self.assertIn("prepare_branch page _page", workflow)
         self.assertIn("group: herald-daily-", workflow)
         self.assertIn(
-            "python -m herald --state-dir _state --page-dir _page", workflow
+            "python -m herald --state-dir _state --page-dir _page --phase full", workflow
         )
         self.assertIn("--state-dir _state --page-dir _page", workflow)
         self.assertIn("commit_branch state _state", workflow)
         self.assertIn("commit_branch page _page", workflow)
         self.assertNotIn("commit_branch main", workflow)
+        self.assertIn(
+            "INITIAL_LOOKBACK_DAYS: ${{ vars.INITIAL_LOOKBACK_DAYS || '21' }}",
+            workflow,
+        )
 
     def test_private_configuration_uses_secrets(self) -> None:
         workflow = (ROOT / ".github/workflows/daily.yml").read_text(encoding="utf-8")

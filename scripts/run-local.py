@@ -140,6 +140,12 @@ def _parser() -> argparse.ArgumentParser:
     )
     parser.add_argument("--now", help="timezone-aware ISO timestamp")
     parser.add_argument(
+        "--phase",
+        choices=("fetch", "extract", "full"),
+        default="full",
+        help="run only source fetching, only queued AI extraction, or the full workflow",
+    )
+    parser.add_argument(
         "--ai-smoke-test",
         action="store_true",
         help="run only one real AI extraction against a fixed public sample",
@@ -217,6 +223,7 @@ def main(argv: list[str] | None = None) -> int:
             "-m", "herald",
             "--state-dir", str(args.state_dir),
             "--page-dir", str(args.page_dir),
+            "--phase", args.phase,
         ]
         if args.now:
             command.extend(["--now", args.now])

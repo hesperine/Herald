@@ -15,7 +15,7 @@ from .ai import AIProvider, OpenAICompatibleProvider, ZhipuOpenAIProvider
 from .config import RuntimeSettings, load_settings
 from .media import PublicMediaCache
 from .notifications import EmailSender, SmtpEmailSender
-from .runner import DailyRunner
+from .runner import DailyRunner, RunPhase
 from .sources.miyoushe import MiyousheTimelineClient
 from .sources.skland import SklandTimelineClient
 from .sources.weibo import WeiboTimelineClient
@@ -98,6 +98,12 @@ def _parser() -> argparse.ArgumentParser:
         "--now",
         help="timezone-aware ISO timestamp for deterministic local runs",
     )
+    parser.add_argument(
+        "--phase",
+        choices=[phase.value for phase in RunPhase],
+        default=RunPhase.FULL.value,
+        help="fetch sources only, extract queued materials only, or run everything",
+    )
     return parser
 
 
@@ -118,10 +124,16 @@ async def _run(args: argparse.Namespace) -> dict[str, object]:
                 provider=_make_provider(settings, ai_client),
                 email_sender=_make_email_sender(settings),
                 media_cache=PublicMediaCache(source_client),
+                phase=RunPhase(args.phase),
             )
     return {
+        "phase": args.phase,
         "report": result.report.model_dump(mode="json"),
         "published_campaigns": result.published_campaigns,
+        "ai_calls": sum(item.ai_calls for item in result.pipeline_results),
+        "pending_extractions": sum(
+            item.pending_extractions for item in result.pipeline_results
+        ),
     }
 
 
