@@ -22,6 +22,7 @@ class LoadSettingsTests(unittest.TestCase):
                 "AI_VISION": "true",
                 "PUBLISH_REACHABILITY": "true",
                 "AI_JSON_MODE": "false",
+                "INITIAL_LOOKBACK_DAYS": "30",
             }
         )
 
@@ -36,6 +37,7 @@ class LoadSettingsTests(unittest.TestCase):
         self.assertTrue(settings.public.ai_vision)
         self.assertTrue(settings.public.publish_reachability)
         self.assertFalse(settings.public.ai_json_mode)
+        self.assertEqual(settings.public.initial_lookback_days, 30)
         self.assertEqual(settings.private.origin_city.get_secret_value(), "上海")
         self.assertEqual(
             settings.private.notify_email.get_secret_value(), "player@example.com"
@@ -44,6 +46,18 @@ class LoadSettingsTests(unittest.TestCase):
     def test_requires_at_least_one_ip(self) -> None:
         with self.assertRaisesRegex(ValueError, "WATCH_IPS"):
             load_settings({})
+
+    def test_initial_history_defaults_to_three_weeks_and_is_bounded(self) -> None:
+        self.assertEqual(
+            load_settings({"WATCH_IPS": "原神"}).public.initial_lookback_days,
+            21,
+        )
+        for value in ("0", "91"):
+            with self.subTest(value=value):
+                with self.assertRaisesRegex(ValueError, "INITIAL_LOOKBACK_DAYS"):
+                    load_settings(
+                        {"WATCH_IPS": "原神", "INITIAL_LOOKBACK_DAYS": value}
+                    )
 
     def test_rejects_invalid_extra_uid_format(self) -> None:
         with self.assertRaisesRegex(ValueError, "IP:uid"):

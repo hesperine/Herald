@@ -34,6 +34,19 @@ def _parse_bool(value: str | None, default: bool) -> bool:
     raise ValueError(f"invalid boolean value: {value!r}")
 
 
+def _parse_initial_lookback_days(value: str | None) -> int:
+    raw = "21" if value is None or not value.strip() else value.strip()
+    try:
+        days = int(raw)
+    except ValueError as exc:
+        raise ValueError(
+            "INITIAL_LOOKBACK_DAYS must be an integer from 1 to 90"
+        ) from exc
+    if not 1 <= days <= 90:
+        raise ValueError("INITIAL_LOOKBACK_DAYS must be an integer from 1 to 90")
+    return days
+
+
 def _parse_extra_uids(value: str | None) -> dict[str, list[str]]:
     result: dict[str, list[str]] = {}
     if not value:
@@ -64,6 +77,7 @@ class PublicSettings(BaseModel):
     remind_day_before: bool = True
     publish_reachability: bool = False
     timezone: str = "Asia/Shanghai"
+    initial_lookback_days: int = Field(default=21, ge=1, le=90)
     ai_provider: str = "openai_compatible"
     ai_base_url: str = "https://api.openai.com/v1"
     ai_model: str | None = None
@@ -151,6 +165,9 @@ def load_settings(environ: Mapping[str, str] | None = None) -> RuntimeSettings:
             env.get("PUBLISH_REACHABILITY"), False
         ),
         timezone=env.get("TIMEZONE", "Asia/Shanghai"),
+        initial_lookback_days=_parse_initial_lookback_days(
+            env.get("INITIAL_LOOKBACK_DAYS")
+        ),
         ai_provider=ai_provider,
         ai_base_url=ai_base_url,
         ai_model=env.get("AI_MODEL") or None,

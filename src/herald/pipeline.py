@@ -71,12 +71,14 @@ class ObservationPipeline:
         now: datetime,
         provider: AIProvider | None,
         remind_day_before: bool = True,
+        suppress_immediate_for: set[str] | None = None,
     ) -> PipelineResult:
         counters = {
             field: 0 for field in PipelineResult.__dataclass_fields__
         }
         by_id = {observation.id: observation for observation in observations}
         existing_campaigns = store.list_campaigns()
+        suppressed_observation_ids = suppress_immediate_for or set()
 
         for group in self.deduplicator.group(observations):
             group_items = [by_id[item_id] for item_id in group.observation_ids]
@@ -87,6 +89,14 @@ class ObservationPipeline:
                 for item in group_items
                 if store.observation_content_hash(item.id) != item.source.content_hash
             ]
+            notify_immediately = (
+                pending.notify_immediately
+                if pending is not None and not changed_items
+                else not all(
+                    observation_id in suppressed_observation_ids
+                    for observation_id in group.observation_ids
+                )
+            )
             if not changed_items:
                 counters["unchanged_observations"] += len(group_items)
                 if pending is None or provider is None:
@@ -113,6 +123,7 @@ class ObservationPipeline:
                         ip_slug=ip.slug,
                         queued_at=now,
                         reason="AI provider is not configured",
+                        notify_immediately=notify_immediately,
                     )
                 )
                 counters["pending_extractions"] += 1
@@ -134,6 +145,7 @@ class ObservationPipeline:
                             ip_slug=ip.slug,
                             queued_at=now,
                             reason="AI extraction failed; retry required",
+                            notify_immediately=notify_immediately,
                         )
                     )
                     counters["pending_extractions"] += 1
@@ -185,9 +197,12 @@ class ObservationPipeline:
             for change in outcome.changes:
                 store.save_change(change)
                 counters["changes_written"] += 1
-            for job in self.scheduler.jobs_for_changes(list(outcome.material_changes)):
-                store.save_queue_job(job)
-                counters["jobs_written"] += 1
+            if notify_immediately:
+                for job in self.scheduler.jobs_for_changes(
+                    list(outcome.material_changes)
+                ):
+                    store.save_queue_job(job)
+                    counters["jobs_written"] += 1
             future_jobs = self.scheduler.reconcile_campaign(
                 store,
                 outcome.campaign,

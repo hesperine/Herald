@@ -3,7 +3,8 @@
 from __future__ import annotations
 
 from dataclasses import dataclass
-from datetime import datetime, timedelta, timezone
+from datetime import datetime, time, timedelta, timezone, tzinfo
+from enum import StrEnum
 from pathlib import Path
 from typing import Callable, Protocol
 
@@ -33,6 +34,7 @@ class WeiboAccountFetcher(Protocol):
         cursor: WeiboCursor | None,
         first_seen_at: datetime,
         published_since: datetime,
+        max_pages: int,
     ) -> FetchBatch[WeiboCursor]: ...
 
 
@@ -46,6 +48,7 @@ class MiyousheAccountFetcher(Protocol):
         cursor: MiyousheCursor | None,
         first_seen_at: datetime,
         published_since: datetime,
+        max_pages: int,
     ) -> FetchBatch[MiyousheCursor]: ...
 
 
@@ -58,6 +61,7 @@ class SklandAccountFetcher(Protocol):
         cursor: SklandCursor | None,
         first_seen_at: datetime,
         published_since: datetime,
+        max_pages: int,
     ) -> FetchBatch[SklandCursor]: ...
 
 
@@ -65,6 +69,16 @@ class MediaCache(Protocol):
     async def cache(
         self, urls: list[str], output_dir: Path | str
     ) -> MediaCacheResult: ...
+
+
+class RunPhase(StrEnum):
+    FETCH = "fetch"
+    EXTRACT = "extract"
+    FULL = "full"
+
+
+PAGES_PER_NATURAL_DAY = 2
+INCREMENTAL_NATURAL_DAYS = 2
 
 
 @dataclass(frozen=True, slots=True)
@@ -100,121 +114,145 @@ class DailyRunner:
         media_cache: MediaCache | None = None,
         miyoushe_client: MiyousheAccountFetcher | None = None,
         skland_client: SklandAccountFetcher | None = None,
+        phase: RunPhase = RunPhase.FULL,
     ) -> DailyRunResult:
         if now.tzinfo is None or now.utcoffset() is None:
             raise ValueError("daily run time must include a timezone")
 
+        phase = RunPhase(phase)
         store.initialize()
         resolution = self.registry.resolve(settings.public)
         if not resolution.supported:
             raise ValueError("none of WATCH_IPS are supported by the built-in registry")
+        if phase is RunPhase.EXTRACT and provider is None:
+            raise ValueError("extract phase requires a configured AI provider")
 
         warnings = [
             f"unsupported WATCH_IPS entry: {name}" for name in resolution.unsupported
         ]
         pipeline = ObservationPipeline(settings.public.timezone)
         pipeline_results: list[PipelineResult] = []
+        notification_service = NotificationService(settings.public.timezone)
 
-        pending_by_ip = self._pending_observations(store) if provider is not None else {}
+        should_fetch = phase in {RunPhase.FETCH, RunPhase.FULL}
+        should_extract = phase in {RunPhase.EXTRACT, RunPhase.FULL}
+        pending_by_ip = (
+            self._pending_observations(store)
+            if should_extract and provider is not None
+            else {}
+        )
         for ip in resolution.supported:
             observations = list(pending_by_ip.get(ip.slug, []))
             observations_by_id = {item.id: item for item in observations}
-            if not ip.sources:
+            suppress_immediate_for: set[str] = set()
+            if should_fetch and not ip.sources:
                 warnings.append(f"no official source is configured for IP: {ip.name}")
 
-            for source in ip.sources:
-                fetched = await self._fetch_source(
-                    store=store,
-                    ip=ip,
-                    source=source,
-                    now=now,
-                    weibo_client=weibo_client,
-                    miyoushe_client=miyoushe_client,
-                    skland_client=skland_client,
-                    warnings=warnings,
-                )
-                for observation in fetched:
-                    observation = self._preserve_observation_history(
-                        store, observation, now
+            if should_fetch:
+                for source in ip.sources:
+                    fetched, historical_ids = await self._fetch_source(
+                        store=store,
+                        ip=ip,
+                        source=source,
+                        now=now,
+                        timezone_info=notification_service.timezone,
+                        initial_lookback_days=(
+                            settings.public.initial_lookback_days
+                        ),
+                        weibo_client=weibo_client,
+                        miyoushe_client=miyoushe_client,
+                        skland_client=skland_client,
+                        warnings=warnings,
                     )
-                    observations_by_id[observation.id] = observation
+                    suppress_immediate_for.update(historical_ids)
+                    for observation in fetched:
+                        observation = self._preserve_observation_history(
+                            store, observation, now
+                        )
+                        observations_by_id[observation.id] = observation
 
             result = await pipeline.process(
                 store=store,
                 ip=ip,
                 observations=list(observations_by_id.values()),
                 now=now,
-                provider=provider,
+                provider=provider if should_extract else None,
                 remind_day_before=settings.public.remind_day_before,
+                suppress_immediate_for=suppress_immediate_for,
             )
             pipeline_results.append(result)
 
-        notification_service = NotificationService(settings.public.timezone)
         local_day = now.astimezone(notification_service.timezone).date()
         delivery: DeliveryResult | None = None
-        recipient = self._secret(settings.private.notify_email)
-        if recipient and email_sender is not None:
-            try:
-                delivery = notification_service.deliver_due(
-                    store=store,
-                    day=local_day,
-                    generated_at=now,
-                    sender=email_sender,
-                    recipient=recipient,
-                )
-            except Exception:
-                # Delivery credentials and provider errors must never enter state/logs.
-                warnings.append("email delivery failed; no receipt was recorded")
-        else:
-            due, _ = notification_service.collect_due(store, local_day)
-            if due:
-                missing = "NOTIFY_EMAIL" if not recipient else "complete SMTP settings"
-                warnings.append(
-                    f"{len(due)} notification(s) are due but {missing} are not configured"
-                )
+        published: list[object] = []
+        if phase is RunPhase.FULL:
+            recipient = self._secret(settings.private.notify_email)
+            if recipient and email_sender is not None:
+                try:
+                    delivery = notification_service.deliver_due(
+                        store=store,
+                        day=local_day,
+                        generated_at=now,
+                        sender=email_sender,
+                        recipient=recipient,
+                    )
+                except Exception:
+                    # Delivery credentials and provider errors must never enter state/logs.
+                    warnings.append("email delivery failed; no receipt was recorded")
+            else:
+                due, _ = notification_service.collect_due(store, local_day)
+                if due:
+                    missing = (
+                        "NOTIFY_EMAIL"
+                        if not recipient
+                        else "complete SMTP settings"
+                    )
+                    warnings.append(
+                        f"{len(due)} notification(s) are due but {missing} are not configured"
+                    )
 
-        watched_slugs = {ip.slug for ip in resolution.supported}
-        media_assets: dict[str, CachedMediaAsset] = {}
-        if media_cache is not None:
-            media_urls = self._visible_media_urls(
-                store=store,
-                watched_ip_slugs=watched_slugs,
-                now=now,
-            )
-            cache_result = await media_cache.cache(media_urls, page_dir)
-            media_assets = cache_result.assets
-            if cache_result.failed_count:
-                warnings.append(
-                    f"{cache_result.failed_count} public image(s) could not be cached"
+            watched_slugs = {ip.slug for ip in resolution.supported}
+            media_assets: dict[str, CachedMediaAsset] = {}
+            if media_cache is not None:
+                media_urls = self._visible_media_urls(
+                    store=store,
+                    watched_ip_slugs=watched_slugs,
+                    now=now,
                 )
-        origin_city = None
-        reachable_cities: list[str] = []
-        if settings.public.publish_reachability:
-            origin_city = self._secret(settings.private.origin_city)
-            reachable_cities = self._split_private_list(
-                self._secret(settings.private.reachable_cities)
+                cache_result = await media_cache.cache(media_urls, page_dir)
+                media_assets = cache_result.assets
+                if cache_result.failed_count:
+                    warnings.append(
+                        f"{cache_result.failed_count} public image(s) could not be cached"
+                    )
+            origin_city = None
+            reachable_cities: list[str] = []
+            if settings.public.publish_reachability:
+                origin_city = self._secret(settings.private.origin_city)
+                reachable_cities = self._split_private_list(
+                    self._secret(settings.private.reachable_cities)
+                )
+            forbidden_values = [
+                value
+                for value in (
+                    self._secret(settings.private.notify_email),
+                    self._secret(settings.private.ai_api_key),
+                    self._secret(settings.private.weibo_cookie),
+                    self._secret(settings.private.smtp_username),
+                    self._secret(settings.private.smtp_password),
+                )
+                if value
+            ]
+            published = StaticSiteBuilder(settings.public.timezone).build(
+                store=store,
+                output_dir=page_dir,
+                now=now,
+                watched_ip_slugs=watched_slugs,
+                origin_city=origin_city,
+                reachable_cities=reachable_cities,
+                forbidden_values=forbidden_values,
+                media_assets=media_assets,
             )
-        forbidden_values = [
-            value
-            for value in (
-                self._secret(settings.private.notify_email),
-                self._secret(settings.private.ai_api_key),
-                self._secret(settings.private.weibo_cookie),
-                self._secret(settings.private.smtp_username),
-                self._secret(settings.private.smtp_password),
-            )
-            if value
-        ]
-        published = StaticSiteBuilder(settings.public.timezone).build(
-            store=store,
-            output_dir=page_dir,
-            now=now,
-            watched_ip_slugs=watched_slugs,
-            origin_city=origin_city,
-            reachable_cities=reachable_cities,
-            forbidden_values=forbidden_values,
-            media_assets=media_assets,
-        )
 
         report = RunReport(
             started_at=now,
@@ -246,7 +284,9 @@ class DailyRunner:
         miyoushe_client: MiyousheAccountFetcher | None,
         skland_client: SklandAccountFetcher | None,
         warnings: list[str],
-    ) -> list[SourceObservation]:
+        timezone_info: tzinfo,
+        initial_lookback_days: int,
+    ) -> tuple[list[SourceObservation], set[str]]:
         cursor_type: type[WeiboCursor | MiyousheCursor | SklandCursor]
         client: object | None
         if source.kind is SourceKind.WEIBO:
@@ -262,28 +302,42 @@ class DailyRunner:
             warnings.append(
                 f"unsupported source kind for {ip.name}: {source.kind.value}"
             )
-            return []
+            return [], set()
         if client is None:
             warnings.append(
                 f"{source.kind.value} client is unavailable for IP: {ip.name}"
             )
-            return []
+            return [], set()
 
         source_id = f"{source.kind.value}-{source.account_id}"
         cursor_payload = store.load_source_cursor(source_id)
         cursor: WeiboCursor | MiyousheCursor | SklandCursor | None = None
+        has_valid_cursor = False
         if cursor_payload is not None:
             try:
                 cursor = cursor_type.model_validate(cursor_payload)
+                has_valid_cursor = True
             except ValidationError:
                 warnings.append(f"invalid source cursor was ignored: {source_id}")
+
+        natural_days = (
+            INCREMENTAL_NATURAL_DAYS
+            if has_valid_cursor
+            else initial_lookback_days
+        )
+        local_day = now.astimezone(timezone_info).date()
+        first_local_day = local_day - timedelta(days=natural_days - 1)
+        published_since = datetime.combine(
+            first_local_day, time.min, tzinfo=timezone_info
+        )
 
         parameters = {
             "account_id": source.account_id,
             "account_name": source.account_name,
             "cursor": cursor,
             "first_seen_at": now,
-            "published_since": now - timedelta(hours=72),
+            "published_since": published_since,
+            "max_pages": natural_days * PAGES_PER_NATURAL_DAY,
         }
         if source.kind is SourceKind.MIYOUSHE:
             parameters["account_url"] = source.url
@@ -291,10 +345,17 @@ class DailyRunner:
             batch = await client.fetch_account(**parameters)  # type: ignore[union-attr]
         except SourceAccessError:
             warnings.append(f"official source fetch failed: {source_id}")
-            return []
+            return [], set()
 
         store.save_source_cursor(source_id, batch.cursor.model_dump(mode="json"))
-        return [item.observation for item in batch.items]
+        observations = [item.observation for item in batch.items]
+        historical_ids = {
+            item.id
+            for item in observations
+            if not has_valid_cursor
+            and item.source.published_at.astimezone(timezone_info).date() < local_day
+        }
+        return observations, historical_ids
 
     @staticmethod
     def _pending_observations(

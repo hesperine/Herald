@@ -25,7 +25,7 @@ from herald.models import (
     SourceRef,
 )
 from herald.registry import IpRegistry, RegisteredIp, RegisteredSource
-from herald.runner import DailyRunner
+from herald.runner import DailyRunner, RunPhase
 from herald.sources.base import FetchBatch, FetchedObservation
 from herald.sources.miyoushe import MiyousheCursor
 from herald.sources.skland import SklandCursor
@@ -269,6 +269,159 @@ class DailyRunnerTests(unittest.IsolatedAsyncioTestCase):
             self.store.load_source_cursor("skland-3737967211133"),
             {"latest_post_id": "2"},
         )
+
+    async def test_first_source_run_uses_natural_day_history_and_linear_page_limit(self) -> None:
+        client = FakeWeiboClient(
+            [
+                FetchBatch(
+                    items=(),
+                    cursor=WeiboCursor(
+                        container_id="1076031001", latest_post_id="newest"
+                    ),
+                )
+            ]
+        )
+
+        await self.runner.run(
+            settings=settings(with_ai=False, with_email=False),
+            store=self.store,
+            page_dir=self.page,
+            now=NOW,
+            weibo_client=client,
+            provider=None,
+            email_sender=None,
+        )
+
+        china = timezone(timedelta(hours=8))
+        self.assertEqual(
+            client.calls[0]["published_since"],
+            datetime(2026, 8, 10, 0, tzinfo=china),
+        )
+        self.assertEqual(client.calls[0]["max_pages"], 42)
+
+    async def test_incremental_source_run_reads_two_natural_days(self) -> None:
+        self.store.initialize()
+        self.store.save_source_cursor(
+            "weibo-1001",
+            {"container_id": "1076031001", "latest_post_id": "previous"},
+        )
+        client = FakeWeiboClient(
+            [
+                FetchBatch(
+                    items=(),
+                    cursor=WeiboCursor(
+                        container_id="1076031001", latest_post_id="newest"
+                    ),
+                )
+            ]
+        )
+
+        await self.runner.run(
+            settings=settings(with_ai=False, with_email=False),
+            store=self.store,
+            page_dir=self.page,
+            now=NOW,
+            weibo_client=client,
+            provider=None,
+            email_sender=None,
+        )
+
+        china = timezone(timedelta(hours=8))
+        self.assertEqual(
+            client.calls[0]["published_since"],
+            datetime(2026, 8, 29, 0, tzinfo=china),
+        )
+        self.assertEqual(client.calls[0]["max_pages"], 4)
+
+    async def test_local_fetch_and_extract_phases_do_not_cross_io_boundaries(self) -> None:
+        item = observation()
+        fetch_client = FakeWeiboClient(
+            [
+                FetchBatch(
+                    items=(FetchedObservation(item),),
+                    cursor=WeiboCursor(
+                        container_id="1076031001", latest_post_id="next"
+                    ),
+                )
+            ]
+        )
+        provider = MockAIProvider({item.id: extraction()})
+        sender = MemorySender()
+
+        fetched = await self.runner.run(
+            settings=settings(),
+            store=self.store,
+            page_dir=self.page,
+            now=NOW,
+            weibo_client=fetch_client,
+            provider=provider,
+            email_sender=sender,
+            phase=RunPhase.FETCH,
+        )
+
+        self.assertEqual(fetched.report.observations, 1)
+        self.assertEqual(self.store.list_campaigns(), [])
+        self.assertEqual(len(self.store.list_pending_extractions()), 1)
+        self.assertFalse(self.page.exists())
+        self.assertEqual(sender.messages, [])
+
+        extracted = await self.runner.run(
+            settings=settings(),
+            store=self.store,
+            page_dir=self.page,
+            now=NOW,
+            weibo_client=None,
+            provider=provider,
+            email_sender=sender,
+            phase=RunPhase.EXTRACT,
+        )
+
+        self.assertEqual(extracted.report.campaigns_created, 1)
+        self.assertEqual(self.store.list_pending_extractions(), [])
+        self.assertFalse(self.page.exists())
+        self.assertEqual(sender.messages, [])
+
+    async def test_bootstrap_history_keeps_future_jobs_without_immediate_mail(self) -> None:
+        item = observation()
+        item.source.published_at = NOW - timedelta(days=10)
+        item.source.first_seen_at = NOW
+
+        await self.runner.run(
+            settings=settings(with_email=False),
+            store=self.store,
+            page_dir=self.page,
+            now=NOW,
+            weibo_client=FakeWeiboClient(
+                [
+                    FetchBatch(
+                        items=(FetchedObservation(item),),
+                        cursor=WeiboCursor(
+                            container_id="1076031001", latest_post_id="next"
+                        ),
+                    )
+                ]
+            ),
+            provider=MockAIProvider({item.id: extraction()}),
+            email_sender=None,
+            phase=RunPhase.FETCH,
+        )
+        pending = self.store.list_pending_extractions()
+        self.assertEqual(len(pending), 1)
+        self.assertFalse(pending[0].notify_immediately)
+
+        await self.runner.run(
+            settings=settings(with_email=False),
+            store=self.store,
+            page_dir=self.page,
+            now=NOW,
+            weibo_client=None,
+            provider=MockAIProvider({item.id: extraction()}),
+            email_sender=None,
+            phase=RunPhase.EXTRACT,
+        )
+
+        self.assertEqual(self.store.load_queue_jobs(date(2026, 8, 30)), [])
+        self.assertEqual(len(self.store.load_queue_jobs(date(2026, 9, 7))), 1)
 
     async def test_complete_run_fetches_extracts_notifies_and_publishes(self) -> None:
         item = observation()

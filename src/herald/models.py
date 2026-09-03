@@ -272,6 +272,7 @@ class PendingExtraction(StrictModel):
     ip_slug: str
     queued_at: AwareDatetime
     reason: str
+    notify_immediately: bool = True
 
 
 class PendingExtractionIndexRecord(StrictModel):
