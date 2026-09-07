@@ -74,6 +74,21 @@ class StaticSiteBuilderTests(unittest.TestCase):
         self.output = root / "page"
         self.builder = StaticSiteBuilder("Asia/Shanghai")
 
+    def test_html_declares_utf8_and_chinese_language(self) -> None:
+        self.builder.build(
+            store=self.store,
+            output_dir=self.output,
+            now=NOW,
+            watched_ip_slugs={"genshin-impact"},
+        )
+
+        for filename in ("index.html", "event.html"):
+            with self.subTest(filename=filename):
+                content = (self.output / filename).read_text(encoding="utf-8")
+                self.assertTrue(content.startswith("<!doctype html>"))
+                self.assertIn('<html lang="zh-CN">', content)
+                self.assertIn('<meta charset="utf-8">', content)
+
     def test_build_filters_expired_cancelled_and_unwatched_campaigns(self) -> None:
         (self.output / "events").mkdir(parents=True)
         (self.output / "events/stale.json").write_text("{}", encoding="utf-8")

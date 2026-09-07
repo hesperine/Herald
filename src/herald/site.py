@@ -19,13 +19,23 @@ from .scheduler import ScheduleCompiler
 from .storage import StateStore
 
 
-INDEX_HTML = """<main>
+INDEX_HTML = """<!doctype html>
+<html lang="zh-CN">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>游戏联动提醒</title>
+</head>
+<body>
+<main>
   <h1>游戏联动提醒</h1>
   <p id="generated-at"></p>
   <label>搜索 <input id="search" type="search"></label>
   <ul id="events"></ul>
 </main>
 <script src="app.js"></script>
+</body>
+</html>
 """
 
 
@@ -53,7 +63,15 @@ search.addEventListener('input', render);
 """
 
 
-DETAIL_HTML = """<main>
+DETAIL_HTML = """<!doctype html>
+<html lang="zh-CN">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>活动详情 · 游戏联动提醒</title>
+</head>
+<body>
+<main>
   <p><a href="index.html">返回全部联动</a></p>
   <h1 id="title">活动详情</h1>
   <dl id="summary"></dl>
@@ -65,6 +83,8 @@ DETAIL_HTML = """<main>
   <ul id="sources"></ul>
 </main>
 <script src="event.js"></script>
+</body>
+</html>
 """
 
 
