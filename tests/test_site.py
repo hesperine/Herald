@@ -89,6 +89,18 @@ class StaticSiteBuilderTests(unittest.TestCase):
                 self.assertIn('<html lang="zh-CN">', content)
                 self.assertIn('<meta charset="utf-8">', content)
 
+    def test_daily_notification_view_is_generated_separately_from_catalog(self) -> None:
+        from herald.models import QueueJob, NotificationKind
+        self.store.save_campaign(campaign("active"))
+        self.store.save_queue_job(QueueJob(id="today", campaign_id="active",
+            activity_id="active-activity", kind=NotificationKind.UPDATE,
+            due_date=NOW.date(), semantic_key="update", summary="补充地点"))
+        self.builder.build(store=self.store, output_dir=self.output, now=NOW,
+            watched_ip_slugs={"genshin-impact"})
+        payload = json.loads((self.output / "data/today.json").read_text("utf-8"))
+        self.assertEqual(len(payload["cards"]), 1)
+        self.assertEqual(payload["cards"][0]["activity"]["venues"][0]["city"], "上海")
+
     def test_build_filters_expired_cancelled_and_unwatched_campaigns(self) -> None:
         (self.output / "events").mkdir(parents=True)
         (self.output / "events/stale.json").write_text("{}", encoding="utf-8")

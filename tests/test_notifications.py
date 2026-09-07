@@ -105,6 +105,29 @@ class NotificationServiceTests(unittest.TestCase):
         self.assertIn("明天开售", sender.messages[0]["text"])
         self.assertTrue(self.store.has_receipt("job-scheduled", DUE_DAY))
 
+    def test_update_and_due_action_share_one_card_and_keep_both_receipts(self) -> None:
+        self.store.save_campaign(campaign())
+        self.store.save_queue_job(scheduled_job())
+        update = scheduled_job().model_copy(update={
+            "id": "job-update", "action_id": None, "expected_at": None,
+            "kind": NotificationKind.UPDATE, "summary": "补充预约说明",
+            "semantic_key": "update",
+        })
+        self.store.save_queue_job(update)
+        items, _ = self.service.collect_due(self.store, DUE_DAY)
+        cards = self.service.build_cards(items)
+        self.assertEqual(len(cards), 1)
+        self.assertEqual(cards[0]["activity"]["title"], "主题快闪")
+        self.assertEqual(len(cards[0]["reasons"]), 2)
+        sender = MemorySender()
+        self.service.deliver_due(store=self.store, day=DUE_DAY,
+            generated_at=NOW, sender=sender, recipient="player@example.com")
+        self.assertIn("1 项", sender.messages[0]["subject"])
+        self.assertTrue(self.store.has_receipt(update.id, DUE_DAY))
+        self.assertTrue(self.store.has_receipt("job-scheduled", DUE_DAY))
+        public_items, _ = self.service.collect_due(self.store, DUE_DAY, include_delivered=True)
+        self.assertEqual(self.service.build_cards(public_items), cards)
+
     def test_receipt_prevents_duplicate_delivery(self) -> None:
         self.store.save_campaign(campaign())
         self.store.save_queue_job(scheduled_job())

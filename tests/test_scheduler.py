@@ -96,6 +96,18 @@ class ScheduleCompilerTests(unittest.TestCase):
         self.assertEqual(jobs[0].expected_at, action_at)
         self.assertEqual(jobs[0].kind, NotificationKind.DAY_BEFORE)
 
+    def test_repeated_reconciliation_preserves_distinct_actions_without_duplicates(self) -> None:
+        with tempfile.TemporaryDirectory() as directory:
+            store = StateStore(directory)
+            store.initialize()
+            item = make_campaign(datetime(2026, 9, 8, 2, tzinfo=UTC))
+            item.activities[0].actions.append(EventAction(id="reservation",
+                kind=ActionKind.RESERVATION_OPEN, title="预约",
+                at=datetime(2026, 9, 8, 1, tzinfo=UTC)))
+            self.compiler.reconcile_campaign(store, item, NOW)
+            self.compiler.reconcile_campaign(store, item, NOW)
+            self.assertEqual(len(store.load_queue_jobs(date(2026, 9, 7))), 2)
+
     def test_reconcile_moves_changed_schedule_to_new_date_bucket(self) -> None:
         with tempfile.TemporaryDirectory() as directory:
             store = StateStore(Path(directory))

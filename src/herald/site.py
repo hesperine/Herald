@@ -14,6 +14,7 @@ from zoneinfo import ZoneInfo, ZoneInfoNotFoundError
 
 from .media import CachedMediaAsset
 from .models import Campaign
+from .notifications import NotificationService
 from .reachability import ReachabilityClassifier
 from .scheduler import ScheduleCompiler
 from .storage import StateStore
@@ -30,6 +31,9 @@ INDEX_HTML = """<!doctype html>
 <main>
   <h1>游戏联动提醒</h1>
   <p id="generated-at"></p>
+  <h2>今日提醒</h2>
+  <ul id="notifications"></ul>
+  <h2>全部有效联动</h2>
   <label>搜索 <input id="search" type="search"></label>
   <ul id="events"></ul>
 </main>
@@ -60,6 +64,21 @@ fetch('data/active.json').then(response => response.json()).then(data => {
   render();
 });
 search.addEventListener('input', render);
+fetch('data/today.json', {cache: 'no-store'}).then(response => {
+  if (!response.ok) throw new Error('load failed');
+  return response.json();
+}).then(data => {
+  const target = document.getElementById('notifications');
+  for (const card of data.cards) {
+    const li = document.createElement('li');
+    const link = document.createElement('a');
+    link.href = `event.html?id=${encodeURIComponent(card.campaign_id)}`;
+    link.textContent = card.activity ? card.activity.title : card.campaign_title;
+    li.append(link, '：', card.reasons.map(reason => reason.summary).join('；'));
+    target.append(li);
+  }
+  if (!data.cards.length) target.textContent = '今天暂无提醒';
+}).catch(() => { document.getElementById('notifications').textContent = '今日提醒加载失败，请刷新重试'; });
 """
 
 
@@ -217,6 +236,17 @@ class StaticSiteBuilder:
             if campaign.ip_slug in watched_ip_slugs and campaign.is_visible(now)
         ]
         campaigns.sort(key=lambda item: (item.updated_at, item.id), reverse=True)
+        notification_service = NotificationService(str(self.timezone))
+        due, _ = notification_service.collect_due(
+            store, now.astimezone(self.timezone).date(), include_delivered=True
+        )
+        visible_ids = {campaign.id for campaign in campaigns}
+        self._write_json(data_dir / "today.json", {
+            "date": now.astimezone(self.timezone).date().isoformat(),
+            "cards": notification_service.build_cards([
+                item for item in due if item.campaign.id in visible_ids
+            ]),
+        })
         reachable = reachable_cities or []
         summaries = [
             self._campaign_summary(
