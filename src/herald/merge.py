@@ -93,6 +93,9 @@ class CampaignIdentityResolver:
         if existing.ip_slug != incoming.ip_slug:
             return IdentityDecision(IdentityKind.DISTINCT, 0.0, "different IP")
 
+        if {s.id for s in existing.sources} & {s.id for s in incoming.sources}:
+            return IdentityDecision(IdentityKind.MATCH, 1.0, "same source identity")
+
         existing_partner = normalize_name(existing.partner)
         incoming_partner = normalize_name(incoming.partner)
         if existing_partner and incoming_partner and existing_partner != incoming_partner:
@@ -208,6 +211,15 @@ class CampaignMerger:
         for incoming_activity in incoming.activities:
             activity = by_activity_id.get(incoming_activity.id)
             if activity is None:
+                # Only reuse a unique identity with the same title/type and no
+                # conflicting city. Dates and newly supplied addresses can change.
+                candidates = [a for a in merged.activities
+                    if a.kind == incoming_activity.kind
+                    and normalize_name(a.title) == normalize_name(incoming_activity.title)
+                    and self._compatible_cities(a, incoming_activity)]
+                if len(candidates) == 1:
+                    activity = candidates[0]
+            if activity is None:
                 merged.activities.append(incoming_activity.model_copy(deep=True))
                 by_activity_id[incoming_activity.id] = merged.activities[-1]
                 changes.append(
@@ -282,6 +294,12 @@ class CampaignMerger:
         actions_by_id = {action.id: action for action in existing.actions}
         for incoming_action in incoming.actions:
             action = actions_by_id.get(incoming_action.id)
+            if action is None:
+                candidates = [a for a in existing.actions
+                    if a.kind == incoming_action.kind
+                    and normalize_name(a.title) == normalize_name(incoming_action.title)]
+                if len(candidates) == 1:
+                    action = candidates[0]
             if action is None:
                 existing.actions.append(incoming_action.model_copy(deep=True))
                 changes.append(
@@ -402,6 +420,12 @@ class CampaignMerger:
                 reason="incoming fact is not newer than existing fact",
             )
         )
+
+    @staticmethod
+    def _compatible_cities(left: Activity, right: Activity) -> bool:
+        left_cities = {normalize_name(v.city) for v in left.venues if v.city}
+        right_cities = {normalize_name(v.city) for v in right.venues if v.city}
+        return not left_cities or not right_cities or left_cities == right_cities
 
     @staticmethod
     def _merge_sources(existing: list[SourceRef], incoming: list[SourceRef]) -> list[str]:

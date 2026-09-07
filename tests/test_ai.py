@@ -166,6 +166,13 @@ class MockAIProviderTests(unittest.IsolatedAsyncioTestCase):
 
 
 class OpenAICompatibleProviderTests(unittest.IsolatedAsyncioTestCase):
+    def test_scope_includes_cross_ip_in_game_collaborations(self) -> None:
+        provider = OpenAICompatibleProvider(client=object(), base_url="https://example.com",
+            model="fixture", api_key="fixture")
+        prompt = provider._request_payload(packet())["messages"][0]["content"]
+        self.assertIn("游戏内跨 IP 联动", prompt)
+        self.assertIn("relevant=false", prompt)
+
     async def test_request_contains_only_public_packet_fields(self) -> None:
         captured: dict[str, object] = {}
 

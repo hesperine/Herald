@@ -77,6 +77,36 @@ class CampaignIdentityResolverTests(unittest.TestCase):
     def setUp(self) -> None:
         self.resolver = CampaignIdentityResolver()
 
+    def test_same_source_edit_retains_campaign_identity(self) -> None:
+        existing = campaign("existing", sources=[source("same")])
+        incoming = campaign("renamed", partner="另一种品牌写法", sources=[source("same")])
+        self.assertEqual(self.resolver.compare(existing, incoming).kind, IdentityKind.MATCH)
+
+    def test_location_enrichment_preserves_activity_and_action_ids(self) -> None:
+        from herald.models import Venue
+        existing = campaign("existing", action_at=BASE + timedelta(days=3))
+        incoming = campaign("existing", action_at=BASE + timedelta(days=4),
+            updated_at=BASE + timedelta(days=1))
+        incoming.activities[0].id = "new-generated-id"
+        incoming.activities[0].venues = [Venue(id="new-venue", city="上海")]
+        incoming.activities[0].actions[0].id = "new-generated-action-id"
+        result = CampaignMerger().merge(existing, incoming, BASE + timedelta(days=1))
+        self.assertEqual(len(result.campaign.activities), 1)
+        activity = result.campaign.activities[0]
+        self.assertEqual(activity.id, "national-sale")
+        self.assertEqual(activity.actions[0].id, "sale-open")
+        self.assertEqual(activity.actions[0].at, BASE + timedelta(days=4))
+
+    def test_different_city_activities_are_not_merged_by_title(self) -> None:
+        from herald.models import Venue
+        existing = campaign("existing")
+        incoming = campaign("existing")
+        existing.activities[0].venues = [Venue(id="sh", city="上海")]
+        incoming.activities[0].id = "beijing"
+        incoming.activities[0].venues = [Venue(id="bj", city="北京")]
+        result = CampaignMerger().merge(existing, incoming, BASE)
+        self.assertEqual(len(result.campaign.activities), 2)
+
     def test_same_partner_title_and_date_is_a_match(self) -> None:
         day = BASE + timedelta(days=9)
         existing = campaign("existing", action_at=day)
