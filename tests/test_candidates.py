@@ -30,6 +30,20 @@ def observation(text: str, *, media_text: list[str] | None = None) -> SourceObse
 
 
 class CandidateFilterTests(unittest.TestCase):
+    def test_offline_derivative_events_do_not_require_collaboration(self):
+        for term in ('漫展', '嘉年华', '演唱会', '音乐会', '巡展', '线下活动', '主题展'):
+            with self.subTest(term=term):
+                decision = CandidateFilter().evaluate(observation(f'官方{term}门票即将开售'),
+                    ip_names=['明日方舟'], from_official_ip_account=True)
+                self.assertTrue(decision.relevant)
+                self.assertIn(term, decision.matched_terms)
+
+    def test_carnival_merchandise_is_a_candidate(self):
+        decision = CandidateFilter().evaluate(
+            observation('▼明日方舟：终末地 ／ 2026鹰角嘉年华 主题周边▼现场&线上 贩售情报公开！'),
+            ip_names=['明日方舟：终末地'], from_official_ip_account=True)
+        self.assertTrue(decision.relevant)
+
     def setUp(self) -> None:
         self.filter = CandidateFilter()
 

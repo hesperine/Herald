@@ -30,6 +30,11 @@ ACTION_TERMS = {
     "补货",
 }
 
+OFFLINE_EVENT_TERMS = {
+    '漫展', '嘉年华', '演唱会', '音乐会', '巡演', '巡展',
+    '主题展', '线下活动', '线下展会', '线下演出', '见面会',
+}
+
 
 @dataclass(frozen=True, slots=True)
 class CandidateDecision:
@@ -51,7 +56,7 @@ class CandidateFilter:
             [observation.text, *observation.extracted_media_text]
         ).casefold()
         matched_collaboration = sorted(
-            term for term in COLLABORATION_TERMS if term.casefold() in material
+            term for term in COLLABORATION_TERMS | OFFLINE_EVENT_TERMS if term.casefold() in material
         )
         matched_actions = sorted(term for term in ACTION_TERMS if term.casefold() in material)
         matched_ips = sorted(name for name in ip_names if name.casefold() in material)
@@ -71,8 +76,8 @@ class CandidateFilter:
         )
         terms = tuple([*matched_collaboration, *matched_actions, *matched_ips])
         reason = (
-            "collaboration signal from a configured official IP source"
+            "collaboration or offline event signal for the configured IP"
             if relevant
-            else "no reliable collaboration signal"
+            else "no reliable collaboration or offline event signal"
         )
         return CandidateDecision(relevant, score, terms, reason)

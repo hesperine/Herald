@@ -2,6 +2,7 @@ from __future__ import annotations
 
 import json
 import unittest
+from unittest.mock import AsyncMock, patch
 from datetime import datetime, timedelta, timezone
 
 import httpx
@@ -16,6 +17,68 @@ NOW = datetime(2026, 9, 2, 2, tzinfo=UTC)
 
 
 class MiyousheTimelineClientTests(unittest.IsolatedAsyncioTestCase):
+    def setUp(self):
+        self.sleep = AsyncMock()
+        patcher = patch('herald.sources.miyoushe.asyncio.sleep', self.sleep)
+        patcher.start()
+        self.addCleanup(patcher.stop)
+
+    async def test_business_failure_retries_three_times_with_doubled_delay(self):
+        requests = []
+        def handler(request):
+            requests.append(str(request.url))
+            return httpx.Response(200, json={'retcode': 1034, 'data': None})
+        async with httpx.AsyncClient(transport=httpx.MockTransport(handler)) as client:
+            adapter = MiyousheTimelineClient(client)
+            with self.assertRaises(SourceAccessError):
+                await adapter._get_json('https://bbs-api.miyoushe.com/post/wapi/getPostFull', {'post_id': '1'})
+        self.assertEqual(len(requests), 4)
+        self.assertEqual(len(set(requests)), 1)
+        self.assertEqual([c.args[0] for c in self.sleep.await_args_list], [2, 4, 8, 16])
+
+    async def test_success_stops_retry_and_next_request_uses_base_interval(self):
+        count = 0
+        def handler(request):
+            nonlocal count
+            count += 1
+            if count == 1:
+                return httpx.Response(503)
+            return httpx.Response(200, json={'retcode': 0, 'data': {}})
+        async with httpx.AsyncClient(transport=httpx.MockTransport(handler)) as client:
+            adapter = MiyousheTimelineClient(client)
+            for _ in range(2):
+                await adapter._get_json('https://bbs-api.miyoushe.com/painter/wapi/userPostList', {'uid': '1'})
+        self.assertEqual(count, 3)
+        self.assertEqual([c.args[0] for c in self.sleep.await_args_list], [2, 4, 2])
+
+    async def test_upper_date_bound_skips_newer_details(self):
+        def handler(request):
+            self.assertTrue(request.url.path.endswith('/userPostList'))
+            return httpx.Response(200, json={'retcode': 0, 'data': {'list': [
+                {'post': {'post_id': '1', 'created_at': int(NOW.timestamp())}}
+            ], 'is_last': True}})
+        async with httpx.AsyncClient(transport=httpx.MockTransport(handler)) as client:
+            adapter = MiyousheTimelineClient(client)
+            result = await adapter.fetch_account(account_id='75276539', account_name='原神',
+                account_url='https://www.miyoushe.com/ys/accountCenter/postList?id=75276539',
+                cursor=None, first_seen_at=NOW, published_since=NOW-timedelta(days=60), published_before=NOW)
+            self.assertEqual(result.items, ())
+            self.assertTrue(adapter.last_fetch_complete)
+
+    async def test_optional_sampling_filter_skips_detail_not_pagination(self):
+        def handler(request):
+            self.assertTrue(request.url.path.endswith('/userPostList'))
+            return httpx.Response(200, json={'retcode': 0, 'data': {'list': [
+                {'post': {'post_id': '1', 'created_at': int(NOW.timestamp()), 'subject': '维护公告'}}
+            ], 'is_last': True}})
+        async with httpx.AsyncClient(transport=httpx.MockTransport(handler)) as client:
+            result = await MiyousheTimelineClient(client).fetch_account(account_id='75276539',
+                account_name='原神', account_url='https://www.miyoushe.com/ys/accountCenter/postList?id=75276539',
+                cursor=None, first_seen_at=NOW, published_since=NOW-timedelta(days=3),
+                detail_predicate=lambda item: False)
+        self.assertEqual(result.items, ())
+        self.assertEqual(result.cursor.latest_post_id, '1')
+
     async def test_pages_author_timeline_and_expands_every_candidate_post(self) -> None:
         requests: list[httpx.Request] = []
 

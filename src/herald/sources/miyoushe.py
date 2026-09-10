@@ -8,10 +8,11 @@ truncated list excerpt can never be mistaken for the complete announcement.
 from __future__ import annotations
 
 import hashlib
+import asyncio
 import json
 import re
 from datetime import datetime, timezone
-from typing import Any
+from typing import Any, Callable
 
 import httpx
 from pydantic import BaseModel, ConfigDict
@@ -129,6 +130,7 @@ def _image_urls(post_wrapper: dict[str, Any], post: dict[str, Any]) -> list[str]
 class MiyousheTimelineClient:
     def __init__(self, client: httpx.AsyncClient) -> None:
         self.client = client
+        self._request_lock = asyncio.Lock()
 
     async def fetch_account(
         self,
@@ -140,9 +142,14 @@ class MiyousheTimelineClient:
         first_seen_at: datetime,
         published_since: datetime,
         max_pages: int = 6,
+        detail_predicate: Callable[[dict], bool] | None = None,
+        published_before: datetime | None = None,
     ) -> FetchBatch[MiyousheCursor]:
         if max_pages < 1:
             raise ValueError("max_pages must be at least 1")
+        self.last_fetch_complete = False
+        if published_before is not None and (published_before.tzinfo is None or published_before <= published_since):
+            raise ValueError('published_before must be aware and after published_since')
         if published_since.tzinfo is None or published_since.utcoffset() is None:
             raise ValueError("published_since must include a timezone")
         match = SUBSITE_PATTERN.match(account_url)
@@ -166,6 +173,7 @@ class MiyousheTimelineClient:
                 raise SourceAccessError("Miyoushe timeline data was not found")
             raw_items = data.get("list")
             if not isinstance(raw_items, list) or not raw_items:
+                self.last_fetch_complete = isinstance(raw_items, list)
                 break
 
             page_items: list[tuple[str, datetime]] = []
@@ -181,7 +189,11 @@ class MiyousheTimelineClient:
                 page_items.append((post_id, published_at))
                 encountered.append((post_id, published_at))
 
-                if published_at >= published_since or post_id == boundary_id:
+                if (published_at >= published_since or post_id == boundary_id) and (
+                    detail_predicate is None or detail_predicate(raw_item)
+                ) and (
+                    published_before is None or published_at < published_before
+                ):
                     fetched.append(
                         await self._fetch_detail(
                             post_id=post_id,
@@ -196,8 +208,10 @@ class MiyousheTimelineClient:
                     break
 
             if stop_at_boundary or not page_items:
+                self.last_fetch_complete = stop_at_boundary
                 break
             if all(published_at < published_since for _, published_at in page_items):
+                self.last_fetch_complete = True
                 break
             next_offset = str(data.get("next_offset") or "")
             if (
@@ -205,6 +219,7 @@ class MiyousheTimelineClient:
                 or not next_offset
                 or next_offset == offset
             ):
+                self.last_fetch_complete = data.get('is_last') is True
                 break
             offset = next_offset
 
@@ -283,14 +298,20 @@ class MiyousheTimelineClient:
             "Referer": "https://www.miyoushe.com/",
             "User-Agent": "Mozilla/5.0 HERALD/0.1",
         }
-        try:
-            response = await self.client.get(
-                endpoint, params=parameters, headers=headers
-            )
-            response.raise_for_status()
-            payload = response.json()
-        except (httpx.HTTPError, ValueError) as exc:
-            raise SourceAccessError("Miyoushe request failed") from exc
-        if not isinstance(payload, dict) or payload.get("retcode") != 0:
-            raise SourceAccessError("Miyoushe returned an unavailable response")
-        return payload
+        # The same pacing applies to timeline and detail requests, in daily
+        # runs and historical collection. Three retries means four attempts.
+        async with self._request_lock:
+            failure = 'Miyoushe request failed'
+            for attempt in range(4):
+                await asyncio.sleep(2 * (2 ** attempt))
+                try:
+                    response = await self.client.get(endpoint, params=parameters, headers=headers)
+                    response.raise_for_status()
+                    payload = response.json()
+                    if isinstance(payload, dict) and payload.get('retcode') == 0:
+                        return payload
+                    failure = 'Miyoushe returned an unavailable response'
+                except (httpx.HTTPError, ValueError):
+                    failure = 'Miyoushe request failed'
+            # Never include response bodies, URLs, or chained provider errors.
+            raise SourceAccessError(failure) from None

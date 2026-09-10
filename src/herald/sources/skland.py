@@ -298,9 +298,14 @@ class SklandTimelineClient:
         first_seen_at: datetime,
         published_since: datetime,
         max_pages: int = 6,
+        detail_predicate: Callable[[dict], bool] | None = None,
+        published_before: datetime | None = None,
     ) -> FetchBatch[SklandCursor]:
         if max_pages < 1:
             raise ValueError("max_pages must be at least 1")
+        self.last_fetch_complete = False
+        if published_before is not None and (published_before.tzinfo is None or published_before <= published_since):
+            raise ValueError('published_before must be aware and after published_since')
         if published_since.tzinfo is None or published_since.utcoffset() is None:
             raise ValueError("published_since must include a timezone")
         current_cursor = cursor or SklandCursor()
@@ -326,6 +331,7 @@ class SklandTimelineClient:
                 raise SourceAccessError("Skland timeline data was not found")
             raw_items = data.get("list")
             if not isinstance(raw_items, list) or not raw_items:
+                self.last_fetch_complete = isinstance(raw_items, list)
                 break
 
             page_items: list[tuple[str, datetime]] = []
@@ -339,7 +345,11 @@ class SklandTimelineClient:
                 published_at = _item_time(item)
                 page_items.append((post_id, published_at))
                 encountered.append((post_id, published_at))
-                if published_at >= published_since or post_id == boundary_id:
+                if (published_at >= published_since or post_id == boundary_id) and (
+                    detail_predicate is None or detail_predicate(item)
+                ) and (
+                    published_before is None or published_at < published_before
+                ):
                     fetched.append(
                         await self._fetch_detail(
                             post_id=post_id,
@@ -353,8 +363,10 @@ class SklandTimelineClient:
                     break
 
             if stop_at_boundary or not page_items:
+                self.last_fetch_complete = stop_at_boundary
                 break
             if all(published_at < published_since for _, published_at in page_items):
+                self.last_fetch_complete = True
                 break
             next_token = str(data.get("pageToken") or data.get("page_token") or "")
             if (
@@ -362,6 +374,7 @@ class SklandTimelineClient:
                 or not next_token
                 or next_token == page_token
             ):
+                self.last_fetch_complete = data.get('hasMore') is False
                 break
             page_token = next_token
 

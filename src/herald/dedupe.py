@@ -138,7 +138,9 @@ class ObservationDeduplicator:
 
         for left_index, left in enumerate(observations):
             for right_index in range(left_index + 1, len(observations)):
-                if self.compare(left, observations[right_index]).is_duplicate:
+                # Shared links/posters are association hints, not permission to
+                # discard complementary announcements in the extraction stage.
+                if self.compare(left, observations[right_index]).kind is DuplicateKind.EXACT:
                     union(left_index, right_index)
 
         grouped: dict[int, list[SourceObservation]] = {}
@@ -157,4 +159,7 @@ class ObservationDeduplicator:
                     observation_ids=tuple(item.id for item in ordered),
                 )
             )
-        return sorted(result, key=lambda group: group.primary_id)
+        by_id = {item.id: item for item in observations}
+        return sorted(result, key=lambda group: (
+            by_id[group.primary_id].source.published_at, group.primary_id
+        ))

@@ -44,6 +44,18 @@ def make_observation(
 
 
 class ObservationDeduplicatorTests(unittest.TestCase):
+    def test_shared_link_does_not_discard_complementary_text(self):
+        first = make_observation('a', text='联动日期九月一日', account='IP', urls=['https://example.com/event'])
+        second = make_observation('b', text='联动改期九月二日', account='IP', urls=['https://example.com/event'])
+        self.assertEqual(len(self.deduplicator.group([first, second])), 2)
+
+    def test_groups_follow_publication_time_not_identifier(self):
+        from datetime import timedelta
+        first = make_observation('z', text='首次官宣', account='IP')
+        second = make_observation('a', text='后续补充', account='IP')
+        second.source.published_at += timedelta(days=1)
+        self.assertEqual([g.primary_id for g in self.deduplicator.group([second, first])], ['z', 'a'])
+
     def setUp(self) -> None:
         self.deduplicator = ObservationDeduplicator()
 
