@@ -139,6 +139,8 @@ def _parser() -> argparse.ArgumentParser:
         "--page-dir", type=Path, default=PROJECT_ROOT / ".herald-work/local-page"
     )
     parser.add_argument("--now", help="timezone-aware ISO timestamp")
+    parser.add_argument('--replay', choices=('bootstrap', 'incremental'))
+    parser.add_argument('--replay-directory', type=Path)
     parser.add_argument(
         "--phase",
         choices=("fetch", "extract", "full"),
@@ -173,6 +175,9 @@ def _parser() -> argparse.ArgumentParser:
 
 def main(argv: list[str] | None = None) -> int:
     args = _parser().parse_args(argv)
+    if args.replay and args.replay_directory is None:
+        print('run-local: --replay requires --replay-directory', file=sys.stderr)
+        return 2
     if args.collect_weibo_samples and bool(args.sample_start_date) != bool(
         args.sample_end_date
     ):
@@ -195,7 +200,10 @@ def main(argv: list[str] | None = None) -> int:
         cookie = values.get("WEIBO_COOKIE", "")
         values = {"WEIBO_COOKIE": cookie} if cookie else {}
     child_environment = build_child_environment(values)
-    if args.collect_weibo_samples:
+    if args.replay:
+        command = [sys.executable, '-m', 'herald.replay', args.replay,
+                   '--directory', str(args.replay_directory)]
+    elif args.collect_weibo_samples:
         command = [
             sys.executable,
             "-m",
