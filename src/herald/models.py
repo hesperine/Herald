@@ -176,6 +176,14 @@ class Activity(StrictModel):
         return self.end_at is None or self.end_at >= now
 
 
+class FactProvenance(StrictModel):
+    observation_id: str
+    source_id: str
+    content_hash: str
+    published_at: AwareDatetime
+    quote: str = Field(min_length=1, max_length=1000)
+
+
 class Campaign(StrictModel):
     id: str
     ip_slug: str
@@ -189,6 +197,7 @@ class Campaign(StrictModel):
     revision: int = 1
     activities: list[Activity] = Field(default_factory=list)
     sources: list[SourceRef] = Field(default_factory=list)
+    fact_provenance: dict[str, FactProvenance] = Field(default_factory=dict)
 
     def is_visible(self, now: datetime) -> bool:
         if self.status in {EventStatus.ENDED, EventStatus.CANCELLED}:

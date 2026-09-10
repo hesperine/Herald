@@ -1,0 +1,154 @@
+[
+  {
+    "input": {
+      "observation_id": "weibo-5324662127202110",
+      "platform": "weibo",
+      "account_name": "明日方舟Arknights",
+      "published_at": "2026-07-25T20:17:21+08:00",
+      "text": "明日方舟#明日方舟##2026夏日嘉年华# 《明日方舟》× @国家图书馆 合作筹备中",
+      "ocr_text": [],
+      "media_urls": [],
+      "external_links": [
+        "https://m.weibo.cn/p/index?extparam=%E6%98%8E%E6%97%A5%E6%96%B9%E8%88%9F&containerid=10080811942aa16f6bf2089d55196b13e8c097&launchid=10000360-page_H5"
+      ],
+      "source_url": "https://weibo.com/6279793937/RalzCudB4",
+      "ip_slug_hint": "arknights",
+      "ip_name_hint": "明日方舟"
+    },
+    "expected_output": {
+      "relevant": true,
+      "campaign_title": "明日方舟 × 国家图书馆",
+      "partner": "国家图书馆",
+      "activities": [],
+      "claims": [
+        {
+          "field_path": "relevant",
+          "quote": "《明日方舟》× @国家图书馆 合作筹备中",
+          "confidence": 1
+        },
+        {
+          "field_path": "campaign_title",
+          "quote": "《明日方舟》× @国家图书馆",
+          "confidence": 1
+        },
+        {
+          "field_path": "partner",
+          "quote": "@国家图书馆",
+          "confidence": 1
+        }
+      ],
+      "uncertainties": [
+        "公告仅说明合作正在筹备，未披露合作形式、活动或商品、日期、地点、平台及参与方式，因此不创建 Activity 或 Action。"
+      ]
+    }
+  },
+  {
+    "input": {
+      "observation_id": "weibo-5331915584046294",
+      "platform": "weibo",
+      "account_name": "崩坏星穹铁道",
+      "published_at": "2026-08-14T20:40:00+08:00",
+      "text": "崩坏星穹铁道 #星穹铁道大白兔联名# #快乐分享甜满树庭# 亲爱的开拓者，《崩坏：星穹铁道》× 大白兔联名将于9月10日上线！与那刻夏、风堇一起分享奶糖，让甜意盈满树庭~———————————————————▉转发抽奖关注@崩坏星穹铁道 官方账号并转发本条微博，帕姆将于9月10日通过@微博抽奖平台 随机抽取10位开拓者各获得「随机角色周边」一份。 抽奖详情",
+      "ocr_text": [],
+      "media_urls": [],
+      "external_links": [
+        "https://lottery.media.weibo.com/lottery/h5/history/list?mid=5331915584046294&launchid=10000360-page_H5"
+      ],
+      "source_url": "https://weibo.com/7643376782/RdogKgYCO",
+      "ip_slug_hint": "honkai-star-rail",
+      "ip_name_hint": "崩坏：星穹铁道"
+    },
+    "expected_output": {
+      "relevant": true,
+      "campaign_title": "崩坏：星穹铁道 × 大白兔",
+      "partner": "大白兔",
+      "activities": [
+        {
+          "kind": "food",
+          "title": "大白兔联名奶糖",
+          "start_at": null,
+          "end_at": null,
+          "venues": [],
+          "actions": [
+            {
+              "kind": "event_start",
+              "title": "大白兔联名上线",
+              "at": null,
+              "end_at": null,
+              "platform": null,
+              "url": null,
+              "requires_reservation": null,
+              "requires_rush": null
+            }
+          ]
+        },
+        {
+          "kind": "online",
+          "title": "微博转发抽奖",
+          "start_at": null,
+          "end_at": null,
+          "venues": [],
+          "actions": [
+            {
+              "kind": "lottery_open",
+              "title": "关注并转发参与抽奖",
+              "at": null,
+              "end_at": null,
+              "platform": "微博",
+              "url": "https://lottery.media.weibo.com/lottery/h5/history/list?mid=5331915584046294&launchid=10000360-page_H5",
+              "requires_reservation": null,
+              "requires_rush": null
+            }
+          ]
+        }
+      ],
+      "claims": [
+        {
+          "field_path": "relevant",
+          "quote": "#星穹铁道大白兔联名#",
+          "confidence": 1
+        },
+        {
+          "field_path": "campaign_title",
+          "quote": "《崩坏：星穹铁道》× 大白兔联名",
+          "confidence": 1
+        },
+        {
+          "field_path": "partner",
+          "quote": "大白兔联名",
+          "confidence": 1
+        },
+        {
+          "field_path": "activities[0].kind",
+          "quote": "一起分享奶糖",
+          "confidence": 0.96
+        },
+        {
+          "field_path": "activities[0].actions[0].title",
+          "quote": "大白兔联名将于9月10日上线",
+          "confidence": 1
+        },
+        {
+          "field_path": "activities[1].title",
+          "quote": "转发抽奖",
+          "confidence": 1
+        },
+        {
+          "field_path": "activities[1].actions[0].title",
+          "quote": "关注@崩坏星穹铁道 官方账号并转发本条微博",
+          "confidence": 1
+        },
+        {
+          "field_path": "activities[1].actions[0].url",
+          "quote": "抽奖详情",
+          "confidence": 1
+        }
+      ],
+      "uncertainties": [
+        "联名上线和抽奖开奖均只写9月10日，未写年份和具体时刻，因此相关时间字段保持 null。",
+        "正文明确给出获奖人数和奖品，但当前输出 Schema 没有对应字段，因此没有把它们塞入其他字段。",
+        "正文没有披露联名商品的具体 SKU、购买渠道、销售范围或结束时间。"
+      ]
+    }
+  }
+]

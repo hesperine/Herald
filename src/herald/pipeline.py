@@ -9,6 +9,7 @@ from datetime import datetime
 from .ai import AIProvider, AIProviderError, ExtractionInput, ExtractionResult
 from .assembly import CampaignAssembler
 from .candidates import CandidateFilter
+from .candidate_stage import prepare_candidates
 from .dedupe import ObservationDeduplicator
 from .merge import CampaignIdentityResolver, CampaignMerger
 from .models import PendingExtraction, PendingReview, SourceObservation, SourceRef
@@ -73,6 +74,11 @@ class ObservationPipeline:
         remind_day_before: bool = True,
         suppress_immediate_for: set[str] | None = None,
     ) -> PipelineResult:
+        if provider is not None and callable(getattr(provider, 'extract_batch', None)):
+            from .semantic_pipeline import process_semantic
+            return await process_semantic(self, store=store, ip=ip, observations=observations,
+                now=now, provider=provider, remind_day_before=remind_day_before,
+                suppress_immediate_for=suppress_immediate_for or set())
         counters = {
             field: 0 for field in PipelineResult.__dataclass_fields__
         }
@@ -80,7 +86,8 @@ class ObservationPipeline:
         existing_campaigns = store.list_campaigns()
         suppressed_observation_ids = suppress_immediate_for or set()
 
-        for group in self.deduplicator.group(observations):
+        for selection in prepare_candidates(observations, [ip.name, *ip.aliases]):
+            group = selection.group
             group_items = [by_id[item_id] for item_id in group.observation_ids]
             pending_id = self._id("pending-ai", *group.observation_ids)
             pending = store.load_pending_extraction(pending_id)
@@ -107,12 +114,7 @@ class ObservationPipeline:
                 counters["observations_saved"] += 1
 
             primary = by_id[group.primary_id]
-            decision = self.candidate_filter.evaluate(
-                primary,
-                ip_names=[ip.name, *ip.aliases],
-                from_official_ip_account=True,
-            )
-            if not decision.relevant:
+            if not selection.accepted:
                 continue
 
             if provider is None:

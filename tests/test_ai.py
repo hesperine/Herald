@@ -166,12 +166,29 @@ class MockAIProviderTests(unittest.IsolatedAsyncioTestCase):
 
 
 class OpenAICompatibleProviderTests(unittest.IsolatedAsyncioTestCase):
+    def test_fewshot_boundary_and_concise_prompt(self):
+        provider = OpenAICompatibleProvider(client=object(), base_url='https://example.com',
+            model='fixture', api_key='fixture')
+        messages = provider._request_payload(packet())['messages']
+        prompt = messages[0]['content']
+        self.assertIn('Few-shot', prompt)
+        self.assertIn('最后一条 user', prompt)
+        self.assertIn('禁止将示例事实带入结果', prompt)
+        self.assertNotIn('不是', prompt)
+        self.assertLess(len(prompt), 750)
+        self.assertEqual([m['role'] for m in messages],
+                         ['system', 'user', 'assistant', 'user'])
+        self.assertEqual(json.loads(messages[-1]['content'])['source']['observation_id'], packet().observation_id)
+
     def test_scope_includes_cross_ip_in_game_collaborations(self) -> None:
         provider = OpenAICompatibleProvider(client=object(), base_url="https://example.com",
             model="fixture", api_key="fixture")
         prompt = provider._request_payload(packet())["messages"][0]["content"]
         self.assertIn("游戏内跨 IP 联动", prompt)
         self.assertIn("relevant=false", prompt)
+        self.assertIn('嘉年华', prompt)
+        self.assertIn('演唱会', prompt)
+        self.assertIn('不要求存在合作品牌', prompt)
 
     async def test_request_contains_only_public_packet_fields(self) -> None:
         captured: dict[str, object] = {}
@@ -255,7 +272,7 @@ class OpenAICompatibleProviderTests(unittest.IsolatedAsyncioTestCase):
             )
             await provider.extract(packet())
 
-        content = captured["messages"][1]["content"]
+        content = captured["messages"][-1]["content"]
         self.assertIsInstance(content, str)
         source = json.loads(content)["source"]
         self.assertEqual(source["media_urls"], [])
