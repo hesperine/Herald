@@ -62,3 +62,8 @@
 - 明日方舟：终末地「向渊行」主题快闪开奖帖：当前 Schema 还不能表达首次官宣、更新和开奖后续帖，暂不纳入自动通过率。
 
 审核通过前，不会把这些内容接入 Prompt 或运行 AI 提取测试。
+# 运行时编辑入口更新
+
+Few-shot 已接入请求，实际加载文件是 `src/herald/data/extraction-examples.json`。
+本目录的 `few-shot-draft.json` 保留为审核档案；修改它不会改变请求。
+批处理、候选选择与第二轮合并的规则和限制见 [runtime-prompts.md](runtime-prompts.md)。
