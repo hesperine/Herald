@@ -53,6 +53,19 @@ def make_campaign(action_at: datetime, *, revision: int = 1) -> Campaign:
 
 
 class ScheduleCompilerTests(unittest.TestCase):
+    def test_activity_dates_and_sale_deadline_are_scheduled(self):
+        c = make_campaign(NOW + timedelta(days=2))
+        a = c.activities[0]
+        a.start_date = date(2026, 9, 4)
+        a.end_date = date(2026, 9, 9)
+        a.actions[0].end_at = NOW + timedelta(days=5)
+        jobs = ScheduleCompiler().future_jobs(c, NOW)
+        self.assertEqual(len(jobs), 4)
+        self.assertTrue(all(ScheduleCompiler.validate_due_job(j, c) for j in jobs))
+        deadline = next(j for j in jobs if j.action_id == 'sale-open--end')
+        a.actions[0].end_at += timedelta(days=1)
+        self.assertFalse(ScheduleCompiler.validate_due_job(deadline, c))
+
     def setUp(self) -> None:
         self.compiler = ScheduleCompiler("Asia/Shanghai")
 

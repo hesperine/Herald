@@ -29,10 +29,14 @@ class CliTests(unittest.TestCase):
                 "AI_BASE_URL": "https://free.example/v1",
                 "AI_API_KEY": "user-owned-key",
                 "AI_VISION": "true",
+                "AI_THINKING": "disabled",
+                "AI_MAX_TOKENS": "4096",
             }
         )
         provider = _make_provider(configured, client)
         self.assertEqual(provider.model_name, "free-model")
+        self.assertEqual(provider.thinking, 'disabled')
+        self.assertEqual(provider.max_tokens, 4096)
         self.assertEqual(provider.base_url, "https://free.example/v1")
         self.assertFalse(hasattr(provider, "supports_vision"))
 

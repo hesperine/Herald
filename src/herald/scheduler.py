@@ -3,7 +3,7 @@
 from __future__ import annotations
 
 import hashlib
-from datetime import date, datetime, timedelta, timezone
+from datetime import date, datetime, time, timedelta, timezone
 from zoneinfo import ZoneInfo, ZoneInfoNotFoundError
 
 from .models import (
@@ -12,6 +12,7 @@ from .models import (
     ChangeKind,
     ChangeRecord,
     EventStatus,
+    EventAction,
     NotificationKind,
     QueueJob,
     ScheduleManifest,
@@ -29,8 +30,33 @@ REMINDABLE_ACTIONS = {
     ActionKind.SALE_CLOSE,
     ActionKind.QUEUE_RELEASE,
     ActionKind.EVENT_START,
+    ActionKind.EVENT_END,
 }
-DEADLINE_ACTIONS = {ActionKind.RESERVATION_CLOSE, ActionKind.SALE_CLOSE}
+DEADLINE_ACTIONS = {ActionKind.RESERVATION_CLOSE, ActionKind.SALE_CLOSE, ActionKind.EVENT_END}
+
+
+def schedule_actions(activity, tz):
+    """Derived schedule points; date-only midnight is never written to facts."""
+    points = []
+    for action in activity.actions:
+        if action.cancelled:
+            continue
+        start = action.at or (datetime.combine(action.start_date, time(), tz) if action.start_date else None)
+        if start:
+            points.append(action.model_copy(update={'at': start}))
+        end = action.end_at or (datetime.combine(action.end_date, time(), tz) if action.end_date else None)
+        if end:
+            kind = ActionKind.RESERVATION_CLOSE if action.kind == ActionKind.RESERVATION_OPEN else ActionKind.SALE_CLOSE if action.kind == ActionKind.SALE_OPEN else ActionKind.EVENT_END
+            points.append(EventAction(id=action.id + '--end', kind=kind, title=action.title + '截止', at=end, start_date=action.end_date))
+    for field, kind in [('start', ActionKind.EVENT_START), ('end', ActionKind.EVENT_END)]:
+        value = getattr(activity, field + '_at')
+        day = getattr(activity, field + '_date')
+        value = value or (datetime.combine(day, time(), tz) if day else None)
+        is_end = kind in DEADLINE_ACTIONS
+        if value and not any(p.at == value and (p.kind in DEADLINE_ACTIONS) == is_end for p in points):
+            points.append(EventAction(id=activity.id + '--' + field, kind=kind,
+                title=activity.title + ('结束' if is_end else '开始'), at=value, start_date=day))
+    return points
 
 
 def _job_id(semantic_key: str) -> str:
@@ -86,7 +112,7 @@ class ScheduleCompiler:
         for activity in campaign.activities:
             if activity.status in {EventStatus.CANCELLED, EventStatus.ENDED}:
                 continue
-            for action in activity.actions:
+            for action in schedule_actions(activity, self.timezone):
                 if action.cancelled or action.at is None or action.kind not in REMINDABLE_ACTIONS:
                     continue
                 local_action = action.at.astimezone(self.timezone)
@@ -173,7 +199,7 @@ class ScheduleCompiler:
                 continue
             if activity.status in {EventStatus.CANCELLED, EventStatus.ENDED}:
                 return False
-            for action in activity.actions:
+            for action in schedule_actions(activity, ScheduleCompiler().timezone):
                 if action.id != job.action_id:
                     continue
                 return (

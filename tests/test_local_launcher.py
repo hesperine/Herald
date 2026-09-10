@@ -23,6 +23,11 @@ def _load_launcher():
 
 
 class LocalLauncherTests(unittest.TestCase):
+    def test_replay_preview_options(self):
+        args = _load_launcher()._parser().parse_args(['--replay', 'bootstrap',
+            '--replay-directory', 'samples', '--replay-cache-media', '--now', '2026-07-01T12:00:00+08:00'])
+        self.assertTrue(args.replay_cache_media)
+
     def test_parses_simple_utf8_environment_without_execution(self) -> None:
         launcher = _load_launcher()
         with tempfile.TemporaryDirectory() as temporary:

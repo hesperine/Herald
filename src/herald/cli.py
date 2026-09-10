@@ -54,13 +54,16 @@ def _make_provider(
         if settings.public.ai_provider == "zhipu_openai"
         else OpenAICompatibleProvider
     )
-    return provider_type(
+    provider = provider_type(
         client=client,
         base_url=settings.public.ai_base_url,
         model=settings.public.ai_model,
         api_key=api_key,
         supports_json_object=settings.public.ai_json_mode,
     )
+    provider.thinking = settings.public.ai_thinking
+    provider.max_tokens = settings.public.ai_max_tokens
+    return provider
 
 
 def _make_email_sender(settings: RuntimeSettings) -> EmailSender | None:

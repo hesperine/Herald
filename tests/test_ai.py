@@ -175,7 +175,7 @@ class OpenAICompatibleProviderTests(unittest.IsolatedAsyncioTestCase):
         self.assertIn('最后一条 user', prompt)
         self.assertIn('禁止将示例事实带入结果', prompt)
         self.assertNotIn('不是', prompt)
-        self.assertLess(len(prompt), 750)
+        self.assertLess(len(prompt), 1200)
         self.assertEqual([m['role'] for m in messages],
                          ['system', 'user', 'assistant', 'user'])
         self.assertEqual(json.loads(messages[-1]['content'])['source']['observation_id'], packet().observation_id)

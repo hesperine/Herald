@@ -5,6 +5,20 @@ from datetime import timedelta
 
 
 class ReplayTests(unittest.TestCase):
+    def test_replay_publish_without_email(self):
+        import tempfile
+        from pathlib import Path
+        from herald.replay import publish_replay
+        from herald.storage import StateStore
+        from test_merge import campaign, BASE
+        with tempfile.TemporaryDirectory() as directory:
+            store = StateStore(Path(directory) / 'state')
+            store.initialize()
+            store.save_campaign(campaign('c'))
+            publish_replay(store, Path(directory) / 'page', BASE, 'genshin-impact', [], {})
+            self.assertTrue((Path(directory) / 'page/today.html').exists())
+            self.assertTrue((Path(directory) / 'page/digest.txt').exists())
+
     def test_split_uses_publication_time_and_excludes_fewshot(self):
         a = make_observation('a', text='真实候选', account='official')
         b = make_observation('b', text='后续内容', account='official')
@@ -12,7 +26,7 @@ class ReplayTests(unittest.TestCase):
         train, incremental = split_materials([b, a], a.source.published_at + timedelta(days=1))
         self.assertEqual([p.id for p in train], ['a'])
         self.assertEqual([p.id for p in incremental], ['b'])
-        a.text = '大白兔联动'
+        a.id = 'example-starlight'
         with self.assertRaises(ValueError):
             split_materials([a, b], a.source.published_at + timedelta(days=1))
 

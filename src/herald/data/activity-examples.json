@@ -1,0 +1,160 @@
+[
+  {
+    "input": {
+      "observation_id": "example-starlight",
+      "platform": "website",
+      "account_name": "虚构教学示例",
+      "published_at": "2026-09-20T12:00:00+08:00",
+      "text": "示例游戏 × 示例美术馆｜纸上星光联动\n线下快闪：2026年10月3日至10月9日，杭州、苏州两城；具体场地见配图。\n活动全预约制，入场、领奖及购物均需预约名额。第一阶段预约于2026年10月1日12:00开放。\n纸上星光主题商品在快闪期间现货先行贩售。\n星光旗舰店线上预售：2026年10月6日12:00至10月12日23:59。\n线上主题商品单笔满200元赠书签一套，每单限赠一套，不叠加。\n示例游戏仅公布合作方为示例美术馆，未说明在馆内举办。\n店铺优惠：2026年10月6日至10月8日，全店商品立减10%，部分商品除外。",
+      "source_url": "https://example.com/starlight",
+      "ip_slug_hint": "example-game",
+      "ip_name_hint": "示例游戏"
+    },
+    "expected_output": {
+      "relevant": true,
+      "campaign_title": "示例游戏 × 示例美术馆｜纸上星光",
+      "partner": "示例美术馆",
+      "source_summaries": {
+        "example-starlight": "两城快闪与预约时间、线上预售、满赠及店铺优惠；场地见配图。"
+      },
+      "activities": [
+        {
+          "kind": "popup",
+          "title": "纸上星光线下快闪",
+          "start_date": "2026-10-03",
+          "end_date": "2026-10-09",
+          "rules": "全预约制，入场、领奖及购物均需预约名额",
+          "venues": [
+            {
+              "city": "杭州"
+            },
+            {
+              "city": "苏州"
+            }
+          ],
+          "actions": [
+            {
+              "kind": "reservation_open",
+              "title": "第一阶段预约",
+              "at": "2026-10-01T12:00:00+08:00"
+            },
+            {
+              "kind": "sale_open",
+              "title": "主题商品现场现货先行贩售",
+              "rules": "快闪期间现货先行贩售"
+            }
+          ],
+          "uncertainties": [
+            "具体场地见配图，正文未说明。"
+          ]
+        },
+        {
+          "kind": "merchandise",
+          "title": "纸上星光主题商品线上预售",
+          "start_at": "2026-10-06T12:00:00+08:00",
+          "end_at": "2026-10-12T23:59:00+08:00",
+          "venues": [
+            {
+              "name": "星光旗舰店",
+              "online_platform": "星光旗舰店"
+            }
+          ],
+          "actions": [
+            {
+              "kind": "sale_open",
+              "title": "主题商品线上预售",
+              "at": "2026-10-06T12:00:00+08:00",
+              "end_at": "2026-10-12T23:59:00+08:00",
+              "platform": "星光旗舰店",
+              "rules": "线上主题商品单笔满200元赠书签一套，每单限赠一套，不叠加。"
+            }
+          ],
+          "related_offers": "2026年10月6日至10月8日，全店商品立减10%，部分商品除外。"
+        }
+      ],
+      "claims": [
+        {
+          "field_path": "campaign_title",
+          "quote": "示例游戏 × 示例美术馆｜纸上星光联动",
+          "confidence": 1
+        },
+        {
+          "field_path": "partner",
+          "quote": "合作方为示例美术馆",
+          "confidence": 1
+        },
+        {
+          "field_path": "activities[0].title",
+          "quote": "线下快闪",
+          "confidence": 1
+        },
+        {
+          "field_path": "activities[0].start_date",
+          "quote": "2026年10月3日至10月9日",
+          "confidence": 1
+        },
+        {
+          "field_path": "activities[0].end_date",
+          "quote": "2026年10月3日至10月9日",
+          "confidence": 1
+        },
+        {
+          "field_path": "activities[0].venues",
+          "quote": "杭州、苏州两城",
+          "confidence": 1
+        },
+        {
+          "field_path": "activities[0].rules",
+          "quote": "活动全预约制，入场、领奖及购物均需预约名额",
+          "confidence": 1
+        },
+        {
+          "field_path": "activities[0].actions[0].at",
+          "quote": "第一阶段预约于2026年10月1日12:00开放",
+          "confidence": 1
+        },
+        {
+          "field_path": "activities[0].actions[1].rules",
+          "quote": "纸上星光主题商品在快闪期间现货先行贩售",
+          "confidence": 1
+        },
+        {
+          "field_path": "activities[1].start_at",
+          "quote": "2026年10月6日12:00至10月12日23:59",
+          "confidence": 1
+        },
+        {
+          "field_path": "activities[1].end_at",
+          "quote": "2026年10月6日12:00至10月12日23:59",
+          "confidence": 1
+        },
+        {
+          "field_path": "activities[1].venues",
+          "quote": "星光旗舰店线上预售",
+          "confidence": 1
+        },
+        {
+          "field_path": "activities[1].actions[0].at",
+          "quote": "2026年10月6日12:00至10月12日23:59",
+          "confidence": 1
+        },
+        {
+          "field_path": "activities[1].actions[0].end_at",
+          "quote": "2026年10月6日12:00至10月12日23:59",
+          "confidence": 1
+        },
+        {
+          "field_path": "activities[1].actions[0].rules",
+          "quote": "线上主题商品单笔满200元赠书签一套，每单限赠一套，不叠加。",
+          "confidence": 1
+        },
+        {
+          "field_path": "activities[1].related_offers",
+          "quote": "店铺优惠：2026年10月6日至10月8日，全店商品立减10%，部分商品除外。",
+          "confidence": 1
+        }
+      ],
+      "uncertainties": []
+    }
+  }
+]

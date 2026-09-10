@@ -134,6 +134,13 @@ class CampaignIdentityResolverTests(unittest.TestCase):
 
 
 class CampaignMergerTests(unittest.TestCase):
+    def test_existing_source_receives_summary(self):
+        a = source('s', BASE)
+        b = source('s', BASE)
+        b.summary = '预约安排'
+        CampaignMerger._merge_sources([a], [b])
+        self.assertEqual(a.summary, '预约安排')
+
     def setUp(self) -> None:
         self.merger = CampaignMerger()
 

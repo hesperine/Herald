@@ -7,6 +7,15 @@ from test_merge import BASE, campaign, source
 
 
 class FactUpdateTests(unittest.TestCase):
+    def test_date_only_and_rules_updates(self):
+        item = self.material('p', 1, '9月8日开始，需预约')
+        original = campaign('c')
+        result = apply_fact_updates(original, [
+            self.update(item, 'activities.national-sale.start_date', '2026-09-08'),
+            self.update(item, 'activities.national-sale.rules', '需预约')], [item], BASE)
+        self.assertEqual(str(result.activities[0].start_date), '2026-09-08')
+        self.assertEqual(result.activities[0].rules, '需预约')
+
     def material(self, identifier, day, text):
         return SourceObservation(id=identifier, source=source(identifier, BASE + timedelta(days=day)), text=text)
 

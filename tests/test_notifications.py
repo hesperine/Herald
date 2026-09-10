@@ -80,6 +80,30 @@ def scheduled_job(*, expected_at: datetime = ACTION_AT) -> QueueJob:
 
 
 class NotificationServiceTests(unittest.TestCase):
+    def test_internal_update_path_is_rendered_as_user_text(self):
+        from herald.notifications import NotificationItem
+        c = campaign()
+        c.activities[0].actions[0].rules = '满300元赠一套'
+        job = QueueJob(id='update', campaign_id=c.id, activity_id='popup', kind=NotificationKind.UPDATE,
+            due_date=DUE_DAY, semantic_key='update', summary='更新：activities.popup.actions.sale-open.rules')
+        text = NotificationService.build_cards([NotificationItem(job, c)])[0]['reasons'][0]['summary']
+        self.assertIn('规则', text)
+        self.assertIn('满300元赠一套', text)
+        self.assertNotIn('activities.', text)
+
+    def test_date_only_reason_does_not_display_invented_midnight(self):
+        from herald.notifications import NotificationItem
+        from herald.scheduler import ScheduleCompiler
+        c = campaign()
+        c.activities[0].actions[0].at = None
+        c.activities[0].actions[0].start_date = date(2026, 9, 8)
+        job = ScheduleCompiler().future_jobs(c, NOW)[0]
+        card = NotificationService.build_cards([NotificationItem(job, c)])[0]
+        self.assertEqual(card['reasons'][0]['date_only'], '2026-09-08')
+        digest = NotificationService().render_digest([NotificationItem(job, c)], NOW)
+        self.assertIn('2026-09-08', digest.text)
+        self.assertNotIn('00:00', digest.text)
+
     def setUp(self) -> None:
         self.temporary = tempfile.TemporaryDirectory()
         self.addCleanup(self.temporary.cleanup)

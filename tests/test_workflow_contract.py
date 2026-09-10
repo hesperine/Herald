@@ -8,6 +8,11 @@ ROOT = Path(__file__).resolve().parents[1]
 
 
 class WorkflowContractTests(unittest.TestCase):
+    def test_optional_ai_controls_are_forwarded(self):
+        workflow = (ROOT / '.github/workflows/daily.yml').read_text(encoding='utf-8')
+        self.assertIn('AI_THINKING: ${{ vars.AI_THINKING }}', workflow)
+        self.assertIn('AI_MAX_TOKENS: ${{ vars.AI_MAX_TOKENS }}', workflow)
+
     def test_local_development_uses_a_rebuildable_virtual_environment(self) -> None:
         readme = (ROOT / "README.md").read_text(encoding="utf-8")
         gitignore = (ROOT / ".gitignore").read_text(encoding="utf-8")

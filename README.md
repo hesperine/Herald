@@ -105,6 +105,8 @@ GitHub Pages 首页只列出仍有效、且属于当前关注 IP 的活动。点
 | `AI_PROVIDER` | `openai_compatible` | 通用兼容服务用 `openai_compatible`；智谱用 `zhipu_openai`（也接受 `zhipu-openai`） |
 | `AI_BASE_URL` | `https://example.com/v1` | 兼容服务地址；`zhipu_openai` 未填时默认为智谱开放平台 v4 |
 | `AI_MODEL` | `your-model-name` | 模型名；不填则不调用 AI |
+| `AI_THINKING` | 留空 | 可选 `disabled` / `enabled`，仅用于支持 thinking 参数的服务；DeepSeek 本次测试使用 disabled |
+| `AI_MAX_TOKENS` | 留空 | 可选输出 token 上限；DeepSeek 本次测试使用 4096 |
 | `AI_VISION` | `false` | 预留项；当前可运行版本固定使用纯文本 AI 提取，图片只发布到详情页 |
 | `AI_JSON_MODE` | `true` | 服务不支持 `response_format` 时设为 `false` |
 | `SMTP_HOST` | `smtp.example.com` | 邮件服务器 |

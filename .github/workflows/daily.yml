@@ -30,6 +30,8 @@ jobs:
       AI_BASE_URL: ${{ vars.AI_BASE_URL || 'https://api.openai.com/v1' }}
       AI_MODEL: ${{ vars.AI_MODEL }}
       AI_JSON_MODE: ${{ vars.AI_JSON_MODE || 'true' }}
+      AI_THINKING: ${{ vars.AI_THINKING }}
+      AI_MAX_TOKENS: ${{ vars.AI_MAX_TOKENS }}
       SMTP_HOST: ${{ vars.SMTP_HOST }}
       SMTP_PORT: ${{ vars.SMTP_PORT || '465' }}
       SMTP_USE_SSL: ${{ vars.SMTP_USE_SSL || 'true' }}

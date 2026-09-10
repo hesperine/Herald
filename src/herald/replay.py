@@ -18,9 +18,24 @@ from .storage import StateStore
 from .sources.miyoushe import MiyousheTimelineClient
 
 
+def publish_replay(store, output, now, ip_slug, secrets, assets):
+    from .site import StaticSiteBuilder
+    from .notifications import NotificationService
+    builder = StaticSiteBuilder()
+    builder.build(store=store, output_dir=output, now=now, watched_ip_slugs={ip_slug},
+                  forbidden_values=secrets, media_assets=assets)
+    service = NotificationService()
+    due, _ = service.collect_due(store, now.astimezone(service.timezone).date())
+    (output / 'digest.txt').write_text(service.render_digest(due, now).text, encoding='utf-8')
+    builder._scan_forbidden(output, secrets)
+    builder._scan_forbidden(store.root, secrets)
+
+
 def split_materials(items, cutoff):
-    if any(any(term in item.text for term in ('大白兔', '国家图书馆')) for item in items):
-        raise ValueError('few-shot campaigns cannot enter evaluation')
+    from importlib.resources import files
+    examples = json.loads(files('herald').joinpath('data/activity-examples.json').read_text(encoding='utf-8'))
+    if any(item.id in {e['input']['observation_id'] for e in examples} for item in items):
+        raise ValueError('few-shot posts cannot enter evaluation')
     ordered = sorted(items, key=lambda o: (o.source.published_at, o.id))
     before = [o for o in ordered if o.source.published_at < cutoff]
     after = [o for o in ordered if o.source.published_at >= cutoff]
@@ -136,7 +151,18 @@ async def run(args):
         writer._atomic_json_write(trace_dir / 'report.json', reports)
     if args.mode == 'bootstrap' and not store.list_pending_extractions():
         writer._atomic_json_write(marker, {'cutoff': dataset['cutoff'], 'dataset_hash': dataset_hash})
-    return {'mode': args.mode, 'reports': reports, 'pending': len(store.list_pending_extractions()), 'trace_directory': str(trace_dir)}
+    preview_at = _parse_now(args.now) if getattr(args, 'now', None) else (_parse_now(dataset['cutoff']) if args.mode == 'bootstrap' or not selected else selected[-1].source.published_at)
+    output = root / ('page-' + args.mode)
+    assets = {}
+    media_failures = 0
+    if getattr(args, 'cache_media', False):
+        from .media import PublicMediaCache
+        urls = [str(u) for c in store.list_campaigns() if c.is_visible(preview_at) for s in c.sources for u in s.media_urls]
+        async with httpx.AsyncClient(timeout=30) as media_client:
+            cached = await PublicMediaCache(media_client).cache(urls, output)
+            assets, media_failures = cached.assets, cached.failed_count
+    publish_replay(store, output, preview_at, ip.slug, secret_values, assets)
+    return {'mode': args.mode, 'reports': reports, 'pending': len(store.list_pending_extractions()), 'trace_directory': str(trace_dir), 'page_directory': str(output), 'cached_images': len(assets), 'failed_images': media_failures}
 
 
 def main():
@@ -146,6 +172,8 @@ def main():
     parser.add_argument('--ip', default='genshin-impact')
     parser.add_argument('--since', default='2026-08-01T00:00:00+08:00')
     parser.add_argument('--pages', type=int, default=3)
+    parser.add_argument('--now', help='view snapshot timestamp; original publication dates are preserved')
+    parser.add_argument('--cache-media', action='store_true')
     args = parser.parse_args()
     try:
         result = asyncio.run(run(args))

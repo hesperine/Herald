@@ -21,8 +21,8 @@ class FactUpdate(StrictModel):
 
 FIELDS = {
     'campaign': {'title', 'partner', 'announced_at', 'status'},
-    'activities': {'title', 'kind', 'start_at', 'end_at', 'status'},
-    'actions': {'title', 'kind', 'at', 'end_at', 'platform', 'url', 'requires_reservation', 'requires_rush', 'cancelled'},
+    'activities': {'title', 'kind', 'start_at', 'end_at', 'start_date', 'end_date', 'rules', 'related_offers', 'status'},
+    'actions': {'title', 'kind', 'at', 'end_at', 'start_date', 'end_date', 'rules', 'platform', 'url', 'requires_reservation', 'requires_rush', 'cancelled'},
     'venues': {'name', 'country', 'province', 'city', 'address', 'online_platform', 'business_hours', 'nationwide'},
 }
 
@@ -91,6 +91,9 @@ correction correctly. Quote checks establish provenance, not semantic truth.
             result.sources.append(material.source.model_copy(deep=True))
         changed = True
     for activity in result.activities:
+        for entity in [activity, *activity.actions]:
+            if entity.start_date and entity.end_date and entity.end_date < entity.start_date:
+                raise ValueError('end date precedes start date')
         for start, end in [(activity.start_at, activity.end_at), *((a.at, a.end_at) for a in activity.actions)]:
             if start is not None and end is not None and end < start:
                 raise ValueError('end precedes start')

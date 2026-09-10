@@ -7,7 +7,7 @@ it is never treated as an event by itself.
 
 from __future__ import annotations
 
-from datetime import date, datetime
+from datetime import date, datetime, timedelta, timezone
 from enum import StrEnum
 from typing import Any
 
@@ -106,6 +106,7 @@ class SourceRef(StrictModel):
     updated_at: AwareDatetime | None = None
     content_hash: str
     excerpt: str = Field(default="", max_length=500)
+    summary: str | None = Field(default=None, max_length=300)
     media_urls: list[HttpUrl] = Field(default_factory=list)
     media_hashes: list[str] = Field(default_factory=list)
 
@@ -151,6 +152,9 @@ class EventAction(StrictModel):
     title: str
     at: AwareDatetime | None = None
     end_at: AwareDatetime | None = None
+    start_date: date | None = None
+    end_date: date | None = None
+    rules: str | None = None
     platform: str | None = None
     url: HttpUrl | None = None
     requires_reservation: bool | None = None
@@ -166,6 +170,11 @@ class Activity(StrictModel):
     status: EventStatus = EventStatus.ANNOUNCED
     start_at: AwareDatetime | None = None
     end_at: AwareDatetime | None = None
+    start_date: date | None = None
+    end_date: date | None = None
+    rules: str | None = None
+    related_offers: str | None = None
+    uncertainties: list[str] = Field(default_factory=list)
     venues: list[Venue] = Field(default_factory=list)
     actions: list[EventAction] = Field(default_factory=list)
     evidence: list[Evidence] = Field(default_factory=list)
@@ -173,7 +182,9 @@ class Activity(StrictModel):
     def is_visible(self, now: datetime) -> bool:
         if self.status in {EventStatus.ENDED, EventStatus.CANCELLED}:
             return False
-        return self.end_at is None or self.end_at >= now
+        if self.end_at is not None:
+            return self.end_at >= now
+        return self.end_date is None or self.end_date >= now.astimezone(timezone(timedelta(hours=8))).date()
 
 
 class FactProvenance(StrictModel):

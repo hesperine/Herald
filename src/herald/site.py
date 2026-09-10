@@ -16,185 +16,148 @@ from .media import CachedMediaAsset
 from .models import Campaign
 from .notifications import NotificationService
 from .reachability import ReachabilityClassifier
-from .scheduler import ScheduleCompiler
+from .scheduler import ScheduleCompiler, schedule_actions
 from .storage import StateStore
 
 
-INDEX_HTML = """<!doctype html>
+STYLE_CSS = r"""body{font:16px/1.6 system-ui,sans-serif;color:#222;background:#fff;margin:0}main{max-width:1050px;margin:auto;padding:24px}nav{display:flex;gap:24px;border-bottom:1px solid #bbb;padding-bottom:12px}a{color:#146c59}h1{font-size:28px}h2{font-size:22px}h3{font-size:19px}input{font:inherit;padding:6px;max-width:100%;box-sizing:border-box}#events{display:grid;grid-template-columns:repeat(auto-fit,minmax(min(280px,100%),1fr));gap:16px;list-style:none;padding:0}.card{border:1px solid #ccc;border-radius:6px;padding:16px;overflow-wrap:anywhere}.card h2{font-size:20px;margin:4px 0}.deadline{font-weight:600;color:#a52b35}section{border-top:1px solid #ddd;padding:16px 0;scroll-margin-top:16px}p,li,dd{overflow-wrap:anywhere}img{max-width:100%;height:auto}figure{margin:12px 0}summary{cursor:pointer}dt{font-weight:600}dd{margin:0 0 10px}button{font:inherit}small{color:#555}:target{outline:2px solid #146c59;outline-offset:4px}*{letter-spacing:0}"""
+
+INDEX_HTML = r"""<!doctype html>
 <html lang="zh-CN">
-<head>
-  <meta charset="utf-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1">
-  <title>游戏联动提醒</title>
-</head>
-<body>
-<main>
-  <h1>游戏联动提醒</h1>
-  <p id="generated-at"></p>
-  <h2>今日提醒</h2>
-  <ul id="notifications"></ul>
-  <h2>全部有效联动</h2>
-  <label>搜索 <input id="search" type="search"></label>
-  <ul id="events"></ul>
-</main>
-<script src="app.js"></script>
-</body>
+<head><meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1"><title>活动卡片 · HERALD</title><link rel="stylesheet" href="style.css"></head>
+<body><main><nav><a href="index.html">活动卡片</a><a href="today.html">每日提醒</a></nav><h1>活动卡片</h1><p id="generated-at"></p><label>搜索活动 <input id="search" type="search"></label><ul id="events"></ul></main><script src="app.js"></script></body>
 </html>
 """
 
-
-APP_JS = """const list = document.getElementById('events');
-const search = document.getElementById('search');
-let campaigns = [];
+APP_JS = r"""function displayTime(at, day) {
+  return at ? new Date(at).toLocaleString('zh-CN', {timeZone:'Asia/Shanghai',hour12:false,year:'numeric',month:'2-digit',day:'2-digit',hour:'2-digit',minute:'2-digit'}) : day ? day + '（时刻待公布）' : '待公布';
+}
+function node(tag, text) { const el=document.createElement(tag); if(text !== undefined) el.textContent=text; return el; }
+function sourceLabel(s) { return s.summary || (s.excerpt || '').split('\n')[0].slice(0,100) || s.account_name; }
+function sourceLinks(parent, sources) {
+  const list=node('ul'); const seen=new Set();
+  for(const s of sources || []) { if(seen.has(s.url))continue; seen.add(s.url);
+    const li=node('li'), a=node('a',sourceLabel(s)); a.href=s.url;a.rel='noreferrer';li.append(a);list.append(li);
+  } parent.append(list);
+}
+const list=document.getElementById('events'), search=document.getElementById('search');
+let cards=[];
 function render() {
-  const query = search.value.trim().toLowerCase();
-  list.replaceChildren();
-  for (const campaign of campaigns.filter(item => JSON.stringify(item).toLowerCase().includes(query))) {
-    const li = document.createElement('li');
-    const link = document.createElement('a');
-    link.href = `event.html?id=${encodeURIComponent(campaign.id)}`;
-    link.textContent = `${campaign.ip_name} · ${campaign.title}`;
-    li.append(link);
-    list.append(li);
-  }
+ list.replaceChildren(); const query=search.value.trim().toLowerCase();
+ for(const c of cards.filter(c=>JSON.stringify(c).toLowerCase().includes(query))) {
+   const a=c.activity, li=node('li');li.className='card';
+   const link=node('a',a.title);link.href=c.url;
+   const heading=node('h2');heading.append(link);
+   li.append(node('small',c.campaign_title),heading);
+   if(c.next){const p=node('p',c.next.title+' · '+displayTime(c.next.date?null:c.next.at,c.next.date));p.className='deadline';li.append(p);}
+   li.append(node('p',displayTime(a.start_at,a.start_date)+' 至 '+displayTime(a.end_at,a.end_date)));
+   li.append(node('p',(a.venues||[]).map(v=>v.online_platform||[v.city,v.name].filter(Boolean).join(' ')).filter(Boolean).join(' · ')));
+   if(a.rules)li.append(node('p',a.rules));
+   list.append(li);
+ } if(!list.children.length)list.append(node('li','暂无符合条件的活动'));
 }
-fetch('data/active.json').then(response => response.json()).then(data => {
-  campaigns = data.campaigns;
-  document.getElementById('generated-at').textContent = `更新时间：${data.generated_at}`;
-  render();
-});
-search.addEventListener('input', render);
-fetch('data/today.json', {cache: 'no-store'}).then(response => {
-  if (!response.ok) throw new Error('load failed');
-  return response.json();
-}).then(data => {
-  const target = document.getElementById('notifications');
-  for (const card of data.cards) {
-    const li = document.createElement('li');
-    const link = document.createElement('a');
-    link.href = `event.html?id=${encodeURIComponent(card.campaign_id)}`;
-    link.textContent = card.activity ? card.activity.title : card.campaign_title;
-    li.append(link, '：', card.reasons.map(reason => reason.summary).join('；'));
-    target.append(li);
-  }
-  if (!data.cards.length) target.textContent = '今天暂无提醒';
-}).catch(() => { document.getElementById('notifications').textContent = '今日提醒加载失败，请刷新重试'; });
+search.addEventListener('input',render);
+fetch('data/active.json').then(r=>{if(!r.ok)throw Error();return r.json();}).then(data=>{
+ cards=data.cards;document.getElementById('generated-at').textContent='更新时间：'+displayTime(data.generated_at);render();
+}).catch(()=>{list.textContent='活动加载失败，请刷新重试';});
+// Details use event.html?id=<campaign>#activity-<activity>.
 """
 
-
-DETAIL_HTML = """<!doctype html>
+TODAY_HTML = r"""<!doctype html>
 <html lang="zh-CN">
-<head>
-  <meta charset="utf-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1">
-  <title>活动详情 · 游戏联动提醒</title>
-</head>
-<body>
-<main>
-  <p><a href="index.html">返回全部联动</a></p>
-  <h1 id="title">活动详情</h1>
-  <dl id="summary"></dl>
-  <h2>子活动</h2>
-  <div id="activities"></div>
-  <h2>公告图片</h2>
-  <div id="media"></div>
-  <h2>信息来源</h2>
-  <ul id="sources"></ul>
-</main>
-<script src="event.js"></script>
-</body>
+<head><meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1"><title>每日提醒 · HERALD</title><link rel="stylesheet" href="style.css"></head>
+<body><main><nav><a href="index.html">活动卡片</a><a href="today.html">每日提醒</a></nav><h1>每日提醒</h1><p id="day"></p><h2>今日新消息</h2><div id="news"></div><h2>即将开始或结束</h2><div id="upcoming"></div></main><script src="today.js"></script></body>
 </html>
 """
 
+TODAY_JS = r"""function displayTime(at, day) {
+  return at ? new Date(at).toLocaleString('zh-CN', {timeZone:'Asia/Shanghai',hour12:false,year:'numeric',month:'2-digit',day:'2-digit',hour:'2-digit',minute:'2-digit'}) : day ? day + '（时刻待公布）' : '待公布';
+}
+function node(tag, text) { const el=document.createElement(tag); if(text !== undefined) el.textContent=text; return el; }
+function sourceLabel(s) { return s.summary || (s.excerpt || '').split('\n')[0].slice(0,100) || s.account_name; }
+function sourceLinks(parent, sources) {
+  const list=node('ul'); const seen=new Set();
+  for(const s of sources || []) { if(seen.has(s.url))continue; seen.add(s.url);
+    const li=node('li'), a=node('a',sourceLabel(s)); a.href=s.url;a.rel='noreferrer';li.append(a);list.append(li);
+  } parent.append(list);
+}
+fetch('data/today.json',{cache:'no-store'}).then(r=>{if(!r.ok)throw Error();return r.json();}).then(data=>{
+ document.getElementById('day').textContent=data.date;
+ for(const [targetId,isNews] of [['news',true],['upcoming',false]]) {
+  const target=document.getElementById(targetId);
+  for(const c of data.cards) {
+   const reasons=c.reasons.filter(r=>['announcement','update'].includes(r.kind)===isNews);
+   if(!reasons.length)continue;
+   const section=node('section'),h=node('h3'),link=node('a',c.activity?c.activity.title:c.campaign_title);
+   link.href='event.html?id='+encodeURIComponent(c.campaign_id)+(c.activity_id?'#activity-'+encodeURIComponent(c.activity_id):'');h.append(link);
+   section.append(h,node('p',c.campaign_title));
+   for(const r of reasons)section.append(node('p',r.summary+(r.expected_at?' · '+displayTime(r.date_only?null:r.expected_at,r.date_only):'')));
+   sourceLinks(section,c.sources);target.append(section);
+  } if(!target.children.length)target.textContent=isNews?'今天暂无新消息':'今天暂无开始或结束提醒';
+ }
+}).catch(()=>{document.getElementById('news').textContent='提醒加载失败，请刷新重试';});
+"""
 
-DETAIL_JS = """const params = new URLSearchParams(location.search);
-const eventId = params.get('id') || '';
-const title = document.getElementById('title');
-const summary = document.getElementById('summary');
-const activities = document.getElementById('activities');
-const media = document.getElementById('media');
-const sources = document.getElementById('sources');
-function addDefinition(term, value) {
-  if (value === null || value === undefined || value === '') return;
-  const dt = document.createElement('dt'); dt.textContent = term;
-  const dd = document.createElement('dd'); dd.textContent = String(value);
-  summary.append(dt, dd);
+DETAIL_HTML = r"""<!doctype html>
+<html lang="zh-CN">
+<head><meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1"><title>企划详情 · HERALD</title><link rel="stylesheet" href="style.css"></head>
+<body><main><nav><a href="index.html">活动卡片</a><a href="today.html">每日提醒</a></nav><h1 id="title">企划详情</h1><dl id="summary"></dl><h2>活动</h2><div id="activities"></div><h2>原帖与配图</h2><div id="sources"></div></main><script src="event.js"></script></body>
+</html>
+"""
+
+DETAIL_JS = r"""function displayTime(at, day) {
+  return at ? new Date(at).toLocaleString('zh-CN', {timeZone:'Asia/Shanghai',hour12:false,year:'numeric',month:'2-digit',day:'2-digit',hour:'2-digit',minute:'2-digit'}) : day ? day + '（时刻待公布）' : '待公布';
 }
-function localTime(value) {
-  return value ? new Date(value).toLocaleString('zh-CN', {hour12: false}) : '待公布';
+function node(tag, text) { const el=document.createElement(tag); if(text !== undefined) el.textContent=text; return el; }
+function sourceLabel(s) { return s.summary || (s.excerpt || '').split('\n')[0].slice(0,100) || s.account_name; }
+function sourceLinks(parent, sources) {
+  const list=node('ul'); const seen=new Set();
+  for(const s of sources || []) { if(seen.has(s.url))continue; seen.add(s.url);
+    const li=node('li'), a=node('a',sourceLabel(s)); a.href=s.url;a.rel='noreferrer';li.append(a);list.append(li);
+  } parent.append(list);
 }
-function yesNo(value) {
-  return value === true ? '是' : value === false ? '否' : '待确认';
+const eventId=new URLSearchParams(location.search).get('id')||'';
+function render(data){
+ document.getElementById('title').textContent=data.title;document.title=data.title;
+ const summary=document.getElementById('summary');
+ for(const [key,value] of [['IP',data.ip_name],['合作方',data.partner],['公布时间',displayTime(data.announced_at)]])if(value)summary.append(node('dt',key),node('dd',value));
+ const activities=document.getElementById('activities');
+ for(const a of data.activities){
+  const section=node('section');section.id='activity-'+a.id;
+  section.append(node('h3',a.title),node('p',displayTime(a.start_at,a.start_date)+' 至 '+displayTime(a.end_at,a.end_date)));
+  for(const v of a.venues)section.append(node('p',v.online_platform||[v.province,v.city,v.name,v.address,v.business_hours].filter(Boolean).join(' · ')));
+  if(a.rules)section.append(node('p',a.rules));
+  const list=node('ul');
+  for(const action of a.actions){
+   if(action.cancelled)continue;
+   const li=node('li',action.title+' · '+displayTime(action.at,action.start_date)+(action.end_at||action.end_date?' 至 '+displayTime(action.end_at,action.end_date):''));
+   if(action.platform)li.append(' · '+action.platform);
+   if(action.requires_reservation===true)li.append(' · 需预约');
+   if(action.requires_rush===true)li.append(' · 需抢购或抢名额');
+   if(action.rules)li.append(node('p',action.rules));
+   if(action.url){const link=node('a','预约 / 购买入口');link.href=action.url;link.rel='noreferrer';li.append(link);}
+   list.append(li);
+  }section.append(list);
+  if(a.related_offers)section.append(node('h4','关联优惠'),node('p',a.related_offers));
+  if(a.uncertainties?.length)section.append(node('p','待确认：'+a.uncertainties.join('；')));
+  activities.append(section);
+ }
+ const sources=document.getElementById('sources');
+ for(const s of data.sources){
+  const section=node('section'),link=node('a',sourceLabel(s));link.href=s.url;link.rel='noreferrer';
+  section.append(link,node('p',s.account_name+' · '+displayTime(s.published_at)));
+  const pictures=(data.media||[]).filter(m=>m.source_id===s.id);
+  for(const m of pictures){
+   const figure=node('figure');
+   if(m.asset_path){const img=document.createElement('img');img.src=m.asset_path;img.alt='原帖配图';img.loading='lazy';figure.append(img);}
+   const a=node('a','查看原图');a.href=m.source_url;a.rel='noreferrer';figure.append(a);section.append(figure);
+  }sources.append(section);
+ }
+ const anchor=document.getElementById(decodeURIComponent(location.hash.slice(1)));
+ if(anchor)anchor.scrollIntoView();
 }
-function venueText(venue) {
-  if (venue.online_platform) return `线上：${venue.online_platform}`;
-  if (venue.nationwide) return '全国范围';
-  return [venue.province, venue.city, venue.name, venue.address].filter(Boolean).join(' · ') || '地点待公布';
-}
-function render(data) {
-  title.textContent = data.title;
-  document.title = data.title;
-  addDefinition('IP', data.ip_name);
-  addDefinition('合作品牌', data.partner || '待确认');
-  addDefinition('状态', data.status);
-  addDefinition('公布时间', localTime(data.announced_at));
-  for (const activity of data.activities) {
-    const section = document.createElement('section');
-    const heading = document.createElement('h3'); heading.textContent = activity.title;
-    const info = document.createElement('p');
-    info.textContent = `类型：${activity.kind}；日期：${localTime(activity.start_at)} 至 ${localTime(activity.end_at)}；可达性：${data.reachability[activity.id] || 'unknown'}`;
-    section.append(heading, info);
-    const venueList = document.createElement('ul');
-    for (const venue of activity.venues) {
-      const li = document.createElement('li'); li.textContent = venueText(venue); venueList.append(li);
-    }
-    if (activity.venues.length) section.append(venueList);
-    const actionList = document.createElement('ul');
-    for (const action of activity.actions) {
-      const li = document.createElement('li');
-      li.textContent = `${action.title}｜${localTime(action.at)} 至 ${localTime(action.end_at)}｜预约：${yesNo(action.requires_reservation)}｜抢购/抢号：${yesNo(action.requires_rush)}`;
-      if (action.platform) li.append(`｜平台：${action.platform}`);
-      if (action.url) {
-        const link = document.createElement('a'); link.href = action.url; link.textContent = ' 操作链接'; link.rel = 'noreferrer'; li.append(link);
-      }
-      actionList.append(li);
-    }
-    if (activity.actions.length) section.append(actionList);
-    activities.append(section);
-  }
-  for (const item of data.media || []) {
-    const figure = document.createElement('figure');
-    if (item.asset_path) {
-      const image = document.createElement('img');
-      image.src = item.asset_path;
-      image.alt = `${item.account_name} 公告图片`;
-      image.loading = 'lazy';
-      figure.append(image);
-    }
-    const caption = document.createElement('figcaption');
-    caption.append(`${item.account_name} · `);
-    const original = document.createElement('a');
-    original.href = item.source_url;
-    original.textContent = '查看原图';
-    original.rel = 'noreferrer';
-    caption.append(original);
-    figure.append(caption);
-    media.append(figure);
-  }
-  for (const source of data.sources) {
-    const li = document.createElement('li');
-    const link = document.createElement('a'); link.href = source.url; link.textContent = `${source.account_name} · ${localTime(source.published_at)}`; link.rel = 'noreferrer';
-    li.append(link); sources.append(li);
-  }
-}
-if (!/^[A-Za-z0-9][A-Za-z0-9._-]{0,180}$/.test(eventId)) {
-  title.textContent = '无效的活动编号';
-} else {
-  fetch(`events/${encodeURIComponent(eventId)}.json`).then(response => {
-    if (!response.ok) throw new Error('not found');
-    return response.json();
-  }).then(render).catch(() => { title.textContent = '活动不存在或已经过期'; });
-}
+if(!/^[A-Za-z0-9][A-Za-z0-9._-]{0,180}$/.test(eventId))document.getElementById('title').textContent='无效的企划编号';
+else fetch('events/'+encodeURIComponent(eventId)+'.json').then(r=>{if(!r.ok)throw Error();return r.json();}).then(render).catch(()=>{document.getElementById('title').textContent='企划不存在或已经过期';});
 """
 
 
@@ -235,6 +198,7 @@ class StaticSiteBuilder:
             for campaign in store.list_campaigns()
             if campaign.ip_slug in watched_ip_slugs and campaign.is_visible(now)
         ]
+        campaigns = [c.model_copy(update={'activities': [a for a in c.activities if a.is_visible(now)]}) for c in campaigns]
         campaigns.sort(key=lambda item: (item.updated_at, item.id), reverse=True)
         notification_service = NotificationService(str(self.timezone))
         due, _ = notification_service.collect_due(
@@ -244,7 +208,8 @@ class StaticSiteBuilder:
         self._write_json(data_dir / "today.json", {
             "date": now.astimezone(self.timezone).date().isoformat(),
             "cards": notification_service.build_cards([
-                item for item in due if item.campaign.id in visible_ids
+                item for item in due if item.campaign.id in visible_ids and
+                (not item.job.activity_id or any(a.id == item.job.activity_id and a.is_visible(now) for a in item.campaign.activities))
             ]),
         })
         reachable = reachable_cities or []
@@ -262,6 +227,7 @@ class StaticSiteBuilder:
             {
                 "generated_at": now.astimezone(self.timezone).isoformat(),
                 "campaigns": summaries,
+                "cards": self._activity_cards(campaigns, now),
             },
         )
 
@@ -287,9 +253,25 @@ class StaticSiteBuilder:
         (output / "app.js").write_text(APP_JS, encoding="utf-8")
         (output / "event.html").write_text(DETAIL_HTML, encoding="utf-8")
         (output / "event.js").write_text(DETAIL_JS, encoding="utf-8")
+        (output / "today.html").write_text(TODAY_HTML, encoding="utf-8")
+        (output / "today.js").write_text(TODAY_JS, encoding="utf-8")
+        (output / "style.css").write_text(STYLE_CSS, encoding="utf-8")
         (output / ".nojekyll").write_text("", encoding="utf-8")
         self._scan_forbidden(output, forbidden_values or [])
         return campaigns
+
+    def _activity_cards(self, campaigns, now):
+        cards = []
+        for campaign in campaigns:
+            for activity in campaign.activities:
+                points = sorted((p for p in schedule_actions(activity, self.timezone)
+                    if p.at >= now or (p.start_date and p.start_date == now.astimezone(self.timezone).date())), key=lambda p: p.at)
+                cards.append({'campaign_id': campaign.id, 'campaign_title': campaign.title,
+                    'ip_name': campaign.ip_name, 'activity': activity.model_dump(mode='json'),
+                    'next': {'title': points[0].title, 'at': points[0].at.isoformat(),
+                             'date': str(points[0].start_date) if points[0].start_date else None} if points else None,
+                    'url': f'event.html?id={campaign.id}#activity-{activity.id}'})
+        return sorted(cards, key=lambda c: (c['next']['at'] if c['next'] else '9999', c['activity']['id']))
 
     @staticmethod
     def _campaign_media(
@@ -377,7 +359,9 @@ class StaticSiteBuilder:
         seen: set[tuple[str, str, str]] = set()
         for campaign in campaigns:
             for activity in campaign.activities:
-                for action in activity.actions:
+                if not activity.is_visible(now):
+                    continue
+                for action in schedule_actions(activity, self.timezone):
                     if action.cancelled or action.at is None:
                         continue
                     local_action = action.at.astimezone(self.timezone)

@@ -120,6 +120,11 @@ class CampaignAssembler:
                     ),
                     start_at=extracted_activity.start_at,
                     end_at=extracted_activity.end_at,
+                    start_date=extracted_activity.start_date,
+                    end_date=extracted_activity.end_date,
+                    rules=extracted_activity.rules,
+                    related_offers=extracted_activity.related_offers,
+                    uncertainties=extracted_activity.uncertainties,
                     venues=venues,
                     actions=actions,
                     evidence=self._claims_for_prefix(
@@ -130,6 +135,7 @@ class CampaignAssembler:
 
         campaign_status = self._campaign_status(activities)
         source = observation.source.model_copy(deep=True)
+        source.summary = extraction.source_summaries.get(observation.id)
         source.media_urls = list(
             dict.fromkeys([*source.media_urls, *observation.media_urls])
         )

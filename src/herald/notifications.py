@@ -10,7 +10,7 @@ from typing import Protocol
 from zoneinfo import ZoneInfo, ZoneInfoNotFoundError
 
 from .models import Campaign, NotificationReceipt, QueueJob
-from .scheduler import ScheduleCompiler
+from .scheduler import ScheduleCompiler, schedule_actions
 from .storage import StateStore
 
 
@@ -75,6 +75,25 @@ class SmtpEmailSender:
 
 
 class NotificationService:
+    @staticmethod
+    def _reason_summary(campaign, job):
+        path = job.summary.removeprefix('更新：')
+        if path == job.summary:
+            return job.summary
+        from .fact_updates import _target
+        try:
+            target, field = _target(campaign, path)
+        except (ValueError, AttributeError):
+            return '活动信息已更新，请查看企划详情'
+        labels = {'rules': '规则', 'related_offers': '关联优惠', 'start_at': '开始时间',
+                  'at': '开放时间', 'end_at': '截止时间', 'start_date': '开始日期',
+                  'end_date': '截止日期', 'title': '名称', 'partner': '合作方',
+                  'status': '状态', 'requires_reservation': '预约要求'}
+        value = getattr(target, field)
+        if isinstance(value, datetime):
+            value = value.isoformat()
+        return f"{getattr(target, 'title', campaign.title)} · {labels.get(field, '信息')}已更新：{value}"
+
     def __init__(self, timezone_name: str = "Asia/Shanghai") -> None:
         try:
             self.timezone = ZoneInfo(timezone_name)
@@ -115,9 +134,11 @@ class NotificationService:
                 "reasons": [],
                 "sources": [s.model_dump(mode="json") for s in campaign.sources],
             })
-            reason = {"kind": job.kind.value, "summary": job.summary,
+            reason = {"kind": job.kind.value, "summary": NotificationService._reason_summary(campaign, job),
                       "action_id": job.action_id,
                       "expected_at": job.expected_at.isoformat() if job.expected_at else None}
+            point = next((p for p in schedule_actions(activity, ScheduleCompiler().timezone) if p.id == job.action_id), None) if activity else None
+            reason['date_only'] = str(point.start_date) if point and point.start_date else None
             if reason not in card["reasons"]:
                 card["reasons"].append(reason)
         return list(cards.values())
@@ -151,12 +172,16 @@ class NotificationService:
                 for action in activity["actions"]:
                     if action["cancelled"]:
                         continue
-                    when = action["at"] or "时间待公布"
+                    when = action["at"] or action.get('start_date') or "时间待公布"
                     lines.append(f"{action['title']}：{when}")
+                    if action.get('end_at') or action.get('end_date'):
+                        lines.append(f"截止：{action.get('end_at') or action.get('end_date')}")
+                    if action.get('rules'):
+                        lines.append(action['rules'])
                     if action["url"]:
                         lines.append(action["url"])
             for source in card["sources"]:
-                lines.append(f"信息依据：{source['account_name']} {source['url']}")
+                lines.append(f"信息依据：{source.get('summary') or source['account_name']} {source['url']}")
             lines.append("")
         subject = f"游戏联动提醒：{len(cards)} 项需要关注"
         return NotificationDigest(subject, "\n".join(lines).rstrip() + "\n", tuple(ordered))

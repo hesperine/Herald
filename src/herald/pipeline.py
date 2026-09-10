@@ -167,7 +167,7 @@ class ObservationPipeline:
             )
             if draft is None:
                 continue
-            draft.sources = self._group_sources(group_items)
+            draft.sources = self._group_sources(group_items, extraction.source_summaries)
 
             matched, ambiguous = self.identity.find_match(draft, existing_campaigns)
             if matched is None and ambiguous:
@@ -216,13 +216,14 @@ class ObservationPipeline:
         return PipelineResult(**counters)
 
     @staticmethod
-    def _group_sources(observations: list[SourceObservation]) -> list[SourceRef]:
+    def _group_sources(observations: list[SourceObservation], summaries: dict[str, str] | None = None) -> list[SourceRef]:
         sources = []
         seen = set()
         for observation in observations:
             if observation.source.id in seen:
                 continue
             source = observation.source.model_copy(deep=True)
+            source.summary = (summaries or {}).get(observation.id, source.summary)
             source.media_urls = list(
                 dict.fromkeys([*source.media_urls, *observation.media_urls])
             )

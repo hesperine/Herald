@@ -65,6 +65,24 @@ def campaign(
 
 
 class StaticSiteBuilderTests(unittest.TestCase):
+    def test_activity_cards_and_expired_child_filter(self):
+        c = campaign('multi')
+        expired = c.activities[0].model_copy(deep=True)
+        expired.id = 'expired-child'
+        expired.end_at = NOW - timedelta(days=1)
+        c.activities.append(expired)
+        self.store.save_campaign(c)
+        self.builder.build(store=self.store, output_dir=self.output, now=NOW,
+                           watched_ip_slugs={'genshin-impact'})
+        active = json.loads((self.output / 'data/active.json').read_text('utf-8'))
+        self.assertEqual(len(active['cards']), 1)
+        self.assertIn('#activity-multi-activity', active['cards'][0]['url'])
+        detail = json.loads((self.output / 'events/multi.json').read_text('utf-8'))
+        self.assertEqual([a['id'] for a in detail['activities']], ['multi-activity'])
+        self.assertTrue((self.output / 'today.html').exists())
+        calendar = ''.join(p.read_text('utf-8') for p in (self.output / 'data/calendar').glob('*.json'))
+        self.assertNotIn('expired-child', calendar)
+
     def setUp(self) -> None:
         self.temporary = tempfile.TemporaryDirectory()
         self.addCleanup(self.temporary.cleanup)

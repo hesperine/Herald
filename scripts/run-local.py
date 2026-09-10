@@ -141,6 +141,7 @@ def _parser() -> argparse.ArgumentParser:
     parser.add_argument("--now", help="timezone-aware ISO timestamp")
     parser.add_argument('--replay', choices=('bootstrap', 'incremental'))
     parser.add_argument('--replay-directory', type=Path)
+    parser.add_argument('--replay-cache-media', action='store_true')
     parser.add_argument(
         "--phase",
         choices=("fetch", "extract", "full"),
@@ -203,6 +204,10 @@ def main(argv: list[str] | None = None) -> int:
     if args.replay:
         command = [sys.executable, '-m', 'herald.replay', args.replay,
                    '--directory', str(args.replay_directory)]
+        if args.now:
+            command.extend(['--now', args.now])
+        if args.replay_cache_media:
+            command.append('--cache-media')
     elif args.collect_weibo_samples:
         command = [
             sys.executable,

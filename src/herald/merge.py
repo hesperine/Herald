@@ -259,7 +259,7 @@ class CampaignMerger:
         conflicts: list[MergeConflict],
         detected_at: datetime,
     ) -> None:
-        for field_name in ("start_at", "end_at"):
+        for field_name in ("start_at", "end_at", "start_date", "end_date", "rules", "related_offers"):
             self._merge_scalar(
                 existing,
                 incoming,
@@ -337,7 +337,7 @@ class CampaignMerger:
         conflicts: list[MergeConflict],
         detected_at: datetime,
     ) -> None:
-        for field_name in ("at", "end_at"):
+        for field_name in ("at", "end_at", "start_date", "end_date", "rules"):
             self._merge_scalar(
                 existing,
                 incoming,
@@ -434,6 +434,8 @@ class CampaignMerger:
         for source in incoming:
             current = known.get(source.id)
             if current is not None:
+                if source.summary:
+                    current.summary = source.summary
                 CampaignMerger._merge_source_media(current, source)
                 continue
             existing.append(source.model_copy(deep=True))

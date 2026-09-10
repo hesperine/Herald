@@ -18,6 +18,27 @@ BATCH_CHAR_BUDGET = 24000
 BATCH_POST_LIMIT = 2
 
 
+def activity_additions(extraction, requested):
+    """Merge selects entities; first-round fields and indexed evidence remain authoritative."""
+    indices = []
+    for value in requested:
+        matches = [i for i, a in enumerate(extraction.activities) if a.title == value.title and a.kind == value.kind]
+        if len(matches) != 1 or matches[0] in indices:
+            raise ValueError('new activity must identify one extracted activity')
+        indices.append(matches[0])
+    claims = []
+    for claim in extraction.claims:
+        match = re.match(r'activities\[(\d+)\]', claim.field_path)
+        if match:
+            old_index = int(match.group(1))
+            if old_index not in indices:
+                continue
+            claim = claim.model_copy(update={'field_path': claim.field_path.replace(
+                f'activities[{old_index}]', f'activities[{indices.index(old_index)}]', 1)})
+        claims.append(claim)
+    return extraction.model_copy(update={'activities': [extraction.activities[i] for i in indices], 'claims': claims})
+
+
 def summaries(store, ip):
     return [{
         'id': c.id, 'title': c.title, 'partner': c.partner,
@@ -118,7 +139,7 @@ async def _apply_group(pipeline, store, ip, members, extraction, now, provider,
     primary = members[0]
     draft = pipeline.assembler.assemble(packet=packets[0], observation=primary,
                                         extraction=extraction, now=now)
-    draft.sources = pipeline._group_sources(members)
+    draft.sources = pipeline._group_sources(members, extraction.source_summaries)
     # Translate extraction array paths into stable-ID paths, retaining the
     # actual quoted source date rather than the batch processing date.
     for claim in extraction.claims:
@@ -180,9 +201,7 @@ async def _apply_group(pipeline, store, ip, members, extraction, now, provider,
                     source_ids=[updated.fact_provenance[operation.field_path].source_id],
                     field_paths=[operation.field_path]))
             if decision.new_activities:
-                if any(a not in extraction.activities for a in decision.new_activities):
-                    raise ValueError('new activities must come from first-round extraction')
-                additions = extraction.model_copy(update={'activities': decision.new_activities})
+                additions = activity_additions(extraction, decision.new_activities)
                 assembled = pipeline.assembler.assemble(packet=packets[0], observation=primary, extraction=additions, now=now)
                 for activity in assembled.activities:
                     if any(a.id == activity.id for a in updated.activities):

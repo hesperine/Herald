@@ -6,6 +6,11 @@ from herald.config import load_settings
 
 
 class LoadSettingsTests(unittest.TestCase):
+    def test_optional_ai_call_controls(self):
+        settings = load_settings({'WATCH_IPS': '原神', 'AI_THINKING': 'disabled', 'AI_MAX_TOKENS': '4096'})
+        self.assertEqual(settings.public.ai_thinking, 'disabled')
+        self.assertEqual(settings.public.ai_max_tokens, 4096)
+
     def test_parses_public_and_private_settings(self) -> None:
         settings = load_settings(
             {

@@ -5,6 +5,7 @@ from __future__ import annotations
 import hashlib
 import json
 import os
+from typing import Literal
 from collections.abc import Mapping
 
 from pydantic import BaseModel, ConfigDict, Field, SecretStr, field_validator
@@ -83,6 +84,8 @@ class PublicSettings(BaseModel):
     ai_model: str | None = None
     ai_vision: bool = False
     ai_json_mode: bool = True
+    ai_thinking: Literal['enabled', 'disabled'] | None = None
+    ai_max_tokens: int | None = Field(default=None, ge=1, le=65536)
     smtp_host: str | None = None
     smtp_port: int = Field(default=465, ge=1, le=65535)
     smtp_use_ssl: bool = True
@@ -173,6 +176,8 @@ def load_settings(environ: Mapping[str, str] | None = None) -> RuntimeSettings:
         ai_model=env.get("AI_MODEL") or None,
         ai_vision=_parse_bool(env.get("AI_VISION"), False),
         ai_json_mode=_parse_bool(env.get("AI_JSON_MODE"), True),
+        ai_thinking=env.get('AI_THINKING') or None,
+        ai_max_tokens=int(env['AI_MAX_TOKENS']) if env.get('AI_MAX_TOKENS') else None,
         smtp_host=env.get("SMTP_HOST") or None,
         smtp_port=int(env.get("SMTP_PORT", "465")),
         smtp_use_ssl=_parse_bool(env.get("SMTP_USE_SSL"), True),

@@ -86,6 +86,17 @@ def extraction(action_time: str = "2026-09-08T10:00:00+08:00") -> ExtractionResu
 
 
 class CampaignAssemblerTests(unittest.TestCase):
+    def test_date_rules_and_summary_survive_assembly(self):
+        value = extraction()
+        value.activities[0].start_at = None
+        value.activities[0].start_date = '2026-09-08'
+        value.activities[0].rules = '全预约制'
+        value.source_summaries = {'weibo-a': '快闪预约和售卖安排'}
+        result = CampaignAssembler().assemble(packet=packet(), observation=observation(), extraction=value, now=NOW)
+        self.assertEqual(str(result.activities[0].start_date), '2026-09-08')
+        self.assertEqual(result.activities[0].rules, '全预约制')
+        self.assertEqual(result.sources[0].summary, '快闪预约和售卖安排')
+
     def setUp(self) -> None:
         self.assembler = CampaignAssembler()
 

@@ -17,6 +17,13 @@ UTC = timezone.utc
 
 
 class VisibilityTests(unittest.TestCase):
+    def test_date_only_end_uses_china_calendar_day(self):
+        activity = Activity(id='date-only', kind=ActivityKind.POPUP, title='快闪',
+                            start_date='2026-07-04', end_date='2026-07-17', rules='全预约制')
+        self.assertIsNone(activity.end_at)
+        self.assertTrue(activity.is_visible(datetime(2026, 7, 17, 15, tzinfo=UTC)))
+        self.assertFalse(activity.is_visible(datetime(2026, 7, 17, 16, tzinfo=UTC)))
+
     def test_activity_is_hidden_only_when_whole_activity_is_expired(self) -> None:
         now = datetime(2026, 9, 8, 12, tzinfo=UTC)
         activity = Activity(

@@ -14,6 +14,25 @@ from test_merge import BASE
 
 
 class SemanticPipelineTests(unittest.IsolatedAsyncioTestCase):
+    def test_new_activity_reuses_extraction_and_remaps_claims(self):
+        from herald.ai import ExtractionResult, ExtractedActivity, ExtractedClaim
+        from herald.semantic_pipeline import activity_additions
+        first = ExtractedActivity(kind='popup', title='快闪')
+        second = ExtractedActivity(kind='merchandise', title='预售', rules='每单限一套')
+        extraction = ExtractionResult(relevant=True, activities=[first, second],
+            claims=[ExtractedClaim(field_path='activities[1].rules', quote='每单限一套', confidence=1)])
+        copied = second.model_copy(update={'rules': '改写内容'})
+        result = activity_additions(extraction, [copied])
+        self.assertEqual(result.activities[0].rules, '每单限一套')
+        self.assertEqual(result.claims[0].field_path, 'activities[0].rules')
+
+    def test_group_sources_preserve_summary_and_images(self):
+        item = make_observation('source-a', text='联动', account='official')
+        item.media_urls = ['https://example.com/public.png']
+        sources = ObservationPipeline._group_sources([item], {'source-a': '预约安排'})
+        self.assertEqual(sources[0].summary, '预约安排')
+        self.assertEqual(len(sources[0].media_urls), 1)
+
     async def test_three_posts_split_two_then_one(self):
         from herald.config import PublicSettings
         sizes = []

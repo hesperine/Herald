@@ -9,6 +9,7 @@ from __future__ import annotations
 import asyncio
 import json
 import re
+from datetime import date
 from importlib.resources import files
 from typing import Any, Protocol, Literal
 
@@ -55,23 +56,31 @@ class ExtractedVenue(BaseModel):
 class ExtractedAction(BaseModel):
     model_config = ConfigDict(extra="forbid")
 
-    kind: ActionKind
-    title: str
-    at: AwareDatetime | None = None
-    end_at: AwareDatetime | None = None
+    kind: ActionKind = Field(description='节点类型：announcement公告；reservation_open/close预约起止；lottery_open/result活动抽签报名/结果；sale_open/close售卖起止；queue_release放号；event_start/end活动起止；other其他。游戏抽卡勿归活动抽签。')
+    title: str = Field(description='节点名称，描述参与者可进行的动作。')
+    start_date: date | None = Field(default=None, description='仅知开放日期、不知时刻时填写 YYYY-MM-DD，并令 at=null；例如 2026-07-04。')
+    end_date: date | None = Field(default=None, description='仅知截止日期时填写，并令 end_at=null。')
+    rules: str | None = Field(default=None, description='完整参与或售卖规则，必须保留规则自身的生效起止日期、门槛、赠品、每单限制、文字截止条件。满赠日期保留在规则文字，不直接视为整个售卖的起止日期。')
+    at: AwareDatetime | None = Field(default=None, description='该节点发生或开放的具体时刻，带时区；勿用发帖时间代替。原文不足以确定时刻填 null。')
+    end_at: AwareDatetime | None = Field(default=None, description='该节点持续开放的截止时刻；瞬时节点或截止时刻不明填 null。版本号、阶段名不可换算日历日期。')
     platform: str | None = None
     url: HttpUrl | None = None
-    requires_reservation: bool | None = None
-    requires_rush: bool | None = None
+    requires_reservation: bool | None = Field(default=None, description='参与是否须提前预约：明确要求填 true，明确免预约填 false，未说明填 null。购买、使用道具或抽卡不构成预约依据。')
+    requires_rush: bool | None = Field(default=None, description='是否须抢购或抢名额：明确抢购/先到先得填 true，明确无需争抢填 false，未说明填 null；仅有限量或开售时间不足以判断。')
 
 
 class ExtractedActivity(BaseModel):
     model_config = ConfigDict(extra="forbid")
 
-    kind: ActivityKind
-    title: str
-    start_at: AwareDatetime | None = None
-    end_at: AwareDatetime | None = None
+    kind: ActivityKind = Field(description='实际活动类型：product联名产品；food餐饮；popup快闪；exhibition展会；theme_store主题店；mall_event商场活动；city_tour巡回；merchandise周边贩售；online线上活动；in_game游戏内联动；other其他。按形式选择。')
+    title: str = Field(description='具体子活动名称；同企划不同时间、地点或参与形式可分活动。')
+    start_date: date | None = Field(default=None, description='日期已知但时刻未知填 YYYY-MM-DD，同时 start_at=null，不补午夜。')
+    end_date: date | None = Field(default=None, description='结束日期已知但时刻未知填写，同时 end_at=null，不补23:59:59。')
+    rules: str | None = Field(default=None, description='该活动的完整参与条件，例如参加活动、领奖、购买均需预约名额入场。')
+    related_offers: str | None = Field(default=None, description='关联店铺优惠，保留其独立起止时间、门槛和适用范围，不改写成联动专属优惠。')
+    uncertainties: list[str] = Field(default_factory=list, description='本活动正文未说明或指向配图的内容，不能猜测图片内容。')
+    start_at: AwareDatetime | None = Field(default=None, description='实际子活动开始时刻，带时区；区别于公告、预约、售卖节点。无法确定具体时刻填 null。')
+    end_at: AwareDatetime | None = Field(default=None, description='实际子活动结束时刻，不得早于 start_at。版本号、阶段名不可换算日期；具体时刻未知填 null，文字结束条件写 uncertainties。')
     venues: list[ExtractedVenue] = Field(default_factory=list)
     actions: list[ExtractedAction] = Field(default_factory=list)
 
@@ -79,21 +88,22 @@ class ExtractedActivity(BaseModel):
 class ExtractedClaim(BaseModel):
     model_config = ConfigDict(extra="forbid")
 
-    field_path: str
-    quote: str = Field(min_length=1, max_length=1000)
-    confidence: float = Field(ge=0, le=1)
+    field_path: str = Field(description='相对 extraction 的字段路径；数组用零起始索引，如 activities[0].actions[0].at；企划字段如 partner。')
+    quote: str = Field(min_length=1, max_length=1000, description='支持该字段值的连续原文片段，保留实体、数字和动作词；禁止改写、补词、拼接。')
+    confidence: float = Field(ge=0, le=1, description='该字段值受到引文支持的置信度；高分不能替代缺失证据。')
 
 
 class ExtractionResult(BaseModel):
     model_config = ConfigDict(extra="forbid")
 
-    relevant: bool
+    relevant: bool = Field(description='是否包含收录范围内的企划事实；普通更新或纯宣传且无目标活动填 false。')
+    source_summaries: dict[str, str] = Field(default_factory=dict, description='按实际 observation_id 给每帖一条不超过100字的正文概述，说明打开原帖能看到什么；不能总结未读取的图片。批处理按帖分别写。')
     campaign_title: str | None = None
     partner: str | None = None
     activities: list[ExtractedActivity] = Field(default_factory=list)
     claims: list[ExtractedClaim] = Field(default_factory=list)
-    uncertainties: list[str] = Field(default_factory=list)
-    candidate_campaign_id: str | None = None
+    uncertainties: list[str] = Field(default_factory=list, description='无法确定的日期、条件或歧义；对应未知字段填 null，与已填写事实保持一致。')
+    candidate_campaign_id: str | None = Field(default=None, description='给定候选中最可能同一期企划的 ID；无匹配填 null，禁止自造。')
 
 
 class BatchGroup(BaseModel):
@@ -171,6 +181,8 @@ class OpenAICompatibleProvider:
         supports_json_object: bool = True,
         temperature: float = 0,
         max_attempts: int = 3,
+        thinking: str | None = None,
+        max_tokens: int | None = None,
     ) -> None:
         self.client = client
         self.base_url = base_url.rstrip("/")
@@ -180,6 +192,8 @@ class OpenAICompatibleProvider:
         self.temperature = temperature
         self.max_attempts = max(1, max_attempts)
         self.diagnostics = []
+        self.thinking = thinking
+        self.max_tokens = max_tokens
 
     async def extract(self, packet: ExtractionInput) -> ExtractionResult:
         request_payload = self._request_payload(packet)
@@ -205,10 +219,13 @@ class OpenAICompatibleProvider:
                 stage = 'http_status'
                 response.raise_for_status()
                 stage = 'response_json'
+                metadata = response.json()
                 content = self._response_content(response.json())
                 stage = 'schema'
                 result = result_type.model_validate_json(self._strip_fence(content))
                 self.diagnostics.append({'stage': 'validated', 'attempt': attempt + 1,
+                    'finish_reason': metadata.get('choices', [{}])[0].get('finish_reason'),
+                    'usage': metadata.get('usage', {}),
                     'elapsed_seconds': round(monotonic() - started, 3), 'http_status': response.status_code})
                 return result
             except (httpx.HTTPError, ValueError, KeyError, TypeError, ValidationError) as exc:
@@ -259,6 +276,13 @@ class OpenAICompatibleProvider:
         payload = self._request_payload(packets[0])
         example_source = json.loads(payload['messages'][1]['content'])['source']
         example_result = json.loads(payload['messages'][2]['content'])
+        example_activity = dict(example_result['activities'][0], id='example-activity-0', start_date=None, end_date=None)
+        example_activity['actions'] = [dict(a, id=f'example-action-{i}') for i, a in enumerate(example_activity['actions'])]
+        example_updates = [{'field_path': f'activities.example-activity-0.{field}',
+                            'value': example_result['activities'][0][field],
+                            'observation_id': example_source['observation_id'],
+                            'quote': next(c['quote'] for c in example_result['claims'] if c['field_path'] == f'activities[0].{field}')}
+                           for field in ('start_date', 'end_date')]
         payload['messages'] = [payload['messages'][0], {
             'role': 'user', 'content': json.dumps({
                 'existing_campaign': self._public_campaign(campaign),
@@ -277,19 +301,24 @@ class OpenAICompatibleProvider:
             '已有子活动通过更新维护；只有确实全新的子活动才放 new_activities。'
             '已有活动新增节点使用 new_actions，新增地点使用 new_venues；必须指定已有 activity_id、原帖 ID 和引文。'
             '明确取消可更新 status=cancelled 或 Action.cancelled=true；不能把已过日期推断成官方结束。'
+            '新公告的满赠规则补到已有售卖 Action.rules，不覆盖 Activity.rules 中的预约要求。'
+            '同形式同主题的已有售卖节点应补充时间和规则，不能因标题措辞变化再建一个。'
+            'new_activities 保持第一轮活动的 title、kind；其余字段由程序复用第一轮结果。'
+            '日期公布只更新日期，不更新 status；status 仅允许原文明示的 cancelled、ended、announced，禁止 scheduled/upcoming 等推断状态。'
+            '逐项检查第一轮中的日期、截止和规则是否已在目标对象保存；补规则时也必须补齐同一售卖节点缺失的起止日期。'
         )
-        # Same real crawler sample, now demonstrating an already-known teaser:
-        # no duplicate activity and no changes on repeat evidence.
+        # Demonstrate complementing an existing activity and adding another form.
         payload['messages'][1:1] = [
             {'role': 'user', 'content': json.dumps({
                 'existing_campaign': {
-                    'id': 'example-library', 'title': example_result['campaign_title'],
-                    'partner': example_result['partner'], 'activities': [],
+                    'id': 'example-campaign', 'title': example_result['campaign_title'],
+                    'partner': example_result['partner'], 'activities': [example_activity],
                     'sources': [{'id': example_source['observation_id'], 'url': example_source['source_url']}],
                 },
                 'sources': [example_source], 'extraction': example_result,
             }, ensure_ascii=False)},
-            {'role': 'assistant', 'content': MergeResult(decision='update').model_dump_json()},
+            {'role': 'assistant', 'content': MergeResult(decision='update', updates=example_updates,
+                new_activities=example_result['activities'][1:]).model_dump_json()},
         ]
         return await self._complete(payload, MergeResult)
 
@@ -335,6 +364,13 @@ class OpenAICompatibleProvider:
                         "证据：确定事实须有 claims.quote，复制连续原文，保留实体、数字、日期和动作词，禁止补词、改写、拼接。"
                         "虚构例：原文‘主题店将于10月3日开放’；合格‘10月3日开放’；不合格‘10月3日正式开放’。\n"
                         "关联：candidate_campaign_id 选 campaign_candidates 中至多一个同一期企划 ID，无匹配填 null，禁止自造。"
+                        "\n直接输出企划及 activities，不输出通用 Fact 列表。线下快闪与线上预售分为实际 Activity，现场售卖放快闪的 Action。"
+                        "合作方不等于场地；标题出现合作方名称不能据此填写 venue。仅列城市时 venue 只填 city，不编场馆。"
+                        "参与条件、满赠门槛/赠品/限制保存 rules；关联店铺折扣保存 related_offers，保留原文范围和独立日期。"
+                        "日期已知而时刻未知用 start_date/end_date，datetime 字段为 null；不得借发帖时刻补齐。"
+                        "区间型售卖用一个 Action 的 at/end_at 或 start_date/end_date，不重复创建售卖截止 Action。"
+                        "同帖出现直播、转发抽奖不意味着它们属于联动；先判断归属，联动情报预告可仅关联企划而无新 Activity。"
+                        "每个实际原帖写 source_summaries；不输出图片链接，由程序从来源记录保留。"
                     ),
                 },
                 {
@@ -343,7 +379,7 @@ class OpenAICompatibleProvider:
                 },
             ],
         }
-        examples = json.loads(files('herald').joinpath('data/extraction-examples.json').read_text(encoding='utf-8'))
+        examples = json.loads(files('herald').joinpath('data/activity-examples.json').read_text(encoding='utf-8'))
         demonstrations = []
         for example in examples[:1]:
             source = self._public_packet(ExtractionInput.model_validate(example['input']))
@@ -355,6 +391,10 @@ class OpenAICompatibleProvider:
         payload['messages'][1:1] = demonstrations
         if self.supports_json_object:
             payload["response_format"] = {"type": "json_object"}
+        if self.thinking is not None:
+            payload['thinking'] = {'type': self.thinking}
+        if self.max_tokens is not None:
+            payload['max_tokens'] = self.max_tokens
         return payload
 
     @staticmethod
