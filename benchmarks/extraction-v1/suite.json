@@ -1,0 +1,460 @@
+{
+  "version": "0.1-draft",
+  "review_status": "draft",
+  "judge": "human-first; no automatic semantic scoring or LLM judge yet",
+  "cases": [
+    {
+      "id": "moon-preorder",
+      "title": "月行水上：预售与优惠时间",
+      "ip_slug": "arknights",
+      "inputs": [
+        {
+          "file": "inputs/skland-6274849.json",
+          "sha256": "1e62530b357a900c1476fc162a569b999674522a512516f971780e4b25dc1b0c"
+        }
+      ],
+      "cutoff": "2026-09-08T00:00:00+08:00",
+      "now": "2026-09-12T12:00:00+08:00",
+      "mode": "bootstrap",
+      "batch_size": 2,
+      "purpose": "区分无时间的购买与有时间的满赠、折扣。",
+      "checks": [
+        {
+          "id": "M01",
+          "expectation": "收录联动周边预售 Activity，并保留购买、满赠、店铺折扣三个独立参与事项；标题措辞不限。",
+          "method": "manual_semantic",
+          "evidence": [
+            {
+              "source_id": "skland-6274849",
+              "quote": "联动周边即将开启预售"
+            }
+          ]
+        },
+        {
+          "id": "M02",
+          "expectation": "整个预售 Activity 与购买 Action 的起止时间未知；不能将满赠期限复制为预售期限。",
+          "method": "manual_semantic",
+          "evidence": [
+            {
+              "source_id": "skland-6274849",
+              "quote": "【满赠特典】\n活动时间：2026.09.08 12:00~2026.09.21 23:59"
+            }
+          ]
+        },
+        {
+          "id": "M03",
+          "expectation": "满赠 Action 开始 2026-09-08T12:00:00+08:00，截止 2026-09-21T23:59:00+08:00；允许等价时区表示，不允许降成日期。",
+          "method": "deterministic_candidate",
+          "evidence": [
+            {
+              "source_id": "skland-6274849",
+              "quote": "活动时间：2026.09.08 12:00~2026.09.21 23:59"
+            }
+          ]
+        },
+        {
+          "id": "M04",
+          "expectation": "满赠门槛为指定系列单笔满259元，赠校园凭证特典卡组一套；不补造“每单限赠一套”“限量”“赠完即止”。",
+          "method": "manual_semantic",
+          "evidence": [
+            {
+              "source_id": "skland-6274849",
+              "quote": "满259元，即赠 特典卡组-校园凭证 一套。"
+            }
+          ]
+        },
+        {
+          "id": "M05",
+          "expectation": "店铺立减12%的 Action 开始 2026-09-08T12:00:00+08:00，截止 2026-09-14T23:59:00+08:00。",
+          "method": "deterministic_candidate",
+          "evidence": [
+            {
+              "source_id": "skland-6274849",
+              "quote": "活动时间：2026.09.08 12:00~2026.09.14 23:59"
+            }
+          ]
+        },
+        {
+          "id": "M06",
+          "expectation": "折扣范围为旗舰店全店商品、部分除外，不能写成联动系列专属。",
+          "method": "manual_semantic",
+          "evidence": [
+            {
+              "source_id": "skland-6274849",
+              "quote": "明日方舟旗舰店全店商品（部分商品除外，详见注意事项）"
+            }
+          ]
+        },
+        {
+          "id": "M07",
+          "expectation": "流水线验收：分别有9月13日折扣截止提醒和9月20日满赠截止提醒；不应有预售截止提醒。",
+          "method": "deterministic_candidate",
+          "evidence": []
+        }
+      ],
+      "review_question": "确认预售时间按纯文本保持未知；M07属于提醒链路验收，不计入纯提取得分。"
+    },
+    {
+      "id": "hongshan-batch",
+      "title": "红山：两帖同批",
+      "ip_slug": "arknights",
+      "inputs": [
+        {
+          "file": "inputs/skland-5960093.json",
+          "sha256": "d310bf9a2e4b72a525c37a608b5b5d916c88d31d4f30a6d003e4d3e2074f292b"
+        },
+        {
+          "file": "inputs/skland-5960185.json",
+          "sha256": "e0c1d4022682c402c866139c7f424055a6586570c7f93c3a2e5abde881bc824b"
+        }
+      ],
+      "cutoff": "2026-06-30T00:00:00+08:00",
+      "now": "2026-07-01T09:00:00+08:00",
+      "mode": "bootstrap",
+      "batch_size": 2,
+      "purpose": "同账号两帖一次初始化请求，考察召回与跨帖归属。",
+      "checks": [
+        {
+          "id": "H01",
+          "expectation": "两帖归同一企划，区分线下快闪与线上预售 Activity；不把动物园合作方名称自动填为快闪场馆。",
+          "method": "manual_semantic",
+          "evidence": [
+            {
+              "source_id": "skland-5960093",
+              "quote": "【活动地点】：上海/成都/南京/北京/广州/杭州/武汉"
+            }
+          ]
+        },
+        {
+          "id": "H02",
+          "expectation": "线下快闪日期为2026-07-04至2026-07-17，仅日期，不补午夜或23:59；保留上海、成都、南京、北京、广州、杭州、武汉七城。",
+          "method": "deterministic_candidate",
+          "evidence": [
+            {
+              "source_id": "skland-5960093",
+              "quote": "【活动时间】：2026年7月4日~2026年7月17日"
+            }
+          ]
+        },
+        {
+          "id": "H03",
+          "expectation": "保留第一阶段预约 2026-07-02T12:00:00+08:00；参加、领奖、购买均须预约名额入场；后续轮次日期未知。",
+          "method": "manual_semantic",
+          "evidence": [
+            {
+              "source_id": "skland-5960093",
+              "quote": "本次活动为全预约制，参与快闪活动、领取活动奖励及购买快闪商品均需凭预约名额入场"
+            }
+          ]
+        },
+        {
+          "id": "H04",
+          "expectation": "线下场贩购买与线下满赠分别保留，日期均为2026-07-04至2026-07-17；满赠单笔满300元，一套特典合影卡，每笔订单满额仅赠1件、不可叠加。",
+          "method": "manual_semantic",
+          "evidence": [
+            {
+              "source_id": "skland-5960185",
+              "quote": "※ 单笔订单特典不可叠加获得，每笔订单满额仅赠送1件。"
+            }
+          ]
+        },
+        {
+          "id": "H05",
+          "expectation": "线上预售购买与线上满赠分别保留，时间均为2026-07-13T12:00:00+08:00至2026-07-26T23:59:00+08:00；线上满赠范围是夏荫同栖任意商品、单笔满300元。",
+          "method": "manual_semantic",
+          "evidence": [
+            {
+              "source_id": "skland-5960185",
+              "quote": "2026年7月13日 12:00~2026年7月26日 23:59"
+            }
+          ]
+        },
+        {
+          "id": "H06",
+          "expectation": "线上与线下满赠不能合为一个；期限与各自活动对应，不串到另一渠道。",
+          "method": "manual_semantic",
+          "evidence": [
+            {
+              "source_id": "skland-5960185",
+              "quote": "山林未远，夏荫同栖 线下主题快闪活动"
+            }
+          ]
+        },
+        {
+          "id": "H07",
+          "expectation": "独立店铺立减15%事项：2026-07-13T12:00:00+08:00至2026-07-19T23:59:00+08:00；全店、部分商品除外。",
+          "method": "manual_semantic",
+          "evidence": [
+            {
+              "source_id": "skland-5960185",
+              "quote": "活动时间：2026.7.13 12:00~2026.7.19 23:59"
+            }
+          ]
+        }
+      ],
+      "review_question": "确认同渠道同期限的购买和满赠仍是独立参与事项；允许标题改写。"
+    },
+    {
+      "id": "hongshan-incremental",
+      "title": "红山：初始化后增量",
+      "ip_slug": "arknights",
+      "inputs": [
+        {
+          "file": "inputs/skland-5960093.json",
+          "sha256": "d310bf9a2e4b72a525c37a608b5b5d916c88d31d4f30a6d003e4d3e2074f292b"
+        },
+        {
+          "file": "inputs/skland-5960185.json",
+          "sha256": "e0c1d4022682c402c866139c7f424055a6586570c7f93c3a2e5abde881bc824b"
+        }
+      ],
+      "cutoff": "2026-06-29T12:30:00+08:00",
+      "now": "2026-07-01T09:00:00+08:00",
+      "mode": "both",
+      "batch_size": 2,
+      "purpose": "与合批共用相同输入，单独验证二轮合并。",
+      "checks": [
+        {
+          "id": "H01",
+          "expectation": "两帖归同一企划，区分线下快闪与线上预售 Activity；不把动物园合作方名称自动填为快闪场馆。",
+          "method": "manual_semantic",
+          "evidence": [
+            {
+              "source_id": "skland-5960093",
+              "quote": "【活动地点】：上海/成都/南京/北京/广州/杭州/武汉"
+            }
+          ]
+        },
+        {
+          "id": "H02",
+          "expectation": "线下快闪日期为2026-07-04至2026-07-17，仅日期，不补午夜或23:59；保留上海、成都、南京、北京、广州、杭州、武汉七城。",
+          "method": "deterministic_candidate",
+          "evidence": [
+            {
+              "source_id": "skland-5960093",
+              "quote": "【活动时间】：2026年7月4日~2026年7月17日"
+            }
+          ]
+        },
+        {
+          "id": "H03",
+          "expectation": "保留第一阶段预约 2026-07-02T12:00:00+08:00；参加、领奖、购买均须预约名额入场；后续轮次日期未知。",
+          "method": "manual_semantic",
+          "evidence": [
+            {
+              "source_id": "skland-5960093",
+              "quote": "本次活动为全预约制，参与快闪活动、领取活动奖励及购买快闪商品均需凭预约名额入场"
+            }
+          ]
+        },
+        {
+          "id": "H04",
+          "expectation": "线下场贩购买与线下满赠分别保留，日期均为2026-07-04至2026-07-17；满赠单笔满300元，一套特典合影卡，每笔订单满额仅赠1件、不可叠加。",
+          "method": "manual_semantic",
+          "evidence": [
+            {
+              "source_id": "skland-5960185",
+              "quote": "※ 单笔订单特典不可叠加获得，每笔订单满额仅赠送1件。"
+            }
+          ]
+        },
+        {
+          "id": "H05",
+          "expectation": "线上预售购买与线上满赠分别保留，时间均为2026-07-13T12:00:00+08:00至2026-07-26T23:59:00+08:00；线上满赠范围是夏荫同栖任意商品、单笔满300元。",
+          "method": "manual_semantic",
+          "evidence": [
+            {
+              "source_id": "skland-5960185",
+              "quote": "2026年7月13日 12:00~2026年7月26日 23:59"
+            }
+          ]
+        },
+        {
+          "id": "H06",
+          "expectation": "线上与线下满赠不能合为一个；期限与各自活动对应，不串到另一渠道。",
+          "method": "manual_semantic",
+          "evidence": [
+            {
+              "source_id": "skland-5960185",
+              "quote": "山林未远，夏荫同栖 线下主题快闪活动"
+            }
+          ]
+        },
+        {
+          "id": "H07",
+          "expectation": "独立店铺立减15%事项：2026-07-13T12:00:00+08:00至2026-07-19T23:59:00+08:00；全店、部分商品除外。",
+          "method": "manual_semantic",
+          "evidence": [
+            {
+              "source_id": "skland-5960185",
+              "quote": "活动时间：2026.7.13 12:00~2026.7.19 23:59"
+            }
+          ]
+        },
+        {
+          "id": "I01",
+          "expectation": "初始化只含第一帖：线下快闪、预约、现场购买；不得提前出现第二帖的线上预售或优惠。",
+          "method": "manual_semantic",
+          "evidence": []
+        },
+        {
+          "id": "I02",
+          "expectation": "增量后保留原Campaign和线下Activity稳定ID，新增线上活动、补充线下满赠；最终事实满足H01—H07。",
+          "method": "deterministic_candidate",
+          "evidence": []
+        },
+        {
+          "id": "I03",
+          "expectation": "两帖原链接都保留；同一帖子再次处理不重复新增或通知。重复投递作为附加回归检查，普通两阶段运行不自动视为已验证。",
+          "method": "deterministic_candidate",
+          "evidence": []
+        }
+      ],
+      "review_question": "确认分界点是第一帖12:00与第二帖13:02之间（中国时间）；合并操作措辞不计分。"
+    },
+    {
+      "id": "music-sales",
+      "title": "音律联觉：多事项与日期精度",
+      "ip_slug": "arknights",
+      "inputs": [
+        {
+          "file": "inputs/skland-5973873.json",
+          "sha256": "7e6f231c9b0deb5f6225a9be990bd1c01c01d148d5787ef629df0cb35edfd7f1"
+        }
+      ],
+      "cutoff": "2026-07-07T00:00:00+08:00",
+      "now": "2026-07-10T09:00:00+08:00",
+      "mode": "bootstrap",
+      "batch_size": 2,
+      "purpose": "覆盖曾经失败的JSON结构、多个优惠、不同购买渠道。",
+      "checks": [
+        {
+          "id": "A01",
+          "expectation": "现场贩售和旗舰店线上预售作为不同实际活动或明确隔离的实体，不混淆渠道与日程。",
+          "method": "manual_semantic",
+          "evidence": [
+            {
+              "source_id": "skland-5973873",
+              "quote": "2026鹰角嘉年华 现场贩售：2026.07.30~2026.08.02"
+            }
+          ]
+        },
+        {
+          "id": "A02",
+          "expectation": "现场贩售与其满赠日期为2026-07-30至2026-08-02；填日期字段，不把日期字符串填进at/end_at。",
+          "method": "deterministic_candidate",
+          "evidence": [
+            {
+              "source_id": "skland-5973873",
+              "quote": "活动时间：2026.07.30~2026.08.02"
+            }
+          ]
+        },
+        {
+          "id": "A03",
+          "expectation": "现场满赠门槛单笔明日方舟主题系列周边满399元，明信片组一套及纪念币一枚；保留两条途径：现场购买，或持快速入场券通过哔哩哔哩会员购预购。不能把快速入场券要求套到所有购买者。",
+          "method": "manual_semantic",
+          "evidence": [
+            {
+              "source_id": "skland-5973873",
+              "quote": "B. 持有快速入场券，并通过哔哩哔哩会员购线上预购"
+            }
+          ]
+        },
+        {
+          "id": "A04",
+          "expectation": "旗舰店线上购买及满赠为2026-08-03T12:00:00+08:00至2026-08-16T23:59:00+08:00；指定系列满399元赠同样两种赠品。",
+          "method": "manual_semantic",
+          "evidence": [
+            {
+              "source_id": "skland-5973873",
+              "quote": "活动时间：2026.08.03 12:00~2026.08.16 23:59"
+            }
+          ]
+        },
+        {
+          "id": "A05",
+          "expectation": "店铺立减15%单独保留，2026-08-03T12:00:00+08:00至2026-08-09T23:59:00+08:00；全店部分除外。",
+          "method": "manual_semantic",
+          "evidence": [
+            {
+              "source_id": "skland-5973873",
+              "quote": "活动时间：2026.08.03 12:00~2026.08.09 23:59"
+            }
+          ]
+        },
+        {
+          "id": "A06",
+          "expectation": "全店限时包邮作为独立可提醒事项，2026-08-03T12:00:00+08:00至2026-08-07T23:59:00+08:00；不丢失，也不与立减合并。",
+          "method": "manual_semantic",
+          "evidence": [
+            {
+              "source_id": "skland-5973873",
+              "quote": "活动时间：2026.08.03 12:00~2026.08.07 23:59"
+            }
+          ]
+        },
+        {
+          "id": "A07",
+          "expectation": "JSON通过BatchResult/ExtractionResult校验；activities只能包含对象，claims位于extraction内。",
+          "method": "deterministic_candidate",
+          "evidence": []
+        }
+      ],
+      "review_question": "请确认Campaign划分是否允许联合周边企划或多企划表达；暂不对Campaign数量打分。包邮kind暂允许discount或other，以信息与期限完整为准。"
+    },
+    {
+      "id": "ugreen-announcement",
+      "title": "绿联：无日程官宣",
+      "ip_slug": "honkai-star-rail",
+      "inputs": [
+        {
+          "file": "inputs/miyoushe-75525472.json",
+          "sha256": "d190e3950bb4247c28df49d19bbf9ae2a7dc31c75200afe21715b20dcd8eef64"
+        }
+      ],
+      "cutoff": "2026-05-23T00:00:00+08:00",
+      "now": "2026-05-23T09:00:00+08:00",
+      "mode": "bootstrap",
+      "batch_size": 2,
+      "purpose": "官宣收录与定时提醒分离。",
+      "checks": [
+        {
+          "id": "U01",
+          "expectation": "relevant=true，保留崩坏：星穹铁道与UGREEN绿联合作官宣及原帖，不因没有日程而忽略。",
+          "method": "manual_semantic",
+          "evidence": [
+            {
+              "source_id": "miyoushe-75525472",
+              "quote": "《崩坏：星穹铁道》× UGREEN绿联 联动活动即将上线！"
+            }
+          ]
+        },
+        {
+          "id": "U02",
+          "expectation": "空状态下可建立合作企划；正文没有明确活动形式，activities可以为空，不强造预售、充电宝售卖或快闪。",
+          "method": "manual_semantic",
+          "evidence": [
+            {
+              "source_id": "miyoushe-75525472",
+              "quote": "漫漫开拓之旅，告别电量焦虑~"
+            }
+          ]
+        },
+        {
+          "id": "U03",
+          "expectation": "不从发布时间或“即将上线”推算开始/截止时间，不生成日期队列提醒。",
+          "method": "deterministic_candidate",
+          "evidence": []
+        },
+        {
+          "id": "U04",
+          "expectation": "摘要表达联动官宣、详情待公布，不以“无详情”作为排除理由。初始化只保存，不把历史官宣变成今日新增消息。",
+          "method": "manual_semantic",
+          "evidence": []
+        }
+      ],
+      "review_question": "这组仅验证空状态下的官宣；已有企划新增活动需要另外的明确活动帖，不能从本帖编造。"
+    }
+  ]
+}

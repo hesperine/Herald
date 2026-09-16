@@ -337,7 +337,7 @@ class CampaignMerger:
         conflicts: list[MergeConflict],
         detected_at: datetime,
     ) -> None:
-        for field_name in ("at", "end_at", "start_date", "end_date", "rules"):
+        for field_name in ("at", "end_at", "start_date", "end_date", "rules", "scope", "quantity_limit", "end_condition"):
             self._merge_scalar(
                 existing,
                 incoming,
@@ -373,6 +373,10 @@ class CampaignMerger:
                     campaign,
                     activity.id,
                 )
+        if incoming_is_newer and incoming.ended:
+            self._merge_scalar(existing, incoming, 'ended',
+                f'activities.{activity.id}.actions.{existing.id}.ended', True,
+                changes, conflicts, detected_at, campaign, activity.id)
         self._merge_evidence(existing.evidence, incoming.evidence)
 
     def _merge_scalar(

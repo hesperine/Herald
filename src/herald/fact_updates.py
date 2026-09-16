@@ -22,7 +22,7 @@ class FactUpdate(StrictModel):
 FIELDS = {
     'campaign': {'title', 'partner', 'announced_at', 'status'},
     'activities': {'title', 'kind', 'start_at', 'end_at', 'start_date', 'end_date', 'rules', 'related_offers', 'status'},
-    'actions': {'title', 'kind', 'at', 'end_at', 'start_date', 'end_date', 'rules', 'platform', 'url', 'requires_reservation', 'requires_rush', 'cancelled'},
+    'actions': {'title', 'kind', 'at', 'end_at', 'start_date', 'end_date', 'rules', 'scope', 'quantity_limit', 'end_condition', 'ended', 'platform', 'url', 'requires_reservation', 'requires_rush', 'cancelled'},
     'venues': {'name', 'country', 'province', 'city', 'address', 'online_platform', 'business_hours', 'nationwide'},
 }
 

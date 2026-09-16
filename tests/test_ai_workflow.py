@@ -9,6 +9,15 @@ from test_merge import campaign
 
 
 class AIWorkflowTests(unittest.IsolatedAsyncioTestCase):
+    def test_announcement_is_information_not_a_fixed_entity_level(self):
+        provider = OpenAICompatibleProvider(client=None, base_url='https://example.com', model='test', api_key='secret')
+        prompt = provider._request_payload(packet())['messages'][0]['content']
+        self.assertIn('官宣是消息性质', prompt)
+        self.assertIn('无日期也收录', prompt)
+        self.assertIn('只公布合作关系', prompt)
+        self.assertIn('新增Activity', prompt)
+        self.assertNotIn('预告或补充说明不单建活动', prompt)
+
     def test_date_only_rules_and_source_summary_contract(self):
         from herald.ai import ExtractionResult
         value = ExtractionResult.model_validate({'relevant': True,
@@ -26,7 +35,10 @@ class AIWorkflowTests(unittest.IsolatedAsyncioTestCase):
         example = json.loads(payload['messages'][2]['content'])
         self.assertEqual(len(example['activities']), 2)
         self.assertIsNone(example['activities'][0]['start_at'])
-        self.assertTrue(example['activities'][1]['actions'][0]['rules'])
+        actions = example['activities'][1]['actions']
+        self.assertEqual([a['kind'] for a in actions], ['sale_open', 'gift', 'discount'])
+        self.assertTrue(actions[1]['rules'])
+        self.assertEqual(actions[2]['end_date'], '2026-10-08')
 
     def test_fewshots_are_messages_and_current_input_is_last(self):
         provider = OpenAICompatibleProvider(client=None, base_url='https://example.com', model='test', api_key='secret')

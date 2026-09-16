@@ -178,6 +178,9 @@ class NotificationService:
                         lines.append(f"截止：{action.get('end_at') or action.get('end_date')}")
                     if action.get('rules'):
                         lines.append(action['rules'])
+                    for field in ('scope', 'quantity_limit', 'end_condition'):
+                        if action.get(field):
+                            lines.append(action[field])
                     if action["url"]:
                         lines.append(action["url"])
             for source in card["sources"]:

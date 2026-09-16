@@ -57,6 +57,8 @@ class ActionKind(StrEnum):
     LOTTERY_RESULT = "lottery_result"
     SALE_OPEN = "sale_open"
     SALE_CLOSE = "sale_close"
+    GIFT = "gift"
+    DISCOUNT = "discount"
     QUEUE_RELEASE = "queue_release"
     EVENT_START = "event_start"
     EVENT_END = "event_end"
@@ -155,6 +157,10 @@ class EventAction(StrictModel):
     start_date: date | None = None
     end_date: date | None = None
     rules: str | None = None
+    scope: str | None = None
+    quantity_limit: str | None = None
+    end_condition: str | None = None
+    ended: bool = False
     platform: str | None = None
     url: HttpUrl | None = None
     requires_reservation: bool | None = None

@@ -1,0 +1,73 @@
+<!doctype html>
+<html lang="zh-CN"><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
+<title>HERALD 本地提取调试</title>
+<style>body{font:16px/1.6 system-ui;margin:24px}input,select,textarea,button{font:inherit;max-width:100%;box-sizing:border-box}textarea{width:100%}section,article{border:1px solid #bbb;padding:12px;margin:12px 0}pre{white-space:pre-wrap;overflow-wrap:anywhere}label{display:block;margin:6px 0}.columns{display:grid;grid-template-columns:1fr 1fr;gap:16px}table{border-collapse:collapse;width:100%}td,th{border:1px solid #ccc;padding:6px;text-align:left;overflow-wrap:anywhere}small{display:block}summary,button{cursor:pointer}@media(max-width:800px){.columns{display:block}}.warning{font-weight:bold}</style>
+<h1>HERALD 本地提取调试</h1>
+<p>只在本机运行。复用公开帖子；AI Key 沿用本地配置，不在网页填写或展示。运行 AI 会产生调用费用，不发送邮件。图片仅提供链接，不送入 AI。</p>
+<p id="status" role="status"></p>
+<section><h2>1. 选择已采集内容</h2>
+<button id="refresh">刷新数据集</button>
+<label>数据集 <select id="datasets"></select></label>
+<label>筛选发帖日期（含开始、不含结束；按中国时间） <input id="filter-start" type="date"> 至 <input id="filter-end" type="date"></label>
+<button id="filter">应用日期筛选</button><button id="all">选择可见帖子</button>
+<small>dataset 为回放样本，observations 为完整采集记录，candidates 为筛选后的候选；实际回放仍经过正式去重和候选筛选。</small>
+</section>
+<details><summary>重新采集官方帖子（独立于 AI，可重复使用）</summary>
+<label>开始 <input id="since" value="2026-09-01T00:00:00+08:00"></label>
+<label>结束（不含） <input id="before" value="2026-09-13T00:00:00+08:00"></label>
+<label>每账号最多页数 <input id="pages" type="number" min="1" max="20" value="3"></label>
+<p>使用现有社区采集器读取内置官方账号。页数上限可能导致日期范围不完整，不保证找全。</p>
+<button id="collect">开始采集，不调用 AI</button></details>
+<section><h2>2. 运行设置</h2>
+<label>模型 ID（留空使用当前本地配置） <input id="model"></label>
+<label>思考参数 <select id="thinking"><option value="disabled">disabled</option><option value="enabled">enabled</option><option value="">不传</option></select></label>
+<label>最大输出 tokens <input id="max_tokens" type="number" value="8192" min="256" max="32768"></label>
+<label>初始化每批最多帖子 <input id="batch_size" type="number" value="2" min="1" max="8"></label>
+<small>原有 24,000 字符预算仍有效；只合批同平台同账号。增量仍逐帖处理。思考参数是否生效取决于服务商。</small>
+<label>模式 <select id="mode"><option value="bootstrap">仅初始化批处理</option><option value="both">初始化＋增量／二轮合并</option></select></label>
+<label>初始化／增量分界（之前初始化，之后增量） <input id="cutoff" value="2026-07-02T00:00:00+08:00"></label>
+<label>模拟页面日期 <input id="now" value="2026-07-02T09:00:00+08:00"></label>
+<details><summary>编辑本次系统 Prompt</summary><p>默认来自 src，修改仅用于本次调试。Few-shot、Schema 和批处理／合并说明仍由正式代码附加，完整请求可在结果中查看。</p><textarea id="prompt" rows="16"></textarea></details>
+<button id="run">使用所选帖子新建 AI 调试运行</button>
+</section>
+<div class="columns"><div><h2>原帖与图片链接</h2><div id="posts"></div></div>
+<div><h2>模型与最终事实对照</h2><div id="results"></div></div></div>
+<script>
+const $=id=>document.getElementById(id);let token='',catalog=[],current=null,selected=new Set(),busy=false;
+function el(tag,text){const e=document.createElement(tag);if(text!==undefined)e.textContent=text;return e;}
+function details(parent,title,value){const d=el('details');d.append(el('summary',title),el('pre',typeof value==='string'?value:JSON.stringify(value,null,2)));parent.append(d);}
+async function api(path,body){const r=await fetch(path,body?{method:'POST',headers:{'Content-Type':'application/json','X-Debug-Token':token},body:JSON.stringify(body)}:{});const d=await r.json();if(!r.ok)throw Error(d.error||'请求失败');return d;}
+function time(at,date){return at?new Date(at).toLocaleString('zh-CN',{timeZone:'Asia/Shanghai',hour12:false}):date?date+'（仅日期）':'未提取到';}
+function tree(parent,c){const box=el('section');box.append(el('h3',c.title||c.campaign_title||'未命名企划'));
+ for(const a of c.activities||[]){const art=el('article');art.append(el('h4',a.title),el('p','Activity：'+time(a.start_at,a.start_date)+' → '+time(a.end_at,a.end_date)));
+ if(a.rules)art.append(el('p','活动规则：'+a.rules));if(a.related_offers)art.append(el('p','旧关联优惠文本：'+a.related_offers));
+ if(a.venues?.length)art.append(el('p','地点／平台：'+a.venues.map(v=>[v.city,v.name,v.online_platform].filter(Boolean).join(' ')).join('；')));
+ const table=el('table'),head=el('tr');for(const text of ['Action','开始','截止','范围／条件'])head.append(el('th',text));table.append(head);
+ for(const action of a.actions||[]){const row=el('tr');row.append(el('td',action.title+' ['+action.kind+']'),el('td',time(action.at,action.start_date)),el('td',time(action.end_at,action.end_date)),el('td',[action.scope,action.rules,action.quantity_limit,action.end_condition,action.ended?'已结束':''].filter(Boolean).join('；')));table.append(row);}art.append(table);
+ if(a.uncertainties?.length)art.append(el('p','待确认：'+a.uncertainties.join('；')));box.append(art);
+ }details(box,'完整 JSON（含证据）',c);parent.append(box);}
+function filtered(){return (current?.dataset.observations||[]).filter(o=>{const day=new Date(o.source.published_at).toLocaleDateString('sv-SE',{timeZone:'Asia/Shanghai'});return (!$('filter-start').value||day>=$('filter-start').value)&&(!$('filter-end').value||day<$('filter-end').value);});}
+function posts(){const target=$('posts');target.replaceChildren();for(const o of filtered()){const art=el('article'),label=el('label'),check=el('input');check.type='checkbox';check.checked=selected.has(o.id);check.onchange=()=>check.checked?selected.add(o.id):selected.delete(o.id);label.append(check,document.createTextNode(' '+o.id+' · '+time(o.source.published_at)));art.append(label,el('pre',o.text));const link=el('a','打开原帖');link.href=o.source.url;link.target='_blank';link.rel='noreferrer';art.append(link);for(const [i,url] of (o.media_urls?.length?o.media_urls:o.source.media_urls||[]).entries()){const a=el('a','配图 '+(i+1));a.href=url;a.target='_blank';a.rel='noreferrer';art.append(el('br'),a);}target.append(art);}}
+async function load(){current=await api('/api/result?dataset='+encodeURIComponent($('datasets').value));selected=new Set(current.dataset.observations.map(o=>o.id));posts();const root=$('results');root.replaceChildren();
+ $('cutoff').value=current.dataset.cutoff||'2026-09-13T00:00:00+08:00';
+ if(current.settings.now)$('now').value=current.settings.now;
+ root.append(el('p','已保存企划：'+current.campaigns.length+'；历史调用：'+current.calls.length));
+ details(root,'校验结果／错误／用量',current.diagnostics);details(root,'处理报告',current.report);details(root,'本次保存的参数',current.settings);if(current.collection)details(root,'采集日期范围与完整性',current.collection);
+ root.append(el('h3','校验后保存的事实'));for(const c of current.campaigns)tree(root,c);
+ if(!current.campaigns.length)root.append(el('p','尚无保存事实；请查看模型输出和校验错误。'));
+ root.append(el('h3','每次模型调用（原始提取可能未通过校验）'));
+ for(const [i,call] of current.calls.entries()){const section=el('section');section.append(el('h4','调用 '+(i+1)+' · '+call.model+' · HTTP '+call.status));
+ let actual;try{actual=JSON.parse(call.messages.at(-1).content);}catch{}section.append(el('p','输入帖子数：'+(actual?.sources?.length||1)));
+ for(const g of call.parsed?.groups||[]){section.append(el('p','来源：'+g.observation_ids.join('、')));tree(section,g.extraction);}
+ if(call.parsed?.activities)tree(section,call.parsed);
+ details(section,'完整模型回答／合并操作',call.parsed||call.answer);details(section,'完整请求（Prompt、Few-shot、Schema）',call.messages);root.append(section);}
+}
+async function refresh(preferred){const data=await api('/api/init');token=data.token;catalog=data.datasets;const old=preferred||$('datasets').value;$('datasets').replaceChildren();for(const d of catalog){const option=el('option',d.ip+' · '+d.count+'帖 · '+d.id);option.value=d.id;$('datasets').append(option);}if(catalog.some(d=>d.id===old))$('datasets').value=old;else if(catalog.some(d=>d.id==='qwen-batch-20260912/dataset.json'))$('datasets').value='qwen-batch-20260912/dataset.json';if(!$('prompt').value)$('prompt').value=data.prompt;if(catalog.length)await load();}
+function status(text){$('status').textContent=text;}
+async function start(path,body){if(busy)return;const job=await api(path,body);busy=true;status('运行中：'+job.directory+'。可以继续查看已有结果。');poll();}
+async function poll(){try{const job=await api('/api/status');busy=job.running;$('run').disabled=busy;$('collect').disabled=busy;if(busy){status('运行中：'+job.directory);setTimeout(poll,2000);}else{status('运行结束，退出码 '+job.exit_code+'；校验失败时也可检查原始模型回答。');await refresh(job.directory+'/dataset.json');}}catch(e){status(e.message);busy=false;}}
+$('datasets').onchange=()=>load().catch(e=>status(e.message));$('refresh').onclick=()=>refresh().catch(e=>status(e.message));$('filter').onclick=()=>{selected=new Set(filtered().map(o=>o.id));posts();};$('all').onclick=()=>{selected=new Set(filtered().map(o=>o.id));posts();};
+$('run').onclick=()=>{const d={dataset:$('datasets').value,ids:[...selected]};for(const k of ['model','thinking','max_tokens','batch_size','mode','cutoff','now','prompt'])d[k]=$(k).value;start('/api/run',d).catch(e=>status(e.message));};
+$('collect').onclick=()=>start('/api/collect',{since:$('since').value,before:$('before').value,pages:$('pages').value}).catch(e=>status(e.message));
+refresh().then(()=>api('/api/status')).then(j=>{if(j.running)poll();}).catch(e=>status(e.message));
+</script></html>

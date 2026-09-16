@@ -49,10 +49,18 @@ function render() {
    const link=node('a',a.title);link.href=c.url;
    const heading=node('h2');heading.append(link);
    li.append(node('small',c.campaign_title),heading);
-   if(c.next){const p=node('p',c.next.title+' · '+displayTime(c.next.date?null:c.next.at,c.next.date));p.className='deadline';li.append(p);}
+   if(c.next){const remaining=Math.ceil((new Date(c.next.at)-new Date())/86400000);const p=node('p',c.next.title+' · '+displayTime(c.next.date?null:c.next.at,c.next.date)+(remaining>0?' · 还有'+remaining+'天':''));p.className='deadline';li.append(p);}
    li.append(node('p',displayTime(a.start_at,a.start_date)+' 至 '+displayTime(a.end_at,a.end_date)));
    li.append(node('p',(a.venues||[]).map(v=>v.online_platform||[v.city,v.name].filter(Boolean).join(' ')).filter(Boolean).join(' · ')));
    if(a.rules)li.append(node('p',a.rules));
+   if(!c.next)li.append(node('p','暂无后续明确时间，请查看原帖'));
+   const details=node('details');details.append(node('summary','参与事项与时间'));
+   for(const action of a.actions||[]){
+     const expired=action.end_at?new Date(action.end_at)<new Date():action.end_date?action.end_date<new Date().toLocaleDateString('sv-SE',{timeZone:'Asia/Shanghai'}):false;
+     const item=node('p',action.title+' · '+(action.cancelled?'已取消':action.ended?'已结束':(expired?'已过截止时间 · ':'')+displayTime(action.at,action.start_date)+' 至 '+displayTime(action.end_at,action.end_date)));
+     for(const key of ['scope','rules','quantity_limit','end_condition'])if(action[key])item.append(node('small',' · '+action[key]));
+     details.append(item);
+   }li.append(details);
    list.append(li);
  } if(!list.children.length)list.append(node('li','暂无符合条件的活动'));
 }
@@ -135,6 +143,9 @@ function render(data){
    if(action.requires_reservation===true)li.append(' · 需预约');
    if(action.requires_rush===true)li.append(' · 需抢购或抢名额');
    if(action.rules)li.append(node('p',action.rules));
+   li.id='action-'+action.id;
+   if(action.ended)li.append(node('p','已结束'));
+   for(const key of ['scope','quantity_limit','end_condition'])if(action[key])li.append(node('p',action[key]));
    if(action.url){const link=node('a','预约 / 购买入口');link.href=action.url;link.rel='noreferrer';li.append(link);}
    list.append(li);
   }section.append(list);

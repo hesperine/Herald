@@ -28,6 +28,8 @@ REMINDABLE_ACTIONS = {
     ActionKind.LOTTERY_RESULT,
     ActionKind.SALE_OPEN,
     ActionKind.SALE_CLOSE,
+    ActionKind.GIFT,
+    ActionKind.DISCOUNT,
     ActionKind.QUEUE_RELEASE,
     ActionKind.EVENT_START,
     ActionKind.EVENT_END,
@@ -39,7 +41,7 @@ def schedule_actions(activity, tz):
     """Derived schedule points; date-only midnight is never written to facts."""
     points = []
     for action in activity.actions:
-        if action.cancelled:
+        if action.cancelled or action.ended:
             continue
         start = action.at or (datetime.combine(action.start_date, time(), tz) if action.start_date else None)
         if start:
