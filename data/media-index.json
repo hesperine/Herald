@@ -1,0 +1,18 @@
+{
+  "assets": [
+    {
+      "asset_path": "assets/media/cae604f2dbbd0f0d34bd92a1c8bf7bf7e3a692dccdc8be7c70bbbc1d22d3f745.jpg",
+      "content_type": "image/jpeg",
+      "sha256": "cae604f2dbbd0f0d34bd92a1c8bf7bf7e3a692dccdc8be7c70bbbc1d22d3f745",
+      "size_bytes": 2318977,
+      "source_url": "https://upload-bbs.miyoushe.com/upload/2026/09/07/288909600/cec2da4a5cace257ad4f07b6468ff0bf_7487234519425605546.jpg"
+    },
+    {
+      "asset_path": "assets/media/5b2f2070ade93237653f1e38d3676bb28831f00bb15c4c9533d0934221ff466e.png",
+      "content_type": "image/png",
+      "sha256": "5b2f2070ade93237653f1e38d3676bb28831f00bb15c4c9533d0934221ff466e",
+      "size_bytes": 4430311,
+      "source_url": "https://upload-bbs.miyoushe.com/upload/2026/09/09/288909600/45f34b7f6be728ec9f40144921254731_4612487477566683884.png"
+    }
+  ]
+}
