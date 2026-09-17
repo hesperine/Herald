@@ -19,6 +19,7 @@ class LoadSettingsTests(unittest.TestCase):
                 "EXTRA_WEIBO_UIDS": "原神:1001,1002\n明日方舟:2001",
                 "INCLUDE_IN_GAME": "true",
                 "REMIND_DAY_BEFORE": "false",
+                "ALWAYS_SEND_DAILY_DIGEST": "true",
                 "ORIGIN_CITY": "上海",
                 "NOTIFY_EMAIL": "player@example.com",
                 "SMTP_HOST": "smtp.example.com",
@@ -36,6 +37,7 @@ class LoadSettingsTests(unittest.TestCase):
         self.assertEqual(settings.public.extra_weibo_uids["原神"], ["1001", "1002"])
         self.assertTrue(settings.public.include_in_game)
         self.assertFalse(settings.public.remind_day_before)
+        self.assertTrue(settings.public.always_send_daily_digest)
         self.assertEqual(settings.public.smtp_host, "smtp.example.com")
         self.assertEqual(settings.public.smtp_port, 587)
         self.assertFalse(settings.public.smtp_use_ssl)
@@ -63,6 +65,11 @@ class LoadSettingsTests(unittest.TestCase):
                     load_settings(
                         {"WATCH_IPS": "原神", "INITIAL_LOOKBACK_DAYS": value}
                     )
+
+    def test_daily_digest_defaults_to_only_sending_when_notifications_exist(self) -> None:
+        settings = load_settings({"WATCH_IPS": "原神"})
+
+        self.assertFalse(settings.public.always_send_daily_digest)
 
     def test_rejects_invalid_extra_uid_format(self) -> None:
         with self.assertRaisesRegex(ValueError, "IP:uid"):

@@ -195,21 +195,27 @@ class DailyRunner:
                         generated_at=now,
                         sender=email_sender,
                         recipient=recipient,
+                        send_empty_digest=settings.public.always_send_daily_digest,
                     )
                 except Exception:
                     # Delivery credentials and provider errors must never enter state/logs.
                     warnings.append("email delivery failed; no receipt was recorded")
             else:
                 due, _ = notification_service.collect_due(store, local_day)
-                if due:
+                if due or settings.public.always_send_daily_digest:
                     missing = (
                         "NOTIFY_EMAIL"
                         if not recipient
                         else "complete SMTP settings"
                     )
-                    warnings.append(
-                        f"{len(due)} notification(s) are due but {missing} are not configured"
-                    )
+                    if due:
+                        warnings.append(
+                            f"{len(due)} notification(s) are due but {missing} are not configured"
+                        )
+                    else:
+                        warnings.append(
+                            f"daily digest is enabled but {missing} are not configured"
+                        )
 
             watched_slugs = {ip.slug for ip in resolution.supported}
             media_assets: dict[str, CachedMediaAsset] = {}
@@ -263,6 +269,9 @@ class DailyRunner:
             campaigns_updated=sum(item.campaigns_updated for item in pipeline_results),
             jobs_created=sum(item.jobs_written for item in pipeline_results),
             notifications_sent=len(delivery.sent) if delivery is not None else 0,
+            emails_sent=(
+                1 if delivery is not None and delivery.email_sent else 0
+            ),
             warnings=warnings,
         )
         store.save_run_report(report)

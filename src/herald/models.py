@@ -323,4 +323,5 @@ class RunReport(StrictModel):
     campaigns_updated: int = 0
     jobs_created: int = 0
     notifications_sent: int = 0
+    emails_sent: int = 0
     warnings: list[str] = Field(default_factory=list)

@@ -48,6 +48,7 @@ class WorkflowContractTests(unittest.TestCase):
         self.assertIn("local.env", gitignore.splitlines())
         self.assertIn("WATCH_IPS=原神,明日方舟", example)
         self.assertIn("INITIAL_LOOKBACK_DAYS=21", example)
+        self.assertIn("ALWAYS_SEND_DAILY_DIGEST=false", example)
         self.assertIn("--phase", launcher)
         self.assertIn('"-m", "herald"', launcher)
         self.assertIn("env=child_environment", launcher)
@@ -70,6 +71,10 @@ class WorkflowContractTests(unittest.TestCase):
         self.assertNotIn("commit_branch main", workflow)
         self.assertIn(
             "INITIAL_LOOKBACK_DAYS: ${{ vars.INITIAL_LOOKBACK_DAYS || '21' }}",
+            workflow,
+        )
+        self.assertIn(
+            "ALWAYS_SEND_DAILY_DIGEST: ${{ vars.ALWAYS_SEND_DAILY_DIGEST || 'false' }}",
             workflow,
         )
 

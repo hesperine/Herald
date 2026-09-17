@@ -76,6 +76,7 @@ class PublicSettings(BaseModel):
     extra_weibo_uids: dict[str, list[str]] = Field(default_factory=dict)
     include_in_game: bool = False
     remind_day_before: bool = True
+    always_send_daily_digest: bool = False
     publish_reachability: bool = False
     timezone: str = "Asia/Shanghai"
     initial_lookback_days: int = Field(default=21, ge=1, le=90)
@@ -164,6 +165,9 @@ def load_settings(environ: Mapping[str, str] | None = None) -> RuntimeSettings:
         extra_weibo_uids=_parse_extra_uids(env.get("EXTRA_WEIBO_UIDS")),
         include_in_game=_parse_bool(env.get("INCLUDE_IN_GAME"), False),
         remind_day_before=_parse_bool(env.get("REMIND_DAY_BEFORE"), True),
+        always_send_daily_digest=_parse_bool(
+            env.get("ALWAYS_SEND_DAILY_DIGEST"), False
+        ),
         publish_reachability=_parse_bool(
             env.get("PUBLISH_REACHABILITY"), False
         ),

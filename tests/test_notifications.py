@@ -152,6 +152,70 @@ class NotificationServiceTests(unittest.TestCase):
         self.store.initialize()
         self.service = NotificationService("Asia/Shanghai")
 
+    def test_empty_daily_digest_is_opt_in_and_sent_only_once_per_day(self) -> None:
+        sender = MemorySender()
+
+        disabled = self.service.deliver_due(
+            store=self.store,
+            day=DUE_DAY,
+            generated_at=NOW,
+            sender=sender,
+            recipient="player@example.com",
+        )
+        first = self.service.deliver_due(
+            store=self.store,
+            day=DUE_DAY,
+            generated_at=NOW,
+            sender=sender,
+            recipient="player@example.com",
+            send_empty_digest=True,
+        )
+        second = self.service.deliver_due(
+            store=self.store,
+            day=DUE_DAY,
+            generated_at=NOW,
+            sender=sender,
+            recipient="player@example.com",
+            send_empty_digest=True,
+        )
+
+        self.assertFalse(disabled.email_sent)
+        self.assertTrue(first.email_sent)
+        self.assertFalse(second.email_sent)
+        self.assertEqual(first.sent, ())
+        self.assertEqual(len(sender.messages), 1)
+        self.assertIn("今日暂无需要关注的更新", sender.messages[0]["text"])
+        self.assertTrue(
+            self.store.has_receipt("daily-digest-2026-09-07", DUE_DAY)
+        )
+
+    def test_real_notification_still_sends_after_an_empty_daily_digest(self) -> None:
+        sender = MemorySender()
+        self.service.deliver_due(
+            store=self.store,
+            day=DUE_DAY,
+            generated_at=NOW,
+            sender=sender,
+            recipient="player@example.com",
+            send_empty_digest=True,
+        )
+        self.store.save_campaign(campaign())
+        self.store.save_queue_job(scheduled_job())
+
+        result = self.service.deliver_due(
+            store=self.store,
+            day=DUE_DAY,
+            generated_at=NOW,
+            sender=sender,
+            recipient="player@example.com",
+            send_empty_digest=True,
+        )
+
+        self.assertTrue(result.email_sent)
+        self.assertEqual(len(result.sent), 1)
+        self.assertEqual(len(sender.messages), 2)
+        self.assertIn("明天开售", sender.messages[1]["text"])
+
     def test_saved_future_job_sends_without_any_new_source_content(self) -> None:
         self.store.save_campaign(campaign())
         self.store.save_queue_job(scheduled_job())
@@ -203,6 +267,7 @@ class NotificationServiceTests(unittest.TestCase):
             generated_at=NOW,
             sender=sender,
             recipient="player@example.com",
+            send_empty_digest=True,
         )
 
         self.service.deliver_due(**arguments)

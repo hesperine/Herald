@@ -81,7 +81,7 @@ GitHub Pages 首页只列出仍有效、且属于当前关注 IP 的活动。点
 1. Fork 本仓库，在 fork 的 **Actions** 页面启用工作流。
 2. 打开 **Settings → Secrets and variables → Actions**，按下一节添加配置。
 3. 手动运行一次 **Daily collaboration scan**。第一次运行会自动创建 `state` 和 `page`。
-4. 打开 **Settings → Pages**，选择 **Deploy from a branch**，分支选 `page`，目录选 `/ (root)`。
+4. 打开 **Settings → Pages**，选择 **Deploy from a branch**，分支选 `page`，目录选 `/ (root)`。这个设置只需完成一次；以后 `page` 分支更新会自动触发部署。
 5. 以后工作流每天约在北京时间 08:15 自动运行；GitHub 定时任务可能延后几分钟。
 
 整个配置过程不要求修改或提交仓库文件，也不需要创建 `local.env`。GitHub Actions 会在运行时把 Repository Variables/Secrets 注入为环境变量，HERALD 再从运行进程中读取；这些配置不会进入 Git 历史，因此不会妨碍 fork 同步上游。
@@ -98,6 +98,7 @@ GitHub Pages 首页只列出仍有效、且属于当前关注 IP 的活动。点
 | `COUNTRY` | `CN` | 第一版固定支持中国 |
 | `EXTRA_WEIBO_UIDS` | `原神:123456\n明日方舟:987654` | 可选；给已经内置的 IP 补充微博官方 UID，不能创建未知 IP |
 | `REMIND_DAY_BEFORE` | `true` | 是否生成提前一天提醒 |
+| `ALWAYS_SEND_DAILY_DIGEST` | `false` | 是否在没有新消息或到期提醒时也发送一封空日报；默认关闭 |
 | `INCLUDE_IN_GAME` | `false` | 预留项；当前版本仍聚焦品牌/线下/商品联动 |
 | `TIMEZONE` | `Asia/Shanghai` | 日期队列和邮件时区 |
 | `INITIAL_LOOKBACK_DAYS` | `21` | 每个来源首次成功初始化时回溯的自然日数；可设为 1–90，例如 `30` |
@@ -126,6 +127,8 @@ GitHub Pages 首页只列出仍有效、且属于当前关注 IP 的活动。点
 | `SMTP_PASSWORD` | SMTP 授权码或密码 | 使用邮件时必需 |
 
 `NOTIFY_EMAIL` 可填写多个纯邮箱地址，用英文逗号分隔，允许两侧空格；重复地址自动去重。所有地址仍放在同一个 Repository Secret 中。多收件人发送不在邮件头展示收件地址列表。任一地址被 SMTP 拒收时，本次不记录发送成功回执；后续整批重试可能让已成功接收的地址再次收到邮件。目前不维护逐收件人的回执。
+
+`ALWAYS_SEND_DAILY_DIGEST=true` 时，即使当天没有需要关注的新消息或到期提醒，成功运行也会发送“今日暂无需要关注的更新”。同一自然日的重复运行不会重复发送空日报；如果空日报之后又产生实际提醒，实际提醒仍会发送。保持默认值 `false` 时，只有存在实际提醒才发送邮件。
 
 `codex://threads/...` 是 Codex 任务引用，不是 GitHub Actions 可调用的模型 Key。开发期间可以让 Codex/Luna处理脱敏公开样本，但每日项目运行仍使用上述使用者自配 API。
 

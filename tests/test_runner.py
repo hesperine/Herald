@@ -144,7 +144,12 @@ def extraction() -> ExtractionResult:
     )
 
 
-def settings(*, with_ai: bool = True, with_email: bool = True):
+def settings(
+    *,
+    with_ai: bool = True,
+    with_email: bool = True,
+    always_daily: bool = False,
+):
     env = {
         "WATCH_IPS": "原神",
         "ORIGIN_CITY": "上海",
@@ -161,6 +166,8 @@ def settings(*, with_ai: bool = True, with_email: bool = True):
                 "SMTP_PASSWORD": "test-smtp-password",
             }
         )
+    if always_daily:
+        env["ALWAYS_SEND_DAILY_DIGEST"] = "true"
     return load_settings(env)
 
 
@@ -452,6 +459,7 @@ class DailyRunnerTests(unittest.IsolatedAsyncioTestCase):
 
         self.assertEqual(result.report.campaigns_created, 1)
         self.assertEqual(result.report.notifications_sent, 1)
+        self.assertEqual(result.report.emails_sent, 1)
         self.assertEqual(result.published_campaigns, 1)
         self.assertEqual(len(sender.messages), 1)
         self.assertEqual(len(self.store.load_queue_jobs(date(2026, 9, 7))), 1)
@@ -471,6 +479,37 @@ class DailyRunnerTests(unittest.IsolatedAsyncioTestCase):
             next((self.page / "events").glob("*.json")).read_text("utf-8")
         )
         self.assertEqual(detail["media"][0]["asset_path"], "assets/media/cached.jpg")
+
+    async def test_opt_in_daily_digest_sends_when_no_notifications_exist(self) -> None:
+        sender = MemorySender()
+
+        result = await self.runner.run(
+            settings=settings(
+                with_ai=False,
+                with_email=True,
+                always_daily=True,
+            ),
+            store=self.store,
+            page_dir=self.page,
+            now=NOW,
+            weibo_client=FakeWeiboClient(
+                [
+                    FetchBatch(
+                        items=(),
+                        cursor=WeiboCursor(
+                            container_id="1076031001", latest_post_id="next"
+                        ),
+                    )
+                ]
+            ),
+            provider=None,
+            email_sender=sender,
+        )
+
+        self.assertEqual(result.report.notifications_sent, 0)
+        self.assertEqual(result.report.emails_sent, 1)
+        self.assertEqual(len(sender.messages), 1)
+        self.assertIn("今日暂无需要关注的更新", sender.messages[0]["text"])
 
     async def test_public_reachability_requires_explicit_opt_in(self) -> None:
         item = observation()

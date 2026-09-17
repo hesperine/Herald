@@ -33,6 +33,7 @@ class NotificationDigest:
 class DeliveryResult:
     sent: tuple[QueueJob, ...]
     skipped: tuple[QueueJob, ...]
+    email_sent: bool = False
 
 
 class EmailSender(Protocol):
@@ -212,6 +213,32 @@ class NotificationService:
         subject = f"游戏联动提醒：{len(cards)} 项需要关注"
         return NotificationDigest(subject, "\n".join(lines).rstrip() + "\n", tuple(ordered))
 
+    def render_empty_digest(self, generated_at: datetime) -> NotificationDigest:
+        local_day = generated_at.astimezone(self.timezone).date()
+        subject = f"游戏联动日报：{local_day:%Y-%m-%d} 暂无更新"
+        text = (
+            f"游戏联动日报 · {local_day:%Y-%m-%d}\n\n"
+            "今日暂无需要关注的更新。\n"
+        )
+        return NotificationDigest(subject, text, ())
+
+    @staticmethod
+    def _daily_digest_receipt_id(day: date) -> str:
+        return f"daily-digest-{day.isoformat()}"
+
+    def _save_daily_digest_receipt(
+        self, store: StateStore, day: date, sent_at: datetime
+    ) -> None:
+        receipt_id = self._daily_digest_receipt_id(day)
+        store.save_receipt(
+            NotificationReceipt(
+                job_id=receipt_id,
+                semantic_key=f"daily-digest:{day.isoformat()}",
+                sent_at=sent_at,
+                delivery_day=day,
+            )
+        )
+
     def deliver_due(
         self,
         *,
@@ -220,10 +247,17 @@ class NotificationService:
         generated_at: datetime,
         sender: EmailSender,
         recipient: str,
+        send_empty_digest: bool = False,
     ) -> DeliveryResult:
         items, skipped = self.collect_due(store, day)
         if not items:
-            return DeliveryResult((), tuple(skipped))
+            receipt_id = self._daily_digest_receipt_id(day)
+            if not send_empty_digest or store.has_receipt(receipt_id, day):
+                return DeliveryResult((), tuple(skipped))
+            digest = self.render_empty_digest(generated_at)
+            sender.send(recipient=recipient, subject=digest.subject, text=digest.text)
+            self._save_daily_digest_receipt(store, day, generated_at)
+            return DeliveryResult((), tuple(skipped), email_sent=True)
         digest = self.render_digest(items, generated_at)
         sender.send(recipient=recipient, subject=digest.subject, text=digest.text)
         sent_jobs: list[QueueJob] = []
@@ -237,4 +271,5 @@ class NotificationService:
                 )
             )
             sent_jobs.append(item.job)
-        return DeliveryResult(tuple(sent_jobs), tuple(skipped))
+        self._save_daily_digest_receipt(store, day, generated_at)
+        return DeliveryResult(tuple(sent_jobs), tuple(skipped), email_sent=True)

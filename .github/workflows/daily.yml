@@ -23,6 +23,7 @@ jobs:
       EXTRA_WEIBO_UIDS: ${{ vars.EXTRA_WEIBO_UIDS }}
       INCLUDE_IN_GAME: ${{ vars.INCLUDE_IN_GAME || 'false' }}
       REMIND_DAY_BEFORE: ${{ vars.REMIND_DAY_BEFORE || 'true' }}
+      ALWAYS_SEND_DAILY_DIGEST: ${{ vars.ALWAYS_SEND_DAILY_DIGEST || 'false' }}
       PUBLISH_REACHABILITY: ${{ vars.PUBLISH_REACHABILITY || 'false' }}
       TIMEZONE: ${{ vars.TIMEZONE || 'Asia/Shanghai' }}
       INITIAL_LOOKBACK_DAYS: ${{ vars.INITIAL_LOOKBACK_DAYS || '21' }}
