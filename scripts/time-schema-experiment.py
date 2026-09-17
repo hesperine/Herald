@@ -7,10 +7,22 @@ import re
 OLD={'at','start_at','end_at','start_date','end_date'}
 TIME_SCHEMA={'anyOf':[{'type':'object','additionalProperties':False,
     'properties':{'date':{'type':'string','format':'date','description':'已知日期 YYYY-MM-DD。'},
-                  'time':{'anyOf':[{'type':'string','pattern':r'^([01]\d|2[0-3]):[0-5]\d(:[0-5]\d)?$'},{'type':'null'}], 'description':'已知时刻 HH:MM 或 HH:MM:SS；未知填null，不补午夜。'},
+                  'time':{'anyOf':[{'type':'string','pattern':r'^([01]\d|2[0-3]):[0-5]\d(:[0-5]\d)?$'},{'type':'null'}], 'description':'时刻 HH:MM 或 HH:MM:SS。原文明示该事项时分时必须保留，不能降为仅日期；只有未说明时刻时才填null，不补午夜或23:59。'},
                   'timezone':{'type':'string','enum':['Asia/Shanghai'],'description':'本实验中国区时间，Asia/Shanghai。'}},
     'required':['date','time','timezone']},{'type':'null'}], 'default':None,
     'description':'日期未知则整个对象null；日期已知而时刻未知则只将time填null。'}
+
+
+TIME_DESCRIPTIONS={
+    'ExtractedActivity':{
+        'start':'该实际活动自身的开始时间。不能直接用其中某个预约、开票、满赠或折扣的开始时间代替；卡片最近DDL由程序计算，不填在这里。',
+        'end':'该实际活动自身的结束时间。不能直接用其中某个预约、开票、满赠或折扣的截止时间代替；售完即止等条件不转换成日期。',
+    },
+    'ExtractedAction':{
+        'start':'这个参与事项自身的发生、开放或生效时间。只取对应渠道、轮次、购买或优惠的时间；不能借用其他Action时间，满赠或折扣开始不等于预售开始。',
+        'end':'这个参与事项自身的截止或失效时间。只取对应渠道、轮次、购买或优惠的时间；满赠或折扣截止不等于预售截止。瞬时事项或未公布截止时填null；售完/赠完即止写end_condition。',
+    },
+}
 
 
 def entity(d):
@@ -24,7 +36,9 @@ def convert_schema(schema):
         if not definition:continue
         props=definition['properties']
         for key in OLD:props.pop(key,None)
-        props.update(start=copy.deepcopy(TIME_SCHEMA),end=copy.deepcopy(TIME_SCHEMA))
+        for side in ('start','end'):
+            props[side]=copy.deepcopy(TIME_SCHEMA)
+            props[side]['description']=TIME_DESCRIPTIONS[name][side]+TIME_SCHEMA['description']+'不借发帖时间补齐，不从版本号推算日期；已知结束不得早于开始。'
     claim=schema.get('$defs',{}).get('ExtractedClaim',{}).get('properties',{}).get('field_path')
     if claim:claim['description']='相对extraction路径，如activities[0].actions[0].start或end.time；数组零起始。'
     return schema

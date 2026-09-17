@@ -121,9 +121,11 @@ GitHub Pages 首页只列出仍有效、且属于当前关注 IP 的活动。点
 | `REACHABLE_CITIES` | 愿意前往的城市，用逗号或换行分隔 | 可选 |
 | `AI_API_KEY` | 使用者自己的模型 Key | 使用 AI 时必需 |
 | `WEIBO_COOKIE` | 使用者自己的微博 Cookie | 只有配置额外微博 UID 且匿名接口受限时才可能需要 |
-| `NOTIFY_EMAIL` | 收件地址 | 使用邮件时必需 |
+| `NOTIFY_EMAIL` | `first@example.com,second@example.com` | 使用邮件时必需；支持单个或多个地址，英文逗号分隔 |
 | `SMTP_USERNAME` | SMTP 登录账号/发件地址 | 使用邮件时必需 |
 | `SMTP_PASSWORD` | SMTP 授权码或密码 | 使用邮件时必需 |
+
+`NOTIFY_EMAIL` 可填写多个纯邮箱地址，用英文逗号分隔，允许两侧空格；重复地址自动去重。所有地址仍放在同一个 Repository Secret 中。多收件人发送不在邮件头展示收件地址列表。任一地址被 SMTP 拒收时，本次不记录发送成功回执；后续整批重试可能让已成功接收的地址再次收到邮件。目前不维护逐收件人的回执。
 
 `codex://threads/...` 是 Codex 任务引用，不是 GitHub Actions 可调用的模型 Key。开发期间可以让 Codex/Luna处理脱敏公开样本，但每日项目运行仍使用上述使用者自配 API。
 

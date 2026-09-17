@@ -4,6 +4,7 @@ import tempfile
 import unittest
 from datetime import date, datetime, timezone
 from pathlib import Path
+from unittest.mock import patch
 
 from herald.models import (
     ActionKind,
@@ -15,7 +16,7 @@ from herald.models import (
     NotificationKind,
     QueueJob,
 )
-from herald.notifications import NotificationService
+from herald.notifications import NotificationService, SmtpEmailSender
 from herald.storage import StateStore
 
 
@@ -23,6 +24,46 @@ UTC = timezone.utc
 NOW = datetime(2026, 9, 7, 13, tzinfo=UTC)
 DUE_DAY = date(2026, 9, 7)
 ACTION_AT = datetime(2026, 9, 8, 2, tzinfo=UTC)
+
+
+class SmtpRecipientTests(unittest.TestCase):
+    def sender(self, use_ssl=True):
+        return SmtpEmailSender(host='smtp.example.com', port=465 if use_ssl else 587,
+                               username='sender@example.com', password='test-only', use_ssl=use_ssl)
+
+    def test_multiple_recipients_with_ssl_and_starttls(self):
+        for use_ssl in (True, False):
+            with self.subTest(use_ssl=use_ssl), patch('herald.notifications.smtplib.SMTP_SSL' if use_ssl else 'herald.notifications.smtplib.SMTP') as smtp:
+                client=smtp.return_value.__enter__.return_value
+                client.send_message.return_value={}
+                self.sender(use_ssl).send(recipient='one@example.com, two@example.com, one@example.com', subject='提醒', text='正文')
+                args, kwargs=client.send_message.call_args
+                self.assertEqual(kwargs['to_addrs'], ['one@example.com', 'two@example.com'])
+                self.assertNotIn('one@example.com', str(args[0]['To']))
+                self.assertNotIn('two@example.com', str(args[0]['To']))
+                if not use_ssl: client.starttls.assert_called_once()
+
+    def test_single_recipient_remains_supported(self):
+        with patch('herald.notifications.smtplib.SMTP_SSL') as smtp:
+            client=smtp.return_value.__enter__.return_value
+            client.send_message.return_value={}
+            self.sender().send(recipient='one@example.com', subject='提醒', text='正文')
+            args, kwargs=client.send_message.call_args
+            self.assertEqual(str(args[0]['To']), 'one@example.com')
+            self.assertEqual(kwargs['to_addrs'], ['one@example.com'])
+
+    def test_invalid_list_rejected_before_connecting_without_exposing_address(self):
+        for value in (' , ', 'one@example.com,invalid', 'one@example.com,broken@@example.com', 'one@example.com\nBcc: other@example.com'):
+            with self.subTest(value=value), patch('herald.notifications.smtplib.SMTP_SSL') as smtp:
+                with self.assertRaisesRegex(ValueError, '^invalid NOTIFY_EMAIL recipient list$'):
+                    self.sender().send(recipient=value, subject='提醒', text='正文')
+                smtp.assert_not_called()
+
+    def test_partial_refusal_is_not_reported_as_success(self):
+        with patch('herald.notifications.smtplib.SMTP_SSL') as smtp:
+            smtp.return_value.__enter__.return_value.send_message.return_value={'two@example.com': (550, b'refused')}
+            with self.assertRaisesRegex(RuntimeError, '^email delivery incomplete$'):
+                self.sender().send(recipient='one@example.com,two@example.com', subject='提醒', text='正文')
 
 
 class MemorySender:

@@ -6,6 +6,8 @@ import smtplib
 from dataclasses import dataclass
 from datetime import date, datetime
 from email.message import EmailMessage
+from email.headerregistry import Address
+from email.errors import HeaderParseError
 from typing import Protocol
 from zoneinfo import ZoneInfo, ZoneInfoNotFoundError
 
@@ -56,22 +58,43 @@ class SmtpEmailSender:
         self.use_ssl = use_ssl
 
     def send(self, *, recipient: str, subject: str, text: str) -> None:
+        recipients = []
+        try:
+            if '\r' in recipient or '\n' in recipient:
+                raise ValueError
+            for value in recipient.split(','):
+                value = value.strip()
+                if not value:
+                    continue
+                address = Address(addr_spec=value)
+                if not address.username or not address.domain:
+                    raise ValueError
+                if address.addr_spec not in recipients:
+                    recipients.append(address.addr_spec)
+            if not recipients:
+                raise ValueError
+        except (ValueError, IndexError, HeaderParseError):
+            raise ValueError('invalid NOTIFY_EMAIL recipient list') from None
         message = EmailMessage()
         message["From"] = self.username
-        message["To"] = recipient
+        message["To"] = recipients[0] if len(recipients) == 1 else 'undisclosed-recipients:;'
         message["Subject"] = subject
         message.set_content(text)
 
         if self.use_ssl:
             with smtplib.SMTP_SSL(self.host, self.port, timeout=30) as client:
                 client.login(self.username, self.password)
-                client.send_message(message)
+                refused = client.send_message(message, to_addrs=recipients)
+                if refused:
+                    raise RuntimeError('email delivery incomplete')
             return
 
         with smtplib.SMTP(self.host, self.port, timeout=30) as client:
             client.starttls()
             client.login(self.username, self.password)
-            client.send_message(message)
+            refused = client.send_message(message, to_addrs=recipients)
+            if refused:
+                raise RuntimeError('email delivery incomplete')
 
 
 class NotificationService:

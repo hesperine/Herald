@@ -60,4 +60,18 @@ class TimeSchemaProviderTests(unittest.IsolatedAsyncioTestCase):
             actual=await provider._complete({'messages':[{'role':'system','content':'test'},{'role':'user','content':json.dumps({'output_schema':BatchResult.model_json_schema()})}]},BatchResult)
         props=json.loads(bodies[0]['messages'][-1]['content'])['output_schema']['$defs']['ExtractedAction']['properties']
         self.assertIn('start',props);self.assertNotIn('at',props)
+        definitions=json.loads(bodies[0]['messages'][-1]['content'])['output_schema']['$defs']
+        descriptions=[]
+        import re
+        for name in ('ExtractedActivity','ExtractedAction'):
+            for side in ('start','end'):
+                endpoint=definitions[name]['properties'][side]
+                descriptions.append(endpoint['description'])
+                clock=endpoint['anyOf'][0]['properties']['time']
+                self.assertIn('必须保留',clock['description'])
+                self.assertRegex('12:00',clock['anyOf'][0]['pattern'])
+                self.assertIsNone(re.fullmatch(clock['anyOf'][0]['pattern'],'25:00'))
+        self.assertEqual(len(set(descriptions)),4)
+        self.assertIn('渠道',props['end']['description'])
+        self.assertIn('不能',definitions['ExtractedActivity']['properties']['start']['description'])
         self.assertEqual(actual.groups[0].extraction.activities[0].actions[0].at.isoformat(),'2026-09-08T12:00:00+08:00')
