@@ -1,0 +1,29 @@
+{
+  "extracted_media_text": [],
+  "id": "skland-6306328",
+  "media_hashes": [
+    "67b005cca1267a8badae951a2d29e0a5b51b5eb8f79a0bf9bb2932fd4fdb05b0"
+  ],
+  "media_urls": [
+    "https://bbs.hycdn.cn/image/common/20260911/113/6aa3e5e73ec4be1dfe8a34b2_65de0095.webp"
+  ],
+  "outbound_urls": [],
+  "source": {
+    "account_id": "3737967211133",
+    "account_name": "明日方舟终末地",
+    "canonical_content_id": "6306328",
+    "content_hash": "ccee30e94e8713a4d46acc89d61f106b5c359b33d64db3f66905da6de44ffc0c",
+    "excerpt": "//塔卫二畅游指南//特别篇6//\n//塔卫二畅游指南//特别篇6//\n旅社温馨提示：请善待自己的眉毛~",
+    "first_seen_at": "2026-09-17T04:11:37.178399Z",
+    "id": "skland-6306328",
+    "is_official": true,
+    "kind": "skland",
+    "media_hashes": [],
+    "media_urls": [],
+    "published_at": "2026-09-12T03:00:43Z",
+    "summary": null,
+    "updated_at": null,
+    "url": "https://www.skland.com/article?id=6306328"
+  },
+  "text": "//塔卫二畅游指南//特别篇6//\n//塔卫二畅游指南//特别篇6//\n旅社温馨提示：请善待自己的眉毛~"
+}

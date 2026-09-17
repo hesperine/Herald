@@ -1,0 +1,29 @@
+{
+  "extracted_media_text": [],
+  "id": "skland-6262670",
+  "media_hashes": [
+    "dff4b4583012e985490d9cfc857ef6ff8a6bfcc64d89ef9b1659b63ef95e7d33"
+  ],
+  "media_urls": [
+    "https://bbs.hycdn.cn/image/common/20260829/113/6a9269882333462277f8450f_004865de.webp"
+  ],
+  "outbound_urls": [],
+  "source": {
+    "account_id": "3737967211133",
+    "account_name": "明日方舟终末地",
+    "canonical_content_id": "6262670",
+    "content_hash": "1759ea29903da633bbbc8743e094721375eacc8dcdcef376a013d911236692bd",
+    "excerpt": "《明日方舟：终末地》干员战斗演示 - 提弗洛斯\n预言并非注定，结局该是我们自己书写。",
+    "first_seen_at": "2026-09-17T04:11:37.178399Z",
+    "id": "skland-6262670",
+    "is_official": true,
+    "kind": "skland",
+    "media_hashes": [],
+    "media_urls": [],
+    "published_at": "2026-08-31T03:00:07Z",
+    "summary": null,
+    "updated_at": null,
+    "url": "https://www.skland.com/article?id=6262670"
+  },
+  "text": "《明日方舟：终末地》干员战斗演示 - 提弗洛斯\n预言并非注定，结局该是我们自己书写。"
+}

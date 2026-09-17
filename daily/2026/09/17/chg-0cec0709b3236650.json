@@ -1,0 +1,15 @@
+{
+  "activity_id": null,
+  "campaign_id": "campaign-0451ddb8aea2e952-631416ed",
+  "detected_at": "2026-09-17T04:11:37.178399Z",
+  "field_paths": [],
+  "id": "chg-0cec0709b3236650",
+  "kind": "new_campaign",
+  "published_at": "2026-09-07T10:00:13Z",
+  "semantic_key": "campaign-0451ddb8aea2e952-631416ed:new-campaign",
+  "source_ids": [
+    "miyoushe-78031412",
+    "miyoushe-78058520"
+  ],
+  "summary": "新增联动：崩坏：星穹铁道 × 大白兔"
+}

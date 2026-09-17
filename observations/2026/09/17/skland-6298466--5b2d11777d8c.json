@@ -1,0 +1,29 @@
+{
+  "extracted_media_text": [],
+  "id": "skland-6298466",
+  "media_hashes": [
+    "c2bc93585e66aed5f7b2568735029c35711f9db1136bc6ffb8c634e1385f8757"
+  ],
+  "media_urls": [
+    "https://bbs.hycdn.cn/image/common/20260909/113/6aa0fef0e433a34124fa809b_65de0095.webp"
+  ],
+  "outbound_urls": [],
+  "source": {
+    "account_id": "3737967211133",
+    "account_name": "明日方舟终末地",
+    "canonical_content_id": "6298466",
+    "content_hash": "5b2d11777d8c04f7236e6365f31269150050c03ec4d9cd1ef697fae28d894db1",
+    "excerpt": "铁痕电台游离信号 | 雪凇幽梦OST\n错误的频道，正确的质感。\n对了，外面下雪了，记得多喝热水。如果还是觉得冷，可以把音量再放大一些。",
+    "first_seen_at": "2026-09-17T04:11:37.178399Z",
+    "id": "skland-6298466",
+    "is_official": true,
+    "kind": "skland",
+    "media_hashes": [],
+    "media_urls": [],
+    "published_at": "2026-09-09T12:00:41Z",
+    "summary": null,
+    "updated_at": null,
+    "url": "https://www.skland.com/article?id=6298466"
+  },
+  "text": "铁痕电台游离信号 | 雪凇幽梦OST\n错误的频道，正确的质感。\n对了，外面下雪了，记得多喝热水。如果还是觉得冷，可以把音量再放大一些。"
+}

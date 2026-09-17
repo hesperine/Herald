@@ -1,0 +1,29 @@
+{
+  "extracted_media_text": [],
+  "id": "skland-6262666",
+  "media_hashes": [
+    "8143836347fc71898d018d44ca88dfe1e988e41df2dc8898c2ffec24d0339704"
+  ],
+  "media_urls": [
+    "https://bbs.hycdn.cn/image/common/20260829/113/6a9269242333462277f8450e_e71aef33.webp"
+  ],
+  "outbound_urls": [],
+  "source": {
+    "account_id": "3737967211133",
+    "account_name": "明日方舟终末地",
+    "canonical_content_id": "6262666",
+    "content_hash": "be96c0a39b1b5addee40283e518e275bcbb676c4e52dbdd791b64c4768c08b7a",
+    "excerpt": "武器档案 | 寒夜幽影（施术单元）\n熔炉要塞铸造的武器之一。造型简洁流畅，特殊的镀层适用于昏暗环境隐蔽作战。",
+    "first_seen_at": "2026-09-17T04:11:37.178399Z",
+    "id": "skland-6262666",
+    "is_official": true,
+    "kind": "skland",
+    "media_hashes": [],
+    "media_urls": [],
+    "published_at": "2026-08-30T10:00:58Z",
+    "summary": null,
+    "updated_at": null,
+    "url": "https://www.skland.com/article?id=6262666"
+  },
+  "text": "武器档案 | 寒夜幽影（施术单元）\n熔炉要塞铸造的武器之一。造型简洁流畅，特殊的镀层适用于昏暗环境隐蔽作战。"
+}

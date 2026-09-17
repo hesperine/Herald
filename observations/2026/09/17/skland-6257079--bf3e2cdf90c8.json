@@ -1,0 +1,33 @@
+{
+  "extracted_media_text": [],
+  "id": "skland-6257079",
+  "media_hashes": [
+    "77865195f1dec82e2a81c2d3895854bd729aace9f2e2ad3fc67e4c1cb633ca14",
+    "4b00815788848d411e223c5b2ab56db3d72415d81ab2a584549f82b153f4c435",
+    "01120d8ce5ac6d359bcd9b97ad0c2a886cd7ad9aebadc2e50639dc83907a03cc"
+  ],
+  "media_urls": [
+    "https://bbs.hycdn.cn/image/common/20260827/113/6a900ec2d7d2ad4a6142e5b7_e71aef33.webp",
+    "https://bbs.hycdn.cn/image/common/20260827/113/6a900ec2469981b872ef97a8_004865de.webp",
+    "https://bbs.hycdn.cn/image/common/20260827/113/6a900ec2646410a5f523328c_65de0095.webp"
+  ],
+  "outbound_urls": [],
+  "source": {
+    "account_id": "3737967211133",
+    "account_name": "明日方舟终末地",
+    "canonical_content_id": "6257079",
+    "content_hash": "bf3e2cdf90c8b1b0431b2a71cc8ca8ee424bb04f43a1a4437acc4dd25670219e",
+    "excerpt": "「雪凇幽梦」版本内容说明\n《明日方舟：终末地》新版本「雪凇幽梦」将于9月2日正式开启！\n以下为版本内容说明，请管理员查阅。\n穿过雪与雾，进入幽暗深林和漫长的梦。",
+    "first_seen_at": "2026-09-17T04:11:37.178399Z",
+    "id": "skland-6257079",
+    "is_official": true,
+    "kind": "skland",
+    "media_hashes": [],
+    "media_urls": [],
+    "published_at": "2026-08-28T04:00:15Z",
+    "summary": null,
+    "updated_at": null,
+    "url": "https://www.skland.com/article?id=6257079"
+  },
+  "text": "「雪凇幽梦」版本内容说明\n《明日方舟：终末地》新版本「雪凇幽梦」将于9月2日正式开启！\n以下为版本内容说明，请管理员查阅。\n穿过雪与雾，进入幽暗深林和漫长的梦。"
+}

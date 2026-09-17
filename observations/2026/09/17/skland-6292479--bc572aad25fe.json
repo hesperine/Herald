@@ -1,0 +1,31 @@
+{
+  "extracted_media_text": [],
+  "id": "skland-6292479",
+  "media_hashes": [
+    "c6dfe55e08aed35a9ef0fc990facb6389d00299c31328359abf27e1b836550b5",
+    "b00a61c8e7d4100f0b5bdd470637f0f423f8b542b56d54bcc56d36e416aa1d4a"
+  ],
+  "media_urls": [
+    "https://bbs.hycdn.cn/image/common/20260907/113/6a9ea468bca14bfacde006a0_0095c241.webp",
+    "https://bbs.hycdn.cn/image/common/20260907/113/6a9ea4683da2774810f1a478_96d20048.webp"
+  ],
+  "outbound_urls": [],
+  "source": {
+    "account_id": "3737967211133",
+    "account_name": "明日方舟终末地",
+    "canonical_content_id": "6292479",
+    "content_hash": "bc572aad25fe00a69e559b8c013c1dfb0ab859a531f6bd865226515898cbfee4",
+    "excerpt": "提弗洛斯的日记\n你用一段在应龙关的故事换来了提弗洛斯的笔记本，上面记录了她在雪松林的日常……",
+    "first_seen_at": "2026-09-17T04:11:37.178399Z",
+    "id": "skland-6292479",
+    "is_official": true,
+    "kind": "skland",
+    "media_hashes": [],
+    "media_urls": [],
+    "published_at": "2026-09-08T04:00:57Z",
+    "summary": null,
+    "updated_at": null,
+    "url": "https://www.skland.com/article?id=6292479"
+  },
+  "text": "提弗洛斯的日记\n你用一段在应龙关的故事换来了提弗洛斯的笔记本，上面记录了她在雪松林的日常……"
+}

@@ -1,0 +1,31 @@
+{
+  "extracted_media_text": [],
+  "id": "miyoushe-78117353",
+  "media_hashes": [
+    "abc446254ac6c6defac0f44ff4ff5c3b4a63cab58d8d8238a79356507ab7340a",
+    "ab6eb73a5caeea625fdc65b2681e7c701889e51e6866ebe5f84f350c8e41114b"
+  ],
+  "media_urls": [
+    "https://upload-bbs.miyoushe.com/upload/2026/09/12/75276539/b59709c9ce3c14ea16f233073a42eab0_8427954128596812703.jpg",
+    "https://upload-bbs.miyoushe.com/upload/2026/09/12/75276539/7224167a19fb78dcca6a6d83f2a41255_2798069170530904580.jpg"
+  ],
+  "outbound_urls": [],
+  "source": {
+    "account_id": "75276539",
+    "account_name": "原神",
+    "canonical_content_id": "78117353",
+    "content_hash": "de8a0f4246e9bc0d1d11ab5ecafd3d9d5366cdf83732693b8d137a53ad7cca90",
+    "excerpt": "7.1版本《原神》六周年福利速览\n旅行者好呀，转眼间已经和大家共同度过了六年的时光了~7.1版本恰逢周年，在特别的日子，我们也为大家准备了特别的福利和内容，一起来看看吧~",
+    "first_seen_at": "2026-09-17T04:11:37.178399Z",
+    "id": "miyoushe-78117353",
+    "is_official": true,
+    "kind": "miyoushe",
+    "media_hashes": [],
+    "media_urls": [],
+    "published_at": "2026-09-12T13:15:12Z",
+    "summary": null,
+    "updated_at": null,
+    "url": "https://www.miyoushe.com/ys/article/78117353"
+  },
+  "text": "7.1版本《原神》六周年福利速览\n旅行者好呀，转眼间已经和大家共同度过了六年的时光了~7.1版本恰逢周年，在特别的日子，我们也为大家准备了特别的福利和内容，一起来看看吧~"
+}

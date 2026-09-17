@@ -1,0 +1,29 @@
+{
+  "extracted_media_text": [],
+  "id": "miyoushe-77817831",
+  "media_hashes": [
+    "e148edb8c972e2ef4c234db3ecc5e9e16d5eb3ec5590bcf14f36c96a752eecf2"
+  ],
+  "media_urls": [
+    "https://upload-bbs.miyoushe.com/upload/2026/08/28/288909600/e3cd1d6c495289c383aff6f491a9d000_2387154913114983969.png"
+  ],
+  "outbound_urls": [],
+  "source": {
+    "account_id": "288909600",
+    "account_name": "崩坏星穹铁道",
+    "canonical_content_id": "77817831",
+    "content_hash": "d691f3c9b02fc12a81f9bb08629bd7b8f3401b85cca1d9ec2ca9b15b366c9b64",
+    "excerpt": "星穹美学速递：知更鸟•晴歌\n「听，心中那自由的摇摆。」",
+    "first_seen_at": "2026-09-17T04:11:37.178399Z",
+    "id": "miyoushe-77817831",
+    "is_official": true,
+    "kind": "miyoushe",
+    "media_hashes": [],
+    "media_urls": [],
+    "published_at": "2026-08-28T04:15:10Z",
+    "summary": null,
+    "updated_at": null,
+    "url": "https://www.miyoushe.com/sr/article/77817831"
+  },
+  "text": "星穹美学速递：知更鸟•晴歌\n「听，心中那自由的摇摆。」"
+}

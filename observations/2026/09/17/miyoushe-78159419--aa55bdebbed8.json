@@ -1,0 +1,29 @@
+{
+  "extracted_media_text": [],
+  "id": "miyoushe-78159419",
+  "media_hashes": [
+    "c1ff8e49491d3f112be3239fb86a8dc5204755408d20cf59ff976a56a7eadfc8"
+  ],
+  "media_urls": [
+    "https://upload-bbs.miyoushe.com/upload/2026/09/14/288909600/e1f993d50c86b5e20570a6d8b35f60be_3217167586873814162.png"
+  ],
+  "outbound_urls": [],
+  "source": {
+    "account_id": "288909600",
+    "account_name": "崩坏星穹铁道",
+    "canonical_content_id": "78159419",
+    "content_hash": "aa55bdebbed842303ca0bca5f443ad033548ca0b086d20ecdf10d4fdfc78e11f",
+    "excerpt": "星穹美学速递：砂金•戏浪\n「看，广阔的蓝海在等着我们！」",
+    "first_seen_at": "2026-09-17T04:11:37.178399Z",
+    "id": "miyoushe-78159419",
+    "is_official": true,
+    "kind": "miyoushe",
+    "media_hashes": [],
+    "media_urls": [],
+    "published_at": "2026-09-14T04:15:09Z",
+    "summary": null,
+    "updated_at": null,
+    "url": "https://www.miyoushe.com/sr/article/78159419"
+  },
+  "text": "星穹美学速递：砂金•戏浪\n「看，广阔的蓝海在等着我们！」"
+}

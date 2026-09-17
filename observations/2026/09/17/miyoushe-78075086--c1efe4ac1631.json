@@ -1,0 +1,37 @@
+{
+  "extracted_media_text": [],
+  "id": "miyoushe-78075086",
+  "media_hashes": [
+    "9fbb37613f2c1f6496fd672accbb4a7340c668513d4f5f1423e736dd716c74bb",
+    "03dec3dc26e7dcdb5f27867d6b40d5d902813c3997d315349bdc28800bb23cf3",
+    "f7e8ac7589e8cdc1e383e485e4c34120651fb44f0867172ad5669c50517ef954",
+    "73055c442ceca9b2ff27b9433ea736d10a59076b37fafa4a546d20b1445818f8",
+    "21a46996c78ee96fb96604faedc7d64de5393c76e785ac819b64fd191078c330"
+  ],
+  "media_urls": [
+    "https://upload-bbs.miyoushe.com/upload/2026/09/09/288909600/d6c5adf071fa13ca0346e6c298c3e7b7_9121497121432861408.jpg",
+    "https://upload-bbs.miyoushe.com/upload/2026/09/09/288909600/880e9cdd3c6143a3c2f43b5be626e974_5127853024423053004.jpg",
+    "https://upload-bbs.miyoushe.com/upload/2026/09/09/288909600/26f4cb3884a45ff15c0957c3e28c2490_1879048822741052852.jpg",
+    "https://upload-bbs.miyoushe.com/upload/2026/09/09/288909600/80eacb0706d00b8cc6cff575a4200261_5072544514330423241.jpg",
+    "https://upload-bbs.miyoushe.com/upload/2026/09/09/288909600/0dcb0106c7efa59a7b9dea8d7a60bfac_8598283177972501270.gif"
+  ],
+  "outbound_urls": [],
+  "source": {
+    "account_id": "288909600",
+    "account_name": "崩坏星穹铁道",
+    "canonical_content_id": "78075086",
+    "content_hash": "c1efe4ac163134213517634dce2206d0d810dd3890a87c4095363adbd595ecab",
+    "excerpt": "「方寸大冒险」活动介绍\n踏上方寸大冒险，这里装下了大半个银河的麻烦。集结你的勇者小队，挑战重重难关，击败面前的所有强敌吧。",
+    "first_seen_at": "2026-09-17T04:11:37.178399Z",
+    "id": "miyoushe-78075086",
+    "is_official": true,
+    "kind": "miyoushe",
+    "media_hashes": [],
+    "media_urls": [],
+    "published_at": "2026-09-10T05:00:12Z",
+    "summary": null,
+    "updated_at": null,
+    "url": "https://www.miyoushe.com/sr/article/78075086"
+  },
+  "text": "「方寸大冒险」活动介绍\n踏上方寸大冒险，这里装下了大半个银河的麻烦。集结你的勇者小队，挑战重重难关，击败面前的所有强敌吧。"
+}

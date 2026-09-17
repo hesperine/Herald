@@ -1,0 +1,29 @@
+{
+  "extracted_media_text": [],
+  "id": "skland-6282763",
+  "media_hashes": [
+    "e9f9396ab1684163e5dd96c39794d29b0888ddff3d1b898a0c9d9830f35f308e"
+  ],
+  "media_urls": [
+    "https://bbs.hycdn.cn/image/common/20260904/113/6a9ada9c4faaa271348054e7_ef3391c4.webp"
+  ],
+  "outbound_urls": [],
+  "source": {
+    "account_id": "3737967211133",
+    "account_name": "明日方舟终末地",
+    "canonical_content_id": "6282763",
+    "content_hash": "aa871cf7f8f68693def921809f72221bde43f002eb8d42994b4594898693a41a",
+    "excerpt": "《明日方舟：终末地》过场动画 - 安玛的馈赠\n跟随蹄印与长箭，远离噩梦中包围而来的敌人。\n回到洁白的林中，继续平静的生活。",
+    "first_seen_at": "2026-09-17T04:11:37.178399Z",
+    "id": "skland-6282763",
+    "is_official": true,
+    "kind": "skland",
+    "media_hashes": [],
+    "media_urls": [],
+    "published_at": "2026-09-07T03:00:37Z",
+    "summary": null,
+    "updated_at": null,
+    "url": "https://www.skland.com/article?id=6282763"
+  },
+  "text": "《明日方舟：终末地》过场动画 - 安玛的馈赠\n跟随蹄印与长箭，远离噩梦中包围而来的敌人。\n回到洁白的林中，继续平静的生活。"
+}

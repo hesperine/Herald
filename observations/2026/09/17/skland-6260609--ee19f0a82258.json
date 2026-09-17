@@ -1,0 +1,31 @@
+{
+  "extracted_media_text": [],
+  "id": "skland-6260609",
+  "media_hashes": [
+    "afccd9a37df3c032ca195bfb9ca61a0cb2576d5a08dc8b7eea5f3fb770b73eba",
+    "6010e7a100015efd1d1f0ffeb7a2bd069870bf5e6cdddfe6adde2cb26725e408"
+  ],
+  "media_urls": [
+    "https://bbs.hycdn.cn/image/common/20260828/113/6a91871e1b5f7e68cd1d0fdc_91c496d2.webp",
+    "https://bbs.hycdn.cn/image/common/20260828/113/6a91871e2333462277f84431_96d20048.webp"
+  ],
+  "outbound_urls": [],
+  "source": {
+    "account_id": "3737967211133",
+    "account_name": "明日方舟终末地",
+    "canonical_content_id": "6260609",
+    "content_hash": "ee19f0a8225866ab17cb700d009f4648d3d7e8d8b78f0fc37e4e8403fc173cf2",
+    "excerpt": "「装饰物品」「拍照动作」上新\n《明日方舟：终末地》「雪凇幽梦」版本全新「装饰物品」与「拍照动作」即将上线，请管理员查阅。",
+    "first_seen_at": "2026-09-17T04:11:37.178399Z",
+    "id": "skland-6260609",
+    "is_official": true,
+    "kind": "skland",
+    "media_hashes": [],
+    "media_urls": [],
+    "published_at": "2026-08-29T04:00:33Z",
+    "summary": null,
+    "updated_at": null,
+    "url": "https://www.skland.com/article?id=6260609"
+  },
+  "text": "「装饰物品」「拍照动作」上新\n《明日方舟：终末地》「雪凇幽梦」版本全新「装饰物品」与「拍照动作」即将上线，请管理员查阅。"
+}

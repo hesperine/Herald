@@ -1,0 +1,33 @@
+{
+  "extracted_media_text": [],
+  "id": "miyoushe-78207634",
+  "media_hashes": [
+    "714fdd71a3dd2122545d4541525c566441fe31d79eb762d402963579de8feab5",
+    "0de1b166a96ecf7d273c585d5e3017fb197a855ecee73a15cefc9bc0f4479ccd",
+    "a84e1af70961e43466150cdcc55ee9e8618f7225499661ff961de7183e99ec99"
+  ],
+  "media_urls": [
+    "https://upload-bbs.miyoushe.com/upload/2026/09/15/288909600/24a01a764c3eb2c0b6ae28fd38af14e6_6343910720062409845.jpg",
+    "https://upload-bbs.miyoushe.com/upload/2026/09/15/288909600/987adc718071cbb786fe334abd82304a_1365254560197166068.jpg",
+    "https://upload-bbs.miyoushe.com/upload/2026/09/15/288909600/2e12025c256eb5f0b65326159e3c0ecc_844372951851374217.jpg"
+  ],
+  "outbound_urls": [],
+  "source": {
+    "account_id": "288909600",
+    "account_name": "崩坏星穹铁道",
+    "canonical_content_id": "78207634",
+    "content_hash": "f2aacff461cff5de17dfa98dee795e49f0f755218f5bfb2eee06ae524486b59f",
+    "excerpt": "帕姆展览馆 | 挥掷千星的筹码\n「为了全宇宙，还有你，我愿意揭下自己的面具……」",
+    "first_seen_at": "2026-09-17T04:11:37.178399Z",
+    "id": "miyoushe-78207634",
+    "is_official": true,
+    "kind": "miyoushe",
+    "media_hashes": [],
+    "media_urls": [],
+    "published_at": "2026-09-16T10:00:10Z",
+    "summary": null,
+    "updated_at": null,
+    "url": "https://www.miyoushe.com/sr/article/78207634"
+  },
+  "text": "帕姆展览馆 | 挥掷千星的筹码\n「为了全宇宙，还有你，我愿意揭下自己的面具……」"
+}

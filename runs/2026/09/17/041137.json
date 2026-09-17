@@ -1,0 +1,13 @@
+{
+  "campaigns_created": 1,
+  "campaigns_updated": 0,
+  "duplicates": 0,
+  "finished_at": "2026-09-17T04:20:58.455091Z",
+  "jobs_created": 0,
+  "notifications_sent": 0,
+  "observations": 94,
+  "started_at": "2026-09-17T04:11:37.178399Z",
+  "warnings": [
+    "3 public image(s) could not be cached"
+  ]
+}

@@ -1,0 +1,10 @@
+{
+  "id": "pending-ai-f94f1a8b0673438a75b1",
+  "ip_slug": "arknights-endfield",
+  "notify_immediately": false,
+  "observation_ids": [
+    "skland-6271937"
+  ],
+  "queued_at": "2026-09-17T04:11:37.178399Z",
+  "reason": "semantic extraction pending"
+}

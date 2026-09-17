@@ -1,0 +1,39 @@
+{
+  "extracted_media_text": [],
+  "id": "skland-6282735",
+  "media_hashes": [
+    "7b142125c4ce6ded98ab6e8486a8ec1dfbdc8b4bbd355329864f7f5d36263a2c",
+    "fa82131dbe285955f8d6ac8f14385c783414b6113c9d1116037cf768cc62dc75",
+    "7cb4c72a2de4859801e52faf0675b7746a76f927e3ffa3b3f1e69ac644dfa002",
+    "ccf474fd0e368c27cb6a2f8e3bf0f846837fab084f5739bacb538c1eb2f718ad",
+    "45fb3add0aaf7338b6d9659965d99288cb325d3e02144382dcb211c3e693a618",
+    "8bcc1f97aa4e9cd82b4da5cf4c30e047d8d2f294e1f980b86efa2c16a7ca0bbc"
+  ],
+  "media_urls": [
+    "https://bbs.hycdn.cn/image/common/20260904/113/6a9ad8885cdd0ef480c3ae99_e71aef33.webp",
+    "https://bbs.hycdn.cn/image/common/20260904/113/6a9ad88872c744400454bb92_65de0095.webp",
+    "https://bbs.hycdn.cn/image/common/20260904/113/6a9ad88be3262b30754be954_96d20048.gif",
+    "https://bbs.hycdn.cn/image/common/20260904/113/6a9ad88b5d409990bf571756_91c496d2.gif",
+    "https://bbs.hycdn.cn/image/common/20260904/113/6a9ad88fe3262b30754be955_e71aef33.webp",
+    "https://bbs.hycdn.cn/image/common/20260904/113/6a9ad88fe3262b30754be956_96d20048.webp"
+  ],
+  "outbound_urls": [],
+  "source": {
+    "account_id": "3737967211133",
+    "account_name": "明日方舟终末地",
+    "canonical_content_id": "6282735",
+    "content_hash": "e4e4f7c63d6dfbf3011b93ce6eb5e84de0c377a4cf462407a34fdb211a1b48b8",
+    "excerpt": "「挽弓试炼」活动介绍\n「挽弓试炼」是通过合理搭配箭矢芯片、击破各类靶标，以完成射击训练的挑战活动。\n猎人虽停止狩猎，却不会忘记精进箭术。",
+    "first_seen_at": "2026-09-17T04:11:37.178399Z",
+    "id": "skland-6282735",
+    "is_official": true,
+    "kind": "skland",
+    "media_hashes": [],
+    "media_urls": [],
+    "published_at": "2026-09-06T04:00:26Z",
+    "summary": null,
+    "updated_at": null,
+    "url": "https://www.skland.com/article?id=6282735"
+  },
+  "text": "「挽弓试炼」活动介绍\n「挽弓试炼」是通过合理搭配箭矢芯片、击破各类靶标，以完成射击训练的挑战活动。\n猎人虽停止狩猎，却不会忘记精进箭术。"
+}

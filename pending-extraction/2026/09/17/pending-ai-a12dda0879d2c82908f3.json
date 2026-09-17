@@ -1,0 +1,10 @@
+{
+  "id": "pending-ai-a12dda0879d2c82908f3",
+  "ip_slug": "honkai-star-rail",
+  "notify_immediately": false,
+  "observation_ids": [
+    "miyoushe-78179682"
+  ],
+  "queued_at": "2026-09-17T04:11:37.178399Z",
+  "reason": "semantic extraction pending"
+}
