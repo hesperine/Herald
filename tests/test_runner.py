@@ -61,9 +61,9 @@ class MemorySender:
     def __init__(self) -> None:
         self.messages: list[dict[str, str]] = []
 
-    def send(self, *, recipient: str, subject: str, text: str) -> None:
+    def send(self, *, recipient: str, subject: str, text: str, html: str | None = None) -> None:
         self.messages.append(
-            {"recipient": recipient, "subject": subject, "text": text}
+            {"recipient": recipient, "subject": subject, "text": text, "html": html}
         )
 
 

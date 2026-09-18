@@ -31,6 +31,17 @@ class SmtpRecipientTests(unittest.TestCase):
         return SmtpEmailSender(host='smtp.example.com', port=465 if use_ssl else 587,
                                username='sender@example.com', password='test-only', use_ssl=use_ssl)
 
+    def test_html_mail_has_plain_text_alternative(self):
+        with patch('herald.notifications.smtplib.SMTP_SSL') as smtp:
+            client = smtp.return_value.__enter__.return_value
+            client.send_message.return_value = {}
+            self.sender().send(recipient='one@example.com', subject='日报', text='纯文本', html='<p>正文</p>')
+            message = client.send_message.call_args.args[0]
+            self.assertEqual(message.get_content_type(), 'multipart/alternative')
+            self.assertEqual([p.get_content_type() for p in message.iter_parts()], ['text/plain', 'text/html'])
+            self.assertIn('纯文本', message.get_body(preferencelist=('plain',)).get_content())
+            self.assertIn('<p>正文</p>', message.get_body(preferencelist=('html',)).get_content())
+
     def test_multiple_recipients_with_ssl_and_starttls(self):
         for use_ssl in (True, False):
             with self.subTest(use_ssl=use_ssl), patch('herald.notifications.smtplib.SMTP_SSL' if use_ssl else 'herald.notifications.smtplib.SMTP') as smtp:
@@ -71,11 +82,11 @@ class MemorySender:
         self.should_fail = should_fail
         self.messages: list[dict[str, str]] = []
 
-    def send(self, *, recipient: str, subject: str, text: str) -> None:
+    def send(self, *, recipient: str, subject: str, text: str, html: str | None = None) -> None:
         if self.should_fail:
             raise RuntimeError("simulated SMTP failure")
         self.messages.append(
-            {"recipient": recipient, "subject": subject, "text": text}
+            {"recipient": recipient, "subject": subject, "text": text, "html": html}
         )
 
 
@@ -167,6 +178,20 @@ class NotificationServiceTests(unittest.TestCase):
             generated_at=NOW + timedelta(days=1), sender=sender, recipient='player@example.com')
         self.assertFalse(result.email_sent)
         self.assertEqual(len(sender.messages), 1)
+
+    def test_html_digest_escapes_content_and_formats_local_times(self):
+        from herald.notifications import NotificationItem
+        item = campaign()
+        item.activities[0].title = '<script>test</script>'
+        item.activities[0].actions[0].requires_reservation = True
+        digest = self.service.render_digest([NotificationItem(scheduled_job(), item)], NOW)
+        self.assertIn('&lt;script&gt;test&lt;/script&gt;', digest.html)
+        self.assertNotIn('<script>', digest.html)
+        self.assertIn('2026-09-08 10:00', digest.html)
+        self.assertIn('需预约', digest.html)
+        self.assertIn('即将开始或结束', digest.html)
+        self.assertIn('2026-09-08 10:00', digest.text)
+        self.assertIn('今日暂无需要关注的更新', self.service.render_empty_digest(NOW).html)
 
     def test_empty_daily_digest_is_opt_in_and_sent_only_once_per_day(self) -> None:
         sender = MemorySender()
