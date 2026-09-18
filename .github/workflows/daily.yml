@@ -4,6 +4,8 @@ on:
   schedule:
     # 08:15 in Asia/Shanghai. GitHub schedules use UTC and may start later.
     - cron: "15 0 * * *"
+    # Pending only: 14:15, 20:15, 02:15 in Asia/Shanghai.
+    - cron: "15 6,12,18 * * *"
   workflow_dispatch:
 
 permissions:
@@ -60,6 +62,7 @@ jobs:
         run: python -m pip install .
 
       - name: Prepare generated branches
+        id: prepare
         shell: bash
         run: |
           set -euo pipefail
@@ -79,9 +82,21 @@ jobs:
           prepare_branch page _page
 
       - name: Scan, notify, and build static page
-        run: python -m herald --state-dir _state --page-dir _page --phase full
+        id: scan
+        env:
+          TRIGGER_SCHEDULE: ${{ github.event.schedule }}
+        shell: bash
+        run: |
+          if [[ "$TRIGGER_SCHEDULE" == "15 6,12,18 * * *" ]]; then
+            timeout --signal=TERM 16m python -m herald --state-dir _state --page-dir _page --phase retry
+          else
+            timeout --signal=TERM 16m python -m herald --state-dir _state --page-dir _page --phase full
+          fi
 
       - name: Commit state and page only
+        if: ${{ always() && steps.prepare.outcome == 'success' }}
+        env:
+          PUBLISH_PAGE: ${{ steps.scan.outcome == 'success' }}
         shell: bash
         run: |
           set -euo pipefail
@@ -90,7 +105,7 @@ jobs:
             local directory="$2"
             git -C "$directory" config user.name "github-actions[bot]"
             git -C "$directory" config user.email "41898282+github-actions[bot]@users.noreply.github.com"
-            git -C "$directory" add -A
+            git -C "$directory" add -A -- . ':(exclude)**/*.tmp'
             if git -C "$directory" diff --cached --quiet; then
               echo "No changes for $branch"
               return
@@ -99,4 +114,6 @@ jobs:
             git -C "$directory" push origin "HEAD:$branch"
           }
           commit_branch state _state
-          commit_branch page _page
+          if [[ "$PUBLISH_PAGE" == "true" ]]; then
+            commit_branch page _page
+          fi

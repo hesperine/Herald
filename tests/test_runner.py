@@ -180,6 +180,21 @@ class DailyRunnerTests(unittest.IsolatedAsyncioTestCase):
         self.page = root / "page"
         self.runner = DailyRunner(registry=registry(), clock=lambda: NOW)
 
+    async def test_retry_phase_extracts_and_publishes_without_fetch_or_mail(self):
+        item = observation()
+        await self.runner.run(settings=settings(), store=self.store, page_dir=self.page,
+            now=NOW, weibo_client=FakeWeiboClient([FetchBatch(items=(FetchedObservation(item),),
+                cursor=WeiboCursor(container_id="1076031001", latest_post_id="next"))]),
+            provider=None, email_sender=None, phase=RunPhase.FETCH)
+        sender = MemorySender()
+        result = await self.runner.run(settings=settings(), store=self.store, page_dir=self.page,
+            now=NOW, weibo_client=FakeWeiboClient([]), provider=MockAIProvider({item.id: extraction()}),
+            email_sender=sender, phase=RunPhase.RETRY)
+        self.assertEqual(result.report.campaigns_created, 1)
+        self.assertTrue((self.page / 'index.html').exists())
+        self.assertEqual(sender.messages, [])
+        self.assertEqual(self.store.list_pending_extractions(), [])
+
     async def test_source_edit_keeps_original_first_seen_time(self) -> None:
         self.store.initialize()
         original = observation()
@@ -613,7 +628,7 @@ class DailyRunnerTests(unittest.IsolatedAsyncioTestCase):
             provider=MockAIProvider({item.id: extraction()}),
             email_sender=None,
         )
-        # Replace today's immediate job with a historical future job due today.
+        # Add a future reminder; yesterday's unsent announcement must also carry forward.
         campaign = self.store.list_campaigns()[0]
         self.store.save_queue_job(
             QueueJob(
@@ -647,7 +662,7 @@ class DailyRunnerTests(unittest.IsolatedAsyncioTestCase):
         )
 
         self.assertEqual(result.report.observations, 0)
-        self.assertEqual(result.report.notifications_sent, 1)
+        self.assertEqual(result.report.notifications_sent, 2)
         self.assertIn("历史资料", sender.messages[0]["text"])
 
 

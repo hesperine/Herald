@@ -76,6 +76,7 @@ class RunPhase(StrEnum):
     FETCH = "fetch"
     EXTRACT = "extract"
     FULL = "full"
+    RETRY = "retry"
 
 
 PAGES_PER_NATURAL_DAY = 2
@@ -141,13 +142,14 @@ class DailyRunner:
         notification_service = NotificationService(settings.public.timezone)
 
         should_fetch = phase in {RunPhase.FETCH, RunPhase.FULL}
-        should_extract = phase in {RunPhase.EXTRACT, RunPhase.FULL}
+        should_extract = phase in {RunPhase.EXTRACT, RunPhase.RETRY, RunPhase.FULL}
         pending_by_ip = (
             self._pending_observations(store)
             if should_extract and provider is not None
             else {}
         )
         for ip in resolution.supported:
+            fetched_cursors = {}
             observations = list(pending_by_ip.get(ip.slug, []))
             observations_by_id = {item.id: item for item in observations}
             suppress_immediate_for: set[str] = set()
@@ -169,6 +171,7 @@ class DailyRunner:
                         miyoushe_client=miyoushe_client,
                         skland_client=skland_client,
                         warnings=warnings,
+                        fetched_cursors=fetched_cursors,
                     )
                     suppress_immediate_for.update(historical_ids)
                     for observation in fetched:
@@ -187,6 +190,8 @@ class DailyRunner:
                 suppress_immediate_for=suppress_immediate_for,
             )
             pipeline_results.append(result)
+            for source_id, cursor_payload in fetched_cursors.items():
+                store.save_source_cursor(source_id, cursor_payload)
 
         local_day = now.astimezone(notification_service.timezone).date()
         delivery: DeliveryResult | None = None
@@ -223,6 +228,7 @@ class DailyRunner:
                             f"daily digest is enabled but {missing} are not configured"
                         )
 
+        if phase in {RunPhase.FULL, RunPhase.RETRY}:
             watched_slugs = {ip.slug for ip in resolution.supported}
             media_assets: dict[str, CachedMediaAsset] = {}
             if media_cache is not None:
@@ -299,6 +305,7 @@ class DailyRunner:
         miyoushe_client: MiyousheAccountFetcher | None,
         skland_client: SklandAccountFetcher | None,
         warnings: list[str],
+        fetched_cursors: dict,
         timezone_info: tzinfo,
         initial_lookback_days: int,
     ) -> tuple[list[SourceObservation], set[str]]:
@@ -362,7 +369,7 @@ class DailyRunner:
             warnings.append(f"official source fetch failed: {source_id}")
             return [], set()
 
-        store.save_source_cursor(source_id, batch.cursor.model_dump(mode="json"))
+        fetched_cursors[source_id] = batch.cursor.model_dump(mode="json")
         observations = [item.observation for item in batch.items]
         historical_ids = {
             item.id

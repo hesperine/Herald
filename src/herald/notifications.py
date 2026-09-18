@@ -11,7 +11,7 @@ from email.errors import HeaderParseError
 from typing import Protocol
 from zoneinfo import ZoneInfo, ZoneInfoNotFoundError
 
-from .models import Campaign, NotificationReceipt, QueueJob
+from .models import Campaign, NotificationKind, NotificationReceipt, QueueJob
 from .scheduler import ScheduleCompiler, schedule_actions
 from .storage import StateStore
 
@@ -130,8 +130,20 @@ class NotificationService:
     ) -> tuple[list[NotificationItem], list[QueueJob]]:
         items: list[NotificationItem] = []
         skipped: list[QueueJob] = []
-        for job in store.load_queue_jobs(day):
-            if not include_delivered and store.has_receipt(job.id, day):
+        jobs = store.load_queue_jobs(day)
+        # Carry unsent announcements/updates across midnight; never replay old countdowns.
+        for directory in sorted((store.root / 'queue').glob('*/*/*')):
+            try:
+                queued_day = date(*map(int, directory.relative_to(store.root / 'queue').parts))
+            except ValueError:
+                continue
+            if queued_day < day:
+                jobs.extend(job for job in store.load_queue_jobs(queued_day)
+                            if job.kind in (NotificationKind.ANNOUNCEMENT, NotificationKind.UPDATE))
+        delivered_ids = {p.stem for p in (store.root / 'notified').glob('*/*/*/*.json')}
+        for job in jobs:
+            delivered = job.id in delivered_ids
+            if delivered and (not include_delivered or not store.has_receipt(job.id, day)):
                 skipped.append(job)
                 continue
             campaign = store.load_campaign(job.campaign_id)
@@ -250,6 +262,8 @@ class NotificationService:
         send_empty_digest: bool = False,
     ) -> DeliveryResult:
         items, skipped = self.collect_due(store, day)
+        if store.has_receipt(self._daily_digest_receipt_id(day), day):
+            return DeliveryResult((), tuple(skipped), email_sent=False)
         if not items:
             receipt_id = self._daily_digest_receipt_id(day)
             if not send_empty_digest or store.has_receipt(receipt_id, day):

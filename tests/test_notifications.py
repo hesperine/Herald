@@ -152,6 +152,22 @@ class NotificationServiceTests(unittest.TestCase):
         self.store.initialize()
         self.service = NotificationService("Asia/Shanghai")
 
+    def test_yesterday_update_is_delivered_once_but_old_deadline_is_not(self):
+        from datetime import timedelta
+        self.store.save_campaign(campaign())
+        old = DUE_DAY - timedelta(days=1)
+        self.store.save_queue_job(QueueJob(id='late-update', campaign_id='campaign-a',
+            kind=NotificationKind.UPDATE, due_date=old, semantic_key='late', summary='公开更新'))
+        self.store.save_queue_job(scheduled_job().model_copy(update={'due_date': old}))
+        sender = MemorySender()
+        result = self.service.deliver_due(store=self.store, day=DUE_DAY, generated_at=NOW,
+            sender=sender, recipient='player@example.com')
+        self.assertEqual([j.id for j in result.sent], ['late-update'])
+        result = self.service.deliver_due(store=self.store, day=DUE_DAY + timedelta(days=1),
+            generated_at=NOW + timedelta(days=1), sender=sender, recipient='player@example.com')
+        self.assertFalse(result.email_sent)
+        self.assertEqual(len(sender.messages), 1)
+
     def test_empty_daily_digest_is_opt_in_and_sent_only_once_per_day(self) -> None:
         sender = MemorySender()
 
@@ -189,7 +205,7 @@ class NotificationServiceTests(unittest.TestCase):
             self.store.has_receipt("daily-digest-2026-09-07", DUE_DAY)
         )
 
-    def test_real_notification_still_sends_after_an_empty_daily_digest(self) -> None:
+    def test_daily_digest_is_not_sent_twice_after_empty_digest(self) -> None:
         sender = MemorySender()
         self.service.deliver_due(
             store=self.store,
@@ -211,10 +227,9 @@ class NotificationServiceTests(unittest.TestCase):
             send_empty_digest=True,
         )
 
-        self.assertTrue(result.email_sent)
-        self.assertEqual(len(result.sent), 1)
-        self.assertEqual(len(sender.messages), 2)
-        self.assertIn("明天开售", sender.messages[1]["text"])
+        self.assertFalse(result.email_sent)
+        self.assertEqual(len(result.sent), 0)
+        self.assertEqual(len(sender.messages), 1)
 
     def test_saved_future_job_sends_without_any_new_source_content(self) -> None:
         self.store.save_campaign(campaign())

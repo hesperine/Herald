@@ -58,7 +58,7 @@ GitHub Pages 首页只列出仍有效、且属于当前关注 IP 的活动。点
 
 ## 为什么不需要服务器或数据库
 
-- GitHub Actions 每天运行一次 Python；
+- GitHub Actions 每天完整运行一次，另有三次 pending 重试；
 - `state` 分支充当文件型历史状态和日期队列；
 - `page` 分支由 GitHub Pages 托管静态网页；
 - 邮件通过使用者自己的 SMTP 账号发送；
@@ -82,7 +82,7 @@ GitHub Pages 首页只列出仍有效、且属于当前关注 IP 的活动。点
 2. 打开 **Settings → Secrets and variables → Actions**，按下一节添加配置。
 3. 手动运行一次 **Daily collaboration scan**。第一次运行会自动创建 `state` 和 `page`。
 4. 打开 **Settings → Pages**，选择 **Deploy from a branch**，分支选 `page`，目录选 `/ (root)`。这个设置只需完成一次；以后 `page` 分支更新会自动触发部署。
-5. 以后工作流每天约在北京时间 08:15 自动运行；GitHub 定时任务可能延后几分钟。
+5. 以后工作流每天约在北京时间 08:15 自动运行；另在北京时间 02:15、14:15、20:15 仅重试 pending 并更新网页，不重复爬取或发信。GitHub 定时任务可能延迟。
 
 整个配置过程不要求修改或提交仓库文件，也不需要创建 `local.env`。GitHub Actions 会在运行时把 Repository Variables/Secrets 注入为环境变量，HERALD 再从运行进程中读取；这些配置不会进入 Git 历史，因此不会妨碍 fork 同步上游。
 
@@ -209,7 +209,8 @@ python scripts/run-local.py --phase full
 
 - `fetch`：只访问来源，完成分页、详情补全、规范化、落盘和不耗 token 的规则候选筛选；候选写入 `pending-extraction`，不调用 AI、不合并 Campaign、不发邮件、不生成页面。
 - `extract`：不访问米游社、森空岛或微博，只用已配置的 AI Provider 处理 `pending-extraction`，然后执行确定性的 Campaign 合并与未来提醒编排；不发邮件、不下载图片、不生成页面。缺少 AI Key 或模型配置时会明确报错。
-- `full`（默认）：抓取、候选筛选、AI 提取、Campaign 合并、到期通知、图片缓存与静态页全部执行。GitHub Actions 固定使用这个阶段，每天运行一次。
+- `full`（默认）：抓取、候选筛选、AI 提取、Campaign 合并、到期通知、图片缓存与静态页全部执行。每天北京时间 08:15 执行，同时处理新材料和已有 pending。
+- `retry`：只处理 pending 并发布页面，不爬取、不发邮件；新公告与更新在下一次日报汇总。
 
 首次 `fetch` 或 `full` 是否回溯历史由每个来源自己的 cursor 自动判断，不需要单独的“初始化命令”。想在本地以不同回溯天数重新验证初始化时，请在 `local.env` 修改 `INITIAL_LOOKBACK_DAYS`，并传一个新的空 state 目录，例如 `--state-dir .herald-work/init-30d-state`；已有 state 会继续走增量，不会重复回溯和群发旧公告。
 
@@ -346,3 +347,7 @@ python scripts/run-local.py --now "2026-08-31T10:00:00+08:00" --state-dir ".hera
 请在启用公开 Pages 前阅读 [PRIVACY.md](PRIVACY.md)；安全说明见 [SECURITY.md](SECURITY.md)。项目采用 [MIT License](LICENSE)，第三方参考与许可证核验记录见 [THIRD_PARTY_NOTICES.md](THIRD_PARTY_NOTICES.md)。
 
 感谢 [Thysrael/Horizon](https://github.com/Thysrael/Horizon) 提供 GitHub Actions + AI 信息雷达的产品启发；感谢 [dataabc/weibo-crawler](https://github.com/dataabc/weibo-crawler)、[dataabc/weiboSpider](https://github.com/dataabc/weiboSpider) 与 [nghuyong/WeiboSpider](https://github.com/nghuyong/WeiboSpider) 展示微博数据采集领域的实现思路。本项目没有复制前两个无明确许可证仓库的源码、配置、注释或测试；“致谢/侵删”不替代授权。如公开链接或说明存在权利问题，欢迎提交 Issue 联系处理。
+
+### 限额与运行预算
+
+AI 默认每轮最多 40 次提取／合并调用，并在运行开始后 12 分钟停止 AI 工作。限流优先遵循 Retry-After，材料失败按 3／6／12／24 小时退避；额度或认证失败至少冷却 24 小时。未完成材料保留在 state，成功部分可继续发布。工作流处理步骤有 16 分钟上限，为提交预留时间；失败时提交已落盘的 state，仅成功时发布 page。任务整体仍有 20 分钟上限，硬终止或网络推送失败无法保证远端保存。

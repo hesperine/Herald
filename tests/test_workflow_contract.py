@@ -59,6 +59,10 @@ class WorkflowContractTests(unittest.TestCase):
         workflow = (ROOT / ".github/workflows/daily.yml").read_text(encoding="utf-8")
 
         self.assertIn('cron: "15 0 * * *"', workflow)
+        self.assertIn('cron: "15 6,12,18 * * *"', workflow)
+        self.assertIn('--phase retry', workflow)
+        self.assertIn("steps.scan.outcome == 'success'", workflow)
+        self.assertIn('timeout --signal=TERM 16m', workflow)
         self.assertIn("prepare_branch state _state", workflow)
         self.assertIn("prepare_branch page _page", workflow)
         self.assertIn("group: herald-daily-", workflow)

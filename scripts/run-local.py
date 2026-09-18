@@ -144,7 +144,7 @@ def _parser() -> argparse.ArgumentParser:
     parser.add_argument('--replay-cache-media', action='store_true')
     parser.add_argument(
         "--phase",
-        choices=("fetch", "extract", "full"),
+        choices=("fetch", "extract", "retry", "full"),
         default="full",
         help="run only source fetching, only queued AI extraction, or the full workflow",
     )
