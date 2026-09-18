@@ -1,0 +1,12 @@
+{
+  "action_id": "action-b6029e7a72089cbd--end",
+  "activity_id": "activity-143370800450b804",
+  "campaign_id": "campaign-9d561ae4c629334d-b074e365",
+  "change_id": null,
+  "due_date": "2026-09-20",
+  "expected_at": "2026-09-21T23:59:00+08:00",
+  "id": "job-c51979c5dc7685c2566d",
+  "kind": "deadline",
+  "semantic_key": "schedule:campaign-9d561ae4c629334d-b074e365:activity-143370800450b804:action-b6029e7a72089cbd--end:deadline:2026-09-21T23:59:00+08:00",
+  "summary": "明天截止：联动周边预售截止"
+}

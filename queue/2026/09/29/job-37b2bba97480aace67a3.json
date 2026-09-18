@@ -1,0 +1,12 @@
+{
+  "action_id": "activity-ec00117645e279cd--end",
+  "activity_id": "activity-ec00117645e279cd",
+  "campaign_id": "campaign-9d561ae4c629334d-b074e365",
+  "change_id": null,
+  "due_date": "2026-09-29",
+  "expected_at": "2026-09-30T00:00:00+08:00",
+  "id": "job-37b2bba97480aace67a3",
+  "kind": "deadline",
+  "semantic_key": "schedule:campaign-9d561ae4c629334d-b074e365:activity-ec00117645e279cd:activity-ec00117645e279cd--end:deadline:2026-09-30T00:00:00+08:00",
+  "summary": "明天截止：明日方舟×三丽鸥家族粘土人补款结束"
+}

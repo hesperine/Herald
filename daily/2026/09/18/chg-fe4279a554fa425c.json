@@ -1,0 +1,14 @@
+{
+  "activity_id": null,
+  "campaign_id": "campaign-3e088f098cbc4865-a12dda08",
+  "detected_at": "2026-09-18T04:41:20.369330Z",
+  "field_paths": [],
+  "id": "chg-fe4279a554fa425c",
+  "kind": "new_campaign",
+  "published_at": "2026-09-15T04:00:16Z",
+  "semantic_key": "campaign-3e088f098cbc4865-a12dda08:new-campaign",
+  "source_ids": [
+    "miyoushe-78179682"
+  ],
+  "summary": "新增联动：崩坏：星穹铁道 联动"
+}
