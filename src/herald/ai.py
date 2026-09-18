@@ -150,6 +150,12 @@ class MergeResult(BaseModel):
 class AIProviderError(RuntimeError):
     """A redacted failure safe for run reports."""
 
+    def __init__(self, message: str, *, category: str = 'transient',
+                 retry_after_seconds: float | None = None) -> None:
+        super().__init__(message)
+        self.category = category
+        self.retry_after_seconds = retry_after_seconds
+
 
 class AIProvider(Protocol):
     provider_name: str
@@ -238,6 +244,28 @@ class OpenAICompatibleProvider:
                     'http_status': response.status_code if response is not None else None,
                     'exception_type': type(exc).__name__})
                 last_error = exc
+                if response is not None and response.status_code in (401, 402, 403, 429):
+                    category = 'authentication' if response.status_code in (401, 403) else 'quota' if response.status_code == 402 else 'rate_limit'
+                    try:
+                        error = response.json().get('error', {})
+                        code = error.get('code') or error.get('type') if isinstance(error, dict) else None
+                        if code in ('insufficient_quota', 'quota_exceeded', 'balance_not_enough'):
+                            category = 'quota'
+                    except (ValueError, AttributeError):
+                        pass
+                    retry_after = None
+                    value = response.headers.get('Retry-After', '')
+                    try:
+                        retry_after = max(0, float(value))
+                    except ValueError:
+                        try:
+                            from email.utils import parsedate_to_datetime
+                            from datetime import datetime, timezone
+                            retry_after = max(0, (parsedate_to_datetime(value) - datetime.now(timezone.utc)).total_seconds())
+                        except (ValueError, TypeError, OverflowError):
+                            pass
+                    raise AIProviderError('AI service requires cooldown', category=category,
+                                          retry_after_seconds=retry_after) from None
                 if attempt + 1 < self.max_attempts:
                     retry_delay = self._retry_delay(exc, attempt)
                     if retry_delay is None:

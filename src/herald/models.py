@@ -299,6 +299,9 @@ class PendingExtraction(StrictModel):
     queued_at: AwareDatetime
     reason: str
     notify_immediately: bool = True
+    attempts: int = Field(default=0, ge=0)
+    next_retry_at: AwareDatetime | None = None
+    error_category: str | None = None
 
 
 class PendingExtractionIndexRecord(StrictModel):

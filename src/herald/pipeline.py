@@ -14,6 +14,7 @@ from .dedupe import ObservationDeduplicator
 from .merge import CampaignIdentityResolver, CampaignMerger
 from .models import PendingExtraction, PendingReview, SourceObservation, SourceRef
 from .registry import RegisteredIp
+from .retry import record_failure
 from .scheduler import ScheduleCompiler
 from .storage import StateStore
 
@@ -117,6 +118,14 @@ class ObservationPipeline:
             if not selection.accepted:
                 continue
 
+            if pending is not None and not changed_items and pending.next_retry_at and pending.next_retry_at > now:
+                counters["pending_extractions"] += 1
+                continue
+            pending = pending if pending is not None and not changed_items else PendingExtraction(
+                id=pending_id, observation_ids=list(group.observation_ids), ip_slug=ip.slug,
+                queued_at=now, reason="AI extraction pending", notify_immediately=notify_immediately)
+            store.save_pending_extraction(pending)
+
             if provider is None:
                 store.save_pending_extraction(
                     PendingExtraction(
@@ -139,24 +148,14 @@ class ObservationPipeline:
                 packet = build_extraction_input(primary, ip)
                 try:
                     extraction = await provider.extract(packet)
-                except AIProviderError:
-                    store.save_pending_extraction(
-                        PendingExtraction(
-                            id=pending_id,
-                            observation_ids=list(group.observation_ids),
-                            ip_slug=ip.slug,
-                            queued_at=now,
-                            reason="AI extraction failed; retry required",
-                            notify_immediately=notify_immediately,
-                        )
-                    )
+                except AIProviderError as error:
+                    record_failure(store, pending, now, error)
                     counters["pending_extractions"] += 1
                     continue
                 store.save_extraction(
                     primary.source.content_hash, extraction.model_dump(mode="json")
                 )
                 counters["ai_calls"] += 1
-            store.delete_pending_extraction(pending_id)
 
             packet = build_extraction_input(primary, ip)
             draft = self.assembler.assemble(
@@ -166,6 +165,7 @@ class ObservationPipeline:
                 now=now,
             )
             if draft is None:
+                store.delete_pending_extraction(pending_id)
                 continue
             draft.sources = self._group_sources(group_items, extraction.source_summaries)
 
@@ -181,6 +181,7 @@ class ObservationPipeline:
                         reason="campaign identity is ambiguous",
                     )
                 )
+                store.delete_pending_extraction(pending.id)
                 counters["pending_reviews"] += 1
                 continue
 
@@ -212,6 +213,7 @@ class ObservationPipeline:
                 remind_day_before=remind_day_before,
             )
             counters["jobs_written"] += len(future_jobs)
+            store.delete_pending_extraction(pending.id)
 
         return PipelineResult(**counters)
 

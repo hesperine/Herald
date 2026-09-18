@@ -17,6 +17,7 @@ from .models import RunReport, SourceKind, SourceObservation
 from .notifications import DeliveryResult, EmailSender, NotificationService
 from .pipeline import ObservationPipeline, PipelineResult
 from .registry import IpRegistry, RegisteredIp, RegisteredSource
+from .retry import BudgetedProvider
 from .site import StaticSiteBuilder
 from .sources.base import FetchBatch, SourceAccessError
 from .sources.miyoushe import MiyousheCursor
@@ -119,6 +120,8 @@ class DailyRunner:
         if now.tzinfo is None or now.utcoffset() is None:
             raise ValueError("daily run time must include a timezone")
 
+        from time import monotonic
+        started = monotonic()
         phase = RunPhase(phase)
         store.initialize()
         resolution = self.registry.resolve(settings.public)
@@ -126,6 +129,9 @@ class DailyRunner:
             raise ValueError("none of WATCH_IPS are supported by the built-in registry")
         if phase is RunPhase.EXTRACT and provider is None:
             raise ValueError("extract phase requires a configured AI provider")
+
+        if provider is not None:
+            provider = BudgetedProvider(provider, store, now, started=started)
 
         warnings = [
             f"unsupported WATCH_IPS entry: {name}" for name in resolution.unsupported

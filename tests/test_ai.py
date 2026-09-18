@@ -326,7 +326,7 @@ class OpenAICompatibleProviderTests(unittest.IsolatedAsyncioTestCase):
                 api_key="private-key",
                 max_attempts=3,
             )
-            with self.assertRaisesRegex(AIProviderError, "redacted retries"):
+            with self.assertRaises(AIProviderError):
                 await provider.extract(packet())
 
         self.assertEqual(attempts, 1)
