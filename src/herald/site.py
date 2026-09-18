@@ -74,7 +74,7 @@ fetch('data/active.json').then(r=>{if(!r.ok)throw Error();return r.json();}).the
 TODAY_HTML = r"""<!doctype html>
 <html lang="zh-CN">
 <head><meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1"><title>每日提醒 · HERALD</title><link rel="stylesheet" href="style.css"></head>
-<body><main><nav><a href="index.html">活动卡片</a><a href="today.html">每日提醒</a></nav><h1>每日提醒</h1><p id="day"></p><h2>今日新消息</h2><div id="news"></div><h2>即将开始或结束</h2><div id="upcoming"></div></main><script src="today.js"></script></body>
+<body><main><nav><a href="index.html">活动卡片</a><a href="today.html">每日提醒</a></nav><h1>每日提醒</h1><label>查看日期 <select id="history-date" aria-label="选择提醒日期"></select></label><p id="day"></p><h2>今日新消息</h2><div id="news"></div><h2>即将开始或结束</h2><div id="upcoming"></div></main><script src="today.js"></script></body>
 </html>
 """
 
@@ -89,20 +89,37 @@ function sourceLinks(parent, sources) {
     const li=node('li'), a=node('a',sourceLabel(s)); a.href=s.url;a.rel='noreferrer';li.append(a);list.append(li);
   } parent.append(list);
 }
-fetch('data/today.json',{cache:'no-store'}).then(r=>{if(!r.ok)throw Error();return r.json();}).then(data=>{
- document.getElementById('day').textContent=data.date;
- for(const [targetId,isNews] of [['news',true],['upcoming',false]]) {
-  const target=document.getElementById(targetId);
-  for(const c of data.cards) {
-   const reasons=c.reasons.filter(r=>['announcement','update'].includes(r.kind)===isNews);
-   if(!reasons.length)continue;
-   const section=node('section'),h=node('h3'),link=node('a',c.activity?c.activity.title:c.campaign_title);
-   link.href='event.html?id='+encodeURIComponent(c.campaign_id)+(c.activity_id?'#activity-'+encodeURIComponent(c.activity_id):'');h.append(link);
-   section.append(h,node('p',c.campaign_title));
-   for(const r of reasons)section.append(node('p',r.summary+(r.expected_at?' · '+displayTime(r.date_only?null:r.expected_at,r.date_only):'')));
-   sourceLinks(section,c.sources);target.append(section);
-  } if(!target.children.length)target.textContent=isNews?'今天暂无新消息':'今天暂无开始或结束提醒';
- }
+let loadVersion=0;
+async function loadDay(day) {
+ const version=++loadVersion;
+ try {
+  const response=await fetch('data/reminders/'+encodeURIComponent(day)+'.json',{cache:'no-store'});
+  if(!response.ok)throw Error();
+  const data=await response.json();if(version!==loadVersion)return;
+  document.getElementById('day').textContent=data.date+' · 当日提醒记录';
+  for(const [targetId,isNews] of [['news',true],['upcoming',false]]) {
+   const target=document.getElementById(targetId);target.replaceChildren();
+   for(const c of data.cards) {
+    const reasons=c.reasons.filter(r=>['announcement','update'].includes(r.kind)===isNews);
+    if(!reasons.length)continue;
+    const section=node('section'),h=node('h3');
+    const title=c.activity?c.activity.title:c.campaign_title;
+    if(c.detail_url){const link=node('a',title);link.href=c.detail_url;h.append(link);}else h.textContent=title;
+    section.append(h,node('p',c.campaign_title));
+    for(const r of reasons)section.append(node('p',r.summary+(r.expected_at?' · '+displayTime(r.date_only?null:r.expected_at,r.date_only):'')));
+    if(!c.detail_url)section.append(node('small','详情已下线，请参考原帖'));
+    sourceLinks(section,c.sources);target.append(section);
+   }
+   if(!target.children.length)target.textContent=isNews?'当日暂无新消息':'当日暂无开始或结束提醒';
+  }
+ } catch(error){if(version===loadVersion){document.getElementById('news').textContent='提醒加载失败，请重试';document.getElementById('upcoming').replaceChildren();}}
+}
+const dates=document.getElementById('history-date');
+dates.addEventListener('change',()=>loadDay(dates.value));
+fetch('data/reminders/index.json',{cache:'no-store'}).then(r=>{if(!r.ok)throw Error();return r.json();}).then(data=>{
+ for(const day of data.dates){const option=node('option',day);option.value=day;dates.append(option);}
+ if(data.dates.length)loadDay(data.dates[0]);
+ else document.getElementById('news').textContent='暂无提醒记录';
 }).catch(()=>{document.getElementById('news').textContent='提醒加载失败，请刷新重试';});
 """
 
@@ -223,6 +240,8 @@ class StaticSiteBuilder:
                 (not item.job.activity_id or any(a.id == item.job.activity_id and a.is_visible(now) for a in item.campaign.activities))
             ]),
         })
+        self._publish_reminder_history(store, data_dir, now, campaigns,
+                                       watched_ip_slugs, notification_service, forbidden_values or [])
         reachable = reachable_cities or []
         summaries = [
             self._campaign_summary(
@@ -270,6 +289,51 @@ class StaticSiteBuilder:
         (output / ".nojekyll").write_text("", encoding="utf-8")
         self._scan_forbidden(output, forbidden_values or [])
         return campaigns
+
+    def _publish_reminder_history(self, store, data_dir, now, campaigns,
+                                  watched_slugs, service, forbidden_values):
+        day = now.astimezone(self.timezone).date()
+        due, _ = service.collect_due(store, day, include_delivered=True)
+        old = store.load_reminder_snapshot(day) or {'date': str(day), 'cards': []}
+        cards = {(c['campaign_id'], c['activity_id']): c for c in old['cards']}
+        for card in service.build_cards(due):
+            key = (card['campaign_id'], card['activity_id'])
+            previous = cards.get(key)
+            if previous:
+                card['reasons'] = previous['reasons'] + [r for r in card['reasons'] if r not in previous['reasons']]
+            cards[key] = card
+        snapshot = {'date': str(day), 'cards': list(cards.values())}
+        serialized = json.dumps(snapshot, ensure_ascii=False)
+        if any(value in serialized for value in forbidden_values if len(value) >= 8):
+            raise ValueError('sensitive value detected in reminder snapshot')
+        store.save_reminder_snapshot(day, snapshot)
+        store.prune_reminders(day)
+        directory = data_dir / 'reminders'
+        directory.mkdir(exist_ok=True)
+        self._remove_json_files(directory)
+        visible = {c.id: {a.id for a in c.activities} for c in campaigns}
+        watched_ids = {c.id for c in store.list_campaigns() if c.ip_slug in watched_slugs}
+        dates = []
+        for saved in store.list_reminder_snapshots(day):
+            published = []
+            for card in saved['cards']:
+                if card['campaign_id'] not in watched_ids:
+                    continue
+                cid, aid = card['campaign_id'], card['activity_id']
+                url = None
+                if cid in visible and (not aid or aid in visible[cid]):
+                    url = f'event.html?id={cid}' + (f'#activity-{aid}' if aid else '')
+                published.append({
+                    'campaign_id': cid, 'activity_id': aid,
+                    'campaign_title': card['campaign_title'], 'ip_name': card['ip_name'],
+                    'activity': {'title': card['activity']['title']} if card['activity'] else None,
+                    'reasons': card['reasons'], 'detail_url': url,
+                    'sources': [{k: source.get(k) for k in ('url', 'summary', 'account_name')}
+                                for source in card['sources']],
+                })
+            dates.append(saved['date'])
+            self._write_json(directory / f"{saved['date']}.json", {'date': saved['date'], 'cards': published})
+        self._write_json(directory / 'index.json', {'dates': dates})
 
     def _activity_cards(self, campaigns, now):
         cards = []

@@ -5,7 +5,7 @@ from __future__ import annotations
 import json
 import re
 import uuid
-from datetime import date
+from datetime import date, timedelta
 from pathlib import Path
 from typing import TypeVar
 
@@ -69,6 +69,7 @@ class StateStore:
             "pending-review",
             "runs",
             "sources",
+            "reminders",
         ):
             (self.root / name).mkdir(parents=True, exist_ok=True)
 
@@ -77,6 +78,44 @@ class StateStore:
             self.root / "events" / f"{_require_safe_id(campaign.id)}.json",
             campaign,
         )
+
+    def save_reminder_snapshot(self, day: date, payload: dict) -> Path:
+        return self._atomic_json_write(self.root / 'reminders' / f'{day.isoformat()}.json', payload)
+
+    def load_reminder_snapshot(self, day: date) -> dict | None:
+        path = self.root / 'reminders' / f'{day.isoformat()}.json'
+        return json.loads(path.read_text(encoding='utf-8')) if path.exists() else None
+
+    def list_reminder_snapshots(self, today: date) -> list[dict]:
+        return [snapshot for offset in range(7)
+                if (snapshot := self.load_reminder_snapshot(today - timedelta(days=offset))) is not None]
+
+    def prune_reminders(self, today: date) -> None:
+        """Seven local calendar days; never remove facts, sources or future jobs."""
+        cutoff = today - timedelta(days=6)
+        root = self.root.resolve()
+        for bucket in ('reminders', 'daily', 'queue', 'notified'):
+            directory = self.root / bucket
+            pattern = '*.json' if bucket == 'reminders' else '*/*/*/*.json'
+            for path in directory.glob(pattern):
+                if path.is_symlink() or not path.resolve().is_relative_to(root):
+                    continue
+                try:
+                    day = date.fromisoformat(path.stem) if bucket == 'reminders' else date(*map(int, path.relative_to(directory).parts[:3]))
+                except ValueError:
+                    continue
+                if day < cutoff:
+                    if bucket == 'queue':
+                        payload = json.loads(path.read_text(encoding='utf-8'))
+                        if payload.get('kind') in ('announcement', 'update') and not any(
+                            (self.root / 'notified').glob(f'*/*/*/{path.name}')
+                        ):
+                            continue
+                    path.unlink()
+                    parent = path.parent
+                    while parent != directory and parent.is_dir() and not any(parent.iterdir()):
+                        parent.rmdir()
+                        parent = parent.parent
 
     def load_campaign(self, campaign_id: str) -> Campaign | None:
         path = self.root / "events" / f"{_require_safe_id(campaign_id)}.json"

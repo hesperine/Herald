@@ -83,6 +83,34 @@ class StaticSiteBuilderTests(unittest.TestCase):
         calendar = ''.join(p.read_text('utf-8') for p in (self.output / 'data/calendar').glob('*.json'))
         self.assertNotIn('expired-child', calendar)
 
+    def test_seven_day_history_survives_rebuild_and_expired_detail_removal(self):
+        from herald.models import QueueJob, NotificationKind
+        self.store.save_campaign(campaign('archive'))
+        self.store.save_queue_job(QueueJob(id='notice', campaign_id='archive',
+            activity_id='archive-activity', kind=NotificationKind.UPDATE,
+            due_date=NOW.date(), semantic_key='notice', summary='公开提醒'))
+        def build(now):
+            self.builder.build(store=self.store, output_dir=self.output, now=now,
+                               watched_ip_slugs={'genshin-impact'})
+        build(NOW)
+        self.store.delete_queue_job(self.store.load_queue_jobs(NOW.date())[0])
+        build(NOW)
+        self.assertEqual(len(self.store.load_reminder_snapshot(NOW.date())['cards']), 1)
+        item = self.store.load_campaign('archive')
+        item.status = EventStatus.ENDED
+        self.store.save_campaign(item)
+        build(NOW + timedelta(days=6))
+        history = self.output / 'data/reminders' / (str(NOW.date()) + '.json')
+        payload = json.loads(history.read_text('utf-8'))
+        self.assertEqual(payload['cards'][0]['reasons'][0]['summary'], '公开提醒')
+        self.assertIsNone(payload['cards'][0]['detail_url'])
+        self.assertNotIn('venues', payload['cards'][0]['activity'])
+        self.assertFalse((self.output / 'events/archive.json').exists())
+        build(NOW + timedelta(days=7))
+        self.assertFalse(history.exists())
+        self.assertIsNone(self.store.load_reminder_snapshot(NOW.date()))
+        self.assertIsNotNone(self.store.load_campaign('archive'))
+
     def setUp(self) -> None:
         self.temporary = tempfile.TemporaryDirectory()
         self.addCleanup(self.temporary.cleanup)
