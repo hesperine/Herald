@@ -1,0 +1,151 @@
+{
+  "activities": [
+    {
+      "actions": [
+        {
+          "at": "2026-09-23T00:00:00+08:00",
+          "cancelled": false,
+          "end_at": null,
+          "end_condition": null,
+          "end_date": null,
+          "ended": false,
+          "evidence": [],
+          "id": "action-917d8e7757ce9a5f",
+          "kind": "announcement",
+          "platform": null,
+          "quantity_limit": null,
+          "requires_reservation": null,
+          "requires_rush": null,
+          "rules": null,
+          "scope": null,
+          "start_date": null,
+          "title": "联名活动上线",
+          "url": null
+        }
+      ],
+      "end_at": null,
+      "end_date": null,
+      "evidence": [
+        {
+          "field_path": "activities[0].start_date",
+          "quote": "9 月 23 日正式上线",
+          "source_id": "skland-6271937"
+        },
+        {
+          "field_path": "activities[0].uncertainties",
+          "quote": "更多饮品套餐及瓶装联名活动情报，将于后续发布",
+          "source_id": "skland-6271937"
+        }
+      ],
+      "id": "activity-270f3157626abbe8",
+      "kind": "in_game",
+      "related_offers": null,
+      "rules": null,
+      "start_at": null,
+      "start_date": "2026-09-23",
+      "status": "details_pending",
+      "title": "联名活动",
+      "uncertainties": [
+        "更多饮品套餐及瓶装联名活动情报，将于后续发布"
+      ],
+      "venues": [
+        {
+          "address": null,
+          "business_hours": null,
+          "city": null,
+          "country": "CN",
+          "evidence": [],
+          "id": "venue-ad3a0fbafa27d7a2",
+          "name": null,
+          "nationwide": false,
+          "online_platform": null,
+          "province": null
+        }
+      ]
+    }
+  ],
+  "announced_at": "2026-09-02T01:00:51Z",
+  "fact_provenance": {
+    "activities.activity-270f3157626abbe8.start_date": {
+      "content_hash": "791ddac61cbfbc4ccdf6a0d0d4fa3d40f1d98013e54d7f8b9947a40e9a7e2bae",
+      "observation_id": "skland-6305039",
+      "published_at": "2026-09-11T06:00:35Z",
+      "quote": "9 月 23 日正式上线",
+      "source_id": "skland-6305039"
+    },
+    "activities.activity-270f3157626abbe8.uncertainties": {
+      "content_hash": "791ddac61cbfbc4ccdf6a0d0d4fa3d40f1d98013e54d7f8b9947a40e9a7e2bae",
+      "observation_id": "skland-6305039",
+      "published_at": "2026-09-11T06:00:35Z",
+      "quote": "更多饮品套餐及瓶装联名活动情报，将于后续发布",
+      "source_id": "skland-6305039"
+    },
+    "partner": {
+      "content_hash": "791ddac61cbfbc4ccdf6a0d0d4fa3d40f1d98013e54d7f8b9947a40e9a7e2bae",
+      "observation_id": "skland-6305039",
+      "published_at": "2026-09-11T06:00:35Z",
+      "quote": "奈雪的茶",
+      "source_id": "skland-6305039"
+    },
+    "title": {
+      "content_hash": "791ddac61cbfbc4ccdf6a0d0d4fa3d40f1d98013e54d7f8b9947a40e9a7e2bae",
+      "observation_id": "skland-6305039",
+      "published_at": "2026-09-11T06:00:35Z",
+      "quote": "奈雪的茶 ×《明日方舟：终末地》联名活动",
+      "source_id": "skland-6305039"
+    }
+  },
+  "first_seen_at": "2026-09-17T04:11:37.178399Z",
+  "id": "campaign-3302d7e79db4b203-62055d07",
+  "ip_name": "明日方舟：终末地",
+  "ip_slug": "arknights-endfield",
+  "partner": "奈雪的茶",
+  "revision": 1,
+  "sources": [
+    {
+      "account_id": "3737967211133",
+      "account_name": "明日方舟终末地",
+      "canonical_content_id": "6271937",
+      "content_hash": "07336763ba5ef24567d352878b49d22a00811c7d67be11d69ac13b35e78aa299",
+      "excerpt": "「雪凇幽梦」版本更新说明\n穿过雪与雾，进入幽暗深林和漫长的梦。\n亲爱的管理员：\n欢迎来到全新版本「雪凇幽梦」！\n▼//更新维护及补偿说明\n■ 更新维护时间\n2026/09/02 06:00 - 2026/09/02 12:00（UTC+8）\n※ 维护后的开服时间存在提前或延迟的可能，详情请关注官方公告。\n■ 更新维护及问题修复补偿说明\n· 更新维护补偿内容：【嵌晶玉】×900\n· 问题修复补偿内容：【嵌晶玉】×900\n· 发放时间：2026/09/02更新维护后 - 下次版本更新维护前\n· 发放条件：2026/09/02更新前创建角色\n· 发放说明：更新维护补偿及问题修复补偿将在解锁【邮箱】功能后，通过游戏内邮件分两封发放，邮件将于下次版本更新维护时过期，请注意及时领取。\n■ 更新说明\n本次更新为强制更新，更新结束后，需重新下载并安装游戏客户端。版本更新维护开始后，管理员可依照游戏内指引进行更新。\n· iOS：进入App Store，点击更新。\n· 安卓：进入游戏后，按照游戏内弹窗提示完成更新。\n· PlayStation®5：打开系统界面，选择《明日方舟：终末地》，按下控制器“选项（",
+      "first_seen_at": "2026-09-17T04:11:37.178399Z",
+      "id": "skland-6271937",
+      "is_official": true,
+      "kind": "skland",
+      "media_hashes": [
+        "064b6d6f80d562923c2313a12acc47014f75e44f69d6a1908b4980cd18fc4828"
+      ],
+      "media_urls": [
+        "https://bbs.hycdn.cn/image/common/20260901/113/6a96d3219c4113da3017deef_96d20048.webp"
+      ],
+      "published_at": "2026-09-02T01:00:51Z",
+      "summary": "版本更新说明，含维护时间、补偿、全新剧情/干员/武器/区域、寻访及申领、活动及玩法更新、采购中心、集成工业系统、系统功能、问题修复等。",
+      "updated_at": null,
+      "url": "https://www.skland.com/article?id=6271937"
+    },
+    {
+      "account_id": "3737967211133",
+      "account_name": "明日方舟终末地",
+      "canonical_content_id": "6305039",
+      "content_hash": "791ddac61cbfbc4ccdf6a0d0d4fa3d40f1d98013e54d7f8b9947a40e9a7e2bae",
+      "excerpt": "奈雪的茶 ×《明日方舟：终末地》联名活动，9月23日正式上线！\n亲爱的管理员：\n属于你的下午茶补给，即将送达。\n@奈雪的茶 ×《明日方舟：终末地》联名活动，9月23日正式上线！\n更多饮品套餐及瓶装联名活动情报，将于后续发布，敬请期待~",
+      "first_seen_at": "2026-09-17T04:11:37.178399Z",
+      "id": "skland-6305039",
+      "is_official": true,
+      "kind": "skland",
+      "media_hashes": [
+        "40810561f0fdb294aad7b70a51deb24ca70bac43ff8a13426a78d02912b92dd2"
+      ],
+      "media_urls": [
+        "https://bbs.hycdn.cn/image/common/20260911/113/6aa377eeb8edfebe3af4fc99_e71aef33.webp"
+      ],
+      "published_at": "2026-09-11T06:00:35Z",
+      "summary": "官宣与奈雪的茶联名活动，9月23日正式上线，后续将有更多饮品套餐及瓶装联名情报。",
+      "updated_at": null,
+      "url": "https://www.skland.com/article?id=6305039"
+    }
+  ],
+  "status": "details_pending",
+  "title": "奈雪的茶 ×《明日方舟：终末地》联名活动",
+  "updated_at": "2026-09-18T20:56:54.700486Z"
+}

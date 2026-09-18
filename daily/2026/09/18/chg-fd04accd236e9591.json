@@ -1,0 +1,15 @@
+{
+  "activity_id": null,
+  "campaign_id": "campaign-3302d7e79db4b203-62055d07",
+  "detected_at": "2026-09-18T20:56:54.700486Z",
+  "field_paths": [],
+  "id": "chg-fd04accd236e9591",
+  "kind": "new_campaign",
+  "published_at": "2026-09-02T01:00:51Z",
+  "semantic_key": "campaign-3302d7e79db4b203-62055d07:new-campaign",
+  "source_ids": [
+    "skland-6271937",
+    "skland-6305039"
+  ],
+  "summary": "新增联动：奈雪的茶 ×《明日方舟：终末地》联名活动"
+}
