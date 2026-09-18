@@ -1,7 +1,7 @@
 """Minimal static JSON and HTML publisher.
 
-Visual design is intentionally absent. This module exists to verify filtering,
-date indexes, details, and privacy boundaries before a later frontend redesign.
+Publishes activity cards, accessible image galleries and seven-day reminders
+without a frontend framework or persistent server.
 """
 
 from __future__ import annotations
@@ -21,6 +21,32 @@ from .storage import StateStore
 
 
 STYLE_CSS = r"""body{font:16px/1.6 system-ui,sans-serif;color:#222;background:#fff;margin:0}main{max-width:1050px;margin:auto;padding:24px}nav{display:flex;gap:24px;border-bottom:1px solid #bbb;padding-bottom:12px}a{color:#146c59}h1{font-size:28px}h2{font-size:22px}h3{font-size:19px}input{font:inherit;padding:6px;max-width:100%;box-sizing:border-box}#events{display:grid;grid-template-columns:repeat(auto-fit,minmax(min(280px,100%),1fr));gap:16px;list-style:none;padding:0}.card{border:1px solid #ccc;border-radius:6px;padding:16px;overflow-wrap:anywhere}.card h2{font-size:20px;margin:4px 0}.deadline{font-weight:600;color:#a52b35}section{border-top:1px solid #ddd;padding:16px 0;scroll-margin-top:16px}p,li,dd{overflow-wrap:anywhere}img{max-width:100%;height:auto}figure{margin:12px 0}summary{cursor:pointer}dt{font-weight:600}dd{margin:0 0 10px}button{font:inherit}small{color:#555}:target{outline:2px solid #146c59;outline-offset:4px}*{letter-spacing:0}"""
+
+STYLE_CSS += r"""
+body{background:#f6f7f8;color:#263238}main{max-width:1050px;padding:28px 24px 64px}
+nav{gap:24px;border-color:#dfe5e5}nav a{text-decoration:none;font-weight:600;padding:4px 0}
+h1{margin:28px 0 20px;line-height:1.3}h2,h3{line-height:1.4}a{text-underline-offset:3px}
+.card,#activities>section,#sources>section,#news>section,#upcoming>section{background:white;border:1px solid #dfe5e5;border-radius:12px;padding:20px;margin-bottom:16px}
+#summary{display:grid;grid-template-columns:max-content 1fr;gap:8px 20px}#summary dd{margin:0}
+button,select{font:inherit;border:1px solid #cbd5d5;border-radius:7px;background:white;color:inherit;padding:8px 12px;cursor:pointer}
+button:hover{background:#eef4f3}button:disabled{opacity:.4;cursor:default}
+:focus-visible{outline:3px solid #146c59;outline-offset:3px}
+.gallery{display:grid;grid-template-columns:repeat(auto-fill,minmax(150px,1fr));gap:12px;margin-top:16px}
+.gallery figure{margin:0;min-width:0}.thumbnail{display:flex;align-items:center;justify-content:center;height:180px;background:#f2f4f5;border:1px solid #e2e7e8;border-radius:8px;overflow:hidden}
+.thumbnail img{display:block;width:100%;height:100%;object-fit:contain}.gallery figcaption{font-size:13px;margin-top:6px}
+.gallery .missing-image{font-size:14px;color:#667;padding:12px;text-align:center}
+body.viewer-open{overflow:hidden}
+#image-viewer{width:min(1100px,94vw);height:88vh;height:88dvh;max-width:94vw;max-height:92vh;border:0;border-radius:12px;padding:0;background:#f7f8f9;color:#263238}
+#image-viewer::backdrop{background:rgba(12,20,24,.8)}
+.viewer-panel{height:100%;display:flex;flex-direction:column}.viewer-toolbar{display:flex;align-items:center;gap:8px;flex-wrap:wrap;padding:12px 16px;background:white;border-bottom:1px solid #dfe5e5}
+#viewer-caption{margin:0 auto 0 0;font-size:14px}#viewer-original{font-size:14px}
+.viewer-stage{flex:1;min-height:0;overflow:auto;text-align:center;padding:12px;box-sizing:border-box;position:relative}
+#viewer-image{display:block;width:100%;height:100%;object-fit:contain;margin:auto}
+.viewer-stage.original #viewer-image{width:auto;height:auto;max-width:none;max-height:none;margin:0 auto}
+#viewer-status{background:white;padding:20px}.viewer-hint{margin:0;padding:8px 16px;font-size:12px;color:#526166;text-align:center}
+@media(max-width:600px){main{padding:16px 14px 40px}.card,#activities>section,#sources>section{padding:16px}h1{font-size:25px}.gallery{grid-template-columns:repeat(2,minmax(0,1fr))}.thumbnail{height:150px}.viewer-toolbar{padding:10px;gap:6px}#viewer-caption{flex-basis:100%}.viewer-toolbar button{padding:6px 10px}#image-viewer{width:96vw;max-width:96vw;height:92vh;height:92dvh}}
+"""
+
 
 INDEX_HTML = r"""<!doctype html>
 <html lang="zh-CN">
@@ -126,7 +152,15 @@ fetch('data/reminders/index.json',{cache:'no-store'}).then(r=>{if(!r.ok)throw Er
 DETAIL_HTML = r"""<!doctype html>
 <html lang="zh-CN">
 <head><meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1"><title>企划详情 · HERALD</title><link rel="stylesheet" href="style.css"></head>
-<body><main><nav><a href="index.html">活动卡片</a><a href="today.html">每日提醒</a></nav><h1 id="title">企划详情</h1><dl id="summary"></dl><h2>活动</h2><div id="activities"></div><h2>原帖与配图</h2><div id="sources"></div></main><script src="event.js"></script></body>
+<body><main><nav><a href="index.html">活动卡片</a><a href="today.html">每日提醒</a></nav><h1 id="title">企划详情</h1><dl id="summary"></dl><h2>活动</h2><div id="activities"></div><h2>原帖与配图</h2><div id="sources"></div></main>
+<dialog id="image-viewer" aria-labelledby="viewer-caption">
+<div class="viewer-panel"><div class="viewer-toolbar"><p id="viewer-caption" aria-live="polite">原帖配图</p>
+<button id="viewer-prev" type="button" aria-label="上一张图片">上一张</button><button id="viewer-next" type="button" aria-label="下一张图片">下一张</button>
+<button id="viewer-zoom" type="button" aria-pressed="false">原尺寸</button><a id="viewer-original" target="_blank" rel="noopener noreferrer">打开原图 ↗</a>
+<button id="viewer-close" type="button" aria-label="关闭图片查看器" autofocus>关闭 ✕</button></div>
+<div class="viewer-stage"><img id="viewer-image" alt=""><p id="viewer-status" role="status" hidden>图片加载失败，请尝试打开原图。</p></div>
+<p class="viewer-hint">方向键切换 · Esc 关闭 · 原尺寸模式可滚动查看长图</p></div></dialog>
+<script src="event.js"></script></body>
 </html>
 """
 
@@ -141,6 +175,33 @@ function sourceLinks(parent, sources) {
     const li=node('li'), a=node('a',sourceLabel(s)); a.href=s.url;a.rel='noreferrer';li.append(a);list.append(li);
   } parent.append(list);
 }
+const viewer=document.getElementById('image-viewer'), viewerImage=document.getElementById('viewer-image');
+const viewerStage=viewer.querySelector('.viewer-stage'), zoom=document.getElementById('viewer-zoom');
+let galleryItems=[], galleryIndex=0, returnFocus=null;
+function showPicture(index){
+ galleryIndex=(index+galleryItems.length)%galleryItems.length;
+ const item=galleryItems[galleryIndex];
+ viewerStage.classList.remove('original');zoom.textContent='原尺寸';zoom.setAttribute('aria-pressed','false');
+ document.getElementById('viewer-status').hidden=true;viewerImage.hidden=false;
+ viewerImage.alt=item.alt;viewerImage.src=item.asset_path;
+ document.getElementById('viewer-caption').textContent=item.alt+' · '+(galleryIndex+1)+' / '+galleryItems.length;
+ document.getElementById('viewer-original').href=item.source_url;
+ for(const id of ['viewer-prev','viewer-next'])document.getElementById(id).disabled=galleryItems.length<2;
+ viewerStage.scrollTop=0;viewerStage.scrollLeft=0;
+}
+function openGallery(items,index,trigger){
+ if(typeof viewer.showModal!=='function')return false;
+ galleryItems=items;returnFocus=trigger;showPicture(index);viewer.showModal();document.body.classList.add('viewer-open');return true;
+}
+viewerImage.addEventListener('error',()=>{viewerImage.hidden=true;document.getElementById('viewer-status').hidden=false;});
+viewerImage.addEventListener('load',()=>{viewerImage.hidden=false;document.getElementById('viewer-status').hidden=true;});
+document.getElementById('viewer-close').addEventListener('click',()=>viewer.close());
+document.getElementById('viewer-prev').addEventListener('click',()=>showPicture(galleryIndex-1));
+document.getElementById('viewer-next').addEventListener('click',()=>showPicture(galleryIndex+1));
+zoom.addEventListener('click',()=>{const original=viewerStage.classList.toggle('original');zoom.textContent=original?'适应窗口':'原尺寸';zoom.setAttribute('aria-pressed',String(original));});
+viewer.addEventListener('close',()=>{document.body.classList.remove('viewer-open');returnFocus?.focus();});
+viewer.addEventListener('click',event=>{if(event.target===viewer)viewer.close();});
+viewer.addEventListener('keydown',event=>{if(event.key==='ArrowLeft'||event.key==='ArrowRight'){event.preventDefault();showPicture(galleryIndex+(event.key==='ArrowLeft'?-1:1));}});
 const eventId=new URLSearchParams(location.search).get('id')||'';
 function render(data){
  document.getElementById('title').textContent=data.title;document.title=data.title;
@@ -175,11 +236,19 @@ function render(data){
   const section=node('section'),link=node('a',sourceLabel(s));link.href=s.url;link.rel='noreferrer';
   section.append(link,node('p',s.account_name+' · '+displayTime(s.published_at)));
   const pictures=(data.media||[]).filter(m=>m.source_id===s.id);
-  for(const m of pictures){
+  const gallery=node('div');gallery.className='gallery';
+  const available=pictures.filter(m=>m.asset_path).map((m,i)=>({...m,alt:s.account_name+' · 配图 '+(i+1)}));
+  for(const [index,m] of pictures.entries()){
    const figure=node('figure');
-   if(m.asset_path){const img=document.createElement('img');img.src=m.asset_path;img.alt='原帖配图';img.loading='lazy';figure.append(img);}
-   const a=node('a','查看原图');a.href=m.source_url;a.rel='noreferrer';figure.append(a);section.append(figure);
-  }sources.append(section);
+   if(m.asset_path){
+    const trigger=node('a');trigger.href=m.asset_path;trigger.className='thumbnail';trigger.target='_blank';trigger.rel='noopener noreferrer';
+    trigger.setAttribute('aria-label','放大查看 '+s.account_name+' 配图 '+(index+1));
+    const img=document.createElement('img');img.src=m.asset_path;img.alt=s.account_name+' · 配图 '+(index+1);img.loading='lazy';
+    img.addEventListener('error',()=>{img.hidden=true;trigger.append(node('span','缩略图加载失败，点击查看'));},{once:true});
+    trigger.append(img);trigger.addEventListener('click',event=>{if(openGallery(available,available.findIndex(p=>p.asset_path===m.asset_path),trigger))event.preventDefault();});figure.append(trigger);
+   } else {const placeholder=node('div','图片暂不可用');placeholder.className='thumbnail missing-image';figure.append(placeholder);}
+   const caption=node('figcaption'), a=node('a','配图 '+(index+1)+' · 查看原图 ↗');a.href=m.source_url;a.rel='noopener noreferrer';a.target='_blank';caption.append(a);figure.append(caption);gallery.append(figure);
+  }if(pictures.length)section.append(gallery);sources.append(section);
  }
  const anchor=document.getElementById(decodeURIComponent(location.hash.slice(1)));
  if(anchor)anchor.scrollIntoView();

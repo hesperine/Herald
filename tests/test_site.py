@@ -111,6 +111,24 @@ class StaticSiteBuilderTests(unittest.TestCase):
         self.assertIsNone(self.store.load_reminder_snapshot(NOW.date()))
         self.assertIsNotNone(self.store.load_campaign('archive'))
 
+    def test_detail_gallery_has_accessible_dialog_and_original_fallback(self):
+        from html.parser import HTMLParser
+        self.builder.build(store=self.store, output_dir=self.output, now=NOW,
+                           watched_ip_slugs={'genshin-impact'})
+        class Elements(HTMLParser):
+            def __init__(self):
+                super().__init__()
+                self.tags = []
+            def handle_starttag(self, tag, attrs):
+                self.tags.append((tag, dict(attrs)))
+        parser = Elements()
+        parser.feed((self.output / 'event.html').read_text('utf-8'))
+        dialogs = [attrs for tag, attrs in parser.tags if tag == 'dialog']
+        self.assertEqual(len(dialogs), 1)
+        self.assertEqual(dialogs[0]['aria-labelledby'], 'viewer-caption')
+        ids = {attrs.get('id') for tag, attrs in parser.tags}
+        self.assertTrue({'viewer-close', 'viewer-prev', 'viewer-next', 'viewer-zoom', 'viewer-original'} <= ids)
+
     def setUp(self) -> None:
         self.temporary = tempfile.TemporaryDirectory()
         self.addCleanup(self.temporary.cleanup)
