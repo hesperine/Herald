@@ -196,10 +196,10 @@
     },
     {
       "account_name": "崩坏星穹铁道",
-      "asset_path": null,
-      "content_type": null,
-      "sha256": null,
-      "size_bytes": null,
+      "asset_path": "assets/media/799d97f7c5cdca4eec23f9a44236ffa67ea041d385ac76ce078b117c0012a051.jpg",
+      "content_type": "image/jpeg",
+      "sha256": "799d97f7c5cdca4eec23f9a44236ffa67ea041d385ac76ce078b117c0012a051",
+      "size_bytes": 2931945,
       "source_id": "miyoushe-78031412",
       "source_media_hash": "c22e3988aa31b0b0f92f6175fcaee50cf05e534281f015ba5ed8593fc0782562",
       "source_url": "https://upload-bbs.miyoushe.com/upload/2026/09/07/288909600/7e524f5d9f142bf732743c52991afbe8_6792691181668272083.jpg"

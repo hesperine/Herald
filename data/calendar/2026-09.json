@@ -1,0 +1,35 @@
+{
+  "days": {
+    "2026-09-21": [
+      {
+        "action_id": "action-b6029e7a72089cbd--end",
+        "activity_id": "activity-143370800450b804",
+        "at": "2026-09-21T23:59:00+08:00",
+        "campaign_id": "campaign-9d561ae4c629334d-b074e365",
+        "ip_name": "明日方舟",
+        "kind": "sale_close",
+        "title": "联动周边预售截止"
+      },
+      {
+        "action_id": "action-391872f540b791ea--end",
+        "activity_id": "activity-143370800450b804",
+        "at": "2026-09-21T00:00:00+08:00",
+        "campaign_id": "campaign-9d561ae4c629334d-b074e365",
+        "ip_name": "明日方舟",
+        "kind": "event_end",
+        "title": "购买满259元赠特典卡组-校园凭证截止"
+      }
+    ],
+    "2026-09-30": [
+      {
+        "action_id": "activity-ec00117645e279cd--end",
+        "activity_id": "activity-ec00117645e279cd",
+        "at": "2026-09-30T00:00:00+08:00",
+        "campaign_id": "campaign-9d561ae4c629334d-b074e365",
+        "ip_name": "明日方舟",
+        "kind": "event_end",
+        "title": "明日方舟×三丽鸥家族粘土人补款结束"
+      }
+    ]
+  }
+}

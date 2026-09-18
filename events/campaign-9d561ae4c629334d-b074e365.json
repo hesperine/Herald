@@ -1,0 +1,389 @@
+{
+  "activities": [
+    {
+      "actions": [
+        {
+          "at": "2026-09-08T12:00:00+08:00",
+          "cancelled": false,
+          "end_at": "2026-09-21T23:59:00+08:00",
+          "end_condition": null,
+          "end_date": null,
+          "ended": false,
+          "evidence": [],
+          "id": "action-b6029e7a72089cbd",
+          "kind": "sale_open",
+          "platform": "明日方舟旗舰店",
+          "quantity_limit": null,
+          "requires_reservation": null,
+          "requires_rush": null,
+          "rules": null,
+          "scope": null,
+          "start_date": null,
+          "title": "联动周边预售",
+          "url": null
+        },
+        {
+          "at": null,
+          "cancelled": false,
+          "end_at": null,
+          "end_condition": null,
+          "end_date": "2026-09-21",
+          "ended": false,
+          "evidence": [
+            {
+              "field_path": "activities[0].actions[1].rules",
+              "quote": "单笔订单下单「明日方舟 × 女神异闻录3 Reload「月行水上」系列周边」满259元，即赠 特典卡组-校园凭证 一套。",
+              "source_id": "skland-6274849"
+            }
+          ],
+          "id": "action-391872f540b791ea",
+          "kind": "gift",
+          "platform": null,
+          "quantity_limit": null,
+          "requires_reservation": null,
+          "requires_rush": null,
+          "rules": "单笔订单下单「明日方舟 × 女神异闻录3 Reload「月行水上」系列周边」满259元，即赠特典卡组-校园凭证一套。",
+          "scope": "明日方舟 × 女神异闻录3 Reload「月行水上」系列周边",
+          "start_date": "2026-09-08",
+          "title": "购买满259元赠特典卡组-校园凭证",
+          "url": null
+        },
+        {
+          "at": null,
+          "cancelled": false,
+          "end_at": null,
+          "end_condition": null,
+          "end_date": "2026-09-14",
+          "ended": false,
+          "evidence": [
+            {
+              "field_path": "activities[0].actions[2].rules",
+              "quote": "活动期间，明日方舟旗舰店全店商品（部分商品除外，详见注意事项）参与店铺立减活动。购买任意单件商品即可享受立减12%优惠！",
+              "source_id": "skland-6274849"
+            }
+          ],
+          "id": "action-253472849846ae2a",
+          "kind": "discount",
+          "platform": null,
+          "quantity_limit": null,
+          "requires_reservation": null,
+          "requires_rush": null,
+          "rules": "活动期间，明日方舟旗舰店全店商品（部分商品除外，详见注意事项）参与店铺立减活动。购买任意单件商品即可享受立减12%优惠！",
+          "scope": "明日方舟旗舰店全店商品，部分商品除外",
+          "start_date": "2026-09-08",
+          "title": "全店商品立减12%",
+          "url": null
+        }
+      ],
+      "end_at": "2026-09-21T23:59:00+08:00",
+      "end_date": "2026-09-21",
+      "evidence": [
+        {
+          "field_path": "activities[0].start_at",
+          "quote": "2026.09.08 12:00",
+          "source_id": "skland-6274849"
+        },
+        {
+          "field_path": "activities[0].end_at",
+          "quote": "2026.09.21 23:59",
+          "source_id": "skland-6274849"
+        },
+        {
+          "field_path": "activities[0].actions[1].rules",
+          "quote": "单笔订单下单「明日方舟 × 女神异闻录3 Reload「月行水上」系列周边」满259元，即赠 特典卡组-校园凭证 一套。",
+          "source_id": "skland-6274849"
+        },
+        {
+          "field_path": "activities[0].actions[2].rules",
+          "quote": "活动期间，明日方舟旗舰店全店商品（部分商品除外，详见注意事项）参与店铺立减活动。购买任意单件商品即可享受立减12%优惠！",
+          "source_id": "skland-6274849"
+        }
+      ],
+      "id": "activity-143370800450b804",
+      "kind": "merchandise",
+      "related_offers": null,
+      "rules": null,
+      "start_at": "2026-09-08T12:00:00+08:00",
+      "start_date": "2026-09-08",
+      "status": "ongoing",
+      "title": "明日方舟 × 女神异闻录3 Reload「月行水上」系列周边预售",
+      "uncertainties": [],
+      "venues": [
+        {
+          "address": null,
+          "business_hours": null,
+          "city": null,
+          "country": "CN",
+          "evidence": [],
+          "id": "venue-6f25558612a0d475",
+          "name": null,
+          "nationwide": false,
+          "online_platform": "明日方舟旗舰店",
+          "province": null
+        }
+      ]
+    },
+    {
+      "actions": [
+        {
+          "at": null,
+          "cancelled": false,
+          "end_at": null,
+          "end_condition": null,
+          "end_date": null,
+          "ended": false,
+          "evidence": [],
+          "id": "action-7c01e198ec6175c0",
+          "kind": "sale_open",
+          "platform": "明日方舟旗舰店",
+          "quantity_limit": null,
+          "requires_reservation": null,
+          "requires_rush": null,
+          "rules": null,
+          "scope": null,
+          "start_date": null,
+          "title": "粘土人补款",
+          "url": null
+        },
+        {
+          "at": null,
+          "cancelled": false,
+          "end_at": null,
+          "end_condition": null,
+          "end_date": null,
+          "ended": false,
+          "evidence": [],
+          "id": "action-c9835bb3f38c301f",
+          "kind": "announcement",
+          "platform": null,
+          "quantity_limit": null,
+          "requires_reservation": null,
+          "requires_rush": null,
+          "rules": null,
+          "scope": null,
+          "start_date": null,
+          "title": "现货上架预告",
+          "url": null
+        }
+      ],
+      "end_at": null,
+      "end_date": "2026-09-30",
+      "evidence": [
+        {
+          "field_path": "activities[1].start_date",
+          "quote": "2026年9月15日-2026年9月30日",
+          "source_id": "skland-6274849"
+        },
+        {
+          "field_path": "activities[1].uncertainties[0]",
+          "quote": "现货将于10月15日上架明日方舟旗舰店，届时欢迎博士进店选购。",
+          "source_id": "skland-6274849"
+        }
+      ],
+      "id": "activity-ec00117645e279cd",
+      "kind": "merchandise",
+      "related_offers": null,
+      "rules": null,
+      "start_at": null,
+      "start_date": "2026-09-15",
+      "status": "details_pending",
+      "title": "明日方舟×三丽鸥家族粘土人补款",
+      "uncertainties": [
+        "现货将于10月15日上架，补款后发货顺序以补款订单为准"
+      ],
+      "venues": [
+        {
+          "address": null,
+          "business_hours": null,
+          "city": null,
+          "country": "CN",
+          "evidence": [],
+          "id": "venue-52622e31620d4eae",
+          "name": null,
+          "nationwide": false,
+          "online_platform": "明日方舟旗舰店",
+          "province": null
+        }
+      ]
+    }
+  ],
+  "announced_at": "2026-09-07T04:00:34Z",
+  "fact_provenance": {
+    "activities.activity-143370800450b804.actions.action-253472849846ae2a.rules": {
+      "content_hash": "9354b7f1423dd2a69184e8ebf957cace4e3dc571e59518c617915853e8a329c8",
+      "observation_id": "skland-6274849",
+      "published_at": "2026-09-07T04:00:34Z",
+      "quote": "活动期间，明日方舟旗舰店全店商品（部分商品除外，详见注意事项）参与店铺立减活动。购买任意单件商品即可享受立减12%优惠！",
+      "source_id": "skland-6274849"
+    },
+    "activities.activity-143370800450b804.actions.action-391872f540b791ea.rules": {
+      "content_hash": "9354b7f1423dd2a69184e8ebf957cace4e3dc571e59518c617915853e8a329c8",
+      "observation_id": "skland-6274849",
+      "published_at": "2026-09-07T04:00:34Z",
+      "quote": "单笔订单下单「明日方舟 × 女神异闻录3 Reload「月行水上」系列周边」满259元，即赠 特典卡组-校园凭证 一套。",
+      "source_id": "skland-6274849"
+    },
+    "activities.activity-143370800450b804.end_at": {
+      "content_hash": "9354b7f1423dd2a69184e8ebf957cace4e3dc571e59518c617915853e8a329c8",
+      "observation_id": "skland-6274849",
+      "published_at": "2026-09-07T04:00:34Z",
+      "quote": "2026.09.21 23:59",
+      "source_id": "skland-6274849"
+    },
+    "activities.activity-143370800450b804.start_at": {
+      "content_hash": "9354b7f1423dd2a69184e8ebf957cace4e3dc571e59518c617915853e8a329c8",
+      "observation_id": "skland-6274849",
+      "published_at": "2026-09-07T04:00:34Z",
+      "quote": "2026.09.08 12:00",
+      "source_id": "skland-6274849"
+    },
+    "activities.activity-ec00117645e279cd.start_date": {
+      "content_hash": "045a019c394b4b4518817f4784859d436bc06e0fb4205fd7d4cbe1fda2d70a11",
+      "observation_id": "skland-6316903",
+      "published_at": "2026-09-15T05:00:50Z",
+      "quote": "2026年9月15日-2026年9月30日",
+      "source_id": "skland-6316903"
+    },
+    "partner": {
+      "content_hash": "9354b7f1423dd2a69184e8ebf957cace4e3dc571e59518c617915853e8a329c8",
+      "observation_id": "skland-6274849",
+      "published_at": "2026-09-07T04:00:34Z",
+      "quote": "明日方舟 × 女神异闻录3 Reload",
+      "source_id": "skland-6274849"
+    },
+    "title": {
+      "content_hash": "9354b7f1423dd2a69184e8ebf957cace4e3dc571e59518c617915853e8a329c8",
+      "observation_id": "skland-6274849",
+      "published_at": "2026-09-07T04:00:34Z",
+      "quote": "〓明日方舟 × 女神异闻录3 Reload｜月行水上〓",
+      "source_id": "skland-6274849"
+    }
+  },
+  "first_seen_at": "2026-09-17T04:11:37.178399Z",
+  "id": "campaign-9d561ae4c629334d-b074e365",
+  "ip_name": "明日方舟",
+  "ip_slug": "arknights",
+  "media": [
+    {
+      "account_name": "明日方舟朝陇山",
+      "asset_path": "assets/media/3fa7b66a17a739744a4d15dfee4a7004aae15963bd2e6dcd802e1f63a509b84e.webp",
+      "content_type": "image/webp",
+      "sha256": "3fa7b66a17a739744a4d15dfee4a7004aae15963bd2e6dcd802e1f63a509b84e",
+      "size_bytes": 103944,
+      "source_id": "skland-6274849",
+      "source_media_hash": "ce9ef50fc1aaa529f609555a624e73d892f089ac666096732417c4d020542e4d",
+      "source_url": "https://bbs.hycdn.cn/image/common/20260902/107/6a980a840d3bdbdd6918f93c_65de0095.webp"
+    },
+    {
+      "account_name": "明日方舟朝陇山",
+      "asset_path": "assets/media/12f5665de6fe0432965f3e5ed1c7aedd7d4d3447c36d0c1fd0280697a1e0ace9.webp",
+      "content_type": "image/webp",
+      "sha256": "12f5665de6fe0432965f3e5ed1c7aedd7d4d3447c36d0c1fd0280697a1e0ace9",
+      "size_bytes": 167260,
+      "source_id": "skland-6274849",
+      "source_media_hash": "feaaa79117660a8fa38e1b026794514fe64272c2a38d6462bff103f7e2bb776e",
+      "source_url": "https://bbs.hycdn.cn/image/common/20260902/107/6a980aaa34a51abb569bbf9c_65de0095.webp"
+    },
+    {
+      "account_name": "明日方舟朝陇山",
+      "asset_path": "assets/media/fc45fa3d6a4a775f8ba813c1e296c3a8ffd642a78463963e8ff122924f849f2d.webp",
+      "content_type": "image/webp",
+      "sha256": "fc45fa3d6a4a775f8ba813c1e296c3a8ffd642a78463963e8ff122924f849f2d",
+      "size_bytes": 518748,
+      "source_id": "skland-6274849",
+      "source_media_hash": "3feb9339118a56ae03ba5b284be2944c3bb1bb852d4383b85a93594129022e78",
+      "source_url": "https://bbs.hycdn.cn/image/common/20260907/107/6a9e3a8143e1a78eabf1785c_0095c241.webp"
+    },
+    {
+      "account_name": "明日方舟朝陇山",
+      "asset_path": "assets/media/efac7eaba7261384ad72432a8d2e3c2e691af993c8aaeef2ab74d06ba0da0125.webp",
+      "content_type": "image/webp",
+      "sha256": "efac7eaba7261384ad72432a8d2e3c2e691af993c8aaeef2ab74d06ba0da0125",
+      "size_bytes": 1644662,
+      "source_id": "skland-6274849",
+      "source_media_hash": "416a3a832f013d52487fd2a25869a9fd3721e6e719300d6f051613550706f22d",
+      "source_url": "https://bbs.hycdn.cn/image/common/20260907/107/6a9e3a880e3cb4dc2e0c875f_65de0095.webp"
+    },
+    {
+      "account_name": "明日方舟朝陇山",
+      "asset_path": "assets/media/22f73e47ec01600fb0184462d4c24dbe7a6199a5e4bdf6ff9d0f121895fb8f07.webp",
+      "content_type": "image/webp",
+      "sha256": "22f73e47ec01600fb0184462d4c24dbe7a6199a5e4bdf6ff9d0f121895fb8f07",
+      "size_bytes": 1506750,
+      "source_id": "skland-6274849",
+      "source_media_hash": "3ca37ab3990f0c84e99d3ff0cc2d2df2cc296188b7cc1f384bafaa58dd3b0706",
+      "source_url": "https://bbs.hycdn.cn/image/common/20260907/107/6a9e3a88bca14bfacde005f1_ef3391c4.webp"
+    },
+    {
+      "account_name": "明日方舟朝陇山",
+      "asset_path": "assets/media/65767ec154f51d75a84512b05e2afe937ab0f25b997e202d960c916202b58a51.webp",
+      "content_type": "image/webp",
+      "sha256": "65767ec154f51d75a84512b05e2afe937ab0f25b997e202d960c916202b58a51",
+      "size_bytes": 131792,
+      "source_id": "skland-6316903",
+      "source_media_hash": "3fcac9f9b0323279fbaacc83ea376cc9a3154ae7c6cb40c3a270d2eebaf861cf",
+      "source_url": "https://bbs.hycdn.cn/image/common/20260915/107/6aa8a89bb0ed338fc74aa758_0095c241.webp"
+    }
+  ],
+  "partner": "女神异闻录3 Reload",
+  "reachability": {
+    "activity-143370800450b804": "online",
+    "activity-ec00117645e279cd": "online"
+  },
+  "revision": 1,
+  "sources": [
+    {
+      "account_id": "6168723566526",
+      "account_name": "明日方舟朝陇山",
+      "canonical_content_id": "6274849",
+      "content_hash": "9354b7f1423dd2a69184e8ebf957cace4e3dc571e59518c617915853e8a329c8",
+      "excerpt": "〓明日方舟 × 女神异闻录3 Reload｜月行水上〓上新\n博士们好，\n明日方舟 × 女神异闻录3 Reload 联动周边即将开启预售，预售详情如下：\n【满赠特典】\n活动时间：2026.09.08 12:00~2026.09.21 23:59\n单笔订单下单“明日方舟 × 女神异闻录3 Reload 「月行水上」系列周边”满259元，即赠 特典卡组-校园凭证 一套。\n【店铺立减】\n活动时间：2026.09.08 12:00~2026.09.14 23:59\n活动期间，明日方舟旗舰店全店商品（部分商品除外，详见注意事项）参与店铺立减活动。购买任意单件商品即可享受立减12%优惠！\n天猫搜索：明日方舟旗舰店\n详情请继续阅读。",
+      "first_seen_at": "2026-09-17T04:11:37.178399Z",
+      "id": "skland-6274849",
+      "is_official": true,
+      "kind": "skland",
+      "media_hashes": [
+        "ce9ef50fc1aaa529f609555a624e73d892f089ac666096732417c4d020542e4d",
+        "feaaa79117660a8fa38e1b026794514fe64272c2a38d6462bff103f7e2bb776e",
+        "3feb9339118a56ae03ba5b284be2944c3bb1bb852d4383b85a93594129022e78",
+        "416a3a832f013d52487fd2a25869a9fd3721e6e719300d6f051613550706f22d",
+        "3ca37ab3990f0c84e99d3ff0cc2d2df2cc296188b7cc1f384bafaa58dd3b0706"
+      ],
+      "media_urls": [
+        "https://bbs.hycdn.cn/image/common/20260902/107/6a980a840d3bdbdd6918f93c_65de0095.webp",
+        "https://bbs.hycdn.cn/image/common/20260902/107/6a980aaa34a51abb569bbf9c_65de0095.webp",
+        "https://bbs.hycdn.cn/image/common/20260907/107/6a9e3a8143e1a78eabf1785c_0095c241.webp",
+        "https://bbs.hycdn.cn/image/common/20260907/107/6a9e3a880e3cb4dc2e0c875f_65de0095.webp",
+        "https://bbs.hycdn.cn/image/common/20260907/107/6a9e3a88bca14bfacde005f1_ef3391c4.webp"
+      ],
+      "published_at": "2026-09-07T04:00:34Z",
+      "summary": "明日方舟×P3R联动周边预售开启，含满赠特典及店铺立减优惠。",
+      "updated_at": null,
+      "url": "https://www.skland.com/article?id=6274849"
+    },
+    {
+      "account_id": "6168723566526",
+      "account_name": "明日方舟朝陇山",
+      "canonical_content_id": "6316903",
+      "content_hash": "045a019c394b4b4518817f4784859d436bc06e0fb4205fd7d4cbe1fda2d70a11",
+      "excerpt": "〓明日方舟×三丽鸥家族 粘土人 补款开启！〓\n〓明日方舟×三丽鸥家族 粘土人 圣约送葬人 CINNAMOROLL合作款 & W KUROMI合作款 补款开启！〓\n补款日期：2026年9月15日-2026年9月30日\n【明日方舟 粘土人 圣约送葬人 CINNAMOROLL合作款】【明日方舟 粘土人 W KUROMI合作款】即将到货~\n请博士在期限内及时补款并填写正确的收件信息。\n发货地址以补款订单为准，请下单前注意手办单独拍付并检查收件信息是否正确，订单将会以补款的先后顺序发货~\n现货将于10月15日上架明日方舟旗舰店，届时欢迎博士进店选购。",
+      "first_seen_at": "2026-09-17T04:11:37.178399Z",
+      "id": "skland-6316903",
+      "is_official": true,
+      "kind": "skland",
+      "media_hashes": [
+        "3fcac9f9b0323279fbaacc83ea376cc9a3154ae7c6cb40c3a270d2eebaf861cf"
+      ],
+      "media_urls": [
+        "https://bbs.hycdn.cn/image/common/20260915/107/6aa8a89bb0ed338fc74aa758_0095c241.webp"
+      ],
+      "published_at": "2026-09-15T05:00:50Z",
+      "summary": "明日方舟×三丽鸥粘土人补款开启，涉及合作款补款及现货上架时间。",
+      "updated_at": null,
+      "url": "https://www.skland.com/article?id=6316903"
+    }
+  ],
+  "status": "ongoing",
+  "title": "明日方舟 × 女神异闻录3 Reload｜月行水上",
+  "updated_at": "2026-09-18T04:41:20.369330Z"
+}

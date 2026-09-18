@@ -1,6 +1,55 @@
 {
   "assets": [
     {
+      "asset_path": "assets/media/3fa7b66a17a739744a4d15dfee4a7004aae15963bd2e6dcd802e1f63a509b84e.webp",
+      "content_type": "image/webp",
+      "sha256": "3fa7b66a17a739744a4d15dfee4a7004aae15963bd2e6dcd802e1f63a509b84e",
+      "size_bytes": 103944,
+      "source_url": "https://bbs.hycdn.cn/image/common/20260902/107/6a980a840d3bdbdd6918f93c_65de0095.webp"
+    },
+    {
+      "asset_path": "assets/media/12f5665de6fe0432965f3e5ed1c7aedd7d4d3447c36d0c1fd0280697a1e0ace9.webp",
+      "content_type": "image/webp",
+      "sha256": "12f5665de6fe0432965f3e5ed1c7aedd7d4d3447c36d0c1fd0280697a1e0ace9",
+      "size_bytes": 167260,
+      "source_url": "https://bbs.hycdn.cn/image/common/20260902/107/6a980aaa34a51abb569bbf9c_65de0095.webp"
+    },
+    {
+      "asset_path": "assets/media/fc45fa3d6a4a775f8ba813c1e296c3a8ffd642a78463963e8ff122924f849f2d.webp",
+      "content_type": "image/webp",
+      "sha256": "fc45fa3d6a4a775f8ba813c1e296c3a8ffd642a78463963e8ff122924f849f2d",
+      "size_bytes": 518748,
+      "source_url": "https://bbs.hycdn.cn/image/common/20260907/107/6a9e3a8143e1a78eabf1785c_0095c241.webp"
+    },
+    {
+      "asset_path": "assets/media/efac7eaba7261384ad72432a8d2e3c2e691af993c8aaeef2ab74d06ba0da0125.webp",
+      "content_type": "image/webp",
+      "sha256": "efac7eaba7261384ad72432a8d2e3c2e691af993c8aaeef2ab74d06ba0da0125",
+      "size_bytes": 1644662,
+      "source_url": "https://bbs.hycdn.cn/image/common/20260907/107/6a9e3a880e3cb4dc2e0c875f_65de0095.webp"
+    },
+    {
+      "asset_path": "assets/media/22f73e47ec01600fb0184462d4c24dbe7a6199a5e4bdf6ff9d0f121895fb8f07.webp",
+      "content_type": "image/webp",
+      "sha256": "22f73e47ec01600fb0184462d4c24dbe7a6199a5e4bdf6ff9d0f121895fb8f07",
+      "size_bytes": 1506750,
+      "source_url": "https://bbs.hycdn.cn/image/common/20260907/107/6a9e3a88bca14bfacde005f1_ef3391c4.webp"
+    },
+    {
+      "asset_path": "assets/media/65767ec154f51d75a84512b05e2afe937ab0f25b997e202d960c916202b58a51.webp",
+      "content_type": "image/webp",
+      "sha256": "65767ec154f51d75a84512b05e2afe937ab0f25b997e202d960c916202b58a51",
+      "size_bytes": 131792,
+      "source_url": "https://bbs.hycdn.cn/image/common/20260915/107/6aa8a89bb0ed338fc74aa758_0095c241.webp"
+    },
+    {
+      "asset_path": "assets/media/799d97f7c5cdca4eec23f9a44236ffa67ea041d385ac76ce078b117c0012a051.jpg",
+      "content_type": "image/jpeg",
+      "sha256": "799d97f7c5cdca4eec23f9a44236ffa67ea041d385ac76ce078b117c0012a051",
+      "size_bytes": 2931945,
+      "source_url": "https://upload-bbs.miyoushe.com/upload/2026/09/07/288909600/7e524f5d9f142bf732743c52991afbe8_6792691181668272083.jpg"
+    },
+    {
       "asset_path": "assets/media/cae604f2dbbd0f0d34bd92a1c8bf7bf7e3a692dccdc8be7c70bbbc1d22d3f745.jpg",
       "content_type": "image/jpeg",
       "sha256": "cae604f2dbbd0f0d34bd92a1c8bf7bf7e3a692dccdc8be7c70bbbc1d22d3f745",
@@ -13,6 +62,27 @@
       "sha256": "5b2f2070ade93237653f1e38d3676bb28831f00bb15c4c9533d0934221ff466e",
       "size_bytes": 4430311,
       "source_url": "https://upload-bbs.miyoushe.com/upload/2026/09/09/288909600/45f34b7f6be728ec9f40144921254731_4612487477566683884.png"
+    },
+    {
+      "asset_path": "assets/media/aae6bf779d8322e97be73c449ef4c452288e337c2ec90f99ffbc31ef69529cd5.jpg",
+      "content_type": "image/jpeg",
+      "sha256": "aae6bf779d8322e97be73c449ef4c452288e337c2ec90f99ffbc31ef69529cd5",
+      "size_bytes": 4013658,
+      "source_url": "https://upload-bbs.miyoushe.com/upload/2026/09/14/288909600/064436627f0f076e2c47d02cc61f0feb_6375825882831933751.jpg"
+    },
+    {
+      "asset_path": "assets/media/3fae91fe2a4f3c84d50fecab7fb92013456d7977ee23e8e1198cb04f9b6bdcf9.png",
+      "content_type": "image/png",
+      "sha256": "3fae91fe2a4f3c84d50fecab7fb92013456d7977ee23e8e1198cb04f9b6bdcf9",
+      "size_bytes": 7722706,
+      "source_url": "https://upload-bbs.miyoushe.com/upload/2026/09/14/288909600/965fd43086db1fcb43f6fd8caacef570_3987353022951504924.png"
+    },
+    {
+      "asset_path": "assets/media/7e69a5eb05cf64acef03cc5516f9732103353d75eafc1528bb1bd1258ff57feb.jpg",
+      "content_type": "image/jpeg",
+      "sha256": "7e69a5eb05cf64acef03cc5516f9732103353d75eafc1528bb1bd1258ff57feb",
+      "size_bytes": 2002277,
+      "source_url": "https://upload-bbs.miyoushe.com/upload/2026/09/14/288909600/dc06c4cd1b45a7cad7ff9ed32deb9040_9197657994297658640.jpg"
     }
   ]
 }
