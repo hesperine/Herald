@@ -176,20 +176,20 @@
   "media": [
     {
       "account_name": "崩坏星穹铁道",
-      "asset_path": null,
-      "content_type": null,
-      "sha256": null,
-      "size_bytes": null,
+      "asset_path": "assets/media/a16fdfa29b33eb93fd2add9adcee7984104c869e25bb3f73d40f806369f7624a.jpg",
+      "content_type": "image/jpeg",
+      "sha256": "a16fdfa29b33eb93fd2add9adcee7984104c869e25bb3f73d40f806369f7624a",
+      "size_bytes": 172275,
       "source_id": "miyoushe-78031412",
       "source_media_hash": "ab802eb670661d47aa45f9093b7b33d685c8af1481adbc11015b4595e178a473",
       "source_url": "https://upload-bbs.miyoushe.com/upload/2026/09/07/288909600/a850c267441c99397ade9c610d549458_879266309787518609.jpg"
     },
     {
       "account_name": "崩坏星穹铁道",
-      "asset_path": null,
-      "content_type": null,
-      "sha256": null,
-      "size_bytes": null,
+      "asset_path": "assets/media/73c100e577c97f3632c8ddfeec658267c7bb99f7b2db8018d280819f61f130da.jpg",
+      "content_type": "image/jpeg",
+      "sha256": "73c100e577c97f3632c8ddfeec658267c7bb99f7b2db8018d280819f61f130da",
+      "size_bytes": 3164058,
       "source_id": "miyoushe-78031412",
       "source_media_hash": "218cadf8a43bee1d317b96e1794dc01469f5d74366627c40b6abf69fa5939d57",
       "source_url": "https://upload-bbs.miyoushe.com/upload/2026/09/07/288909600/b72a933f6960c29a98ac2bd81772ed0b_8542718660431853099.jpg"

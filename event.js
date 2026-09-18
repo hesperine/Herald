@@ -9,6 +9,33 @@ function sourceLinks(parent, sources) {
     const li=node('li'), a=node('a',sourceLabel(s)); a.href=s.url;a.rel='noreferrer';li.append(a);list.append(li);
   } parent.append(list);
 }
+const viewer=document.getElementById('image-viewer'), viewerImage=document.getElementById('viewer-image');
+const viewerStage=viewer.querySelector('.viewer-stage'), zoom=document.getElementById('viewer-zoom');
+let galleryItems=[], galleryIndex=0, returnFocus=null;
+function showPicture(index){
+ galleryIndex=(index+galleryItems.length)%galleryItems.length;
+ const item=galleryItems[galleryIndex];
+ viewerStage.classList.remove('original');zoom.textContent='原尺寸';zoom.setAttribute('aria-pressed','false');
+ document.getElementById('viewer-status').hidden=true;viewerImage.hidden=false;
+ viewerImage.alt=item.alt;viewerImage.src=item.asset_path;
+ document.getElementById('viewer-caption').textContent=item.alt+' · '+(galleryIndex+1)+' / '+galleryItems.length;
+ document.getElementById('viewer-original').href=item.source_url;
+ for(const id of ['viewer-prev','viewer-next'])document.getElementById(id).disabled=galleryItems.length<2;
+ viewerStage.scrollTop=0;viewerStage.scrollLeft=0;
+}
+function openGallery(items,index,trigger){
+ if(typeof viewer.showModal!=='function')return false;
+ galleryItems=items;returnFocus=trigger;showPicture(index);viewer.showModal();document.body.classList.add('viewer-open');return true;
+}
+viewerImage.addEventListener('error',()=>{viewerImage.hidden=true;document.getElementById('viewer-status').hidden=false;});
+viewerImage.addEventListener('load',()=>{viewerImage.hidden=false;document.getElementById('viewer-status').hidden=true;});
+document.getElementById('viewer-close').addEventListener('click',()=>viewer.close());
+document.getElementById('viewer-prev').addEventListener('click',()=>showPicture(galleryIndex-1));
+document.getElementById('viewer-next').addEventListener('click',()=>showPicture(galleryIndex+1));
+zoom.addEventListener('click',()=>{const original=viewerStage.classList.toggle('original');zoom.textContent=original?'适应窗口':'原尺寸';zoom.setAttribute('aria-pressed',String(original));});
+viewer.addEventListener('close',()=>{document.body.classList.remove('viewer-open');returnFocus?.focus();});
+viewer.addEventListener('click',event=>{if(event.target===viewer)viewer.close();});
+viewer.addEventListener('keydown',event=>{if(event.key==='ArrowLeft'||event.key==='ArrowRight'){event.preventDefault();showPicture(galleryIndex+(event.key==='ArrowLeft'?-1:1));}});
 const eventId=new URLSearchParams(location.search).get('id')||'';
 function render(data){
  document.getElementById('title').textContent=data.title;document.title=data.title;
@@ -43,11 +70,19 @@ function render(data){
   const section=node('section'),link=node('a',sourceLabel(s));link.href=s.url;link.rel='noreferrer';
   section.append(link,node('p',s.account_name+' · '+displayTime(s.published_at)));
   const pictures=(data.media||[]).filter(m=>m.source_id===s.id);
-  for(const m of pictures){
+  const gallery=node('div');gallery.className='gallery';
+  const available=pictures.filter(m=>m.asset_path).map((m,i)=>({...m,alt:s.account_name+' · 配图 '+(i+1)}));
+  for(const [index,m] of pictures.entries()){
    const figure=node('figure');
-   if(m.asset_path){const img=document.createElement('img');img.src=m.asset_path;img.alt='原帖配图';img.loading='lazy';figure.append(img);}
-   const a=node('a','查看原图');a.href=m.source_url;a.rel='noreferrer';figure.append(a);section.append(figure);
-  }sources.append(section);
+   if(m.asset_path){
+    const trigger=node('a');trigger.href=m.asset_path;trigger.className='thumbnail';trigger.target='_blank';trigger.rel='noopener noreferrer';
+    trigger.setAttribute('aria-label','放大查看 '+s.account_name+' 配图 '+(index+1));
+    const img=document.createElement('img');img.src=m.asset_path;img.alt=s.account_name+' · 配图 '+(index+1);img.loading='lazy';
+    img.addEventListener('error',()=>{img.hidden=true;trigger.append(node('span','缩略图加载失败，点击查看'));},{once:true});
+    trigger.append(img);trigger.addEventListener('click',event=>{if(openGallery(available,available.findIndex(p=>p.asset_path===m.asset_path),trigger))event.preventDefault();});figure.append(trigger);
+   } else {const placeholder=node('div','图片暂不可用');placeholder.className='thumbnail missing-image';figure.append(placeholder);}
+   const caption=node('figcaption'), a=node('a','配图 '+(index+1)+' · 查看原图 ↗');a.href=m.source_url;a.rel='noopener noreferrer';a.target='_blank';caption.append(a);figure.append(caption);gallery.append(figure);
+  }if(pictures.length)section.append(gallery);sources.append(section);
  }
  const anchor=document.getElementById(decodeURIComponent(location.hash.slice(1)));
  if(anchor)anchor.scrollIntoView();

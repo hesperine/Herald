@@ -1,6 +1,13 @@
 {
   "assets": [
     {
+      "asset_path": "assets/media/0205d5ad0aba435593f2c7fe50868500a37557709ba7ae0410f29f7bf9a4176e.webp",
+      "content_type": "image/webp",
+      "sha256": "0205d5ad0aba435593f2c7fe50868500a37557709ba7ae0410f29f7bf9a4176e",
+      "size_bytes": 220750,
+      "source_url": "https://bbs.hycdn.cn/image/common/20260901/113/6a96d3219c4113da3017deef_96d20048.webp"
+    },
+    {
       "asset_path": "assets/media/3fa7b66a17a739744a4d15dfee4a7004aae15963bd2e6dcd802e1f63a509b84e.webp",
       "content_type": "image/webp",
       "sha256": "3fa7b66a17a739744a4d15dfee4a7004aae15963bd2e6dcd802e1f63a509b84e",
@@ -36,6 +43,13 @@
       "source_url": "https://bbs.hycdn.cn/image/common/20260907/107/6a9e3a88bca14bfacde005f1_ef3391c4.webp"
     },
     {
+      "asset_path": "assets/media/a5feba3bd8516d3d89abbc2dec291cfee50ff48bd94f55dbcfbe478f857db22c.webp",
+      "content_type": "image/webp",
+      "sha256": "a5feba3bd8516d3d89abbc2dec291cfee50ff48bd94f55dbcfbe478f857db22c",
+      "size_bytes": 156030,
+      "source_url": "https://bbs.hycdn.cn/image/common/20260911/113/6aa377eeb8edfebe3af4fc99_e71aef33.webp"
+    },
+    {
       "asset_path": "assets/media/65767ec154f51d75a84512b05e2afe937ab0f25b997e202d960c916202b58a51.webp",
       "content_type": "image/webp",
       "sha256": "65767ec154f51d75a84512b05e2afe937ab0f25b997e202d960c916202b58a51",
@@ -48,6 +62,20 @@
       "sha256": "799d97f7c5cdca4eec23f9a44236ffa67ea041d385ac76ce078b117c0012a051",
       "size_bytes": 2931945,
       "source_url": "https://upload-bbs.miyoushe.com/upload/2026/09/07/288909600/7e524f5d9f142bf732743c52991afbe8_6792691181668272083.jpg"
+    },
+    {
+      "asset_path": "assets/media/a16fdfa29b33eb93fd2add9adcee7984104c869e25bb3f73d40f806369f7624a.jpg",
+      "content_type": "image/jpeg",
+      "sha256": "a16fdfa29b33eb93fd2add9adcee7984104c869e25bb3f73d40f806369f7624a",
+      "size_bytes": 172275,
+      "source_url": "https://upload-bbs.miyoushe.com/upload/2026/09/07/288909600/a850c267441c99397ade9c610d549458_879266309787518609.jpg"
+    },
+    {
+      "asset_path": "assets/media/73c100e577c97f3632c8ddfeec658267c7bb99f7b2db8018d280819f61f130da.jpg",
+      "content_type": "image/jpeg",
+      "sha256": "73c100e577c97f3632c8ddfeec658267c7bb99f7b2db8018d280819f61f130da",
+      "size_bytes": 3164058,
+      "source_url": "https://upload-bbs.miyoushe.com/upload/2026/09/07/288909600/b72a933f6960c29a98ac2bd81772ed0b_8542718660431853099.jpg"
     },
     {
       "asset_path": "assets/media/cae604f2dbbd0f0d34bd92a1c8bf7bf7e3a692dccdc8be7c70bbbc1d22d3f745.jpg",
