@@ -1,0 +1,39 @@
+{
+  "campaign_id": "campaign-0451ddb8aea2e952-631416ed",
+  "detected_at": "2026-09-19T11:05:13.960434Z",
+  "facts": {
+    "action-60d8b12acaa400df:数量限制": "400,000份",
+    "action-60d8b12acaa400df:时间": "2026-09-10T10:00:00+08:00",
+    "action-60d8b12acaa400df:规则": "单个用户限购6份",
+    "action-60d8b12acaa400df:适用范围": "线上全渠道",
+    "activity-6a6bf6084a4ddac7:地点:online_platform": "线上全渠道",
+    "activity-6a6bf6084a4ddac7:开始日期": "2026-09-10",
+    "activity-6a6bf6084a4ddac7:开始时间": "2026-09-10T10:00:00+08:00",
+    "activity-6a6bf6084a4ddac7:规则": "单个用户限购6份",
+    "activity-841e15a9847b54dd:开始日期": "2026-09-15"
+  },
+  "id": "candidate-05148dcbad19c4c555adc952",
+  "ip_name": "崩坏：星穹铁道",
+  "ip_slug": "honkai-star-rail",
+  "public_text": "《崩坏：星穹铁道》× 大白兔联动小曲 | 奶糖警告\n乖宝请注意，学习时间到啦~\n要是被那刻夏老师、风堇助教抓到开小差，就请尝尝「奶糖技巧」的甜甜威力吧！",
+  "sources": [
+    {
+      "account_id": "288909600",
+      "account_name": "崩坏星穹铁道",
+      "canonical_content_id": "78058520",
+      "content_hash": "d6185e9a99b24cd200cad29d234011951e858542f43ffb4049f50f7fedeb57f5",
+      "excerpt": "《崩坏：星穹铁道》× 大白兔联动小曲 | 奶糖警告\n乖宝请注意，学习时间到啦~\n要是被那刻夏老师、风堇助教抓到开小差，就请尝尝「奶糖技巧」的甜甜威力吧！",
+      "first_seen_at": "2026-09-17T04:11:37.178399Z",
+      "id": "miyoushe-78058520",
+      "is_official": true,
+      "kind": "miyoushe",
+      "media_hashes": [],
+      "media_urls": [],
+      "published_at": "2026-09-09T04:00:20Z",
+      "summary": null,
+      "updated_at": null,
+      "url": "https://www.miyoushe.com/sr/article/78058520"
+    }
+  ],
+  "status": "structured"
+}

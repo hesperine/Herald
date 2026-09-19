@@ -1,0 +1,14 @@
+{
+  "action_id": null,
+  "activity_id": null,
+  "campaign_id": "campaign-3e088f098cbc4865-a12dda08",
+  "candidate_id": "candidate-1a001c957ee83965c838c77e",
+  "change_id": null,
+  "due_date": "2026-09-19",
+  "expected_at": null,
+  "expected_date": null,
+  "id": "candidate-1a001c957ee83965c838c77e",
+  "kind": "announcement",
+  "semantic_key": "candidate-1a001c957ee83965c838c77e",
+  "summary": "联动信息：崩坏：星穹铁道 联动"
+}

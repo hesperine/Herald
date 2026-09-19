@@ -1,0 +1,14 @@
+{
+  "action_id": null,
+  "activity_id": null,
+  "campaign_id": "campaign-3302d7e79db4b203-62055d07",
+  "candidate_id": "candidate-3ac2f047e7163a1b30f1b1b8",
+  "change_id": null,
+  "due_date": "2026-09-19",
+  "expected_at": null,
+  "expected_date": null,
+  "id": "candidate-3ac2f047e7163a1b30f1b1b8",
+  "kind": "announcement",
+  "semantic_key": "candidate-3ac2f047e7163a1b30f1b1b8",
+  "summary": "联动信息：奈雪的茶 ×《明日方舟：终末地》联名活动\n开始日期：2026-09-23\n时间：2026-09-23T00:00:00+08:00"
+}
