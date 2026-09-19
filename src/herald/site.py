@@ -134,7 +134,7 @@ async function loadDay(day) {
     if(c.detail_url){const link=node('a',title);link.href=c.detail_url;h.append(link);}else h.textContent=title;
     section.append(h,node('p',c.campaign_title));
     for(const r of reasons)section.append(node('p',r.summary+(r.expected_at?' · '+displayTime(r.date_only?null:r.expected_at,r.date_only):'')));
-    if(!c.detail_url)section.append(node('small','详情已下线，请参考原帖'));
+    if(!c.detail_url)section.append(node('small',c.extraction_status==='pending'?'待解析，请参考原帖':'详情已下线，请参考原帖'));
     sourceLinks(section,c.sources);target.append(section);
    }
    if(!target.children.length)target.textContent=isNews?'当日暂无新消息':'当日暂无开始或结束提醒';
@@ -205,6 +205,11 @@ viewer.addEventListener('click',event=>{if(event.target===viewer)viewer.close();
 viewer.addEventListener('keydown',event=>{if(event.key==='ArrowLeft'||event.key==='ArrowRight'){event.preventDefault();showPicture(galleryIndex+(event.key==='ArrowLeft'?-1:1));}});
 const eventId=new URLSearchParams(location.search).get('id')||'';
 function render(data){
+ const oldAnchor=location.hash.slice(1);
+ if(oldAnchor.startsWith('activity-')){
+  const mapped=(data.activity_redirects||{})[oldAnchor.slice(9)];
+  if(mapped)history.replaceState(null,'',location.pathname+location.search+'#activity-'+mapped);
+ }
  document.getElementById('title').textContent=data.title;document.title=data.title;
  const summary=document.getElementById('summary');
  for(const [key,value] of [['IP',data.ip_name],['合作方',data.partner],['公布时间',displayTime(data.announced_at)]])if(value)summary.append(node('dt',key),node('dd',value));
@@ -307,13 +312,14 @@ class StaticSiteBuilder:
         campaigns.sort(key=lambda item: (item.updated_at, item.id), reverse=True)
         notification_service = NotificationService(str(self.timezone))
         due, _ = notification_service.collect_due(
-            store, now.astimezone(self.timezone).date(), include_delivered=True
+            store, now.astimezone(self.timezone).date(), include_delivered=True, now=now,
+            watched_ip_slugs=watched_ip_slugs,
         )
         visible_ids = {campaign.id for campaign in campaigns}
         self._write_json(data_dir / "today.json", {
             "date": now.astimezone(self.timezone).date().isoformat(),
             "cards": notification_service.build_cards([
-                item for item in due if item.campaign.id in visible_ids and
+                item for item in due if (item.job.candidate_id or item.campaign.id in visible_ids) and
                 (not item.job.activity_id or any(a.id == item.job.activity_id and a.is_visible(now) for a in item.campaign.activities))
             ]),
         })
@@ -353,6 +359,16 @@ class StaticSiteBuilder:
             }
             self._write_json(event_dir / f"{campaign.id}.json", detail)
 
+        # Keep old deep links working after a campaign container is consolidated.
+        for alias in store.list_campaigns(include_redirects=True):
+            if alias.redirected_to:
+                target = store.load_campaign(alias.id)
+                path = event_dir / f'{target.id}.json' if target else None
+                if path and path.exists():
+                    detail = json.loads(path.read_text(encoding='utf-8'))
+                    detail['activity_redirects'] = alias.activity_redirects
+                    self._write_json(event_dir / f'{alias.id}.json', detail)
+
         for month, days in self._calendar(campaigns, now).items():
             self._write_json(calendar_dir / f"{month}.json", {"days": days})
 
@@ -380,7 +396,8 @@ class StaticSiteBuilder:
     def _publish_reminder_history(self, store, data_dir, now, campaigns,
                                   watched_slugs, service, forbidden_values):
         day = now.astimezone(self.timezone).date()
-        due, _ = service.collect_due(store, day, include_delivered=True)
+        due, _ = service.collect_due(store, day, include_delivered=True, now=now,
+                                   watched_ip_slugs=watched_slugs)
         old = store.load_reminder_snapshot(day) or {'date': str(day), 'cards': []}
         cards = {(c['campaign_id'], c['activity_id']): c for c in old['cards']}
         for card in service.build_cards(due):
@@ -399,7 +416,9 @@ class StaticSiteBuilder:
         directory.mkdir(exist_ok=True)
         self._remove_json_files(directory)
         visible = {c.id: {a.id for a in c.activities} for c in campaigns}
-        watched_ids = {c.id for c in store.list_campaigns() if c.ip_slug in watched_slugs}
+        all_campaigns = {c.id: c for c in store.list_campaigns(include_redirects=True)}
+        notices = {c.id: c for c in store.list_candidates() if c.ip_slug in watched_slugs}
+        watched_ids = {c.id for c in all_campaigns.values() if c.ip_slug in watched_slugs} | notices.keys()
         dates = []
         for saved in store.list_reminder_snapshots(day):
             published = []
@@ -407,14 +426,22 @@ class StaticSiteBuilder:
                 if card['campaign_id'] not in watched_ids:
                     continue
                 cid, aid = card['campaign_id'], card['activity_id']
+                notice = notices.get(cid)
+                detail_id = notice.campaign_id if notice else card.get('detail_campaign_id', cid)
+                alias = all_campaigns.get(detail_id)
+                if alias:
+                    aid = alias.activity_redirects.get(aid, aid)
+                target = store.load_campaign(detail_id) if detail_id else None
+                detail_id = target.id if target else detail_id
                 url = None
-                if cid in visible and (not aid or aid in visible[cid]):
-                    url = f'event.html?id={cid}' + (f'#activity-{aid}' if aid else '')
+                if detail_id in visible and (not aid or aid in visible[detail_id]):
+                    url = f'event.html?id={detail_id}' + (f'#activity-{aid}' if aid else '')
                 published.append({
                     'campaign_id': cid, 'activity_id': aid,
                     'campaign_title': card['campaign_title'], 'ip_name': card['ip_name'],
                     'activity': {'title': card['activity']['title']} if card['activity'] else None,
                     'reasons': card['reasons'], 'detail_url': url,
+                    'extraction_status': notice.status if notice else card.get('extraction_status'),
                     'sources': [{k: source.get(k) for k in ('url', 'summary', 'account_name')}
                                 for source in card['sources']],
                 })

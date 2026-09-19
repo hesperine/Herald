@@ -116,7 +116,7 @@ async def _run(args: argparse.Namespace) -> dict[str, object]:
     cookie = _secret(settings.private.weibo_cookie)
     async with httpx.AsyncClient(follow_redirects=True, timeout=30) as source_client:
         async with httpx.AsyncClient(follow_redirects=True, timeout=60) as ai_client:
-            result = await DailyRunner().run(
+            result = await DailyRunner(clock=(lambda: now) if args.now else None).run(
                 settings=settings,
                 store=StateStore(args.state_dir),
                 page_dir=args.page_dir,

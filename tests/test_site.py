@@ -65,6 +65,73 @@ def campaign(
 
 
 class StaticSiteBuilderTests(unittest.TestCase):
+    def test_unstructured_candidate_is_in_history_but_not_activity_catalog(self):
+        from herald.candidate_notices import register_candidates
+        from herald.registry import RegisteredIp
+        from tests.test_pipeline import observation
+        register_candidates(self.store, RegisteredIp(slug='genshin-impact', name='原神'),
+            [observation('public', '原神', digest='c' * 64)], NOW)
+        self.builder.build(store=self.store, output_dir=self.output, now=NOW,
+                           watched_ip_slugs={'genshin-impact'}, forbidden_values=['private-secret-fixture'])
+        active = json.loads((self.output / 'data/active.json').read_text('utf8'))
+        history = json.loads((self.output / 'data/reminders/2026-08-30.json').read_text('utf8'))
+        self.assertEqual(active['cards'], [])
+        self.assertEqual(len(history['cards']), 1)
+        self.assertIsNone(history['cards'][0]['detail_url'])
+        self.assertEqual(history['cards'][0]['extraction_status'], 'pending')
+        self.assertFalse(list((self.output / 'events').glob('*.json')))
+
+    def test_legacy_campaign_link_keeps_activity_anchor_after_consolidation(self):
+        c = campaign('current')
+        self.store.save_campaign(c)
+        alias = campaign('old')
+        alias.redirected_to = c.id
+        self.store.save_campaign(alias)
+        self.builder.build(store=self.store, output_dir=self.output, now=NOW,
+                           watched_ip_slugs={'genshin-impact'})
+        old = json.loads((self.output / 'events/old.json').read_text('utf8'))
+        self.assertEqual(old['activities'][0]['id'], 'current-activity')
+
+    def test_history_alias_and_activity_collision_redirect_survive_rebuild(self):
+        c = campaign('current')
+        self.store.save_campaign(c)
+        alias = campaign('old')
+        alias.redirected_to = c.id
+        alias.activity_redirects = {'old-activity': 'current-activity'}
+        self.store.save_campaign(alias)
+        self.store.save_reminder_snapshot(NOW.date(), {'date': str(NOW.date()), 'cards': [{
+            'campaign_id': 'old', 'activity_id': 'old-activity',
+            'campaign_title': alias.title, 'ip_name': alias.ip_name,
+            'activity': {'title': '旧活动'}, 'sources': [], 'reasons': []}]})
+        self.builder.build(store=self.store, output_dir=self.output, now=NOW,
+                           watched_ip_slugs={'genshin-impact'})
+        history = json.loads((self.output / 'data/reminders/2026-08-30.json').read_text('utf8'))
+        self.assertEqual(history['cards'][0]['detail_url'],
+                         'event.html?id=current#activity-current-activity')
+
+    def test_sent_pending_history_links_to_later_structured_details(self):
+        from herald.candidate_notices import register_candidates, resolve_candidates
+        from herald.notifications import NotificationService
+        from herald.registry import RegisteredIp
+        from tests.test_pipeline import observation
+        from tests.test_notifications import MemorySender
+        item = observation('public', '原神', digest='c' * 64)
+        register_candidates(self.store, RegisteredIp(slug='genshin-impact', name='原神'), [item], NOW)
+        NotificationService().deliver_due(store=self.store, day=NOW.date(), generated_at=NOW,
+            sender=MemorySender(), recipient='player@example.com')
+        self.builder.build(store=self.store, output_dir=self.output, now=NOW,
+                           watched_ip_slugs={'genshin-impact'})
+        c = campaign('resolved')
+        c.sources = [item.source]
+        self.store.save_campaign(c)
+        later = NOW + timedelta(days=1)
+        resolve_candidates(self.store, later)
+        self.builder.build(store=self.store, output_dir=self.output, now=later,
+                           watched_ip_slugs={'genshin-impact'})
+        history = json.loads((self.output / 'data/reminders/2026-08-30.json').read_text('utf8'))
+        self.assertEqual(history['cards'][0]['detail_url'], 'event.html?id=resolved')
+        self.assertEqual(history['cards'][0]['extraction_status'], 'structured')
+
     def test_activity_cards_and_expired_child_filter(self):
         c = campaign('multi')
         expired = c.activities[0].model_copy(deep=True)

@@ -128,6 +128,9 @@ class CliTests(unittest.TestCase):
             self.assertEqual(payload["campaigns"], [])
             reports = list((state / "runs").rglob("*.json"))
             self.assertEqual(len(reports), 1)
+            report = json.loads(reports[0].read_text('utf8'))
+            self.assertEqual(report['started_at'], report['finished_at'])
+            self.assertTrue((page / 'data/reminders/2026-08-30.json').exists())
 
 
 if __name__ == "__main__":

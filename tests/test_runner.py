@@ -180,7 +180,7 @@ class DailyRunnerTests(unittest.IsolatedAsyncioTestCase):
         self.page = root / "page"
         self.runner = DailyRunner(registry=registry(), clock=lambda: NOW)
 
-    async def test_retry_phase_extracts_and_publishes_without_fetch_or_mail(self):
+    async def test_retry_phase_extracts_publishes_and_sends_one_summary_without_fetch(self):
         item = observation()
         await self.runner.run(settings=settings(), store=self.store, page_dir=self.page,
             now=NOW, weibo_client=FakeWeiboClient([FetchBatch(items=(FetchedObservation(item),),
@@ -192,7 +192,7 @@ class DailyRunnerTests(unittest.IsolatedAsyncioTestCase):
             email_sender=sender, phase=RunPhase.RETRY)
         self.assertEqual(result.report.campaigns_created, 1)
         self.assertTrue((self.page / 'index.html').exists())
-        self.assertEqual(sender.messages, [])
+        self.assertEqual(len(sender.messages), 1)
         self.assertEqual(self.store.list_pending_extractions(), [])
 
     async def test_source_edit_keeps_original_first_seen_time(self) -> None:
@@ -403,7 +403,7 @@ class DailyRunnerTests(unittest.IsolatedAsyncioTestCase):
         self.assertFalse(self.page.exists())
         self.assertEqual(sender.messages, [])
 
-    async def test_bootstrap_history_keeps_future_jobs_without_immediate_mail(self) -> None:
+    async def test_bootstrap_history_keeps_traceable_news_and_future_jobs(self) -> None:
         item = observation()
         item.source.published_at = NOW - timedelta(days=10)
         item.source.first_seen_at = NOW
@@ -442,8 +442,75 @@ class DailyRunnerTests(unittest.IsolatedAsyncioTestCase):
             phase=RunPhase.EXTRACT,
         )
 
-        self.assertEqual(self.store.load_queue_jobs(date(2026, 8, 30)), [])
+        self.assertEqual(len(self.store.load_queue_jobs(date(2026, 8, 30))), 1)
         self.assertEqual(len(self.store.load_queue_jobs(date(2026, 9, 7))), 1)
+
+    async def test_all_retry_slots_send_one_summary_and_never_duplicate(self):
+        from herald.candidate_notices import register_candidates
+        sender = MemorySender()
+        for hour in (2, 14, 20):
+            instant = datetime(2026, 9, 19, hour, 15, tzinfo=timezone(timedelta(hours=8)))
+            items = []
+            for index in range(2):
+                o = observation()
+                o.id = o.source.id = f'post-{hour}-{index}'
+                o.text = f'原神品牌联动{hour}时第{index}条新消息'
+                o.source.content_hash = f'{hour:02}{index}' * 20
+                items.append(o)
+            self.store.initialize()
+            register_candidates(self.store, registry().entries[0], items, instant)
+            before = len(sender.messages)
+            for _ in range(2):
+                await self.runner.run(settings=settings(with_ai=False), store=self.store, page_dir=self.page,
+                    now=instant, weibo_client=None, provider=None, email_sender=sender, phase=RunPhase.RETRY)
+            self.assertEqual(len(sender.messages), before + 1)
+
+    async def test_ai_failure_still_publishes_and_sends_fallback(self):
+        from tests.test_pipeline import FailingProvider
+        sender = MemorySender()
+        await self.runner.run(settings=settings(), store=self.store, page_dir=self.page, now=NOW,
+            weibo_client=FakeWeiboClient([FetchBatch(items=(FetchedObservation(observation()),),
+                cursor=WeiboCursor(container_id='1076031001', latest_post_id='next'))]),
+            provider=FailingProvider(), email_sender=sender)
+        self.assertEqual(len(sender.messages), 1)
+        self.assertIn('待解析', sender.messages[0]['text'])
+        self.assertEqual(len(self.store.list_pending_extractions()), 1)
+        self.assertEqual(json.loads((self.page / 'data/active.json').read_text('utf8'))['cards'], [])
+        self.assertEqual(len(json.loads((self.page / 'data/reminders/2026-08-30.json').read_text('utf8'))['cards']), 1)
+        for root in (self.store.root, self.page):
+            content = '\n'.join(p.read_text('utf8') for p in root.rglob('*.json'))
+            for private in ('player@example.com', 'test-ai-key', 'test-smtp-password', '上海', '杭州'):
+                self.assertNotIn(private, content)
+
+    async def test_retry_smtp_failure_keeps_news_for_next_day(self):
+        from herald.candidate_notices import register_candidates
+        self.store.initialize()
+        register_candidates(self.store, registry().entries[0], [observation()], NOW)
+        class FailedSender:
+            def send(self, **kwargs):
+                raise RuntimeError('test-smtp-password player@example.com')
+        failed = await self.runner.run(settings=settings(), store=self.store, page_dir=self.page,
+            now=NOW, weibo_client=None, provider=None, email_sender=FailedSender(), phase=RunPhase.RETRY)
+        self.assertEqual(failed.report.emails_sent, 0)
+        self.assertEqual(self.store.list_receipts(), [])
+        self.assertNotIn('test-smtp-password', failed.report.model_dump_json())
+        sender = MemorySender()
+        later = NOW + timedelta(days=1)
+        for _ in range(2):
+            await self.runner.run(settings=settings(), store=self.store, page_dir=self.page,
+                now=later, weibo_client=None, provider=None, email_sender=sender, phase=RunPhase.RETRY)
+        self.assertEqual(len(sender.messages), 1)
+
+    async def test_legacy_backfill_is_counted_in_run_report(self):
+        from tests.test_merge import campaign, source
+        self.store.initialize()
+        s = source('legacy-post')
+        s.excerpt = '原神品牌联动，预约信息待公布'
+        self.store.save_campaign(campaign('legacy', sources=[s]))
+        result = await self.runner.run(settings=settings(), store=self.store, page_dir=self.page,
+            now=NOW, weibo_client=None, provider=None, email_sender=MemorySender(), phase=RunPhase.RETRY)
+        self.assertEqual(result.report.jobs_created, 1)
+        self.assertEqual(result.report.emails_sent, 1)
 
     async def test_complete_run_fetches_extracts_notifies_and_publishes(self) -> None:
         item = observation()

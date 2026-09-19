@@ -24,6 +24,7 @@ from .sources.miyoushe import MiyousheCursor
 from .sources.skland import SklandCursor
 from .sources.weibo import WeiboCursor
 from .storage import StateStore
+from .compatibility import repair_state
 
 
 class WeiboAccountFetcher(Protocol):
@@ -125,6 +126,7 @@ class DailyRunner:
         started = monotonic()
         phase = RunPhase(phase)
         store.initialize()
+        initial_job_ids = {job.id for job in store.list_queue_jobs()}
         resolution = self.registry.resolve(settings.public)
         if not resolution.supported:
             raise ValueError("none of WATCH_IPS are supported by the built-in registry")
@@ -143,6 +145,9 @@ class DailyRunner:
 
         should_fetch = phase in {RunPhase.FETCH, RunPhase.FULL}
         should_extract = phase in {RunPhase.EXTRACT, RunPhase.RETRY, RunPhase.FULL}
+        if phase in {RunPhase.FULL, RunPhase.RETRY}:
+            repair_state(store, resolution.supported, now, timezone_name=settings.public.timezone,
+                         remind_day_before=settings.public.remind_day_before)
         pending_by_ip = (
             self._pending_observations(store)
             if should_extract and provider is not None
@@ -193,26 +198,31 @@ class DailyRunner:
             for source_id, cursor_payload in fetched_cursors.items():
                 store.save_source_cursor(source_id, cursor_payload)
 
-        local_day = now.astimezone(notification_service.timezone).date()
+        delivery_now = max(now, self.clock())
+        local_day = delivery_now.astimezone(notification_service.timezone).date()
         delivery: DeliveryResult | None = None
         published: list[object] = []
-        if phase is RunPhase.FULL:
+        if phase in {RunPhase.FULL, RunPhase.RETRY}:
+            repair_state(store, resolution.supported, delivery_now, timezone_name=settings.public.timezone,
+                         remind_day_before=settings.public.remind_day_before)
             recipient = self._secret(settings.private.notify_email)
             if recipient and email_sender is not None:
                 try:
                     delivery = notification_service.deliver_due(
                         store=store,
                         day=local_day,
-                        generated_at=now,
+                        generated_at=delivery_now,
                         sender=email_sender,
                         recipient=recipient,
-                        send_empty_digest=settings.public.always_send_daily_digest,
+                        send_empty_digest=phase is RunPhase.FULL and settings.public.always_send_daily_digest,
+                        watched_ip_slugs={ip.slug for ip in resolution.supported},
                     )
                 except Exception:
                     # Delivery credentials and provider errors must never enter state/logs.
                     warnings.append("email delivery failed; no receipt was recorded")
             else:
-                due, _ = notification_service.collect_due(store, local_day)
+                due, _ = notification_service.collect_due(store, local_day, now=delivery_now,
+                    watched_ip_slugs={ip.slug for ip in resolution.supported})
                 if due or settings.public.always_send_daily_digest:
                     missing = (
                         "NOTIFY_EMAIL"
@@ -264,7 +274,7 @@ class DailyRunner:
             published = StaticSiteBuilder(settings.public.timezone).build(
                 store=store,
                 output_dir=page_dir,
-                now=now,
+                now=delivery_now,
                 watched_ip_slugs=watched_slugs,
                 origin_city=origin_city,
                 reachable_cities=reachable_cities,
@@ -279,7 +289,7 @@ class DailyRunner:
             duplicates=sum(item.unchanged_observations for item in pipeline_results),
             campaigns_created=sum(item.campaigns_created for item in pipeline_results),
             campaigns_updated=sum(item.campaigns_updated for item in pipeline_results),
-            jobs_created=sum(item.jobs_written for item in pipeline_results),
+            jobs_created=len({job.id for job in store.list_queue_jobs()} - initial_job_ids),
             notifications_sent=len(delivery.sent) if delivery is not None else 0,
             emails_sent=(
                 1 if delivery is not None and delivery.email_sent else 0
