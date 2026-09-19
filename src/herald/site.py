@@ -7,6 +7,7 @@ without a frontend framework or persistent server.
 from __future__ import annotations
 
 import json
+from hashlib import sha256
 from collections import defaultdict
 from datetime import datetime
 from pathlib import Path
@@ -91,7 +92,7 @@ function render() {
  } if(!list.children.length)list.append(node('li','暂无符合条件的活动'));
 }
 search.addEventListener('input',render);
-fetch('data/active.json').then(r=>{if(!r.ok)throw Error();return r.json();}).then(data=>{
+fetch('data/active.json',{cache:'no-store'}).then(r=>{if(!r.ok)throw Error();return r.json();}).then(data=>{
  cards=data.cards;document.getElementById('generated-at').textContent='更新时间：'+displayTime(data.generated_at);render();
 }).catch(()=>{list.textContent='活动加载失败，请刷新重试';});
 // Details use event.html?id=<campaign>#activity-<activity>.
@@ -254,8 +255,15 @@ function render(data){
  if(anchor)anchor.scrollIntoView();
 }
 if(!/^[A-Za-z0-9][A-Za-z0-9._-]{0,180}$/.test(eventId))document.getElementById('title').textContent='无效的企划编号';
-else fetch('events/'+encodeURIComponent(eventId)+'.json').then(r=>{if(!r.ok)throw Error();return r.json();}).then(render).catch(()=>{document.getElementById('title').textContent='企划不存在或已经过期';});
+else fetch('events/'+encodeURIComponent(eventId)+'.json',{cache:'no-store'}).then(r=>{if(!r.ok)throw Error();return r.json();}).then(render).catch(()=>{document.getElementById('title').textContent='企划不存在或已经过期';});
 """
+
+
+def _versioned_html(html: str, assets: dict[str, str]) -> str:
+    for filename, content in assets.items():
+        version = sha256(content.encode("utf-8")).hexdigest()[:12]
+        html = html.replace(f'"{filename}"', f'"{filename}?v={version}"')
+    return html
 
 
 class StaticSiteBuilder:
@@ -348,11 +356,21 @@ class StaticSiteBuilder:
         for month, days in self._calendar(campaigns, now).items():
             self._write_json(calendar_dir / f"{month}.json", {"days": days})
 
-        (output / "index.html").write_text(INDEX_HTML, encoding="utf-8")
+        shared_assets = {"style.css": STYLE_CSS}
+        (output / "index.html").write_text(
+            _versioned_html(INDEX_HTML, {**shared_assets, "app.js": APP_JS}),
+            encoding="utf-8",
+        )
         (output / "app.js").write_text(APP_JS, encoding="utf-8")
-        (output / "event.html").write_text(DETAIL_HTML, encoding="utf-8")
+        (output / "event.html").write_text(
+            _versioned_html(DETAIL_HTML, {**shared_assets, "event.js": DETAIL_JS}),
+            encoding="utf-8",
+        )
         (output / "event.js").write_text(DETAIL_JS, encoding="utf-8")
-        (output / "today.html").write_text(TODAY_HTML, encoding="utf-8")
+        (output / "today.html").write_text(
+            _versioned_html(TODAY_HTML, {**shared_assets, "today.js": TODAY_JS}),
+            encoding="utf-8",
+        )
         (output / "today.js").write_text(TODAY_JS, encoding="utf-8")
         (output / "style.css").write_text(STYLE_CSS, encoding="utf-8")
         (output / ".nojekyll").write_text("", encoding="utf-8")

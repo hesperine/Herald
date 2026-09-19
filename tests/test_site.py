@@ -153,6 +153,30 @@ class StaticSiteBuilderTests(unittest.TestCase):
                 self.assertIn('<html lang="zh-CN">', content)
                 self.assertIn('<meta charset="utf-8">', content)
 
+    def test_generated_pages_bypass_stale_browser_caches(self) -> None:
+        self.builder.build(
+            store=self.store,
+            output_dir=self.output,
+            now=NOW,
+            watched_ip_slugs={"genshin-impact"},
+        )
+
+        index = (self.output / "index.html").read_text(encoding="utf-8")
+        detail = (self.output / "event.html").read_text(encoding="utf-8")
+        today = (self.output / "today.html").read_text(encoding="utf-8")
+        self.assertRegex(index, r'href="style\.css\?v=[0-9a-f]{12}"')
+        self.assertRegex(index, r'src="app\.js\?v=[0-9a-f]{12}"')
+        self.assertRegex(detail, r'src="event\.js\?v=[0-9a-f]{12}"')
+        self.assertRegex(today, r'src="today\.js\?v=[0-9a-f]{12}"')
+
+        app_script = (self.output / "app.js").read_text(encoding="utf-8")
+        detail_script = (self.output / "event.js").read_text(encoding="utf-8")
+        self.assertIn("fetch('data/active.json',{cache:'no-store'})", app_script)
+        self.assertIn(
+            "fetch('events/'+encodeURIComponent(eventId)+'.json',{cache:'no-store'})",
+            detail_script,
+        )
+
     def test_daily_notification_view_is_generated_separately_from_catalog(self) -> None:
         from herald.models import QueueJob, NotificationKind
         self.store.save_campaign(campaign("active"))
