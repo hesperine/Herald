@@ -8,8 +8,8 @@
 2. 使用者自行承担 AI 与 SMTP 账号；项目维护者不得内置、转发或代付 API Key。
 3. `main` 只保存可同步的上游代码。用户配置只来自 Repository Variables/Secrets；运行状态只写 `state`；静态产物只写 `page`。
 4. 默认只处理中国区、内置 IP 的官方来源。未知 IP 不进行自动官号发现；合作品牌账号暂不自动加入长期监控。
-5. 信息必须先来源去重，再按 `Campaign → Activity → Action` 合并。证据不足时保守进入 `pending-review`，不得为了减少条目而硬合并。
-6. 当天任务同时包含新公告/更新和历史日期队列中的提醒。
+5. 信息必须先来源去重，再按 `Campaign → Activity → Action` 合并。同一 IP 与明确合作方共用企划；未知合作方不因名称相似合并。Activity 关系不明时新建，未知事实留空。通过规则筛选的候选必须可追踪和通知，AI 失败保留 pending 与公开原帖兜底，不虚构活动或日期。
+6. FULL 与 RETRY 每次最多发送一封汇总，包含未发送的新公告/更新和仍有效的到期提醒。按任务回执防重；每日回执只阻止重复空日报。候选通知与未来日期提醒分开，后者必须有可靠日期。
 7. 过期活动保留在 `state`，但必须从 `page` 的首页、日历和详情产物中清除。
 8. 前端现阶段只保证可用。未经用户明确进入视觉设计阶段，不增加框架、复杂 CSS、配色系统或大规模布局。
 
@@ -30,6 +30,7 @@
 - `ai.py`、`assembly.py`：公开材料结构化和稳定 ID 组装。
 - `storage.py`：原子 JSON、日期目录和索引。
 - `scheduler.py`、`notifications.py`：即时变更、未来提醒和防重回执。
+- `candidate_notices.py`、`compatibility.py`：候选通知身份、已发送公开事实比较与旧 state 的幂等兼容修复。
 - `reachability.py`、`site.py`：隐私保护的可达性推断与最低可用静态页。
 - `pipeline.py`：单个 IP 的观察材料处理。
 - `runner.py`：一次完整每日运行。
