@@ -6,7 +6,6 @@ import hashlib
 import re
 from dataclasses import dataclass
 from datetime import datetime
-from difflib import SequenceMatcher
 from enum import StrEnum
 
 from .models import (
@@ -15,6 +14,7 @@ from .models import (
     ChangeKind,
     ChangeRecord,
     EventAction,
+    EventStatus,
     SourceRef,
     Venue,
 )
@@ -61,77 +61,24 @@ class MergeOutcome:
         )
 
 
-def _campaign_dates(campaign: Campaign) -> set[object]:
-    result: set[object] = set()
-    for activity in campaign.activities:
-        if activity.start_at:
-            result.add(activity.start_at.date())
-        if activity.end_at:
-            result.add(activity.end_at.date())
-        for action in activity.actions:
-            if action.at:
-                result.add(action.at.date())
-    return result
-
-
-def _campaign_cities(campaign: Campaign) -> set[str]:
-    return {
-        normalize_name(venue.city)
-        for activity in campaign.activities
-        for venue in activity.venues
-        if venue.city
-    }
-
-
 class CampaignIdentityResolver:
     """Resolve only strong matches; uncertain pairs must stay separate."""
 
     def compare(self, existing: Campaign, incoming: Campaign) -> IdentityDecision:
-        if existing.id == incoming.id:
-            return IdentityDecision(IdentityKind.MATCH, 1.0, "same campaign id")
-
         if existing.ip_slug != incoming.ip_slug:
             return IdentityDecision(IdentityKind.DISTINCT, 0.0, "different IP")
-
-        if {s.id for s in existing.sources} & {s.id for s in incoming.sources}:
-            return IdentityDecision(IdentityKind.MATCH, 1.0, "same source identity")
 
         existing_partner = normalize_name(existing.partner)
         incoming_partner = normalize_name(incoming.partner)
         if existing_partner and incoming_partner and existing_partner != incoming_partner:
             return IdentityDecision(IdentityKind.DISTINCT, 0.0, "different partner")
-
-        score = 0.0
-        reasons: list[str] = []
+        if existing.id == incoming.id:
+            return IdentityDecision(IdentityKind.MATCH, 1.0, "same campaign id")
+        if {s.id for s in existing.sources} & {s.id for s in incoming.sources}:
+            return IdentityDecision(IdentityKind.MATCH, 1.0, "same source identity")
         if existing_partner and existing_partner == incoming_partner:
-            score += 0.45
-            reasons.append("same partner")
-
-        title_similarity = SequenceMatcher(
-            None, normalize_name(existing.title), normalize_name(incoming.title)
-        ).ratio()
-        if title_similarity >= 0.75:
-            score += 0.25
-            reasons.append("similar title")
-
-        existing_dates = _campaign_dates(existing)
-        incoming_dates = _campaign_dates(incoming)
-        if existing_dates and incoming_dates and existing_dates & incoming_dates:
-            score += 0.20
-            reasons.append("shared activity date")
-
-        existing_cities = _campaign_cities(existing)
-        incoming_cities = _campaign_cities(incoming)
-        if existing_cities and incoming_cities and existing_cities & incoming_cities:
-            score += 0.10
-            reasons.append("shared city")
-
-        reason = ", ".join(reasons) if reasons else "insufficient identity evidence"
-        if score >= 0.75:
-            return IdentityDecision(IdentityKind.MATCH, score, reason)
-        if score >= 0.40:
-            return IdentityDecision(IdentityKind.AMBIGUOUS, score, reason)
-        return IdentityDecision(IdentityKind.DISTINCT, score, reason)
+            return IdentityDecision(IdentityKind.MATCH, 1.0, "same IP and partner")
+        return IdentityDecision(IdentityKind.DISTINCT, 0.0, "unknown partner without shared source")
 
     def find_match(
         self, incoming: Campaign, existing_campaigns: list[Campaign]
@@ -144,14 +91,15 @@ class CampaignIdentityResolver:
                 matches.append(existing)
             elif decision.kind is IdentityKind.AMBIGUOUS:
                 ambiguous.append(existing)
-        if len(matches) == 1:
-            return matches[0], ambiguous
+        if matches:
+            return min(matches, key=lambda c: (c.first_seen_at, c.id)), ambiguous
         return None, [*matches, *ambiguous]
 
 
 class CampaignMerger:
     def merge(
-        self, existing: Campaign | None, incoming: Campaign, detected_at: datetime
+        self, existing: Campaign | None, incoming: Campaign, detected_at: datetime,
+        *, match_activities: bool = True,
     ) -> MergeOutcome:
         if existing is None:
             change = self._change(
@@ -207,16 +155,18 @@ class CampaignMerger:
                     detected_at,
                 )
 
+        shared_source = bool({s.id for s in existing.sources} & {s.id for s in incoming.sources})
         by_activity_id = {activity.id: activity for activity in merged.activities}
         for incoming_activity in incoming.activities:
             activity = by_activity_id.get(incoming_activity.id)
-            if activity is None:
+            if activity is None and match_activities:
                 # Only reuse a unique identity with the same title/type and no
                 # conflicting city. Dates and newly supplied addresses can change.
                 candidates = [a for a in merged.activities
                     if a.kind == incoming_activity.kind
                     and normalize_name(a.title) == normalize_name(incoming_activity.title)
-                    and self._compatible_cities(a, incoming_activity)]
+                    and self._compatible_cities(a, incoming_activity)
+                    and (shared_source or self._compatible_dates(a, incoming_activity))]
                 if len(candidates) == 1:
                     activity = candidates[0]
             if activity is None:
@@ -247,7 +197,18 @@ class CampaignMerger:
         if changes:
             merged.revision = existing.revision + 1
             merged.updated_at = max(existing.updated_at, incoming.updated_at, detected_at)
+        from .assembly import CampaignAssembler
+        if merged.status != EventStatus.CANCELLED:
+            merged.status = CampaignAssembler._campaign_status(merged.activities)
         return MergeOutcome(merged, tuple(changes), tuple(conflicts))
+
+    @staticmethod
+    def _compatible_dates(left, right):
+        def dates(a):
+            return {str(v)[:10] for v in (a.start_date, a.start_at,
+                *(x.start_date or x.at for x in a.actions)) if v}
+        a, b = dates(left), dates(right)
+        return not a or not b or bool(a & b)
 
     def _merge_activity(
         self,

@@ -13,6 +13,7 @@ from pydantic import BaseModel
 
 from .models import (
     Campaign,
+    CandidateNotice,
     ChangeRecord,
     NotificationReceipt,
     ObservationIndexRecord,
@@ -70,6 +71,7 @@ class StateStore:
             "runs",
             "sources",
             "reminders",
+            "candidates",
         ):
             (self.root / name).mkdir(parents=True, exist_ok=True)
 
@@ -105,9 +107,12 @@ class StateStore:
                 except ValueError:
                     continue
                 if day < cutoff:
+                    if bucket == 'notified' and 'job_id' in json.loads(path.read_text(encoding='utf-8')):
+                        # Durable tombstones prevent migration/reconciliation from resending.
+                        continue
                     if bucket == 'queue':
                         payload = json.loads(path.read_text(encoding='utf-8'))
-                        if payload.get('kind') in ('announcement', 'update') and not any(
+                        if payload.get('kind') and not any(
                             (self.root / 'notified').glob(f'*/*/*/{path.name}')
                         ):
                             continue
@@ -118,14 +123,39 @@ class StateStore:
                         parent = parent.parent
 
     def load_campaign(self, campaign_id: str) -> Campaign | None:
-        path = self.root / "events" / f"{_require_safe_id(campaign_id)}.json"
-        return self._load_optional(path, Campaign)
+        seen = set()
+        while campaign_id not in seen:
+            seen.add(campaign_id)
+            path = self.root / 'events' / f'{_require_safe_id(campaign_id)}.json'
+            item = self._load_optional(path, Campaign)
+            if item is None or not item.redirected_to:
+                return item
+            campaign_id = item.redirected_to
+        raise ValueError('cyclic campaign alias')
 
-    def list_campaigns(self) -> list[Campaign]:
+    def save_candidate(self, candidate: CandidateNotice) -> Path:
+        return self._save_model(self.root / 'candidates' / f'{_require_safe_id(candidate.id)}.json', candidate)
+
+    def list_candidates(self) -> list[CandidateNotice]:
+        return [self._load(p, CandidateNotice) for p in sorted((self.root / 'candidates').glob('*.json'))]
+
+    def list_queue_jobs(self) -> list[QueueJob]:
+        return [self._load(p, QueueJob) for p in sorted((self.root / 'queue').glob('*/*/*/*.json'))]
+
+    def find_receipt(self, job_id: str) -> NotificationReceipt | None:
+        paths = sorted((self.root / 'notified').glob(f'*/*/*/{_require_safe_id(job_id)}.json'))
+        return self._load(paths[-1], NotificationReceipt) if paths else None
+
+    def list_receipts(self) -> list[NotificationReceipt]:
+        return [self._load(p, NotificationReceipt)
+                for p in sorted((self.root / 'notified').glob('*/*/*/*.json'))]
+
+    def list_campaigns(self, *, include_redirects: bool = False) -> list[Campaign]:
         directory = self.root / "events"
         if not directory.exists():
             return []
-        return [self._load(path, Campaign) for path in sorted(directory.glob("*.json"))]
+        return [c for path in sorted(directory.glob('*.json'))
+                if (c := self._load(path, Campaign)) and (include_redirects or not c.redirected_to)]
 
     def save_observation(self, observation: SourceObservation) -> Path:
         day = observation.source.first_seen_at.date()

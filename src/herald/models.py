@@ -215,8 +215,12 @@ class Campaign(StrictModel):
     activities: list[Activity] = Field(default_factory=list)
     sources: list[SourceRef] = Field(default_factory=list)
     fact_provenance: dict[str, FactProvenance] = Field(default_factory=dict)
+    redirected_to: str | None = None
+    activity_redirects: dict[str, str] = Field(default_factory=dict)
 
     def is_visible(self, now: datetime) -> bool:
+        if self.redirected_to:
+            return False
         if self.status in {EventStatus.ENDED, EventStatus.CANCELLED}:
             return False
         if not self.activities:
@@ -256,23 +260,42 @@ class ChangeRecord(StrictModel):
 
 class QueueJob(StrictModel):
     id: str
-    campaign_id: str
+    campaign_id: str | None = None
+    candidate_id: str | None = None
     activity_id: str | None = None
     action_id: str | None = None
     change_id: str | None = None
     kind: NotificationKind
     due_date: date
     expected_at: AwareDatetime | None = None
+    expected_date: date | None = None
     semantic_key: str
     summary: str
 
 
 class NotificationReceipt(StrictModel):
     job_id: str
+    candidate_id: str | None = None
     semantic_key: str
     sent_at: AwareDatetime
     delivery_day: date
     channel: str = "email"
+    public_text: str = ""
+    facts: dict[str, str] = Field(default_factory=dict)
+
+
+class CandidateNotice(StrictModel):
+    """Public fallback and its structured association; independent of AI success."""
+
+    id: str
+    ip_slug: str
+    ip_name: str
+    detected_at: AwareDatetime
+    sources: list[SourceRef] = Field(default_factory=list)
+    public_text: str = ""
+    campaign_id: str | None = None
+    status: str = "pending"
+    facts: dict[str, str] = Field(default_factory=dict)
 
 
 class ScheduledJobRef(StrictModel):
@@ -315,6 +338,7 @@ class PendingReview(StrictModel):
     possible_campaign_ids: list[str]
     queued_at: AwareDatetime
     reason: str
+    resolved_campaign_id: str | None = None
 
 
 class RunReport(StrictModel):

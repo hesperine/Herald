@@ -79,14 +79,21 @@ class CampaignIdentityResolverTests(unittest.TestCase):
 
     def test_same_source_edit_retains_campaign_identity(self) -> None:
         existing = campaign("existing", sources=[source("same")])
-        incoming = campaign("renamed", partner="另一种品牌写法", sources=[source("same")])
+        incoming = campaign("renamed", sources=[source("same")])
         self.assertEqual(self.resolver.compare(existing, incoming).kind, IdentityKind.MATCH)
+
+    def test_shared_source_does_not_merge_different_known_partners(self):
+        a = campaign('one', partner='品牌A', sources=[source('same')])
+        b = campaign('two', partner='品牌B', sources=[source('same')])
+        self.assertEqual(self.resolver.compare(a, b).kind, IdentityKind.DISTINCT)
 
     def test_location_enrichment_preserves_activity_and_action_ids(self) -> None:
         from herald.models import Venue
         existing = campaign("existing", action_at=BASE + timedelta(days=3))
         incoming = campaign("existing", action_at=BASE + timedelta(days=4),
             updated_at=BASE + timedelta(days=1))
+        existing.sources = [source('same-post')]
+        incoming.sources = [source('same-post', BASE + timedelta(days=1))]
         incoming.activities[0].id = "new-generated-id"
         incoming.activities[0].venues = [Venue(id="new-venue", city="上海")]
         incoming.activities[0].actions[0].id = "new-generated-action-id"
@@ -116,13 +123,27 @@ class CampaignIdentityResolverTests(unittest.TestCase):
 
         self.assertEqual(decision.kind, IdentityKind.MATCH)
 
-    def test_same_partner_without_other_evidence_is_ambiguous(self) -> None:
+    def test_same_partner_uses_one_campaign_across_editions(self) -> None:
         existing = campaign("existing", title="第一期联动")
         incoming = campaign("incoming", title="第二期联动")
 
         decision = self.resolver.compare(existing, incoming)
 
-        self.assertEqual(decision.kind, IdentityKind.AMBIGUOUS)
+        self.assertEqual(decision.kind, IdentityKind.MATCH)
+
+    def test_unknown_partners_do_not_merge_by_title(self):
+        a = campaign('one', partner=None)
+        b = campaign('two', partner=None)
+        self.assertEqual(self.resolver.compare(a, b).kind, IdentityKind.DISTINCT)
+
+    def test_separate_batches_keep_separate_activity_ids(self):
+        a = campaign('one', action_at=BASE)
+        b = campaign('two', action_at=BASE + timedelta(days=30))
+        b.activities[0].id = 'second-batch'
+        a.sources = [source('first')]
+        b.sources = [source('second')]
+        result = CampaignMerger().merge(a, b, BASE)
+        self.assertEqual([x.id for x in result.campaign.activities], ['national-sale', 'second-batch'])
 
     def test_different_partner_is_distinct(self) -> None:
         existing = campaign("existing", partner="品牌A")
@@ -134,6 +155,14 @@ class CampaignIdentityResolverTests(unittest.TestCase):
 
 
 class CampaignMergerTests(unittest.TestCase):
+    def test_explicit_campaign_cancellation_is_preserved(self):
+        from herald.models import EventStatus
+        a = campaign('one')
+        b = campaign('two', updated_at=BASE + timedelta(days=1))
+        b.status = EventStatus.CANCELLED
+        result = CampaignMerger().merge(a, b, BASE + timedelta(days=1))
+        self.assertEqual(result.campaign.status, EventStatus.CANCELLED)
+
     def test_existing_source_receives_summary(self):
         a = source('s', BASE)
         b = source('s', BASE)

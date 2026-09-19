@@ -19,6 +19,18 @@ UTC = timezone.utc
 
 
 class StateStoreTests(unittest.TestCase):
+    def test_candidate_records_and_receipts_survive_history_pruning(self):
+        from herald.models import CandidateNotice
+        record = CandidateNotice(id='candidate-a', ip_slug='genshin-impact', ip_name='原神',
+            detected_at=datetime(2026, 1, 1, tzinfo=UTC), public_text='公开联动预告')
+        self.store.save_candidate(record)
+        receipt = NotificationReceipt(job_id='candidate-a', semantic_key='candidate-a',
+            sent_at=datetime(2026, 1, 1, tzinfo=UTC), delivery_day=date(2026, 1, 1))
+        self.store.save_receipt(receipt)
+        self.store.prune_reminders(date(2026, 9, 19))
+        self.assertEqual(self.store.list_candidates(), [record])
+        self.assertEqual(self.store.find_receipt('candidate-a'), receipt)
+
     def test_reminder_retention_preserves_boundary_future_jobs_and_facts(self):
         today=date(2026, 9, 17)
         for day in (date(2026,9,10),date(2026,9,11),today):

@@ -53,6 +53,51 @@ def make_campaign(action_at: datetime, *, revision: int = 1) -> Campaign:
 
 
 class ScheduleCompilerTests(unittest.TestCase):
+    def test_announcement_cannot_swallow_date_only_start(self):
+        c = make_campaign(datetime(2026, 9, 23, tzinfo=self.compiler.timezone))
+        c.activities[0].actions[0].kind = ActionKind.ANNOUNCEMENT
+        c.activities[0].start_date = date(2026, 9, 23)
+        jobs = self.compiler.future_jobs(c, NOW)
+        self.assertEqual(len(jobs), 1)
+        self.assertEqual(jobs[0].action_id, 'popup-shanghai--start')
+        self.assertEqual(jobs[0].expected_date, date(2026, 9, 23))
+        self.assertEqual(len(self.compiler.future_jobs(c, datetime(2026, 9, 23, 8, tzinfo=UTC))), 1)
+
+    def test_moving_activity_keeps_job_identity_and_legacy_receipt_identity(self):
+        with tempfile.TemporaryDirectory() as directory:
+            store = StateStore(directory)
+            store.initialize()
+            c = make_campaign(NOW + timedelta(days=2))
+            first = self.compiler.reconcile_campaign(store, c, NOW)[0]
+            # Simulate a pre-upgrade job whose ID includes the original campaign.
+            store.delete_queue_job(first)
+            legacy = first.model_copy(update={'id': 'legacy-job', 'semantic_key': 'old-key'})
+            store.save_queue_job(legacy)
+            c.id = 'new-parent'
+            moved = self.compiler.reconcile_campaign(store, c, NOW)[0]
+            self.assertEqual(moved.id, 'legacy-job')
+            self.assertEqual(moved.campaign_id, 'new-parent')
+            self.assertEqual(self.compiler.future_jobs(c, NOW)[0].id, first.id)
+
+    def test_old_parent_reconciliation_does_not_delete_moved_legacy_job(self):
+        with tempfile.TemporaryDirectory() as directory:
+            store = StateStore(directory)
+            store.initialize()
+            old = make_campaign(NOW + timedelta(days=2))
+            job = self.compiler.reconcile_campaign(store, old, NOW)[0]
+            store.delete_queue_job(job)
+            store.save_queue_job(job.model_copy(update={'id': 'legacy-id'}))
+            manifest = store.load_schedule_manifest(old.id)
+            manifest.jobs[0].job_id = 'legacy-id'
+            store.save_schedule_manifest(manifest)
+            new = old.model_copy(deep=True)
+            new.id = 'new-parent'
+            old.activities = []
+            store.save_campaign(old)
+            store.save_campaign(new)
+            self.compiler.reconcile_campaign(store, old, NOW)
+            self.assertEqual(self.compiler.reconcile_campaign(store, new, NOW)[0].id, 'legacy-id')
+
     def test_activity_dates_and_sale_deadline_are_scheduled(self):
         c = make_campaign(NOW + timedelta(days=2))
         a = c.activities[0]

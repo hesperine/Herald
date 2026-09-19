@@ -47,7 +47,7 @@ class CampaignAssembler:
             "campaign",
             packet.ip_slug_hint,
             extraction.partner or "unknown-partner",
-            campaign_title,
+            '' if extraction.partner else observation.id,
         )
         claims = [
             Evidence(
@@ -64,7 +64,7 @@ class CampaignAssembler:
             activity_id = _stable_id(
                 "activity",
                 packet.ip_slug_hint,
-                extraction.partner or "unknown-partner",
+                observation.id,
                 extracted_activity.kind.value,
                 extracted_activity.title,
                 location_hint,

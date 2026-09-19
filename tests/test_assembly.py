@@ -161,6 +161,13 @@ class CampaignAssemblerTests(unittest.TestCase):
         self.assertEqual(campaign.status, EventStatus.DETAILS_PENDING)
         self.assertEqual(campaign.activities, [])
 
+    def test_activity_identity_is_independent_of_partner_correction(self):
+        first = self.assembler.assemble(packet=packet(), observation=observation(), extraction=extraction(), now=NOW)
+        corrected = extraction()
+        corrected.partner = '修正合作方'
+        second = self.assembler.assemble(packet=packet(), observation=observation(), extraction=corrected, now=NOW)
+        self.assertEqual(first.activities[0].id, second.activities[0].id)
+
 
 if __name__ == "__main__":
     unittest.main()
