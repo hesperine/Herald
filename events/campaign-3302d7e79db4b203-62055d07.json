@@ -64,6 +64,7 @@
       ]
     }
   ],
+  "activity_redirects": {},
   "announced_at": "2026-09-02T01:00:51Z",
   "fact_provenance": {
     "activities.activity-270f3157626abbe8.start_date": {
@@ -125,6 +126,7 @@
   "reachability": {
     "activity-270f3157626abbe8": "unknown"
   },
+  "redirected_to": null,
   "revision": 1,
   "sources": [
     {

@@ -1,5 +1,6 @@
 {
   "activities": [],
+  "activity_redirects": {},
   "announced_at": "2026-09-15T04:00:16Z",
   "fact_provenance": {},
   "first_seen_at": "2026-09-17T04:11:37.178399Z",
@@ -40,6 +41,7 @@
   ],
   "partner": null,
   "reachability": {},
+  "redirected_to": null,
   "revision": 1,
   "sources": [
     {

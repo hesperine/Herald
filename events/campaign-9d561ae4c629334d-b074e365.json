@@ -207,6 +207,7 @@
       ]
     }
   ],
+  "activity_redirects": {},
   "announced_at": "2026-09-07T04:00:34Z",
   "fact_provenance": {
     "activities.activity-143370800450b804.actions.action-253472849846ae2a.rules": {
@@ -330,6 +331,7 @@
     "activity-143370800450b804": "online",
     "activity-ec00117645e279cd": "online"
   },
+  "redirected_to": null,
   "revision": 1,
   "sources": [
     {

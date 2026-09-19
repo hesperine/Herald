@@ -38,6 +38,11 @@ viewer.addEventListener('click',event=>{if(event.target===viewer)viewer.close();
 viewer.addEventListener('keydown',event=>{if(event.key==='ArrowLeft'||event.key==='ArrowRight'){event.preventDefault();showPicture(galleryIndex+(event.key==='ArrowLeft'?-1:1));}});
 const eventId=new URLSearchParams(location.search).get('id')||'';
 function render(data){
+ const oldAnchor=location.hash.slice(1);
+ if(oldAnchor.startsWith('activity-')){
+  const mapped=(data.activity_redirects||{})[oldAnchor.slice(9)];
+  if(mapped)history.replaceState(null,'',location.pathname+location.search+'#activity-'+mapped);
+ }
  document.getElementById('title').textContent=data.title;document.title=data.title;
  const summary=document.getElementById('summary');
  for(const [key,value] of [['IP',data.ip_name],['合作方',data.partner],['公布时间',displayTime(data.announced_at)]])if(value)summary.append(node('dt',key),node('dd',value));

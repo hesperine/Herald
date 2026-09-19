@@ -117,6 +117,7 @@
       ]
     }
   ],
+  "activity_redirects": {},
   "announced_at": "2026-09-07T10:00:13Z",
   "fact_provenance": {
     "activities.activity-6a6bf6084a4ddac7.actions.action-60d8b12acaa400df.quantity_limit": {
@@ -230,6 +231,7 @@
     "activity-6a6bf6084a4ddac7": "online",
     "activity-841e15a9847b54dd": "unknown"
   },
+  "redirected_to": null,
   "revision": 1,
   "sources": [
     {

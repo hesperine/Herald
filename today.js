@@ -27,7 +27,7 @@ async function loadDay(day) {
     if(c.detail_url){const link=node('a',title);link.href=c.detail_url;h.append(link);}else h.textContent=title;
     section.append(h,node('p',c.campaign_title));
     for(const r of reasons)section.append(node('p',r.summary+(r.expected_at?' · '+displayTime(r.date_only?null:r.expected_at,r.date_only):'')));
-    if(!c.detail_url)section.append(node('small','详情已下线，请参考原帖'));
+    if(!c.detail_url)section.append(node('small',c.extraction_status==='pending'?'待解析，请参考原帖':'详情已下线，请参考原帖'));
     sourceLinks(section,c.sources);target.append(section);
    }
    if(!target.children.length)target.textContent=isNews?'当日暂无新消息':'当日暂无开始或结束提醒';

@@ -293,8 +293,8 @@
       "ip_name": "明日方舟：终末地",
       "next": {
         "at": "2026-09-23T00:00:00+08:00",
-        "date": null,
-        "title": "联名活动上线"
+        "date": "2026-09-23",
+        "title": "联名活动开始"
       },
       "url": "event.html?id=campaign-3302d7e79db4b203-62055d07#activity-activity-270f3157626abbe8"
     },
@@ -523,5 +523,5 @@
       "url": "event.html?id=campaign-0451ddb8aea2e952-631416ed#activity-activity-841e15a9847b54dd"
     }
   ],
-  "generated_at": "2026-09-19T12:35:26.923006+08:00"
+  "generated_at": "2026-09-19T19:05:14.153933+08:00"
 }
