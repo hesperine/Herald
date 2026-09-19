@@ -88,4 +88,4 @@ function render(data){
  if(anchor)anchor.scrollIntoView();
 }
 if(!/^[A-Za-z0-9][A-Za-z0-9._-]{0,180}$/.test(eventId))document.getElementById('title').textContent='无效的企划编号';
-else fetch('events/'+encodeURIComponent(eventId)+'.json').then(r=>{if(!r.ok)throw Error();return r.json();}).then(render).catch(()=>{document.getElementById('title').textContent='企划不存在或已经过期';});
+else fetch('events/'+encodeURIComponent(eventId)+'.json',{cache:'no-store'}).then(r=>{if(!r.ok)throw Error();return r.json();}).then(render).catch(()=>{document.getElementById('title').textContent='企划不存在或已经过期';});

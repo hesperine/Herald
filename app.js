@@ -34,7 +34,7 @@ function render() {
  } if(!list.children.length)list.append(node('li','暂无符合条件的活动'));
 }
 search.addEventListener('input',render);
-fetch('data/active.json').then(r=>{if(!r.ok)throw Error();return r.json();}).then(data=>{
+fetch('data/active.json',{cache:'no-store'}).then(r=>{if(!r.ok)throw Error();return r.json();}).then(data=>{
  cards=data.cards;document.getElementById('generated-at').textContent='更新时间：'+displayTime(data.generated_at);render();
 }).catch(()=>{list.textContent='活动加载失败，请刷新重试';});
 // Details use event.html?id=<campaign>#activity-<activity>.
