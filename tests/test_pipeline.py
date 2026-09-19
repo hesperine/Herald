@@ -209,6 +209,22 @@ class ObservationPipelineTests(unittest.IsolatedAsyncioTestCase):
         self.assertEqual(result.pending_extractions, 1)
         self.assertEqual(len(self.store.list_pending_extractions()), 1)
         self.assertEqual(self.store.list_campaigns(), [])
+        jobs = self.store.load_queue_jobs(NOW.date())
+        self.assertEqual(len(jobs), 1)
+        self.assertIsNotNone(jobs[0].candidate_id)
+        self.assertIsNone(jobs[0].expected_at)
+
+    async def test_old_suppressed_pending_gets_one_fallback_and_one_resolved_notice(self):
+        item = observation('historical', '原神', digest='b' * 64)
+        kwargs = dict(store=self.store, ip=self.ip, observations=[item], now=NOW,
+            suppress_immediate_for={item.id})
+        await self.pipeline.process(**kwargs, provider=None)
+        pending = self.store.list_pending_extractions()[0]
+        self.assertFalse(pending.notify_immediately)
+        await self.pipeline.process(**kwargs, provider=CountingProvider(extraction()))
+        await self.pipeline.process(**kwargs, provider=CountingProvider(extraction()))
+        self.assertEqual(len(self.store.load_queue_jobs(NOW.date())), 1)
+        self.assertEqual(self.store.list_pending_extractions(), [])
 
 
 if __name__ == "__main__":

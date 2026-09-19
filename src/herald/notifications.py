@@ -22,6 +22,8 @@ from .storage import StateStore
 class NotificationItem:
     job: QueueJob
     campaign: Campaign
+    detail_campaign_id: str | None = None
+    extraction_status: str | None = None
 
 
 @dataclass(frozen=True, slots=True)
@@ -131,31 +133,50 @@ class NotificationService:
             self.timezone = ScheduleCompiler(timezone_name).timezone
 
     def collect_due(
-        self, store: StateStore, day: date, *, include_delivered: bool = False
+        self, store: StateStore, day: date, *, include_delivered: bool = False,
+        now: datetime | None = None, watched_ip_slugs: set[str] | None = None,
     ) -> tuple[list[NotificationItem], list[QueueJob]]:
         items: list[NotificationItem] = []
         skipped: list[QueueJob] = []
-        jobs = store.load_queue_jobs(day)
-        # Carry unsent announcements/updates across midnight; never replay old countdowns.
-        for directory in sorted((store.root / 'queue').glob('*/*/*')):
-            try:
-                queued_day = date(*map(int, directory.relative_to(store.root / 'queue').parts))
-            except ValueError:
-                continue
-            if queued_day < day:
-                jobs.extend(job for job in store.load_queue_jobs(queued_day)
-                            if job.kind in (NotificationKind.ANNOUNCEMENT, NotificationKind.UPDATE))
+        now = now or datetime.combine(day, datetime.min.time(), self.timezone)
+        jobs = [j for j in store.list_queue_jobs() if j.due_date <= day]
+        candidates = {c.id: c for c in store.list_candidates()}
         delivered_ids = {p.stem for p in (store.root / 'notified').glob('*/*/*/*.json')}
         for job in jobs:
             delivered = job.id in delivered_ids
             if delivered and (not include_delivered or not store.has_receipt(job.id, day)):
                 skipped.append(job)
                 continue
-            campaign = store.load_campaign(job.campaign_id)
+            notice = candidates.get(job.candidate_id)
+            campaign_id = notice.campaign_id if notice else job.campaign_id
+            campaign = store.load_campaign(campaign_id) if campaign_id else None
+            if job.activity_id and (campaign is None or not any(a.id == job.activity_id for a in campaign.activities)):
+                campaign = next((c for c in store.list_campaigns() if any(a.id == job.activity_id for a in c.activities)), None)
+            if notice:
+                title = campaign.title if campaign else notice.ip_name + ' · 候选联动信息'
+                # An ephemeral presentation object, never a fabricated stored campaign.
+                campaign = Campaign(id=notice.id, ip_slug=notice.ip_slug, ip_name=notice.ip_name,
+                    title=title, first_seen_at=notice.detected_at, updated_at=notice.detected_at,
+                    sources=notice.sources)
+                job = job.model_copy(update={'summary': job.summary + '\n' + notice.public_text})
             if campaign is None or not ScheduleCompiler.validate_due_job(job, campaign):
                 skipped.append(job)
                 continue
-            items.append(NotificationItem(job=job, campaign=campaign))
+            if watched_ip_slugs is not None and campaign.ip_slug not in watched_ip_slugs:
+                continue
+            if job.expected_at and not (delivered and include_delivered):
+                activity = next((a for a in campaign.activities if a.id == job.activity_id), None)
+                point = next((p for p in schedule_actions(activity, self.timezone) if p.id == job.action_id), None) if activity else None
+                target_day = job.expected_date or (point.start_date if point else None)
+                expired = target_day < day if target_day else job.expected_at <= now
+                if expired:
+                    skipped.append(job)
+                    continue
+                if (target_day or job.expected_at.astimezone(self.timezone).date()) == day:
+                    job = job.model_copy(update={'summary': job.summary.replace('明天', '今天')})
+            items.append(NotificationItem(job=job, campaign=campaign,
+                detail_campaign_id=campaign_id if notice else campaign.id,
+                extraction_status=notice.status if notice else None))
         return items, skipped
 
     @staticmethod
@@ -172,6 +193,8 @@ class NotificationService:
                 "ip_name": campaign.ip_name,
                 "activity_id": job.activity_id,
                 "activity": activity.model_dump(mode="json") if activity else None,
+                "detail_campaign_id": item.detail_campaign_id or (None if job.candidate_id else campaign.id),
+                "extraction_status": item.extraction_status,
                 "reasons": [],
                 "sources": [s.model_dump(mode="json") for s in campaign.sources],
             })
@@ -179,7 +202,7 @@ class NotificationService:
                       "action_id": job.action_id,
                       "expected_at": job.expected_at.isoformat() if job.expected_at else None}
             point = next((p for p in schedule_actions(activity, ScheduleCompiler().timezone) if p.id == job.action_id), None) if activity else None
-            reason['date_only'] = str(point.start_date) if point and point.start_date else None
+            reason['date_only'] = str(job.expected_date or point.start_date) if job.expected_date or (point and point.start_date) else None
             if reason not in card["reasons"]:
                 card["reasons"].append(reason)
         return list(cards.values())
@@ -353,10 +376,9 @@ class NotificationService:
         sender: EmailSender,
         recipient: str,
         send_empty_digest: bool = False,
+        watched_ip_slugs: set[str] | None = None,
     ) -> DeliveryResult:
-        items, skipped = self.collect_due(store, day)
-        if store.has_receipt(self._daily_digest_receipt_id(day), day):
-            return DeliveryResult((), tuple(skipped), email_sent=False)
+        items, skipped = self.collect_due(store, day, now=generated_at, watched_ip_slugs=watched_ip_slugs)
         if not items:
             receipt_id = self._daily_digest_receipt_id(day)
             if not send_empty_digest or store.has_receipt(receipt_id, day):
@@ -368,13 +390,18 @@ class NotificationService:
         digest = self.render_digest(items, generated_at)
         sender.send(recipient=recipient, subject=digest.subject, text=digest.text, html=digest.html)
         sent_jobs: list[QueueJob] = []
+        candidates = {c.id: c for c in store.list_candidates()}
         for item in digest.items:
+            notice = candidates.get(item.job.candidate_id)
             store.save_receipt(
                 NotificationReceipt(
                     job_id=item.job.id,
+                    candidate_id=item.job.candidate_id,
                     semantic_key=item.job.semantic_key,
                     sent_at=generated_at,
                     delivery_day=day,
+                    public_text=notice.public_text if notice else '',
+                    facts=notice.facts if notice else {},
                 )
             )
             sent_jobs.append(item.job)

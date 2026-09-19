@@ -97,12 +97,85 @@ class SemanticPipelineTests(unittest.IsolatedAsyncioTestCase):
                 await pipeline.process(store=store, ip=ip, observations=[a, b], now=BASE, provider=provider, suppress_immediate_for={'a', 'b'})
                 self.assertEqual(len(calls), 1)
                 self.assertEqual(len(calls[0]['sources']), 2)
-                self.assertEqual(store.load_queue_jobs(BASE.date()), [])
+                self.assertEqual(len(store.load_queue_jobs(BASE.date())), 2)
                 before = store.list_campaigns()
                 result = await pipeline.process(store=store, ip=ip, observations=[c], now=BASE, provider=provider)
                 self.assertEqual(result.pending_extractions, 1)
                 self.assertEqual(store.list_campaigns(), before)
                 self.assertEqual(len(store.list_pending_extractions()), 1)
+                self.assertEqual(len(store.list_candidates()), 3)
+
+    async def test_same_partner_defaults_to_existing_campaign_without_ai_hint(self):
+        from herald.config import PublicSettings
+        ip = IpRegistry.load_builtin().resolve(PublicSettings(watched_ips=['原神'])).supported[0]
+        def handler(request):
+            body = json.loads(json.loads(request.content)['messages'][-1]['content'])
+            if 'existing_campaign' in body:
+                answer = {'decision': 'create_new'}
+            else:
+                title = body['source']['text']
+                answer = {'relevant': True, 'campaign_title': title, 'partner': '品牌',
+                    'activities': [{'title': title, 'kind': 'product'}]}
+            return httpx.Response(200, json={'choices': [{'message': {'content': json.dumps(answer)}}]})
+        with tempfile.TemporaryDirectory() as directory:
+            store = StateStore(directory)
+            store.initialize()
+            items = [make_observation('first', text='原神品牌联动第一期', account='official'),
+                     make_observation('second', text='原神品牌联动第二期', account='official')]
+            async with httpx.AsyncClient(transport=httpx.MockTransport(handler)) as client:
+                provider = OpenAICompatibleProvider(client=client, base_url='https://example.com', model='test', api_key='test')
+                await ObservationPipeline().process(store=store, ip=ip, observations=items, now=BASE, provider=provider)
+            self.assertEqual(len(store.list_campaigns()), 1)
+            self.assertEqual(len(store.list_campaigns()[0].activities), 2)
+
+    async def test_merge_outage_keeps_extracted_activity_in_default_container(self):
+        from herald.config import PublicSettings
+        ip = IpRegistry.load_builtin().resolve(PublicSettings(watched_ips=['原神'])).supported[0]
+        def handler(request):
+            body = json.loads(json.loads(request.content)['messages'][-1]['content'])
+            if 'existing_campaign' in body:
+                return httpx.Response(503)
+            answer = {'relevant': True, 'campaign_title': '原神品牌联动', 'partner': '品牌',
+                'activities': [{'title': body['source']['text'], 'kind': 'product'}]}
+            return httpx.Response(200, json={'choices': [{'message': {'content': json.dumps(answer)}}]})
+        with tempfile.TemporaryDirectory() as directory:
+            store = StateStore(directory)
+            store.initialize()
+            async with httpx.AsyncClient(transport=httpx.MockTransport(handler)) as client:
+                provider = OpenAICompatibleProvider(client=client, base_url='https://example.com', model='test', api_key='test')
+                result = await ObservationPipeline().process(store=store, ip=ip, now=BASE, provider=provider,
+                    observations=[make_observation('one', text='原神品牌联动甲批', account='official'),
+                                  make_observation('two', text='原神品牌联动乙批', account='official')])
+            self.assertEqual(len(store.list_campaigns()), 1)
+            self.assertEqual(len(store.list_campaigns()[0].activities), 2)
+            self.assertEqual(result.pending_extractions, 0)
+
+    async def test_new_activity_reopens_previously_ended_container(self):
+        from herald.config import PublicSettings
+        from herald.models import EventStatus
+        from tests.test_merge import campaign
+        ip = IpRegistry.load_builtin().resolve(PublicSettings(watched_ips=['原神'])).supported[0]
+        def handler(request):
+            body = json.loads(json.loads(request.content)['messages'][-1]['content'])
+            activity = {'title': '第二期', 'kind': 'product'}
+            answer = ({'decision': 'update', 'new_activities': [activity]}
+                if 'existing_campaign' in body else
+                {'relevant': True, 'campaign_title': '原神品牌联动', 'partner': '品牌',
+                 'activities': [activity]})
+            return httpx.Response(200, json={'choices': [{'message': {'content': json.dumps(answer)}}]})
+        with tempfile.TemporaryDirectory() as directory:
+            store = StateStore(directory)
+            store.initialize()
+            old = campaign('old', partner='品牌')
+            old.status = old.activities[0].status = EventStatus.ENDED
+            store.save_campaign(old)
+            async with httpx.AsyncClient(transport=httpx.MockTransport(handler)) as client:
+                provider = OpenAICompatibleProvider(client=client, base_url='https://example.com', model='test', api_key='test')
+                await ObservationPipeline().process(store=store, ip=ip, now=BASE, provider=provider,
+                    observations=[make_observation('two', text='原神品牌联动第二期', account='official')])
+            result = store.load_campaign('old')
+            self.assertEqual(len(result.activities), 2)
+            self.assertTrue(result.is_visible(BASE))
 
     async def test_two_round_update_and_repeat_noop(self):
         calls = []

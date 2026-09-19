@@ -132,6 +132,51 @@ def scheduled_job(*, expected_at: datetime = ACTION_AT) -> QueueJob:
 
 
 class NotificationServiceTests(unittest.TestCase):
+    def test_retry_after_empty_digest_sends_new_items_once(self):
+        sender = MemorySender()
+        self.service.deliver_due(store=self.store, day=DUE_DAY, generated_at=NOW,
+            sender=sender, recipient='player@example.com', send_empty_digest=True)
+        self.store.save_campaign(campaign())
+        self.store.save_queue_job(scheduled_job())
+        for _ in range(2):
+            self.service.deliver_due(store=self.store, day=DUE_DAY, generated_at=NOW,
+                sender=sender, recipient='player@example.com')
+        self.assertEqual(len(sender.messages), 2)
+
+    def test_fallback_without_campaign_is_deliverable_and_keeps_pending(self):
+        from herald.models import CandidateNotice
+        record = CandidateNotice(id='candidate-a', ip_slug='genshin-impact', ip_name='原神',
+            detected_at=NOW, public_text='品牌联动公开预告')
+        self.store.save_candidate(record)
+        self.store.save_queue_job(QueueJob(id=record.id, candidate_id=record.id,
+            kind=NotificationKind.ANNOUNCEMENT, due_date=DUE_DAY,
+            semantic_key=record.id, summary='待解析'))
+        sender = MemorySender()
+        self.service.deliver_due(store=self.store, day=DUE_DAY, generated_at=NOW,
+            sender=sender, recipient='player@example.com')
+        self.assertIn('品牌联动公开预告', sender.messages[0]['text'])
+        self.assertIn('待解析', sender.messages[0]['text'])
+        self.assertEqual(self.store.find_receipt(record.id).public_text, record.public_text)
+
+    def test_overdue_time_job_survives_until_target_and_uses_today(self):
+        from datetime import timedelta
+        c = campaign()
+        self.store.save_campaign(c)
+        self.store.save_queue_job(scheduled_job())
+        target = scheduled_job().expected_at
+        before = target - timedelta(minutes=1)
+        day = before.astimezone(self.service.timezone).date()
+        items, _ = self.service.collect_due(self.store, day, now=before)
+        self.assertEqual(len(items), 1)
+        self.assertIn('今天', self.service.render_digest(items, before).text)
+        self.assertEqual(self.service.collect_due(self.store, day, now=target)[0], [])
+        c.activities[0].actions[0].at = None
+        c.activities[0].actions[0].start_date = day
+        self.store.save_campaign(c)
+        j = scheduled_job().model_copy(update={'expected_at': datetime.combine(day, datetime.min.time(), self.service.timezone), 'expected_date': day})
+        self.store.save_queue_job(j)
+        self.assertEqual(len(self.service.collect_due(self.store, day, now=target + timedelta(hours=5))[0]), 1)
+
     def test_internal_update_path_is_rendered_as_user_text(self):
         from herald.notifications import NotificationItem
         c = campaign()
@@ -163,7 +208,7 @@ class NotificationServiceTests(unittest.TestCase):
         self.store.initialize()
         self.service = NotificationService("Asia/Shanghai")
 
-    def test_yesterday_update_is_delivered_once_but_old_deadline_is_not(self):
+    def test_yesterday_update_and_still_future_deadline_are_delivered_once(self):
         from datetime import timedelta
         self.store.save_campaign(campaign())
         old = DUE_DAY - timedelta(days=1)
@@ -173,7 +218,7 @@ class NotificationServiceTests(unittest.TestCase):
         sender = MemorySender()
         result = self.service.deliver_due(store=self.store, day=DUE_DAY, generated_at=NOW,
             sender=sender, recipient='player@example.com')
-        self.assertEqual([j.id for j in result.sent], ['late-update'])
+        self.assertEqual({j.id for j in result.sent}, {'late-update', 'job-scheduled'})
         result = self.service.deliver_due(store=self.store, day=DUE_DAY + timedelta(days=1),
             generated_at=NOW + timedelta(days=1), sender=sender, recipient='player@example.com')
         self.assertFalse(result.email_sent)
@@ -230,7 +275,7 @@ class NotificationServiceTests(unittest.TestCase):
             self.store.has_receipt("daily-digest-2026-09-07", DUE_DAY)
         )
 
-    def test_daily_digest_is_not_sent_twice_after_empty_digest(self) -> None:
+    def test_new_jobs_are_sent_after_empty_digest(self) -> None:
         sender = MemorySender()
         self.service.deliver_due(
             store=self.store,
@@ -252,9 +297,9 @@ class NotificationServiceTests(unittest.TestCase):
             send_empty_digest=True,
         )
 
-        self.assertFalse(result.email_sent)
-        self.assertEqual(len(result.sent), 0)
-        self.assertEqual(len(sender.messages), 1)
+        self.assertTrue(result.email_sent)
+        self.assertEqual(len(result.sent), 1)
+        self.assertEqual(len(sender.messages), 2)
 
     def test_saved_future_job_sends_without_any_new_source_content(self) -> None:
         self.store.save_campaign(campaign())

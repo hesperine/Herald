@@ -10,7 +10,7 @@ from .retry import record_failure
 from .evidence import quote_matches
 from .candidate_stage import prepare_candidates
 from .fact_updates import apply_fact_updates
-from .models import ChangeKind, PendingExtraction, FactProvenance, EventAction, Venue, Evidence
+from .models import ChangeKind, PendingExtraction, FactProvenance, EventAction, EventStatus, Venue, Evidence
 from .merge import MergeOutcome
 from .pipeline import PipelineResult, build_extraction_input
 
@@ -174,13 +174,24 @@ async def _apply_group(pipeline, store, ip, members, extraction, now, provider,
     matched = store.load_campaign(candidate_id) if candidate_id else None
     if candidate_id and (matched is None or matched.ip_slug != ip.slug):
         raise ValueError('invalid campaign candidate')
+    from .merge import normalize_name
+    if matched and draft.partner and matched.partner and normalize_name(draft.partner) != normalize_name(matched.partner):
+        matched = None
+    default, _ = pipeline.identity.find_match(draft, store.list_campaigns())
+    matched = default or matched
     if matched:
         counters['ai_calls'] += 1
-        decision = await provider.merge_campaign(matched, packets, extraction)
-        if decision.decision == 'create_new':
-            if decision.updates or decision.new_activities or decision.new_actions or decision.new_venues:
+        try:
+            decision = await provider.merge_campaign(matched, packets, extraction)
+        except AIProviderError:
+            decision = None
+        if decision is None or decision.decision == 'create_new':
+            if decision and (decision.updates or decision.new_activities or decision.new_actions or decision.new_venues):
                 raise ValueError('new campaign decision cannot contain updates')
-            matched = None
+            # A separate edition is an Activity inside the same partner container.
+            fallback = draft.model_copy(deep=True)
+            fallback.title, fallback.partner, fallback.announced_at = matched.title, matched.partner, matched.announced_at
+            outcome = pipeline.merger.merge(matched, fallback, now, match_activities=False)
         else:
             # Old data without field provenance cannot use processing time as
             # evidence priority. Conservatively guard existing values with the
@@ -246,6 +257,9 @@ async def _apply_group(pipeline, store, ip, members, extraction, now, provider,
             if changes or added:
                 updated.revision = matched.revision + 1
                 updated.updated_at = now
+            if updated.status != EventStatus.CANCELLED and not any(
+                    op.field_path == 'status' for op in decision.updates):
+                updated.status = pipeline.assembler._campaign_status(updated.activities)
             outcome = MergeOutcome(updated, tuple(changes), ())
     if matched is None:
         for activity in draft.activities:
@@ -263,10 +277,7 @@ async def _apply_group(pipeline, store, ip, members, extraction, now, provider,
     for change in outcome.changes:
         store.save_change(change)
         counters['changes_written'] += 1
-    if notify:
-        for job in pipeline.scheduler.jobs_for_changes(list(outcome.material_changes)):
-            store.save_queue_job(job)
-            counters['jobs_written'] += 1
+    # Candidate notices handle delivery regardless of historical batching.
     jobs = pipeline.scheduler.reconcile_campaign(store, outcome.campaign, now,
                                                 remind_day_before=remind_day_before)
     counters['jobs_written'] += len(jobs)

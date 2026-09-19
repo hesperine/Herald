@@ -12,7 +12,8 @@ from .candidates import CandidateFilter
 from .candidate_stage import prepare_candidates
 from .dedupe import ObservationDeduplicator
 from .merge import CampaignIdentityResolver, CampaignMerger
-from .models import PendingExtraction, PendingReview, SourceObservation, SourceRef
+from .models import PendingExtraction, SourceObservation, SourceRef
+from .candidate_notices import register_candidates, resolve_candidates
 from .registry import RegisteredIp
 from .retry import record_failure
 from .scheduler import ScheduleCompiler
@@ -65,6 +66,19 @@ class ObservationPipeline:
         self.scheduler = ScheduleCompiler(timezone_name)
 
     async def process(
+        self, *, store, ip, observations, now, provider, remind_day_before=True,
+        suppress_immediate_for=None,
+    ) -> PipelineResult:
+        before = {j.id for j in store.list_queue_jobs()}
+        register_candidates(store, ip, observations, now, str(self.scheduler.timezone))
+        result = await self._process(store=store, ip=ip, observations=observations, now=now,
+            provider=provider, remind_day_before=remind_day_before,
+            suppress_immediate_for=suppress_immediate_for)
+        resolve_candidates(store, now, str(self.scheduler.timezone))
+        from dataclasses import replace
+        return replace(result, jobs_written=len({j.id for j in store.list_queue_jobs()} - before))
+
+    async def _process(
         self,
         *,
         store: StateStore,
@@ -170,20 +184,6 @@ class ObservationPipeline:
             draft.sources = self._group_sources(group_items, extraction.source_summaries)
 
             matched, ambiguous = self.identity.find_match(draft, existing_campaigns)
-            if matched is None and ambiguous:
-                pending_id = self._id("pending-review", draft.id, *[item.id for item in ambiguous])
-                store.save_pending_review(
-                    PendingReview(
-                        id=pending_id,
-                        candidate=draft,
-                        possible_campaign_ids=[item.id for item in ambiguous],
-                        queued_at=now,
-                        reason="campaign identity is ambiguous",
-                    )
-                )
-                store.delete_pending_extraction(pending.id)
-                counters["pending_reviews"] += 1
-                continue
 
             outcome = self.merger.merge(matched, draft, now)
             store.save_campaign(outcome.campaign)
@@ -200,12 +200,7 @@ class ObservationPipeline:
             for change in outcome.changes:
                 store.save_change(change)
                 counters["changes_written"] += 1
-            if notify_immediately:
-                for job in self.scheduler.jobs_for_changes(
-                    list(outcome.material_changes)
-                ):
-                    store.save_queue_job(job)
-                    counters["jobs_written"] += 1
+            # Candidate notices own news delivery; changes remain an audit trail.
             future_jobs = self.scheduler.reconcile_campaign(
                 store,
                 outcome.campaign,
