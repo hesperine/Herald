@@ -1,205 +1,149 @@
 {
   "cards": [
     {
-      "activity": null,
-      "activity_id": null,
-      "campaign_id": "candidate-05148dcbad19c4c555adc952",
-      "campaign_title": "崩坏：星穹铁道 × 大白兔",
-      "detail_campaign_id": "campaign-0451ddb8aea2e952-631416ed",
-      "extraction_status": "structured",
-      "ip_name": "崩坏：星穹铁道",
-      "reasons": [
-        {
-          "action_id": null,
-          "date_only": null,
-          "expected_at": null,
-          "kind": "announcement",
-          "summary": "联动信息：崩坏：星穹铁道 × 大白兔\n开始时间：2026-09-10T10:00:00+08:00\n开始日期：2026-09-10\n规则：单个用户限购6份\n时间：2026-09-10T10:00:00+08:00\n规则：单个用户限购6份\n适用范围：线上全渠道\n数量限制：400,000份\n地点:online_platform：线上全渠道\n开始日期：2026-09-15\n《崩坏：星穹铁道》× 大白兔联动小曲 | 奶糖警告\n乖宝请注意，学习时间到啦~\n要是被那刻夏老师、风堇助教抓到开小差，就请尝尝「奶糖技巧」的甜甜威力吧！"
-        }
-      ],
-      "sources": [
-        {
-          "account_id": "288909600",
-          "account_name": "崩坏星穹铁道",
-          "canonical_content_id": "78058520",
-          "content_hash": "d6185e9a99b24cd200cad29d234011951e858542f43ffb4049f50f7fedeb57f5",
-          "excerpt": "《崩坏：星穹铁道》× 大白兔联动小曲 | 奶糖警告\n乖宝请注意，学习时间到啦~\n要是被那刻夏老师、风堇助教抓到开小差，就请尝尝「奶糖技巧」的甜甜威力吧！",
-          "first_seen_at": "2026-09-17T04:11:37.178399Z",
-          "id": "miyoushe-78058520",
-          "is_official": true,
-          "kind": "miyoushe",
-          "media_hashes": [],
-          "media_urls": [],
-          "published_at": "2026-09-09T04:00:20Z",
-          "summary": null,
-          "updated_at": null,
-          "url": "https://www.miyoushe.com/sr/article/78058520"
-        }
-      ]
-    },
-    {
-      "activity": null,
-      "activity_id": null,
-      "campaign_id": "candidate-1a001c957ee83965c838c77e",
-      "campaign_title": "崩坏：星穹铁道 联动",
-      "detail_campaign_id": "campaign-3e088f098cbc4865-a12dda08",
-      "extraction_status": "structured",
-      "ip_name": "崩坏：星穹铁道",
-      "reasons": [
-        {
-          "action_id": null,
-          "date_only": null,
-          "expected_at": null,
-          "kind": "announcement",
-          "summary": "联动信息：崩坏：星穹铁道 联动\n阿哈时刻 | 星神★阿哈\n「再度启程的阿基维利，你猜，我现在是谁？漫画家，悲悼伶人，无名客，大乐透女神…在银河的剧目里，阿哈曾拥有无数假面，但从始至终，我才是舞台之上一切戏剧性的主人——群星已然为我们欢唱，准备好共赴狂欢的巡礼了吗？」\n \n啼哭与欢笑交织，死寂的银河在闹剧中破晓。\n再次登上命途的舞台，撕下神的面具，谁是阿哈？我才阿哈！\n去游戏，去愚弄，去狩猎，敬请见证——人神共舞的即兴巡演！\n==========\n阿哈！隆重介绍星神★阿哈为：\n✧「星神最严厉的母亲」第1名 ✧\n✧「阿哈反买别墅靠海」第1名 ✧\n✧「想你想得头都掉了」第1名 ✧\n==========\n中文CV：子音\n日文CV：户松遥\n韩文CV：권다예"
-        }
-      ],
-      "sources": [
-        {
-          "account_id": "288909600",
-          "account_name": "崩坏星穹铁道",
-          "canonical_content_id": "78179682",
-          "content_hash": "0f34dc1c12f5ad2991956d7d15bf1884cccd40d4ec2364563a1fd0f4b06b64d6",
-          "excerpt": "阿哈时刻 | 星神★阿哈\n「再度启程的阿基维利，你猜，我现在是谁？漫画家，悲悼伶人，无名客，大乐透女神…在银河的剧目里，阿哈曾拥有无数假面，但从始至终，我才是舞台之上一切戏剧性的主人——群星已然为我们欢唱，准备好共赴狂欢的巡礼了吗？」\n \n啼哭与欢笑交织，死寂的银河在闹剧中破晓。\n再次登上命途的舞台，撕下神的面具，谁是阿哈？我才阿哈！\n去游戏，去愚弄，去狩猎，敬请见证——人神共舞的即兴巡演！\n==========\n阿哈！隆重介绍星神★阿哈为：\n✧「星神最严厉的母亲」第1名 ✧\n✧「阿哈反买别墅靠海」第1名 ✧\n✧「想你想得头都掉了」第1名 ✧\n==========\n中文CV：子音\n日文CV：户松遥\n韩文CV：권다예",
-          "first_seen_at": "2026-09-17T04:11:37.178399Z",
-          "id": "miyoushe-78179682",
-          "is_official": true,
-          "kind": "miyoushe",
-          "media_hashes": [],
-          "media_urls": [],
-          "published_at": "2026-09-15T04:00:16Z",
-          "summary": null,
-          "updated_at": null,
-          "url": "https://www.miyoushe.com/sr/article/78179682"
-        }
-      ]
-    },
-    {
-      "activity": null,
-      "activity_id": null,
-      "campaign_id": "candidate-3ac2f047e7163a1b30f1b1b8",
-      "campaign_title": "奈雪的茶 ×《明日方舟：终末地》联名活动",
-      "detail_campaign_id": "campaign-3302d7e79db4b203-62055d07",
-      "extraction_status": "structured",
-      "ip_name": "明日方舟：终末地",
-      "reasons": [
-        {
-          "action_id": null,
-          "date_only": null,
-          "expected_at": null,
-          "kind": "announcement",
-          "summary": "联动信息：奈雪的茶 ×《明日方舟：终末地》联名活动\n开始日期：2026-09-23\n时间：2026-09-23T00:00:00+08:00\n「雪凇幽梦」版本更新说明\n穿过雪与雾，进入幽暗深林和漫长的梦。\n亲爱的管理员：\n欢迎来到全新版本「雪凇幽梦」！\n▼//更新维护及补偿说明\n■ 更新维护时间\n2026/09/02 06:00 - 2026/09/02 12:00（UTC+8）\n※ 维护后的开服时间存在提前或延迟的可能，详情请关注官方公告。\n■ 更新维护及问题修复补偿说明\n· 更新维护补偿内容：【嵌晶玉】×900\n· 问题修复补偿内容：【嵌晶玉】×900\n· 发放时间：2026/09/02更新维护后 - 下次版本更新维护前\n· 发放条件：2026/09/02更新前创建角色\n· 发放说明：更新维护补偿及问题修复补偿将在解锁【邮箱】功能后，通过游戏内邮件分两封发放，邮件将于下次版本更新维护时过期，请注意及时领取。\n■ 更新说明\n本次更新为强制更新，更新结束后，需重新下载并安装游戏客户端。版本更新维护开始后，管理员可依照游戏内指引进行更新。\n· iOS：进入App Store，点击更新。\n· 安卓：进入游戏后，按照游戏内弹窗提示完成更新。\n· PlayStation®5：打开系统界面，选择《明日方舟：终末地》，按下控制器“选项（"
-        }
-      ],
-      "sources": [
-        {
-          "account_id": "3737967211133",
-          "account_name": "明日方舟终末地",
-          "canonical_content_id": "6271937",
-          "content_hash": "07336763ba5ef24567d352878b49d22a00811c7d67be11d69ac13b35e78aa299",
-          "excerpt": "「雪凇幽梦」版本更新说明\n穿过雪与雾，进入幽暗深林和漫长的梦。\n亲爱的管理员：\n欢迎来到全新版本「雪凇幽梦」！\n▼//更新维护及补偿说明\n■ 更新维护时间\n2026/09/02 06:00 - 2026/09/02 12:00（UTC+8）\n※ 维护后的开服时间存在提前或延迟的可能，详情请关注官方公告。\n■ 更新维护及问题修复补偿说明\n· 更新维护补偿内容：【嵌晶玉】×900\n· 问题修复补偿内容：【嵌晶玉】×900\n· 发放时间：2026/09/02更新维护后 - 下次版本更新维护前\n· 发放条件：2026/09/02更新前创建角色\n· 发放说明：更新维护补偿及问题修复补偿将在解锁【邮箱】功能后，通过游戏内邮件分两封发放，邮件将于下次版本更新维护时过期，请注意及时领取。\n■ 更新说明\n本次更新为强制更新，更新结束后，需重新下载并安装游戏客户端。版本更新维护开始后，管理员可依照游戏内指引进行更新。\n· iOS：进入App Store，点击更新。\n· 安卓：进入游戏后，按照游戏内弹窗提示完成更新。\n· PlayStation®5：打开系统界面，选择《明日方舟：终末地》，按下控制器“选项（",
-          "first_seen_at": "2026-09-17T04:11:37.178399Z",
-          "id": "skland-6271937",
-          "is_official": true,
-          "kind": "skland",
-          "media_hashes": [],
-          "media_urls": [],
-          "published_at": "2026-09-02T01:00:51Z",
-          "summary": null,
-          "updated_at": null,
-          "url": "https://www.skland.com/article?id=6271937"
-        }
-      ]
-    },
-    {
-      "activity": null,
-      "activity_id": null,
-      "campaign_id": "candidate-7a99c1a5499936bfacdc0b6b",
-      "campaign_title": "奈雪的茶 ×《明日方舟：终末地》联名活动",
-      "detail_campaign_id": "campaign-3302d7e79db4b203-62055d07",
-      "extraction_status": "structured",
-      "ip_name": "明日方舟：终末地",
-      "reasons": [
-        {
-          "action_id": null,
-          "date_only": null,
-          "expected_at": null,
-          "kind": "announcement",
-          "summary": "联动信息：奈雪的茶 ×《明日方舟：终末地》联名活动\n开始日期：2026-09-23\n时间：2026-09-23T00:00:00+08:00\n奈雪的茶 ×《明日方舟：终末地》联名活动，9月23日正式上线！\n亲爱的管理员：\n属于你的下午茶补给，即将送达。\n@奈雪的茶 ×《明日方舟：终末地》联名活动，9月23日正式上线！\n更多饮品套餐及瓶装联名活动情报，将于后续发布，敬请期待~"
-        }
-      ],
-      "sources": [
-        {
-          "account_id": "3737967211133",
-          "account_name": "明日方舟终末地",
-          "canonical_content_id": "6305039",
-          "content_hash": "791ddac61cbfbc4ccdf6a0d0d4fa3d40f1d98013e54d7f8b9947a40e9a7e2bae",
-          "excerpt": "奈雪的茶 ×《明日方舟：终末地》联名活动，9月23日正式上线！\n亲爱的管理员：\n属于你的下午茶补给，即将送达。\n@奈雪的茶 ×《明日方舟：终末地》联名活动，9月23日正式上线！\n更多饮品套餐及瓶装联名活动情报，将于后续发布，敬请期待~",
-          "first_seen_at": "2026-09-17T04:11:37.178399Z",
-          "id": "skland-6305039",
-          "is_official": true,
-          "kind": "skland",
-          "media_hashes": [],
-          "media_urls": [],
-          "published_at": "2026-09-11T06:00:35Z",
-          "summary": null,
-          "updated_at": null,
-          "url": "https://www.skland.com/article?id=6305039"
-        }
-      ]
-    },
-    {
-      "activity": null,
-      "activity_id": null,
-      "campaign_id": "candidate-e4d9c31a773e2a1ad0d7dca7",
-      "campaign_title": "崩坏：星穹铁道 × 大白兔",
-      "detail_campaign_id": "campaign-0451ddb8aea2e952-631416ed",
-      "extraction_status": "structured",
-      "ip_name": "崩坏：星穹铁道",
-      "reasons": [
-        {
-          "action_id": null,
-          "date_only": null,
-          "expected_at": null,
-          "kind": "announcement",
-          "summary": "联动信息：崩坏：星穹铁道 × 大白兔\n开始时间：2026-09-10T10:00:00+08:00\n开始日期：2026-09-10\n规则：单个用户限购6份\n时间：2026-09-10T10:00:00+08:00\n规则：单个用户限购6份\n适用范围：线上全渠道\n数量限制：400,000份\n地点:online_platform：线上全渠道\n开始日期：2026-09-15\n星穹铁道 × 大白兔 | 联名9月10日10:00上线！\n亲爱的开拓者，《崩坏：星穹铁道》× 大白兔 联名将于9月10日10:00正式上线！\n快乐分享，甜满树庭！与那刻夏、风堇一起，分享甜蜜的奶糖吧~\n\n▌帕姆小贴士\n*联名礼盒将于9月10日10:00起在线上渠道发售，线下快闪及店铺发售将于9月15日陆续开启，请开拓者认准官方渠道。销售渠道请以大白兔官方信息为准。\n*联名礼盒线上全渠道发售总量为400,000份，单个用户限购6份。\n* 线上发售店铺的实际发货地区及运费，以店铺实际情况为准。\n\n点击图片查看更多联名信息。\n更多线下活动，还请关注大白兔后续官方资讯。"
-        }
-      ],
-      "sources": [
-        {
-          "account_id": "288909600",
-          "account_name": "崩坏星穹铁道",
-          "canonical_content_id": "78031412",
-          "content_hash": "fc87322719f2259f01eb589d16b3aa98fb49f41ac01f0aa614ef3ea9be06ba07",
-          "excerpt": "星穹铁道 × 大白兔 | 联名9月10日10:00上线！\n亲爱的开拓者，《崩坏：星穹铁道》× 大白兔 联名将于9月10日10:00正式上线！\n快乐分享，甜满树庭！与那刻夏、风堇一起，分享甜蜜的奶糖吧~\n\n▌帕姆小贴士\n*联名礼盒将于9月10日10:00起在线上渠道发售，线下快闪及店铺发售将于9月15日陆续开启，请开拓者认准官方渠道。销售渠道请以大白兔官方信息为准。\n*联名礼盒线上全渠道发售总量为400,000份，单个用户限购6份。\n* 线上发售店铺的实际发货地区及运费，以店铺实际情况为准。\n\n点击图片查看更多联名信息。\n更多线下活动，还请关注大白兔后续官方资讯。",
-          "first_seen_at": "2026-09-17T04:11:37.178399Z",
-          "id": "miyoushe-78031412",
-          "is_official": true,
-          "kind": "miyoushe",
-          "media_hashes": [],
-          "media_urls": [],
-          "published_at": "2026-09-07T10:00:13Z",
-          "summary": null,
-          "updated_at": null,
-          "url": "https://www.miyoushe.com/sr/article/78031412"
-        }
-      ]
-    },
-    {
-      "activity": null,
-      "activity_id": null,
-      "campaign_id": "candidate-f8ae451b222ee0f321902973",
+      "activity": {
+        "actions": [
+          {
+            "at": "2026-09-08T12:00:00+08:00",
+            "cancelled": false,
+            "end_at": "2026-09-21T23:59:00+08:00",
+            "end_condition": null,
+            "end_date": null,
+            "ended": false,
+            "evidence": [],
+            "id": "action-b6029e7a72089cbd",
+            "kind": "sale_open",
+            "platform": "明日方舟旗舰店",
+            "quantity_limit": null,
+            "requires_reservation": null,
+            "requires_rush": null,
+            "rules": null,
+            "scope": null,
+            "start_date": null,
+            "title": "联动周边预售",
+            "url": null
+          },
+          {
+            "at": null,
+            "cancelled": false,
+            "end_at": null,
+            "end_condition": null,
+            "end_date": "2026-09-21",
+            "ended": false,
+            "evidence": [
+              {
+                "field_path": "activities[0].actions[1].rules",
+                "quote": "单笔订单下单「明日方舟 × 女神异闻录3 Reload「月行水上」系列周边」满259元，即赠 特典卡组-校园凭证 一套。",
+                "source_id": "skland-6274849"
+              }
+            ],
+            "id": "action-391872f540b791ea",
+            "kind": "gift",
+            "platform": null,
+            "quantity_limit": null,
+            "requires_reservation": null,
+            "requires_rush": null,
+            "rules": "单笔订单下单「明日方舟 × 女神异闻录3 Reload「月行水上」系列周边」满259元，即赠特典卡组-校园凭证一套。",
+            "scope": "明日方舟 × 女神异闻录3 Reload「月行水上」系列周边",
+            "start_date": "2026-09-08",
+            "title": "购买满259元赠特典卡组-校园凭证",
+            "url": null
+          },
+          {
+            "at": null,
+            "cancelled": false,
+            "end_at": null,
+            "end_condition": null,
+            "end_date": "2026-09-14",
+            "ended": false,
+            "evidence": [
+              {
+                "field_path": "activities[0].actions[2].rules",
+                "quote": "活动期间，明日方舟旗舰店全店商品（部分商品除外，详见注意事项）参与店铺立减活动。购买任意单件商品即可享受立减12%优惠！",
+                "source_id": "skland-6274849"
+              }
+            ],
+            "id": "action-253472849846ae2a",
+            "kind": "discount",
+            "platform": null,
+            "quantity_limit": null,
+            "requires_reservation": null,
+            "requires_rush": null,
+            "rules": "活动期间，明日方舟旗舰店全店商品（部分商品除外，详见注意事项）参与店铺立减活动。购买任意单件商品即可享受立减12%优惠！",
+            "scope": "明日方舟旗舰店全店商品，部分商品除外",
+            "start_date": "2026-09-08",
+            "title": "全店商品立减12%",
+            "url": null
+          }
+        ],
+        "end_at": "2026-09-21T23:59:00+08:00",
+        "end_date": "2026-09-21",
+        "evidence": [
+          {
+            "field_path": "activities[0].start_at",
+            "quote": "2026.09.08 12:00",
+            "source_id": "skland-6274849"
+          },
+          {
+            "field_path": "activities[0].end_at",
+            "quote": "2026.09.21 23:59",
+            "source_id": "skland-6274849"
+          },
+          {
+            "field_path": "activities[0].actions[1].rules",
+            "quote": "单笔订单下单「明日方舟 × 女神异闻录3 Reload「月行水上」系列周边」满259元，即赠 特典卡组-校园凭证 一套。",
+            "source_id": "skland-6274849"
+          },
+          {
+            "field_path": "activities[0].actions[2].rules",
+            "quote": "活动期间，明日方舟旗舰店全店商品（部分商品除外，详见注意事项）参与店铺立减活动。购买任意单件商品即可享受立减12%优惠！",
+            "source_id": "skland-6274849"
+          }
+        ],
+        "id": "activity-143370800450b804",
+        "kind": "merchandise",
+        "related_offers": null,
+        "rules": null,
+        "start_at": "2026-09-08T12:00:00+08:00",
+        "start_date": "2026-09-08",
+        "status": "ongoing",
+        "title": "明日方舟 × 女神异闻录3 Reload「月行水上」系列周边预售",
+        "uncertainties": [],
+        "venues": [
+          {
+            "address": null,
+            "business_hours": null,
+            "city": null,
+            "country": "CN",
+            "evidence": [],
+            "id": "venue-6f25558612a0d475",
+            "name": null,
+            "nationwide": false,
+            "online_platform": "明日方舟旗舰店",
+            "province": null
+          }
+        ]
+      },
+      "activity_id": "activity-143370800450b804",
+      "campaign_id": "campaign-9d561ae4c629334d-b074e365",
       "campaign_title": "明日方舟 × 女神异闻录3 Reload｜月行水上",
       "detail_campaign_id": "campaign-9d561ae4c629334d-b074e365",
-      "extraction_status": "structured",
+      "extraction_status": null,
       "ip_name": "明日方舟",
       "reasons": [
         {
-          "action_id": null,
+          "action_id": "action-391872f540b791ea--end",
+          "date_only": "2026-09-21",
+          "expected_at": "2026-09-21T00:00:00+08:00",
+          "kind": "deadline",
+          "summary": "明天截止：购买满259元赠特典卡组-校园凭证截止"
+        },
+        {
+          "action_id": "action-b6029e7a72089cbd--end",
           "date_only": null,
-          "expected_at": null,
-          "kind": "announcement",
-          "summary": "联动信息：明日方舟 × 女神异闻录3 Reload｜月行水上\n开始时间：2026-09-08T12:00:00+08:00\n开始日期：2026-09-08\n截止时间：2026-09-21T23:59:00+08:00\n截止日期：2026-09-21\n截止时间：2026-09-21T23:59:00+08:00\n时间：2026-09-08T12:00:00+08:00\n开始日期：2026-09-08\n截止日期：2026-09-21\n规则：单笔订单下单「明日方舟 × 女神异闻录3 Reload「月行水上」系列周边」满259元，即赠特典卡组-校园凭证一套。\n适用范围：明日方舟 × 女神异闻录3 Reload「月行水上」系列周边\n开始日期：2026-09-08\n截止日期：2026-09-14\n规则：活动期间，明日方舟旗舰店全店商品（部分商品除外，详见注意事项）参与店铺立减活动。购买任意单件商品即可享受立减12%优惠！\n适用范围：明日方舟旗舰店全店商品，部分商品除外\n地点:online_platform：明日方舟旗舰店\n开始日期：2026-09-15\n截止日期：2026-09-30\n地点:online_platform：明日方舟旗舰店\n〓明日方舟 × 女神异闻录3 Reload｜月行水上〓上新\n博士们好，\n明日方舟 × 女神异闻录3 Reload 联动周边即将开启预售，预售详情如下：\n【满赠特典】\n活动时间：2026.09.08 12:00~2026.09.21 23:59\n单笔订单下单“明日方舟 × 女神异闻录3 Reload 「月行水上」系列周边”满259元，即赠 特典卡组-校园凭证 一套。\n【店铺立减】\n活动时间：2026.09.08 12:00~2026.09.14 23:59\n活动期间，明日方舟旗舰店全店商品（部分商品除外，详见注意事项）参与店铺立减活动。购买任意单件商品即可享受立减12%优惠！\n天猫搜索：明日方舟旗舰店\n详情请继续阅读。"
+          "expected_at": "2026-09-21T23:59:00+08:00",
+          "kind": "deadline",
+          "summary": "明天截止：联动周边预售截止"
         }
       ],
       "sources": [
@@ -213,33 +157,25 @@
           "id": "skland-6274849",
           "is_official": true,
           "kind": "skland",
-          "media_hashes": [],
-          "media_urls": [],
+          "media_hashes": [
+            "ce9ef50fc1aaa529f609555a624e73d892f089ac666096732417c4d020542e4d",
+            "feaaa79117660a8fa38e1b026794514fe64272c2a38d6462bff103f7e2bb776e",
+            "3feb9339118a56ae03ba5b284be2944c3bb1bb852d4383b85a93594129022e78",
+            "416a3a832f013d52487fd2a25869a9fd3721e6e719300d6f051613550706f22d",
+            "3ca37ab3990f0c84e99d3ff0cc2d2df2cc296188b7cc1f384bafaa58dd3b0706"
+          ],
+          "media_urls": [
+            "https://bbs.hycdn.cn/image/common/20260902/107/6a980a840d3bdbdd6918f93c_65de0095.webp",
+            "https://bbs.hycdn.cn/image/common/20260902/107/6a980aaa34a51abb569bbf9c_65de0095.webp",
+            "https://bbs.hycdn.cn/image/common/20260907/107/6a9e3a8143e1a78eabf1785c_0095c241.webp",
+            "https://bbs.hycdn.cn/image/common/20260907/107/6a9e3a880e3cb4dc2e0c875f_65de0095.webp",
+            "https://bbs.hycdn.cn/image/common/20260907/107/6a9e3a88bca14bfacde005f1_ef3391c4.webp"
+          ],
           "published_at": "2026-09-07T04:00:34Z",
-          "summary": null,
+          "summary": "明日方舟×P3R联动周边预售开启，含满赠特典及店铺立减优惠。",
           "updated_at": null,
           "url": "https://www.skland.com/article?id=6274849"
-        }
-      ]
-    },
-    {
-      "activity": null,
-      "activity_id": null,
-      "campaign_id": "candidate-fb3ad08089e7713926f786b4",
-      "campaign_title": "明日方舟 × 女神异闻录3 Reload｜月行水上",
-      "detail_campaign_id": "campaign-9d561ae4c629334d-b074e365",
-      "extraction_status": "structured",
-      "ip_name": "明日方舟",
-      "reasons": [
-        {
-          "action_id": null,
-          "date_only": null,
-          "expected_at": null,
-          "kind": "announcement",
-          "summary": "联动信息：明日方舟 × 女神异闻录3 Reload｜月行水上\n开始时间：2026-09-08T12:00:00+08:00\n开始日期：2026-09-08\n截止时间：2026-09-21T23:59:00+08:00\n截止日期：2026-09-21\n截止时间：2026-09-21T23:59:00+08:00\n时间：2026-09-08T12:00:00+08:00\n开始日期：2026-09-08\n截止日期：2026-09-21\n规则：单笔订单下单「明日方舟 × 女神异闻录3 Reload「月行水上」系列周边」满259元，即赠特典卡组-校园凭证一套。\n适用范围：明日方舟 × 女神异闻录3 Reload「月行水上」系列周边\n开始日期：2026-09-08\n截止日期：2026-09-14\n规则：活动期间，明日方舟旗舰店全店商品（部分商品除外，详见注意事项）参与店铺立减活动。购买任意单件商品即可享受立减12%优惠！\n适用范围：明日方舟旗舰店全店商品，部分商品除外\n地点:online_platform：明日方舟旗舰店\n开始日期：2026-09-15\n截止日期：2026-09-30\n地点:online_platform：明日方舟旗舰店\n〓明日方舟×三丽鸥家族 粘土人 补款开启！〓\n〓明日方舟×三丽鸥家族 粘土人 圣约送葬人 CINNAMOROLL合作款 & W KUROMI合作款 补款开启！〓\n补款日期：2026年9月15日-2026年9月30日\n【明日方舟 粘土人 圣约送葬人 CINNAMOROLL合作款】【明日方舟 粘土人 W KUROMI合作款】即将到货~\n请博士在期限内及时补款并填写正确的收件信息。\n发货地址以补款订单为准，请下单前注意手办单独拍付并检查收件信息是否正确，订单将会以补款的先后顺序发货~\n现货将于10月15日上架明日方舟旗舰店，届时欢迎博士进店选购。"
-        }
-      ],
-      "sources": [
+        },
         {
           "account_id": "6168723566526",
           "account_name": "明日方舟朝陇山",
@@ -250,15 +186,19 @@
           "id": "skland-6316903",
           "is_official": true,
           "kind": "skland",
-          "media_hashes": [],
-          "media_urls": [],
+          "media_hashes": [
+            "3fcac9f9b0323279fbaacc83ea376cc9a3154ae7c6cb40c3a270d2eebaf861cf"
+          ],
+          "media_urls": [
+            "https://bbs.hycdn.cn/image/common/20260915/107/6aa8a89bb0ed338fc74aa758_0095c241.webp"
+          ],
           "published_at": "2026-09-15T05:00:50Z",
-          "summary": null,
+          "summary": "明日方舟×三丽鸥粘土人补款开启，涉及合作款补款及现货上架时间。",
           "updated_at": null,
           "url": "https://www.skland.com/article?id=6316903"
         }
       ]
     }
   ],
-  "date": "2026-09-19"
+  "date": "2026-09-20"
 }

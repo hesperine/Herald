@@ -1,0 +1,44 @@
+{
+  "cards": [
+    {
+      "activity": {
+        "title": "明日方舟 × 女神异闻录3 Reload「月行水上」系列周边预售"
+      },
+      "activity_id": "activity-143370800450b804",
+      "campaign_id": "campaign-9d561ae4c629334d-b074e365",
+      "campaign_title": "明日方舟 × 女神异闻录3 Reload｜月行水上",
+      "detail_url": "event.html?id=campaign-9d561ae4c629334d-b074e365#activity-activity-143370800450b804",
+      "extraction_status": null,
+      "ip_name": "明日方舟",
+      "reasons": [
+        {
+          "action_id": "action-391872f540b791ea--end",
+          "date_only": "2026-09-21",
+          "expected_at": "2026-09-21T00:00:00+08:00",
+          "kind": "deadline",
+          "summary": "明天截止：购买满259元赠特典卡组-校园凭证截止"
+        },
+        {
+          "action_id": "action-b6029e7a72089cbd--end",
+          "date_only": null,
+          "expected_at": "2026-09-21T23:59:00+08:00",
+          "kind": "deadline",
+          "summary": "明天截止：联动周边预售截止"
+        }
+      ],
+      "sources": [
+        {
+          "account_name": "明日方舟朝陇山",
+          "summary": "明日方舟×P3R联动周边预售开启，含满赠特典及店铺立减优惠。",
+          "url": "https://www.skland.com/article?id=6274849"
+        },
+        {
+          "account_name": "明日方舟朝陇山",
+          "summary": "明日方舟×三丽鸥粘土人补款开启，涉及合作款补款及现货上架时间。",
+          "url": "https://www.skland.com/article?id=6316903"
+        }
+      ]
+    }
+  ],
+  "date": "2026-09-20"
+}
