@@ -1,0 +1,14 @@
+{
+  "activity_id": null,
+  "campaign_id": "campaign-c0eb942cf0b13e3a-e6fe958d",
+  "detected_at": "2026-09-21T04:53:13.112293Z",
+  "field_paths": [],
+  "id": "chg-e5650a0f97f2e628",
+  "kind": "new_campaign",
+  "published_at": "2026-09-21T04:00:06Z",
+  "semantic_key": "campaign-c0eb942cf0b13e3a-e6fe958d:new-campaign",
+  "source_ids": [
+    "skland-6328871"
+  ],
+  "summary": "新增联动：「绚丽异彩」重构寻访#1"
+}

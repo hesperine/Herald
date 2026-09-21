@@ -1,0 +1,14 @@
+{
+  "action_id": null,
+  "activity_id": null,
+  "campaign_id": "campaign-c0eb942cf0b13e3a-e6fe958d",
+  "candidate_id": "candidate-37c480946e2bc5f5aaabe5ad",
+  "change_id": null,
+  "due_date": "2026-09-21",
+  "expected_at": null,
+  "expected_date": null,
+  "id": "candidate-37c480946e2bc5f5aaabe5ad",
+  "kind": "announcement",
+  "semantic_key": "candidate-37c480946e2bc5f5aaabe5ad",
+  "summary": "联动信息：「绚丽异彩」重构寻访#1\n开始时间：2026-09-24T12:00:00+08:00\n开始日期：2026-09-24\n规则：6星干员【伊冯】获取概率大幅提升\n规则：安卓&iOS端不限量测试\n规则：完成活动免费领满潜能干员【噗切娜】及武器【点心时刻】"
+}

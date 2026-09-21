@@ -1,0 +1,14 @@
+{
+  "activity_id": null,
+  "campaign_id": "campaign-088817ae96bf8f7f-afce333c",
+  "detected_at": "2026-09-21T04:53:13.112293Z",
+  "field_paths": [],
+  "id": "chg-9b2f2ccaa4c72338",
+  "kind": "new_campaign",
+  "published_at": "2026-09-20T12:20:08Z",
+  "semantic_key": "campaign-088817ae96bf8f7f-afce333c:new-campaign",
+  "source_ids": [
+    "miyoushe-78286787"
+  ],
+  "summary": "新增联动：崩坏：星穹铁道 × 绝区零"
+}

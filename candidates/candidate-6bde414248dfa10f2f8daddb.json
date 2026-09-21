@@ -1,0 +1,31 @@
+{
+  "campaign_id": "campaign-088817ae96bf8f7f-afce333c",
+  "detected_at": "2026-09-21T04:53:13.112293Z",
+  "facts": {
+    "activity-1cdafb1ec747fedf:开始日期": "2026-04-08"
+  },
+  "id": "candidate-6bde414248dfa10f2f8daddb",
+  "ip_name": "崩坏：星穹铁道",
+  "ip_slug": "honkai-star-rail",
+  "public_text": "快讯！艾莲与耀嘉音即将登陆星穹列车！\n《崩坏：星穹铁道》×《绝区零》联动将于4.8版本正式上线，艾莲与耀嘉音在星穹铁道的冒险故事即将拉开帷幕。更多惊喜，敬请期待~",
+  "sources": [
+    {
+      "account_id": "288909600",
+      "account_name": "崩坏星穹铁道",
+      "canonical_content_id": "78286787",
+      "content_hash": "7acbf1cfb57a05a2bc8a759a0f4d477a6eecf8b48fbd135b4a2a24c4997db706",
+      "excerpt": "快讯！艾莲与耀嘉音即将登陆星穹列车！\n《崩坏：星穹铁道》×《绝区零》联动将于4.8版本正式上线，艾莲与耀嘉音在星穹铁道的冒险故事即将拉开帷幕。更多惊喜，敬请期待~",
+      "first_seen_at": "2026-09-21T04:53:13.112293Z",
+      "id": "miyoushe-78286787",
+      "is_official": true,
+      "kind": "miyoushe",
+      "media_hashes": [],
+      "media_urls": [],
+      "published_at": "2026-09-20T12:20:08Z",
+      "summary": null,
+      "updated_at": null,
+      "url": "https://www.miyoushe.com/sr/article/78286787"
+    }
+  ],
+  "status": "structured"
+}

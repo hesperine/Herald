@@ -1,0 +1,45 @@
+{
+  "extracted_media_text": [],
+  "id": "miyoushe-78299856",
+  "media_hashes": [
+    "ce76bb8daf9cbfb00c9d4fcae127fbee953c630d8316c81d1cc71dc769c0d99b",
+    "6ca36ff74c06752136c2f4afeae192279a6777cda82b76e753e5e72ab5637d63",
+    "aedff1efb4ff1ecc9a9282910b4d2d5de17737644ba41f8012d04d4be1b2deac",
+    "ff176eab200d4db89dbe52a9eaa81fcb9d8577c3fd6d195c5964589f17f18e0f",
+    "299a96c3d0b83a23681b891cf4fc77652e044f482bbfc26fa89f5a277cca506e",
+    "ba3f8d7c0582a543bdf5fc947f2ac3dc21fd918b86e5073250f1a98c0394f6e6",
+    "67107ff0714c0e1914422a1c6b376067b222b9df3dec4fab467b282e5a53b84b",
+    "d22b9d05f8afc42c1d675891f6e5a418b1bf312c8bca515c00b8940ad3951acc",
+    "06a5cc1318714e903a4f570145a93c014f79b840761133bdc8a59e03c7753c75"
+  ],
+  "media_urls": [
+    "https://upload-bbs.miyoushe.com/upload/2026/09/20/75276539/f1d7e3f6f029d51cdcf77783ec3b5382_1358976461827572357.jpg",
+    "https://upload-bbs.miyoushe.com/upload/2026/09/20/75276539/322521d5cfa5529f1af7b4a7002e5776_6667130283034589455.jpg",
+    "https://upload-bbs.miyoushe.com/upload/2026/09/20/75276539/490c2d079bdf8aea86a02f4e0bb3c117_7317032281800643410.jpg",
+    "https://upload-bbs.miyoushe.com/upload/2026/09/20/75276539/e5178807cf52258053ee17b4f364dab6_6071111812132161800.gif",
+    "https://upload-bbs.miyoushe.com/upload/2026/09/20/75276539/cea5e25c166531b02f1d161d8f2a6af5_5987052456313861843.jpg",
+    "https://upload-bbs.miyoushe.com/upload/2026/09/20/75276539/becd1bfc5a615b2f128842b94bfa4ac6_1784367456652343983.jpg",
+    "https://upload-bbs.miyoushe.com/upload/2026/09/20/75276539/7a9d0835a4b381e8ac27533d2f634241_4890080744071164648.jpg",
+    "https://upload-bbs.miyoushe.com/upload/2026/09/20/75276539/8faf2506a27712f94b3a2a6389093b2a_6192146886103722929.jpg",
+    "https://upload-bbs.miyoushe.com/upload/2026/09/20/75276539/488cf3d7d820581532947441df7c1880_3774923005481139853.jpg"
+  ],
+  "outbound_urls": [],
+  "source": {
+    "account_id": "75276539",
+    "account_name": "原神",
+    "canonical_content_id": "78299856",
+    "content_hash": "4c281396942ae234692a0feb0911b1ade1d2fd0dfbb5c7b4771e36609b04afb3",
+    "excerpt": "「往冥府的安魂歌」7.1版本活动速递第一期\n旅行者好呀~7.1版本「往冥府的安魂歌」即将开启，一起来看看新版本中有哪些福利和活动吧！\n*更多详情内容可见7.1版本公告。",
+    "first_seen_at": "2026-09-21T04:53:13.112293Z",
+    "id": "miyoushe-78299856",
+    "is_official": true,
+    "kind": "miyoushe",
+    "media_hashes": [],
+    "media_urls": [],
+    "published_at": "2026-09-21T04:10:09Z",
+    "summary": null,
+    "updated_at": null,
+    "url": "https://www.miyoushe.com/ys/article/78299856"
+  },
+  "text": "「往冥府的安魂歌」7.1版本活动速递第一期\n旅行者好呀~7.1版本「往冥府的安魂歌」即将开启，一起来看看新版本中有哪些福利和活动吧！\n*更多详情内容可见7.1版本公告。"
+}

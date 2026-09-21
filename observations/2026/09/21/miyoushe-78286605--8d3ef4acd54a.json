@@ -1,0 +1,45 @@
+{
+  "extracted_media_text": [],
+  "id": "miyoushe-78286605",
+  "media_hashes": [
+    "a023d3f899e7640492d00c16a25337b119f74f961f6fe416c07d8c835b6f561d",
+    "26e79fa76919d0e4c1d053f088295ae845d3ca3795a2dcc671a137c83de81940",
+    "57c4eb2430fb065e538f8bfa1f6deaadb7b28fdfeafb43cf920e61da079695ca",
+    "b88356ad3bef5a6a0a643bc843c9f0e957dac6c44dfefa784c054018a9f6d763",
+    "9790a42133b82c400461573cf1acc434aa2d37c148ca14c9fa9bd5da7bbfbe21",
+    "76c7fc81cdd8c85433164362959f6542354631672233024d8143da54be126468",
+    "8b3aa0a8bdacac1a8d09372292748c0cb86464b9d3e19fcd45a468fe7b25148a",
+    "13137e7dfa1868e05393153a231bd872193e73f7c695ccefb071e67a86c566e5",
+    "d6d3ff38fc2e179ed99204c1b7e0165713cf84fa5aae5b5fb61822a39b7dd7f8"
+  ],
+  "media_urls": [
+    "https://upload-bbs.miyoushe.com/upload/2026/09/20/288909600/2e06195a8875466275e3153b54e14247_4709674382330112437.png",
+    "https://upload-bbs.miyoushe.com/upload/2026/09/20/288909600/65e20ad0edbeee0a6612af4715a6c5a1_952999267279618701.png",
+    "https://upload-bbs.miyoushe.com/upload/2026/09/20/288909600/2e4400c03ad4f1fbb4678467590d4e88_2495643436397199449.png",
+    "https://upload-bbs.miyoushe.com/upload/2026/09/20/288909600/8c9e1d584abc9c96606f1671405bd9d9_7250440254987236905.gif",
+    "https://upload-bbs.miyoushe.com/upload/2026/09/20/288909600/8f8d1822fa0a2cd8456b0b076258e083_940552375642824415.gif",
+    "https://upload-bbs.miyoushe.com/upload/2026/09/20/288909600/6e7f311ba799de5173f310a3bc963333_7296642705799950066.png",
+    "https://upload-bbs.miyoushe.com/upload/2026/09/20/288909600/858e316cec3586a3df67eecc2958e5b1_8171619294218110507.gif",
+    "https://upload-bbs.miyoushe.com/upload/2026/09/20/288909600/c84c3f8e803461872831924fcaac317f_3138128002123866897.gif",
+    "https://upload-bbs.miyoushe.com/upload/2026/09/20/288909600/31b9222a012302aa1acc1babd72362c3_1166151401359043099.png"
+  ],
+  "outbound_urls": [],
+  "source": {
+    "account_id": "288909600",
+    "account_name": "崩坏星穹铁道",
+    "canonical_content_id": "78286605",
+    "content_hash": "8d3ef4acd54a1e78748826a0ad6a0cced462c4a6a3ced2d99e6b946511af3455",
+    "excerpt": "商店上新  | V4.6 月升之前，与兽共舞\n4.6版本中，游戏内商店将会上架「绯英」全新时装「月待花时」、「风堇」全新时装「云边拾暖」！",
+    "first_seen_at": "2026-09-21T04:53:13.112293Z",
+    "id": "miyoushe-78286605",
+    "is_official": true,
+    "kind": "miyoushe",
+    "media_hashes": [],
+    "media_urls": [],
+    "published_at": "2026-09-20T12:15:10Z",
+    "summary": null,
+    "updated_at": null,
+    "url": "https://www.miyoushe.com/sr/article/78286605"
+  },
+  "text": "商店上新  | V4.6 月升之前，与兽共舞\n4.6版本中，游戏内商店将会上架「绯英」全新时装「月待花时」、「风堇」全新时装「云边拾暖」！"
+}
