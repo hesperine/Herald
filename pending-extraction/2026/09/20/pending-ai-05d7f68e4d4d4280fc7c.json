@@ -1,9 +1,9 @@
 {
-  "attempts": 3,
+  "attempts": 4,
   "error_category": "validation",
   "id": "pending-ai-05d7f68e4d4d4280fc7c",
   "ip_slug": "arknights-endfield",
-  "next_retry_at": "2026-09-21T08:52:16.904098Z",
+  "next_retry_at": "2026-09-22T12:54:53.448819Z",
   "notify_immediately": true,
   "observation_ids": [
     "skland-6325558"
