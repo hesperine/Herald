@@ -4,6 +4,64 @@
       "activities": [
         {
           "end_at": null,
+          "id": "activity-54ac4a1db49186b3",
+          "kind": "in_game",
+          "reachability": "unknown",
+          "start_at": "2026-09-24T12:00:00+08:00",
+          "status": "upcoming",
+          "title": "「绚丽异彩」重构寻访#1"
+        },
+        {
+          "end_at": null,
+          "id": "activity-c54e303c057e46dc",
+          "kind": "online",
+          "reachability": "unknown",
+          "start_at": null,
+          "status": "details_pending",
+          "title": "《云·终末地》不限量测试"
+        },
+        {
+          "end_at": null,
+          "id": "activity-a2fafb4a1e7fd943",
+          "kind": "product",
+          "reachability": "unknown",
+          "start_at": null,
+          "status": "details_pending",
+          "title": "「雪凇幽梦」版本"
+        }
+      ],
+      "id": "campaign-c0eb942cf0b13e3a-e6fe958d",
+      "ip_name": "明日方舟：终末地",
+      "ip_slug": "arknights-endfield",
+      "partner": null,
+      "status": "upcoming",
+      "title": "「绚丽异彩」重构寻访#1",
+      "updated_at": "2026-09-21T04:53:13.112293+00:00"
+    },
+    {
+      "activities": [
+        {
+          "end_at": null,
+          "id": "activity-1cdafb1ec747fedf",
+          "kind": "in_game",
+          "reachability": "unknown",
+          "start_at": null,
+          "status": "details_pending",
+          "title": "艾莲与耀嘉音版本上线"
+        }
+      ],
+      "id": "campaign-088817ae96bf8f7f-afce333c",
+      "ip_name": "崩坏：星穹铁道",
+      "ip_slug": "honkai-star-rail",
+      "partner": "绝区零",
+      "status": "details_pending",
+      "title": "崩坏：星穹铁道 × 绝区零",
+      "updated_at": "2026-09-21T04:53:13.112293+00:00"
+    },
+    {
+      "activities": [
+        {
+          "end_at": null,
           "id": "activity-270f3157626abbe8",
           "kind": "in_game",
           "reachability": "unknown",
@@ -300,6 +358,49 @@
     },
     {
       "activity": {
+        "actions": [],
+        "end_at": null,
+        "end_date": null,
+        "evidence": [
+          {
+            "field_path": "activities[0].start_date",
+            "quote": "「绚丽异彩」重构寻访#1将于2026年9月24日12:00（服务器时间）开启",
+            "source_id": "skland-6328871"
+          },
+          {
+            "field_path": "activities[0].start_at",
+            "quote": "2026年9月24日12:00（服务器时间）",
+            "source_id": "skland-6328871"
+          },
+          {
+            "field_path": "activities[0].rules",
+            "quote": "6星干员【伊冯】获取概率大幅提升",
+            "source_id": "skland-6328871"
+          }
+        ],
+        "id": "activity-54ac4a1db49186b3",
+        "kind": "in_game",
+        "related_offers": null,
+        "rules": "6星干员【伊冯】获取概率大幅提升",
+        "start_at": "2026-09-24T12:00:00+08:00",
+        "start_date": "2026-09-24",
+        "status": "upcoming",
+        "title": "「绚丽异彩」重构寻访#1",
+        "uncertainties": [],
+        "venues": []
+      },
+      "campaign_id": "campaign-c0eb942cf0b13e3a-e6fe958d",
+      "campaign_title": "「绚丽异彩」重构寻访#1",
+      "ip_name": "明日方舟：终末地",
+      "next": {
+        "at": "2026-09-24T12:00:00+08:00",
+        "date": "2026-09-24",
+        "title": "「绚丽异彩」重构寻访#1开始"
+      },
+      "url": "event.html?id=campaign-c0eb942cf0b13e3a-e6fe958d#activity-activity-54ac4a1db49186b3"
+    },
+    {
+      "activity": {
         "actions": [
           {
             "at": null,
@@ -391,6 +492,42 @@
         "title": "明日方舟×三丽鸥家族粘土人补款结束"
       },
       "url": "event.html?id=campaign-9d561ae4c629334d-b074e365#activity-activity-ec00117645e279cd"
+    },
+    {
+      "activity": {
+        "actions": [],
+        "end_at": null,
+        "end_date": null,
+        "evidence": [
+          {
+            "field_path": "activities[0].title",
+            "quote": "艾莲与耀嘉音",
+            "source_id": "miyoushe-78286787"
+          },
+          {
+            "field_path": "activities[0].start_date",
+            "quote": "4.8版本",
+            "source_id": "miyoushe-78286787"
+          }
+        ],
+        "id": "activity-1cdafb1ec747fedf",
+        "kind": "in_game",
+        "related_offers": null,
+        "rules": null,
+        "start_at": null,
+        "start_date": "2026-04-08",
+        "status": "details_pending",
+        "title": "艾莲与耀嘉音版本上线",
+        "uncertainties": [
+          "具体上线时间待确认，原文仅预告4.8版本。"
+        ],
+        "venues": []
+      },
+      "campaign_id": "campaign-088817ae96bf8f7f-afce333c",
+      "campaign_title": "崩坏：星穹铁道 × 绝区零",
+      "ip_name": "崩坏：星穹铁道",
+      "next": null,
+      "url": "event.html?id=campaign-088817ae96bf8f7f-afce333c#activity-activity-1cdafb1ec747fedf"
     },
     {
       "activity": {
@@ -521,7 +658,75 @@
       "ip_name": "崩坏：星穹铁道",
       "next": null,
       "url": "event.html?id=campaign-0451ddb8aea2e952-631416ed#activity-activity-841e15a9847b54dd"
+    },
+    {
+      "activity": {
+        "actions": [],
+        "end_at": null,
+        "end_date": null,
+        "evidence": [
+          {
+            "field_path": "activities[2].title",
+            "quote": "「雪凇幽梦」版本",
+            "source_id": "skland-6328871"
+          },
+          {
+            "field_path": "activities[2].rules",
+            "quote": "完成活动免费领满潜能干员【噗切娜】及武器【点心时刻】",
+            "source_id": "skland-6328871"
+          }
+        ],
+        "id": "activity-a2fafb4a1e7fd943",
+        "kind": "product",
+        "related_offers": null,
+        "rules": "完成活动免费领满潜能干员【噗切娜】及武器【点心时刻】",
+        "start_at": null,
+        "start_date": null,
+        "status": "details_pending",
+        "title": "「雪凇幽梦」版本",
+        "uncertainties": [],
+        "venues": []
+      },
+      "campaign_id": "campaign-c0eb942cf0b13e3a-e6fe958d",
+      "campaign_title": "「绚丽异彩」重构寻访#1",
+      "ip_name": "明日方舟：终末地",
+      "next": null,
+      "url": "event.html?id=campaign-c0eb942cf0b13e3a-e6fe958d#activity-activity-a2fafb4a1e7fd943"
+    },
+    {
+      "activity": {
+        "actions": [],
+        "end_at": null,
+        "end_date": null,
+        "evidence": [
+          {
+            "field_path": "activities[1].title",
+            "quote": "《云·终末地》已上线",
+            "source_id": "skland-6328871"
+          },
+          {
+            "field_path": "activities[1].rules",
+            "quote": "官方云游戏《云·终末地》现已开启安卓&iOS端不限量测试",
+            "source_id": "skland-6328871"
+          }
+        ],
+        "id": "activity-c54e303c057e46dc",
+        "kind": "online",
+        "related_offers": null,
+        "rules": "安卓&iOS端不限量测试",
+        "start_at": null,
+        "start_date": null,
+        "status": "details_pending",
+        "title": "《云·终末地》不限量测试",
+        "uncertainties": [],
+        "venues": []
+      },
+      "campaign_id": "campaign-c0eb942cf0b13e3a-e6fe958d",
+      "campaign_title": "「绚丽异彩」重构寻访#1",
+      "ip_name": "明日方舟：终末地",
+      "next": null,
+      "url": "event.html?id=campaign-c0eb942cf0b13e3a-e6fe958d#activity-activity-c54e303c057e46dc"
     }
   ],
-  "generated_at": "2026-09-21T04:52:40.983867+08:00"
+  "generated_at": "2026-09-21T12:56:22.399525+08:00"
 }

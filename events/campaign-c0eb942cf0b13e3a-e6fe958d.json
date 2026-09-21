@@ -1,0 +1,224 @@
+{
+  "activities": [
+    {
+      "actions": [],
+      "end_at": null,
+      "end_date": null,
+      "evidence": [
+        {
+          "field_path": "activities[0].start_date",
+          "quote": "「绚丽异彩」重构寻访#1将于2026年9月24日12:00（服务器时间）开启",
+          "source_id": "skland-6328871"
+        },
+        {
+          "field_path": "activities[0].start_at",
+          "quote": "2026年9月24日12:00（服务器时间）",
+          "source_id": "skland-6328871"
+        },
+        {
+          "field_path": "activities[0].rules",
+          "quote": "6星干员【伊冯】获取概率大幅提升",
+          "source_id": "skland-6328871"
+        }
+      ],
+      "id": "activity-54ac4a1db49186b3",
+      "kind": "in_game",
+      "related_offers": null,
+      "rules": "6星干员【伊冯】获取概率大幅提升",
+      "start_at": "2026-09-24T12:00:00+08:00",
+      "start_date": "2026-09-24",
+      "status": "upcoming",
+      "title": "「绚丽异彩」重构寻访#1",
+      "uncertainties": [],
+      "venues": []
+    },
+    {
+      "actions": [],
+      "end_at": null,
+      "end_date": null,
+      "evidence": [
+        {
+          "field_path": "activities[1].title",
+          "quote": "《云·终末地》已上线",
+          "source_id": "skland-6328871"
+        },
+        {
+          "field_path": "activities[1].rules",
+          "quote": "官方云游戏《云·终末地》现已开启安卓&iOS端不限量测试",
+          "source_id": "skland-6328871"
+        }
+      ],
+      "id": "activity-c54e303c057e46dc",
+      "kind": "online",
+      "related_offers": null,
+      "rules": "安卓&iOS端不限量测试",
+      "start_at": null,
+      "start_date": null,
+      "status": "details_pending",
+      "title": "《云·终末地》不限量测试",
+      "uncertainties": [],
+      "venues": []
+    },
+    {
+      "actions": [],
+      "end_at": null,
+      "end_date": null,
+      "evidence": [
+        {
+          "field_path": "activities[2].title",
+          "quote": "「雪凇幽梦」版本",
+          "source_id": "skland-6328871"
+        },
+        {
+          "field_path": "activities[2].rules",
+          "quote": "完成活动免费领满潜能干员【噗切娜】及武器【点心时刻】",
+          "source_id": "skland-6328871"
+        }
+      ],
+      "id": "activity-a2fafb4a1e7fd943",
+      "kind": "product",
+      "related_offers": null,
+      "rules": "完成活动免费领满潜能干员【噗切娜】及武器【点心时刻】",
+      "start_at": null,
+      "start_date": null,
+      "status": "details_pending",
+      "title": "「雪凇幽梦」版本",
+      "uncertainties": [],
+      "venues": []
+    }
+  ],
+  "activity_redirects": {},
+  "announced_at": "2026-09-21T04:00:06Z",
+  "fact_provenance": {
+    "activities.activity-54ac4a1db49186b3.rules": {
+      "content_hash": "589915ee2fbc839ef7af746f179ef5861f3a57e74059fab41b7ec44bcf3306a1",
+      "observation_id": "skland-6328871",
+      "published_at": "2026-09-21T04:00:06Z",
+      "quote": "6星干员【伊冯】获取概率大幅提升",
+      "source_id": "skland-6328871"
+    },
+    "activities.activity-54ac4a1db49186b3.start_at": {
+      "content_hash": "589915ee2fbc839ef7af746f179ef5861f3a57e74059fab41b7ec44bcf3306a1",
+      "observation_id": "skland-6328871",
+      "published_at": "2026-09-21T04:00:06Z",
+      "quote": "2026年9月24日12:00（服务器时间）",
+      "source_id": "skland-6328871"
+    },
+    "activities.activity-54ac4a1db49186b3.start_date": {
+      "content_hash": "589915ee2fbc839ef7af746f179ef5861f3a57e74059fab41b7ec44bcf3306a1",
+      "observation_id": "skland-6328871",
+      "published_at": "2026-09-21T04:00:06Z",
+      "quote": "「绚丽异彩」重构寻访#1将于2026年9月24日12:00（服务器时间）开启",
+      "source_id": "skland-6328871"
+    },
+    "activities.activity-a2fafb4a1e7fd943.rules": {
+      "content_hash": "589915ee2fbc839ef7af746f179ef5861f3a57e74059fab41b7ec44bcf3306a1",
+      "observation_id": "skland-6328871",
+      "published_at": "2026-09-21T04:00:06Z",
+      "quote": "完成活动免费领满潜能干员【噗切娜】及武器【点心时刻】",
+      "source_id": "skland-6328871"
+    },
+    "activities.activity-a2fafb4a1e7fd943.title": {
+      "content_hash": "589915ee2fbc839ef7af746f179ef5861f3a57e74059fab41b7ec44bcf3306a1",
+      "observation_id": "skland-6328871",
+      "published_at": "2026-09-21T04:00:06Z",
+      "quote": "「雪凇幽梦」版本",
+      "source_id": "skland-6328871"
+    },
+    "activities.activity-c54e303c057e46dc.rules": {
+      "content_hash": "589915ee2fbc839ef7af746f179ef5861f3a57e74059fab41b7ec44bcf3306a1",
+      "observation_id": "skland-6328871",
+      "published_at": "2026-09-21T04:00:06Z",
+      "quote": "官方云游戏《云·终末地》现已开启安卓&iOS端不限量测试",
+      "source_id": "skland-6328871"
+    },
+    "activities.activity-c54e303c057e46dc.title": {
+      "content_hash": "589915ee2fbc839ef7af746f179ef5861f3a57e74059fab41b7ec44bcf3306a1",
+      "observation_id": "skland-6328871",
+      "published_at": "2026-09-21T04:00:06Z",
+      "quote": "《云·终末地》已上线",
+      "source_id": "skland-6328871"
+    },
+    "title": {
+      "content_hash": "589915ee2fbc839ef7af746f179ef5861f3a57e74059fab41b7ec44bcf3306a1",
+      "observation_id": "skland-6328871",
+      "published_at": "2026-09-21T04:00:06Z",
+      "quote": "「绚丽异彩」重构寻访#1",
+      "source_id": "skland-6328871"
+    }
+  },
+  "first_seen_at": "2026-09-21T04:53:13.112293Z",
+  "id": "campaign-c0eb942cf0b13e3a-e6fe958d",
+  "ip_name": "明日方舟：终末地",
+  "ip_slug": "arknights-endfield",
+  "media": [
+    {
+      "account_name": "明日方舟终末地",
+      "asset_path": "assets/media/72049f2014736e794c0c07d2573d17497106cff23a739e2732a5a04ec9a5792c.webp",
+      "content_type": "image/webp",
+      "sha256": "72049f2014736e794c0c07d2573d17497106cff23a739e2732a5a04ec9a5792c",
+      "size_bytes": 645362,
+      "source_id": "skland-6328871",
+      "source_media_hash": "e155adc4abbeb89754f3110c4036dbf0c0bde80301933e5bf673c6cd0df783c4",
+      "source_url": "https://bbs.hycdn.cn/image/common/20260920/113/6aafce7a8af11c747f2e1428_ef3391c4.webp"
+    },
+    {
+      "account_name": "明日方舟终末地",
+      "asset_path": "assets/media/1585afaa984dbd0ab861d98b7fd41911fe4bfcf8f567c73e08fe118d87a61d84.webp",
+      "content_type": "image/webp",
+      "sha256": "1585afaa984dbd0ab861d98b7fd41911fe4bfcf8f567c73e08fe118d87a61d84",
+      "size_bytes": 384820,
+      "source_id": "skland-6328871",
+      "source_media_hash": "13584fcc86226c8a529c337a47d3b463f82ffe172f1c9ccbeae5ed4bfe3bd35f",
+      "source_url": "https://bbs.hycdn.cn/image/common/20260920/113/6aafce7a36696a39d3c33817_0095c241.webp"
+    },
+    {
+      "account_name": "明日方舟终末地",
+      "asset_path": "assets/media/e82cb01e71416e472472f18056cd39392f8ebf24360f86e5fb9dae4fd24aed45.webp",
+      "content_type": "image/webp",
+      "sha256": "e82cb01e71416e472472f18056cd39392f8ebf24360f86e5fb9dae4fd24aed45",
+      "size_bytes": 664820,
+      "source_id": "skland-6328871",
+      "source_media_hash": "f220f071da708d2cd4e4540103d7a8bb2b48016592706e3ed267850afd8c98d3",
+      "source_url": "https://bbs.hycdn.cn/image/common/20260920/113/6aafce7c1add8879b04f4924_65de0095.webp"
+    }
+  ],
+  "partner": null,
+  "reachability": {
+    "activity-54ac4a1db49186b3": "unknown",
+    "activity-a2fafb4a1e7fd943": "unknown",
+    "activity-c54e303c057e46dc": "unknown"
+  },
+  "redirected_to": null,
+  "revision": 1,
+  "sources": [
+    {
+      "account_id": "3737967211133",
+      "account_name": "明日方舟终末地",
+      "canonical_content_id": "6328871",
+      "content_hash": "589915ee2fbc839ef7af746f179ef5861f3a57e74059fab41b7ec44bcf3306a1",
+      "excerpt": "//干员回顾//伊冯\n“嗨，又见面了，还是叫我伊冯就好。这可是我最近第一次出门，管理员，希望我们能合作愉快——”\n——————————\n「绚丽异彩」重构寻访#1将于2026年9月24日12:00（服务器时间）开启，活动期间6星干员【伊冯】获取概率大幅提升。\n————————\n▼ 「雪凇幽梦」版本现已开启！\n完成活动免费领满潜能干员【噗切娜】及武器【点心时刻】！「绚丽异彩」重构寻访#1开启，【伊冯】获取概率UP！\n前往下载：http://endfield.hypergryph.com/\n▼《云·终末地》已上线！\n官方云游戏《云·终末地》现已开启安卓&iOS端不限量测试！\n前往体验：https://endfield.hypergryph.com/cloud?hg_media=social",
+      "first_seen_at": "2026-09-21T04:53:13.112293Z",
+      "id": "skland-6328871",
+      "is_official": true,
+      "kind": "skland",
+      "media_hashes": [
+        "e155adc4abbeb89754f3110c4036dbf0c0bde80301933e5bf673c6cd0df783c4",
+        "13584fcc86226c8a529c337a47d3b463f82ffe172f1c9ccbeae5ed4bfe3bd35f",
+        "f220f071da708d2cd4e4540103d7a8bb2b48016592706e3ed267850afd8c98d3"
+      ],
+      "media_urls": [
+        "https://bbs.hycdn.cn/image/common/20260920/113/6aafce7a8af11c747f2e1428_ef3391c4.webp",
+        "https://bbs.hycdn.cn/image/common/20260920/113/6aafce7a36696a39d3c33817_0095c241.webp",
+        "https://bbs.hycdn.cn/image/common/20260920/113/6aafce7c1add8879b04f4924_65de0095.webp"
+      ],
+      "published_at": "2026-09-21T04:00:06Z",
+      "summary": "版本更新、云游戏测试及重构寻访活动开启。",
+      "updated_at": null,
+      "url": "https://www.skland.com/article?id=6328871"
+    }
+  ],
+  "status": "upcoming",
+  "title": "「绚丽异彩」重构寻访#1",
+  "updated_at": "2026-09-21T04:53:13.112293Z"
+}

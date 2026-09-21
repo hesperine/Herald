@@ -57,6 +57,27 @@
       "source_url": "https://bbs.hycdn.cn/image/common/20260915/107/6aa8a89bb0ed338fc74aa758_0095c241.webp"
     },
     {
+      "asset_path": "assets/media/1585afaa984dbd0ab861d98b7fd41911fe4bfcf8f567c73e08fe118d87a61d84.webp",
+      "content_type": "image/webp",
+      "sha256": "1585afaa984dbd0ab861d98b7fd41911fe4bfcf8f567c73e08fe118d87a61d84",
+      "size_bytes": 384820,
+      "source_url": "https://bbs.hycdn.cn/image/common/20260920/113/6aafce7a36696a39d3c33817_0095c241.webp"
+    },
+    {
+      "asset_path": "assets/media/72049f2014736e794c0c07d2573d17497106cff23a739e2732a5a04ec9a5792c.webp",
+      "content_type": "image/webp",
+      "sha256": "72049f2014736e794c0c07d2573d17497106cff23a739e2732a5a04ec9a5792c",
+      "size_bytes": 645362,
+      "source_url": "https://bbs.hycdn.cn/image/common/20260920/113/6aafce7a8af11c747f2e1428_ef3391c4.webp"
+    },
+    {
+      "asset_path": "assets/media/e82cb01e71416e472472f18056cd39392f8ebf24360f86e5fb9dae4fd24aed45.webp",
+      "content_type": "image/webp",
+      "sha256": "e82cb01e71416e472472f18056cd39392f8ebf24360f86e5fb9dae4fd24aed45",
+      "size_bytes": 664820,
+      "source_url": "https://bbs.hycdn.cn/image/common/20260920/113/6aafce7c1add8879b04f4924_65de0095.webp"
+    },
+    {
       "asset_path": "assets/media/799d97f7c5cdca4eec23f9a44236ffa67ea041d385ac76ce078b117c0012a051.jpg",
       "content_type": "image/jpeg",
       "sha256": "799d97f7c5cdca4eec23f9a44236ffa67ea041d385ac76ce078b117c0012a051",
@@ -111,6 +132,13 @@
       "sha256": "7e69a5eb05cf64acef03cc5516f9732103353d75eafc1528bb1bd1258ff57feb",
       "size_bytes": 2002277,
       "source_url": "https://upload-bbs.miyoushe.com/upload/2026/09/14/288909600/dc06c4cd1b45a7cad7ff9ed32deb9040_9197657994297658640.jpg"
+    },
+    {
+      "asset_path": "assets/media/1504a2cf97dd30e42013ad938b9bae816555ef901ca04858887e29047516ba1f.png",
+      "content_type": "image/png",
+      "sha256": "1504a2cf97dd30e42013ad938b9bae816555ef901ca04858887e29047516ba1f",
+      "size_bytes": 4094628,
+      "source_url": "https://upload-bbs.miyoushe.com/upload/2026/09/20/288909600/6cf461d9983498dd51b56c0bd47a7c2f_9125710034465571852.png"
     }
   ]
 }

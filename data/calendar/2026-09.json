@@ -31,6 +31,17 @@
         "title": "联名活动开始"
       }
     ],
+    "2026-09-24": [
+      {
+        "action_id": "activity-54ac4a1db49186b3--start",
+        "activity_id": "activity-54ac4a1db49186b3",
+        "at": "2026-09-24T12:00:00+08:00",
+        "campaign_id": "campaign-c0eb942cf0b13e3a-e6fe958d",
+        "ip_name": "明日方舟：终末地",
+        "kind": "event_start",
+        "title": "「绚丽异彩」重构寻访#1开始"
+      }
+    ],
     "2026-09-30": [
       {
         "action_id": "activity-ec00117645e279cd--end",
