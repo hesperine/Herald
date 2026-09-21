@@ -3,129 +3,6 @@
     {
       "actions": [
         {
-          "at": "2026-09-08T12:00:00+08:00",
-          "cancelled": false,
-          "end_at": "2026-09-21T23:59:00+08:00",
-          "end_condition": null,
-          "end_date": null,
-          "ended": false,
-          "evidence": [],
-          "id": "action-b6029e7a72089cbd",
-          "kind": "sale_open",
-          "platform": "明日方舟旗舰店",
-          "quantity_limit": null,
-          "requires_reservation": null,
-          "requires_rush": null,
-          "rules": null,
-          "scope": null,
-          "start_date": null,
-          "title": "联动周边预售",
-          "url": null
-        },
-        {
-          "at": null,
-          "cancelled": false,
-          "end_at": null,
-          "end_condition": null,
-          "end_date": "2026-09-21",
-          "ended": false,
-          "evidence": [
-            {
-              "field_path": "activities[0].actions[1].rules",
-              "quote": "单笔订单下单「明日方舟 × 女神异闻录3 Reload「月行水上」系列周边」满259元，即赠 特典卡组-校园凭证 一套。",
-              "source_id": "skland-6274849"
-            }
-          ],
-          "id": "action-391872f540b791ea",
-          "kind": "gift",
-          "platform": null,
-          "quantity_limit": null,
-          "requires_reservation": null,
-          "requires_rush": null,
-          "rules": "单笔订单下单「明日方舟 × 女神异闻录3 Reload「月行水上」系列周边」满259元，即赠特典卡组-校园凭证一套。",
-          "scope": "明日方舟 × 女神异闻录3 Reload「月行水上」系列周边",
-          "start_date": "2026-09-08",
-          "title": "购买满259元赠特典卡组-校园凭证",
-          "url": null
-        },
-        {
-          "at": null,
-          "cancelled": false,
-          "end_at": null,
-          "end_condition": null,
-          "end_date": "2026-09-14",
-          "ended": false,
-          "evidence": [
-            {
-              "field_path": "activities[0].actions[2].rules",
-              "quote": "活动期间，明日方舟旗舰店全店商品（部分商品除外，详见注意事项）参与店铺立减活动。购买任意单件商品即可享受立减12%优惠！",
-              "source_id": "skland-6274849"
-            }
-          ],
-          "id": "action-253472849846ae2a",
-          "kind": "discount",
-          "platform": null,
-          "quantity_limit": null,
-          "requires_reservation": null,
-          "requires_rush": null,
-          "rules": "活动期间，明日方舟旗舰店全店商品（部分商品除外，详见注意事项）参与店铺立减活动。购买任意单件商品即可享受立减12%优惠！",
-          "scope": "明日方舟旗舰店全店商品，部分商品除外",
-          "start_date": "2026-09-08",
-          "title": "全店商品立减12%",
-          "url": null
-        }
-      ],
-      "end_at": "2026-09-21T23:59:00+08:00",
-      "end_date": "2026-09-21",
-      "evidence": [
-        {
-          "field_path": "activities[0].start_at",
-          "quote": "2026.09.08 12:00",
-          "source_id": "skland-6274849"
-        },
-        {
-          "field_path": "activities[0].end_at",
-          "quote": "2026.09.21 23:59",
-          "source_id": "skland-6274849"
-        },
-        {
-          "field_path": "activities[0].actions[1].rules",
-          "quote": "单笔订单下单「明日方舟 × 女神异闻录3 Reload「月行水上」系列周边」满259元，即赠 特典卡组-校园凭证 一套。",
-          "source_id": "skland-6274849"
-        },
-        {
-          "field_path": "activities[0].actions[2].rules",
-          "quote": "活动期间，明日方舟旗舰店全店商品（部分商品除外，详见注意事项）参与店铺立减活动。购买任意单件商品即可享受立减12%优惠！",
-          "source_id": "skland-6274849"
-        }
-      ],
-      "id": "activity-143370800450b804",
-      "kind": "merchandise",
-      "related_offers": null,
-      "rules": null,
-      "start_at": "2026-09-08T12:00:00+08:00",
-      "start_date": "2026-09-08",
-      "status": "ongoing",
-      "title": "明日方舟 × 女神异闻录3 Reload「月行水上」系列周边预售",
-      "uncertainties": [],
-      "venues": [
-        {
-          "address": null,
-          "business_hours": null,
-          "city": null,
-          "country": "CN",
-          "evidence": [],
-          "id": "venue-6f25558612a0d475",
-          "name": null,
-          "nationwide": false,
-          "online_platform": "明日方舟旗舰店",
-          "province": null
-        }
-      ]
-    },
-    {
-      "actions": [
-        {
           "at": null,
           "cancelled": false,
           "end_at": null,
@@ -328,7 +205,6 @@
   ],
   "partner": "女神异闻录3 Reload",
   "reachability": {
-    "activity-143370800450b804": "online",
     "activity-ec00117645e279cd": "online"
   },
   "redirected_to": null,

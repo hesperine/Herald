@@ -1,0 +1,37 @@
+{
+  "cards": [
+    {
+      "activity": {
+        "title": "联名活动"
+      },
+      "activity_id": "activity-270f3157626abbe8",
+      "campaign_id": "campaign-3302d7e79db4b203-62055d07",
+      "campaign_title": "奈雪的茶 ×《明日方舟：终末地》联名活动",
+      "detail_url": "event.html?id=campaign-3302d7e79db4b203-62055d07#activity-activity-270f3157626abbe8",
+      "extraction_status": null,
+      "ip_name": "明日方舟：终末地",
+      "reasons": [
+        {
+          "action_id": "activity-270f3157626abbe8--start",
+          "date_only": "2026-09-23",
+          "expected_at": "2026-09-23T00:00:00+08:00",
+          "kind": "day_before",
+          "summary": "明天开始：联名活动开始"
+        }
+      ],
+      "sources": [
+        {
+          "account_name": "明日方舟终末地",
+          "summary": "版本更新说明，含维护时间、补偿、全新剧情/干员/武器/区域、寻访及申领、活动及玩法更新、采购中心、集成工业系统、系统功能、问题修复等。",
+          "url": "https://www.skland.com/article?id=6271937"
+        },
+        {
+          "account_name": "明日方舟终末地",
+          "summary": "官宣与奈雪的茶联名活动，9月23日正式上线，后续将有更多饮品套餐及瓶装联名情报。",
+          "url": "https://www.skland.com/article?id=6305039"
+        }
+      ]
+    }
+  ],
+  "date": "2026-09-22"
+}
