@@ -1,0 +1,32 @@
+{
+  "cards": [
+    {
+      "activity": {
+        "title": "「绚丽异彩」重构寻访#1"
+      },
+      "activity_id": "activity-54ac4a1db49186b3",
+      "campaign_id": "campaign-c0eb942cf0b13e3a-e6fe958d",
+      "campaign_title": "「绚丽异彩」重构寻访#1",
+      "detail_url": "event.html?id=campaign-c0eb942cf0b13e3a-e6fe958d#activity-activity-54ac4a1db49186b3",
+      "extraction_status": null,
+      "ip_name": "明日方舟：终末地",
+      "reasons": [
+        {
+          "action_id": "activity-54ac4a1db49186b3--start",
+          "date_only": "2026-09-24",
+          "expected_at": "2026-09-24T12:00:00+08:00",
+          "kind": "day_before",
+          "summary": "明天开始：「绚丽异彩」重构寻访#1开始"
+        }
+      ],
+      "sources": [
+        {
+          "account_name": "明日方舟终末地",
+          "summary": "版本更新、云游戏测试及重构寻访活动开启。",
+          "url": "https://www.skland.com/article?id=6328871"
+        }
+      ]
+    }
+  ],
+  "date": "2026-09-23"
+}
