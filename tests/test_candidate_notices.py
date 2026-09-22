@@ -100,7 +100,7 @@ class CandidateNoticeTests(unittest.TestCase):
         c.activities[0].actions[0].url = 'https://example.com/updated'
         self.store.save_campaign(c)
         resolve_candidates(self.store, NOW)
-        service.deliver_due(store=self.store, day=NOW.date(), generated_at=NOW,
+        service.deliver_due(store=self.store, day=(NOW + timedelta(days=1)).date(), generated_at=NOW + timedelta(days=1),
             sender=sender, recipient='player@example.com')
         later = NOW + timedelta(days=9)
         self.store.prune_reminders(later.date())
@@ -131,8 +131,8 @@ class CandidateNoticeTests(unittest.TestCase):
         c.activities[0].actions[0].at += timedelta(days=2)
         self.store.save_campaign(c)
         resolve_candidates(self.store, NOW)
-        later = NOW + timedelta(hours=1)
-        service.deliver_due(store=self.store, day=NOW.date(), generated_at=later,
+        later = NOW + timedelta(days=1)
+        service.deliver_due(store=self.store, day=later.date(), generated_at=later,
             sender=sender, recipient='player@example.com')
         c.activities[0].actions[0].at = original
         self.store.save_campaign(c)
@@ -140,7 +140,7 @@ class CandidateNoticeTests(unittest.TestCase):
         items, _ = service.collect_due(self.store, NOW.date(), now=NOW)
         self.assertEqual(len(items), 1)
         self.assertIn(original.isoformat(), items[0].job.summary)
-        service.deliver_due(store=self.store, day=NOW.date(), generated_at=later + timedelta(hours=1),
+        service.deliver_due(store=self.store, day=(later + timedelta(days=1)).date(), generated_at=later + timedelta(days=1),
             sender=sender, recipient='player@example.com')
         c.activities[0].actions[0].at += timedelta(days=2)
         self.store.save_campaign(c)

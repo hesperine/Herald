@@ -17,6 +17,12 @@ from herald.config import load_settings
 
 
 class CliTests(unittest.TestCase):
+    def test_final_retry_is_explicit_and_only_allowed_for_retry(self):
+        self.assertFalse(_parser().parse_args([]).final_retry)
+        self.assertTrue(_parser().parse_args(['--phase', 'retry', '--final-retry']).final_retry)
+        with self.assertRaises(SystemExit):
+            main(['--phase', 'full', '--final-retry'])
+
     def test_provider_is_optional_and_uses_openai_compatible_configuration(self) -> None:
         without_key = load_settings({"WATCH_IPS": "原神"})
         client = object()

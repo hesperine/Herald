@@ -195,6 +195,33 @@ class DailyRunnerTests(unittest.IsolatedAsyncioTestCase):
         self.assertEqual(len(sender.messages), 1)
         self.assertEqual(self.store.list_pending_extractions(), [])
 
+    async def test_pending_cleared_in_retry_sends_before_final_slot(self):
+        sender = MemorySender()
+        item = observation()
+        await self.runner.run(settings=settings(), store=self.store, page_dir=self.page, now=NOW,
+            weibo_client=FakeWeiboClient([FetchBatch(items=(FetchedObservation(item),),
+                cursor=WeiboCursor(container_id='1076031001', latest_post_id='next'))]),
+            provider=None, email_sender=sender)
+        self.assertEqual(sender.messages, [])
+        await self.runner.run(settings=settings(), store=self.store, page_dir=self.page, now=NOW,
+            weibo_client=FakeWeiboClient([]), provider=MockAIProvider({item.id: extraction()}),
+            email_sender=sender, phase=RunPhase.RETRY)
+        self.assertEqual(len(sender.messages), 1)
+        self.assertEqual(self.store.list_pending_extractions(), [])
+        await self.runner.run(settings=settings(), store=self.store, page_dir=self.page, now=NOW,
+            weibo_client=None, provider=None, email_sender=sender, phase=RunPhase.RETRY, final_retry=True)
+        self.assertEqual(len(sender.messages), 1)
+
+    async def test_final_retry_empty_digest_respects_opt_in(self):
+        for enabled in (False, True):
+            with self.subTest(enabled=enabled):
+                store = StateStore(self.store.root / str(enabled))
+                sender = MemorySender()
+                await self.runner.run(settings=settings(always_daily=enabled), store=store,
+                    page_dir=self.page, now=NOW, weibo_client=None, provider=None,
+                    email_sender=sender, phase=RunPhase.RETRY, final_retry=True)
+                self.assertEqual(len(sender.messages), int(enabled))
+
     async def test_source_edit_keeps_original_first_seen_time(self) -> None:
         self.store.initialize()
         original = observation()
@@ -445,11 +472,11 @@ class DailyRunnerTests(unittest.IsolatedAsyncioTestCase):
         self.assertEqual(len(self.store.load_queue_jobs(date(2026, 8, 30))), 1)
         self.assertEqual(len(self.store.load_queue_jobs(date(2026, 9, 7))), 1)
 
-    async def test_all_retry_slots_send_one_summary_and_never_duplicate(self):
+    async def test_all_retry_slots_share_one_daily_email(self):
         from herald.candidate_notices import register_candidates
         sender = MemorySender()
-        for hour in (2, 14, 20):
-            instant = datetime(2026, 9, 19, hour, 15, tzinfo=timezone(timedelta(hours=8)))
+        for hour in (4, 6, 8):
+            instant = datetime(2026, 9, 19, hour, 0, tzinfo=timezone(timedelta(hours=8)))
             items = []
             for index in range(2):
                 o = observation()
@@ -459,19 +486,25 @@ class DailyRunnerTests(unittest.IsolatedAsyncioTestCase):
                 items.append(o)
             self.store.initialize()
             register_candidates(self.store, registry().entries[0], items, instant)
-            before = len(sender.messages)
             for _ in range(2):
                 await self.runner.run(settings=settings(with_ai=False), store=self.store, page_dir=self.page,
                     now=instant, weibo_client=None, provider=None, email_sender=sender, phase=RunPhase.RETRY)
-            self.assertEqual(len(sender.messages), before + 1)
+            self.assertEqual(len(sender.messages), 1)
 
-    async def test_ai_failure_still_publishes_and_sends_fallback(self):
+    async def test_ai_failure_waits_until_final_retry_and_keeps_publishing(self):
         from tests.test_pipeline import FailingProvider
         sender = MemorySender()
         await self.runner.run(settings=settings(), store=self.store, page_dir=self.page, now=NOW,
             weibo_client=FakeWeiboClient([FetchBatch(items=(FetchedObservation(observation()),),
                 cursor=WeiboCursor(container_id='1076031001', latest_post_id='next'))]),
             provider=FailingProvider(), email_sender=sender)
+        self.assertEqual(len(sender.messages), 0)
+        self.assertTrue((self.page / 'index.html').exists())
+        for final in (False, False, True, True):
+            await self.runner.run(settings=settings(), store=self.store, page_dir=self.page, now=NOW,
+                weibo_client=FakeWeiboClient([]), provider=None, email_sender=sender,
+                phase=RunPhase.RETRY, final_retry=final)
+            self.assertEqual(len(sender.messages), int(final))
         self.assertEqual(len(sender.messages), 1)
         self.assertIn('待解析', sender.messages[0]['text'])
         self.assertEqual(len(self.store.list_pending_extractions()), 1)

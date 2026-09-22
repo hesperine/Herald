@@ -118,6 +118,7 @@ class DailyRunner:
         miyoushe_client: MiyousheAccountFetcher | None = None,
         skland_client: SklandAccountFetcher | None = None,
         phase: RunPhase = RunPhase.FULL,
+        final_retry: bool = False,
     ) -> DailyRunResult:
         if now.tzinfo is None or now.utcoffset() is None:
             raise ValueError("daily run time must include a timezone")
@@ -206,7 +207,12 @@ class DailyRunner:
             repair_state(store, resolution.supported, delivery_now, timezone_name=settings.public.timezone,
                          remind_day_before=settings.public.remind_day_before)
             recipient = self._secret(settings.private.notify_email)
-            if recipient and email_sender is not None:
+            watched_slugs = {ip.slug for ip in resolution.supported}
+            has_pending = any(p.ip_slug in watched_slugs for p in store.list_pending_extractions())
+            ready_to_send = not has_pending or (phase is RunPhase.RETRY and final_retry)
+            if not ready_to_send:
+                pass  # Keep queue jobs and receipts untouched; still publish the page below.
+            elif recipient and email_sender is not None:
                 try:
                     delivery = notification_service.deliver_due(
                         store=store,
@@ -214,7 +220,7 @@ class DailyRunner:
                         generated_at=delivery_now,
                         sender=email_sender,
                         recipient=recipient,
-                        send_empty_digest=phase is RunPhase.FULL and settings.public.always_send_daily_digest,
+                        send_empty_digest=settings.public.always_send_daily_digest,
                         watched_ip_slugs={ip.slug for ip in resolution.supported},
                     )
                 except Exception:

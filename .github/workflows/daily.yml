@@ -2,10 +2,12 @@ name: Daily collaboration scan
 
 on:
   schedule:
-    # 08:15 in Asia/Shanghai. GitHub schedules use UTC and may start later.
-    - cron: "15 0 * * *"
-    # Pending only: 14:15, 20:15, 02:15 in Asia/Shanghai.
-    - cron: "15 6,12,18 * * *"
+    # 02:00 in Asia/Shanghai (previous UTC day). Starts may be delayed.
+    - cron: "0 18 * * *"
+    # Pending only: 04:00 and 06:00 in Asia/Shanghai.
+    - cron: "0 20,22 * * *"
+    # Final pending retry and digest fallback: 08:00 in Asia/Shanghai.
+    - cron: "0 0 * * *"
   workflow_dispatch:
 
 permissions:
@@ -87,7 +89,9 @@ jobs:
           TRIGGER_SCHEDULE: ${{ github.event.schedule }}
         shell: bash
         run: |
-          if [[ "$TRIGGER_SCHEDULE" == "15 6,12,18 * * *" ]]; then
+          if [[ "$TRIGGER_SCHEDULE" == "0 0 * * *" ]]; then
+            timeout --signal=TERM 16m python -m herald --state-dir _state --page-dir _page --phase retry --final-retry
+          elif [[ "$TRIGGER_SCHEDULE" == "0 20,22 * * *" ]]; then
             timeout --signal=TERM 16m python -m herald --state-dir _state --page-dir _page --phase retry
           else
             timeout --signal=TERM 16m python -m herald --state-dir _state --page-dir _page --phase full

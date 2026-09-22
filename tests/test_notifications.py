@@ -49,10 +49,10 @@ class SmtpRecipientTests(unittest.TestCase):
                 client.send_message.return_value={}
                 self.sender(use_ssl).send(recipient='one@example.com, two@example.com, one@example.com', subject='提醒', text='正文')
                 args, kwargs=client.send_message.call_args
-                self.assertEqual(kwargs['to_addrs'], ['one@example.com', 'two@example.com'])
+                self.assertEqual([c.kwargs['to_addrs'] for c in client.send_message.call_args_list], [['one@example.com'], ['two@example.com']])
                 self.assertNotIn('one@example.com', str(args[0]['To']))
                 self.assertNotIn('two@example.com', str(args[0]['To']))
-                if not use_ssl: client.starttls.assert_called_once()
+                if not use_ssl: self.assertEqual(client.starttls.call_count, 2)
 
     def test_single_recipient_remains_supported(self):
         with patch('herald.notifications.smtplib.SMTP_SSL') as smtp:
@@ -70,11 +70,74 @@ class SmtpRecipientTests(unittest.TestCase):
                     self.sender().send(recipient=value, subject='提醒', text='正文')
                 smtp.assert_not_called()
 
-    def test_partial_refusal_is_not_reported_as_success(self):
-        with patch('herald.notifications.smtplib.SMTP_SSL') as smtp:
-            smtp.return_value.__enter__.return_value.send_message.return_value={'two@example.com': (550, b'refused')}
+    def test_each_failed_recipient_gets_three_retries_without_resending_successes(self):
+        for use_ssl in (True, False):
+            with self.subTest(use_ssl=use_ssl), patch('herald.notifications.smtplib.SMTP_SSL' if use_ssl else 'herald.notifications.smtplib.SMTP') as smtp:
+                client = smtp.return_value.__enter__.return_value
+                client.send_message.side_effect = [{}, OSError('private failure'),
+                    {'two@example.com': (550, b'private refusal')}, {}, {}]
+                self.sender(use_ssl).send(recipient='one@example.com,two@example.com,three@example.com',
+                    subject='test', text='body')
+                self.assertEqual([c.kwargs['to_addrs'] for c in client.send_message.call_args_list],
+                    [['one@example.com'], ['two@example.com'], ['two@example.com'],
+                     ['two@example.com'], ['three@example.com']])
+
+    def test_failure_disables_retries_and_success_restores_them(self):
+        with tempfile.TemporaryDirectory() as directory, patch('herald.notifications.smtplib.SMTP_SSL') as smtp:
+            store = StateStore(directory)
+            client = smtp.return_value.__enter__.return_value
+            def send(message, to_addrs):
+                if to_addrs == ['two@example.com']:
+                    raise OSError('private failure two@example.com')
+                return {}
+            client.send_message.side_effect = send
+            for _ in range(2):
+                with self.assertRaisesRegex(RuntimeError, '^email delivery incomplete$'):
+                    self.sender().send_daily(store=store, day=DUE_DAY,
+                        recipient='one@example.com,two@example.com,three@example.com', subject='test', text='body')
+            calls = [c.kwargs['to_addrs'] for c in client.send_message.call_args_list]
+            self.assertEqual(calls.count(['one@example.com']), 1)
+            self.assertEqual(calls.count(['two@example.com']), 5)
+            self.assertEqual(calls.count(['three@example.com']), 1)
+            import json
+            from datetime import timedelta
+            state_path = Path(directory) / 'email-delivery.json'
+            state = json.loads(state_path.read_text('utf8'))
+            self.assertEqual(state['sent'], '0x5')
+            self.assertEqual(state['no_retry'], '0x2')
+            client.send_message.side_effect = None
+            client.send_message.return_value = {}
+            self.sender().send_daily(store=store, day=DUE_DAY,
+                recipient='one@example.com,two@example.com,three@example.com', subject='test', text='body')
+            self.assertEqual(json.loads(state_path.read_text('utf8'))['sent'], '0x7')
+            self.assertEqual(json.loads(state_path.read_text('utf8'))['no_retry'], '0x0')
+            before = client.send_message.call_count
+            self.sender().send_daily(store=store, day=DUE_DAY,
+                recipient='one@example.com,two@example.com,three@example.com', subject='test', text='body')
+            self.assertEqual(client.send_message.call_count, before)
+            client.send_message.side_effect = [{}] + [OSError('private failure')] * 4 + [{}]
             with self.assertRaisesRegex(RuntimeError, '^email delivery incomplete$'):
-                self.sender().send(recipient='one@example.com,two@example.com', subject='提醒', text='正文')
+                self.sender().send_daily(store=store, day=DUE_DAY + timedelta(days=1),
+                    recipient='one@example.com,two@example.com,three@example.com', subject='test', text='body')
+            self.assertEqual(client.send_message.call_count, before + 6)
+            self.assertEqual(json.loads(state_path.read_text('utf8'))['no_retry'], '0x2')
+            client.send_message.side_effect = [{}, OSError('private failure'), {}]
+            with self.assertRaisesRegex(RuntimeError, '^email delivery incomplete$'):
+                self.sender().send_daily(store=store, day=DUE_DAY + timedelta(days=2),
+                    recipient='one@example.com,two@example.com,three@example.com', subject='test', text='body')
+            self.assertEqual(client.send_message.call_count, before + 9)
+            content = '\n'.join(p.read_text('utf8') for p in Path(directory).rglob('*.json'))
+            for private in ('one@example.com', 'two@example.com', 'three@example.com',
+                            'sender@example.com', 'test-only', 'private failure'):
+                self.assertNotIn(private, content)
+
+    def test_login_failure_is_retried_and_redacted(self):
+        with patch('herald.notifications.smtplib.SMTP_SSL') as smtp:
+            smtp.return_value.__enter__.return_value.login.side_effect = OSError('secret password')
+            with self.assertRaisesRegex(RuntimeError, '^email delivery incomplete$'):
+                self.sender().send(recipient='one@example.com', subject='test', text='body')
+            self.assertEqual(smtp.call_count, 4)
+
 
 
 class MemorySender:
@@ -132,7 +195,7 @@ def scheduled_job(*, expected_at: datetime = ACTION_AT) -> QueueJob:
 
 
 class NotificationServiceTests(unittest.TestCase):
-    def test_retry_after_empty_digest_sends_new_items_once(self):
+    def test_retry_after_empty_digest_defers_new_items(self):
         sender = MemorySender()
         self.service.deliver_due(store=self.store, day=DUE_DAY, generated_at=NOW,
             sender=sender, recipient='player@example.com', send_empty_digest=True)
@@ -141,7 +204,50 @@ class NotificationServiceTests(unittest.TestCase):
         for _ in range(2):
             self.service.deliver_due(store=self.store, day=DUE_DAY, generated_at=NOW,
                 sender=sender, recipient='player@example.com')
+        self.assertEqual(len(sender.messages), 1)
+
+    def test_partial_smtp_delivery_only_retries_failed_mailbox_before_daily_receipt(self):
+        self.store.save_campaign(campaign())
+        self.store.save_queue_job(scheduled_job())
+        with patch('herald.notifications.smtplib.SMTP_SSL') as smtp:
+            client = smtp.return_value.__enter__.return_value
+            client.send_message.side_effect = [{}] + [OSError('private response')] * 4
+            def deliver():
+                return self.service.deliver_due(store=self.store, day=DUE_DAY, generated_at=NOW,
+                    sender=SmtpEmailSender(host='smtp.example.com', port=465,
+                        username='sender@example.com', password='test-only'),
+                    recipient='one@example.com,two@example.com')
+            with self.assertRaisesRegex(RuntimeError, '^email delivery incomplete$'):
+                deliver()
+            self.assertFalse(self.store.has_receipt('daily-digest-2026-09-07', DUE_DAY))
+            client.send_message.side_effect = [{}]
+            result = deliver()
+            self.assertTrue(result.email_sent)
+            self.assertEqual(client.send_message.call_count, 6)
+            self.assertEqual(client.send_message.call_args.kwargs['to_addrs'], ['two@example.com'])
+            self.assertTrue(self.store.has_receipt('daily-digest-2026-09-07', DUE_DAY))
+            self.assertFalse(deliver().email_sent)
+            self.assertEqual(client.send_message.call_count, 6)
+
+    def test_nonempty_daily_receipt_defers_new_job_until_next_day(self):
+        from datetime import timedelta
+        sender = MemorySender()
+        self.store.save_campaign(campaign())
+        first = scheduled_job()
+        self.store.save_queue_job(first)
+        self.service.deliver_due(store=self.store, day=DUE_DAY, generated_at=NOW,
+            sender=sender, recipient='player@example.com')
+        later = first.model_copy(update={'id': 'later-news', 'kind': NotificationKind.UPDATE,
+            'expected_at': None, 'action_id': None, 'semantic_key': 'later-news'})
+        self.store.save_queue_job(later)
+        result = self.service.deliver_due(store=self.store, day=DUE_DAY, generated_at=NOW,
+            sender=sender, recipient='player@example.com')
+        self.assertFalse(result.email_sent)
+        self.assertIsNone(self.store.find_receipt(later.id))
+        self.service.deliver_due(store=self.store, day=DUE_DAY + timedelta(days=1),
+            generated_at=NOW + timedelta(days=1), sender=sender, recipient='player@example.com')
         self.assertEqual(len(sender.messages), 2)
+        self.assertIsNotNone(self.store.find_receipt(later.id))
 
     def test_fallback_without_campaign_is_deliverable_and_keeps_pending(self):
         from herald.models import CandidateNotice
@@ -275,7 +381,7 @@ class NotificationServiceTests(unittest.TestCase):
             self.store.has_receipt("daily-digest-2026-09-07", DUE_DAY)
         )
 
-    def test_new_jobs_are_sent_after_empty_digest(self) -> None:
+    def test_new_jobs_wait_after_empty_digest(self) -> None:
         sender = MemorySender()
         self.service.deliver_due(
             store=self.store,
@@ -297,9 +403,10 @@ class NotificationServiceTests(unittest.TestCase):
             send_empty_digest=True,
         )
 
-        self.assertTrue(result.email_sent)
-        self.assertEqual(len(result.sent), 1)
-        self.assertEqual(len(sender.messages), 2)
+        self.assertFalse(result.email_sent)
+        self.assertEqual(len(result.sent), 0)
+        self.assertIsNone(self.store.find_receipt(scheduled_job().id))
+        self.assertEqual(len(sender.messages), 1)
 
     def test_saved_future_job_sends_without_any_new_source_content(self) -> None:
         self.store.save_campaign(campaign())

@@ -107,6 +107,8 @@ def _parser() -> argparse.ArgumentParser:
         default=RunPhase.FULL.value,
         help="fetch sources only, extract queued materials only, or run everything",
     )
+    parser.add_argument('--final-retry', action='store_true',
+                        help='send the daily digest even if pending remains (retry only)')
     return parser
 
 
@@ -128,6 +130,7 @@ async def _run(args: argparse.Namespace) -> dict[str, object]:
                 email_sender=_make_email_sender(settings),
                 media_cache=PublicMediaCache(source_client),
                 phase=RunPhase(args.phase),
+                final_retry=args.final_retry,
             )
     return {
         "phase": args.phase,
@@ -141,7 +144,10 @@ async def _run(args: argparse.Namespace) -> dict[str, object]:
 
 
 def main(argv: list[str] | None = None) -> int:
-    args = _parser().parse_args(argv)
+    parser = _parser()
+    args = parser.parse_args(argv)
+    if args.final_retry and args.phase != RunPhase.RETRY.value:
+        parser.error('--final-retry requires --phase retry')
     try:
         result = asyncio.run(_run(args))
     except (ValueError, OSError) as exc:

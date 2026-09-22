@@ -3,6 +3,7 @@
 from __future__ import annotations
 
 import smtplib
+import json
 from dataclasses import dataclass
 from datetime import date, datetime
 from email.message import EmailMessage
@@ -64,6 +65,19 @@ class SmtpEmailSender:
         self.use_ssl = use_ssl
 
     def send(self, *, recipient: str, subject: str, text: str, html: str | None = None) -> None:
+        self._send(recipient=recipient, subject=subject, text=text, html=html,
+                   progress={}, save=lambda: None)
+
+    def send_daily(self, *, store: StateStore, day: date, recipient: str,
+                   subject: str, text: str, html: str | None = None) -> None:
+        path = store.root / 'email-delivery.json'
+        progress = json.loads(path.read_text(encoding='utf8')) if path.exists() else {}
+        if progress.get('day') != day.isoformat():
+            progress.update(day=day.isoformat(), sent='0x0')
+        self._send(recipient=recipient, subject=subject, text=text, html=html,
+                   progress=progress, save=lambda: store._atomic_json_write(path, progress))
+
+    def _send(self, *, recipient, subject, text, html, progress, save):
         recipients = []
         try:
             if '\r' in recipient or '\n' in recipient:
@@ -89,20 +103,42 @@ class SmtpEmailSender:
         if html:
             message.add_alternative(html, subtype="html")
 
-        if self.use_ssl:
-            with smtplib.SMTP_SSL(self.host, self.port, timeout=30) as client:
-                client.login(self.username, self.password)
-                refused = client.send_message(message, to_addrs=recipients)
-                if refused:
-                    raise RuntimeError('email delivery incomplete')
-            return
-
-        with smtplib.SMTP(self.host, self.port, timeout=30) as client:
-            client.starttls()
-            client.login(self.username, self.password)
-            refused = client.send_message(message, to_addrs=recipients)
-            if refused:
-                raise RuntimeError('email delivery incomplete')
+        # Bits correspond to the deduplicated NOTIFY_EMAIL order. No address,
+        # hash of an address, or SMTP response is persisted.
+        sent = int(progress.get('sent', '0x0'), 16)
+        no_retry = int(progress.get('no_retry', '0x0'), 16)
+        incomplete = False
+        for index, address in enumerate(recipients):
+            bit = 1 << index
+            if sent & bit:
+                continue
+            attempts = 1 if no_retry & bit else 4
+            for _ in range(attempts):
+                accepted = False
+                try:
+                    factory = smtplib.SMTP_SSL if self.use_ssl else smtplib.SMTP
+                    with factory(self.host, self.port, timeout=30) as client:
+                        if not self.use_ssl:
+                            client.starttls()
+                        client.login(self.username, self.password)
+                        refused = client.send_message(message, to_addrs=[address])
+                        accepted = not refused
+                except (OSError, smtplib.SMTPException, RuntimeError):
+                    # A failed QUIT does not undo SMTP acceptance.
+                    pass
+                if accepted:
+                    sent |= bit
+                    no_retry &= ~bit
+                    progress.update(sent=hex(sent), no_retry=hex(no_retry))
+                    save()
+                    break
+            else:
+                no_retry |= bit
+                progress.update(sent=hex(sent), no_retry=hex(no_retry))
+                save()
+                incomplete = True
+        if incomplete:
+            raise RuntimeError('email delivery incomplete') from None
 
 
 class NotificationService:
@@ -367,6 +403,14 @@ class NotificationService:
             )
         )
 
+    @staticmethod
+    def _send_digest(sender, store, day, recipient, digest):
+        if isinstance(sender, SmtpEmailSender):
+            sender.send_daily(store=store, day=day, recipient=recipient,
+                subject=digest.subject, text=digest.text, html=digest.html)
+        else:
+            sender.send(recipient=recipient, subject=digest.subject, text=digest.text, html=digest.html)
+
     def deliver_due(
         self,
         *,
@@ -378,17 +422,21 @@ class NotificationService:
         send_empty_digest: bool = False,
         watched_ip_slugs: set[str] | None = None,
     ) -> DeliveryResult:
+        # Any successful digest closes this local day's delivery window.
+        # Leave later jobs unreceipted so a subsequent day can collect them.
+        if store.has_receipt(self._daily_digest_receipt_id(day), day):
+            return DeliveryResult((), ())
         items, skipped = self.collect_due(store, day, now=generated_at, watched_ip_slugs=watched_ip_slugs)
         if not items:
             receipt_id = self._daily_digest_receipt_id(day)
             if not send_empty_digest or store.has_receipt(receipt_id, day):
                 return DeliveryResult((), tuple(skipped))
             digest = self.render_empty_digest(generated_at)
-            sender.send(recipient=recipient, subject=digest.subject, text=digest.text, html=digest.html)
+            self._send_digest(sender, store, day, recipient, digest)
             self._save_daily_digest_receipt(store, day, generated_at)
             return DeliveryResult((), tuple(skipped), email_sent=True)
         digest = self.render_digest(items, generated_at)
-        sender.send(recipient=recipient, subject=digest.subject, text=digest.text, html=digest.html)
+        self._send_digest(sender, store, day, recipient, digest)
         sent_jobs: list[QueueJob] = []
         candidates = {c.id: c for c in store.list_candidates()}
         for item in digest.items:
