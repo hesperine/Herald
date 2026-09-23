@@ -1,0 +1,29 @@
+{
+  "campaign_id": null,
+  "detected_at": "2026-09-23T21:21:57.952948Z",
+  "facts": {},
+  "id": "candidate-7bf13dcac5ccee3945652f21",
+  "ip_name": "崩坏：星穹铁道",
+  "ip_slug": "honkai-star-rail",
+  "public_text": "即兴巡演PV：「至此，已成艺术」\n楼主[匿名]：画成这样…可以接稿吗？\nID[Jade]：每日审美积累已达成\nID[点石成金]：稿子有点熟悉啊，你不会是……\nID[扑满保护协会名誉会长]：下次让账账做模特好不好~\nID[龙颜大悦]：这就是你在半夜敲我门的原因？\nID[高清条形码]：我用最简单最直接最不绕弯子的方式告诉你：老师，你是我的神！\n \n中文CV：\n真珠——苏婉\n托帕——陆敏悦\n砂金——杨超然\n龙晶——洪海天\n虚照——子音",
+  "sources": [
+    {
+      "account_id": "288909600",
+      "account_name": "崩坏星穹铁道",
+      "canonical_content_id": "78341238",
+      "content_hash": "a048f50924271209cd69246bf77f63b1f908d7e8751b63de95563288a8a09478",
+      "excerpt": "即兴巡演PV：「至此，已成艺术」\n楼主[匿名]：画成这样…可以接稿吗？\nID[Jade]：每日审美积累已达成\nID[点石成金]：稿子有点熟悉啊，你不会是……\nID[扑满保护协会名誉会长]：下次让账账做模特好不好~\nID[龙颜大悦]：这就是你在半夜敲我门的原因？\nID[高清条形码]：我用最简单最直接最不绕弯子的方式告诉你：老师，你是我的神！\n \n中文CV：\n真珠——苏婉\n托帕——陆敏悦\n砂金——杨超然\n龙晶——洪海天\n虚照——子音",
+      "first_seen_at": "2026-09-23T21:21:57.952948Z",
+      "id": "miyoushe-78341238",
+      "is_official": true,
+      "kind": "miyoushe",
+      "media_hashes": [],
+      "media_urls": [],
+      "published_at": "2026-09-23T04:00:21Z",
+      "summary": null,
+      "updated_at": null,
+      "url": "https://www.miyoushe.com/sr/article/78341238"
+    }
+  ],
+  "status": "pending"
+}
