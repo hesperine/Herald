@@ -5,7 +5,7 @@
       "activity_id": null,
       "campaign_id": "candidate-5f1b754448a1a792153ed731",
       "campaign_title": "明日方舟：终末地 · 候选联动信息",
-      "detail_campaign_id": null,
+      "detail_url": null,
       "extraction_status": "pending",
       "ip_name": "明日方舟：终末地",
       "reasons": [
@@ -19,20 +19,8 @@
       ],
       "sources": [
         {
-          "account_id": "3737967211133",
           "account_name": "明日方舟终末地",
-          "canonical_content_id": "6333403",
-          "content_hash": "81e8b98b215ecf1954e32e80ef586df6447ca636f3729894e4486f5f8015e855",
-          "excerpt": "奈雪的茶 ×《明日方舟：终末地》 联动定制头像框兑换开启\n联动定制头像框\n“甘甜雪花”\n果香与吸管里的沙沙声，您听，记忆回来了。\n_____________\n联动定制头像框，小程序下单【奈雪×明日方舟：终末地 联名饮品/套餐】或电商渠道购买【奈雪×明日方舟：终末地 联名瓶装果蔬茶】获取。\n兑换有效期：2026年9月23日 00:00:00 - 2027年1月20日 00:00:00",
-          "first_seen_at": "2026-09-23T21:21:57.952948Z",
-          "id": "skland-6333403",
-          "is_official": true,
-          "kind": "skland",
-          "media_hashes": [],
-          "media_urls": [],
-          "published_at": "2026-09-23T03:05:16Z",
           "summary": null,
-          "updated_at": null,
           "url": "https://www.skland.com/article?id=6333403"
         }
       ]
@@ -42,7 +30,7 @@
       "activity_id": null,
       "campaign_id": "candidate-7bf13dcac5ccee3945652f21",
       "campaign_title": "崩坏：星穹铁道 · 候选联动信息",
-      "detail_campaign_id": null,
+      "detail_url": null,
       "extraction_status": "pending",
       "ip_name": "崩坏：星穹铁道",
       "reasons": [
@@ -56,20 +44,8 @@
       ],
       "sources": [
         {
-          "account_id": "288909600",
           "account_name": "崩坏星穹铁道",
-          "canonical_content_id": "78341238",
-          "content_hash": "a048f50924271209cd69246bf77f63b1f908d7e8751b63de95563288a8a09478",
-          "excerpt": "即兴巡演PV：「至此，已成艺术」\n楼主[匿名]：画成这样…可以接稿吗？\nID[Jade]：每日审美积累已达成\nID[点石成金]：稿子有点熟悉啊，你不会是……\nID[扑满保护协会名誉会长]：下次让账账做模特好不好~\nID[龙颜大悦]：这就是你在半夜敲我门的原因？\nID[高清条形码]：我用最简单最直接最不绕弯子的方式告诉你：老师，你是我的神！\n \n中文CV：\n真珠——苏婉\n托帕——陆敏悦\n砂金——杨超然\n龙晶——洪海天\n虚照——子音",
-          "first_seen_at": "2026-09-23T21:21:57.952948Z",
-          "id": "miyoushe-78341238",
-          "is_official": true,
-          "kind": "miyoushe",
-          "media_hashes": [],
-          "media_urls": [],
-          "published_at": "2026-09-23T04:00:21Z",
           "summary": null,
-          "updated_at": null,
           "url": "https://www.miyoushe.com/sr/article/78341238"
         }
       ]
@@ -79,7 +55,7 @@
       "activity_id": null,
       "campaign_id": "candidate-7da6a08e21749c4567b95f11",
       "campaign_title": "明日方舟：终末地 · 候选联动信息",
-      "detail_campaign_id": null,
+      "detail_url": null,
       "extraction_status": "pending",
       "ip_name": "明日方舟：终末地",
       "reasons": [
@@ -93,20 +69,8 @@
       ],
       "sources": [
         {
-          "account_id": "3737967211133",
           "account_name": "明日方舟终末地",
-          "canonical_content_id": "6333400",
-          "content_hash": "56831faaa8d223e2da9bd7402bb1c435a2214b9200f830dc8b414a351a876362",
-          "excerpt": "奈雪的茶 ×《明日方舟：终末地》「果韵香迎，心意同行」合作宣传PV\n鲜果入杯，沁香萦回。\n终末地携手@奈雪的茶，邀管理员共赴这场清爽惬意的午间茶歇。\n联动合作现已开启，更多活动详情，请关注奈雪的茶官方自媒体账号。",
-          "first_seen_at": "2026-09-23T21:21:57.952948Z",
-          "id": "skland-6333400",
-          "is_official": true,
-          "kind": "skland",
-          "media_hashes": [],
-          "media_urls": [],
-          "published_at": "2026-09-23T03:00:14Z",
           "summary": null,
-          "updated_at": null,
           "url": "https://www.skland.com/article?id=6333400"
         }
       ]

@@ -141,80 +141,6 @@
   "cards": [
     {
       "activity": {
-        "actions": [
-          {
-            "at": "2026-09-23T00:00:00+08:00",
-            "cancelled": false,
-            "end_at": null,
-            "end_condition": null,
-            "end_date": null,
-            "ended": false,
-            "evidence": [],
-            "id": "action-917d8e7757ce9a5f",
-            "kind": "announcement",
-            "platform": null,
-            "quantity_limit": null,
-            "requires_reservation": null,
-            "requires_rush": null,
-            "rules": null,
-            "scope": null,
-            "start_date": null,
-            "title": "联名活动上线",
-            "url": null
-          }
-        ],
-        "end_at": null,
-        "end_date": null,
-        "evidence": [
-          {
-            "field_path": "activities[0].start_date",
-            "quote": "9 月 23 日正式上线",
-            "source_id": "skland-6271937"
-          },
-          {
-            "field_path": "activities[0].uncertainties",
-            "quote": "更多饮品套餐及瓶装联名活动情报，将于后续发布",
-            "source_id": "skland-6271937"
-          }
-        ],
-        "id": "activity-270f3157626abbe8",
-        "kind": "in_game",
-        "related_offers": null,
-        "rules": null,
-        "start_at": null,
-        "start_date": "2026-09-23",
-        "status": "details_pending",
-        "title": "联名活动",
-        "uncertainties": [
-          "更多饮品套餐及瓶装联名活动情报，将于后续发布"
-        ],
-        "venues": [
-          {
-            "address": null,
-            "business_hours": null,
-            "city": null,
-            "country": "CN",
-            "evidence": [],
-            "id": "venue-ad3a0fbafa27d7a2",
-            "name": null,
-            "nationwide": false,
-            "online_platform": null,
-            "province": null
-          }
-        ]
-      },
-      "campaign_id": "campaign-3302d7e79db4b203-62055d07",
-      "campaign_title": "奈雪的茶 ×《明日方舟：终末地》联名活动",
-      "ip_name": "明日方舟：终末地",
-      "next": {
-        "at": "2026-09-23T00:00:00+08:00",
-        "date": "2026-09-23",
-        "title": "联名活动开始"
-      },
-      "url": "event.html?id=campaign-3302d7e79db4b203-62055d07#activity-activity-270f3157626abbe8"
-    },
-    {
-      "activity": {
         "actions": [],
         "end_at": null,
         "end_date": null,
@@ -385,6 +311,76 @@
       "ip_name": "崩坏：星穹铁道",
       "next": null,
       "url": "event.html?id=campaign-088817ae96bf8f7f-afce333c#activity-activity-1cdafb1ec747fedf"
+    },
+    {
+      "activity": {
+        "actions": [
+          {
+            "at": "2026-09-23T00:00:00+08:00",
+            "cancelled": false,
+            "end_at": null,
+            "end_condition": null,
+            "end_date": null,
+            "ended": false,
+            "evidence": [],
+            "id": "action-917d8e7757ce9a5f",
+            "kind": "announcement",
+            "platform": null,
+            "quantity_limit": null,
+            "requires_reservation": null,
+            "requires_rush": null,
+            "rules": null,
+            "scope": null,
+            "start_date": null,
+            "title": "联名活动上线",
+            "url": null
+          }
+        ],
+        "end_at": null,
+        "end_date": null,
+        "evidence": [
+          {
+            "field_path": "activities[0].start_date",
+            "quote": "9 月 23 日正式上线",
+            "source_id": "skland-6271937"
+          },
+          {
+            "field_path": "activities[0].uncertainties",
+            "quote": "更多饮品套餐及瓶装联名活动情报，将于后续发布",
+            "source_id": "skland-6271937"
+          }
+        ],
+        "id": "activity-270f3157626abbe8",
+        "kind": "in_game",
+        "related_offers": null,
+        "rules": null,
+        "start_at": null,
+        "start_date": "2026-09-23",
+        "status": "details_pending",
+        "title": "联名活动",
+        "uncertainties": [
+          "更多饮品套餐及瓶装联名活动情报，将于后续发布"
+        ],
+        "venues": [
+          {
+            "address": null,
+            "business_hours": null,
+            "city": null,
+            "country": "CN",
+            "evidence": [],
+            "id": "venue-ad3a0fbafa27d7a2",
+            "name": null,
+            "nationwide": false,
+            "online_platform": null,
+            "province": null
+          }
+        ]
+      },
+      "campaign_id": "campaign-3302d7e79db4b203-62055d07",
+      "campaign_title": "奈雪的茶 ×《明日方舟：终末地》联名活动",
+      "ip_name": "明日方舟：终末地",
+      "next": null,
+      "url": "event.html?id=campaign-3302d7e79db4b203-62055d07#activity-activity-270f3157626abbe8"
     },
     {
       "activity": {
@@ -585,5 +581,5 @@
       "url": "event.html?id=campaign-c0eb942cf0b13e3a-e6fe958d#activity-activity-c54e303c057e46dc"
     }
   ],
-  "generated_at": "2026-09-23T10:14:32.747055+08:00"
+  "generated_at": "2026-09-24T05:24:35.005397+08:00"
 }
