@@ -1,0 +1,14 @@
+{
+  "action_id": "actions-02340639bdfb3b9d--end",
+  "activity_id": "activity-fbb195125825e5b2",
+  "campaign_id": "campaign-3302d7e79db4b203-62055d07",
+  "candidate_id": null,
+  "change_id": null,
+  "due_date": "2027-01-19",
+  "expected_at": "2027-01-20T00:00:00+08:00",
+  "expected_date": null,
+  "id": "job-2aeeeeb7366a4039afb3",
+  "kind": "deadline",
+  "semantic_key": "schedule:activity-fbb195125825e5b2:actions-02340639bdfb3b9d--end:deadline:2027-01-20T00:00:00+08:00",
+  "summary": "明天截止：联动定制头像框「甘甜雪花」兑换截止"
+}

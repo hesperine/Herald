@@ -1,0 +1,29 @@
+{
+  "extracted_media_text": [],
+  "id": "miyoushe-78376875",
+  "media_hashes": [
+    "8dc6e29dc089c2d8a57f9ef3b6b12aac3486497ef51e4121a4b6326545e4827a"
+  ],
+  "media_urls": [
+    "https://upload-bbs.miyoushe.com/upload/2026/09/24/288909600/a5223f788101f0179c74f6aac47a793c_8173926737133822830.png"
+  ],
+  "outbound_urls": [],
+  "source": {
+    "account_id": "288909600",
+    "account_name": "崩坏星穹铁道",
+    "canonical_content_id": "78376875",
+    "content_hash": "494dc4320c6b14c77950e5f97734837710fa5b3c21c4f4501d80e6ab27f1ed9e",
+    "excerpt": "叮咚，您的好友发来语音——真珠的「金嗓子生成器」\n「您的好友 叶琳娜 为您购买的艺术大师变声器，已设置生效」\n\n「您收到了 3 笔转账，请查收」",
+    "first_seen_at": "2026-09-24T21:23:23.207914Z",
+    "id": "miyoushe-78376875",
+    "is_official": true,
+    "kind": "miyoushe",
+    "media_hashes": [],
+    "media_urls": [],
+    "published_at": "2026-09-24T10:00:16Z",
+    "summary": null,
+    "updated_at": null,
+    "url": "https://www.miyoushe.com/sr/article/78376875"
+  },
+  "text": "叮咚，您的好友发来语音——真珠的「金嗓子生成器」\n「您的好友 叶琳娜 为您购买的艺术大师变声器，已设置生效」\n\n「您收到了 3 笔转账，请查收」"
+}

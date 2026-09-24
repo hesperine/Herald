@@ -1,0 +1,14 @@
+{
+  "campaigns_created": 0,
+  "campaigns_updated": 3,
+  "duplicates": 4,
+  "emails_sent": 1,
+  "finished_at": "2026-09-24T21:27:48.695098Z",
+  "jobs_created": 2,
+  "notifications_sent": 1,
+  "observations": 9,
+  "started_at": "2026-09-24T21:23:23.207914Z",
+  "warnings": [
+    "official source fetch failed: miyoushe-75276539"
+  ]
+}

@@ -1,0 +1,12 @@
+{
+  "activity_id": "activity-62e32749aa2b7844",
+  "campaign_id": "campaign-3302d7e79db4b203-62055d07",
+  "detected_at": "2026-09-24T21:23:23.207914Z",
+  "field_paths": [],
+  "id": "chg-d134ae7374cfd4d5",
+  "kind": "new_activity",
+  "published_at": "2026-09-02T01:00:51Z",
+  "semantic_key": "campaign-3302d7e79db4b203-62055d07:new-activity-activity-62e32749aa2b7844",
+  "source_ids": [],
+  "summary": "新增活动：全国140家主题店"
+}

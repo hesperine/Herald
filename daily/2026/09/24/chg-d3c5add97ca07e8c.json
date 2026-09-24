@@ -1,0 +1,14 @@
+{
+  "activity_id": "activity-fbb195125825e5b2",
+  "campaign_id": "campaign-3302d7e79db4b203-62055d07",
+  "detected_at": "2026-09-24T21:23:23.207914Z",
+  "field_paths": [],
+  "id": "chg-d3c5add97ca07e8c",
+  "kind": "field_added",
+  "published_at": "2026-09-02T01:00:51Z",
+  "semantic_key": "campaign-3302d7e79db4b203-62055d07:entity-added-actions-02340639bdfb3b9d",
+  "source_ids": [
+    "skland-6333403"
+  ],
+  "summary": "新增：联动定制头像框「甘甜雪花」兑换"
+}
