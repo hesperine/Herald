@@ -44,8 +44,8 @@
       "activity_id": null,
       "campaign_id": "candidate-fcb9adfcc720931b3d86a50e",
       "campaign_title": "明日方舟：终末地 · 候选联动信息",
-      "detail_url": null,
-      "extraction_status": "pending",
+      "detail_url": "event.html?id=campaign-3302d7e79db4b203-62055d07",
+      "extraction_status": "structured",
       "ip_name": "明日方舟：终末地",
       "reasons": [
         {

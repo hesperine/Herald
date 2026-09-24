@@ -62,6 +62,160 @@
           "province": null
         }
       ]
+    },
+    {
+      "actions": [
+        {
+          "at": null,
+          "cancelled": false,
+          "end_at": null,
+          "end_condition": null,
+          "end_date": null,
+          "ended": false,
+          "evidence": [],
+          "id": "action-fda9d6be8caa233d",
+          "kind": "event_start",
+          "platform": null,
+          "quantity_limit": null,
+          "requires_reservation": null,
+          "requires_rush": null,
+          "rules": null,
+          "scope": null,
+          "start_date": "2026-09-23",
+          "title": "联名活动开启",
+          "url": null
+        },
+        {
+          "at": "2026-09-23T00:00:00+08:00",
+          "cancelled": false,
+          "end_at": "2027-01-20T00:00:00+08:00",
+          "end_condition": null,
+          "end_date": null,
+          "ended": false,
+          "evidence": [
+            {
+              "field_path": "activities.activity-fbb195125825e5b2.actions.actions-02340639bdfb3b9d",
+              "quote": "联动定制头像框，小程序下单【奈雪×明日方舟：终末地 联名饮品/套餐】或电商渠道购买【奈雪×明日方舟：终末地 联名瓶装果蔬茶】获取。",
+              "source_id": "skland-6333403"
+            }
+          ],
+          "id": "actions-02340639bdfb3b9d",
+          "kind": "gift",
+          "platform": null,
+          "quantity_limit": null,
+          "requires_reservation": null,
+          "requires_rush": null,
+          "rules": "小程序下单【奈雪×明日方舟：终末地 联名饮品/套餐】或电商渠道购买【奈雪×明日方舟：终末地 联名瓶装果蔬茶】获取。",
+          "scope": "奈雪×明日方舟：终末地 联名饮品/套餐、联名瓶装果蔬茶",
+          "start_date": null,
+          "title": "联动定制头像框「甘甜雪花」兑换",
+          "url": null
+        }
+      ],
+      "end_at": null,
+      "end_date": null,
+      "evidence": [
+        {
+          "field_path": "activities[0].start_date",
+          "quote": "9月23日，期待与你在塔卫二的午后，共享一杯果韵悠然的茶歇时光。",
+          "source_id": "skland-6325558"
+        },
+        {
+          "field_path": "activities[0].title",
+          "quote": "3款联名果奶＋1款联名烘焙",
+          "source_id": "skland-6325558"
+        }
+      ],
+      "id": "activity-fbb195125825e5b2",
+      "kind": "food",
+      "related_offers": null,
+      "rules": null,
+      "start_at": null,
+      "start_date": "2026-09-23",
+      "status": "details_pending",
+      "title": "奈雪的茶×明日方舟终末地联名餐饮",
+      "uncertainties": [
+        "联名活动结束时间未公布。",
+        "主题店具体门店名单未公布。"
+      ],
+      "venues": [
+        {
+          "address": null,
+          "business_hours": null,
+          "city": null,
+          "country": "CN",
+          "evidence": [],
+          "id": "venue-0924bca985af10ca",
+          "name": null,
+          "nationwide": true,
+          "online_platform": null,
+          "province": null
+        }
+      ]
+    },
+    {
+      "actions": [
+        {
+          "at": null,
+          "cancelled": false,
+          "end_at": null,
+          "end_condition": null,
+          "end_date": null,
+          "ended": false,
+          "evidence": [],
+          "id": "action-cbad8f7252dbf70d",
+          "kind": "event_start",
+          "platform": null,
+          "quantity_limit": null,
+          "requires_reservation": null,
+          "requires_rush": null,
+          "rules": null,
+          "scope": null,
+          "start_date": "2026-09-23",
+          "title": "主题店活动开启",
+          "url": null
+        }
+      ],
+      "end_at": null,
+      "end_date": null,
+      "evidence": [
+        {
+          "field_path": "activities[1].title",
+          "quote": "全国140家主题店",
+          "source_id": "skland-6325558"
+        },
+        {
+          "field_path": "activities[1].start_date",
+          "quote": "9月23日，管理员们不见不散。",
+          "source_id": "skland-6325558"
+        }
+      ],
+      "id": "activity-62e32749aa2b7844",
+      "kind": "theme_store",
+      "related_offers": null,
+      "rules": null,
+      "start_at": null,
+      "start_date": "2026-09-23",
+      "status": "details_pending",
+      "title": "全国140家主题店",
+      "uncertainties": [
+        "主题店具体门店名单未公布。",
+        "主题店限定周边获取条件未公布。"
+      ],
+      "venues": [
+        {
+          "address": null,
+          "business_hours": null,
+          "city": null,
+          "country": "CN",
+          "evidence": [],
+          "id": "venue-316590a485f59eba",
+          "name": null,
+          "nationwide": true,
+          "online_platform": null,
+          "province": null
+        }
+      ]
     }
   ],
   "activity_redirects": {},
@@ -120,14 +274,66 @@
       "source_id": "skland-6305039",
       "source_media_hash": "40810561f0fdb294aad7b70a51deb24ca70bac43ff8a13426a78d02912b92dd2",
       "source_url": "https://bbs.hycdn.cn/image/common/20260911/113/6aa377eeb8edfebe3af4fc99_e71aef33.webp"
+    },
+    {
+      "account_name": "明日方舟终末地",
+      "asset_path": "assets/media/73c96f79c29a0907694749783dc77d2ccf957738e3c0fb04f3a78516fd35264b.webp",
+      "content_type": "image/webp",
+      "sha256": "73c96f79c29a0907694749783dc77d2ccf957738e3c0fb04f3a78516fd35264b",
+      "size_bytes": 1050450,
+      "source_id": "skland-6325558",
+      "source_media_hash": "c6701dcc117e6762a26c40a508edd85ba0d17a7003e657613ffbec2d9a5de2c6",
+      "source_url": "https://bbs.hycdn.cn/image/common/20260919/113/6aad7caa8861f86f3589f034_004865de.webp"
+    },
+    {
+      "account_name": "明日方舟终末地",
+      "asset_path": "assets/media/1145bc38792ed360b1bf2a2d446c3c15c46366a8d86997769c587b2796945d36.webp",
+      "content_type": "image/webp",
+      "sha256": "1145bc38792ed360b1bf2a2d446c3c15c46366a8d86997769c587b2796945d36",
+      "size_bytes": 1241754,
+      "source_id": "skland-6325558",
+      "source_media_hash": "fc7e6a12c7b5e03adb72fbb1f98f266ab7bf6755767fca14b4c62076545b3664",
+      "source_url": "https://bbs.hycdn.cn/image/common/20260919/113/6aad7caabbf60d37013de8f0_65de0095.webp"
+    },
+    {
+      "account_name": "明日方舟终末地",
+      "asset_path": "assets/media/91d611137882d7d12768a4fa3448df6069ff22e8dd6bf59c2d36171936852c77.webp",
+      "content_type": "image/webp",
+      "sha256": "91d611137882d7d12768a4fa3448df6069ff22e8dd6bf59c2d36171936852c77",
+      "size_bytes": 848704,
+      "source_id": "skland-6325558",
+      "source_media_hash": "af2d5aeb78e5a0bca44291eea400cfdf62bcf598f50dcd4ba271ef75c2cc5914",
+      "source_url": "https://bbs.hycdn.cn/image/common/20260919/113/6aad7caa9b052e6236f0a65d_65de0095.webp"
+    },
+    {
+      "account_name": "明日方舟终末地",
+      "asset_path": "assets/media/590482ce8530d098069f391278a96eb9a9a30ecac928d90a31f95877cafa5e02.webp",
+      "content_type": "image/webp",
+      "sha256": "590482ce8530d098069f391278a96eb9a9a30ecac928d90a31f95877cafa5e02",
+      "size_bytes": 169216,
+      "source_id": "skland-6333400",
+      "source_media_hash": "3ffd0058c8f82fb6ae5962bbd46eae3b39d6bd14139968cc8c4c4adac528393e",
+      "source_url": "https://bbs.hycdn.cn/image/common/20260922/113/6ab28063bbf60d37013dec77_96d20048.webp"
+    },
+    {
+      "account_name": "明日方舟终末地",
+      "asset_path": "assets/media/d101e0796b74ca337d569089616a2686210f3bbb71a17fca37308d469f55d988.webp",
+      "content_type": "image/webp",
+      "sha256": "d101e0796b74ca337d569089616a2686210f3bbb71a17fca37308d469f55d988",
+      "size_bytes": 134742,
+      "source_id": "skland-6333403",
+      "source_media_hash": "88128c5ecd883be9660b2b054ecf2501a579d945ee6550a7258e9fde0d543df8",
+      "source_url": "https://bbs.hycdn.cn/image/common/20260922/113/6ab2810228cbf869859e38ae_65de0095.webp"
     }
   ],
   "partner": "奈雪的茶",
   "reachability": {
-    "activity-270f3157626abbe8": "unknown"
+    "activity-270f3157626abbe8": "unknown",
+    "activity-62e32749aa2b7844": "nationwide",
+    "activity-fbb195125825e5b2": "nationwide"
   },
   "redirected_to": null,
-  "revision": 1,
+  "revision": 4,
   "sources": [
     {
       "account_id": "3737967211133",
@@ -170,9 +376,76 @@
       "summary": "官宣与奈雪的茶联名活动，9月23日正式上线，后续将有更多饮品套餐及瓶装联名情报。",
       "updated_at": null,
       "url": "https://www.skland.com/article?id=6305039"
+    },
+    {
+      "account_id": "3737967211133",
+      "account_name": "明日方舟终末地",
+      "canonical_content_id": "6325558",
+      "content_hash": "3b561096cd5f6ca3467ba4de158cd749f1ab569dacc4163749ad5379efbbdf45",
+      "excerpt": "奈雪×《明日方舟：终末地》|联名情报送达\n「果韵香迎，心意同行」\n亲爱的管理员，奈雪的茶×明日方舟终末地 联名活动情报公开！9月23日，期待与你在塔卫二的午后，共享一杯果韵悠然的茶歇时光。\n·3款联名果奶＋1款联名烘焙\n联名包材：主题杯、主题纸袋&无纺布袋（含双面款式）\n联名周边：联名烫色卡、联名贴纸包、联名浮雕徽章、联名旋转立牌\n·全国140家主题店\n主题店限定包材：「刻术瓶」彩蛋杯套\n主题店限定周边：联名蚀刻章贴、联名甜品架、联名明信片套组\n·2款联名超级果蔬瓶饮料\n超级果蔬瓶饮料联名周边：联名挂件、联名徽章、联名贴纸、游戏道具兑换卡\n更多联名活动细节，敬请关注后续发布，9月23日，管理员们不见不散。",
+      "first_seen_at": "2026-09-20T04:52:03.953198Z",
+      "id": "skland-6325558",
+      "is_official": true,
+      "kind": "skland",
+      "media_hashes": [
+        "c6701dcc117e6762a26c40a508edd85ba0d17a7003e657613ffbec2d9a5de2c6",
+        "fc7e6a12c7b5e03adb72fbb1f98f266ab7bf6755767fca14b4c62076545b3664",
+        "af2d5aeb78e5a0bca44291eea400cfdf62bcf598f50dcd4ba271ef75c2cc5914"
+      ],
+      "media_urls": [
+        "https://bbs.hycdn.cn/image/common/20260919/113/6aad7caa8861f86f3589f034_004865de.webp",
+        "https://bbs.hycdn.cn/image/common/20260919/113/6aad7caabbf60d37013de8f0_65de0095.webp",
+        "https://bbs.hycdn.cn/image/common/20260919/113/6aad7caa9b052e6236f0a65d_65de0095.webp"
+      ],
+      "published_at": "2026-09-19T06:00:23Z",
+      "summary": "奈雪的茶×《明日方舟：终末地》联名情报公开，9月23日开启；含3款联名果奶+1款联名烘焙、联名包材与周边、全国140家主题店限定包材与周边、2款联名超级果蔬瓶饮料及周边，更多细节待后续发布。",
+      "updated_at": null,
+      "url": "https://www.skland.com/article?id=6325558"
+    },
+    {
+      "account_id": "3737967211133",
+      "account_name": "明日方舟终末地",
+      "canonical_content_id": "6333400",
+      "content_hash": "56831faaa8d223e2da9bd7402bb1c435a2214b9200f830dc8b414a351a876362",
+      "excerpt": "奈雪的茶 ×《明日方舟：终末地》「果韵香迎，心意同行」合作宣传PV\n鲜果入杯，沁香萦回。\n终末地携手@奈雪的茶，邀管理员共赴这场清爽惬意的午间茶歇。\n联动合作现已开启，更多活动详情，请关注奈雪的茶官方自媒体账号。",
+      "first_seen_at": "2026-09-23T21:21:57.952948Z",
+      "id": "skland-6333400",
+      "is_official": true,
+      "kind": "skland",
+      "media_hashes": [
+        "3ffd0058c8f82fb6ae5962bbd46eae3b39d6bd14139968cc8c4c4adac528393e"
+      ],
+      "media_urls": [
+        "https://bbs.hycdn.cn/image/common/20260922/113/6ab28063bbf60d37013dec77_96d20048.webp"
+      ],
+      "published_at": "2026-09-23T03:00:14Z",
+      "summary": "奈雪的茶与《明日方舟：终末地》合作宣传PV，宣布联动合作现已开启，更多活动详情引导关注奈雪的茶官方自媒体。",
+      "updated_at": null,
+      "url": "https://www.skland.com/article?id=6333400"
+    },
+    {
+      "account_id": "3737967211133",
+      "account_name": "明日方舟终末地",
+      "canonical_content_id": "6333403",
+      "content_hash": "81e8b98b215ecf1954e32e80ef586df6447ca636f3729894e4486f5f8015e855",
+      "excerpt": "奈雪的茶 ×《明日方舟：终末地》 联动定制头像框兑换开启\n联动定制头像框\n“甘甜雪花”\n果香与吸管里的沙沙声，您听，记忆回来了。\n_____________\n联动定制头像框，小程序下单【奈雪×明日方舟：终末地 联名饮品/套餐】或电商渠道购买【奈雪×明日方舟：终末地 联名瓶装果蔬茶】获取。\n兑换有效期：2026年9月23日 00:00:00 - 2027年1月20日 00:00:00",
+      "first_seen_at": "2026-09-23T21:21:57.952948Z",
+      "id": "skland-6333403",
+      "is_official": true,
+      "kind": "skland",
+      "media_hashes": [
+        "88128c5ecd883be9660b2b054ecf2501a579d945ee6550a7258e9fde0d543df8"
+      ],
+      "media_urls": [
+        "https://bbs.hycdn.cn/image/common/20260922/113/6ab2810228cbf869859e38ae_65de0095.webp"
+      ],
+      "published_at": "2026-09-23T03:05:16Z",
+      "summary": "奈雪的茶×《明日方舟：终末地》联动定制头像框兑换开启，小程序下单联名饮品/套餐或电商购买联名瓶装果蔬茶获取，兑换有效期至2027年1月20日。",
+      "updated_at": null,
+      "url": "https://www.skland.com/article?id=6333403"
     }
   ],
   "status": "details_pending",
   "title": "奈雪的茶 ×《明日方舟：终末地》联名活动",
-  "updated_at": "2026-09-18T20:56:54.700486Z"
+  "updated_at": "2026-09-24T21:23:23.207914Z"
 }
