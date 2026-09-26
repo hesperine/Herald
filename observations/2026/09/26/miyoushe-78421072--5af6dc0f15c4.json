@@ -1,0 +1,31 @@
+{
+  "extracted_media_text": [],
+  "id": "miyoushe-78421072",
+  "media_hashes": [
+    "0b65790e6ad5407a87a1ad84e97ed953fae83980fc2f0f0361397626f59728e8",
+    "d527218f508f778ef17b017776e4484ffb7a5329ae3c1f5462059947c46557e3"
+  ],
+  "media_urls": [
+    "https://upload-bbs.miyoushe.com/upload/2026/09/24/288909600/dc0fe7ff9e84236a67d2662e02951576_5060775335573671272.png",
+    "https://upload-bbs.miyoushe.com/upload/2026/09/24/288909600/33c881f1289b404a914d81fe8717df0c_4980917132515889716.png"
+  ],
+  "outbound_urls": [],
+  "source": {
+    "account_id": "288909600",
+    "account_name": "崩坏星穹铁道",
+    "canonical_content_id": "78421072",
+    "content_hash": "5af6dc0f15c4fd5a4b69d2c0716d4ac24948d5a2f782d2edb0c74ddfed34925a",
+    "excerpt": "「星际碰碰好搭档！」活动介绍\n幻宠乐园开业之际，公司策划了一场「星际碰碰」活动，快与好友组队，一起完成挑战吧！",
+    "first_seen_at": "2026-09-26T20:54:53.938520Z",
+    "id": "miyoushe-78421072",
+    "is_official": true,
+    "kind": "miyoushe",
+    "media_hashes": [],
+    "media_urls": [],
+    "published_at": "2026-09-26T03:00:10Z",
+    "summary": null,
+    "updated_at": null,
+    "url": "https://www.miyoushe.com/sr/article/78421072"
+  },
+  "text": "「星际碰碰好搭档！」活动介绍\n幻宠乐园开业之际，公司策划了一场「星际碰碰」活动，快与好友组队，一起完成挑战吧！"
+}
