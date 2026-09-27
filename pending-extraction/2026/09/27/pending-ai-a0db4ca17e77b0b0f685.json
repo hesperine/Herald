@@ -1,0 +1,13 @@
+{
+  "attempts": 1,
+  "error_category": "validation",
+  "id": "pending-ai-a0db4ca17e77b0b0f685",
+  "ip_slug": "genshin-impact",
+  "next_retry_at": "2026-09-28T00:12:05.656654Z",
+  "notify_immediately": true,
+  "observation_ids": [
+    "miyoushe-78446193"
+  ],
+  "queued_at": "2026-09-27T21:12:05.656654Z",
+  "reason": "AI processing failed; retry scheduled"
+}
