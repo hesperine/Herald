@@ -58,12 +58,12 @@ class WorkflowContractTests(unittest.TestCase):
     def test_daily_workflow_keeps_configuration_out_of_main(self) -> None:
         workflow = (ROOT / ".github/workflows/daily.yml").read_text(encoding="utf-8")
 
-        self.assertIn('cron: "0 18 * * *"', workflow)
-        self.assertIn('cron: "0 20,22 * * *"', workflow)
-        self.assertIn('cron: "0 0 * * *"', workflow)
+        self.assertIn('cron: "0 13 * * *"', workflow)
+        self.assertIn('cron: "0 15,17 * * *"', workflow)
+        self.assertIn('cron: "0 19 * * *"', workflow)
         self.assertIn('--phase retry --final-retry', workflow)
-        self.assertIn('$TRIGGER_SCHEDULE" == "0 20,22 * * *', workflow)
-        self.assertIn('$TRIGGER_SCHEDULE" == "0 0 * * *', workflow)
+        self.assertIn('$TRIGGER_SCHEDULE" == "0 15,17 * * *', workflow)
+        self.assertIn('$TRIGGER_SCHEDULE" == "0 19 * * *', workflow)
         self.assertIn('--phase retry', workflow)
         self.assertIn("steps.scan.outcome == 'success'", workflow)
         self.assertIn('timeout --signal=TERM 16m', workflow)
