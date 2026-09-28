@@ -4,6 +4,26 @@
       "activities": [
         {
           "end_at": null,
+          "id": "activity-dfd55f4c31903c72",
+          "kind": "other",
+          "reachability": "unknown",
+          "start_at": null,
+          "status": "details_pending",
+          "title": "「拾音邮局」原神六周年特别公益行动"
+        }
+      ],
+      "id": "campaign-cdc53ffc7863c84c-a0db4ca1",
+      "ip_name": "原神",
+      "ip_slug": "genshin-impact",
+      "partner": "中国儿童少年基金会",
+      "status": "details_pending",
+      "title": "「拾音邮局」原神六周年特别公益行动",
+      "updated_at": "2026-09-28T02:22:52.471851+00:00"
+    },
+    {
+      "activities": [
+        {
+          "end_at": null,
           "id": "activity-270f3157626abbe8",
           "kind": "in_game",
           "reachability": "unknown",
@@ -765,7 +785,105 @@
       "ip_name": "明日方舟：终末地",
       "next": null,
       "url": "event.html?id=campaign-c0eb942cf0b13e3a-e6fe958d#activity-activity-c54e303c057e46dc"
+    },
+    {
+      "activity": {
+        "actions": [
+          {
+            "at": null,
+            "cancelled": false,
+            "end_at": null,
+            "end_condition": null,
+            "end_date": null,
+            "ended": false,
+            "evidence": [
+              {
+                "field_path": "activities[0].actions[0].title",
+                "quote": "「拾音邮局」原神六周年特别公益行动正式开启！",
+                "source_id": "miyoushe-78446193"
+              }
+            ],
+            "id": "action-ca656e43ceec4cc6",
+            "kind": "announcement",
+            "platform": null,
+            "quantity_limit": null,
+            "requires_reservation": null,
+            "requires_rush": null,
+            "rules": null,
+            "scope": null,
+            "start_date": null,
+            "title": "公益行动正式开启",
+            "url": null
+          }
+        ],
+        "end_at": null,
+        "end_date": null,
+        "evidence": [
+          {
+            "field_path": "activities[0].rules",
+            "quote": "通过在湖南省张家界市的6个试点村及社区打造儿童关爱服务阵地、定期开展主题活动、为有需要的儿童发放关爱金等方式，助力更多儿童健康成长、全面发展。",
+            "source_id": "miyoushe-78446193"
+          },
+          {
+            "field_path": "activities[0].venues[0].province",
+            "quote": "湖南省张家界市",
+            "source_id": "miyoushe-78446193"
+          },
+          {
+            "field_path": "activities[0].venues[0].city",
+            "quote": "湖南省张家界市",
+            "source_id": "miyoushe-78446193"
+          },
+          {
+            "field_path": "activities[0].actions[0].title",
+            "quote": "「拾音邮局」原神六周年特别公益行动正式开启！",
+            "source_id": "miyoushe-78446193"
+          }
+        ],
+        "id": "activity-dfd55f4c31903c72",
+        "kind": "other",
+        "related_offers": null,
+        "rules": "向中国儿童少年基金会捐赠人民币100万元，在湖南省张家界市的6个试点村及社区打造儿童关爱服务阵地、定期开展主题活动、为有需要的儿童发放关爱金；邀请旅行者为小朋友们的心声写下回应。",
+        "start_at": null,
+        "start_date": null,
+        "status": "details_pending",
+        "title": "「拾音邮局」原神六周年特别公益行动",
+        "uncertainties": [
+          "活动具体起止时间未说明。",
+          "点击前往链接的具体参与页面内容未说明。"
+        ],
+        "venues": [
+          {
+            "address": null,
+            "business_hours": null,
+            "city": "张家界市",
+            "country": "CN",
+            "evidence": [
+              {
+                "field_path": "activities[0].venues[0].province",
+                "quote": "湖南省张家界市",
+                "source_id": "miyoushe-78446193"
+              },
+              {
+                "field_path": "activities[0].venues[0].city",
+                "quote": "湖南省张家界市",
+                "source_id": "miyoushe-78446193"
+              }
+            ],
+            "id": "venue-e860f2ffb341e72f",
+            "name": null,
+            "nationwide": false,
+            "online_platform": null,
+            "province": "湖南省"
+          }
+        ]
+      },
+      "campaign_id": "campaign-cdc53ffc7863c84c-a0db4ca1",
+      "campaign_title": "「拾音邮局」原神六周年特别公益行动",
+      "ip_name": "原神",
+      "next": null,
+      "url": "event.html?id=campaign-cdc53ffc7863c84c-a0db4ca1#activity-activity-dfd55f4c31903c72"
     }
   ],
-  "generated_at": "2026-09-28T06:44:08.017955+08:00"
+  "generated_at": "2026-09-28T10:22:55.717966+08:00"
 }

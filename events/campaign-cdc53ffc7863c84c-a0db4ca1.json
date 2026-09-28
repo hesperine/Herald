@@ -1,0 +1,189 @@
+{
+  "activities": [
+    {
+      "actions": [
+        {
+          "at": null,
+          "cancelled": false,
+          "end_at": null,
+          "end_condition": null,
+          "end_date": null,
+          "ended": false,
+          "evidence": [
+            {
+              "field_path": "activities[0].actions[0].title",
+              "quote": "「拾音邮局」原神六周年特别公益行动正式开启！",
+              "source_id": "miyoushe-78446193"
+            }
+          ],
+          "id": "action-ca656e43ceec4cc6",
+          "kind": "announcement",
+          "platform": null,
+          "quantity_limit": null,
+          "requires_reservation": null,
+          "requires_rush": null,
+          "rules": null,
+          "scope": null,
+          "start_date": null,
+          "title": "公益行动正式开启",
+          "url": null
+        }
+      ],
+      "end_at": null,
+      "end_date": null,
+      "evidence": [
+        {
+          "field_path": "activities[0].rules",
+          "quote": "通过在湖南省张家界市的6个试点村及社区打造儿童关爱服务阵地、定期开展主题活动、为有需要的儿童发放关爱金等方式，助力更多儿童健康成长、全面发展。",
+          "source_id": "miyoushe-78446193"
+        },
+        {
+          "field_path": "activities[0].venues[0].province",
+          "quote": "湖南省张家界市",
+          "source_id": "miyoushe-78446193"
+        },
+        {
+          "field_path": "activities[0].venues[0].city",
+          "quote": "湖南省张家界市",
+          "source_id": "miyoushe-78446193"
+        },
+        {
+          "field_path": "activities[0].actions[0].title",
+          "quote": "「拾音邮局」原神六周年特别公益行动正式开启！",
+          "source_id": "miyoushe-78446193"
+        }
+      ],
+      "id": "activity-dfd55f4c31903c72",
+      "kind": "other",
+      "related_offers": null,
+      "rules": "向中国儿童少年基金会捐赠人民币100万元，在湖南省张家界市的6个试点村及社区打造儿童关爱服务阵地、定期开展主题活动、为有需要的儿童发放关爱金；邀请旅行者为小朋友们的心声写下回应。",
+      "start_at": null,
+      "start_date": null,
+      "status": "details_pending",
+      "title": "「拾音邮局」原神六周年特别公益行动",
+      "uncertainties": [
+        "活动具体起止时间未说明。",
+        "点击前往链接的具体参与页面内容未说明。"
+      ],
+      "venues": [
+        {
+          "address": null,
+          "business_hours": null,
+          "city": "张家界市",
+          "country": "CN",
+          "evidence": [
+            {
+              "field_path": "activities[0].venues[0].province",
+              "quote": "湖南省张家界市",
+              "source_id": "miyoushe-78446193"
+            },
+            {
+              "field_path": "activities[0].venues[0].city",
+              "quote": "湖南省张家界市",
+              "source_id": "miyoushe-78446193"
+            }
+          ],
+          "id": "venue-e860f2ffb341e72f",
+          "name": null,
+          "nationwide": false,
+          "online_platform": null,
+          "province": "湖南省"
+        }
+      ]
+    }
+  ],
+  "activity_redirects": {},
+  "announced_at": "2026-09-27T04:01:10Z",
+  "fact_provenance": {
+    "activities.activity-dfd55f4c31903c72.actions.action-ca656e43ceec4cc6.title": {
+      "content_hash": "68527e425162dfb368c8b1eeecc74bbdd762ca36fbda073fb897c2c589f0353b",
+      "observation_id": "miyoushe-78446193",
+      "published_at": "2026-09-27T04:01:10Z",
+      "quote": "「拾音邮局」原神六周年特别公益行动正式开启！",
+      "source_id": "miyoushe-78446193"
+    },
+    "activities.activity-dfd55f4c31903c72.rules": {
+      "content_hash": "68527e425162dfb368c8b1eeecc74bbdd762ca36fbda073fb897c2c589f0353b",
+      "observation_id": "miyoushe-78446193",
+      "published_at": "2026-09-27T04:01:10Z",
+      "quote": "通过在湖南省张家界市的6个试点村及社区打造儿童关爱服务阵地、定期开展主题活动、为有需要的儿童发放关爱金等方式，助力更多儿童健康成长、全面发展。",
+      "source_id": "miyoushe-78446193"
+    },
+    "activities.activity-dfd55f4c31903c72.venues.venue-e860f2ffb341e72f.city": {
+      "content_hash": "68527e425162dfb368c8b1eeecc74bbdd762ca36fbda073fb897c2c589f0353b",
+      "observation_id": "miyoushe-78446193",
+      "published_at": "2026-09-27T04:01:10Z",
+      "quote": "湖南省张家界市",
+      "source_id": "miyoushe-78446193"
+    },
+    "activities.activity-dfd55f4c31903c72.venues.venue-e860f2ffb341e72f.province": {
+      "content_hash": "68527e425162dfb368c8b1eeecc74bbdd762ca36fbda073fb897c2c589f0353b",
+      "observation_id": "miyoushe-78446193",
+      "published_at": "2026-09-27T04:01:10Z",
+      "quote": "湖南省张家界市",
+      "source_id": "miyoushe-78446193"
+    },
+    "partner": {
+      "content_hash": "68527e425162dfb368c8b1eeecc74bbdd762ca36fbda073fb897c2c589f0353b",
+      "observation_id": "miyoushe-78446193",
+      "published_at": "2026-09-27T04:01:10Z",
+      "quote": "《原神》向中国儿童少年基金会捐赠人民币100万元",
+      "source_id": "miyoushe-78446193"
+    },
+    "title": {
+      "content_hash": "68527e425162dfb368c8b1eeecc74bbdd762ca36fbda073fb897c2c589f0353b",
+      "observation_id": "miyoushe-78446193",
+      "published_at": "2026-09-27T04:01:10Z",
+      "quote": "「拾音邮局」原神六周年特别公益行动正式开启！",
+      "source_id": "miyoushe-78446193"
+    }
+  },
+  "first_seen_at": "2026-09-27T21:12:05.656654Z",
+  "id": "campaign-cdc53ffc7863c84c-a0db4ca1",
+  "ip_name": "原神",
+  "ip_slug": "genshin-impact",
+  "media": [
+    {
+      "account_name": "原神",
+      "asset_path": "assets/media/e19b0cf64e6c194cc489e989c8ddbafe1bb874863564a432acba78636ea8f87a.jpg",
+      "content_type": "image/jpeg",
+      "sha256": "e19b0cf64e6c194cc489e989c8ddbafe1bb874863564a432acba78636ea8f87a",
+      "size_bytes": 9808471,
+      "source_id": "miyoushe-78446193",
+      "source_media_hash": "a1350152fd8cbd88fe8bd009512e32fb6968525673c506aff44244b4d20fbca0",
+      "source_url": "https://upload-bbs.miyoushe.com/upload/2026/09/24/75276539/3ba9459675f3d689cdad76f7b2ca07b3_891506167028452654.jpg"
+    }
+  ],
+  "partner": "中国儿童少年基金会",
+  "reachability": {
+    "activity-dfd55f4c31903c72": "unknown"
+  },
+  "redirected_to": null,
+  "revision": 1,
+  "sources": [
+    {
+      "account_id": "75276539",
+      "account_name": "原神",
+      "canonical_content_id": "78446193",
+      "content_hash": "68527e425162dfb368c8b1eeecc74bbdd762ca36fbda073fb897c2c589f0353b",
+      "excerpt": "「拾音邮局」原神六周年特别公益行动正式开启！\n亲爱的旅行者：\n「拾音邮局」原神六周年特别公益行动正式开启！\n \n六周年到来之际，《原神》向中国儿童少年基金会捐赠人民币100万元，通过在湖南省张家界市的6个试点村及社区打造儿童关爱服务阵地、定期开展主题活动、为有需要的儿童发放关爱金等方式，助力更多儿童健康成长、全面发展。项目预计覆盖1000名儿童。\n项目落地后，我们已经陆续实现了许多小朋友的心愿，比如一个新书包、一盒画笔或是一副乒乓球拍。同时，我们也关注到有些小朋友的心愿并非通过送一个小礼物能够解决——或许是父母忙于工作无暇陪伴，或许是与知心好友的分别……在他们的生活里，还有许多无法诉说的烦恼、无人倾听的心声。\n因此，我们想邀请屏幕前的旅行者一起参与此次特别公益行动，为小朋友们的心声写下回应。无论是对困惑的解答，还是几句安慰与鼓励，都可能成为他们成长过程中的一份陪伴。我们相信，人与人之间的小小善意，也能带来大大的力量。\n>>点击前往<<\n或扫描下图中二维码，来听听小朋友们的心声，写下你的回信吧~",
+      "first_seen_at": "2026-09-27T21:12:05.656654Z",
+      "id": "miyoushe-78446193",
+      "is_official": true,
+      "kind": "miyoushe",
+      "media_hashes": [
+        "a1350152fd8cbd88fe8bd009512e32fb6968525673c506aff44244b4d20fbca0"
+      ],
+      "media_urls": [
+        "https://upload-bbs.miyoushe.com/upload/2026/09/24/75276539/3ba9459675f3d689cdad76f7b2ca07b3_891506167028452654.jpg"
+      ],
+      "published_at": "2026-09-27T04:01:10Z",
+      "summary": "原神六周年公益行动「拾音邮局」开启，向中国儿童少年基金会捐赠100万元，在张家界6个试点村及社区开展儿童关爱服务，并邀请玩家为小朋友的心声写回信。",
+      "updated_at": null,
+      "url": "https://www.miyoushe.com/ys/article/78446193"
+    }
+  ],
+  "status": "details_pending",
+  "title": "「拾音邮局」原神六周年特别公益行动",
+  "updated_at": "2026-09-28T02:22:52.471851Z"
+}
