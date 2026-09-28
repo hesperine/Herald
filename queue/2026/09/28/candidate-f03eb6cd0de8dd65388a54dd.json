@@ -1,7 +1,7 @@
 {
   "action_id": null,
   "activity_id": null,
-  "campaign_id": null,
+  "campaign_id": "campaign-cdc53ffc7863c84c-a0db4ca1",
   "candidate_id": "candidate-f03eb6cd0de8dd65388a54dd",
   "change_id": null,
   "due_date": "2026-09-28",
@@ -10,5 +10,5 @@
   "id": "candidate-f03eb6cd0de8dd65388a54dd",
   "kind": "announcement",
   "semantic_key": "candidate-f03eb6cd0de8dd65388a54dd",
-  "summary": "发现联动相关信息（待解析，请以原帖为准）"
+  "summary": "联动信息：「拾音邮局」原神六周年特别公益行动\n规则：向中国儿童少年基金会捐赠人民币100万元，在湖南省张家界市的6个试点村及社区打造儿童关爱服务阵地、定期开展主题活动、为有需要的儿童发放关爱金；邀请旅行者为小朋友们的心声写下回应。\n地点:city：张家界市"
 }
