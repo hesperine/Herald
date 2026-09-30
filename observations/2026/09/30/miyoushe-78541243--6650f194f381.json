@@ -1,0 +1,29 @@
+{
+  "extracted_media_text": [],
+  "id": "miyoushe-78541243",
+  "media_hashes": [
+    "4ce091e2939aa15f2add7e2a8d6cce6e57c9cebed5f4d5e4069a8b5dc106670e"
+  ],
+  "media_urls": [
+    "https://upload-bbs.miyoushe.com/upload/2026/09/29/288909600/b71cc159605991d527bda20179fb1eb9_8002681908283105726.png"
+  ],
+  "outbound_urls": [],
+  "source": {
+    "account_id": "288909600",
+    "account_name": "崩坏星穹铁道",
+    "canonical_content_id": "78541243",
+    "content_hash": "6650f194f38164c56aba7d5d02b2d90fb6f8f22d0d1428b3b4f8528b65dd32fa",
+    "excerpt": "星穹美学速递：真珠\n「以此笔触，珠玉长存。」",
+    "first_seen_at": "2026-09-30T18:17:28.541331Z",
+    "id": "miyoushe-78541243",
+    "is_official": true,
+    "kind": "miyoushe",
+    "media_hashes": [],
+    "media_urls": [],
+    "published_at": "2026-09-30T04:15:09Z",
+    "summary": null,
+    "updated_at": null,
+    "url": "https://www.miyoushe.com/sr/article/78541243"
+  },
+  "text": "星穹美学速递：真珠\n「以此笔触，珠玉长存。」"
+}

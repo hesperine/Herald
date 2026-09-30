@@ -1,10 +1,5 @@
 {
   "campaign_id": "campaign-9d561ae4c629334d-b074e365",
   "campaign_revision": 1,
-  "jobs": [
-    {
-      "due_date": "2026-09-29",
-      "job_id": "job-37b2bba97480aace67a3"
-    }
-  ]
+  "jobs": []
 }
