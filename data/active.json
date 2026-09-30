@@ -117,26 +117,6 @@
       "updated_at": "2026-09-21T04:53:13.112293+00:00"
     },
     {
-      "activities": [
-        {
-          "end_at": null,
-          "id": "activity-ec00117645e279cd",
-          "kind": "merchandise",
-          "reachability": "online",
-          "start_at": null,
-          "status": "details_pending",
-          "title": "明日方舟×三丽鸥家族粘土人补款"
-        }
-      ],
-      "id": "campaign-9d561ae4c629334d-b074e365",
-      "ip_name": "明日方舟",
-      "ip_slug": "arknights",
-      "partner": "女神异闻录3 Reload",
-      "status": "ongoing",
-      "title": "明日方舟 × 女神异闻录3 Reload｜月行水上",
-      "updated_at": "2026-09-18T04:41:20.369330+00:00"
-    },
-    {
       "activities": [],
       "id": "campaign-3e088f098cbc4865-a12dda08",
       "ip_name": "崩坏：星穹铁道",
@@ -177,100 +157,6 @@
     }
   ],
   "cards": [
-    {
-      "activity": {
-        "actions": [
-          {
-            "at": null,
-            "cancelled": false,
-            "end_at": null,
-            "end_condition": null,
-            "end_date": null,
-            "ended": false,
-            "evidence": [],
-            "id": "action-7c01e198ec6175c0",
-            "kind": "sale_open",
-            "platform": "明日方舟旗舰店",
-            "quantity_limit": null,
-            "requires_reservation": null,
-            "requires_rush": null,
-            "rules": null,
-            "scope": null,
-            "start_date": null,
-            "title": "粘土人补款",
-            "url": null
-          },
-          {
-            "at": null,
-            "cancelled": false,
-            "end_at": null,
-            "end_condition": null,
-            "end_date": null,
-            "ended": false,
-            "evidence": [],
-            "id": "action-c9835bb3f38c301f",
-            "kind": "announcement",
-            "platform": null,
-            "quantity_limit": null,
-            "requires_reservation": null,
-            "requires_rush": null,
-            "rules": null,
-            "scope": null,
-            "start_date": null,
-            "title": "现货上架预告",
-            "url": null
-          }
-        ],
-        "end_at": null,
-        "end_date": "2026-09-30",
-        "evidence": [
-          {
-            "field_path": "activities[1].start_date",
-            "quote": "2026年9月15日-2026年9月30日",
-            "source_id": "skland-6274849"
-          },
-          {
-            "field_path": "activities[1].uncertainties[0]",
-            "quote": "现货将于10月15日上架明日方舟旗舰店，届时欢迎博士进店选购。",
-            "source_id": "skland-6274849"
-          }
-        ],
-        "id": "activity-ec00117645e279cd",
-        "kind": "merchandise",
-        "related_offers": null,
-        "rules": null,
-        "start_at": null,
-        "start_date": "2026-09-15",
-        "status": "details_pending",
-        "title": "明日方舟×三丽鸥家族粘土人补款",
-        "uncertainties": [
-          "现货将于10月15日上架，补款后发货顺序以补款订单为准"
-        ],
-        "venues": [
-          {
-            "address": null,
-            "business_hours": null,
-            "city": null,
-            "country": "CN",
-            "evidence": [],
-            "id": "venue-52622e31620d4eae",
-            "name": null,
-            "nationwide": false,
-            "online_platform": "明日方舟旗舰店",
-            "province": null
-          }
-        ]
-      },
-      "campaign_id": "campaign-9d561ae4c629334d-b074e365",
-      "campaign_title": "明日方舟 × 女神异闻录3 Reload｜月行水上",
-      "ip_name": "明日方舟",
-      "next": {
-        "at": "2026-09-30T00:00:00+08:00",
-        "date": "2026-09-30",
-        "title": "明日方舟×三丽鸥家族粘土人补款结束"
-      },
-      "url": "event.html?id=campaign-9d561ae4c629334d-b074e365#activity-activity-ec00117645e279cd"
-    },
     {
       "activity": {
         "actions": [
@@ -885,5 +771,5 @@
       "url": "event.html?id=campaign-cdc53ffc7863c84c-a0db4ca1#activity-activity-dfd55f4c31903c72"
     }
   ],
-  "generated_at": "2026-09-30T06:53:43.936955+08:00"
+  "generated_at": "2026-10-01T02:17:54.150829+08:00"
 }
