@@ -1,0 +1,33 @@
+{
+  "extracted_media_text": [],
+  "id": "miyoushe-78672639",
+  "media_hashes": [
+    "3abfe3c9c4e4bccfdbff3176e862a3bc8c484f2b76dea4db22b8d3f5aa285207",
+    "e03267b8860dde7aba7486bf02a9e2a31fe5284aa6014def3b9198efcb2fd44c",
+    "90a8b548df8591dfd9444c21aa3a00254c487648e0726c11ca153398818a7a10"
+  ],
+  "media_urls": [
+    "https://upload-bbs.miyoushe.com/upload/2026/10/03/75276539/07149036a6fd46ff64e0a29bd322d929_8475876390459576903.jpg",
+    "https://upload-bbs.miyoushe.com/upload/2026/10/03/75276539/60642f602b0a6c0caee10ea7bb0b442d_1335211802489373959.jpg",
+    "https://upload-bbs.miyoushe.com/upload/2026/10/03/75276539/6c0d807c59dd47738bdc64b3f8c51dea_3124648810285035109.jpg"
+  ],
+  "outbound_urls": [],
+  "source": {
+    "account_id": "75276539",
+    "account_name": "原神",
+    "canonical_content_id": "78672639",
+    "content_hash": "189864896b9fcfacec97cf0944c24bcd6e6cde008c7b9a4fbbe6b245ca481d6a",
+    "excerpt": "死使一切平等。宛如久病之人得赠的良药...\n「死使一切平等。宛如久病之人得赠的良药，宛如乌云散尽后见到的晴空，这就是死亡的譬喻。」\n——「预言家」维瑟弗尼尔",
+    "first_seen_at": "2026-10-04T17:19:22.127063Z",
+    "id": "miyoushe-78672639",
+    "is_official": true,
+    "kind": "miyoushe",
+    "media_hashes": [],
+    "media_urls": [],
+    "published_at": "2026-10-04T04:00:15Z",
+    "summary": null,
+    "updated_at": null,
+    "url": "https://www.miyoushe.com/ys/article/78672639"
+  },
+  "text": "死使一切平等。宛如久病之人得赠的良药...\n「死使一切平等。宛如久病之人得赠的良药，宛如乌云散尽后见到的晴空，这就是死亡的譬喻。」\n——「预言家」维瑟弗尼尔"
+}
