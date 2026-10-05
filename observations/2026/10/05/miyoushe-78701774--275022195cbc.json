@@ -1,0 +1,41 @@
+{
+  "extracted_media_text": [],
+  "id": "miyoushe-78701774",
+  "media_hashes": [
+    "21f9cfa035115aa4c59f3849c77d9c287bce4ffaeff084135dfaa76b936a220a",
+    "d4dbbc20924a61396934c25fc371bda5c319e8e7371691e2c084acd1042770e5",
+    "76e7d45b6a96d80a7f882edf1a4d82db97c9e316fec3ad6648d3cd2a1bea2bac",
+    "b7fd1fcbd0f7da7396dd4d53cfb7f4eab74c748be7d6fb18cede2729d0867e12",
+    "e47a4ca2fc6a51c60f02d7c8ba80b2fb1ff2c107cc7c8785dce3e4dfc97bf395",
+    "4afa8080770b10be6d7b05adc691b779c4f3e0f76229d907ec3c828e94c9e600",
+    "6e29352af6eaa284dcb8989bbc84d22e8682c2048e52b1339d5b3ff9155c1a06"
+  ],
+  "media_urls": [
+    "https://upload-bbs.miyoushe.com/upload/2026/09/30/288909600/a0ef51016a57c5639dba67334f982160_3598407981015376833.jpg",
+    "https://upload-bbs.miyoushe.com/upload/2026/09/30/288909600/12ecd93015844012fe6f338b54403148_8895724100638516647.jpg",
+    "https://upload-bbs.miyoushe.com/upload/2026/09/30/288909600/6247f49a1ebc16cf7dfa76b9a4650887_6066650741981531166.jpg",
+    "https://upload-bbs.miyoushe.com/upload/2026/09/30/288909600/4f82491ae618cf6702e7d97799b56b92_249140498361351225.jpg",
+    "https://upload-bbs.miyoushe.com/upload/2026/09/30/288909600/c5e7ba1a800cee75b9a837645e72f314_1093723165306986060.jpg",
+    "https://upload-bbs.miyoushe.com/upload/2026/09/30/288909600/6c2abc947d119781d022dd9c5e375747_2201284854667435232.jpg",
+    "https://upload-bbs.miyoushe.com/upload/2026/09/30/288909600/956e23b34deecfa211e815cd59a7049d_9063041712425792713.jpg"
+  ],
+  "outbound_urls": [],
+  "source": {
+    "account_id": "288909600",
+    "account_name": "崩坏星穹铁道",
+    "canonical_content_id": "78701774",
+    "content_hash": "275022195cbc8cf3008f8ca0be5c73ba5f910c111ddd1bed02021f2faa626dc2",
+    "excerpt": "帕姆展览馆 | 月升之前，与兽共舞\n「我的『真珠』就在这里，在这副躯壳的『心』中跳动。」",
+    "first_seen_at": "2026-10-05T20:58:56.451663Z",
+    "id": "miyoushe-78701774",
+    "is_official": true,
+    "kind": "miyoushe",
+    "media_hashes": [],
+    "media_urls": [],
+    "published_at": "2026-10-05T04:00:16Z",
+    "summary": null,
+    "updated_at": null,
+    "url": "https://www.miyoushe.com/sr/article/78701774"
+  },
+  "text": "帕姆展览馆 | 月升之前，与兽共舞\n「我的『真珠』就在这里，在这副躯壳的『心』中跳动。」"
+}
