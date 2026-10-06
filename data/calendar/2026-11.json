@@ -1,0 +1,15 @@
+{
+  "days": {
+    "2026-11-05": [
+      {
+        "action_id": "action-64dddfd3e38ec25c",
+        "activity_id": "activity-d9b5947c33cb3d2d",
+        "at": "2026-11-05T00:00:00+08:00",
+        "campaign_id": "campaign-8ef39adc0f9cce18-746c28cd",
+        "ip_name": "明日方舟：终末地",
+        "kind": "event_start",
+        "title": "联动开启"
+      }
+    ]
+  }
+}
