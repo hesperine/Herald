@@ -1,0 +1,14 @@
+{
+  "activity_id": null,
+  "campaign_id": "campaign-8ef39adc0f9cce18-746c28cd",
+  "detected_at": "2026-10-06T18:48:23.889661Z",
+  "field_paths": [],
+  "id": "chg-98e96c75a33e771f",
+  "kind": "new_campaign",
+  "published_at": "2026-10-06T12:40:59Z",
+  "semantic_key": "campaign-8ef39adc0f9cce18-746c28cd:new-campaign",
+  "source_ids": [
+    "skland-6366130"
+  ],
+  "summary": "新增联动：汉堡王 ×《明日方舟：终末地》「美味通行，堡已就位」"
+}

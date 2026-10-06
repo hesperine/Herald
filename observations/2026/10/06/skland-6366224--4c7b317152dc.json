@@ -1,0 +1,29 @@
+{
+  "extracted_media_text": [],
+  "id": "skland-6366224",
+  "media_hashes": [
+    "c581fbb04d728b0faa4480df42ad58fb5d075126787f60669b0cb772f90543ae"
+  ],
+  "media_urls": [
+    "https://bbs.hycdn.cn/image/common/20261006/113/6ac4c7e0d2041cf262b21b25_65de0095.webp"
+  ],
+  "outbound_urls": [],
+  "source": {
+    "account_id": "3737967211133",
+    "account_name": "明日方舟终末地",
+    "canonical_content_id": "6366224",
+    "content_hash": "4c7b317152dc245602983587cc15c5e07cbf84c4a8b6bd9e74c7218675a70bd2",
+    "excerpt": "《明日方舟：终末地》特别映像「宏山」\n宏山人，自有他们的办法。",
+    "first_seen_at": "2026-10-06T18:48:23.889661Z",
+    "id": "skland-6366224",
+    "is_official": true,
+    "kind": "skland",
+    "media_hashes": [],
+    "media_urls": [],
+    "published_at": "2026-10-06T13:00:49Z",
+    "summary": null,
+    "updated_at": null,
+    "url": "https://www.skland.com/article?id=6366224"
+  },
+  "text": "《明日方舟：终末地》特别映像「宏山」\n宏山人，自有他们的办法。"
+}

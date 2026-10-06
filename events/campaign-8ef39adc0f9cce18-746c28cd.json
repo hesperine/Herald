@@ -1,0 +1,137 @@
+{
+  "activities": [
+    {
+      "actions": [
+        {
+          "at": null,
+          "cancelled": false,
+          "end_at": null,
+          "end_condition": null,
+          "end_date": null,
+          "ended": false,
+          "evidence": [
+            {
+              "field_path": "activities[0].actions[0].start_date",
+              "quote": "11月5日，汉堡王×《明日方舟：终末地》联动开启",
+              "source_id": "skland-6366130"
+            }
+          ],
+          "id": "action-64dddfd3e38ec25c",
+          "kind": "event_start",
+          "platform": null,
+          "quantity_limit": null,
+          "requires_reservation": null,
+          "requires_rush": null,
+          "rules": null,
+          "scope": null,
+          "start_date": "2026-11-05",
+          "title": "联动开启",
+          "url": null
+        }
+      ],
+      "end_at": null,
+      "end_date": null,
+      "evidence": [
+        {
+          "field_path": "activities[0].title",
+          "quote": "汉堡王×《明日方舟：终末地》联动开启",
+          "source_id": "skland-6366130"
+        },
+        {
+          "field_path": "activities[0].start_date",
+          "quote": "11月5日，汉堡王×《明日方舟：终末地》联动开启",
+          "source_id": "skland-6366130"
+        },
+        {
+          "field_path": "activities[0].actions[0].start_date",
+          "quote": "11月5日，汉堡王×《明日方舟：终末地》联动开启",
+          "source_id": "skland-6366130"
+        }
+      ],
+      "id": "activity-d9b5947c33cb3d2d",
+      "kind": "food",
+      "related_offers": null,
+      "rules": null,
+      "start_at": null,
+      "start_date": "2026-11-05",
+      "status": "details_pending",
+      "title": "汉堡王×《明日方舟：终末地》联动",
+      "uncertainties": [
+        "具体联动形式、门店范围及任务内容未在正文说明，仅指向汉堡王官方自媒体账号。"
+      ],
+      "venues": []
+    }
+  ],
+  "activity_redirects": {},
+  "announced_at": "2026-10-06T12:40:59Z",
+  "fact_provenance": {
+    "activities.activity-d9b5947c33cb3d2d.actions.action-64dddfd3e38ec25c.start_date": {
+      "content_hash": "81418b4bec7f36907400d19e602ad8ec17666f06e44ab7d476063e61d55e1237",
+      "observation_id": "skland-6366130",
+      "published_at": "2026-10-06T12:40:59Z",
+      "quote": "11月5日，汉堡王×《明日方舟：终末地》联动开启",
+      "source_id": "skland-6366130"
+    },
+    "activities.activity-d9b5947c33cb3d2d.start_date": {
+      "content_hash": "81418b4bec7f36907400d19e602ad8ec17666f06e44ab7d476063e61d55e1237",
+      "observation_id": "skland-6366130",
+      "published_at": "2026-10-06T12:40:59Z",
+      "quote": "11月5日，汉堡王×《明日方舟：终末地》联动开启",
+      "source_id": "skland-6366130"
+    },
+    "activities.activity-d9b5947c33cb3d2d.title": {
+      "content_hash": "81418b4bec7f36907400d19e602ad8ec17666f06e44ab7d476063e61d55e1237",
+      "observation_id": "skland-6366130",
+      "published_at": "2026-10-06T12:40:59Z",
+      "quote": "汉堡王×《明日方舟：终末地》联动开启",
+      "source_id": "skland-6366130"
+    },
+    "partner": {
+      "content_hash": "81418b4bec7f36907400d19e602ad8ec17666f06e44ab7d476063e61d55e1237",
+      "observation_id": "skland-6366130",
+      "published_at": "2026-10-06T12:40:59Z",
+      "quote": "汉堡王×《明日方舟：终末地》联动开启",
+      "source_id": "skland-6366130"
+    },
+    "title": {
+      "content_hash": "81418b4bec7f36907400d19e602ad8ec17666f06e44ab7d476063e61d55e1237",
+      "observation_id": "skland-6366130",
+      "published_at": "2026-10-06T12:40:59Z",
+      "quote": "汉堡王 ×《明日方舟：终末地》「美味通行，堡已就位」合作宣传PV",
+      "source_id": "skland-6366130"
+    }
+  },
+  "first_seen_at": "2026-10-06T18:48:23.889661Z",
+  "id": "campaign-8ef39adc0f9cce18-746c28cd",
+  "ip_name": "明日方舟：终末地",
+  "ip_slug": "arknights-endfield",
+  "partner": "汉堡王",
+  "redirected_to": null,
+  "revision": 1,
+  "sources": [
+    {
+      "account_id": "3737967211133",
+      "account_name": "明日方舟终末地",
+      "canonical_content_id": "6366130",
+      "content_hash": "81418b4bec7f36907400d19e602ad8ec17666f06e44ab7d476063e61d55e1237",
+      "excerpt": "汉堡王 ×《明日方舟：终末地》「美味通行，堡已就位」合作宣传PV\n美味通行，堡已就位！\n11月5日，汉堡王×《明日方舟：终末地》联动开启，\n和干员们相约汉堡王、完成美味特别任务吧~\n更多联动详情敬请关注汉堡王官方自媒体账号。",
+      "first_seen_at": "2026-10-06T18:48:23.889661Z",
+      "id": "skland-6366130",
+      "is_official": true,
+      "kind": "skland",
+      "media_hashes": [
+        "16b6b643fa91055a51719ff668824d4a306122d4fa0e2c2b6a034f18398586a1"
+      ],
+      "media_urls": [
+        "https://bbs.hycdn.cn/image/common/20261006/113/6ac4bd980bba2d0e26ae09a7_65de0095.webp"
+      ],
+      "published_at": "2026-10-06T12:40:59Z",
+      "summary": "汉堡王×《明日方舟：终末地》联动宣传PV，宣布11月5日联动开启，邀请玩家前往汉堡王完成特别任务，详情待汉堡王官方账号公布。",
+      "updated_at": null,
+      "url": "https://www.skland.com/article?id=6366130"
+    }
+  ],
+  "status": "details_pending",
+  "title": "汉堡王 ×《明日方舟：终末地》「美味通行，堡已就位」",
+  "updated_at": "2026-10-06T18:48:23.889661Z"
+}
