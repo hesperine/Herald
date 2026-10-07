@@ -1,0 +1,29 @@
+{
+  "extracted_media_text": [],
+  "id": "skland-6366868",
+  "media_hashes": [
+    "9ffa297d9838d92f0072611e2b583429409e1b65240055999078176115884e79"
+  ],
+  "media_urls": [
+    "https://bbs.hycdn.cn/image/common/20261007/113/6ac5bb03ed989a2c1f471614_e71aef33.webp"
+  ],
+  "outbound_urls": [],
+  "source": {
+    "account_id": "3737967211133",
+    "account_name": "明日方舟终末地",
+    "canonical_content_id": "6366868",
+    "content_hash": "9d99c5a7f90ed4614d5a0d32ae28853ae1f174d50043d32d7c63a98dac560b8b",
+    "excerpt": "《明日方舟：终末地》特别映像「塔卫二：一号简报」\n你醒来的时间尚短，管理员。但随着你的这次苏醒，有些曾经不变的东西正在发生变化——只有你才能带来的变化。",
+    "first_seen_at": "2026-10-06T18:48:23.889661Z",
+    "id": "skland-6366868",
+    "is_official": true,
+    "kind": "skland",
+    "media_hashes": [],
+    "media_urls": [],
+    "published_at": "2026-10-06T13:31:02Z",
+    "summary": null,
+    "updated_at": "2026-10-07T19:13:25.234860Z",
+    "url": "https://www.skland.com/article?id=6366868"
+  },
+  "text": "《明日方舟：终末地》特别映像「塔卫二：一号简报」\n你醒来的时间尚短，管理员。但随着你的这次苏醒，有些曾经不变的东西正在发生变化——只有你才能带来的变化。"
+}
