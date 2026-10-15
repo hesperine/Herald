@@ -37,15 +37,24 @@ button:hover{background:#eef4f3}button:disabled{opacity:.4;cursor:default}
 .thumbnail img{display:block;width:100%;height:100%;object-fit:contain}.gallery figcaption{font-size:13px;margin-top:6px}
 .gallery .missing-image{font-size:14px;color:#667;padding:12px;text-align:center}
 body.viewer-open{overflow:hidden}
-#image-viewer{width:min(1100px,94vw);height:88vh;height:88dvh;max-width:94vw;max-height:92vh;border:0;border-radius:12px;padding:0;background:#f7f8f9;color:#263238}
-#image-viewer::backdrop{background:rgba(12,20,24,.8)}
-.viewer-panel{height:100%;display:flex;flex-direction:column}.viewer-toolbar{display:flex;align-items:center;gap:8px;flex-wrap:wrap;padding:12px 16px;background:white;border-bottom:1px solid #dfe5e5}
-#viewer-caption{margin:0 auto 0 0;font-size:14px}#viewer-original{font-size:14px}
-.viewer-stage{flex:1;min-height:0;overflow:auto;text-align:center;padding:12px;box-sizing:border-box;position:relative}
-#viewer-image{display:block;width:100%;height:100%;object-fit:contain;margin:auto}
-.viewer-stage.original #viewer-image{width:auto;height:auto;max-width:none;max-height:none;margin:0 auto}
-#viewer-status{background:white;padding:20px}.viewer-hint{margin:0;padding:8px 16px;font-size:12px;color:#526166;text-align:center}
-@media(max-width:600px){main{padding:16px 14px 40px}.card,#activities>section,#sources>section{padding:16px}h1{font-size:25px}.gallery{grid-template-columns:repeat(2,minmax(0,1fr))}.thumbnail{height:150px}.viewer-toolbar{padding:10px;gap:6px}#viewer-caption{flex-basis:100%}.viewer-toolbar button{padding:6px 10px}#image-viewer{width:96vw;max-width:96vw;height:92vh;height:92dvh}}
+#image-viewer{width:100vw;height:100vh;height:100dvh;max-width:none;max-height:none;border:0;border-radius:0;margin:0;padding:0;background:rgba(0,0,0,.55);color:#fff}
+#image-viewer::backdrop{background:transparent}
+.viewer-panel{height:100%;position:relative}.viewer-toolbar{position:absolute;bottom:22px;left:50%;transform:translateX(-50%);z-index:3;display:flex;align-items:center;width:max-content;max-width:calc(100% - 24px);padding:3px 10px;gap:10px;border:1px solid rgba(255,255,255,.1);border-radius:24px;background:rgba(20,22,25,.93);box-shadow:0 5px 24px rgba(0,0,0,.2)}
+#viewer-counter{font-size:13px;color:#f3f4f5;font-variant-numeric:tabular-nums;letter-spacing:1px;margin:0;padding:0 8px}.viewer-actions{display:flex;gap:2px;align-items:center;border-left:1px solid rgba(255,255,255,.18);padding-left:6px}
+#viewer-scale{min-width:34px;font-size:12px;text-align:center;font-variant-numeric:tabular-nums;color:#d2d5da}
+#image-viewer .viewer-control{display:inline-flex;align-items:center;justify-content:center;width:44px;height:44px;box-sizing:border-box;padding:0;border:0;border-radius:50%;background:transparent;color:#e0e2e5;text-decoration:none;cursor:pointer;transition:background .15s,color .15s}
+#image-viewer .viewer-control:hover{background:rgba(255,255,255,.1);color:white}#image-viewer .viewer-control:focus-visible{outline:2px solid white;outline-offset:3px}
+#image-viewer .viewer-control:disabled{visibility:hidden}#image-viewer .viewer-control svg{width:22px;height:22px;fill:none;stroke:currentColor;stroke-width:1.7;stroke-linecap:round;stroke-linejoin:round;pointer-events:none}
+#image-viewer .viewer-arrow{position:absolute;top:50%;transform:translateY(-50%);z-index:2;width:52px;height:52px;background:rgba(20,22,25,.5)}#image-viewer .viewer-arrow:hover,#image-viewer #viewer-close:hover{background:rgba(20,22,25,.85)}#image-viewer .viewer-arrow svg{width:28px;height:28px}
+#image-viewer #viewer-close{position:absolute;top:16px;right:16px;z-index:3;width:48px;height:48px;background:rgba(20,22,25,.65)}
+#viewer-prev{left:22px}#viewer-next{right:22px}#viewer-zoom[aria-pressed=true] .zoom-plus{display:none}
+.viewer-stage{position:absolute;inset:24px 64px 112px;overflow:auto;text-align:center;overscroll-behavior:contain;scrollbar-width:thin;scrollbar-color:#5e636b transparent}
+#viewer-image{display:block;width:100%;height:100%;object-fit:contain;margin:auto;cursor:zoom-in}
+.viewer-stage.original #viewer-image{width:auto;height:auto;max-width:none;max-height:none;margin:0 auto;cursor:zoom-out}
+#viewer-status{color:#c5c8cc;padding:24px}.viewer-footer{position:absolute;inset:auto 72px 80px;text-align:center;pointer-events:none}
+#viewer-caption{margin:0;color:#eee;font-size:12px;line-height:1.5;text-shadow:0 1px 4px #000}.viewer-hint{display:none}
+@media(max-width:600px){main{padding:16px 14px 40px}.card,#activities>section,#sources>section{padding:16px}h1{font-size:25px}.gallery{grid-template-columns:repeat(2,minmax(0,1fr))}.thumbnail{height:150px}.viewer-toolbar{bottom:max(16px,env(safe-area-inset-bottom))}.viewer-stage{inset:64px 18px 108px}#image-viewer .viewer-arrow{width:40px;height:40px}#viewer-prev{left:8px}#viewer-next{right:8px}#image-viewer #viewer-close{top:10px;right:10px;width:44px;height:44px}.viewer-footer{left:16px;right:16px;bottom:78px}}
+@media(prefers-reduced-motion:reduce){#image-viewer .viewer-control{transition:none}}
 """
 
 
@@ -155,12 +164,15 @@ DETAIL_HTML = r"""<!doctype html>
 <head><meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1"><title>企划详情 · HERALD</title><link rel="stylesheet" href="style.css"></head>
 <body><main><nav><a href="index.html">活动卡片</a><a href="today.html">每日提醒</a></nav><h1 id="title">企划详情</h1><dl id="summary"></dl><h2>活动</h2><div id="activities"></div><h2>原帖与配图</h2><div id="sources"></div></main>
 <dialog id="image-viewer" aria-labelledby="viewer-caption">
-<div class="viewer-panel"><div class="viewer-toolbar"><p id="viewer-caption" aria-live="polite">原帖配图</p>
-<button id="viewer-prev" type="button" aria-label="上一张图片">上一张</button><button id="viewer-next" type="button" aria-label="下一张图片">下一张</button>
-<button id="viewer-zoom" type="button" aria-pressed="false">原尺寸</button><a id="viewer-original" target="_blank" rel="noopener noreferrer">打开原图 ↗</a>
-<button id="viewer-close" type="button" aria-label="关闭图片查看器" autofocus>关闭 ✕</button></div>
+<div class="viewer-panel"><div class="viewer-toolbar"><p id="viewer-counter" aria-hidden="true"></p><div class="viewer-actions">
+<button id="viewer-zoom" class="viewer-control" type="button" aria-label="查看原尺寸" title="查看原尺寸" aria-pressed="false"><svg viewBox="0 0 24 24" aria-hidden="true"><circle cx="10.5" cy="10.5" r="6.5"/><path d="m16 16 5 5M8 10.5h5"/><path class="zoom-plus" d="M10.5 8v5"/></svg></button>
+<span id="viewer-scale" aria-hidden="true"></span>
+<a id="viewer-original" class="viewer-control" aria-label="在新标签页打开原图" title="打开原图" target="_blank" rel="noopener noreferrer"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M14 4h6v6M20 4 10 14M10 5H5v15h15v-5"/></svg></a>
+</div></div><button id="viewer-close" class="viewer-control" type="button" aria-label="关闭图片查看器" title="关闭 (Esc)" autofocus><svg viewBox="0 0 24 24" aria-hidden="true"><path d="m6 6 12 12M18 6 6 18"/></svg></button>
+<button id="viewer-prev" class="viewer-control viewer-arrow" type="button" aria-label="上一张图片" title="上一张 (←)"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="m14 5-7 7 7 7"/></svg></button>
+<button id="viewer-next" class="viewer-control viewer-arrow" type="button" aria-label="下一张图片" title="下一张 (→)"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="m10 5 7 7-7 7"/></svg></button>
 <div class="viewer-stage"><img id="viewer-image" alt=""><p id="viewer-status" role="status" hidden>图片加载失败，请尝试打开原图。</p></div>
-<p class="viewer-hint">方向键切换 · Esc 关闭 · 原尺寸模式可滚动查看长图</p></div></dialog>
+<div class="viewer-footer"><p id="viewer-caption" aria-live="polite">原帖配图</p><p class="viewer-hint">点击图片缩放 · ← → 切换 · Esc 关闭</p></div></div></dialog>
 <script src="event.js"></script></body>
 </html>
 """
@@ -179,29 +191,41 @@ function sourceLinks(parent, sources) {
 const viewer=document.getElementById('image-viewer'), viewerImage=document.getElementById('viewer-image');
 const viewerStage=viewer.querySelector('.viewer-stage'), zoom=document.getElementById('viewer-zoom');
 let galleryItems=[], galleryIndex=0, returnFocus=null;
+function updateScale(){
+ const scale=viewerStage.classList.contains('original')?1:Math.min(viewerStage.clientWidth/viewerImage.naturalWidth,viewerStage.clientHeight/viewerImage.naturalHeight);
+ document.getElementById('viewer-scale').textContent=Number.isFinite(scale)&&scale>0?Math.round(scale*100)+'%':'';
+}
+function setOriginal(original){
+ viewerStage.classList.toggle('original',original);
+ const label=original?'适应窗口':'查看原尺寸';zoom.setAttribute('aria-label',label);zoom.title=label;zoom.setAttribute('aria-pressed',String(original));
+ updateScale();
+}
 function showPicture(index){
  galleryIndex=(index+galleryItems.length)%galleryItems.length;
  const item=galleryItems[galleryIndex];
- viewerStage.classList.remove('original');zoom.textContent='原尺寸';zoom.setAttribute('aria-pressed','false');
+ setOriginal(false);
  document.getElementById('viewer-status').hidden=true;viewerImage.hidden=false;
  viewerImage.alt=item.alt;viewerImage.src=item.asset_path;
- document.getElementById('viewer-caption').textContent=item.alt+' · '+(galleryIndex+1)+' / '+galleryItems.length;
+ document.getElementById('viewer-caption').textContent=item.alt;
+ document.getElementById('viewer-counter').textContent=(galleryIndex+1)+' / '+galleryItems.length;
  document.getElementById('viewer-original').href=item.source_url;
  for(const id of ['viewer-prev','viewer-next'])document.getElementById(id).disabled=galleryItems.length<2;
  viewerStage.scrollTop=0;viewerStage.scrollLeft=0;
 }
 function openGallery(items,index,trigger){
  if(typeof viewer.showModal!=='function')return false;
- galleryItems=items;returnFocus=trigger;showPicture(index);viewer.showModal();document.body.classList.add('viewer-open');return true;
+ galleryItems=items;returnFocus=trigger;showPicture(index);viewer.showModal();document.body.classList.add('viewer-open');updateScale();return true;
 }
 viewerImage.addEventListener('error',()=>{viewerImage.hidden=true;document.getElementById('viewer-status').hidden=false;});
-viewerImage.addEventListener('load',()=>{viewerImage.hidden=false;document.getElementById('viewer-status').hidden=true;});
+viewerImage.addEventListener('load',()=>{viewerImage.hidden=false;document.getElementById('viewer-status').hidden=true;updateScale();});
+window.addEventListener('resize',()=>{if(viewer.open)updateScale();});
 document.getElementById('viewer-close').addEventListener('click',()=>viewer.close());
 document.getElementById('viewer-prev').addEventListener('click',()=>showPicture(galleryIndex-1));
 document.getElementById('viewer-next').addEventListener('click',()=>showPicture(galleryIndex+1));
-zoom.addEventListener('click',()=>{const original=viewerStage.classList.toggle('original');zoom.textContent=original?'适应窗口':'原尺寸';zoom.setAttribute('aria-pressed',String(original));});
+zoom.addEventListener('click',()=>setOriginal(!viewerStage.classList.contains('original')));
+viewerImage.addEventListener('click',()=>setOriginal(!viewerStage.classList.contains('original')));
 viewer.addEventListener('close',()=>{document.body.classList.remove('viewer-open');returnFocus?.focus();});
-viewer.addEventListener('click',event=>{if(event.target===viewer)viewer.close();});
+viewer.addEventListener('click',event=>{if(event.target===viewer||event.target.classList.contains('viewer-panel')||event.target===viewerStage)viewer.close();});
 viewer.addEventListener('keydown',event=>{if(event.key==='ArrowLeft'||event.key==='ArrowRight'){event.preventDefault();showPicture(galleryIndex+(event.key==='ArrowLeft'?-1:1));}});
 const eventId=new URLSearchParams(location.search).get('id')||'';
 function render(data){

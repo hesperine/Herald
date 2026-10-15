@@ -364,4 +364,13 @@ AI 默认每轮最多 40 次提取／合并调用，并在运行开始后 12 分
 
 详情页按原帖展示完整比例缩略图，点击可放大、前后切换、查看原尺寸长图；支持 Esc 关闭和键盘操作。邮件同时发送 HTML 卡片和纯文本备用版本，按新消息与时间提醒分组，使用内联样式，不依赖脚本或远程图片。
 
+可用演示数据离线检查这些展示功能，不读取私有配置、不采集或发送邮件：
+
+```powershell
+python scripts/preview-ui.py --output .herald-work/ui-preview-new
+python -m http.server 8770 --bind 127.0.0.1 --directory .herald-work/ui-preview-new/page
+```
+
+打开 <http://127.0.0.1:8770/preview.html>，可查看横图/方图/长图放大、七天历史、过期活动提醒、HTML日报和纯文本备用版本。`--output` 必须使用新目录，避免覆盖旧预览；可加 `--now 2026-10-15T12:00:00+08:00` 固定演示日期。检查完按 Ctrl+C 关闭临时服务。真实邮箱客户端的样式仍可能与浏览器预览不同。
+
 最后一轮可用 `python -m herald --phase retry --final-retry` 执行；普通 `retry` 在仍有 pending 时不会发邮件。发送成功并持久化每日回执后，当天后续运行不再发信。SMTP 发送与 Git 提交不是原子事务，发送后进程中断或 state 推送失败仍可能导致重发。

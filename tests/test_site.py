@@ -195,6 +195,13 @@ class StaticSiteBuilderTests(unittest.TestCase):
         self.assertEqual(dialogs[0]['aria-labelledby'], 'viewer-caption')
         ids = {attrs.get('id') for tag, attrs in parser.tags}
         self.assertTrue({'viewer-close', 'viewer-prev', 'viewer-next', 'viewer-zoom', 'viewer-original'} <= ids)
+        controls = {attrs.get('id'): attrs for tag, attrs in parser.tags
+                    if attrs.get('id') in {'viewer-close','viewer-prev','viewer-next','viewer-zoom','viewer-original'}}
+        self.assertTrue(all(attrs.get('aria-label') for attrs in controls.values()))
+        self.assertIn('viewer-counter', ids)
+        self.assertIn('viewer-scale', ids)
+        self.assertEqual(controls['viewer-zoom']['aria-pressed'], 'false')
+        self.assertTrue(any(tag == 'svg' and attrs.get('aria-hidden') == 'true' for tag, attrs in parser.tags))
 
     def setUp(self) -> None:
         self.temporary = tempfile.TemporaryDirectory()
