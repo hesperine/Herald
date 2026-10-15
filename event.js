@@ -12,29 +12,41 @@ function sourceLinks(parent, sources) {
 const viewer=document.getElementById('image-viewer'), viewerImage=document.getElementById('viewer-image');
 const viewerStage=viewer.querySelector('.viewer-stage'), zoom=document.getElementById('viewer-zoom');
 let galleryItems=[], galleryIndex=0, returnFocus=null;
+function updateScale(){
+ const scale=viewerStage.classList.contains('original')?1:Math.min(viewerStage.clientWidth/viewerImage.naturalWidth,viewerStage.clientHeight/viewerImage.naturalHeight);
+ document.getElementById('viewer-scale').textContent=Number.isFinite(scale)&&scale>0?Math.round(scale*100)+'%':'';
+}
+function setOriginal(original){
+ viewerStage.classList.toggle('original',original);
+ const label=original?'适应窗口':'查看原尺寸';zoom.setAttribute('aria-label',label);zoom.title=label;zoom.setAttribute('aria-pressed',String(original));
+ updateScale();
+}
 function showPicture(index){
  galleryIndex=(index+galleryItems.length)%galleryItems.length;
  const item=galleryItems[galleryIndex];
- viewerStage.classList.remove('original');zoom.textContent='原尺寸';zoom.setAttribute('aria-pressed','false');
+ setOriginal(false);
  document.getElementById('viewer-status').hidden=true;viewerImage.hidden=false;
  viewerImage.alt=item.alt;viewerImage.src=item.asset_path;
- document.getElementById('viewer-caption').textContent=item.alt+' · '+(galleryIndex+1)+' / '+galleryItems.length;
+ document.getElementById('viewer-caption').textContent=item.alt;
+ document.getElementById('viewer-counter').textContent=(galleryIndex+1)+' / '+galleryItems.length;
  document.getElementById('viewer-original').href=item.source_url;
  for(const id of ['viewer-prev','viewer-next'])document.getElementById(id).disabled=galleryItems.length<2;
  viewerStage.scrollTop=0;viewerStage.scrollLeft=0;
 }
 function openGallery(items,index,trigger){
  if(typeof viewer.showModal!=='function')return false;
- galleryItems=items;returnFocus=trigger;showPicture(index);viewer.showModal();document.body.classList.add('viewer-open');return true;
+ galleryItems=items;returnFocus=trigger;showPicture(index);viewer.showModal();document.body.classList.add('viewer-open');updateScale();return true;
 }
 viewerImage.addEventListener('error',()=>{viewerImage.hidden=true;document.getElementById('viewer-status').hidden=false;});
-viewerImage.addEventListener('load',()=>{viewerImage.hidden=false;document.getElementById('viewer-status').hidden=true;});
+viewerImage.addEventListener('load',()=>{viewerImage.hidden=false;document.getElementById('viewer-status').hidden=true;updateScale();});
+window.addEventListener('resize',()=>{if(viewer.open)updateScale();});
 document.getElementById('viewer-close').addEventListener('click',()=>viewer.close());
 document.getElementById('viewer-prev').addEventListener('click',()=>showPicture(galleryIndex-1));
 document.getElementById('viewer-next').addEventListener('click',()=>showPicture(galleryIndex+1));
-zoom.addEventListener('click',()=>{const original=viewerStage.classList.toggle('original');zoom.textContent=original?'适应窗口':'原尺寸';zoom.setAttribute('aria-pressed',String(original));});
+zoom.addEventListener('click',()=>setOriginal(!viewerStage.classList.contains('original')));
+viewerImage.addEventListener('click',()=>setOriginal(!viewerStage.classList.contains('original')));
 viewer.addEventListener('close',()=>{document.body.classList.remove('viewer-open');returnFocus?.focus();});
-viewer.addEventListener('click',event=>{if(event.target===viewer)viewer.close();});
+viewer.addEventListener('click',event=>{if(event.target===viewer||event.target.classList.contains('viewer-panel')||event.target===viewerStage)viewer.close();});
 viewer.addEventListener('keydown',event=>{if(event.key==='ArrowLeft'||event.key==='ArrowRight'){event.preventDefault();showPicture(galleryIndex+(event.key==='ArrowLeft'?-1:1));}});
 const eventId=new URLSearchParams(location.search).get('id')||'';
 function render(data){

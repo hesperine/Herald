@@ -1,13 +1,16 @@
 <!doctype html>
 <html lang="zh-CN">
-<head><meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1"><title>企划详情 · HERALD</title><link rel="stylesheet" href="style.css?v=749b2d5a1ec4"></head>
+<head><meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1"><title>企划详情 · HERALD</title><link rel="stylesheet" href="style.css?v=d0bc0b1745a6"></head>
 <body><main><nav><a href="index.html">活动卡片</a><a href="today.html">每日提醒</a></nav><h1 id="title">企划详情</h1><dl id="summary"></dl><h2>活动</h2><div id="activities"></div><h2>原帖与配图</h2><div id="sources"></div></main>
 <dialog id="image-viewer" aria-labelledby="viewer-caption">
-<div class="viewer-panel"><div class="viewer-toolbar"><p id="viewer-caption" aria-live="polite">原帖配图</p>
-<button id="viewer-prev" type="button" aria-label="上一张图片">上一张</button><button id="viewer-next" type="button" aria-label="下一张图片">下一张</button>
-<button id="viewer-zoom" type="button" aria-pressed="false">原尺寸</button><a id="viewer-original" target="_blank" rel="noopener noreferrer">打开原图 ↗</a>
-<button id="viewer-close" type="button" aria-label="关闭图片查看器" autofocus>关闭 ✕</button></div>
+<div class="viewer-panel"><div class="viewer-toolbar"><p id="viewer-counter" aria-hidden="true"></p><div class="viewer-actions">
+<button id="viewer-zoom" class="viewer-control" type="button" aria-label="查看原尺寸" title="查看原尺寸" aria-pressed="false"><svg viewBox="0 0 24 24" aria-hidden="true"><circle cx="10.5" cy="10.5" r="6.5"/><path d="m16 16 5 5M8 10.5h5"/><path class="zoom-plus" d="M10.5 8v5"/></svg></button>
+<span id="viewer-scale" aria-hidden="true"></span>
+<a id="viewer-original" class="viewer-control" aria-label="在新标签页打开原图" title="打开原图" target="_blank" rel="noopener noreferrer"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M14 4h6v6M20 4 10 14M10 5H5v15h15v-5"/></svg></a>
+</div></div><button id="viewer-close" class="viewer-control" type="button" aria-label="关闭图片查看器" title="关闭 (Esc)" autofocus><svg viewBox="0 0 24 24" aria-hidden="true"><path d="m6 6 12 12M18 6 6 18"/></svg></button>
+<button id="viewer-prev" class="viewer-control viewer-arrow" type="button" aria-label="上一张图片" title="上一张 (←)"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="m14 5-7 7 7 7"/></svg></button>
+<button id="viewer-next" class="viewer-control viewer-arrow" type="button" aria-label="下一张图片" title="下一张 (→)"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="m10 5 7 7-7 7"/></svg></button>
 <div class="viewer-stage"><img id="viewer-image" alt=""><p id="viewer-status" role="status" hidden>图片加载失败，请尝试打开原图。</p></div>
-<p class="viewer-hint">方向键切换 · Esc 关闭 · 原尺寸模式可滚动查看长图</p></div></dialog>
-<script src="event.js?v=609b5ba09e98"></script></body>
+<div class="viewer-footer"><p id="viewer-caption" aria-live="polite">原帖配图</p><p class="viewer-hint">点击图片缩放 · ← → 切换 · Esc 关闭</p></div></div></dialog>
+<script src="event.js?v=3f8b705be7b1"></script></body>
 </html>
