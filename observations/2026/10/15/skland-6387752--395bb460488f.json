@@ -1,0 +1,29 @@
+{
+  "extracted_media_text": [],
+  "id": "skland-6387752",
+  "media_hashes": [
+    "376a126b768e37ec6a2e23bb0be207fc2db8c225ae8e54984f83118ff305ca6a"
+  ],
+  "media_urls": [
+    "https://bbs.hycdn.cn/image/common/20261015/130/6ad057329da5ba571c0217dd_0095c241.webp"
+  ],
+  "outbound_urls": [],
+  "source": {
+    "account_id": "7232373607086",
+    "account_name": "明日方舟终末地山团团",
+    "canonical_content_id": "6387752",
+    "content_hash": "395bb460488f9e454853fbe50b80fd3aa6b170275041ed669fec45a5894e29f5",
+    "excerpt": "好想……玩……终末地……新版本……！！！！！！！（快速等待下班中",
+    "first_seen_at": "2026-10-15T17:38:26.750277Z",
+    "id": "skland-6387752",
+    "is_official": true,
+    "kind": "skland",
+    "media_hashes": [],
+    "media_urls": [],
+    "published_at": "2026-10-15T06:00:17Z",
+    "summary": null,
+    "updated_at": null,
+    "url": "https://www.skland.com/article?id=6387752"
+  },
+  "text": "好想……玩……终末地……新版本……！！！！！！！（快速等待下班中"
+}
