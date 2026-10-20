@@ -1,0 +1,41 @@
+{
+  "extracted_media_text": [],
+  "id": "miyoushe-79021230",
+  "media_hashes": [
+    "61851ed08c78d470a64ef9bc790eb40e2b41a230239372df502f58fa89eb8a9e",
+    "821b81028b4718415e29ad9e6079c41c187489deb4663ba2ffdf80feb262620c",
+    "4be2f54e105578ee8a3b2d457ef3ad96f340a5b734cd93402dd84ecbe1b022dc",
+    "aa38c6351fbb6f7589da5558abf2af0e11dda976e0daf70bfeca97ea3852ef7b",
+    "e844e20ca5180996de4c4750e70b6cdd17afcff9e17d2fdfee75165f2a3d3750",
+    "65b60d1bfd8f7d107ce6d2d4a2ac3a5dc5b1c680a0102363ca8b31ee731c3ced",
+    "9b18c01b15274349ae4e52c7da5399982d365482b0bb06197081e6b2896cf8f3"
+  ],
+  "media_urls": [
+    "https://upload-bbs.miyoushe.com/upload/2026/10/19/288909600/8f6fed9728e7670c3ee57a8c7dfd840f_4542207381540307254.png",
+    "https://upload-bbs.miyoushe.com/upload/2026/10/19/288909600/2b62fe991f488e94106c5561936149d8_4200967998604012573.jpg",
+    "https://upload-bbs.miyoushe.com/upload/2026/10/19/288909600/2a84d78745f2bb1f3e12a3a976b38792_8577604475789866851.gif",
+    "https://upload-bbs.miyoushe.com/upload/2026/10/19/288909600/b8fdc6e746961b531a3565dc9fc8ea3a_7083587296776767077.jpg",
+    "https://upload-bbs.miyoushe.com/upload/2026/10/19/288909600/2cd322d343e32dfeaef26209ccac1d0b_1157524496120838591.jpg",
+    "https://upload-bbs.miyoushe.com/upload/2026/10/19/288909600/caa3b4bde9958f86e3e5571b27a9dc1a_4742866791125306026.jpg",
+    "https://upload-bbs.miyoushe.com/upload/2026/10/19/288909600/88f10524e5fafee119354810129d52af_2097900231422569126.jpg"
+  ],
+  "outbound_urls": [],
+  "source": {
+    "account_id": "288909600",
+    "account_name": "崩坏星穹铁道",
+    "canonical_content_id": "79021230",
+    "content_hash": "810ab0baf21ea44fcbc4732b52f90c4dc9177aa4d9907f2f231d15bdcf60668b",
+    "excerpt": "战斗上演！一镜到底！\n星际和平娱乐倾力打造的大型影视真人秀《星际和平盛典：一镜到底》正式开机。即刻试镜，秀出你的战斗技巧，下一个动作巨星就是你！",
+    "first_seen_at": "2026-10-20T17:47:53.448819Z",
+    "id": "miyoushe-79021230",
+    "is_official": true,
+    "kind": "miyoushe",
+    "media_hashes": [],
+    "media_urls": [],
+    "published_at": "2026-10-20T03:00:13Z",
+    "summary": null,
+    "updated_at": null,
+    "url": "https://www.miyoushe.com/sr/article/79021230"
+  },
+  "text": "战斗上演！一镜到底！\n星际和平娱乐倾力打造的大型影视真人秀《星际和平盛典：一镜到底》正式开机。即刻试镜，秀出你的战斗技巧，下一个动作巨星就是你！"
+}

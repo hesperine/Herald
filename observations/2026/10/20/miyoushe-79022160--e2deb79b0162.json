@@ -1,0 +1,39 @@
+{
+  "extracted_media_text": [],
+  "id": "miyoushe-79022160",
+  "media_hashes": [
+    "e5aed518ed7e92899d87088f7442083569365529a1dcaf0b39f19e248407bfa9",
+    "e3c44c7ec74986345b36786d7e34a7b8f20d17cf501c751a5c3de74087399fdb",
+    "fd34c2256dafeaad4a018027bf04e322853a1a741731a4964a0b928fb1b9c26d",
+    "1d95db313e7848bf2cdc663b7bd8111c000ac8ed2a726a3f707d21b303dfee00",
+    "ae6ab093c8af872189a1dc12e6c5056761ab1098b32aaf5813e86803ce65d96a"
+  ],
+  "media_urls": [
+    "https://upload-bbs.miyoushe.com/upload/2026/10/20/75276539/3d1d6bab6c28e992df70d27efdbbffe4_5529388359655061416.jpg",
+    "https://upload-bbs.miyoushe.com/upload/2026/10/20/75276539/f8f07cff0395115e9830f344aa2868a0_9138258869970931220.gif",
+    "https://upload-bbs.miyoushe.com/upload/2026/10/20/75276539/7920bcc33d751ce21a6d8e0680eeddba_256892537306124835.gif",
+    "https://upload-bbs.miyoushe.com/upload/2026/10/20/75276539/78c6007e2f79afe0e6bf81d7c6889b0d_7378801672499007774.gif",
+    "https://upload-bbs.miyoushe.com/upload/2026/10/20/75276539/e7f36534e31550a30a096f61f6c3ad03_5491380626761997125.gif"
+  ],
+  "outbound_urls": [
+    "https://webstatic.mihoyo.com/ys/event/e20210601blue_post/vert.html?page_sn=75da15071f6043b5&bbs_presentation_style=fullscreen&utm_source=bbs&utm_medium=ys&utm_campaign=pgc"
+  ],
+  "source": {
+    "account_id": "75276539",
+    "account_name": "原神",
+    "canonical_content_id": "79022160",
+    "content_hash": "e2deb79b0162711932cddc82a13454f76663b38ad13300f2051f5a76c9d1f81f",
+    "excerpt": "决赛落幕！冠军实至名归，选手各出奇招？\n「判测胜券本征」冠军已经诞生！一起来看看冠军的华丽表现，和比赛中的那些精彩瞬间吧。\n点击了解更多7.1版本内容：\n>>原神「往冥府的安魂歌」内容专题页<<",
+    "first_seen_at": "2026-10-20T17:47:53.448819Z",
+    "id": "miyoushe-79022160",
+    "is_official": true,
+    "kind": "miyoushe",
+    "media_hashes": [],
+    "media_urls": [],
+    "published_at": "2026-10-20T04:00:25Z",
+    "summary": null,
+    "updated_at": null,
+    "url": "https://www.miyoushe.com/ys/article/79022160"
+  },
+  "text": "决赛落幕！冠军实至名归，选手各出奇招？\n「判测胜券本征」冠军已经诞生！一起来看看冠军的华丽表现，和比赛中的那些精彩瞬间吧。\n点击了解更多7.1版本内容：\n>>原神「往冥府的安魂歌」内容专题页<<"
+}
