@@ -1,0 +1,42 @@
+{
+  "cards": [
+    {
+      "activity": null,
+      "activity_id": null,
+      "campaign_id": "candidate-65d2818a595968562b075dec",
+      "campaign_title": "《明日方舟：终末地》× 神舟传媒「镌宇铭星——共赴星海特别活动」",
+      "detail_campaign_id": "campaign-5bc119dd5397df8e-b8a82c6b",
+      "extraction_status": "structured",
+      "ip_name": "明日方舟：终末地",
+      "reasons": [
+        {
+          "action_id": null,
+          "date_only": null,
+          "expected_at": null,
+          "kind": "announcement",
+          "summary": "联动信息：《明日方舟：终末地》× 神舟传媒「镌宇铭星——共赴星海特别活动」\n参与入口：https://endfield.hypergryph.com/activity/voyage-to-the-stars/?source_from=skland&header=0\n规则：管理员写下的ID与星辰同行\n《明日方舟：终末地》「镌宇铭星-共赴星海」合作纪录 PV（下）\n鹰角网络联合神舟传媒携手《明日方舟：终末地》，见证万千理想与足迹奔赴无垠寰宇。星流不熄，苍穹有铭。\n《镌宇铭星——共赴星海特别活动》现已如期发射入轨。管理员，你写下的ID正与星辰同行。\n坐标查询已开放：https://endfield.hypergryph.com/activity/voyage-to-the-stars/?source_from=skland&header=0"
+        }
+      ],
+      "sources": [
+        {
+          "account_id": "3737967211133",
+          "account_name": "明日方舟终末地",
+          "canonical_content_id": "6407030",
+          "content_hash": "53938a7bafb108877fd8c06f108fb3b397dcc8b9c6e4ab99833f771adefc9226",
+          "excerpt": "《明日方舟：终末地》「镌宇铭星-共赴星海」合作纪录 PV（下）\n鹰角网络联合神舟传媒携手《明日方舟：终末地》，见证万千理想与足迹奔赴无垠寰宇。星流不熄，苍穹有铭。\n《镌宇铭星——共赴星海特别活动》现已如期发射入轨。管理员，你写下的ID正与星辰同行。\n坐标查询已开放：https://endfield.hypergryph.com/activity/voyage-to-the-stars/?source_from=skland&header=0",
+          "first_seen_at": "2026-10-22T17:51:58.077110Z",
+          "id": "skland-6407030",
+          "is_official": true,
+          "kind": "skland",
+          "media_hashes": [],
+          "media_urls": [],
+          "published_at": "2026-10-22T04:00:17Z",
+          "summary": null,
+          "updated_at": null,
+          "url": "https://www.skland.com/article?id=6407030"
+        }
+      ]
+    }
+  ],
+  "date": "2026-10-23"
+}

@@ -1,0 +1,181 @@
+{
+  "activities": [
+    {
+      "actions": [
+        {
+          "at": null,
+          "cancelled": false,
+          "end_at": null,
+          "end_condition": null,
+          "end_date": null,
+          "ended": false,
+          "evidence": [
+            {
+              "field_path": "activities[0].actions[0].title",
+              "quote": "《明日方舟：终末地》「镌宇铭星-共赴星海」合作纪录 PV（下）",
+              "source_id": "skland-6407030"
+            }
+          ],
+          "id": "action-87ff33fbb0441edd",
+          "kind": "announcement",
+          "platform": null,
+          "quantity_limit": null,
+          "requires_reservation": null,
+          "requires_rush": null,
+          "rules": null,
+          "scope": null,
+          "start_date": null,
+          "title": "合作纪录PV（下）发布",
+          "url": null
+        },
+        {
+          "at": null,
+          "cancelled": false,
+          "end_at": null,
+          "end_condition": null,
+          "end_date": null,
+          "ended": false,
+          "evidence": [
+            {
+              "field_path": "activities[0].actions[1].title",
+              "quote": "坐标查询已开放",
+              "source_id": "skland-6407030"
+            },
+            {
+              "field_path": "activities[0].actions[1].url",
+              "quote": "https://endfield.hypergryph.com/activity/voyage-to-the-stars/?source_from=skland&header=0",
+              "source_id": "skland-6407030"
+            }
+          ],
+          "id": "action-7ba954a9d4905633",
+          "kind": "other",
+          "platform": null,
+          "quantity_limit": null,
+          "requires_reservation": null,
+          "requires_rush": null,
+          "rules": "管理员写下的ID与星辰同行",
+          "scope": null,
+          "start_date": null,
+          "title": "坐标查询开放",
+          "url": "https://endfield.hypergryph.com/activity/voyage-to-the-stars/?source_from=skland&header=0"
+        }
+      ],
+      "end_at": null,
+      "end_date": null,
+      "evidence": [
+        {
+          "field_path": "activities[0].title",
+          "quote": "《镌宇铭星——共赴星海特别活动》现已如期发射入轨",
+          "source_id": "skland-6407030"
+        },
+        {
+          "field_path": "activities[0].actions[0].title",
+          "quote": "《明日方舟：终末地》「镌宇铭星-共赴星海」合作纪录 PV（下）",
+          "source_id": "skland-6407030"
+        },
+        {
+          "field_path": "activities[0].actions[1].title",
+          "quote": "坐标查询已开放",
+          "source_id": "skland-6407030"
+        },
+        {
+          "field_path": "activities[0].actions[1].url",
+          "quote": "https://endfield.hypergryph.com/activity/voyage-to-the-stars/?source_from=skland&header=0",
+          "source_id": "skland-6407030"
+        }
+      ],
+      "id": "activity-0ffe5b96b6558358",
+      "kind": "online",
+      "related_offers": null,
+      "rules": null,
+      "start_at": null,
+      "start_date": null,
+      "status": "details_pending",
+      "title": "镌宇铭星——共赴星海特别活动",
+      "uncertainties": [
+        "活动具体起止时间未说明。",
+        "“现已如期发射入轨”指活动已上线，未说明结束。"
+      ],
+      "venues": []
+    }
+  ],
+  "activity_redirects": {},
+  "announced_at": "2026-10-22T04:00:17Z",
+  "fact_provenance": {
+    "activities.activity-0ffe5b96b6558358.actions.action-7ba954a9d4905633.title": {
+      "content_hash": "53938a7bafb108877fd8c06f108fb3b397dcc8b9c6e4ab99833f771adefc9226",
+      "observation_id": "skland-6407030",
+      "published_at": "2026-10-22T04:00:17Z",
+      "quote": "坐标查询已开放",
+      "source_id": "skland-6407030"
+    },
+    "activities.activity-0ffe5b96b6558358.actions.action-7ba954a9d4905633.url": {
+      "content_hash": "53938a7bafb108877fd8c06f108fb3b397dcc8b9c6e4ab99833f771adefc9226",
+      "observation_id": "skland-6407030",
+      "published_at": "2026-10-22T04:00:17Z",
+      "quote": "https://endfield.hypergryph.com/activity/voyage-to-the-stars/?source_from=skland&header=0",
+      "source_id": "skland-6407030"
+    },
+    "activities.activity-0ffe5b96b6558358.actions.action-87ff33fbb0441edd.title": {
+      "content_hash": "53938a7bafb108877fd8c06f108fb3b397dcc8b9c6e4ab99833f771adefc9226",
+      "observation_id": "skland-6407030",
+      "published_at": "2026-10-22T04:00:17Z",
+      "quote": "《明日方舟：终末地》「镌宇铭星-共赴星海」合作纪录 PV（下）",
+      "source_id": "skland-6407030"
+    },
+    "activities.activity-0ffe5b96b6558358.title": {
+      "content_hash": "53938a7bafb108877fd8c06f108fb3b397dcc8b9c6e4ab99833f771adefc9226",
+      "observation_id": "skland-6407030",
+      "published_at": "2026-10-22T04:00:17Z",
+      "quote": "《镌宇铭星——共赴星海特别活动》现已如期发射入轨",
+      "source_id": "skland-6407030"
+    },
+    "partner": {
+      "content_hash": "53938a7bafb108877fd8c06f108fb3b397dcc8b9c6e4ab99833f771adefc9226",
+      "observation_id": "skland-6407030",
+      "published_at": "2026-10-22T04:00:17Z",
+      "quote": "鹰角网络联合神舟传媒携手《明日方舟：终末地》",
+      "source_id": "skland-6407030"
+    },
+    "title": {
+      "content_hash": "53938a7bafb108877fd8c06f108fb3b397dcc8b9c6e4ab99833f771adefc9226",
+      "observation_id": "skland-6407030",
+      "published_at": "2026-10-22T04:00:17Z",
+      "quote": "《镌宇铭星——共赴星海特别活动》",
+      "source_id": "skland-6407030"
+    }
+  },
+  "first_seen_at": "2026-10-22T17:51:58.077110Z",
+  "id": "campaign-5bc119dd5397df8e-b8a82c6b",
+  "ip_name": "明日方舟：终末地",
+  "ip_slug": "arknights-endfield",
+  "partner": "神舟传媒",
+  "redirected_to": null,
+  "revision": 1,
+  "sources": [
+    {
+      "account_id": "3737967211133",
+      "account_name": "明日方舟终末地",
+      "canonical_content_id": "6407030",
+      "content_hash": "53938a7bafb108877fd8c06f108fb3b397dcc8b9c6e4ab99833f771adefc9226",
+      "excerpt": "《明日方舟：终末地》「镌宇铭星-共赴星海」合作纪录 PV（下）\n鹰角网络联合神舟传媒携手《明日方舟：终末地》，见证万千理想与足迹奔赴无垠寰宇。星流不熄，苍穹有铭。\n《镌宇铭星——共赴星海特别活动》现已如期发射入轨。管理员，你写下的ID正与星辰同行。\n坐标查询已开放：https://endfield.hypergryph.com/activity/voyage-to-the-stars/?source_from=skland&header=0",
+      "first_seen_at": "2026-10-22T17:51:58.077110Z",
+      "id": "skland-6407030",
+      "is_official": true,
+      "kind": "skland",
+      "media_hashes": [
+        "08bbe75521682504233c9679594288fb3e6980203163245ddc960e458d51e428"
+      ],
+      "media_urls": [
+        "https://bbs.hycdn.cn/image/common/20261022/113/6ada2ae8a0a34b5367ae48ef_65de0095.webp"
+      ],
+      "published_at": "2026-10-22T04:00:17Z",
+      "summary": "发布《明日方舟：终末地》与神舟传媒合作纪录PV（下），并称「镌宇铭星——共赴星海特别活动」已发射入轨，开放坐标查询。",
+      "updated_at": null,
+      "url": "https://www.skland.com/article?id=6407030"
+    }
+  ],
+  "status": "details_pending",
+  "title": "《明日方舟：终末地》× 神舟传媒「镌宇铭星——共赴星海特别活动」",
+  "updated_at": "2026-10-22T17:51:58.077110Z"
+}
