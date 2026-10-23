@@ -48,9 +48,9 @@ body.viewer-open{overflow:hidden}
 #image-viewer .viewer-arrow{position:absolute;top:50%;transform:translateY(-50%);z-index:2;width:52px;height:52px;background:rgba(20,22,25,.5)}#image-viewer .viewer-arrow:hover,#image-viewer #viewer-close:hover{background:rgba(20,22,25,.85)}#image-viewer .viewer-arrow svg{width:28px;height:28px}
 #image-viewer #viewer-close{position:absolute;top:16px;right:16px;z-index:3;width:48px;height:48px;background:rgba(20,22,25,.65)}
 #viewer-prev{left:22px}#viewer-next{right:22px}#viewer-zoom[aria-pressed=true] .zoom-plus{display:none}
-.viewer-stage{position:absolute;inset:24px 64px 112px;overflow:auto;text-align:center;overscroll-behavior:contain;scrollbar-width:thin;scrollbar-color:#5e636b transparent}
-#viewer-image{display:block;width:100%;height:100%;object-fit:contain;margin:auto;cursor:zoom-in}
-.viewer-stage.original #viewer-image{width:auto;height:auto;max-width:none;max-height:none;margin:0 auto;cursor:zoom-out}
+.viewer-stage{position:absolute;inset:24px 64px 112px;display:flex;overflow:auto;text-align:center;overscroll-behavior:contain;scrollbar-width:thin;scrollbar-color:#5e636b transparent}
+#viewer-image{display:block;flex:none;width:auto;height:auto;max-width:100%;max-height:100%;margin:auto;cursor:zoom-in}
+.viewer-stage.original #viewer-image{max-width:none;max-height:none;cursor:zoom-out}
 #viewer-status{color:#c5c8cc;padding:24px}.viewer-footer{position:absolute;inset:auto 72px 80px;text-align:center;pointer-events:none}
 #viewer-caption{margin:0;color:#eee;font-size:12px;line-height:1.5;text-shadow:0 1px 4px #000}.viewer-hint{display:none}
 @media(max-width:600px){main{padding:16px 14px 40px}.card,#activities>section,#sources>section{padding:16px}h1{font-size:25px}.gallery{grid-template-columns:repeat(2,minmax(0,1fr))}.thumbnail{height:150px}.viewer-toolbar{bottom:max(16px,env(safe-area-inset-bottom))}.viewer-stage{inset:64px 18px 108px}#image-viewer .viewer-arrow{width:40px;height:40px}#viewer-prev{left:8px}#viewer-next{right:8px}#image-viewer #viewer-close{top:10px;right:10px;width:44px;height:44px}.viewer-footer{left:16px;right:16px;bottom:78px}}
@@ -192,7 +192,7 @@ const viewer=document.getElementById('image-viewer'), viewerImage=document.getEl
 const viewerStage=viewer.querySelector('.viewer-stage'), zoom=document.getElementById('viewer-zoom');
 let galleryItems=[], galleryIndex=0, returnFocus=null;
 function updateScale(){
- const scale=viewerStage.classList.contains('original')?1:Math.min(viewerStage.clientWidth/viewerImage.naturalWidth,viewerStage.clientHeight/viewerImage.naturalHeight);
+ const scale=viewerImage.getBoundingClientRect().width/viewerImage.naturalWidth;
  document.getElementById('viewer-scale').textContent=Number.isFinite(scale)&&scale>0?Math.round(scale*100)+'%':'';
 }
 function setOriginal(original){
