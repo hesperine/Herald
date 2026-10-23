@@ -285,119 +285,6 @@
       "activity": {
         "actions": [
           {
-            "at": "2026-10-24T04:00:00+08:00",
-            "cancelled": false,
-            "end_at": "2026-11-21T03:59:00+08:00",
-            "end_condition": null,
-            "end_date": null,
-            "ended": false,
-            "evidence": [],
-            "id": "action-03bd746e193f8780",
-            "kind": "sale_open",
-            "platform": null,
-            "quantity_limit": null,
-            "requires_reservation": null,
-            "requires_rush": null,
-            "rules": null,
-            "scope": "时装商店",
-            "start_date": null,
-            "title": "【罗德岛风尚回顾】限时开启",
-            "url": null
-          }
-        ],
-        "end_at": "2026-11-21T03:59:00+08:00",
-        "end_date": null,
-        "evidence": [
-          {
-            "field_path": "activities[5].rules",
-            "quote": "【错位巡礼系列 - 沉思之庭 - 赫德雷】、【错位巡礼系列 - 倾听 - 温蒂】等干员时装将在时装商店复刻上架并限时贩售",
-            "source_id": "website-arknights-official-1454"
-          }
-        ],
-        "id": "activity-3aafc3831b8e637f",
-        "kind": "merchandise",
-        "related_offers": null,
-        "rules": "【错位巡礼系列 - 沉思之庭 - 赫德雷】、【错位巡礼系列 - 倾听 - 温蒂】等干员时装将在时装商店复刻上架并限时贩售",
-        "start_at": "2026-10-24T04:00:00+08:00",
-        "start_date": null,
-        "status": "upcoming",
-        "title": "【罗德岛风尚回顾】限时开启",
-        "uncertainties": [],
-        "venues": []
-      },
-      "campaign_id": "campaign-354e1e728907e326-2cc2bdfc",
-      "campaign_title": "《明日方舟》× 国家图书馆「恒远津梁」",
-      "ip_name": "明日方舟",
-      "next": {
-        "at": "2026-10-24T04:00:00+08:00",
-        "date": null,
-        "title": "【罗德岛风尚回顾】限时开启"
-      },
-      "url": "event.html?id=campaign-354e1e728907e326-2cc2bdfc#activity-activity-3aafc3831b8e637f"
-    },
-    {
-      "activity": {
-        "actions": [
-          {
-            "at": "2026-10-24T04:00:00+08:00",
-            "cancelled": false,
-            "end_at": "2026-11-21T03:59:00+08:00",
-            "end_condition": null,
-            "end_date": null,
-            "ended": false,
-            "evidence": [],
-            "id": "action-3806733594c9dcae",
-            "kind": "sale_open",
-            "platform": null,
-            "quantity_limit": null,
-            "requires_reservation": null,
-            "requires_rush": null,
-            "rules": null,
-            "scope": "时装商店",
-            "start_date": null,
-            "title": "复刻时装限时上架",
-            "url": null
-          }
-        ],
-        "end_at": "2026-11-21T03:59:00+08:00",
-        "end_date": null,
-        "evidence": [
-          {
-            "field_path": "activities[4].start_at",
-            "quote": "活动时间：10月24日 04:00 - 11月21日 03:59",
-            "source_id": "website-arknights-official-1454"
-          },
-          {
-            "field_path": "activities[4].end_at",
-            "quote": "活动时间：10月24日 04:00 - 11月21日 03:59",
-            "source_id": "website-arknights-official-1454"
-          }
-        ],
-        "id": "activity-48146dcb6792b14e",
-        "kind": "merchandise",
-        "related_offers": null,
-        "rules": "活动期间以下干员时装将在时装商店上架并限时贩售",
-        "start_at": "2026-10-24T04:00:00+08:00",
-        "start_date": null,
-        "status": "upcoming",
-        "title": "复刻时装限时上架",
-        "uncertainties": [],
-        "venues": []
-      },
-      "campaign_id": "campaign-354e1e728907e326-2cc2bdfc",
-      "campaign_title": "《明日方舟》× 国家图书馆「恒远津梁」",
-      "ip_name": "明日方舟",
-      "next": {
-        "at": "2026-10-24T04:00:00+08:00",
-        "date": null,
-        "title": "复刻时装限时上架"
-      },
-      "url": "event.html?id=campaign-354e1e728907e326-2cc2bdfc#activity-activity-48146dcb6792b14e"
-    },
-    {
-      "activity": {
-        "actions": [
-          {
             "at": "2026-10-26T04:00:00+08:00",
             "cancelled": false,
             "end_at": "2027-01-25T03:59:00+08:00",
@@ -787,6 +674,119 @@
         "title": "礼包限时上架截止"
       },
       "url": "event.html?id=campaign-354e1e728907e326-2cc2bdfc#activity-activity-dbb1db2446afc1b7"
+    },
+    {
+      "activity": {
+        "actions": [
+          {
+            "at": "2026-10-24T04:00:00+08:00",
+            "cancelled": false,
+            "end_at": "2026-11-21T03:59:00+08:00",
+            "end_condition": null,
+            "end_date": null,
+            "ended": false,
+            "evidence": [],
+            "id": "action-03bd746e193f8780",
+            "kind": "sale_open",
+            "platform": null,
+            "quantity_limit": null,
+            "requires_reservation": null,
+            "requires_rush": null,
+            "rules": null,
+            "scope": "时装商店",
+            "start_date": null,
+            "title": "【罗德岛风尚回顾】限时开启",
+            "url": null
+          }
+        ],
+        "end_at": "2026-11-21T03:59:00+08:00",
+        "end_date": null,
+        "evidence": [
+          {
+            "field_path": "activities[5].rules",
+            "quote": "【错位巡礼系列 - 沉思之庭 - 赫德雷】、【错位巡礼系列 - 倾听 - 温蒂】等干员时装将在时装商店复刻上架并限时贩售",
+            "source_id": "website-arknights-official-1454"
+          }
+        ],
+        "id": "activity-3aafc3831b8e637f",
+        "kind": "merchandise",
+        "related_offers": null,
+        "rules": "【错位巡礼系列 - 沉思之庭 - 赫德雷】、【错位巡礼系列 - 倾听 - 温蒂】等干员时装将在时装商店复刻上架并限时贩售",
+        "start_at": "2026-10-24T04:00:00+08:00",
+        "start_date": null,
+        "status": "upcoming",
+        "title": "【罗德岛风尚回顾】限时开启",
+        "uncertainties": [],
+        "venues": []
+      },
+      "campaign_id": "campaign-354e1e728907e326-2cc2bdfc",
+      "campaign_title": "《明日方舟》× 国家图书馆「恒远津梁」",
+      "ip_name": "明日方舟",
+      "next": {
+        "at": "2026-11-21T03:59:00+08:00",
+        "date": null,
+        "title": "【罗德岛风尚回顾】限时开启截止"
+      },
+      "url": "event.html?id=campaign-354e1e728907e326-2cc2bdfc#activity-activity-3aafc3831b8e637f"
+    },
+    {
+      "activity": {
+        "actions": [
+          {
+            "at": "2026-10-24T04:00:00+08:00",
+            "cancelled": false,
+            "end_at": "2026-11-21T03:59:00+08:00",
+            "end_condition": null,
+            "end_date": null,
+            "ended": false,
+            "evidence": [],
+            "id": "action-3806733594c9dcae",
+            "kind": "sale_open",
+            "platform": null,
+            "quantity_limit": null,
+            "requires_reservation": null,
+            "requires_rush": null,
+            "rules": null,
+            "scope": "时装商店",
+            "start_date": null,
+            "title": "复刻时装限时上架",
+            "url": null
+          }
+        ],
+        "end_at": "2026-11-21T03:59:00+08:00",
+        "end_date": null,
+        "evidence": [
+          {
+            "field_path": "activities[4].start_at",
+            "quote": "活动时间：10月24日 04:00 - 11月21日 03:59",
+            "source_id": "website-arknights-official-1454"
+          },
+          {
+            "field_path": "activities[4].end_at",
+            "quote": "活动时间：10月24日 04:00 - 11月21日 03:59",
+            "source_id": "website-arknights-official-1454"
+          }
+        ],
+        "id": "activity-48146dcb6792b14e",
+        "kind": "merchandise",
+        "related_offers": null,
+        "rules": "活动期间以下干员时装将在时装商店上架并限时贩售",
+        "start_at": "2026-10-24T04:00:00+08:00",
+        "start_date": null,
+        "status": "upcoming",
+        "title": "复刻时装限时上架",
+        "uncertainties": [],
+        "venues": []
+      },
+      "campaign_id": "campaign-354e1e728907e326-2cc2bdfc",
+      "campaign_title": "《明日方舟》× 国家图书馆「恒远津梁」",
+      "ip_name": "明日方舟",
+      "next": {
+        "at": "2026-11-21T03:59:00+08:00",
+        "date": null,
+        "title": "复刻时装限时上架截止"
+      },
+      "url": "event.html?id=campaign-354e1e728907e326-2cc2bdfc#activity-activity-48146dcb6792b14e"
     },
     {
       "activity": {
@@ -1507,5 +1507,5 @@
       "url": "event.html?id=campaign-cdc53ffc7863c84c-a0db4ca1#activity-activity-dfd55f4c31903c72"
     }
   ],
-  "generated_at": "2026-10-24T02:52:44.889461+08:00"
+  "generated_at": "2026-10-24T05:57:41.050859+08:00"
 }
