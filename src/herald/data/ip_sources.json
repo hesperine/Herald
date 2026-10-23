@@ -9,6 +9,12 @@
         "account_name": "原神",
         "account_id": "75276539",
         "url": "https://www.miyoushe.com/ys/accountCenter/postList?id=75276539"
+      },
+      {
+        "kind": "website",
+        "account_name": "原神官方公告",
+        "account_id": "genshin-impact-official",
+        "url": "https://ys.mihoyo.com/main/news"
       }
     ]
   },
@@ -19,9 +25,21 @@
     "sources": [
       {
         "kind": "skland",
+        "account_name": "明日方舟Arknights",
+        "account_id": "7779816949641",
+        "url": "https://www.skland.com/profile?id=7779816949641"
+      },
+      {
+        "kind": "skland",
         "account_name": "明日方舟朝陇山",
         "account_id": "6168723566526",
         "url": "https://www.skland.com/profile?id=6168723566526"
+      },
+      {
+        "kind": "website",
+        "account_name": "明日方舟官方公告",
+        "account_id": "arknights-official",
+        "url": "https://ak.hypergryph.com/news"
       }
     ]
   },
@@ -67,6 +85,25 @@
         "account_name": "崩坏星穹铁道",
         "account_id": "288909600",
         "url": "https://www.miyoushe.com/sr/accountCenter/postList?id=288909600"
+      },
+      {
+        "kind": "website",
+        "account_name": "崩坏：星穹铁道官方公告",
+        "account_id": "honkai-star-rail-official",
+        "url": "https://sr.mihoyo.com/news"
+      }
+    ]
+  },
+  {
+    "slug": "zenless-zone-zero",
+    "name": "绝区零",
+    "aliases": ["Zenless Zone Zero", "Zenless", "ZZZ"],
+    "sources": [
+      {
+        "kind": "website",
+        "account_name": "绝区零官方公告",
+        "account_id": "zenless-zone-zero-official",
+        "url": "https://zzz.mihoyo.com/news"
       }
     ]
   }

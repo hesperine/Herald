@@ -67,6 +67,78 @@ class CandidateFilterTests(unittest.TestCase):
         self.assertTrue(decision.relevant)
         self.assertIn("合作", decision.matched_terms)
 
+    def test_national_library_merchandise_without_collaboration_keyword(self) -> None:
+        decision = self.filter.evaluate(
+            observation(
+                "〓朝陇山26 Oct.｜余音向海〓上新\n"
+                "【满赠特典】\n"
+                "单笔订单下单“余音向海、明日方舟×国家图书馆「恒远津梁」系列”"
+                "任意商品，即赠 特典明信片-昨日海 一张。"
+            ),
+            ip_names=["明日方舟", "Arknights", "方舟"],
+            from_official_ip_account=True,
+        )
+
+        self.assertTrue(decision.relevant)
+        self.assertIn("明日方舟×国家图书馆", decision.matched_terms)
+
+    def test_named_crossover_supports_wrappers_aliases_and_both_orders(self) -> None:
+        for text in (
+            "《明日方舟》 × @国家图书馆「恒远津梁」系列上新",
+            "【国家图书馆】×《明日方舟》系列上新",
+            "明日方舟x国家图书馆「恒远津梁」系列上新",
+            "国家图书馆X明日方舟「恒远津梁」系列上新",
+            "Arknights × National Library of China",
+            "Sanrio x ARKNIGHTS",
+            "《明日方舟》 X 《女神异闻录3 Reload》系列周边",
+        ):
+            with self.subTest(text=text):
+                decision = self.filter.evaluate(
+                    observation(text),
+                    ip_names=["明日方舟", "Arknights"],
+                    from_official_ip_account=True,
+                )
+                self.assertTrue(decision.relevant)
+
+    def test_named_crossover_must_pair_the_configured_ip(self) -> None:
+        for official in (False, True):
+            with self.subTest(official=official):
+                paired = self.filter.evaluate(
+                    observation("国家图书馆×明日方舟「恒远津梁」系列上新"),
+                    ip_names=["明日方舟"],
+                    from_official_ip_account=official,
+                )
+                unrelated = self.filter.evaluate(
+                    observation("原神版本更新。国家图书馆×明日方舟「恒远津梁」系列上新"),
+                    ip_names=["原神"],
+                    from_official_ip_account=official,
+                )
+                self.assertTrue(paired.relevant)
+                self.assertFalse(unrelated.relevant)
+
+    def test_quantity_and_incomplete_pairs_are_not_crossover_signals(self) -> None:
+        for text in (
+            "明日方舟维护补偿：合成玉×800，龙门币×10000。",
+            "明日方舟×800份",
+            "800份×明日方舟",
+            "Arknights x 2",
+            "2 x Arknights",
+            "明日方舟×",
+            "×明日方舟",
+            "明日方舟×\n国家图书馆",
+            "Arknights Xbox版本预告",
+            "NotArknights × National Library of China",
+            "National Library of China × ArknightsExtra",
+            "明日方舟新版本预约，画布尺寸1920×1080。",
+        ):
+            with self.subTest(text=text):
+                decision = self.filter.evaluate(
+                    observation(text),
+                    ip_names=["明日方舟", "Arknights"],
+                    from_official_ip_account=True,
+                )
+                self.assertFalse(decision.relevant)
+
     def test_non_official_source_must_explicitly_name_the_ip(self) -> None:
         without_ip = self.filter.evaluate(
             observation("全新联动即将开启"),

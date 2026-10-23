@@ -2,6 +2,7 @@
 
 from __future__ import annotations
 
+import re
 from dataclasses import dataclass
 
 from .models import SourceObservation
@@ -36,6 +37,32 @@ OFFLINE_EVENT_TERMS = {
 }
 
 
+def _named_crossovers(material: str, ip_names: list[str]) -> set[str]:
+    """Recognize same-line name pairs without treating quantities as partners."""
+    decorations = re.escape(" \t\u3000《》「」『』【】（）()[]“”‘’\"'@")
+    edge = rf"[{decorations}]*"
+    # A partner must start with a letter; the left boundary also excludes
+    # matching only the unit suffix of a quantity such as '800份'.
+    partner = r"[^\W\d_][\w·・&.'’\-]*"
+    space = r"[ \t\u3000]"
+    separator = (
+        rf"(?:{space}*×{space}*|{space}+[xｘ]{space}+|"
+        r"(?<=[\u3400-\u9fff])[xｘ](?=[\u3400-\u9fff]))"
+    )
+    matches: set[str] = set()
+    for name in ip_names:
+        if not name.strip():
+            continue
+        escaped_name = re.escape(name.strip().casefold())
+        patterns = (
+            rf"(?<![a-z0-9_]){escaped_name}{edge}{separator}{edge}{partner}",
+            rf"(?<!\w){partner}{edge}{separator}{edge}{escaped_name}(?![a-z0-9_])",
+        )
+        for pattern in patterns:
+            matches.update(match.group() for match in re.finditer(pattern, material))
+    return matches
+
+
 @dataclass(frozen=True, slots=True)
 class CandidateDecision:
     relevant: bool
@@ -56,7 +83,8 @@ class CandidateFilter:
             [observation.text, *observation.extracted_media_text]
         ).casefold()
         matched_collaboration = sorted(
-            term for term in COLLABORATION_TERMS | OFFLINE_EVENT_TERMS if term.casefold() in material
+            {term for term in COLLABORATION_TERMS | OFFLINE_EVENT_TERMS if term.casefold() in material}
+            | _named_crossovers(material, ip_names)
         )
         matched_actions = sorted(term for term in ACTION_TERMS if term.casefold() in material)
         matched_ips = sorted(name for name in ip_names if name.casefold() in material)

@@ -7,11 +7,13 @@ import unittest
 from contextlib import redirect_stdout
 from io import StringIO
 from pathlib import Path
-from unittest.mock import patch
+from types import SimpleNamespace
+from unittest.mock import AsyncMock, patch
 
 import httpx
 
-from herald.cli import _make_email_sender, _make_provider, _parse_now, _parser, main
+from herald.cli import _make_email_sender, _make_provider, _parse_now, _parser, _run, main
+from herald.sources.website import WebsiteTimelineClient
 from herald.runner import RunPhase
 from herald.config import load_settings
 
@@ -137,6 +139,32 @@ class CliTests(unittest.TestCase):
             report = json.loads(reports[0].read_text('utf8'))
             self.assertEqual(report['started_at'], report['finished_at'])
             self.assertTrue((page / 'data/reminders/2026-08-30.json').exists())
+
+
+class CliSourceWiringTests(unittest.IsolatedAsyncioTestCase):
+    async def test_official_news_adapter_is_wired_into_production_runner(self):
+        clients = []
+
+        class LocalClient:
+            def __init__(self, **kwargs):
+                clients.append(self)
+
+            async def __aenter__(self):
+                return self
+
+            async def __aexit__(self, *args):
+                return None
+
+        result = SimpleNamespace(report=SimpleNamespace(model_dump=lambda **kwargs: {}),
+                                 pipeline_results=(), published_campaigns=0)
+        runner = SimpleNamespace(run=AsyncMock(return_value=result))
+        with patch("herald.cli.load_settings", return_value=load_settings({"WATCH_IPS": "原神"})), \
+             patch("herald.cli.httpx.AsyncClient", LocalClient), \
+             patch("herald.cli.DailyRunner", return_value=runner):
+            await _run(_parser().parse_args(["--phase", "fetch"]))
+        adapter = runner.run.call_args.kwargs.get("website_client")
+        self.assertIsInstance(adapter, WebsiteTimelineClient)
+        self.assertIs(adapter.client, clients[0])
 
 
 if __name__ == "__main__":

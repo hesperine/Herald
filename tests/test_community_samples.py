@@ -26,7 +26,9 @@ class CommunitySampleTests(unittest.IsolatedAsyncioTestCase):
             await self.client.get('https://bbs-api.miyoushe.com/post/wapi/getPostFull?post_id=1')
             await self._fetch_detail(post_id='1')
         item = FetchedObservation(observation=make_observation('1', text='联动公告', account='official'))
-        registry = IpRegistry([IpRegistry.load_builtin().entries[0]])
+        ip = IpRegistry.load_builtin().entries[0].model_copy(deep=True)
+        ip.sources = [source for source in ip.sources if source.kind.value == 'miyoushe']
+        registry = IpRegistry([ip])
         with tempfile.TemporaryDirectory() as temp:
             root = Path(temp) / 'capture'
             with patch('herald.community_samples.httpx.AsyncClient', side_effect=factory), patch('herald.community_samples.asyncio.sleep', new=AsyncMock()), patch('herald.community_samples.IpRegistry.load_builtin', return_value=registry), patch('herald.community_samples.MiyousheTimelineClient.fetch_account', new=fetch), patch('herald.community_samples.MiyousheTimelineClient._fetch_detail', new=AsyncMock(return_value=item)):
@@ -38,3 +40,29 @@ class CommunitySampleTests(unittest.IsolatedAsyncioTestCase):
             self.assertNotIn('private-device-token', paths[0].read_text(encoding='utf-8'))
             output = json.loads(next(root.rglob('observations.json')).read_text(encoding='utf-8'))
             self.assertEqual(output['observations'][0]['text'], '联动公告')
+
+    async def test_website_samples_use_the_production_website_adapter(self):
+        original_client = httpx.AsyncClient
+        def factory(**kwargs):
+            return original_client(transport=httpx.MockTransport(
+                lambda request: httpx.Response(200, json={'public': '官网公告'})), **kwargs)
+        async def fetch(self, **kwargs):
+            self.last_fetch_complete = True
+            await self.client.get('https://act-api-takumi-static.mihoyo.com/content_v2_user/app/16471662a82d418a/getContent?iInfoId=1')
+            await self._fetch_detail(item={}, account_id=kwargs['account_id'],
+                account_name=kwargs['account_name'], first_seen_at=kwargs['first_seen_at'])
+        item = FetchedObservation(observation=make_observation('web-1', text='原神联动公告', account='official'))
+        ip = IpRegistry.load_builtin().entries[0].model_copy(deep=True)
+        ip.sources = [source for source in ip.sources if source.kind.value == 'website']
+        with tempfile.TemporaryDirectory() as temp:
+            root = Path(temp) / 'capture'
+            with patch('herald.community_samples.httpx.AsyncClient', side_effect=factory), \
+                 patch('herald.community_samples.IpRegistry.load_builtin', return_value=IpRegistry([ip])), \
+                 patch('herald.sources.website.WebsiteTimelineClient.fetch_account', new=fetch), \
+                 patch('herald.sources.website.WebsiteTimelineClient._fetch_detail', new=AsyncMock(return_value=item)):
+                await collect(root, BASE, 2)
+            records = json.loads(next(root.rglob('raw-responses.json')).read_text('utf-8'))
+            self.assertEqual(len(records), 1)
+            self.assertTrue(records[0]['path'].endswith('/getContent'))
+            manifest = json.loads((root / 'manifest.json').read_text('utf-8'))
+            self.assertEqual(manifest['sources'][0]['status'], 'complete')

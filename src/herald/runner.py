@@ -23,6 +23,7 @@ from .sources.base import FetchBatch, SourceAccessError
 from .sources.miyoushe import MiyousheCursor
 from .sources.skland import SklandCursor
 from .sources.weibo import WeiboCursor
+from .sources.website import WebsiteCursor
 from .storage import StateStore
 from .compatibility import repair_state
 
@@ -65,6 +66,13 @@ class SklandAccountFetcher(Protocol):
         published_since: datetime,
         max_pages: int,
     ) -> FetchBatch[SklandCursor]: ...
+
+
+class WebsiteAccountFetcher(Protocol):
+    async def fetch_account(
+        self, *, account_id: str, account_name: str, cursor: WebsiteCursor | None,
+        first_seen_at: datetime, published_since: datetime, max_pages: int,
+    ) -> FetchBatch[WebsiteCursor]: ...
 
 
 class MediaCache(Protocol):
@@ -117,6 +125,7 @@ class DailyRunner:
         media_cache: MediaCache | None = None,
         miyoushe_client: MiyousheAccountFetcher | None = None,
         skland_client: SklandAccountFetcher | None = None,
+        website_client: WebsiteAccountFetcher | None = None,
         phase: RunPhase = RunPhase.FULL,
         final_retry: bool = False,
     ) -> DailyRunResult:
@@ -176,6 +185,7 @@ class DailyRunner:
                         weibo_client=weibo_client,
                         miyoushe_client=miyoushe_client,
                         skland_client=skland_client,
+                        website_client=website_client,
                         warnings=warnings,
                         fetched_cursors=fetched_cursors,
                     )
@@ -320,12 +330,13 @@ class DailyRunner:
         weibo_client: WeiboAccountFetcher | None,
         miyoushe_client: MiyousheAccountFetcher | None,
         skland_client: SklandAccountFetcher | None,
+        website_client: WebsiteAccountFetcher | None,
         warnings: list[str],
         fetched_cursors: dict,
         timezone_info: tzinfo,
         initial_lookback_days: int,
     ) -> tuple[list[SourceObservation], set[str]]:
-        cursor_type: type[WeiboCursor | MiyousheCursor | SklandCursor]
+        cursor_type: type[WeiboCursor | MiyousheCursor | SklandCursor | WebsiteCursor]
         client: object | None
         if source.kind is SourceKind.WEIBO:
             cursor_type = WeiboCursor
@@ -336,6 +347,9 @@ class DailyRunner:
         elif source.kind is SourceKind.SKLAND:
             cursor_type = SklandCursor
             client = skland_client
+        elif source.kind is SourceKind.WEBSITE:
+            cursor_type = WebsiteCursor
+            client = website_client
         else:
             warnings.append(
                 f"unsupported source kind for {ip.name}: {source.kind.value}"
@@ -349,7 +363,7 @@ class DailyRunner:
 
         source_id = f"{source.kind.value}-{source.account_id}"
         cursor_payload = store.load_source_cursor(source_id)
-        cursor: WeiboCursor | MiyousheCursor | SklandCursor | None = None
+        cursor: WeiboCursor | MiyousheCursor | SklandCursor | WebsiteCursor | None = None
         has_valid_cursor = False
         if cursor_payload is not None:
             try:

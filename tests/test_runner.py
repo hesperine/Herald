@@ -30,6 +30,7 @@ from herald.sources.base import FetchBatch, FetchedObservation
 from herald.sources.miyoushe import MiyousheCursor
 from herald.sources.skland import SklandCursor
 from herald.sources.weibo import WeiboCursor
+from herald.sources.website import WebsiteCursor
 from herald.storage import StateStore
 
 
@@ -259,6 +260,12 @@ class DailyRunnerTests(unittest.IsolatedAsyncioTestCase):
                             account_id="3737967211133",
                             url="https://www.skland.com/profile?id=3737967211133",
                         ),
+                        RegisteredSource(
+                            kind=SourceKind.WEBSITE,
+                            account_name="原神官方公告",
+                            account_id="genshin-impact-official",
+                            url="https://ys.mihoyo.com/main/news",
+                        ),
                     ],
                 )
             ]
@@ -273,6 +280,10 @@ class DailyRunnerTests(unittest.IsolatedAsyncioTestCase):
         skland_item.source.id = skland_item.id
         skland_item.source.kind = SourceKind.SKLAND
         skland_item.source.url = "https://www.skland.com/article?id=2"
+        website_item = observation().model_copy(deep=True)
+        website_item.id = website_item.source.id = "website-genshin-impact-official-3"
+        website_item.source.kind = SourceKind.WEBSITE
+        website_item.source.url = "https://ys.mihoyo.com/main/news/detail/3"
         miyoushe = FakeAccountClient(
             [
                 FetchBatch(
@@ -289,6 +300,8 @@ class DailyRunnerTests(unittest.IsolatedAsyncioTestCase):
                 )
             ]
         )
+        website = FakeAccountClient([FetchBatch(items=(FetchedObservation(website_item),),
+            cursor=WebsiteCursor(latest_post_id="3"))])
 
         result = await DailyRunner(
             registry=cookie_free_registry, clock=lambda: NOW
@@ -300,16 +313,20 @@ class DailyRunnerTests(unittest.IsolatedAsyncioTestCase):
             weibo_client=None,
             miyoushe_client=miyoushe,
             skland_client=skland,
+            website_client=website,
             provider=None,
             email_sender=None,
         )
 
-        self.assertEqual(result.report.observations, 2)
+        self.assertEqual(result.report.observations, 3)
         self.assertEqual(
             miyoushe.calls[0]["account_url"],
             "https://www.miyoushe.com/ys/accountCenter/postList?id=75276539",
         )
         self.assertNotIn("account_url", skland.calls[0])
+        self.assertEqual(website.calls[0]["account_id"], "genshin-impact-official")
+        self.assertEqual(self.store.load_source_cursor("website-genshin-impact-official"),
+                         {"latest_post_id": "3"})
         self.assertEqual(
             self.store.load_source_cursor("miyoushe-75276539"),
             {"latest_post_id": "1"},

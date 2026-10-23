@@ -19,6 +19,7 @@ from .runner import DailyRunner, RunPhase
 from .sources.miyoushe import MiyousheTimelineClient
 from .sources.skland import SklandTimelineClient
 from .sources.weibo import WeiboTimelineClient
+from .sources.website import WebsiteTimelineClient
 from .storage import StateStore
 
 
@@ -126,6 +127,7 @@ async def _run(args: argparse.Namespace) -> dict[str, object]:
                 weibo_client=WeiboTimelineClient(source_client, cookie=cookie),
                 miyoushe_client=MiyousheTimelineClient(source_client),
                 skland_client=SklandTimelineClient(source_client),
+                website_client=WebsiteTimelineClient(source_client),
                 provider=_make_provider(settings, ai_client),
                 email_sender=_make_email_sender(settings),
                 media_cache=PublicMediaCache(source_client),

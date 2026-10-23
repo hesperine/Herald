@@ -13,10 +13,14 @@ from .cli import _parse_now
 from .registry import IpRegistry
 from .sources.miyoushe import MiyousheTimelineClient
 from .sources.skland import SklandTimelineClient
+from .sources.website import HOYO_SITES, WebsiteTimelineClient
 from .storage import StateStore
 
 
 PUBLIC_PATHS = {'/painter/wapi/userPostList', '/post/wapi/getPostFull', '/web/v2/user/items', '/web/v1/item'}
+PUBLIC_PATHS.update('/content_v2_user/app/' + api.rsplit('/', 1)[-1] + '/' + method
+                    for api, _, _ in HOYO_SITES.values() for method in ('getContentList', 'getContent'))
+PUBLIC_PATHS.add('/api/news')
 
 
 async def collect(directory, since, pages, before=None):
@@ -31,10 +35,14 @@ async def collect(directory, since, pages, before=None):
             output = directory / name
             observations, raw, skipped = [], [], []
             async def before_request(request):
-                if source.kind.value != 'miyoushe':
+                if source.kind.value == 'skland':
                     await asyncio.sleep(1.2)
             async def after_response(response):
-                if response.request.url.path not in PUBLIC_PATHS:
+                path = response.request.url.path
+                article = (source.kind.value == 'website' and source.account_id == 'arknights-official'
+                           and path.startswith('/news/') and path.endswith('.html')
+                           and path[len('/news/'):-len('.html')].isdecimal())
+                if path not in PUBLIC_PATHS and not article:
                     return  # Never record device identity or auth refresh.
                 await response.aread()
                 raw.append({'path': response.request.url.path,
@@ -51,9 +59,13 @@ async def collect(directory, since, pages, before=None):
             class RecordedSkland(SklandTimelineClient):
                 async def _fetch_detail(self, **kwargs):
                     return persist(await super()._fetch_detail(**kwargs))
+            class RecordedWebsite(WebsiteTimelineClient):
+                async def _fetch_detail(self, **kwargs):
+                    return persist(await super()._fetch_detail(**kwargs))
             status = 'incomplete'
             async with httpx.AsyncClient(timeout=35, event_hooks={'request': [before_request], 'response': [after_response]}) as client:
-                adapter = RecordedMiyoushe(client) if source.kind.value == 'miyoushe' else RecordedSkland(client)
+                adapters = {'miyoushe': RecordedMiyoushe, 'skland': RecordedSkland, 'website': RecordedWebsite}
+                adapter = adapters[source.kind.value](client)
                 parameters = dict(account_id=source.account_id, account_name=source.account_name,
                     cursor=None, first_seen_at=datetime.now(timezone.utc), published_since=since,
                     max_pages=pages)

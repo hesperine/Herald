@@ -15,6 +15,7 @@ class IpRegistryTests(unittest.TestCase):
                     "明日方舟",
                     "明日方舟终末地",
                     "崩坏星穹铁道",
+                    "ZZZ",
                 ]
             )
         )
@@ -33,7 +34,8 @@ class IpRegistryTests(unittest.TestCase):
                     "miyoushe",
                     "75276539",
                     "https://www.miyoushe.com/ys/accountCenter/postList?id=75276539",
-                )
+                ),
+                ("website", "genshin-impact-official", "https://ys.mihoyo.com/main/news"),
             ],
         )
         self.assertEqual(
@@ -41,9 +43,15 @@ class IpRegistryTests(unittest.TestCase):
             [
                 (
                     "skland",
+                    "7779816949641",
+                    "https://www.skland.com/profile?id=7779816949641",
+                ),
+                (
+                    "skland",
                     "6168723566526",
                     "https://www.skland.com/profile?id=6168723566526",
-                )
+                ),
+                ("website", "arknights-official", "https://ak.hypergryph.com/news"),
             ],
         )
         self.assertEqual(
@@ -68,9 +76,12 @@ class IpRegistryTests(unittest.TestCase):
                     "miyoushe",
                     "288909600",
                     "https://www.miyoushe.com/sr/accountCenter/postList?id=288909600",
-                )
+                ),
+                ("website", "honkai-star-rail-official", "https://sr.mihoyo.com/news"),
             ],
         )
+        self.assertEqual(sources["zenless-zone-zero"], [
+            ("website", "zenless-zone-zero-official", "https://zzz.mihoyo.com/news")])
 
     def setUp(self) -> None:
         self.registry = IpRegistry.load_builtin()
@@ -108,7 +119,7 @@ class IpRegistryTests(unittest.TestCase):
         self.assertEqual(resolution.unsupported, ["未知IP"])
         sources = resolution.supported[0].sources
         self.assertEqual(
-            [source.account_id for source in sources], ["75276539", "1001"]
+            [source.account_id for source in sources], ["75276539", "genshin-impact-official", "1001"]
         )
         self.assertEqual(sources[-1].kind, "weibo")
 

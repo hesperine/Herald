@@ -27,6 +27,7 @@
 - `config.py`：Variables/Secrets 解析和隐私指纹。
 - `registry.py`、`data/ip_sources.json`：内置 IP 与官方来源。
 - `sources/`：来源适配器。米游社、森空岛和可选微博每天读取最新页，以 `latest_post_id` 做边界；不要把 `next_offset`、`pageToken`、`since_id` 等分页令牌用作增量游标。
+- `sources/website.py`：方舟与米哈游原神、崩铁、绝区零的中国区官网公告；读取完整文字正文，各来源独立保存最新公告 ID，旧置顶不作为最新游标，图片不进入 AI。
 - `dedupe.py`、`merge.py`：来源材料去重与 Campaign 保守合并。
 - `candidate_stage.py`：生产运行与历史测试采集共用的来源去重、CandidateFilter 阶段；不得在采集入口另加内容预筛。
 - `ai.py`、`assembly.py`：公开材料结构化和稳定 ID 组装。
