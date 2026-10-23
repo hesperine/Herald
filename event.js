@@ -13,7 +13,7 @@ const viewer=document.getElementById('image-viewer'), viewerImage=document.getEl
 const viewerStage=viewer.querySelector('.viewer-stage'), zoom=document.getElementById('viewer-zoom');
 let galleryItems=[], galleryIndex=0, returnFocus=null;
 function updateScale(){
- const scale=viewerStage.classList.contains('original')?1:Math.min(viewerStage.clientWidth/viewerImage.naturalWidth,viewerStage.clientHeight/viewerImage.naturalHeight);
+ const scale=viewerImage.getBoundingClientRect().width/viewerImage.naturalWidth;
  document.getElementById('viewer-scale').textContent=Number.isFinite(scale)&&scale>0?Math.round(scale*100)+'%':'';
 }
 function setOriginal(original){

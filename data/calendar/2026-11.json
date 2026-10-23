@@ -10,6 +10,55 @@
         "kind": "event_start",
         "title": "联动开启"
       }
+    ],
+    "2026-11-06": [
+      {
+        "action_id": "action-83b3e676ab0e2564--end",
+        "activity_id": "activity-570c6e42f30e1861",
+        "at": "2026-11-06T03:59:00+08:00",
+        "campaign_id": "campaign-354e1e728907e326-2cc2bdfc",
+        "ip_name": "明日方舟",
+        "kind": "sale_close",
+        "title": "组合包限时上架截止"
+      },
+      {
+        "action_id": "action-113cbbf53c837e30--end",
+        "activity_id": "activity-c435ce9fe3d4b565",
+        "at": "2026-11-06T03:59:00+08:00",
+        "campaign_id": "campaign-354e1e728907e326-2cc2bdfc",
+        "ip_name": "明日方舟",
+        "kind": "sale_close",
+        "title": "新装限时上架截止"
+      },
+      {
+        "action_id": "action-f96b617c7271ceaa--end",
+        "activity_id": "activity-dbb1db2446afc1b7",
+        "at": "2026-11-06T03:59:00+08:00",
+        "campaign_id": "campaign-354e1e728907e326-2cc2bdfc",
+        "ip_name": "明日方舟",
+        "kind": "sale_close",
+        "title": "礼包限时上架截止"
+      }
+    ],
+    "2026-11-21": [
+      {
+        "action_id": "action-3806733594c9dcae--end",
+        "activity_id": "activity-48146dcb6792b14e",
+        "at": "2026-11-21T03:59:00+08:00",
+        "campaign_id": "campaign-354e1e728907e326-2cc2bdfc",
+        "ip_name": "明日方舟",
+        "kind": "sale_close",
+        "title": "复刻时装限时上架截止"
+      },
+      {
+        "action_id": "action-03bd746e193f8780--end",
+        "activity_id": "activity-3aafc3831b8e637f",
+        "at": "2026-11-21T03:59:00+08:00",
+        "campaign_id": "campaign-354e1e728907e326-2cc2bdfc",
+        "ip_name": "明日方舟",
+        "kind": "sale_close",
+        "title": "【罗德岛风尚回顾】限时开启截止"
+      }
     ]
   }
 }

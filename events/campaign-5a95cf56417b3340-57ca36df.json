@@ -1,0 +1,79 @@
+{
+  "activities": [],
+  "activity_redirects": {},
+  "announced_at": "2026-10-23T03:00:13Z",
+  "fact_provenance": {
+    "partner": {
+      "content_hash": "e935f938be45e2850e997bb061682a8146a79ba1959953499913831d25a0d363",
+      "observation_id": "skland-6409184",
+      "published_at": "2026-10-23T03:00:13Z",
+      "quote": "终末地携手八达岭长城发起的「关塞万里，环带一系」联动活动即将开启",
+      "source_id": "skland-6409184"
+    },
+    "title": {
+      "content_hash": "e935f938be45e2850e997bb061682a8146a79ba1959953499913831d25a0d363",
+      "observation_id": "skland-6409184",
+      "published_at": "2026-10-23T03:00:13Z",
+      "quote": "《明日方舟：终末地》×八达岭长城 联动活动介绍",
+      "source_id": "skland-6409184"
+    }
+  },
+  "first_seen_at": "2026-10-23T17:44:25.376551Z",
+  "id": "campaign-5a95cf56417b3340-57ca36df",
+  "ip_name": "明日方舟：终末地",
+  "ip_slug": "arknights-endfield",
+  "media": [
+    {
+      "account_name": "明日方舟终末地",
+      "asset_path": "assets/media/6484e95ca63e6db58a839fb5e11077ea6eaf969bb6ed97342e4a8dc66f5e95ad.webp",
+      "content_type": "image/webp",
+      "sha256": "6484e95ca63e6db58a839fb5e11077ea6eaf969bb6ed97342e4a8dc66f5e95ad",
+      "size_bytes": 668246,
+      "source_id": "skland-6409184",
+      "source_media_hash": "8960f14dd3b9eb4383c26e7311ed70956af6d3f942edd0efa5c3af6071d14d39",
+      "source_url": "https://bbs.hycdn.cn/image/common/20261022/113/6ada036799852dbe740036ad_ef3391c4.webp"
+    },
+    {
+      "account_name": "明日方舟终末地",
+      "asset_path": "assets/media/c668a4bfa0b0fb5ee565195c9bba868d7a22028581e300606fa3a423b53b0aea.webp",
+      "content_type": "image/webp",
+      "sha256": "c668a4bfa0b0fb5ee565195c9bba868d7a22028581e300606fa3a423b53b0aea",
+      "size_bytes": 762554,
+      "source_id": "skland-6409184",
+      "source_media_hash": "8d37b91f31bb0205d6bb6af67f088a4cf4ba6f4ae827bf32c942e5e890f111e8",
+      "source_url": "https://bbs.hycdn.cn/image/common/20261022/113/6ada0367ed989a2c1f472c95_65de0095.webp"
+    }
+  ],
+  "partner": "八达岭长城",
+  "reachability": {},
+  "redirected_to": null,
+  "revision": 1,
+  "sources": [
+    {
+      "account_id": "3737967211133",
+      "account_name": "明日方舟终末地",
+      "canonical_content_id": "6409184",
+      "content_hash": "e935f938be45e2850e997bb061682a8146a79ba1959953499913831d25a0d363",
+      "excerpt": "《明日方舟：终末地》×八达岭长城 联动活动介绍\n终末地携手八达岭长城发起的「关塞万里，环带一系」联动活动即将开启。于青石苍岭间，共赴万里之约。 详情请见长图。",
+      "first_seen_at": "2026-10-23T17:44:25.376551Z",
+      "id": "skland-6409184",
+      "is_official": true,
+      "kind": "skland",
+      "media_hashes": [
+        "8960f14dd3b9eb4383c26e7311ed70956af6d3f942edd0efa5c3af6071d14d39",
+        "8d37b91f31bb0205d6bb6af67f088a4cf4ba6f4ae827bf32c942e5e890f111e8"
+      ],
+      "media_urls": [
+        "https://bbs.hycdn.cn/image/common/20261022/113/6ada036799852dbe740036ad_ef3391c4.webp",
+        "https://bbs.hycdn.cn/image/common/20261022/113/6ada0367ed989a2c1f472c95_65de0095.webp"
+      ],
+      "published_at": "2026-10-23T03:00:13Z",
+      "summary": "《明日方舟：终末地》宣布与八达岭长城联动「关塞万里，环带一系」，活动即将开启，详情见长图。",
+      "updated_at": null,
+      "url": "https://www.skland.com/article?id=6409184"
+    }
+  ],
+  "status": "details_pending",
+  "title": "《明日方舟：终末地》×八达岭长城「关塞万里，环带一系」联动",
+  "updated_at": "2026-10-23T17:44:25.376551Z"
+}

@@ -1,0 +1,968 @@
+{
+  "activities": [
+    {
+      "actions": [
+        {
+          "at": "2026-10-16T16:00:00+08:00",
+          "cancelled": false,
+          "end_at": "2026-10-30T03:59:00+08:00",
+          "end_condition": null,
+          "end_date": null,
+          "ended": false,
+          "evidence": [],
+          "id": "action-575988781b405f84",
+          "kind": "event_start",
+          "platform": null,
+          "quantity_limit": null,
+          "requires_reservation": null,
+          "requires_rush": null,
+          "rules": "活动期间内，玩家累计活动签到3日可获得【绒毛读书伴侣】等活动家具奖励",
+          "scope": null,
+          "start_date": null,
+          "title": "「恒远津梁」限时活动开启",
+          "url": null
+        }
+      ],
+      "end_at": "2026-10-30T03:59:00+08:00",
+      "end_date": null,
+      "evidence": [
+        {
+          "field_path": "activities[0].start_at",
+          "quote": "活动时间：10月16日 16:00 - 10月30日 03:59",
+          "source_id": "website-arknights-official-1454"
+        },
+        {
+          "field_path": "activities[0].end_at",
+          "quote": "活动时间：10月16日 16:00 - 10月30日 03:59",
+          "source_id": "website-arknights-official-1454"
+        },
+        {
+          "field_path": "activities[0].rules",
+          "quote": "活动期间内，玩家累计活动签到3日可获得【绒毛读书伴侣】等活动家具奖励",
+          "source_id": "website-arknights-official-1454"
+        }
+      ],
+      "id": "activity-a2b7efa6c2b40d31",
+      "kind": "in_game",
+      "related_offers": null,
+      "rules": "活动期间内，玩家累计活动签到3日可获得【绒毛读书伴侣】等活动家具奖励",
+      "start_at": "2026-10-16T16:00:00+08:00",
+      "start_date": null,
+      "status": "ongoing",
+      "title": "「恒远津梁」限时活动",
+      "uncertainties": [],
+      "venues": []
+    },
+    {
+      "actions": [
+        {
+          "at": "2026-10-16T16:00:00+08:00",
+          "cancelled": false,
+          "end_at": "2026-11-06T03:59:00+08:00",
+          "end_condition": null,
+          "end_date": null,
+          "ended": false,
+          "evidence": [],
+          "id": "action-83b3e676ab0e2564",
+          "kind": "sale_open",
+          "platform": null,
+          "quantity_limit": null,
+          "requires_reservation": null,
+          "requires_rush": null,
+          "rules": "采购中心将限时售卖[博览群书组合包]",
+          "scope": "采购中心",
+          "start_date": null,
+          "title": "组合包限时上架",
+          "url": null
+        }
+      ],
+      "end_at": "2026-11-06T03:59:00+08:00",
+      "end_date": null,
+      "evidence": [
+        {
+          "field_path": "activities[1].start_at",
+          "quote": "活动时间：10月16日 16:00 - 11月06日 03:59",
+          "source_id": "website-arknights-official-1454"
+        },
+        {
+          "field_path": "activities[1].end_at",
+          "quote": "活动时间：10月16日 16:00 - 11月06日 03:59",
+          "source_id": "website-arknights-official-1454"
+        },
+        {
+          "field_path": "activities[1].rules",
+          "quote": "组合包内容：合成玉*800、头像“山海踏夜”*1、头像“永乐长安”*1、头像“探源开物”*1",
+          "source_id": "website-arknights-official-1454"
+        }
+      ],
+      "id": "activity-570c6e42f30e1861",
+      "kind": "merchandise",
+      "related_offers": null,
+      "rules": "采购中心将限时售卖[博览群书组合包]：合成玉*800、头像“山海踏夜”*1、头像“永乐长安”*1、头像“探源开物”*1",
+      "start_at": "2026-10-16T16:00:00+08:00",
+      "start_date": null,
+      "status": "ongoing",
+      "title": "组合包限时上架",
+      "uncertainties": [],
+      "venues": []
+    },
+    {
+      "actions": [
+        {
+          "at": "2026-10-16T16:00:00+08:00",
+          "cancelled": false,
+          "end_at": "2026-11-06T03:59:00+08:00",
+          "end_condition": null,
+          "end_date": null,
+          "ended": false,
+          "evidence": [
+            {
+              "field_path": "activities[2].actions[0].rules",
+              "quote": "以上【明日方舟×国家图书馆】时装不可使用【时装自选凭证】道具兑换",
+              "source_id": "website-arknights-official-1454"
+            }
+          ],
+          "id": "action-113cbbf53c837e30",
+          "kind": "sale_open",
+          "platform": null,
+          "quantity_limit": null,
+          "requires_reservation": null,
+          "requires_rush": null,
+          "rules": "以上【明日方舟×国家图书馆】时装不可使用【时装自选凭证】道具兑换",
+          "scope": "时装商店",
+          "start_date": null,
+          "title": "新装限时上架",
+          "url": null
+        }
+      ],
+      "end_at": "2026-11-06T03:59:00+08:00",
+      "end_date": null,
+      "evidence": [
+        {
+          "field_path": "activities[2].rules",
+          "quote": "◆【CROSSOVER】系列 - 源远流长 - 黍",
+          "source_id": "website-arknights-official-1454"
+        },
+        {
+          "field_path": "activities[2].actions[0].rules",
+          "quote": "以上【明日方舟×国家图书馆】时装不可使用【时装自选凭证】道具兑换",
+          "source_id": "website-arknights-official-1454"
+        }
+      ],
+      "id": "activity-c435ce9fe3d4b565",
+      "kind": "merchandise",
+      "related_offers": null,
+      "rules": "【CROSSOVER】系列 - 源远流长 - 黍、【CROSSOVER】系列 - 夜行烛火 - 烛煌、【CROSSOVER】系列 - 盛世之象 - 琳琅诗怀雅；不可使用【时装自选凭证】道具兑换",
+      "start_at": "2026-10-16T16:00:00+08:00",
+      "start_date": null,
+      "status": "ongoing",
+      "title": "新装限时上架",
+      "uncertainties": [],
+      "venues": []
+    },
+    {
+      "actions": [
+        {
+          "at": "2026-10-16T16:00:00+08:00",
+          "cancelled": false,
+          "end_at": "2026-11-06T03:59:00+08:00",
+          "end_condition": null,
+          "end_date": null,
+          "ended": false,
+          "evidence": [
+            {
+              "field_path": "activities[3].actions[0].rules",
+              "quote": "【大荒青禾组合包】本次返场将不再享受首次上架优惠",
+              "source_id": "website-arknights-official-1454"
+            }
+          ],
+          "id": "action-f96b617c7271ceaa",
+          "kind": "sale_open",
+          "platform": null,
+          "quantity_limit": null,
+          "requires_reservation": null,
+          "requires_rush": null,
+          "rules": "【大荒青禾组合包】本次返场将不再享受首次上架优惠",
+          "scope": "采购中心",
+          "start_date": null,
+          "title": "礼包限时上架",
+          "url": null
+        }
+      ],
+      "end_at": "2026-11-06T03:59:00+08:00",
+      "end_date": null,
+      "evidence": [
+        {
+          "field_path": "activities[3].rules",
+          "quote": "组合包内容：界面主题【大荒】*1、主题场景【青穰】*1",
+          "source_id": "website-arknights-official-1454"
+        },
+        {
+          "field_path": "activities[3].actions[0].rules",
+          "quote": "【大荒青禾组合包】本次返场将不再享受首次上架优惠",
+          "source_id": "website-arknights-official-1454"
+        }
+      ],
+      "id": "activity-dbb1db2446afc1b7",
+      "kind": "merchandise",
+      "related_offers": null,
+      "rules": "【大荒青禾组合包】内容：界面主题【大荒】*1、主题场景【青穰】*1；本次返场将不再享受首次上架优惠",
+      "start_at": "2026-10-16T16:00:00+08:00",
+      "start_date": null,
+      "status": "ongoing",
+      "title": "礼包限时上架",
+      "uncertainties": [],
+      "venues": []
+    },
+    {
+      "actions": [
+        {
+          "at": "2026-10-24T04:00:00+08:00",
+          "cancelled": false,
+          "end_at": "2026-11-21T03:59:00+08:00",
+          "end_condition": null,
+          "end_date": null,
+          "ended": false,
+          "evidence": [],
+          "id": "action-3806733594c9dcae",
+          "kind": "sale_open",
+          "platform": null,
+          "quantity_limit": null,
+          "requires_reservation": null,
+          "requires_rush": null,
+          "rules": null,
+          "scope": "时装商店",
+          "start_date": null,
+          "title": "复刻时装限时上架",
+          "url": null
+        }
+      ],
+      "end_at": "2026-11-21T03:59:00+08:00",
+      "end_date": null,
+      "evidence": [
+        {
+          "field_path": "activities[4].start_at",
+          "quote": "活动时间：10月24日 04:00 - 11月21日 03:59",
+          "source_id": "website-arknights-official-1454"
+        },
+        {
+          "field_path": "activities[4].end_at",
+          "quote": "活动时间：10月24日 04:00 - 11月21日 03:59",
+          "source_id": "website-arknights-official-1454"
+        }
+      ],
+      "id": "activity-48146dcb6792b14e",
+      "kind": "merchandise",
+      "related_offers": null,
+      "rules": "活动期间以下干员时装将在时装商店上架并限时贩售",
+      "start_at": "2026-10-24T04:00:00+08:00",
+      "start_date": null,
+      "status": "upcoming",
+      "title": "复刻时装限时上架",
+      "uncertainties": [],
+      "venues": []
+    },
+    {
+      "actions": [
+        {
+          "at": "2026-10-24T04:00:00+08:00",
+          "cancelled": false,
+          "end_at": "2026-11-21T03:59:00+08:00",
+          "end_condition": null,
+          "end_date": null,
+          "ended": false,
+          "evidence": [],
+          "id": "action-03bd746e193f8780",
+          "kind": "sale_open",
+          "platform": null,
+          "quantity_limit": null,
+          "requires_reservation": null,
+          "requires_rush": null,
+          "rules": null,
+          "scope": "时装商店",
+          "start_date": null,
+          "title": "【罗德岛风尚回顾】限时开启",
+          "url": null
+        }
+      ],
+      "end_at": "2026-11-21T03:59:00+08:00",
+      "end_date": null,
+      "evidence": [
+        {
+          "field_path": "activities[5].rules",
+          "quote": "【错位巡礼系列 - 沉思之庭 - 赫德雷】、【错位巡礼系列 - 倾听 - 温蒂】等干员时装将在时装商店复刻上架并限时贩售",
+          "source_id": "website-arknights-official-1454"
+        }
+      ],
+      "id": "activity-3aafc3831b8e637f",
+      "kind": "merchandise",
+      "related_offers": null,
+      "rules": "【错位巡礼系列 - 沉思之庭 - 赫德雷】、【错位巡礼系列 - 倾听 - 温蒂】等干员时装将在时装商店复刻上架并限时贩售",
+      "start_at": "2026-10-24T04:00:00+08:00",
+      "start_date": null,
+      "status": "upcoming",
+      "title": "【罗德岛风尚回顾】限时开启",
+      "uncertainties": [],
+      "venues": []
+    },
+    {
+      "actions": [
+        {
+          "at": "2026-10-26T04:00:00+08:00",
+          "cancelled": false,
+          "end_at": "2027-01-25T03:59:00+08:00",
+          "end_condition": null,
+          "end_date": null,
+          "ended": false,
+          "evidence": [],
+          "id": "action-48235225e83a051f",
+          "kind": "event_start",
+          "platform": null,
+          "quantity_limit": null,
+          "requires_reservation": null,
+          "requires_rush": null,
+          "rules": "通关主线2-8",
+          "scope": null,
+          "start_date": null,
+          "title": "剿灭作战关卡【灰石剧场】开启",
+          "url": null
+        }
+      ],
+      "end_at": "2027-01-25T03:59:00+08:00",
+      "end_date": null,
+      "evidence": [
+        {
+          "field_path": "activities[6].start_at",
+          "quote": "开启时间：10月26日 04:00 - 2027年01月25日 03:59",
+          "source_id": "website-arknights-official-1454"
+        },
+        {
+          "field_path": "activities[6].end_at",
+          "quote": "开启时间：10月26日 04:00 - 2027年01月25日 03:59",
+          "source_id": "website-arknights-official-1454"
+        },
+        {
+          "field_path": "activities[6].rules",
+          "quote": "开启条件：通关主线2-8",
+          "source_id": "website-arknights-official-1454"
+        }
+      ],
+      "id": "activity-9f065aeabd4eb15e",
+      "kind": "in_game",
+      "related_offers": null,
+      "rules": "通关主线2-8；新增剿灭委托关卡【灰石剧场】将替换现有剿灭委托关卡【默祷圣祠】",
+      "start_at": "2026-10-26T04:00:00+08:00",
+      "start_date": null,
+      "status": "upcoming",
+      "title": "剿灭作战关卡【灰石剧场】追加",
+      "uncertainties": [],
+      "venues": []
+    }
+  ],
+  "activity_redirects": {},
+  "announced_at": "2026-10-11T03:00:38Z",
+  "fact_provenance": {
+    "partner": {
+      "content_hash": "6ee71d1750c863bb65491b7a8a0c885b7dff413c0821c10ed35710397ec1c274",
+      "observation_id": "skland-6377234",
+      "published_at": "2026-10-11T03:00:38Z",
+      "quote": "明日方舟携手国家图书馆",
+      "source_id": "skland-6377234"
+    },
+    "title": {
+      "content_hash": "6ee71d1750c863bb65491b7a8a0c885b7dff413c0821c10ed35710397ec1c274",
+      "observation_id": "skland-6377234",
+      "published_at": "2026-10-11T03:00:38Z",
+      "quote": "《明日方舟》× 国家图书馆「恒远津梁」合作宣传PV",
+      "source_id": "skland-6377234"
+    }
+  },
+  "first_seen_at": "2026-10-23T17:44:25.376551Z",
+  "id": "campaign-354e1e728907e326-2cc2bdfc",
+  "ip_name": "明日方舟",
+  "ip_slug": "arknights",
+  "media": [
+    {
+      "account_name": "明日方舟Arknights",
+      "asset_path": "assets/media/b361e9e699caf035e888ca95bf17dc5e0dd83c61b16883832706f8bec5f45b5e.webp",
+      "content_type": "image/webp",
+      "sha256": "b361e9e699caf035e888ca95bf17dc5e0dd83c61b16883832706f8bec5f45b5e",
+      "size_bytes": 162254,
+      "source_id": "skland-6377234",
+      "source_media_hash": "e2c9d082cf42edbae816cb5914dec5ac39187798d99e34a1a68b4e9133c3c479",
+      "source_url": "https://bbs.hycdn.cn/image/common/20261010/115/6aca4009eac312a50a66686d_ef3391c4.webp"
+    },
+    {
+      "account_name": "明日方舟官方公告",
+      "asset_path": "assets/media/15bde95103cb114a5a68f4e72757183b5e3fae718a440ffe87a4ef8435d0935c.jpg",
+      "content_type": "image/jpeg",
+      "sha256": "15bde95103cb114a5a68f4e72757183b5e3fae718a440ffe87a4ef8435d0935c",
+      "size_bytes": 230581,
+      "source_id": "website-arknights-official-1454",
+      "source_media_hash": "7f7775bd75f64a6045c1472e92847ecf82247d8946247c95746e46d12fdd2c11",
+      "source_url": "https://web.hycdn.cn/upload/image/20261008/e493ee34fe5d994546ee11d40ee56ccd.JPG"
+    },
+    {
+      "account_name": "明日方舟官方公告",
+      "asset_path": "assets/media/9f59bbc41c8c1d88a9af412caa1746973a3d967e78b82ebfaa96b919d2f64fda.jpg",
+      "content_type": "image/jpeg",
+      "sha256": "9f59bbc41c8c1d88a9af412caa1746973a3d967e78b82ebfaa96b919d2f64fda",
+      "size_bytes": 274423,
+      "source_id": "website-arknights-official-1454",
+      "source_media_hash": "2201e639e44c2764295c58fe6bf2a7d496451f28ff2755bf1a5259d59fd6f84b",
+      "source_url": "https://web.hycdn.cn/upload/image/20261008/1a8259ede784619b266e01186e1e3e06.JPG"
+    },
+    {
+      "account_name": "明日方舟官方公告",
+      "asset_path": "assets/media/709ee668a3ccdd17443aa6f940dd277238a7540f91d277a84d60d956d44b3120.jpg",
+      "content_type": "image/jpeg",
+      "sha256": "709ee668a3ccdd17443aa6f940dd277238a7540f91d277a84d60d956d44b3120",
+      "size_bytes": 442196,
+      "source_id": "website-arknights-official-1454",
+      "source_media_hash": "c85b2250c8ee005b3d9e7c519c03013bd85643e9727f265014902aec844199a2",
+      "source_url": "https://web.hycdn.cn/upload/image/20261008/e934f0669849f8da1602e740ee322793.JPG"
+    },
+    {
+      "account_name": "明日方舟官方公告",
+      "asset_path": "assets/media/e74b5631efd6ead67872f5dbc6ceecdb0c20245d272c7c88b1bca3c3c5629efd.jpg",
+      "content_type": "image/jpeg",
+      "sha256": "e74b5631efd6ead67872f5dbc6ceecdb0c20245d272c7c88b1bca3c3c5629efd",
+      "size_bytes": 323418,
+      "source_id": "website-arknights-official-1454",
+      "source_media_hash": "f1f67a5418e3087b429067376e058dc7a94ea443b8fbf6f3babb07e7651a6091",
+      "source_url": "https://web.hycdn.cn/upload/image/20261008/64609196d5f0752fd774deb7e479921b.JPG"
+    },
+    {
+      "account_name": "明日方舟官方公告",
+      "asset_path": "assets/media/b929f4f6328dbd47c7886ada7e7d011bb4a158021cdad355ffad10151ea81056.jpg",
+      "content_type": "image/jpeg",
+      "sha256": "b929f4f6328dbd47c7886ada7e7d011bb4a158021cdad355ffad10151ea81056",
+      "size_bytes": 399520,
+      "source_id": "website-arknights-official-1454",
+      "source_media_hash": "d8ba50ce17875cea3747b38a32d4a297d8a814c75b407429b4fbbd29826f9ca2",
+      "source_url": "https://web.hycdn.cn/upload/image/20261008/6ad9824105c1761c2668e60d8c281ba9.JPG"
+    },
+    {
+      "account_name": "明日方舟官方公告",
+      "asset_path": "assets/media/d5acef72bb9bc0cf2083da07175ab2eba593412b06702992be932690b022ff9e.jpg",
+      "content_type": "image/jpeg",
+      "sha256": "d5acef72bb9bc0cf2083da07175ab2eba593412b06702992be932690b022ff9e",
+      "size_bytes": 350000,
+      "source_id": "website-arknights-official-1454",
+      "source_media_hash": "be669c24e46bbfad7973ab42494405e2e0a8962ff4166d4c9ed63d4143e19a3e",
+      "source_url": "https://web.hycdn.cn/upload/image/20261008/5914c3bbe423671504263bc58c5c3938.JPG"
+    },
+    {
+      "account_name": "明日方舟官方公告",
+      "asset_path": "assets/media/df81e355f236b94c0e15fd796739f1c8c8c9e7c1c1a447f209cde5eb4ef0002f.jpg",
+      "content_type": "image/jpeg",
+      "sha256": "df81e355f236b94c0e15fd796739f1c8c8c9e7c1c1a447f209cde5eb4ef0002f",
+      "size_bytes": 391959,
+      "source_id": "website-arknights-official-1454",
+      "source_media_hash": "bb3fc4a807003aca8867ab14a6f4cb70444ecea5023e7f4c88cb7351052061cd",
+      "source_url": "https://web.hycdn.cn/upload/image/20261008/7d0f8afd2b0ff1358cbe3b47336eba84.JPG"
+    },
+    {
+      "account_name": "明日方舟官方公告",
+      "asset_path": "assets/media/999f8ff662a256cf885f53b093d0e2b8328c29161801730a73d14e17ba75ee3f.jpg",
+      "content_type": "image/jpeg",
+      "sha256": "999f8ff662a256cf885f53b093d0e2b8328c29161801730a73d14e17ba75ee3f",
+      "size_bytes": 395181,
+      "source_id": "website-arknights-official-1454",
+      "source_media_hash": "8246c83c77ff24120a1d895c8f4da12e202f0046780b515f0a63910926a185ac",
+      "source_url": "https://web.hycdn.cn/upload/image/20261008/d907a9308056522435154b70857f5a8e.JPG"
+    },
+    {
+      "account_name": "明日方舟官方公告",
+      "asset_path": "assets/media/5a08d0ed1336ca3cee3df3a3929d357578382d0ae08c8dbccb6a4a46039d65be.jpg",
+      "content_type": "image/jpeg",
+      "sha256": "5a08d0ed1336ca3cee3df3a3929d357578382d0ae08c8dbccb6a4a46039d65be",
+      "size_bytes": 349022,
+      "source_id": "website-arknights-official-1454",
+      "source_media_hash": "8cc14ed279bdc32d26a2a77c207a4e707c3389127073e19082afa8fa4aaded50",
+      "source_url": "https://web.hycdn.cn/upload/image/20261008/a56ffebc5f44dc9d1fe2e98a25807958.JPG"
+    },
+    {
+      "account_name": "明日方舟官方公告",
+      "asset_path": "assets/media/e6c7fa84eebb919229ef85a221500a120ca9b0207aa9bba847aa8fa8b75841cf.jpg",
+      "content_type": "image/jpeg",
+      "sha256": "e6c7fa84eebb919229ef85a221500a120ca9b0207aa9bba847aa8fa8b75841cf",
+      "size_bytes": 349726,
+      "source_id": "website-arknights-official-1454",
+      "source_media_hash": "da9e33e356d4b7ce5e1d7b2e27a72809883c7c9791572fb00092ce590984c4d5",
+      "source_url": "https://web.hycdn.cn/upload/image/20261008/7866ceee7d4167d317d1db496adae760.JPG"
+    },
+    {
+      "account_name": "明日方舟官方公告",
+      "asset_path": "assets/media/4bb6e554a42bbd464521c14bf646b8aa70ac9e09c4ca9cc7fdae9cb43da5b069.jpg",
+      "content_type": "image/jpeg",
+      "sha256": "4bb6e554a42bbd464521c14bf646b8aa70ac9e09c4ca9cc7fdae9cb43da5b069",
+      "size_bytes": 211847,
+      "source_id": "website-arknights-official-1454",
+      "source_media_hash": "5ebdaaa1258e83fac738211fce70381b7f1c22836d052d77f53abc7fe626e140",
+      "source_url": "https://web.hycdn.cn/upload/image/20261008/9fdb67c6667984ea4fa1be6633cdc4af.JPG"
+    },
+    {
+      "account_name": "明日方舟官方公告",
+      "asset_path": "assets/media/e37c5ba1430fda133c26d7cfc5a660a14b03acfdac029bdaa34e8525a8a24cef.jpg",
+      "content_type": "image/jpeg",
+      "sha256": "e37c5ba1430fda133c26d7cfc5a660a14b03acfdac029bdaa34e8525a8a24cef",
+      "size_bytes": 279852,
+      "source_id": "website-arknights-official-1454",
+      "source_media_hash": "640a3ce34cd415fa027795d30179b4499ca15fdc06dc750ae30ca5afff313c8b",
+      "source_url": "https://web.hycdn.cn/upload/image/20261008/2ff66891a7ffb02a080225c97c335c36.JPG"
+    },
+    {
+      "account_name": "明日方舟Arknights",
+      "asset_path": "assets/media/867a211ed0a50e90500b9587ad4f6e647a0d823586775da2b3e02c301b38372a.webp",
+      "content_type": "image/webp",
+      "sha256": "867a211ed0a50e90500b9587ad4f6e647a0d823586775da2b3e02c301b38372a",
+      "size_bytes": 1098658,
+      "source_id": "skland-6377283",
+      "source_media_hash": "e1a951dc151a56a2891cb1aa69a8f786c6e3a88579d8b920789ee69370c2bbd4",
+      "source_url": "https://bbs.hycdn.cn/image/common/20261020/115/6ad76c9e9da5ba571c0224ac_96d20048.webp"
+    },
+    {
+      "account_name": "明日方舟Arknights",
+      "asset_path": "assets/media/5ced6e7762fcab65bf687abfb70bf3f603f4a217cd6628d073b5f119bd724aa1.webp",
+      "content_type": "image/webp",
+      "sha256": "5ced6e7762fcab65bf687abfb70bf3f603f4a217cd6628d073b5f119bd724aa1",
+      "size_bytes": 405772,
+      "source_id": "skland-6381246",
+      "source_media_hash": "ad01af21c421d53d6cd1c7901c439c4f32b1837dc4b8f0307534a541ec9dfa0c",
+      "source_url": "https://bbs.hycdn.cn/image/common/20261012/115/6acc819d36696a39d3c3533f_004865de.webp"
+    },
+    {
+      "account_name": "明日方舟Arknights",
+      "asset_path": "assets/media/81ff251eddc74186fe8479676fefe8fe073baae7c0cd96921665b17da123acff.gif",
+      "content_type": "image/gif",
+      "sha256": "81ff251eddc74186fe8479676fefe8fe073baae7c0cd96921665b17da123acff",
+      "size_bytes": 4879997,
+      "source_id": "skland-6381246",
+      "source_media_hash": "0fd9e909af5003a15911bd3ffe870db61e689bc2ce89acda99414231f0f51222",
+      "source_url": "https://bbs.hycdn.cn/image/common/20261012/115/6acc81b135923f25b275ce46_65de0095.gif"
+    },
+    {
+      "account_name": "明日方舟Arknights",
+      "asset_path": "assets/media/6d26548cab32fef63185cbc335c5ff507c696e7fb090813fc83063f7f173cde5.gif",
+      "content_type": "image/gif",
+      "sha256": "6d26548cab32fef63185cbc335c5ff507c696e7fb090813fc83063f7f173cde5",
+      "size_bytes": 7990757,
+      "source_id": "skland-6381246",
+      "source_media_hash": "78603137f2a6e86c19fb226300d4fde337f506ef31ca7cacb7afa11b9ceeb6cc",
+      "source_url": "https://bbs.hycdn.cn/image/common/20261012/115/6acc81b60bba2d0e26ae11bc_0095c241.gif"
+    },
+    {
+      "account_name": "明日方舟Arknights",
+      "asset_path": "assets/media/11d20e460521ede3f58919346eda8a95aee5d7625d911a42c19c4dd9da524b29.gif",
+      "content_type": "image/gif",
+      "sha256": "11d20e460521ede3f58919346eda8a95aee5d7625d911a42c19c4dd9da524b29",
+      "size_bytes": 2594662,
+      "source_id": "skland-6381246",
+      "source_media_hash": "461431f402a5767e4474b5fa80c959cb054d0c49ab73bc9632a1663b959a0ac6",
+      "source_url": "https://bbs.hycdn.cn/image/common/20261012/115/6acc81c48861f86f358a17ea_65de0095.gif"
+    },
+    {
+      "account_name": "明日方舟Arknights",
+      "asset_path": "assets/media/506fbc7914e36c7d745778376ca1009717a074cf70f31f2b16c207929474d9a2.gif",
+      "content_type": "image/gif",
+      "sha256": "506fbc7914e36c7d745778376ca1009717a074cf70f31f2b16c207929474d9a2",
+      "size_bytes": 4753663,
+      "source_id": "skland-6381246",
+      "source_media_hash": "fb18fe340983e9beef964c406a17607748f3cd81b8091c43067b3f187a71f229",
+      "source_url": "https://bbs.hycdn.cn/image/common/20261012/115/6acc81d5eac312a50a666a71_65de0095.gif"
+    },
+    {
+      "account_name": "明日方舟Arknights",
+      "asset_path": "assets/media/680f68cb400a9e41b8d36bbc8705d0f6a3341b935cd6c8905012ce1006aaae50.gif",
+      "content_type": "image/gif",
+      "sha256": "680f68cb400a9e41b8d36bbc8705d0f6a3341b935cd6c8905012ce1006aaae50",
+      "size_bytes": 6230203,
+      "source_id": "skland-6381246",
+      "source_media_hash": "ab1a7dfa770886db6f2c7e598305f8b404615d74112ed9e1749d50ea5e4bb8e9",
+      "source_url": "https://bbs.hycdn.cn/image/common/20261012/115/6acc81db8af11c747f2e2e6b_e71aef33.gif"
+    },
+    {
+      "account_name": "明日方舟Arknights",
+      "asset_path": "assets/media/d11d08b169f20705fa3354a0c2c095a4fcafbd1318f7630c459991d6682bd41a.gif",
+      "content_type": "image/gif",
+      "sha256": "d11d08b169f20705fa3354a0c2c095a4fcafbd1318f7630c459991d6682bd41a",
+      "size_bytes": 5532560,
+      "source_id": "skland-6381246",
+      "source_media_hash": "4e251047c20c4826d9a9e948aa8525de19b4a1a507f16a429229aeb7fdbab6fd",
+      "source_url": "https://bbs.hycdn.cn/image/common/20261012/115/6acc81e3ed989a2c1f471c7a_96d20048.gif"
+    },
+    {
+      "account_name": "明日方舟Arknights",
+      "asset_path": "assets/media/db51aff6032c8b3ca1419e57f772fb2c4c73919600347d9622777aa33aa2c90c.webp",
+      "content_type": "image/webp",
+      "sha256": "db51aff6032c8b3ca1419e57f772fb2c4c73919600347d9622777aa33aa2c90c",
+      "size_bytes": 368918,
+      "source_id": "skland-6381801",
+      "source_media_hash": "b9653870776df0271251e91e37515579adad0daf094fd5ea4ab489fe90b1404c",
+      "source_url": "https://bbs.hycdn.cn/image/common/20261012/115/6accd035eac312a50a666ac7_91c496d2.webp"
+    },
+    {
+      "account_name": "明日方舟Arknights",
+      "asset_path": "assets/media/478421eb3bdac9284c398264147860bcf50f6a80424e2873abbcac3755406448.gif",
+      "content_type": "image/gif",
+      "sha256": "478421eb3bdac9284c398264147860bcf50f6a80424e2873abbcac3755406448",
+      "size_bytes": 5763454,
+      "source_id": "skland-6381801",
+      "source_media_hash": "da2a51f2c14d01f889e0848df923114f8d2db4368349e90c7aef073ccb8f61b2",
+      "source_url": "https://bbs.hycdn.cn/image/common/20261012/115/6accd042ed989a2c1f471cb7_65de0095.gif"
+    },
+    {
+      "account_name": "明日方舟Arknights",
+      "asset_path": "assets/media/57b51dc7c03007378a012ab45c8a9d9416371fb4e3800a8919fda8050b141425.gif",
+      "content_type": "image/gif",
+      "sha256": "57b51dc7c03007378a012ab45c8a9d9416371fb4e3800a8919fda8050b141425",
+      "size_bytes": 7997919,
+      "source_id": "skland-6381801",
+      "source_media_hash": "af544c3ab5c0345032316e70d450b9ad28b44a85cfd3184a3f3107eae39cb887",
+      "source_url": "https://bbs.hycdn.cn/image/common/20261012/115/6accd0470fae4186b1e90b30_004865de.gif"
+    },
+    {
+      "account_name": "明日方舟Arknights",
+      "asset_path": "assets/media/e2fe76f3badd0cda8221145f805eb391b86d882ee266da70e6916e26b9604ea8.gif",
+      "content_type": "image/gif",
+      "sha256": "e2fe76f3badd0cda8221145f805eb391b86d882ee266da70e6916e26b9604ea8",
+      "size_bytes": 2953072,
+      "source_id": "skland-6381801",
+      "source_media_hash": "45d843a06b0071437f9f12a03cb13a56e875c3c3b285e58be38011ef93f6384a",
+      "source_url": "https://bbs.hycdn.cn/image/common/20261012/115/6accd059d2041cf262b2217d_96d20048.gif"
+    },
+    {
+      "account_name": "明日方舟Arknights",
+      "asset_path": "assets/media/6fad60269ebf3b91da43c5da01fe9419bd99472ae74de9d6cbff23618ca4f3fb.gif",
+      "content_type": "image/gif",
+      "sha256": "6fad60269ebf3b91da43c5da01fe9419bd99472ae74de9d6cbff23618ca4f3fb",
+      "size_bytes": 4369339,
+      "source_id": "skland-6381801",
+      "source_media_hash": "cba02b73d26bdb99dffbbecac2abf5d33cd65d62b916dc8ef29ee917d306d764",
+      "source_url": "https://bbs.hycdn.cn/image/common/20261012/115/6accd0743ec4be1dfe8a5c31_96d20048.gif"
+    },
+    {
+      "account_name": "明日方舟Arknights",
+      "asset_path": "assets/media/40868392cf55c4fe958bfae8fa65546ee4b4785d46fa719803d48d6091119c87.gif",
+      "content_type": "image/gif",
+      "sha256": "40868392cf55c4fe958bfae8fa65546ee4b4785d46fa719803d48d6091119c87",
+      "size_bytes": 7971769,
+      "source_id": "skland-6381801",
+      "source_media_hash": "2a39fa2468742ce66e86176a1f349bd2a5085ddda437eb2611149e0bd4d1aae2",
+      "source_url": "https://bbs.hycdn.cn/image/common/20261012/115/6accd07b1add8879b04f60b4_91c496d2.gif"
+    },
+    {
+      "account_name": "明日方舟Arknights",
+      "asset_path": "assets/media/71792b77d7bc8ad96b7a9265fc719398b01336943fb941fe12d425978ae3bb8b.gif",
+      "content_type": "image/gif",
+      "sha256": "71792b77d7bc8ad96b7a9265fc719398b01336943fb941fe12d425978ae3bb8b",
+      "size_bytes": 6490777,
+      "source_id": "skland-6381801",
+      "source_media_hash": "26244a936f2071e467383bd7cdf6a43e86040c946ee0e88d0bd82fb45e98f310",
+      "source_url": "https://bbs.hycdn.cn/image/common/20261012/115/6accd086185ed109d66b52e3_65de0095.gif"
+    },
+    {
+      "account_name": "明日方舟Arknights",
+      "asset_path": "assets/media/45237753cc815fa0fd505331fe29da3cdacf45774c5c113debfb7b562489abba.webp",
+      "content_type": "image/webp",
+      "sha256": "45237753cc815fa0fd505331fe29da3cdacf45774c5c113debfb7b562489abba",
+      "size_bytes": 348988,
+      "source_id": "skland-6383812",
+      "source_media_hash": "7eb1fedab0cf5e484cb7257acfb707db7e83da4afb10229c56baa81bd4a0badd",
+      "source_url": "https://bbs.hycdn.cn/image/common/20261013/115/6ace26400bba2d0e26ae133e_004865de.webp"
+    },
+    {
+      "account_name": "明日方舟Arknights",
+      "asset_path": "assets/media/5f3b78cf53c3b8b37a20afda0625b5d281eefd74b96171caa8c4d98ed9d26390.gif",
+      "content_type": "image/gif",
+      "sha256": "5f3b78cf53c3b8b37a20afda0625b5d281eefd74b96171caa8c4d98ed9d26390",
+      "size_bytes": 6910633,
+      "source_id": "skland-6383812",
+      "source_media_hash": "ce6351fdb23a082c3ff3183f711aff9513832f559b7150d7f7e71e2d8949fc2c",
+      "source_url": "https://bbs.hycdn.cn/image/common/20261013/115/6ace265c3ec4be1dfe8a5d19_96d20048.gif"
+    },
+    {
+      "account_name": "明日方舟Arknights",
+      "asset_path": "assets/media/b57efc3347eca0e5fc1d28bb4e9adaafc1cbc5874ea0688d4584a8d6d391238f.gif",
+      "content_type": "image/gif",
+      "sha256": "b57efc3347eca0e5fc1d28bb4e9adaafc1cbc5874ea0688d4584a8d6d391238f",
+      "size_bytes": 7994613,
+      "source_id": "skland-6383812",
+      "source_media_hash": "96d07a31b005baf7cbc1c889152cedb5baee0ad9c017da439f059d6c02c5a6d4",
+      "source_url": "https://bbs.hycdn.cn/image/common/20261013/115/6ace26619da5ba571c02151c_e71aef33.gif"
+    },
+    {
+      "account_name": "明日方舟Arknights",
+      "asset_path": "assets/media/2db40da658a29b61f352a35afe3dff00c415fcf683b18b4d75bae3d6c06675eb.gif",
+      "content_type": "image/gif",
+      "sha256": "2db40da658a29b61f352a35afe3dff00c415fcf683b18b4d75bae3d6c06675eb",
+      "size_bytes": 2510653,
+      "source_id": "skland-6383812",
+      "source_media_hash": "7483e0fe82ee5292455b1a6e335117097ac762c1dc1018d15a6fe06cafb28471",
+      "source_url": "https://bbs.hycdn.cn/image/common/20261013/115/6ace26688861f86f358a19ff_96d20048.gif"
+    },
+    {
+      "account_name": "明日方舟Arknights",
+      "asset_path": "assets/media/c629b6d965aa9572adfb59bad57a3dd079501d5991b83fbf357355c8e2da612f.gif",
+      "content_type": "image/gif",
+      "sha256": "c629b6d965aa9572adfb59bad57a3dd079501d5991b83fbf357355c8e2da612f",
+      "size_bytes": 4283250,
+      "source_id": "skland-6383812",
+      "source_media_hash": "bb9ef0df0207217bfdf6877f29b6b1fa7b6ace681b66dc2d88af3492f86e15f8",
+      "source_url": "https://bbs.hycdn.cn/image/common/20261013/115/6ace2693185ed109d66b53ef_96d20048.gif"
+    },
+    {
+      "account_name": "明日方舟Arknights",
+      "asset_path": "assets/media/69aea406135f962a0509f1a26b610006175d0265c84a8586ed112ae39bed4947.gif",
+      "content_type": "image/gif",
+      "sha256": "69aea406135f962a0509f1a26b610006175d0265c84a8586ed112ae39bed4947",
+      "size_bytes": 8273079,
+      "source_id": "skland-6383812",
+      "source_media_hash": "fdf6dcfd0e9b2c9bad9b915a2bc21ab5815ed60dbd9cbfa56e78479a8f85b622",
+      "source_url": "https://bbs.hycdn.cn/image/common/20261013/115/6ace2697d2041cf262b22265_0095c241.gif"
+    },
+    {
+      "account_name": "明日方舟Arknights",
+      "asset_path": "assets/media/06773cb6df0782d79f73e7c3124568291ae4fdaa7b3bdca5b5ec4100ec77b317.gif",
+      "content_type": "image/gif",
+      "sha256": "06773cb6df0782d79f73e7c3124568291ae4fdaa7b3bdca5b5ec4100ec77b317",
+      "size_bytes": 7983564,
+      "source_id": "skland-6383812",
+      "source_media_hash": "652319a6beea8132b608aba9ee85c1be41d98dc08d5d6efa24e1a7b83d0ce1be",
+      "source_url": "https://bbs.hycdn.cn/image/common/20261013/115/6ace26a58861f86f358a1a00_0095c241.gif"
+    },
+    {
+      "account_name": "明日方舟Arknights",
+      "asset_path": "assets/media/96d97acd597c8c3a78005bfae3a6fbdb4423de65d78f91764ef47ce9a83be6a9.webp",
+      "content_type": "image/webp",
+      "sha256": "96d97acd597c8c3a78005bfae3a6fbdb4423de65d78f91764ef47ce9a83be6a9",
+      "size_bytes": 303502,
+      "source_id": "skland-6411186",
+      "source_media_hash": "90500082ab2e4527785dc9cfea3d4a107580dff2e354e6cdfefafebef82f2025",
+      "source_url": "https://bbs.hycdn.cn/image/common/20261023/115/6adb023addc0f89b712273b9_96d20048.webp"
+    }
+  ],
+  "partner": "国家图书馆",
+  "reachability": {
+    "activity-3aafc3831b8e637f": "unknown",
+    "activity-48146dcb6792b14e": "unknown",
+    "activity-570c6e42f30e1861": "unknown",
+    "activity-9f065aeabd4eb15e": "unknown",
+    "activity-a2b7efa6c2b40d31": "unknown",
+    "activity-c435ce9fe3d4b565": "unknown",
+    "activity-dbb1db2446afc1b7": "unknown"
+  },
+  "redirected_to": null,
+  "revision": 5,
+  "sources": [
+    {
+      "account_id": "7779816949641",
+      "account_name": "明日方舟Arknights",
+      "canonical_content_id": "6377234",
+      "content_hash": "6ee71d1750c863bb65491b7a8a0c885b7dff413c0821c10ed35710397ec1c274",
+      "excerpt": "《明日方舟》× 国家图书馆「恒远津梁」合作宣传PV\n思想以典籍为舟，横渡岁月，沿流千载。\n亘古的文明先声，于今时回荡不绝。\n明日方舟携手国家图书馆，邀博士共览书卷，踏上今昔记忆的津梁。",
+      "first_seen_at": "2026-10-23T17:44:25.376551Z",
+      "id": "skland-6377234",
+      "is_official": true,
+      "kind": "skland",
+      "media_hashes": [
+        "e2c9d082cf42edbae816cb5914dec5ac39187798d99e34a1a68b4e9133c3c479"
+      ],
+      "media_urls": [
+        "https://bbs.hycdn.cn/image/common/20261010/115/6aca4009eac312a50a66686d_ef3391c4.webp"
+      ],
+      "published_at": "2026-10-11T03:00:38Z",
+      "summary": "《明日方舟》宣布与国家图书馆合作「恒远津梁」，发布合作宣传PV。",
+      "updated_at": null,
+      "url": "https://www.skland.com/article?id=6377234"
+    },
+    {
+      "account_id": "arknights-official",
+      "account_name": "明日方舟官方公告",
+      "canonical_content_id": "1454",
+      "content_hash": "502e02302f67e37fbc19b71af4e10221d03858521a6e6b9ed856060b694148bf",
+      "excerpt": "【明日方舟×国家图书馆】「恒远津梁」限时活动即将开启\n一、【明日方舟×国家图书馆】，「恒远津梁」限时活动开启\n活动时间：10月16日 16:00 - 10月30日 03:59\n活动说明：活动期间内，玩家累计活动签到3日可获得【绒毛读书伴侣】等活动家具奖励\n二、【明日方舟×国家图书馆】，组合包限时上架\n活动时间：10月16日 16:00 - 11月06日 03:59\n活动说明：活动期间，采购中心将限时售卖以下组合包\n[博览群书组合包]\n组合包内容：合成玉*800、头像“山海踏夜”*1、头像“永乐长安”*1、头像“探源开物”*1\n三、【明日方舟×国家图书馆】，新装限时上架\n活动时间：10月16日 16:00 - 11月06日 03:59\n活动说明：活动期间以下干员新增时装将在时装商店上架并限时贩售\n◆【CROSSOVER】系列 - 源远流长 - 黍\n◆【CROSSOVER】系列 - 夜行烛火 - 烛煌\n◆【CROSSOVER】系列 - 盛世之象 - 琳琅诗怀雅\n注意：\n◆以上【明日方舟×国家图书馆】时装不可使用【时装自选凭证】道具兑换\n四、礼包限时上架\n售卖时间：10月16日 16:00 ",
+      "first_seen_at": "2026-10-23T17:44:25.376551Z",
+      "id": "website-arknights-official-1454",
+      "is_official": true,
+      "kind": "website",
+      "media_hashes": [
+        "7f7775bd75f64a6045c1472e92847ecf82247d8946247c95746e46d12fdd2c11",
+        "2201e639e44c2764295c58fe6bf2a7d496451f28ff2755bf1a5259d59fd6f84b",
+        "c85b2250c8ee005b3d9e7c519c03013bd85643e9727f265014902aec844199a2",
+        "f1f67a5418e3087b429067376e058dc7a94ea443b8fbf6f3babb07e7651a6091",
+        "d8ba50ce17875cea3747b38a32d4a297d8a814c75b407429b4fbbd29826f9ca2",
+        "be669c24e46bbfad7973ab42494405e2e0a8962ff4166d4c9ed63d4143e19a3e",
+        "bb3fc4a807003aca8867ab14a6f4cb70444ecea5023e7f4c88cb7351052061cd",
+        "8246c83c77ff24120a1d895c8f4da12e202f0046780b515f0a63910926a185ac",
+        "8cc14ed279bdc32d26a2a77c207a4e707c3389127073e19082afa8fa4aaded50",
+        "da9e33e356d4b7ce5e1d7b2e27a72809883c7c9791572fb00092ce590984c4d5",
+        "5ebdaaa1258e83fac738211fce70381b7f1c22836d052d77f53abc7fe626e140",
+        "640a3ce34cd415fa027795d30179b4499ca15fdc06dc750ae30ca5afff313c8b"
+      ],
+      "media_urls": [
+        "https://web.hycdn.cn/upload/image/20261008/e493ee34fe5d994546ee11d40ee56ccd.JPG",
+        "https://web.hycdn.cn/upload/image/20261008/1a8259ede784619b266e01186e1e3e06.JPG",
+        "https://web.hycdn.cn/upload/image/20261008/e934f0669849f8da1602e740ee322793.JPG",
+        "https://web.hycdn.cn/upload/image/20261008/64609196d5f0752fd774deb7e479921b.JPG",
+        "https://web.hycdn.cn/upload/image/20261008/6ad9824105c1761c2668e60d8c281ba9.JPG",
+        "https://web.hycdn.cn/upload/image/20261008/5914c3bbe423671504263bc58c5c3938.JPG",
+        "https://web.hycdn.cn/upload/image/20261008/7d0f8afd2b0ff1358cbe3b47336eba84.JPG",
+        "https://web.hycdn.cn/upload/image/20261008/d907a9308056522435154b70857f5a8e.JPG",
+        "https://web.hycdn.cn/upload/image/20261008/a56ffebc5f44dc9d1fe2e98a25807958.JPG",
+        "https://web.hycdn.cn/upload/image/20261008/7866ceee7d4167d317d1db496adae760.JPG",
+        "https://web.hycdn.cn/upload/image/20261008/9fdb67c6667984ea4fa1be6633cdc4af.JPG",
+        "https://web.hycdn.cn/upload/image/20261008/2ff66891a7ffb02a080225c97c335c36.JPG"
+      ],
+      "published_at": "2026-10-11T03:00:00Z",
+      "summary": "明日方舟×国家图书馆「恒远津梁」限时活动、组合包、新装与复刻时装上架，以及剿灭作战关卡追加公告。",
+      "updated_at": null,
+      "url": "https://ak.hypergryph.com/news/1454.html"
+    },
+    {
+      "account_id": "7779816949641",
+      "account_name": "明日方舟Arknights",
+      "canonical_content_id": "6377283",
+      "content_hash": "8bf1ded446c278e33d5f06cd67c0a9585083f3be53ddc799a1f3a5c36115cce1",
+      "excerpt": "【明日方舟×国家图书馆】「恒远津梁」限时活动即将开启",
+      "first_seen_at": "2026-10-23T17:44:25.376551Z",
+      "id": "skland-6377283",
+      "is_official": true,
+      "kind": "skland",
+      "media_hashes": [
+        "e1a951dc151a56a2891cb1aa69a8f786c6e3a88579d8b920789ee69370c2bbd4"
+      ],
+      "media_urls": [
+        "https://bbs.hycdn.cn/image/common/20261020/115/6ad76c9e9da5ba571c0224ac_96d20048.webp"
+      ],
+      "published_at": "2026-10-11T03:05:40Z",
+      "summary": "宣布明日方舟与国家图书馆联动「恒远津梁」限时活动即将开启。",
+      "updated_at": null,
+      "url": "https://www.skland.com/article?id=6377283"
+    },
+    {
+      "account_id": "7779816949641",
+      "account_name": "明日方舟Arknights",
+      "canonical_content_id": "6381246",
+      "content_hash": "97586d38e6a635645d364eed33714e4781e12b37603d12dd7dec0ff765d04685",
+      "excerpt": "【新增服饰】国家图书馆合作服装-盛世之象-琳琅诗怀雅\n【新增服饰】\n//盛世之象 - 琳琅诗怀雅\n国家图书馆合作服装/盛世之象。诗怀雅在参加文化庆典时穿着的服装。医、技、艺、工，各个展位被她装点得琳琅满目，她将历史穿在身上，盛迎天下贵宾。\n_____________\n“古人编纂典籍记录知识，今人承继智慧，我要做的就是贯通融会，古为今用，让龙门再多点新光景！怎么样，不赖吧？”",
+      "first_seen_at": "2026-10-23T17:44:25.376551Z",
+      "id": "skland-6381246",
+      "is_official": true,
+      "kind": "skland",
+      "media_hashes": [
+        "ad01af21c421d53d6cd1c7901c439c4f32b1837dc4b8f0307534a541ec9dfa0c",
+        "0fd9e909af5003a15911bd3ffe870db61e689bc2ce89acda99414231f0f51222",
+        "78603137f2a6e86c19fb226300d4fde337f506ef31ca7cacb7afa11b9ceeb6cc",
+        "461431f402a5767e4474b5fa80c959cb054d0c49ab73bc9632a1663b959a0ac6",
+        "fb18fe340983e9beef964c406a17607748f3cd81b8091c43067b3f187a71f229",
+        "ab1a7dfa770886db6f2c7e598305f8b404615d74112ed9e1749d50ea5e4bb8e9",
+        "4e251047c20c4826d9a9e948aa8525de19b4a1a507f16a429229aeb7fdbab6fd"
+      ],
+      "media_urls": [
+        "https://bbs.hycdn.cn/image/common/20261012/115/6acc819d36696a39d3c3533f_004865de.webp",
+        "https://bbs.hycdn.cn/image/common/20261012/115/6acc81b135923f25b275ce46_65de0095.gif",
+        "https://bbs.hycdn.cn/image/common/20261012/115/6acc81b60bba2d0e26ae11bc_0095c241.gif",
+        "https://bbs.hycdn.cn/image/common/20261012/115/6acc81c48861f86f358a17ea_65de0095.gif",
+        "https://bbs.hycdn.cn/image/common/20261012/115/6acc81d5eac312a50a666a71_65de0095.gif",
+        "https://bbs.hycdn.cn/image/common/20261012/115/6acc81db8af11c747f2e2e6b_e71aef33.gif",
+        "https://bbs.hycdn.cn/image/common/20261012/115/6acc81e3ed989a2c1f471c7a_96d20048.gif"
+      ],
+      "published_at": "2026-10-12T07:05:22Z",
+      "summary": "公布国家图书馆合作服装「盛世之象-琳琅诗怀雅」新增服饰。",
+      "updated_at": null,
+      "url": "https://www.skland.com/article?id=6381246"
+    },
+    {
+      "account_id": "7779816949641",
+      "account_name": "明日方舟Arknights",
+      "canonical_content_id": "6381801",
+      "content_hash": "16ab14d33b96d73b876ffb83017819569668858fa28db5acfe79bdc9e6e7cca3",
+      "excerpt": "【新增服饰】国家图书馆合作服装-夜行烛火-烛煌\n【新增服饰】\n//夜行烛火 - 烛煌\n国家图书馆合作服装/夜行烛火。煌在游历炎国各方异域时所穿的服装。书中山海万象，手中炽焰长明，奇珍瑞兽相伴身侧，她踏焰前行。\n_____________\n顺着书上的描述，跨越五方山川，渡去四海之外，煌终于见到了传说中的生物。“你的名字应该是，呃......这个古字怎么念来着？”",
+      "first_seen_at": "2026-10-23T17:44:25.376551Z",
+      "id": "skland-6381801",
+      "is_official": true,
+      "kind": "skland",
+      "media_hashes": [
+        "b9653870776df0271251e91e37515579adad0daf094fd5ea4ab489fe90b1404c",
+        "da2a51f2c14d01f889e0848df923114f8d2db4368349e90c7aef073ccb8f61b2",
+        "af544c3ab5c0345032316e70d450b9ad28b44a85cfd3184a3f3107eae39cb887",
+        "45d843a06b0071437f9f12a03cb13a56e875c3c3b285e58be38011ef93f6384a",
+        "cba02b73d26bdb99dffbbecac2abf5d33cd65d62b916dc8ef29ee917d306d764",
+        "2a39fa2468742ce66e86176a1f349bd2a5085ddda437eb2611149e0bd4d1aae2",
+        "26244a936f2071e467383bd7cdf6a43e86040c946ee0e88d0bd82fb45e98f310"
+      ],
+      "media_urls": [
+        "https://bbs.hycdn.cn/image/common/20261012/115/6accd035eac312a50a666ac7_91c496d2.webp",
+        "https://bbs.hycdn.cn/image/common/20261012/115/6accd042ed989a2c1f471cb7_65de0095.gif",
+        "https://bbs.hycdn.cn/image/common/20261012/115/6accd0470fae4186b1e90b30_004865de.gif",
+        "https://bbs.hycdn.cn/image/common/20261012/115/6accd059d2041cf262b2217d_96d20048.gif",
+        "https://bbs.hycdn.cn/image/common/20261012/115/6accd0743ec4be1dfe8a5c31_96d20048.gif",
+        "https://bbs.hycdn.cn/image/common/20261012/115/6accd07b1add8879b04f60b4_91c496d2.gif",
+        "https://bbs.hycdn.cn/image/common/20261012/115/6accd086185ed109d66b52e3_65de0095.gif"
+      ],
+      "published_at": "2026-10-13T07:00:47Z",
+      "summary": "公布国家图书馆合作服装「夜行烛火-烛煌」及服饰介绍。",
+      "updated_at": null,
+      "url": "https://www.skland.com/article?id=6381801"
+    },
+    {
+      "account_id": "7779816949641",
+      "account_name": "明日方舟Arknights",
+      "canonical_content_id": "6383812",
+      "content_hash": "28fdfbbabbe3ec342b2d2ba4699f70fece7f8641b24b91ed9d805cbb3f825648",
+      "excerpt": "【新增服饰】国家图书馆合作服装-源远流长-黍\n【新增服饰】\n//源远流长 - 黍\n国家图书馆合作服装/源远流长。黍在天师府工作时穿着的服装。古卷在她的面前展开，代代相传的智慧浮现纸上，一如脚下长河奔流不息，一径向前。\n_____________\n“春雨少，用水浇；夏雨多，开渠道。”黍还记得很久以前她和人们一同将这则农谚记录在书卷上的情景。如今，当年的纸张已经泛黄，而她脚下稻谷青青，浓绿一片。\n点击查看动态形象时装「源远流长」动态动作展示",
+      "first_seen_at": "2026-10-23T17:44:25.376551Z",
+      "id": "skland-6383812",
+      "is_official": true,
+      "kind": "skland",
+      "media_hashes": [
+        "7eb1fedab0cf5e484cb7257acfb707db7e83da4afb10229c56baa81bd4a0badd",
+        "ce6351fdb23a082c3ff3183f711aff9513832f559b7150d7f7e71e2d8949fc2c",
+        "96d07a31b005baf7cbc1c889152cedb5baee0ad9c017da439f059d6c02c5a6d4",
+        "7483e0fe82ee5292455b1a6e335117097ac762c1dc1018d15a6fe06cafb28471",
+        "bb9ef0df0207217bfdf6877f29b6b1fa7b6ace681b66dc2d88af3492f86e15f8",
+        "fdf6dcfd0e9b2c9bad9b915a2bc21ab5815ed60dbd9cbfa56e78479a8f85b622",
+        "652319a6beea8132b608aba9ee85c1be41d98dc08d5d6efa24e1a7b83d0ce1be"
+      ],
+      "media_urls": [
+        "https://bbs.hycdn.cn/image/common/20261013/115/6ace26400bba2d0e26ae133e_004865de.webp",
+        "https://bbs.hycdn.cn/image/common/20261013/115/6ace265c3ec4be1dfe8a5d19_96d20048.gif",
+        "https://bbs.hycdn.cn/image/common/20261013/115/6ace26619da5ba571c02151c_e71aef33.gif",
+        "https://bbs.hycdn.cn/image/common/20261013/115/6ace26688861f86f358a19ff_96d20048.gif",
+        "https://bbs.hycdn.cn/image/common/20261013/115/6ace2693185ed109d66b53ef_96d20048.gif",
+        "https://bbs.hycdn.cn/image/common/20261013/115/6ace2697d2041cf262b22265_0095c241.gif",
+        "https://bbs.hycdn.cn/image/common/20261013/115/6ace26a58861f86f358a1a00_0095c241.gif"
+      ],
+      "published_at": "2026-10-14T07:00:12Z",
+      "summary": "公布国家图书馆合作服装「源远流长-黍」及动态形象时装展示入口。",
+      "updated_at": null,
+      "url": "https://www.skland.com/article?id=6383812"
+    },
+    {
+      "account_id": "7779816949641",
+      "account_name": "明日方舟Arknights",
+      "canonical_content_id": "6411186",
+      "content_hash": "8e9ee535585d795f841c6df00fbb9054b67704d77c0007cd1fb3c9e0e29698d8",
+      "excerpt": "【明日方舟×国家图书馆】，新装限时上架\n◆【CROSSOVER】系列 - 源远流长 - 黍\n◆【CROSSOVER】系列 - 夜行烛火 - 烛煌\n◆【CROSSOVER】系列 - 盛世之象 - 琳琅诗怀雅\n_____________\n时装商店售卖时间：2026年10月16日 16:00 - 2026年11月6日 03:59",
+      "first_seen_at": "2026-10-23T17:44:25.376551Z",
+      "id": "skland-6411186",
+      "is_official": true,
+      "kind": "skland",
+      "media_hashes": [
+        "90500082ab2e4527785dc9cfea3d4a107580dff2e354e6cdfefafebef82f2025"
+      ],
+      "media_urls": [
+        "https://bbs.hycdn.cn/image/common/20261023/115/6adb023addc0f89b712273b9_96d20048.webp"
+      ],
+      "published_at": "2026-10-23T08:00:54Z",
+      "summary": "明日方舟×国家图书馆CROSSOVER系列三款新装限时上架，公布时装商店售卖时间。",
+      "updated_at": null,
+      "url": "https://www.skland.com/article?id=6411186"
+    }
+  ],
+  "status": "ongoing",
+  "title": "《明日方舟》× 国家图书馆「恒远津梁」",
+  "updated_at": "2026-10-23T17:44:25.376551Z"
+}
