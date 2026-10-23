@@ -1,0 +1,29 @@
+{
+  "extracted_media_text": [],
+  "id": "skland-6377283",
+  "media_hashes": [
+    "e1a951dc151a56a2891cb1aa69a8f786c6e3a88579d8b920789ee69370c2bbd4"
+  ],
+  "media_urls": [
+    "https://bbs.hycdn.cn/image/common/20261020/115/6ad76c9e9da5ba571c0224ac_96d20048.webp"
+  ],
+  "outbound_urls": [],
+  "source": {
+    "account_id": "7779816949641",
+    "account_name": "明日方舟Arknights",
+    "canonical_content_id": "6377283",
+    "content_hash": "8bf1ded446c278e33d5f06cd67c0a9585083f3be53ddc799a1f3a5c36115cce1",
+    "excerpt": "【明日方舟×国家图书馆】「恒远津梁」限时活动即将开启",
+    "first_seen_at": "2026-10-23T17:44:25.376551Z",
+    "id": "skland-6377283",
+    "is_official": true,
+    "kind": "skland",
+    "media_hashes": [],
+    "media_urls": [],
+    "published_at": "2026-10-11T03:05:40Z",
+    "summary": null,
+    "updated_at": null,
+    "url": "https://www.skland.com/article?id=6377283"
+  },
+  "text": "【明日方舟×国家图书馆】「恒远津梁」限时活动即将开启"
+}

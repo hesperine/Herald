@@ -1,0 +1,31 @@
+{
+  "extracted_media_text": [],
+  "id": "skland-6402462",
+  "media_hashes": [
+    "accf5a979f799da5c7f991a384fdab9fb6e1b936b91c071cf88b250d34f59c03",
+    "5f2709c4a378499a74f42631856882939f55f3a0bba935f67551e226fb215b87"
+  ],
+  "media_urls": [
+    "https://bbs.hycdn.cn/image/common/20261019/115/6ad5d437bbf60d37013e0e51_e71aef33.webp",
+    "https://bbs.hycdn.cn/image/common/20261019/115/6ad5d43736696a39d3c35eb6_96d20048.webp"
+  ],
+  "outbound_urls": [],
+  "source": {
+    "account_id": "7779816949641",
+    "account_name": "明日方舟Arknights",
+    "canonical_content_id": "6402462",
+    "content_hash": "5496edda0c121199aa15ad3c5cdff4646b209557371a14b2dd68c35e81de522b",
+    "excerpt": "致博士：有关伊比利亚与阿戈尔的现状\n一份来自克莱门莎的简报，描述了伊比利亚与阿戈尔的现状。\n“博士，速阅。”",
+    "first_seen_at": "2026-10-23T17:44:25.376551Z",
+    "id": "skland-6402462",
+    "is_official": true,
+    "kind": "skland",
+    "media_hashes": [],
+    "media_urls": [],
+    "published_at": "2026-10-19T10:00:01Z",
+    "summary": null,
+    "updated_at": null,
+    "url": "https://www.skland.com/article?id=6402462"
+  },
+  "text": "致博士：有关伊比利亚与阿戈尔的现状\n一份来自克莱门莎的简报，描述了伊比利亚与阿戈尔的现状。\n“博士，速阅。”"
+}

@@ -1,0 +1,29 @@
+{
+  "extracted_media_text": [],
+  "id": "skland-6371206",
+  "media_hashes": [
+    "14f067786474d09b658ead727fee582561e00f2660ea51ff8e1911cfcf18b5eb"
+  ],
+  "media_urls": [
+    "https://bbs.hycdn.cn/image/common/20261008/115/6ac7916b9da5ba571c020be9_e71aef33.webp"
+  ],
+  "outbound_urls": [],
+  "source": {
+    "account_id": "7779816949641",
+    "account_name": "明日方舟Arknights",
+    "canonical_content_id": "6371206",
+    "content_hash": "540afc1d036cc4d7cdc85d267ec12843fcde76fda67f086b69a20402818def15",
+    "excerpt": "SideStory「昨日海」现已开启！",
+    "first_seen_at": "2026-10-23T17:44:25.376551Z",
+    "id": "skland-6371206",
+    "is_official": true,
+    "kind": "skland",
+    "media_hashes": [],
+    "media_urls": [],
+    "published_at": "2026-10-09T04:00:03Z",
+    "summary": null,
+    "updated_at": null,
+    "url": "https://www.skland.com/article?id=6371206"
+  },
+  "text": "SideStory「昨日海」现已开启！"
+}

@@ -1,0 +1,29 @@
+{
+  "extracted_media_text": [],
+  "id": "skland-6364107",
+  "media_hashes": [
+    "6dada67b830856f59c4c83252b5791732e9cc042296e228e6651cc76c2ae380e"
+  ],
+  "media_urls": [
+    "https://bbs.hycdn.cn/image/common/20261005/115/6ac372a20fae4186b1e90021_65de0095.webp"
+  ],
+  "outbound_urls": [],
+  "source": {
+    "account_id": "7779816949641",
+    "account_name": "明日方舟Arknights",
+    "canonical_content_id": "6364107",
+    "content_hash": "f352a179abd3c99fc0aa890d52a32769d45547fb9b6197e7a49ce1f65fa115bc",
+    "excerpt": "《明日方舟》干员「克莱门莎」技能展示PV\n《明日方舟》SideStory「昨日海」活动即将开启\n更多活动详情内容详见官网、游戏内公告及官方自媒体账号。",
+    "first_seen_at": "2026-10-23T17:44:25.376551Z",
+    "id": "skland-6364107",
+    "is_official": true,
+    "kind": "skland",
+    "media_hashes": [],
+    "media_urls": [],
+    "published_at": "2026-10-06T03:00:45Z",
+    "summary": null,
+    "updated_at": null,
+    "url": "https://www.skland.com/article?id=6364107"
+  },
+  "text": "《明日方舟》干员「克莱门莎」技能展示PV\n《明日方舟》SideStory「昨日海」活动即将开启\n更多活动详情内容详见官网、游戏内公告及官方自媒体账号。"
+}

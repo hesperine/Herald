@@ -1,0 +1,14 @@
+{
+  "activity_id": null,
+  "campaign_id": "campaign-5a95cf56417b3340-57ca36df",
+  "detected_at": "2026-10-23T17:44:25.376551Z",
+  "field_paths": [],
+  "id": "chg-9cd16d8bde8d514e",
+  "kind": "new_campaign",
+  "published_at": "2026-10-23T03:00:13Z",
+  "semantic_key": "campaign-5a95cf56417b3340-57ca36df:new-campaign",
+  "source_ids": [
+    "skland-6409184"
+  ],
+  "summary": "新增联动：《明日方舟：终末地》×八达岭长城「关塞万里，环带一系」联动"
+}

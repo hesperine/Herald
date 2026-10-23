@@ -1,0 +1,14 @@
+{
+  "action_id": "action-48235225e83a051f",
+  "activity_id": "activity-9f065aeabd4eb15e",
+  "campaign_id": "campaign-354e1e728907e326-2cc2bdfc",
+  "candidate_id": null,
+  "change_id": null,
+  "due_date": "2026-10-25",
+  "expected_at": "2026-10-26T04:00:00+08:00",
+  "expected_date": null,
+  "id": "job-6be975e3c56641784496",
+  "kind": "day_before",
+  "semantic_key": "schedule:activity-9f065aeabd4eb15e:action-48235225e83a051f:day_before:2026-10-26T04:00:00+08:00",
+  "summary": "明天开始：剿灭作战关卡【灰石剧场】开启"
+}

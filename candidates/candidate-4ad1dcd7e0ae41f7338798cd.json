@@ -1,0 +1,29 @@
+{
+  "campaign_id": "campaign-5a95cf56417b3340-57ca36df",
+  "detected_at": "2026-10-23T17:44:25.376551Z",
+  "facts": {},
+  "id": "candidate-4ad1dcd7e0ae41f7338798cd",
+  "ip_name": "明日方舟：终末地",
+  "ip_slug": "arknights-endfield",
+  "public_text": "《明日方舟：终末地》×八达岭长城 联动活动介绍\n终末地携手八达岭长城发起的「关塞万里，环带一系」联动活动即将开启。于青石苍岭间，共赴万里之约。 详情请见长图。",
+  "sources": [
+    {
+      "account_id": "3737967211133",
+      "account_name": "明日方舟终末地",
+      "canonical_content_id": "6409184",
+      "content_hash": "e935f938be45e2850e997bb061682a8146a79ba1959953499913831d25a0d363",
+      "excerpt": "《明日方舟：终末地》×八达岭长城 联动活动介绍\n终末地携手八达岭长城发起的「关塞万里，环带一系」联动活动即将开启。于青石苍岭间，共赴万里之约。 详情请见长图。",
+      "first_seen_at": "2026-10-23T17:44:25.376551Z",
+      "id": "skland-6409184",
+      "is_official": true,
+      "kind": "skland",
+      "media_hashes": [],
+      "media_urls": [],
+      "published_at": "2026-10-23T03:00:13Z",
+      "summary": null,
+      "updated_at": null,
+      "url": "https://www.skland.com/article?id=6409184"
+    }
+  ],
+  "status": "structured"
+}

@@ -1,0 +1,14 @@
+{
+  "action_id": "action-03bd746e193f8780",
+  "activity_id": "activity-3aafc3831b8e637f",
+  "campaign_id": "campaign-354e1e728907e326-2cc2bdfc",
+  "candidate_id": null,
+  "change_id": null,
+  "due_date": "2026-10-23",
+  "expected_at": "2026-10-24T04:00:00+08:00",
+  "expected_date": null,
+  "id": "job-709cdceeb5d354bf91d3",
+  "kind": "day_before",
+  "semantic_key": "schedule:activity-3aafc3831b8e637f:action-03bd746e193f8780:day_before:2026-10-24T04:00:00+08:00",
+  "summary": "明天开售：【罗德岛风尚回顾】限时开启"
+}

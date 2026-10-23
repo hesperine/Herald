@@ -1,0 +1,14 @@
+{
+  "action_id": "action-03bd746e193f8780--end",
+  "activity_id": "activity-3aafc3831b8e637f",
+  "campaign_id": "campaign-354e1e728907e326-2cc2bdfc",
+  "candidate_id": null,
+  "change_id": null,
+  "due_date": "2026-11-20",
+  "expected_at": "2026-11-21T03:59:00+08:00",
+  "expected_date": null,
+  "id": "job-31b0c63d289ca1b44a10",
+  "kind": "deadline",
+  "semantic_key": "schedule:activity-3aafc3831b8e637f:action-03bd746e193f8780--end:deadline:2026-11-21T03:59:00+08:00",
+  "summary": "明天截止：【罗德岛风尚回顾】限时开启截止"
+}

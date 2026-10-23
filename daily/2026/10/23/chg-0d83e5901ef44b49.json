@@ -1,0 +1,12 @@
+{
+  "activity_id": "activity-dbb1db2446afc1b7",
+  "campaign_id": "campaign-354e1e728907e326-2cc2bdfc",
+  "detected_at": "2026-10-23T17:44:25.376551Z",
+  "field_paths": [],
+  "id": "chg-0d83e5901ef44b49",
+  "kind": "new_activity",
+  "published_at": "2026-10-11T03:00:38Z",
+  "semantic_key": "campaign-354e1e728907e326-2cc2bdfc:new-activity-activity-dbb1db2446afc1b7",
+  "source_ids": [],
+  "summary": "新增活动：礼包限时上架"
+}

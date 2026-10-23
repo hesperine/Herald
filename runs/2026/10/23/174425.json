@@ -1,0 +1,14 @@
+{
+  "campaigns_created": 2,
+  "campaigns_updated": 4,
+  "duplicates": 5,
+  "emails_sent": 1,
+  "finished_at": "2026-10-23T17:47:14.322258Z",
+  "jobs_created": 19,
+  "notifications_sent": 11,
+  "observations": 83,
+  "started_at": "2026-10-23T17:44:25.376551Z",
+  "warnings": [
+    "official source fetch failed: website-honkai-star-rail-official"
+  ]
+}
