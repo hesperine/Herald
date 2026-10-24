@@ -94,6 +94,7 @@
   ],
   "activity_redirects": {},
   "announced_at": "2026-09-27T04:01:10Z",
+  "excluded_activities": [],
   "fact_provenance": {
     "activities.activity-dfd55f4c31903c72.actions.action-ca656e43ceec4cc6.title": {
       "content_hash": "68527e425162dfb368c8b1eeecc74bbdd762ca36fbda073fb897c2c589f0353b",
@@ -160,6 +161,7 @@
   },
   "redirected_to": null,
   "revision": 1,
+  "scope_reviews": [],
   "sources": [
     {
       "account_id": "75276539",

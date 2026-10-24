@@ -4,9 +4,10 @@
       "activity": null,
       "activity_id": null,
       "campaign_id": "candidate-09a0f3c387eb0aafaac15764",
+      "campaign_notice": false,
       "campaign_title": "《明日方舟》× 名创优品「秋意茶话会」",
       "detail_campaign_id": "campaign-1786831476040aa0-253f5627",
-      "extraction_status": "structured",
+      "extraction_status": "pending",
       "ip_name": "明日方舟",
       "reasons": [
         {
@@ -41,9 +42,10 @@
       "activity": null,
       "activity_id": null,
       "campaign_id": "candidate-4c20b59aff531d66dda65dd3",
+      "campaign_notice": false,
       "campaign_title": "《明日方舟：终末地》×八达岭长城「关塞万里，环带一系」联动",
       "detail_campaign_id": "campaign-5a95cf56417b3340-57ca36df",
-      "extraction_status": "structured",
+      "extraction_status": "pending",
       "ip_name": "明日方舟：终末地",
       "reasons": [
         {
@@ -78,9 +80,10 @@
       "activity": null,
       "activity_id": null,
       "campaign_id": "candidate-4fff1a3e26d79a8c2b9dc4c5",
+      "campaign_notice": false,
       "campaign_title": "明日方舟 × 共鸣GONG 超迷你手办企划",
       "detail_campaign_id": "campaign-148dc4c99579d419-b677ac89",
-      "extraction_status": "structured",
+      "extraction_status": "pending",
       "ip_name": "明日方舟",
       "reasons": [
         {
@@ -115,9 +118,10 @@
       "activity": null,
       "activity_id": null,
       "campaign_id": "candidate-5d217163e290102bc6cd026e",
+      "campaign_notice": false,
       "campaign_title": "《明日方舟》× 名创优品「秋意茶话会」",
       "detail_campaign_id": "campaign-1786831476040aa0-253f5627",
-      "extraction_status": "structured",
+      "extraction_status": "pending",
       "ip_name": "明日方舟",
       "reasons": [
         {
@@ -152,9 +156,10 @@
       "activity": null,
       "activity_id": null,
       "campaign_id": "candidate-73a36bf69372579d2bd56bfd",
+      "campaign_notice": false,
       "campaign_title": "明日方舟 × 一番赏「Cuties~罗德岛的甜点时光~」",
       "detail_campaign_id": "campaign-4758edb88f30ddf3-4147566e",
-      "extraction_status": "structured",
+      "extraction_status": "pending",
       "ip_name": "明日方舟",
       "reasons": [
         {
@@ -189,9 +194,10 @@
       "activity": null,
       "activity_id": null,
       "campaign_id": "candidate-d23f1e69efd2231ca12d24d3",
+      "campaign_notice": false,
       "campaign_title": "《明日方舟》网页活动「燃烧即一切」",
       "detail_campaign_id": "campaign-abb4d493ebf696a7-3b3da411",
-      "extraction_status": "structured",
+      "extraction_status": "pending",
       "ip_name": "明日方舟",
       "reasons": [
         {
@@ -226,9 +232,10 @@
       "activity": null,
       "activity_id": null,
       "campaign_id": "candidate-d8cfb478025a1222fc9196e9",
+      "campaign_notice": false,
       "campaign_title": "《明日方舟：终末地》×八达岭长城「关塞万里，环带一系」联动",
       "detail_campaign_id": "campaign-5a95cf56417b3340-57ca36df",
-      "extraction_status": "structured",
+      "extraction_status": "pending",
       "ip_name": "明日方舟：终末地",
       "reasons": [
         {
@@ -263,9 +270,10 @@
       "activity": null,
       "activity_id": null,
       "campaign_id": "candidate-f33da006432debfa683c7e87",
+      "campaign_notice": false,
       "campaign_title": "明日方舟 × 万代食玩 系列第二弹",
       "detail_campaign_id": "campaign-de00e4b309b316f3-7cd10764",
-      "extraction_status": "structured",
+      "extraction_status": "pending",
       "ip_name": "明日方舟",
       "reasons": [
         {
@@ -352,6 +360,7 @@
       },
       "activity_id": "activity-9f065aeabd4eb15e",
       "campaign_id": "campaign-354e1e728907e326-2cc2bdfc",
+      "campaign_notice": false,
       "campaign_title": "《明日方舟》× 国家图书馆「恒远津梁」",
       "detail_campaign_id": "campaign-354e1e728907e326-2cc2bdfc",
       "extraction_status": null,
@@ -605,6 +614,7 @@
       },
       "activity_id": "activity-fd760656e9160352",
       "campaign_id": "campaign-5a95cf56417b3340-57ca36df",
+      "campaign_notice": false,
       "campaign_title": "《明日方舟：终末地》×八达岭长城「关塞万里，环带一系」联动",
       "detail_campaign_id": "campaign-5a95cf56417b3340-57ca36df",
       "extraction_status": null,

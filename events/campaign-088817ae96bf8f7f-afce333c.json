@@ -32,6 +32,7 @@
   ],
   "activity_redirects": {},
   "announced_at": "2026-09-20T12:20:08Z",
+  "excluded_activities": [],
   "fact_provenance": {
     "activities.activity-1cdafb1ec747fedf.start_date": {
       "content_hash": "7acbf1cfb57a05a2bc8a759a0f4d477a6eecf8b48fbd135b4a2a24c4997db706",
@@ -84,6 +85,7 @@
   },
   "redirected_to": null,
   "revision": 1,
+  "scope_reviews": [],
   "sources": [
     {
       "account_id": "288909600",

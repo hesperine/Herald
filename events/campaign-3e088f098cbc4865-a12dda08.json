@@ -2,6 +2,7 @@
   "activities": [],
   "activity_redirects": {},
   "announced_at": "2026-09-15T04:00:16Z",
+  "excluded_activities": [],
   "fact_provenance": {},
   "first_seen_at": "2026-09-17T04:11:37.178399Z",
   "id": "campaign-3e088f098cbc4865-a12dda08",
@@ -43,6 +44,7 @@
   "reachability": {},
   "redirected_to": null,
   "revision": 1,
+  "scope_reviews": [],
   "sources": [
     {
       "account_id": "288909600",

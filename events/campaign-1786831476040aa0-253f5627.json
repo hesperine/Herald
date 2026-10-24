@@ -2,6 +2,7 @@
   "activities": [],
   "activity_redirects": {},
   "announced_at": "2026-10-24T12:35:09Z",
+  "excluded_activities": [],
   "fact_provenance": {
     "partner": {
       "content_hash": "097aee0b2fd264605af7ebcb4d913fa6bf1c9dd77b025a0e6065da36d5a8c1c6",
@@ -128,6 +129,7 @@
   "reachability": {},
   "redirected_to": null,
   "revision": 2,
+  "scope_reviews": [],
   "sources": [
     {
       "account_id": "7779816949641",
