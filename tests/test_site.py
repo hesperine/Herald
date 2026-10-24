@@ -65,6 +65,82 @@ def campaign(
 
 
 class StaticSiteBuilderTests(unittest.TestCase):
+    def test_legacy_candidate_snapshots_consolidate_resolved_news_and_preserve_all_sources(self):
+        from herald.models import CandidateNotice, NotificationKind, QueueJob
+        from tests.test_pipeline import observation
+        c = campaign('resolved')
+        summary = '联动信息：示例联动\n截止日期：2026-09-20'
+        legacy = []
+        for key in ('a', 'b'):
+            source = observation(key, '原神', digest=key * 64).source
+            c.sources.append(source)
+            notice = CandidateNotice(id=key, ip_slug=c.ip_slug, ip_name=c.ip_name,
+                detected_at=NOW, campaign_id=c.id, status='structured',
+                public_text='公开原帖：' + key, sources=[source])
+            self.store.save_candidate(notice)
+            self.store.save_queue_job(QueueJob(id=key, candidate_id=key, campaign_id=c.id,
+                kind=NotificationKind.ANNOUNCEMENT, due_date=NOW.date(), semantic_key=key,
+                summary=summary))
+            legacy.append({'campaign_id': key, 'activity_id': None,
+                'campaign_title': c.title, 'ip_name': c.ip_name, 'activity': None,
+                'detail_campaign_id': c.id, 'extraction_status': 'structured',
+                'sources': [source.model_dump(mode='json')],
+                'reasons': [{'kind': 'announcement', 'summary': summary + '\n' + notice.public_text,
+                             'action_id': None, 'expected_at': None, 'date_only': None}]})
+        self.store.save_campaign(c)
+        yesterday = (NOW - timedelta(days=1)).date()
+        for day in (yesterday, NOW.date()):
+            self.store.save_reminder_snapshot(day, {'date': str(day), 'cards': legacy})
+        for _ in range(2):
+            self.builder.build(store=self.store, output_dir=self.output, now=NOW,
+                               watched_ip_slugs={'genshin-impact'},
+                               forbidden_values=['private-secret-fixture'])
+            for day in (yesterday, NOW.date()):
+                payload = json.loads((self.output / f'data/reminders/{day}.json').read_text('utf8'))
+                self.assertEqual(len(payload['cards']), 1)
+                card = payload['cards'][0]
+                self.assertEqual(card['campaign_id'], c.id)
+                self.assertEqual(len(card['sources']), 2)
+                self.assertEqual(len(card['reasons']), 1)
+                self.assertEqual(card['reasons'][0]['summary'], summary)
+                self.assertEqual(card['detail_url'], 'event.html?id=resolved')
+                saved = self.store.load_reminder_snapshot(day)
+                self.assertEqual(len(saved['cards']), 1)
+            today = json.loads((self.output / 'data/today.json').read_text('utf8'))
+            self.assertEqual(len(today['cards']), 1)
+            for directory in (self.output, self.store.root):
+                content = '\n'.join(p.read_text('utf8') for p in directory.rglob('*.json'))
+                self.assertNotIn('private-secret-fixture', content)
+
+    def test_past_pending_fallbacks_keep_their_text_when_later_grouped(self):
+        from herald.models import CandidateNotice
+        from tests.test_pipeline import observation
+        c = campaign('resolved')
+        cards = []
+        for key in ('a', 'b'):
+            source = observation(key, '原神', digest=key * 64).source
+            notice = CandidateNotice(id=key, ip_slug=c.ip_slug, ip_name=c.ip_name,
+                detected_at=NOW, campaign_id=c.id, status='structured',
+                public_text='公开原帖：' + key, sources=[source])
+            self.store.save_candidate(notice)
+            cards.append({'campaign_id': key, 'activity_id': None,
+                'campaign_title': '原神 · 候选联动信息', 'ip_name': c.ip_name, 'activity': None,
+                'extraction_status': 'pending', 'sources': [source.model_dump(mode='json')],
+                'reasons': [{'kind': 'announcement',
+                             'summary': '待解析，请以原帖为准\n' + notice.public_text}]})
+        self.store.save_campaign(c)
+        self.store.save_reminder_snapshot(NOW.date(), {'date': str(NOW.date()), 'cards': cards})
+        self.builder.build(store=self.store, output_dir=self.output, now=NOW,
+                           watched_ip_slugs={'genshin-impact'})
+        payload = json.loads((self.output / f'data/reminders/{NOW.date()}.json').read_text('utf8'))
+        self.assertEqual(len(payload['cards']), 1)
+        card = payload['cards'][0]
+        self.assertEqual(card['campaign_title'], c.title)
+        self.assertEqual(card['extraction_status'], 'structured')
+        self.assertEqual(len(card['sources']), 2)
+        for key in ('a', 'b'):
+            self.assertIn('公开原帖：' + key, str(card['reasons']))
+
     def test_unstructured_candidate_is_in_history_but_not_activity_catalog(self):
         from herald.candidate_notices import register_candidates
         from herald.registry import RegisteredIp

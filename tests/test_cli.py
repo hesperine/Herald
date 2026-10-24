@@ -19,6 +19,9 @@ from herald.config import load_settings
 
 
 class CliTests(unittest.TestCase):
+    def test_no_email_is_explicit_publish_only_mode(self):
+        self.assertFalse(_parser().parse_args([]).no_email)
+        self.assertTrue(_parser().parse_args(['--phase', 'retry', '--no-email']).no_email)
     def test_final_retry_is_explicit_and_only_allowed_for_retry(self):
         self.assertFalse(_parser().parse_args([]).final_retry)
         self.assertTrue(_parser().parse_args(['--phase', 'retry', '--final-retry']).final_retry)
@@ -43,6 +46,7 @@ class CliTests(unittest.TestCase):
         )
         provider = _make_provider(configured, client)
         self.assertEqual(provider.model_name, "free-model")
+        self.assertTrue(provider.contextual)
         self.assertEqual(provider.thinking, 'disabled')
         self.assertEqual(provider.max_tokens, 4096)
         self.assertEqual(provider.base_url, "https://free.example/v1")

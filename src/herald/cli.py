@@ -64,6 +64,7 @@ def _make_provider(
     )
     provider.thinking = settings.public.ai_thinking
     provider.max_tokens = settings.public.ai_max_tokens
+    provider.contextual = True
     return provider
 
 
@@ -110,6 +111,7 @@ def _parser() -> argparse.ArgumentParser:
     )
     parser.add_argument('--final-retry', action='store_true',
                         help='send the daily digest even if pending remains (retry only)')
+    parser.add_argument('--no-email', action='store_true', help='process and publish without sending email')
     return parser
 
 
@@ -129,7 +131,7 @@ async def _run(args: argparse.Namespace) -> dict[str, object]:
                 skland_client=SklandTimelineClient(source_client),
                 website_client=WebsiteTimelineClient(source_client),
                 provider=_make_provider(settings, ai_client),
-                email_sender=_make_email_sender(settings),
+                email_sender=None if getattr(args, 'no_email', False) else _make_email_sender(settings),
                 media_cache=PublicMediaCache(source_client),
                 phase=RunPhase(args.phase),
                 final_retry=args.final_retry,

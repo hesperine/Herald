@@ -2,6 +2,7 @@
 
 import hashlib
 import re
+import json
 
 from pydantic import ValidationError
 
@@ -17,6 +18,20 @@ from .pipeline import PipelineResult, build_extraction_input
 
 BATCH_CHAR_BUDGET = 24000
 BATCH_POST_LIMIT = 2
+
+
+def entity_signature(value):
+    """Exact public fact equivalence, independent of generated entity/source IDs."""
+    def clean(item):
+        if isinstance(item, dict):
+            return {k: clean(v) for k, v in item.items() if k not in
+                    {'id', 'evidence', 'status', 'cancelled', 'uncertainties'} and v is not None}
+        if isinstance(item, list):
+            return [clean(v) for v in item]
+        if isinstance(item, str):
+            return re.sub(r'\s+', '', item)
+        return item
+    return json.dumps(clean(value.model_dump(mode='json')), sort_keys=True, ensure_ascii=False)
 
 
 def activity_additions(extraction, requested):
@@ -135,9 +150,12 @@ async def process_semantic(pipeline, *, store, ip, observations, now, provider,
 
 
 async def _apply_group(pipeline, store, ip, members, extraction, now, provider,
-                       notify, remind_day_before, counters):
+                       notify, remind_day_before, counters, resolution=None, group_key=''):
     if not extraction.relevant:
         return
+    if resolution is not None:
+        from .contextual_ai import complete_explicit_deadlines
+        complete_explicit_deadlines(extraction, members)
     for claim in extraction.claims:
         if not any(quote_matches(claim.quote, item.text) for item in members):
             raise ValueError('unverified extraction quote')
@@ -176,15 +194,23 @@ async def _apply_group(pipeline, store, ip, members, extraction, now, provider,
         raise ValueError('invalid campaign candidate')
     from .merge import normalize_name
     if matched and draft.partner and matched.partner and normalize_name(draft.partner) != normalize_name(matched.partner):
+        if resolution is not None:
+            raise ValueError('conflicting contextual partner')
         matched = None
-    default, _ = pipeline.identity.find_match(draft, store.list_campaigns())
-    matched = default or matched
+    if resolution is None:
+        default, _ = pipeline.identity.find_match(draft, store.list_campaigns())
+        matched = default or matched
     if matched:
-        counters['ai_calls'] += 1
-        try:
-            decision = await provider.merge_campaign(matched, packets, extraction)
-        except AIProviderError:
-            decision = None
+        if resolution is not None:
+            decision = resolution.merge
+            if decision is None:
+                raise ValueError('missing contextual merge')
+        else:
+            counters['ai_calls'] += 1
+            try:
+                decision = await provider.merge_campaign(matched, packets, extraction)
+            except AIProviderError:
+                decision = None
         if decision is None or decision.decision == 'create_new':
             if decision and (decision.updates or decision.new_activities or decision.new_actions or decision.new_venues):
                 raise ValueError('new campaign decision cannot contain updates')
@@ -221,6 +247,8 @@ async def _apply_group(pipeline, store, ip, members, extraction, now, provider,
                 additions = activity_additions(extraction, decision.new_activities)
                 assembled = pipeline.assembler.assemble(packet=packets[0], observation=primary, extraction=additions, now=now)
                 for activity in assembled.activities:
+                    if resolution is not None and any(entity_signature(a) == entity_signature(activity) for a in updated.activities):
+                        continue
                     if any(a.id == activity.id for a in updated.activities):
                         raise ValueError('new activity already exists')
                     updated.activities.append(activity)
@@ -244,6 +272,8 @@ async def _apply_group(pipeline, store, ip, members, extraction, now, provider,
                         continue
                     entity = model(id=entity_id, **value.model_dump(), evidence=[Evidence(
                         source_id=item.source.id, field_path=f'activities.{activity.id}.{collection}.{entity_id}', quote=addition.quote)])
+                    if resolution is not None and any(entity_signature(e) == entity_signature(entity) for e in entities):
+                        continue
                     entities.append(entity)
                     changes.append(pipeline.merger._change(campaign=updated, activity_id=activity.id,
                         detected_at=now, kind=ChangeKind.FIELD_ADDED,
@@ -266,12 +296,23 @@ async def _apply_group(pipeline, store, ip, members, extraction, now, provider,
             if activity.start_at and activity.end_at and activity.end_at < activity.start_at:
                 raise ValueError('invalid extracted time interval')
         # New editions must not overwrite a same-title stored campaign.
-        seed = '\x1f'.join(sorted(o.id for o in members))
+        seed = '\x1f'.join(sorted(o.id for o in members)) + group_key
         draft.id += '-' + hashlib.sha256(seed.encode()).hexdigest()[:8]
         previous = store.load_campaign(draft.id)
         if previous is not None:
-            return  # A completed group replay after a later group failed.
+            return previous.id  # A completed group replay after a later group failed.
         outcome = pipeline.merger.merge(None, draft, now)
+    if resolution is not None:
+        for exclusion in resolution.exclusions:
+            material = next((o for o in members if o.id == exclusion.observation_id), None)
+            activity = next((a for a in outcome.campaign.activities if a.id == exclusion.activity_id), None)
+            if activity is None or material is None or not quote_matches(exclusion.quote, material.text):
+                raise ValueError('invalid scope exclusion evidence')
+            if matched is None or not any(a.id == activity.id for a in matched.activities):
+                raise ValueError('scope exclusion must refer to legacy activity')
+            outcome.campaign.activities.remove(activity)
+            outcome.campaign.excluded_activities.append(activity)
+            outcome.campaign.scope_reviews.append(exclusion.model_dump())
     store.save_campaign(outcome.campaign)
     counters['campaigns_created' if matched is None else 'campaigns_updated'] += 1
     for change in outcome.changes:
@@ -281,3 +322,4 @@ async def _apply_group(pipeline, store, ip, members, extraction, now, provider,
     jobs = pipeline.scheduler.reconcile_campaign(store, outcome.campaign, now,
                                                 remind_day_before=remind_day_before)
     counters['jobs_written'] += len(jobs)
+    return outcome.campaign.id

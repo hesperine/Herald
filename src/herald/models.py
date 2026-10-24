@@ -213,6 +213,8 @@ class Campaign(StrictModel):
     updated_at: AwareDatetime
     revision: int = 1
     activities: list[Activity] = Field(default_factory=list)
+    excluded_activities: list[Activity] = Field(default_factory=list)
+    scope_reviews: list[dict[str, str]] = Field(default_factory=list)
     sources: list[SourceRef] = Field(default_factory=list)
     fact_provenance: dict[str, FactProvenance] = Field(default_factory=dict)
     redirected_to: str | None = None
@@ -271,6 +273,9 @@ class QueueJob(StrictModel):
     expected_date: date | None = None
     semantic_key: str
     summary: str
+    campaign_notice: bool = False
+    facts: dict[str, str] = Field(default_factory=dict)
+    covered_candidate_ids: list[str] = Field(default_factory=list)
 
 
 class NotificationReceipt(StrictModel):
@@ -282,6 +287,8 @@ class NotificationReceipt(StrictModel):
     channel: str = "email"
     public_text: str = ""
     facts: dict[str, str] = Field(default_factory=dict)
+    campaign_id: str | None = None
+    covered_candidate_ids: list[str] = Field(default_factory=list)
 
 
 class CandidateNotice(StrictModel):
@@ -296,6 +303,9 @@ class CandidateNotice(StrictModel):
     campaign_id: str | None = None
     status: str = "pending"
     facts: dict[str, str] = Field(default_factory=dict)
+    campaign_ids: list[str] = Field(default_factory=list)
+    resolution_version: int = 1
+    review_reason: str | None = None
 
 
 class ScheduledJobRef(StrictModel):

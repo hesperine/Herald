@@ -230,6 +230,8 @@ class OpenAICompatibleProvider:
                 response.raise_for_status()
                 stage = 'response_json'
                 metadata = response.json()
+                if metadata.get('choices', [{}])[0].get('finish_reason') not in (None, 'stop'):
+                    raise ValueError('incomplete model response')
                 content = self._response_content(response.json())
                 stage = 'schema'
                 result = result_type.model_validate_json(self._strip_fence(content))
@@ -303,6 +305,14 @@ class OpenAICompatibleProvider:
         if grouped | ignored != expected or grouped & ignored:
             raise AIProviderError('invalid batch source coverage')
         return result
+
+    async def route_campaigns(self, packets, catalog):
+        from .contextual_ai import route_campaigns
+        return await route_campaigns(self, packets, catalog)
+
+    async def resolve_campaign(self, route, packets, existing):
+        from .contextual_ai import resolve_campaign
+        return await resolve_campaign(self, route, packets, existing)
 
     async def merge_campaign(self, campaign: Campaign, packets: list[ExtractionInput], extraction: ExtractionResult) -> MergeResult:
         payload = self._request_payload(packets[0])

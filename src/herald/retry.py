@@ -36,7 +36,7 @@ class BudgetedProvider:
 
     def __getattr__(self, name):
         method = getattr(self.provider, name)
-        if name not in ('extract', 'extract_batch', 'merge_campaign'):
+        if name not in ('extract', 'extract_batch', 'merge_campaign', 'route_campaigns', 'resolve_campaign'):
             return method
 
         async def call(*args, **kwargs):

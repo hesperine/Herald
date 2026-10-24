@@ -158,6 +158,9 @@ class DailyRunner:
         if phase in {RunPhase.FULL, RunPhase.RETRY}:
             repair_state(store, resolution.supported, now, timezone_name=settings.public.timezone,
                          remind_day_before=settings.public.remind_day_before)
+            if provider is not None and getattr(provider, 'contextual', False):
+                from .campaign_notices import migrate_contextual
+                migrate_contextual(store, resolution.supported, now)
         pending_by_ip = (
             self._pending_observations(store)
             if should_extract and provider is not None

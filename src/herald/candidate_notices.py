@@ -123,6 +123,8 @@ def resolve_candidates(store, now, timezone_name='Asia/Shanghai'):
         if associations[record.id] is None and record.campaign_id:
             associations[record.id] = store.load_campaign(record.campaign_id)
     for record in records:
+        if record.resolution_version == 2:
+            continue
         campaign = associations[record.id]
         if campaign is None:
             continue
@@ -174,3 +176,5 @@ def resolve_candidates(store, now, timezone_name='Asia/Shanghai'):
                     jobs.remove(existing)
                 store.save_queue_job(update)
                 jobs.append(update)
+    from .campaign_notices import resolve_campaign_notices
+    resolve_campaign_notices(store, now, timezone_name)

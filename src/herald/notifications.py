@@ -144,6 +144,8 @@ class SmtpEmailSender:
 class NotificationService:
     @staticmethod
     def _reason_summary(campaign, job):
+        if job.campaign_notice:
+            return job.summary
         path = job.summary.removeprefix('更新：')
         if path == job.summary:
             return job.summary
@@ -188,13 +190,19 @@ class NotificationService:
             campaign = store.load_campaign(campaign_id) if campaign_id else None
             if job.activity_id and (campaign is None or not any(a.id == job.activity_id for a in campaign.activities)):
                 campaign = next((c for c in store.list_campaigns() if any(a.id == job.activity_id for a in c.activities)), None)
+            detail_campaign_id = campaign.id if campaign else None
             if notice:
                 title = campaign.title if campaign else notice.ip_name + ' · 候选联动信息'
+                structured = notice.status == 'structured' and campaign is not None
+                known_sources = {(s.id, s.content_hash): s for s in campaign.sources} if structured else {}
                 # An ephemeral presentation object, never a fabricated stored campaign.
                 campaign = Campaign(id=notice.id, ip_slug=notice.ip_slug, ip_name=notice.ip_name,
                     title=title, first_seen_at=notice.detected_at, updated_at=notice.detected_at,
-                    sources=notice.sources)
-                job = job.model_copy(update={'summary': job.summary + '\n' + notice.public_text})
+                    sources=[known_sources.get((s.id, s.content_hash), s) for s in notice.sources])
+                if notice.status == 'unconfirmed':
+                    job = job.model_copy(update={'summary': '原帖核查：' + (notice.review_reason or '尚未确认具体联动安排，请查看原帖')})
+                elif not structured or not job.summary.startswith(('联动信息：', '补充联动信息：')):
+                    job = job.model_copy(update={'summary': job.summary + '\n' + notice.public_text})
             if campaign is None or not ScheduleCompiler.validate_due_job(job, campaign):
                 skipped.append(job)
                 continue
@@ -211,37 +219,60 @@ class NotificationService:
                 if (target_day or job.expected_at.astimezone(self.timezone).date()) == day:
                     job = job.model_copy(update={'summary': job.summary.replace('明天', '今天')})
             items.append(NotificationItem(job=job, campaign=campaign,
-                detail_campaign_id=campaign_id if notice else campaign.id,
+                detail_campaign_id=detail_campaign_id,
                 extraction_status=notice.status if notice else None))
         return items, skipped
 
     @staticmethod
     def build_cards(items: list[NotificationItem]) -> list[dict]:
         """Public presentation model; current facts, grouped reasons, no receipts."""
-        cards: dict[tuple[str, str | None], dict] = {}
+        cards = []
         for item in sorted(items, key=lambda item: item.job.id):
             campaign, job = item.campaign, item.job
             activity = next((a for a in campaign.activities if a.id == job.activity_id), None)
-            key = (campaign.id, job.activity_id)
-            card = cards.setdefault(key, {
-                "campaign_id": campaign.id,
+            # Source-level receipt identities must not become separate cards once
+            # extraction has established a shared campaign. Pending posts stay apart.
+            campaign_id = (item.detail_campaign_id if item.extraction_status == 'structured'
+                           and item.detail_campaign_id else campaign.id)
+            card = {
+                "campaign_id": campaign_id,
                 "campaign_title": campaign.title,
                 "ip_name": campaign.ip_name,
                 "activity_id": job.activity_id,
                 "activity": activity.model_dump(mode="json") if activity else None,
                 "detail_campaign_id": item.detail_campaign_id or (None if job.candidate_id else campaign.id),
                 "extraction_status": item.extraction_status,
+                "campaign_notice": job.campaign_notice,
                 "reasons": [],
                 "sources": [s.model_dump(mode="json") for s in campaign.sources],
-            })
+            }
             reason = {"kind": job.kind.value, "summary": NotificationService._reason_summary(campaign, job),
                       "action_id": job.action_id,
                       "expected_at": job.expected_at.isoformat() if job.expected_at else None}
             point = next((p for p in schedule_actions(activity, ScheduleCompiler().timezone) if p.id == job.action_id), None) if activity else None
             reason['date_only'] = str(job.expected_date or point.start_date) if job.expected_date or (point and point.start_date) else None
-            if reason not in card["reasons"]:
-                card["reasons"].append(reason)
-        return list(cards.values())
+            card["reasons"].append(reason)
+            cards.append(card)
+        return NotificationService.merge_cards(cards)
+
+    @staticmethod
+    def merge_cards(cards: list[dict]) -> list[dict]:
+        """Merge only established campaign/activity identities, retaining evidence."""
+        grouped = {}
+        consolidated = {c['campaign_id'] for c in cards if c.get('campaign_notice')}
+        for card in cards:
+            if card['campaign_id'] in consolidated:
+                card = {**card, 'activity_id': None, 'activity': None, 'campaign_notice': True}
+            key = (card['campaign_id'], card['activity_id'])
+            merged = grouped.setdefault(key, {'reasons': [], 'sources': []})
+            merged.update({k: v for k, v in card.items() if k not in ('reasons', 'sources')})
+            for reason in card['reasons']:
+                if reason not in merged['reasons']:
+                    merged['reasons'].append(reason)
+            sources = {s['url']: s for s in merged['sources']}
+            sources.update({s['url']: s for s in card['sources']})
+            merged['sources'] = list(sources.values())
+        return list(grouped.values())
 
     def render_digest(
         self, items: list[NotificationItem], generated_at: datetime
@@ -262,7 +293,8 @@ class NotificationService:
         for card in cards:
             activity = card["activity"]
             lines.append(f"【{activity['title'] if activity else card['campaign_title']}】")
-            lines.append(card["campaign_title"])
+            if activity and activity['title'] != card['campaign_title']:
+                lines.append(card["campaign_title"])
             for reason in card["reasons"]:
                 lines.append(reason["summary"])
             if activity:
@@ -315,7 +347,8 @@ class NotificationService:
         for is_news, heading in ((True, '今日新消息'), (False, '即将开始或结束')):
             blocks = []
             for card in cards:
-                reasons = [r for r in card['reasons'] if (r['kind'] in ('announcement', 'update')) == is_news]
+                has_news = any(r['kind'] in ('announcement', 'update') for r in card['reasons'])
+                reasons = card['reasons'] if has_news == is_news else []
                 if not reasons:
                     continue
                 activity = card['activity']
@@ -426,16 +459,41 @@ class NotificationService:
         # Leave later jobs unreceipted so a subsequent day can collect them.
         if store.has_receipt(self._daily_digest_receipt_id(day), day):
             return DeliveryResult((), ())
+        snapshot_path = store.root / 'digest-snapshots' / f'{day.isoformat()}.json'
+        if snapshot_path.exists():
+            frozen = json.loads(snapshot_path.read_text(encoding='utf-8'))
+            digest = NotificationDigest(frozen['subject'], frozen['text'], (), frozen['html'])
+            self._send_digest(sender, store, day, recipient, digest)
+            for value in frozen['receipts']:
+                store.save_receipt(NotificationReceipt.model_validate({**value,
+                    'sent_at': generated_at, 'delivery_day': day}))
+            self._save_daily_digest_receipt(store, day, generated_at)
+            return DeliveryResult(tuple(QueueJob.model_validate(j) for j in frozen['jobs']), (), email_sent=True)
         items, skipped = self.collect_due(store, day, now=generated_at, watched_ip_slugs=watched_ip_slugs)
         if not items:
             receipt_id = self._daily_digest_receipt_id(day)
             if not send_empty_digest or store.has_receipt(receipt_id, day):
                 return DeliveryResult((), tuple(skipped))
             digest = self.render_empty_digest(generated_at)
+            store._atomic_json_write(snapshot_path, {'subject': digest.subject, 'text': digest.text,
+                'html': digest.html, 'jobs': [], 'receipts': []})
             self._send_digest(sender, store, day, recipient, digest)
             self._save_daily_digest_receipt(store, day, generated_at)
             return DeliveryResult((), tuple(skipped), email_sent=True)
         digest = self.render_digest(items, generated_at)
+        candidates = {c.id: c for c in store.list_candidates()}
+        frozen_receipts = []
+        for item in digest.items:
+            notice = candidates.get(item.job.candidate_id)
+            frozen_receipts.append({'job_id': item.job.id, 'candidate_id': item.job.candidate_id,
+                'semantic_key': item.job.semantic_key,
+                'public_text': notice.public_text if notice else '',
+                'facts': item.job.facts if item.job.campaign_notice else notice.facts if notice else {},
+                'campaign_id': item.job.campaign_id if item.job.campaign_notice else None,
+                'covered_candidate_ids': item.job.covered_candidate_ids})
+        store._atomic_json_write(snapshot_path, {'subject': digest.subject, 'text': digest.text,
+            'html': digest.html, 'jobs': [item.job.model_dump(mode='json') for item in digest.items],
+            'receipts': frozen_receipts})
         self._send_digest(sender, store, day, recipient, digest)
         sent_jobs: list[QueueJob] = []
         candidates = {c.id: c for c in store.list_candidates()}
@@ -449,7 +507,9 @@ class NotificationService:
                     sent_at=generated_at,
                     delivery_day=day,
                     public_text=notice.public_text if notice else '',
-                    facts=notice.facts if notice else {},
+                    facts=item.job.facts if item.job.campaign_notice else notice.facts if notice else {},
+                    campaign_id=item.job.campaign_id if item.job.campaign_notice else None,
+                    covered_candidate_ids=item.job.covered_candidate_ids,
                 )
             )
             sent_jobs.append(item.job)

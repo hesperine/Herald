@@ -70,6 +70,8 @@ class ObservationPipeline:
         suppress_immediate_for=None,
     ) -> PipelineResult:
         before = {j.id for j in store.list_queue_jobs()}
+        from .campaign_notices import prepare_baselines
+        prepare_baselines(store)
         register_candidates(store, ip, observations, now, str(self.scheduler.timezone))
         result = await self._process(store=store, ip=ip, observations=observations, now=now,
             provider=provider, remind_day_before=remind_day_before,
@@ -89,6 +91,10 @@ class ObservationPipeline:
         remind_day_before: bool = True,
         suppress_immediate_for: set[str] | None = None,
     ) -> PipelineResult:
+        if provider is not None and getattr(provider, 'contextual', False):
+            from .contextual_pipeline import process_contextual
+            return await process_contextual(self, store=store, ip=ip, observations=observations,
+                now=now, provider=provider, remind_day_before=remind_day_before)
         if provider is not None and callable(getattr(provider, 'extract_batch', None)):
             from .semantic_pipeline import process_semantic
             return await process_semantic(self, store=store, ip=ip, observations=observations,

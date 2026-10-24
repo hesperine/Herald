@@ -1,6 +1,11 @@
 name: Daily collaboration scan
 
 on:
+  push:
+    branches: [main]
+    paths:
+      - 'src/herald/**'
+      - '.github/workflows/daily.yml'
   schedule:
     # 21:00 in Asia/Shanghai. Starts may be delayed.
     - cron: "0 13 * * *"
@@ -9,6 +14,16 @@ on:
     # Final pending retry and digest fallback: next-day 03:00 in Asia/Shanghai.
     - cron: "0 19 * * *"
   workflow_dispatch:
+    inputs:
+      phase:
+        description: "Run phase (retry reuses saved public sources)"
+        type: choice
+        options: [retry, full]
+        default: retry
+      send_email:
+        description: "Allow today's daily email"
+        type: boolean
+        default: false
 
 permissions:
   contents: write
@@ -18,7 +33,25 @@ concurrency:
   cancel-in-progress: false
 
 jobs:
+  verify:
+    if: github.event_name == 'push'
+    permissions:
+      contents: read
+    runs-on: ubuntu-latest
+    timeout-minutes: 10
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.11'
+      - run: python -m pip install .
+      - run: python -m unittest discover -s tests -v
+        env:
+          PYTHONPATH: src
+      - run: python -m compileall -q src tests scripts
   scan:
+    needs: verify
+    if: ${{ always() && (needs.verify.result == 'success' || needs.verify.result == 'skipped') }}
     runs-on: ubuntu-latest
     timeout-minutes: 20
     env:
@@ -87,9 +120,18 @@ jobs:
         id: scan
         env:
           TRIGGER_SCHEDULE: ${{ github.event.schedule }}
+          TRIGGER_EVENT: ${{ github.event_name }}
+          DISPATCH_PHASE: ${{ inputs.phase }}
+          DISPATCH_EMAIL: ${{ inputs.send_email }}
         shell: bash
         run: |
-          if [[ "$TRIGGER_SCHEDULE" == "0 19 * * *" ]]; then
+          if [[ "$TRIGGER_EVENT" == "push" ]]; then
+            timeout --signal=TERM 16m python -m herald --state-dir _state --page-dir _page --phase retry --no-email
+          elif [[ "$TRIGGER_EVENT" == "workflow_dispatch" ]]; then
+            extra=()
+            if [[ "$DISPATCH_EMAIL" != "true" ]]; then extra+=(--no-email); fi
+            timeout --signal=TERM 16m python -m herald --state-dir _state --page-dir _page --phase "${DISPATCH_PHASE:-retry}" "${extra[@]}"
+          elif [[ "$TRIGGER_SCHEDULE" == "0 19 * * *" ]]; then
             timeout --signal=TERM 16m python -m herald --state-dir _state --page-dir _page --phase retry --final-retry
           elif [[ "$TRIGGER_SCHEDULE" == "0 15,17 * * *" ]]; then
             timeout --signal=TERM 16m python -m herald --state-dir _state --page-dir _page --phase retry

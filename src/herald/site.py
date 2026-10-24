@@ -9,7 +9,7 @@ from __future__ import annotations
 import json
 from hashlib import sha256
 from collections import defaultdict
-from datetime import datetime
+from datetime import date, datetime
 from pathlib import Path
 from zoneinfo import ZoneInfo, ZoneInfoNotFoundError
 
@@ -422,15 +422,12 @@ class StaticSiteBuilder:
         day = now.astimezone(self.timezone).date()
         due, _ = service.collect_due(store, day, include_delivered=True, now=now,
                                    watched_ip_slugs=watched_slugs)
+        all_campaigns = {c.id: c for c in store.list_campaigns(include_redirects=True)}
+        notices = {c.id: c for c in store.list_candidates() if c.ip_slug in watched_slugs}
         old = store.load_reminder_snapshot(day) or {'date': str(day), 'cards': []}
-        cards = {(c['campaign_id'], c['activity_id']): c for c in old['cards']}
-        for card in service.build_cards(due):
-            key = (card['campaign_id'], card['activity_id'])
-            previous = cards.get(key)
-            if previous:
-                card['reasons'] = previous['reasons'] + [r for r in card['reasons'] if r not in previous['reasons']]
-            cards[key] = card
-        snapshot = {'date': str(day), 'cards': list(cards.values())}
+        cards = self._normalize_reminder_cards(
+            old['cards'] + service.build_cards(due), store, all_campaigns, notices)
+        snapshot = {'date': str(day), 'cards': cards}
         serialized = json.dumps(snapshot, ensure_ascii=False)
         if any(value in serialized for value in forbidden_values if len(value) >= 8):
             raise ValueError('sensitive value detected in reminder snapshot')
@@ -440,11 +437,13 @@ class StaticSiteBuilder:
         directory.mkdir(exist_ok=True)
         self._remove_json_files(directory)
         visible = {c.id: {a.id for a in c.activities} for c in campaigns}
-        all_campaigns = {c.id: c for c in store.list_campaigns(include_redirects=True)}
-        notices = {c.id: c for c in store.list_candidates() if c.ip_slug in watched_slugs}
         watched_ids = {c.id for c in all_campaigns.values() if c.ip_slug in watched_slugs} | notices.keys()
         dates = []
         for saved in store.list_reminder_snapshots(day):
+            normalized = self._normalize_reminder_cards(saved['cards'], store, all_campaigns, notices)
+            if normalized != saved['cards']:
+                saved = {**saved, 'cards': normalized}
+                store.save_reminder_snapshot(date.fromisoformat(saved['date']), saved)
             published = []
             for card in saved['cards']:
                 if card['campaign_id'] not in watched_ids:
@@ -472,6 +471,34 @@ class StaticSiteBuilder:
             dates.append(saved['date'])
             self._write_json(directory / f"{saved['date']}.json", {'date': saved['date'], 'cards': published})
         self._write_json(directory / 'index.json', {'dates': dates})
+
+    @staticmethod
+    def _normalize_reminder_cards(cards, store, all_campaigns, notices):
+        normalized = []
+        for original in cards:
+            card = dict(original)
+            notice = notices.get(card['campaign_id'])
+            detail_id = notice.campaign_id if notice else card.get('detail_campaign_id', card['campaign_id'])
+            alias = all_campaigns.get(detail_id)
+            if alias:
+                card['activity_id'] = alias.activity_redirects.get(card['activity_id'], card['activity_id'])
+            target = store.load_campaign(detail_id) if detail_id else None
+            card['detail_campaign_id'] = target.id if target else detail_id
+            if target and (notice is None or notice.status == 'structured'):
+                card['campaign_id'] = target.id
+                if notice:
+                    card['campaign_title'] = target.title
+                    card['extraction_status'] = notice.status
+                    # Old snapshots appended a different raw post to each copy of
+                    # the same structured summary. Keep genuine fallback history.
+                    card['reasons'] = [{**reason, 'summary': reason['summary'].removesuffix('\n' + notice.public_text)}
+                        if notice.public_text and reason['summary'].startswith(('联动信息：', '补充联动信息：'))
+                        else reason for reason in card['reasons']]
+                    sources = {(s.id, s.content_hash): s for s in target.sources}
+                    card['sources'] = [sources[(s.get('id'), s.get('content_hash'))].model_dump(mode='json')
+                        if (s.get('id'), s.get('content_hash')) in sources else s for s in card['sources']]
+            normalized.append(card)
+        return NotificationService.merge_cards(normalized)
 
     def _activity_cards(self, campaigns, now):
         cards = []

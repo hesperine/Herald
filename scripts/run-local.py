@@ -139,6 +139,11 @@ def _parser() -> argparse.ArgumentParser:
         "--page-dir", type=Path, default=PROJECT_ROOT / ".herald-work/local-page"
     )
     parser.add_argument("--now", help="timezone-aware ISO timestamp")
+    parser.add_argument('--no-email', action='store_true')
+    parser.add_argument('--two-pass-review', type=Path,
+                        help='isolated public two-day AI experiment; no email or production writes')
+    parser.add_argument('--production-review', type=Path,
+                        help='replay public two-day sources through production pipeline with in-memory mail')
     parser.add_argument('--replay', choices=('bootstrap', 'incremental'))
     parser.add_argument('--replay-directory', type=Path)
     parser.add_argument('--replay-cache-media', action='store_true')
@@ -201,7 +206,11 @@ def main(argv: list[str] | None = None) -> int:
         cookie = values.get("WEIBO_COOKIE", "")
         values = {"WEIBO_COOKIE": cookie} if cookie else {}
     child_environment = build_child_environment(values)
-    if args.replay:
+    if args.production_review:
+        command = [sys.executable, 'scripts/production_review.py', str(args.production_review)]
+    elif args.two_pass_review:
+        command = [sys.executable, 'scripts/two_pass_review.py', str(args.two_pass_review)]
+    elif args.replay:
         command = [sys.executable, '-m', 'herald.replay', args.replay,
                    '--directory', str(args.replay_directory)]
         if args.now:
@@ -240,6 +249,8 @@ def main(argv: list[str] | None = None) -> int:
         ]
         if args.now:
             command.extend(["--now", args.now])
+        if args.no_email:
+            command.append('--no-email')
     try:
         completed = subprocess.run(
             command,

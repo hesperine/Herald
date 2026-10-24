@@ -11,6 +11,7 @@ from herald.models import (
     Activity,
     ActivityKind,
     Campaign,
+    CandidateNotice,
     EventAction,
     EventStatus,
     NotificationKind,
@@ -195,6 +196,84 @@ def scheduled_job(*, expected_at: datetime = ACTION_AT) -> QueueJob:
 
 
 class NotificationServiceTests(unittest.TestCase):
+    def save_candidate(self, candidate_id, parent, summary, *, status='structured'):
+        from tests.test_pipeline import observation
+        source = observation(candidate_id, '原神', digest=candidate_id * 64).source
+        source.summary = '公开来源：' + candidate_id
+        if parent:
+            parent.sources.append(source)
+            self.store.save_campaign(parent)
+        notice = CandidateNotice(id=candidate_id, ip_slug='genshin-impact', ip_name='原神',
+            detected_at=NOW, campaign_id=parent.id if parent else None, status=status,
+            public_text='原帖正文：' + candidate_id, sources=[source])
+        self.store.save_candidate(notice)
+        self.store.save_queue_job(QueueJob(id=candidate_id, candidate_id=candidate_id,
+            campaign_id=notice.campaign_id, kind=NotificationKind.ANNOUNCEMENT,
+            due_date=DUE_DAY, semantic_key=candidate_id, summary=summary))
+        return notice
+
+    def test_structured_posts_share_one_card_and_fact_summary_but_keep_all_receipts(self):
+        parent = campaign()
+        summary = '联动信息：示例联动\n截止日期：2026-09-20'
+        notices = [self.save_candidate(key, parent, summary) for key in ('a', 'b', 'c')]
+        items, _ = self.service.collect_due(self.store, DUE_DAY, now=NOW)
+        cards = self.service.build_cards(items)
+        self.assertEqual(len(cards), 1)
+        self.assertEqual(cards[0]['campaign_id'], parent.id)
+        self.assertEqual(cards[0]['extraction_status'], 'structured')
+        self.assertEqual(len(cards[0]['reasons']), 1)
+        self.assertEqual(len(cards[0]['sources']), 3)
+        self.assertEqual(cards[0]['reasons'][0]['summary'], summary)
+        sender = MemorySender()
+        result = self.service.deliver_due(store=self.store, day=DUE_DAY, generated_at=NOW,
+            sender=sender, recipient='player@example.com')
+        self.assertEqual({job.id for job in result.sent}, {notice.id for notice in notices})
+        self.assertEqual(sender.messages[0]['text'].count('截止日期：2026-09-20'), 1)
+        self.assertEqual(sender.messages[0]['html'].count('截止日期：2026-09-20'), 1)
+        self.assertIn('1 项需要关注', sender.messages[0]['subject'])
+        for notice in notices:
+            self.assertEqual(self.store.find_receipt(notice.id).public_text, notice.public_text)
+            self.assertIn(str(notice.sources[0].url), sender.messages[0]['text'])
+        saved = '\n'.join(p.read_text('utf8') for p in self.store.root.rglob('*.json'))
+        self.assertNotIn('player@example.com', saved)
+
+    def test_same_titles_do_not_merge_unresolved_posts_or_different_campaigns(self):
+        self.save_candidate('a', None, '待解析', status='pending')
+        self.save_candidate('b', None, '待解析', status='pending')
+        first = campaign()
+        second = campaign().model_copy(update={'id': 'campaign-b'})
+        self.save_candidate('c', first, '联动信息：同名企划')
+        self.save_candidate('d', second, '联动信息：同名企划')
+        items, _ = self.service.collect_due(self.store, DUE_DAY, now=NOW)
+        cards = self.service.build_cards(items)
+        self.assertEqual(len(cards), 4)
+        for notice_id in ('a', 'b'):
+            card = next(c for c in cards if c['campaign_id'] == notice_id)
+            self.assertIn('原帖正文：' + notice_id, card['reasons'][0]['summary'])
+
+    def test_sent_fallback_keeps_public_text_when_structured_before_page_rebuild(self):
+        notice = self.save_candidate('a', campaign(), '发现联动相关信息（待解析，请以原帖为准）')
+        from herald.models import NotificationReceipt
+        self.store.save_receipt(NotificationReceipt(job_id=notice.id, candidate_id=notice.id,
+            semantic_key=notice.id, sent_at=NOW, delivery_day=DUE_DAY,
+            public_text=notice.public_text))
+        items, _ = self.service.collect_due(self.store, DUE_DAY, now=NOW, include_delivered=True)
+        cards = self.service.build_cards(items)
+        self.assertIn(notice.public_text, cards[0]['reasons'][0]['summary'])
+
+    def test_grouped_news_keeps_distinct_updates_and_activity_reminders(self):
+        parent = campaign()
+        self.save_candidate('a', parent, '联动信息：示例联动')
+        self.save_candidate('b', parent, '补充联动信息：新增购买入口')
+        self.store.save_queue_job(scheduled_job())
+        items, _ = self.service.collect_due(self.store, DUE_DAY, now=NOW)
+        cards = self.service.build_cards(items)
+        self.assertEqual(len(cards), 2)
+        news = next(c for c in cards if c['activity_id'] is None)
+        self.assertEqual(len(news['reasons']), 2)
+        reminder = next(c for c in cards if c['activity_id'] == 'popup')
+        self.assertEqual(reminder['reasons'][0]['kind'], 'day_before')
+
     def test_retry_after_empty_digest_defers_new_items(self):
         sender = MemorySender()
         self.service.deliver_due(store=self.store, day=DUE_DAY, generated_at=NOW,

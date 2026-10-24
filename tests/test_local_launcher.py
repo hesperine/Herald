@@ -23,6 +23,30 @@ def _load_launcher():
 
 
 class LocalLauncherTests(unittest.TestCase):
+    def test_no_email_is_forwarded_to_runner(self):
+        launcher = _load_launcher()
+        with patch.object(launcher, 'load_local_env', return_value={}), patch.object(
+            launcher.subprocess, 'run', return_value=SimpleNamespace(returncode=0)
+        ) as run:
+            launcher.main(['--no-email', '--phase', 'retry'])
+        self.assertIn('--no-email', run.call_args.args[0])
+    def test_production_review_uses_separate_non_smtp_child(self):
+        launcher = _load_launcher()
+        with patch.object(launcher, 'load_local_env', return_value={}), patch.object(
+            launcher.subprocess, 'run', return_value=SimpleNamespace(returncode=0)
+        ) as run:
+            self.assertEqual(launcher.main(['--production-review', 'review-output']), 0)
+        self.assertIn('scripts/production_review.py', run.call_args.args[0])
+
+    def test_two_pass_review_is_isolated_child(self):
+        launcher = _load_launcher()
+        with patch.object(launcher, 'load_local_env', return_value={}), patch.object(
+            launcher.subprocess, 'run', return_value=SimpleNamespace(returncode=0)
+        ) as run:
+            self.assertEqual(launcher.main(['--two-pass-review', 'review-output']), 0)
+        self.assertIn('scripts/two_pass_review.py', run.call_args.args[0])
+        self.assertNotIn('herald', run.call_args.args[0])
+
     def test_replay_preview_options(self):
         args = _load_launcher()._parser().parse_args(['--replay', 'bootstrap',
             '--replay-directory', 'samples', '--replay-cache-media', '--now', '2026-07-01T12:00:00+08:00'])
