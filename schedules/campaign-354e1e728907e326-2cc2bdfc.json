@@ -1,11 +1,7 @@
 {
   "campaign_id": "campaign-354e1e728907e326-2cc2bdfc",
-  "campaign_revision": 5,
+  "campaign_revision": 6,
   "jobs": [
-    {
-      "due_date": "2026-10-25",
-      "job_id": "job-6be975e3c56641784496"
-    },
     {
       "due_date": "2026-10-29",
       "job_id": "job-1729c11079552c872959"
@@ -16,23 +12,7 @@
     },
     {
       "due_date": "2026-11-05",
-      "job_id": "job-1f10d874382db35d16d9"
-    },
-    {
-      "due_date": "2026-11-05",
       "job_id": "job-fa5481a77629465381e6"
-    },
-    {
-      "due_date": "2026-11-20",
-      "job_id": "job-31b0c63d289ca1b44a10"
-    },
-    {
-      "due_date": "2026-11-20",
-      "job_id": "job-a026f405177f4ca81659"
-    },
-    {
-      "due_date": "2027-01-24",
-      "job_id": "job-17af288a665717154a24"
     }
   ]
 }

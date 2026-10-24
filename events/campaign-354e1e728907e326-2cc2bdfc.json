@@ -159,7 +159,11 @@
       "title": "新装限时上架",
       "uncertainties": [],
       "venues": []
-    },
+    }
+  ],
+  "activity_redirects": {},
+  "announced_at": "2026-10-11T03:00:38Z",
+  "excluded_activities": [
     {
       "actions": [
         {
@@ -359,9 +363,6 @@
       "venues": []
     }
   ],
-  "activity_redirects": {},
-  "announced_at": "2026-10-11T03:00:38Z",
-  "excluded_activities": [],
   "fact_provenance": {
     "partner": {
       "content_hash": "6ee71d1750c863bb65491b7a8a0c885b7dff413c0821c10ed35710397ec1c274",
@@ -384,8 +385,33 @@
   "ip_slug": "arknights",
   "partner": "国家图书馆",
   "redirected_to": null,
-  "revision": 5,
-  "scope_reviews": [],
+  "revision": 6,
+  "scope_reviews": [
+    {
+      "activity_id": "activity-dbb1db2446afc1b7",
+      "observation_id": "website-arknights-official-1454",
+      "quote": "四、礼包限时上架\n售卖时间：10月16日 16:00 - 11月06日 03:59\n活动说明：活动期间，采购中心将限时售卖以下组合包\n【大荒青禾组合包】\n组合包内容：界面主题【大荒】*1、主题场景【青穰】*1\n◆【大荒青禾组合包】本次返场将不再享受首次上架优惠",
+      "reason": "该节为普通礼包返场，未标注明日方舟×国家图书馆联动。"
+    },
+    {
+      "activity_id": "activity-48146dcb6792b14e",
+      "observation_id": "website-arknights-official-1454",
+      "quote": "五、复刻时装限时上架\n活动时间：10月24日 04:00 - 11月21日 03:59\n活动说明：活动期间以下干员时装将在时装商店上架并限时贩售：",
+      "reason": "该节为普通复刻时装更新，未标注明日方舟×国家图书馆联动。"
+    },
+    {
+      "activity_id": "activity-3aafc3831b8e637f",
+      "observation_id": "website-arknights-official-1454",
+      "quote": "六、【罗德岛风尚回顾】限时开启\n活动时间：10月24日 04:00 - 11月21日 03:59\n活动说明：活动期间，【错位巡礼系列 - 沉思之庭 - 赫德雷】、【错位巡礼系列 - 倾听 - 温蒂】等干员时装将在时装商店复刻上架并限时贩售",
+      "reason": "该节为罗德岛风尚回顾普通复刻活动，未标注明日方舟×国家图书馆联动。"
+    },
+    {
+      "activity_id": "activity-9f065aeabd4eb15e",
+      "observation_id": "website-arknights-official-1454",
+      "quote": "七、剿灭作战关卡【灰石剧场】追加\n开启时间：10月26日 04:00 - 2027年01月25日 03:59\n开启条件：通关主线2-8\n关卡说明：新增剿灭委托关卡【灰石剧场】将替换现有剿灭委托关卡【默祷圣祠】，现剿灭委托关卡【默祷圣祠】将在关闭后收录进假定作战目标",
+      "reason": "该节为普通剿灭作战关卡更新，未标注明日方舟×国家图书馆联动。"
+    }
+  ],
   "sources": [
     {
       "account_id": "7779816949641",
@@ -595,5 +621,5 @@
   ],
   "status": "ongoing",
   "title": "《明日方舟》× 国家图书馆「恒远津梁」",
-  "updated_at": "2026-10-23T17:44:25.376551Z"
+  "updated_at": "2026-10-24T19:09:25.995731Z"
 }
