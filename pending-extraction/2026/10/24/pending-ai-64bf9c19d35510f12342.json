@@ -1,0 +1,13 @@
+{
+  "attempts": 1,
+  "error_category": "validation",
+  "id": "pending-ai-64bf9c19d35510f12342",
+  "ip_slug": "honkai-star-rail",
+  "next_retry_at": "2026-10-24T21:51:18.922564Z",
+  "notify_immediately": true,
+  "observation_ids": [
+    "miyoushe-78058520"
+  ],
+  "queued_at": "2026-10-24T18:51:18.922564Z",
+  "reason": "AI processing failed; retry scheduled"
+}

@@ -1,5 +1,8 @@
 {
   "campaign_id": "campaign-3302d7e79db4b203-62055d07",
+  "campaign_ids": [
+    "campaign-3302d7e79db4b203-62055d07"
+  ],
   "detected_at": "2026-09-23T21:21:57.952948Z",
   "facts": {
     "action-917d8e7757ce9a5f:时间": "2026-09-23T00:00:00+08:00",
@@ -17,6 +20,8 @@
   "ip_name": "明日方舟：终末地",
   "ip_slug": "arknights-endfield",
   "public_text": "奈雪的茶 ×《明日方舟：终末地》「果韵香迎，心意同行」合作宣传PV\n鲜果入杯，沁香萦回。\n终末地携手@奈雪的茶，邀管理员共赴这场清爽惬意的午间茶歇。\n联动合作现已开启，更多活动详情，请关注奈雪的茶官方自媒体账号。",
+  "resolution_version": 2,
+  "review_reason": null,
   "sources": [
     {
       "account_id": "3737967211133",
@@ -36,5 +41,5 @@
       "url": "https://www.skland.com/article?id=6333400"
     }
   ],
-  "status": "structured"
+  "status": "pending"
 }

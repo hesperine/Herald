@@ -1,5 +1,8 @@
 {
   "campaign_id": "campaign-8ef39adc0f9cce18-746c28cd",
+  "campaign_ids": [
+    "campaign-8ef39adc0f9cce18-746c28cd"
+  ],
   "detected_at": "2026-10-06T18:48:23.889661Z",
   "facts": {
     "action-64dddfd3e38ec25c:开始日期": "2026-11-05",
@@ -9,6 +12,8 @@
   "ip_name": "明日方舟：终末地",
   "ip_slug": "arknights-endfield",
   "public_text": "汉堡王 ×《明日方舟：终末地》「美味通行，堡已就位」合作宣传PV\n美味通行，堡已就位！\n11月5日，汉堡王×《明日方舟：终末地》联动开启，\n和干员们相约汉堡王、完成美味特别任务吧~\n更多联动详情敬请关注汉堡王官方自媒体账号。",
+  "resolution_version": 2,
+  "review_reason": null,
   "sources": [
     {
       "account_id": "3737967211133",
@@ -28,5 +33,5 @@
       "url": "https://www.skland.com/article?id=6366130"
     }
   ],
-  "status": "structured"
+  "status": "pending"
 }

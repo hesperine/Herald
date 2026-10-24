@@ -1,11 +1,16 @@
 {
   "campaign_id": "campaign-1786831476040aa0-253f5627",
+  "campaign_ids": [
+    "campaign-1786831476040aa0-253f5627"
+  ],
   "detected_at": "2026-10-24T16:27:09.090923Z",
   "facts": {},
   "id": "candidate-09a0f3c387eb0aafaac15764",
   "ip_name": "明日方舟",
   "ip_slug": "arknights",
   "public_text": "《明日方舟》× 名创优品「秋意茶话会」合作宣传PV\n暖光浸木，落叶叩窗。\n明日方舟携手名创优品，邀博士共赴茶会，叙一杯焦糖色的午后。\n更多活动详情，请关注名创优品官方自媒体账号。",
+  "resolution_version": 2,
+  "review_reason": null,
   "sources": [
     {
       "account_id": "7779816949641",
@@ -25,5 +30,5 @@
       "url": "https://www.skland.com/article?id=6413505"
     }
   ],
-  "status": "structured"
+  "status": "pending"
 }

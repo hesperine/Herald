@@ -1,5 +1,8 @@
 {
   "campaign_id": "campaign-3302d7e79db4b203-62055d07",
+  "campaign_ids": [
+    "campaign-3302d7e79db4b203-62055d07"
+  ],
   "detected_at": "2026-09-23T21:21:57.952948Z",
   "facts": {
     "action-917d8e7757ce9a5f:时间": "2026-09-23T00:00:00+08:00",
@@ -17,6 +20,8 @@
   "ip_name": "明日方舟：终末地",
   "ip_slug": "arknights-endfield",
   "public_text": "奈雪的茶 ×《明日方舟：终末地》 联动定制头像框兑换开启\n联动定制头像框\n“甘甜雪花”\n果香与吸管里的沙沙声，您听，记忆回来了。\n_____________\n联动定制头像框，小程序下单【奈雪×明日方舟：终末地 联名饮品/套餐】或电商渠道购买【奈雪×明日方舟：终末地 联名瓶装果蔬茶】获取。\n兑换有效期：2026年9月23日 00:00:00 - 2027年1月20日 00:00:00",
+  "resolution_version": 2,
+  "review_reason": null,
   "sources": [
     {
       "account_id": "3737967211133",
@@ -36,5 +41,5 @@
       "url": "https://www.skland.com/article?id=6333403"
     }
   ],
-  "status": "structured"
+  "status": "pending"
 }

@@ -1,5 +1,8 @@
 {
   "campaign_id": "campaign-354e1e728907e326-2cc2bdfc",
+  "campaign_ids": [
+    "campaign-354e1e728907e326-2cc2bdfc"
+  ],
   "detected_at": "2026-10-23T17:44:25.376551Z",
   "facts": {
     "action-03bd746e193f8780:截止时间": "2026-11-21T03:59:00+08:00",
@@ -52,6 +55,8 @@
   "ip_name": "明日方舟",
   "ip_slug": "arknights",
   "public_text": "【新增服饰】国家图书馆合作服装-源远流长-黍\n【新增服饰】\n//源远流长 - 黍\n国家图书馆合作服装/源远流长。黍在天师府工作时穿着的服装。古卷在她的面前展开，代代相传的智慧浮现纸上，一如脚下长河奔流不息，一径向前。\n_____________\n“春雨少，用水浇；夏雨多，开渠道。”黍还记得很久以前她和人们一同将这则农谚记录在书卷上的情景。如今，当年的纸张已经泛黄，而她脚下稻谷青青，浓绿一片。\n点击查看动态形象时装「源远流长」动态动作展示",
+  "resolution_version": 2,
+  "review_reason": null,
   "sources": [
     {
       "account_id": "7779816949641",
@@ -71,5 +76,5 @@
       "url": "https://www.skland.com/article?id=6383812"
     }
   ],
-  "status": "structured"
+  "status": "pending"
 }

@@ -1,5 +1,8 @@
 {
   "campaign_id": "campaign-354e1e728907e326-2cc2bdfc",
+  "campaign_ids": [
+    "campaign-354e1e728907e326-2cc2bdfc"
+  ],
   "detected_at": "2026-10-23T17:44:25.376551Z",
   "facts": {
     "action-03bd746e193f8780:截止时间": "2026-11-21T03:59:00+08:00",
@@ -52,6 +55,8 @@
   "ip_name": "明日方舟",
   "ip_slug": "arknights",
   "public_text": "【新增服饰】国家图书馆合作服装-夜行烛火-烛煌\n【新增服饰】\n//夜行烛火 - 烛煌\n国家图书馆合作服装/夜行烛火。煌在游历炎国各方异域时所穿的服装。书中山海万象，手中炽焰长明，奇珍瑞兽相伴身侧，她踏焰前行。\n_____________\n顺着书上的描述，跨越五方山川，渡去四海之外，煌终于见到了传说中的生物。“你的名字应该是，呃......这个古字怎么念来着？”",
+  "resolution_version": 2,
+  "review_reason": null,
   "sources": [
     {
       "account_id": "7779816949641",
@@ -71,5 +76,5 @@
       "url": "https://www.skland.com/article?id=6381801"
     }
   ],
-  "status": "structured"
+  "status": "pending"
 }

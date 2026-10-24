@@ -1,5 +1,8 @@
 {
   "campaign_id": "campaign-5a95cf56417b3340-57ca36df",
+  "campaign_ids": [
+    "campaign-5a95cf56417b3340-57ca36df"
+  ],
   "detected_at": "2026-10-24T16:27:09.090923Z",
   "facts": {
     "action-7daecb790c690f03:时间": "2026-10-24T12:00:00+08:00",
@@ -13,6 +16,8 @@
   "ip_name": "明日方舟：终末地",
   "ip_slug": "arknights-endfield",
   "public_text": "《明日方舟：终末地》× 八达岭长城「关塞万里，环带一系」合作宣传PV\n青石承古，环带系安。\n终末地携手八达岭长城，邀管理员同守千秋故梦，共续一襟长风。\n联动合作现已上线，线下活动将于10月26日开启。更多活动详情，请关注官方自媒体账号。",
+  "resolution_version": 2,
+  "review_reason": null,
   "sources": [
     {
       "account_id": "3737967211133",
@@ -32,5 +37,5 @@
       "url": "https://www.skland.com/article?id=6412073"
     }
   ],
-  "status": "structured"
+  "status": "pending"
 }

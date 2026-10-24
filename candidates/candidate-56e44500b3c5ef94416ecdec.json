@@ -1,5 +1,8 @@
 {
   "campaign_id": "campaign-354e1e728907e326-2cc2bdfc",
+  "campaign_ids": [
+    "campaign-354e1e728907e326-2cc2bdfc"
+  ],
   "detected_at": "2026-10-23T17:44:25.376551Z",
   "facts": {
     "action-03bd746e193f8780:截止时间": "2026-11-21T03:59:00+08:00",
@@ -52,6 +55,8 @@
   "ip_name": "明日方舟",
   "ip_slug": "arknights",
   "public_text": "【新增服饰】国家图书馆合作服装-盛世之象-琳琅诗怀雅\n【新增服饰】\n//盛世之象 - 琳琅诗怀雅\n国家图书馆合作服装/盛世之象。诗怀雅在参加文化庆典时穿着的服装。医、技、艺、工，各个展位被她装点得琳琅满目，她将历史穿在身上，盛迎天下贵宾。\n_____________\n“古人编纂典籍记录知识，今人承继智慧，我要做的就是贯通融会，古为今用，让龙门再多点新光景！怎么样，不赖吧？”",
+  "resolution_version": 2,
+  "review_reason": null,
   "sources": [
     {
       "account_id": "7779816949641",
@@ -71,5 +76,5 @@
       "url": "https://www.skland.com/article?id=6381246"
     }
   ],
-  "status": "structured"
+  "status": "pending"
 }

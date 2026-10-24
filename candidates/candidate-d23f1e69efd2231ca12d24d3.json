@@ -1,5 +1,8 @@
 {
   "campaign_id": "campaign-abb4d493ebf696a7-3b3da411",
+  "campaign_ids": [
+    "campaign-abb4d493ebf696a7-3b3da411"
+  ],
   "detected_at": "2026-10-24T16:27:09.090923Z",
   "facts": {
     "action-2130c4e5ad5e584e:规则": "完成指定任务获取活动抽奖券，抽取 Nintendo Switch 2、联名机械键盘、合成玉等奖励",
@@ -16,6 +19,8 @@
   "ip_name": "明日方舟",
   "ip_slug": "arknights",
   "public_text": "《明日方舟》网页活动「燃烧即一切」现已开启！\n前方区域出现大量目标，除了乱窜的源石虫，还有不知为何混入其中的食材——既然送到了眼前，那就一并解决吧。\n前往森空岛参与活动，完成指定任务，即可获得森空岛限定社区装扮，还能获取活动抽奖券，抽取 Nintendo Switch 2、联名机械键盘、合成玉等丰厚奖励！\n活动参与时间： 2026年10月24日 - 2026年11月24日 23:59:59\n兑奖截止时间： 2026年12月1日 23:59:59\n活动链接：《明日方舟》网页活动「燃烧即一切」现已开启！\n（完整奖池清单及活动规则请查看活动页规则）",
+  "resolution_version": 2,
+  "review_reason": null,
   "sources": [
     {
       "account_id": "7779816949641",
@@ -35,5 +40,5 @@
       "url": "https://www.skland.com/article?id=6414284"
     }
   ],
-  "status": "structured"
+  "status": "pending"
 }

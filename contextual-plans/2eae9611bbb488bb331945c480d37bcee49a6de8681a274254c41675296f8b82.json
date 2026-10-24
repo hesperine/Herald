@@ -1,0 +1,30 @@
+{
+  "completed": {},
+  "routes": {
+    "groups": [
+      {
+        "campaign_id": "campaign-0451ddb8aea2e952-631416ed",
+        "observation_ids": [
+          "miyoushe-78031412",
+          "miyoushe-78058520"
+        ],
+        "partner": "大白兔",
+        "phrase": "崩坏：星穹铁道 × 大白兔 联名"
+      },
+      {
+        "campaign_id": "campaign-088817ae96bf8f7f-afce333c",
+        "observation_ids": [
+          "miyoushe-78286787"
+        ],
+        "partner": "绝区零",
+        "phrase": "崩坏：星穹铁道 × 绝区零 联动"
+      }
+    ],
+    "unconfirmed": [
+      {
+        "observation_id": "miyoushe-78179682",
+        "reason": "该帖为星神阿哈的角色介绍与CV公布，未提及任何品牌/IP联动、快闪、演出或票务周边等范围内活动，无法归入任何企划。"
+      }
+    ]
+  }
+}

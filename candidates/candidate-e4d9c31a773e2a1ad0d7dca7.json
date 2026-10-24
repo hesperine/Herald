@@ -1,5 +1,8 @@
 {
   "campaign_id": "campaign-0451ddb8aea2e952-631416ed",
+  "campaign_ids": [
+    "campaign-0451ddb8aea2e952-631416ed"
+  ],
   "detected_at": "2026-09-19T11:05:13.960434Z",
   "facts": {
     "action-60d8b12acaa400df:数量限制": "400,000份",
@@ -16,6 +19,8 @@
   "ip_name": "崩坏：星穹铁道",
   "ip_slug": "honkai-star-rail",
   "public_text": "星穹铁道 × 大白兔 | 联名9月10日10:00上线！\n亲爱的开拓者，《崩坏：星穹铁道》× 大白兔 联名将于9月10日10:00正式上线！\n快乐分享，甜满树庭！与那刻夏、风堇一起，分享甜蜜的奶糖吧~\n\n▌帕姆小贴士\n*联名礼盒将于9月10日10:00起在线上渠道发售，线下快闪及店铺发售将于9月15日陆续开启，请开拓者认准官方渠道。销售渠道请以大白兔官方信息为准。\n*联名礼盒线上全渠道发售总量为400,000份，单个用户限购6份。\n* 线上发售店铺的实际发货地区及运费，以店铺实际情况为准。\n\n点击图片查看更多联名信息。\n更多线下活动，还请关注大白兔后续官方资讯。",
+  "resolution_version": 2,
+  "review_reason": null,
   "sources": [
     {
       "account_id": "288909600",
@@ -35,5 +40,5 @@
       "url": "https://www.miyoushe.com/sr/article/78031412"
     }
   ],
-  "status": "structured"
+  "status": "pending"
 }

@@ -1,5 +1,8 @@
 {
   "campaign_id": "campaign-5bc119dd5397df8e-b8a82c6b",
+  "campaign_ids": [
+    "campaign-5bc119dd5397df8e-b8a82c6b"
+  ],
   "detected_at": "2026-10-22T17:51:58.077110Z",
   "facts": {
     "action-7ba954a9d4905633:参与入口": "https://endfield.hypergryph.com/activity/voyage-to-the-stars/?source_from=skland&header=0",
@@ -9,6 +12,8 @@
   "ip_name": "明日方舟：终末地",
   "ip_slug": "arknights-endfield",
   "public_text": "《明日方舟：终末地》「镌宇铭星-共赴星海」合作纪录 PV（下）\n鹰角网络联合神舟传媒携手《明日方舟：终末地》，见证万千理想与足迹奔赴无垠寰宇。星流不熄，苍穹有铭。\n《镌宇铭星——共赴星海特别活动》现已如期发射入轨。管理员，你写下的ID正与星辰同行。\n坐标查询已开放：https://endfield.hypergryph.com/activity/voyage-to-the-stars/?source_from=skland&header=0",
+  "resolution_version": 2,
+  "review_reason": null,
   "sources": [
     {
       "account_id": "3737967211133",
@@ -28,5 +33,5 @@
       "url": "https://www.skland.com/article?id=6407030"
     }
   ],
-  "status": "structured"
+  "status": "pending"
 }

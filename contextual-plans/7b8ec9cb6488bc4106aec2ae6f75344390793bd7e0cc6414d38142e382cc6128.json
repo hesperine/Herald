@@ -1,0 +1,75 @@
+{
+  "completed": {},
+  "routes": {
+    "groups": [
+      {
+        "campaign_id": "campaign-354e1e728907e326-2cc2bdfc",
+        "observation_ids": [
+          "website-arknights-official-1454",
+          "skland-6377234",
+          "skland-6377283",
+          "skland-6381246",
+          "skland-6381801",
+          "skland-6383812",
+          "skland-6411186"
+        ],
+        "partner": "国家图书馆",
+        "phrase": "明日方舟 × 国家图书馆「恒远津梁」"
+      },
+      {
+        "campaign_id": "campaign-1786831476040aa0-253f5627",
+        "observation_ids": [
+          "skland-6413505",
+          "skland-6415406"
+        ],
+        "partner": "名创优品",
+        "phrase": "明日方舟 × 名创优品「秋意茶话会」"
+      },
+      {
+        "campaign_id": "campaign-abb4d493ebf696a7-3b3da411",
+        "observation_ids": [
+          "skland-6414284",
+          "skland-6415406"
+        ],
+        "partner": null,
+        "phrase": "明日方舟 网页活动「燃烧即一切」"
+      },
+      {
+        "campaign_id": "campaign-de00e4b309b316f3-7cd10764",
+        "observation_ids": [
+          "skland-6411673",
+          "skland-6415406"
+        ],
+        "partner": "万代食玩",
+        "phrase": "明日方舟 × 万代食玩 系列第二弹"
+      },
+      {
+        "campaign_id": "campaign-4758edb88f30ddf3-4147566e",
+        "observation_ids": [
+          "skland-6411680",
+          "skland-6415406"
+        ],
+        "partner": "一番赏",
+        "phrase": "明日方舟 × 一番赏「Cuties~罗德岛的甜点时光~」"
+      },
+      {
+        "campaign_id": "campaign-148dc4c99579d419-b677ac89",
+        "observation_ids": [
+          "skland-6411690",
+          "skland-6415406"
+        ],
+        "partner": "共鸣GONG",
+        "phrase": "明日方舟 × 共鸣GONG 超迷你手办企划"
+      },
+      {
+        "campaign_id": null,
+        "observation_ids": [
+          "skland-6415406"
+        ],
+        "partner": null,
+        "phrase": "明日方舟 2026感谢庆典「故土新程」主题快闪"
+      }
+    ],
+    "unconfirmed": []
+  }
+}

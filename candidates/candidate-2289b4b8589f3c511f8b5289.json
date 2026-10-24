@@ -1,5 +1,8 @@
 {
   "campaign_id": "campaign-354e1e728907e326-2cc2bdfc",
+  "campaign_ids": [
+    "campaign-354e1e728907e326-2cc2bdfc"
+  ],
   "detected_at": "2026-10-23T17:44:25.376551Z",
   "facts": {
     "action-03bd746e193f8780:截止时间": "2026-11-21T03:59:00+08:00",
@@ -52,6 +55,8 @@
   "ip_name": "明日方舟",
   "ip_slug": "arknights",
   "public_text": "《明日方舟》× 国家图书馆「恒远津梁」合作宣传PV\n思想以典籍为舟，横渡岁月，沿流千载。\n亘古的文明先声，于今时回荡不绝。\n明日方舟携手国家图书馆，邀博士共览书卷，踏上今昔记忆的津梁。",
+  "resolution_version": 2,
+  "review_reason": null,
   "sources": [
     {
       "account_id": "7779816949641",
@@ -71,5 +76,5 @@
       "url": "https://www.skland.com/article?id=6377234"
     }
   ],
-  "status": "structured"
+  "status": "pending"
 }

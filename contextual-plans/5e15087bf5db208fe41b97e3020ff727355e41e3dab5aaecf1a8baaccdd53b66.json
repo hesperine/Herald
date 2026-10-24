@@ -1,0 +1,18 @@
+{
+  "completed": {
+    "0": "campaign-cdc53ffc7863c84c-a0db4ca1"
+  },
+  "routes": {
+    "groups": [
+      {
+        "campaign_id": "campaign-cdc53ffc7863c84c-a0db4ca1",
+        "observation_ids": [
+          "miyoushe-78446193"
+        ],
+        "partner": "中国儿童少年基金会",
+        "phrase": "「拾音邮局」原神六周年特别公益行动"
+      }
+    ],
+    "unconfirmed": []
+  }
+}

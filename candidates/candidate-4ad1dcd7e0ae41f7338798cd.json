@@ -1,5 +1,8 @@
 {
   "campaign_id": "campaign-5a95cf56417b3340-57ca36df",
+  "campaign_ids": [
+    "campaign-5a95cf56417b3340-57ca36df"
+  ],
   "detected_at": "2026-10-23T17:44:25.376551Z",
   "facts": {
     "action-7daecb790c690f03:时间": "2026-10-24T12:00:00+08:00",
@@ -13,6 +16,8 @@
   "ip_name": "明日方舟：终末地",
   "ip_slug": "arknights-endfield",
   "public_text": "《明日方舟：终末地》×八达岭长城 联动活动介绍\n终末地携手八达岭长城发起的「关塞万里，环带一系」联动活动即将开启。于青石苍岭间，共赴万里之约。 详情请见长图。",
+  "resolution_version": 2,
+  "review_reason": null,
   "sources": [
     {
       "account_id": "3737967211133",
@@ -32,5 +37,5 @@
       "url": "https://www.skland.com/article?id=6409184"
     }
   ],
-  "status": "structured"
+  "status": "pending"
 }

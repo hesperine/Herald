@@ -1,11 +1,16 @@
 {
   "campaign_id": "campaign-4758edb88f30ddf3-4147566e",
+  "campaign_ids": [
+    "campaign-4758edb88f30ddf3-4147566e"
+  ],
   "detected_at": "2026-10-24T16:27:09.090923Z",
   "facts": {},
   "id": "candidate-73a36bf69372579d2bd56bfd",
   "ip_name": "明日方舟",
   "ip_slug": "arknights",
   "public_text": "〓一番赏 明日方舟 Cuties~罗德岛的甜点时光~ 企划公开〓\n明日方舟 × 一番赏\n「Cuties~罗德岛的甜点时光~」企划公开！\n严肃邀请博士加入享用甜点的队列，及时补充更多的糖分> <\n有关企划的进展，博士们可通过 获取！记得关注噢~",
+  "resolution_version": 2,
+  "review_reason": null,
   "sources": [
     {
       "account_id": "6168723566526",
@@ -25,5 +30,5 @@
       "url": "https://www.skland.com/article?id=6411680"
     }
   ],
-  "status": "structured"
+  "status": "pending"
 }

@@ -1,0 +1,58 @@
+{
+  "completed": {},
+  "routes": {
+    "groups": [
+      {
+        "campaign_id": "campaign-3302d7e79db4b203-62055d07",
+        "observation_ids": [
+          "skland-6305039",
+          "skland-6325558",
+          "skland-6333400",
+          "skland-6333403"
+        ],
+        "partner": "奈雪的茶",
+        "phrase": "《明日方舟：终末地》×奈雪的茶「果韵香迎，心意同行」联名活动"
+      },
+      {
+        "campaign_id": "campaign-8ef39adc0f9cce18-746c28cd",
+        "observation_ids": [
+          "skland-6366130"
+        ],
+        "partner": "汉堡王",
+        "phrase": "《明日方舟：终末地》×汉堡王「美味通行，堡已就位」联动"
+      },
+      {
+        "campaign_id": "campaign-5bc119dd5397df8e-b8a82c6b",
+        "observation_ids": [
+          "skland-6407030"
+        ],
+        "partner": "神舟传媒",
+        "phrase": "《明日方舟：终末地》×神舟传媒「镌宇铭星——共赴星海特别活动」"
+      },
+      {
+        "campaign_id": "campaign-5a95cf56417b3340-57ca36df",
+        "observation_ids": [
+          "skland-6409184",
+          "skland-6412073",
+          "skland-6412085"
+        ],
+        "partner": "八达岭长城",
+        "phrase": "《明日方舟：终末地》×八达岭长城「关塞万里，环带一系」联动"
+      },
+      {
+        "campaign_id": "campaign-c0eb942cf0b13e3a-e6fe958d",
+        "observation_ids": [
+          "skland-6328871"
+        ],
+        "partner": null,
+        "phrase": "《明日方舟：终末地》「绚丽异彩」重构寻访#1"
+      }
+    ],
+    "unconfirmed": [
+      {
+        "observation_id": "skland-6271937",
+        "reason": "「雪凇幽梦」版本更新说明，内容为版本更新、卡池、活动与系统优化，无品牌或IP联动、线下快闪、演出等范围内事项。"
+      }
+    ]
+  }
+}

@@ -1,0 +1,13 @@
+{
+  "attempts": 1,
+  "error_category": "validation",
+  "id": "pending-ai-a90a0428b4b35ffc271c",
+  "ip_slug": "arknights",
+  "next_retry_at": "2026-10-24T21:51:18.922564Z",
+  "notify_immediately": true,
+  "observation_ids": [
+    "skland-6381801"
+  ],
+  "queued_at": "2026-10-24T18:51:18.922564Z",
+  "reason": "AI processing failed; retry scheduled"
+}
