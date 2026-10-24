@@ -1,0 +1,293 @@
+{
+  "activities": [
+    {
+      "actions": [
+        {
+          "at": "2026-10-24T00:00:00+08:00",
+          "cancelled": false,
+          "end_at": "2026-11-24T23:59:59+08:00",
+          "end_condition": null,
+          "end_date": null,
+          "ended": false,
+          "evidence": [
+            {
+              "field_path": "activities[0].actions[0].at",
+              "quote": "活动参与时间： 2026年10月24日 - 2026年11月24日 23:59:59",
+              "source_id": "skland-6414284"
+            },
+            {
+              "field_path": "activities[0].actions[0].end_at",
+              "quote": "活动参与时间： 2026年10月24日 - 2026年11月24日 23:59:59",
+              "source_id": "skland-6414284"
+            }
+          ],
+          "id": "action-250e4da71f404e33",
+          "kind": "event_start",
+          "platform": "森空岛",
+          "quantity_limit": null,
+          "requires_reservation": null,
+          "requires_rush": null,
+          "rules": null,
+          "scope": null,
+          "start_date": null,
+          "title": "网页活动参与",
+          "url": null
+        },
+        {
+          "at": null,
+          "cancelled": false,
+          "end_at": null,
+          "end_condition": null,
+          "end_date": null,
+          "ended": false,
+          "evidence": [
+            {
+              "field_path": "activities[0].actions[1].rules",
+              "quote": "完成指定任务，即可获得森空岛限定社区装扮，还能获取活动抽奖券，抽取 Nintendo Switch 2、联名机械键盘、合成玉等丰厚奖励！",
+              "source_id": "skland-6414284"
+            }
+          ],
+          "id": "action-2130c4e5ad5e584e",
+          "kind": "lottery_open",
+          "platform": "森空岛",
+          "quantity_limit": null,
+          "requires_reservation": null,
+          "requires_rush": null,
+          "rules": "完成指定任务获取活动抽奖券，抽取 Nintendo Switch 2、联名机械键盘、合成玉等奖励",
+          "scope": null,
+          "start_date": null,
+          "title": "活动抽奖券抽取奖励",
+          "url": null
+        },
+        {
+          "at": null,
+          "cancelled": false,
+          "end_at": "2026-12-01T23:59:59+08:00",
+          "end_condition": null,
+          "end_date": null,
+          "ended": false,
+          "evidence": [
+            {
+              "field_path": "activities[0].actions[2].end_at",
+              "quote": "兑奖截止时间： 2026年12月1日 23:59:59",
+              "source_id": "skland-6414284"
+            }
+          ],
+          "id": "action-c42b223182305945",
+          "kind": "other",
+          "platform": null,
+          "quantity_limit": null,
+          "requires_reservation": null,
+          "requires_rush": null,
+          "rules": null,
+          "scope": null,
+          "start_date": null,
+          "title": "兑奖",
+          "url": null
+        }
+      ],
+      "end_at": "2026-11-24T23:59:59+08:00",
+      "end_date": null,
+      "evidence": [
+        {
+          "field_path": "activities[0].title",
+          "quote": "《明日方舟》网页活动「燃烧即一切」现已开启！",
+          "source_id": "skland-6414284"
+        },
+        {
+          "field_path": "activities[0].start_at",
+          "quote": "活动参与时间： 2026年10月24日 - 2026年11月24日 23:59:59",
+          "source_id": "skland-6414284"
+        },
+        {
+          "field_path": "activities[0].end_at",
+          "quote": "活动参与时间： 2026年10月24日 - 2026年11月24日 23:59:59",
+          "source_id": "skland-6414284"
+        },
+        {
+          "field_path": "activities[0].rules",
+          "quote": "前往森空岛参与活动，完成指定任务，即可获得森空岛限定社区装扮，还能获取活动抽奖券，抽取 Nintendo Switch 2、联名机械键盘、合成玉等丰厚奖励！",
+          "source_id": "skland-6414284"
+        },
+        {
+          "field_path": "activities[0].venues[0].name",
+          "quote": "前往森空岛参与活动",
+          "source_id": "skland-6414284"
+        },
+        {
+          "field_path": "activities[0].actions[0].at",
+          "quote": "活动参与时间： 2026年10月24日 - 2026年11月24日 23:59:59",
+          "source_id": "skland-6414284"
+        },
+        {
+          "field_path": "activities[0].actions[0].end_at",
+          "quote": "活动参与时间： 2026年10月24日 - 2026年11月24日 23:59:59",
+          "source_id": "skland-6414284"
+        },
+        {
+          "field_path": "activities[0].actions[1].rules",
+          "quote": "完成指定任务，即可获得森空岛限定社区装扮，还能获取活动抽奖券，抽取 Nintendo Switch 2、联名机械键盘、合成玉等丰厚奖励！",
+          "source_id": "skland-6414284"
+        },
+        {
+          "field_path": "activities[0].actions[2].end_at",
+          "quote": "兑奖截止时间： 2026年12月1日 23:59:59",
+          "source_id": "skland-6414284"
+        }
+      ],
+      "id": "activity-b3693f07903c0f27",
+      "kind": "online",
+      "related_offers": null,
+      "rules": "前往森空岛参与活动，完成指定任务，即可获得森空岛限定社区装扮，还能获取活动抽奖券，抽取 Nintendo Switch 2、联名机械键盘、合成玉等丰厚奖励！",
+      "start_at": "2026-10-24T00:00:00+08:00",
+      "start_date": null,
+      "status": "ongoing",
+      "title": "《明日方舟》网页活动「燃烧即一切」",
+      "uncertainties": [
+        "完整奖池清单及活动规则需查看活动页规则，正文未列出。"
+      ],
+      "venues": [
+        {
+          "address": null,
+          "business_hours": null,
+          "city": null,
+          "country": "CN",
+          "evidence": [
+            {
+              "field_path": "activities[0].venues[0].name",
+              "quote": "前往森空岛参与活动",
+              "source_id": "skland-6414284"
+            }
+          ],
+          "id": "venue-061b611858d4ea2d",
+          "name": "森空岛",
+          "nationwide": false,
+          "online_platform": "森空岛",
+          "province": null
+        }
+      ]
+    }
+  ],
+  "activity_redirects": {},
+  "announced_at": "2026-10-24T12:45:02Z",
+  "fact_provenance": {
+    "activities.activity-b3693f07903c0f27.actions.action-2130c4e5ad5e584e.rules": {
+      "content_hash": "fe3fa84e9b3515793705594a5dc1d6c4033072ac6e0cc798d3c8a38b09c9e7b8",
+      "observation_id": "skland-6414284",
+      "published_at": "2026-10-24T12:45:02Z",
+      "quote": "完成指定任务，即可获得森空岛限定社区装扮，还能获取活动抽奖券，抽取 Nintendo Switch 2、联名机械键盘、合成玉等丰厚奖励！",
+      "source_id": "skland-6414284"
+    },
+    "activities.activity-b3693f07903c0f27.actions.action-250e4da71f404e33.at": {
+      "content_hash": "fe3fa84e9b3515793705594a5dc1d6c4033072ac6e0cc798d3c8a38b09c9e7b8",
+      "observation_id": "skland-6414284",
+      "published_at": "2026-10-24T12:45:02Z",
+      "quote": "活动参与时间： 2026年10月24日 - 2026年11月24日 23:59:59",
+      "source_id": "skland-6414284"
+    },
+    "activities.activity-b3693f07903c0f27.actions.action-250e4da71f404e33.end_at": {
+      "content_hash": "fe3fa84e9b3515793705594a5dc1d6c4033072ac6e0cc798d3c8a38b09c9e7b8",
+      "observation_id": "skland-6414284",
+      "published_at": "2026-10-24T12:45:02Z",
+      "quote": "活动参与时间： 2026年10月24日 - 2026年11月24日 23:59:59",
+      "source_id": "skland-6414284"
+    },
+    "activities.activity-b3693f07903c0f27.actions.action-c42b223182305945.end_at": {
+      "content_hash": "fe3fa84e9b3515793705594a5dc1d6c4033072ac6e0cc798d3c8a38b09c9e7b8",
+      "observation_id": "skland-6414284",
+      "published_at": "2026-10-24T12:45:02Z",
+      "quote": "兑奖截止时间： 2026年12月1日 23:59:59",
+      "source_id": "skland-6414284"
+    },
+    "activities.activity-b3693f07903c0f27.end_at": {
+      "content_hash": "fe3fa84e9b3515793705594a5dc1d6c4033072ac6e0cc798d3c8a38b09c9e7b8",
+      "observation_id": "skland-6414284",
+      "published_at": "2026-10-24T12:45:02Z",
+      "quote": "活动参与时间： 2026年10月24日 - 2026年11月24日 23:59:59",
+      "source_id": "skland-6414284"
+    },
+    "activities.activity-b3693f07903c0f27.rules": {
+      "content_hash": "fe3fa84e9b3515793705594a5dc1d6c4033072ac6e0cc798d3c8a38b09c9e7b8",
+      "observation_id": "skland-6414284",
+      "published_at": "2026-10-24T12:45:02Z",
+      "quote": "前往森空岛参与活动，完成指定任务，即可获得森空岛限定社区装扮，还能获取活动抽奖券，抽取 Nintendo Switch 2、联名机械键盘、合成玉等丰厚奖励！",
+      "source_id": "skland-6414284"
+    },
+    "activities.activity-b3693f07903c0f27.start_at": {
+      "content_hash": "fe3fa84e9b3515793705594a5dc1d6c4033072ac6e0cc798d3c8a38b09c9e7b8",
+      "observation_id": "skland-6414284",
+      "published_at": "2026-10-24T12:45:02Z",
+      "quote": "活动参与时间： 2026年10月24日 - 2026年11月24日 23:59:59",
+      "source_id": "skland-6414284"
+    },
+    "activities.activity-b3693f07903c0f27.title": {
+      "content_hash": "fe3fa84e9b3515793705594a5dc1d6c4033072ac6e0cc798d3c8a38b09c9e7b8",
+      "observation_id": "skland-6414284",
+      "published_at": "2026-10-24T12:45:02Z",
+      "quote": "《明日方舟》网页活动「燃烧即一切」现已开启！",
+      "source_id": "skland-6414284"
+    },
+    "activities.activity-b3693f07903c0f27.venues.venue-061b611858d4ea2d.name": {
+      "content_hash": "fe3fa84e9b3515793705594a5dc1d6c4033072ac6e0cc798d3c8a38b09c9e7b8",
+      "observation_id": "skland-6414284",
+      "published_at": "2026-10-24T12:45:02Z",
+      "quote": "前往森空岛参与活动",
+      "source_id": "skland-6414284"
+    },
+    "title": {
+      "content_hash": "fe3fa84e9b3515793705594a5dc1d6c4033072ac6e0cc798d3c8a38b09c9e7b8",
+      "observation_id": "skland-6414284",
+      "published_at": "2026-10-24T12:45:02Z",
+      "quote": "《明日方舟》网页活动「燃烧即一切」现已开启！",
+      "source_id": "skland-6414284"
+    }
+  },
+  "first_seen_at": "2026-10-24T16:27:09.090923Z",
+  "id": "campaign-abb4d493ebf696a7-3b3da411",
+  "ip_name": "明日方舟",
+  "ip_slug": "arknights",
+  "media": [
+    {
+      "account_name": "明日方舟Arknights",
+      "asset_path": "assets/media/629e441999d38c33f6d9b3f547e1e2a70cf3abf05f85ecb81eb8d615f7e6d927.webp",
+      "content_type": "image/webp",
+      "sha256": "629e441999d38c33f6d9b3f547e1e2a70cf3abf05f85ecb81eb8d615f7e6d927",
+      "size_bytes": 240794,
+      "source_id": "skland-6414284",
+      "source_media_hash": "e77c4859b5672de7ef7e3ac11ca9f470498d1e70a69d732027ec74c22d2fe159",
+      "source_url": "https://bbs.hycdn.cn/image/common/20261024/115/6adc9ad9a22fe7e096ddae6a_004865de.webp"
+    }
+  ],
+  "partner": null,
+  "reachability": {
+    "activity-b3693f07903c0f27": "online"
+  },
+  "redirected_to": null,
+  "revision": 1,
+  "sources": [
+    {
+      "account_id": "7779816949641",
+      "account_name": "明日方舟Arknights",
+      "canonical_content_id": "6414284",
+      "content_hash": "fe3fa84e9b3515793705594a5dc1d6c4033072ac6e0cc798d3c8a38b09c9e7b8",
+      "excerpt": "《明日方舟》网页活动「燃烧即一切」现已开启！\n前方区域出现大量目标，除了乱窜的源石虫，还有不知为何混入其中的食材——既然送到了眼前，那就一并解决吧。\n前往森空岛参与活动，完成指定任务，即可获得森空岛限定社区装扮，还能获取活动抽奖券，抽取 Nintendo Switch 2、联名机械键盘、合成玉等丰厚奖励！\n活动参与时间： 2026年10月24日 - 2026年11月24日 23:59:59\n兑奖截止时间： 2026年12月1日 23:59:59\n活动链接：《明日方舟》网页活动「燃烧即一切」现已开启！\n（完整奖池清单及活动规则请查看活动页规则）",
+      "first_seen_at": "2026-10-24T16:27:09.090923Z",
+      "id": "skland-6414284",
+      "is_official": true,
+      "kind": "skland",
+      "media_hashes": [
+        "e77c4859b5672de7ef7e3ac11ca9f470498d1e70a69d732027ec74c22d2fe159"
+      ],
+      "media_urls": [
+        "https://bbs.hycdn.cn/image/common/20261024/115/6adc9ad9a22fe7e096ddae6a_004865de.webp"
+      ],
+      "published_at": "2026-10-24T12:45:02Z",
+      "summary": "《明日方舟》网页活动「燃烧即一切」开启，参与可获社区装扮与抽奖券，抽取Switch 2、联名键盘、合成玉等；含参与与兑奖截止时间。",
+      "updated_at": null,
+      "url": "https://www.skland.com/article?id=6414284"
+    }
+  ],
+  "status": "ongoing",
+  "title": "《明日方舟》网页活动「燃烧即一切」",
+  "updated_at": "2026-10-24T16:27:09.090923Z"
+}

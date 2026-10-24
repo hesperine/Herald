@@ -2,13 +2,92 @@
   "campaigns": [
     {
       "activities": [],
+      "id": "campaign-de00e4b309b316f3-7cd10764",
+      "ip_name": "明日方舟",
+      "ip_slug": "arknights",
+      "partner": "万代食玩",
+      "status": "details_pending",
+      "title": "明日方舟 × 万代食玩 系列第二弹",
+      "updated_at": "2026-10-24T16:27:09.090923+00:00"
+    },
+    {
+      "activities": [
+        {
+          "end_at": "2026-11-24T23:59:59+08:00",
+          "id": "activity-b3693f07903c0f27",
+          "kind": "online",
+          "reachability": "online",
+          "start_at": "2026-10-24T00:00:00+08:00",
+          "status": "ongoing",
+          "title": "《明日方舟》网页活动「燃烧即一切」"
+        }
+      ],
+      "id": "campaign-abb4d493ebf696a7-3b3da411",
+      "ip_name": "明日方舟",
+      "ip_slug": "arknights",
+      "partner": null,
+      "status": "ongoing",
+      "title": "《明日方舟》网页活动「燃烧即一切」",
+      "updated_at": "2026-10-24T16:27:09.090923+00:00"
+    },
+    {
+      "activities": [
+        {
+          "end_at": null,
+          "id": "activity-fd760656e9160352",
+          "kind": "other",
+          "reachability": "unknown",
+          "start_at": null,
+          "status": "details_pending",
+          "title": "线下活动"
+        },
+        {
+          "end_at": null,
+          "id": "activity-0aae94b9f1120702",
+          "kind": "in_game",
+          "reachability": "unknown",
+          "start_at": "2026-10-24T12:00:00+08:00",
+          "status": "ongoing",
+          "title": "联动定制拍照贴纸道具【贴纸·长城】发放"
+        }
+      ],
       "id": "campaign-5a95cf56417b3340-57ca36df",
       "ip_name": "明日方舟：终末地",
       "ip_slug": "arknights-endfield",
       "partner": "八达岭长城",
-      "status": "details_pending",
+      "status": "ongoing",
       "title": "《明日方舟：终末地》×八达岭长城「关塞万里，环带一系」联动",
-      "updated_at": "2026-10-23T17:44:25.376551+00:00"
+      "updated_at": "2026-10-24T16:27:09.090923+00:00"
+    },
+    {
+      "activities": [],
+      "id": "campaign-4758edb88f30ddf3-4147566e",
+      "ip_name": "明日方舟",
+      "ip_slug": "arknights",
+      "partner": "一番赏",
+      "status": "details_pending",
+      "title": "明日方舟 × 一番赏「Cuties~罗德岛的甜点时光~」",
+      "updated_at": "2026-10-24T16:27:09.090923+00:00"
+    },
+    {
+      "activities": [],
+      "id": "campaign-1786831476040aa0-253f5627",
+      "ip_name": "明日方舟",
+      "ip_slug": "arknights",
+      "partner": "名创优品",
+      "status": "details_pending",
+      "title": "《明日方舟》× 名创优品「秋意茶话会」",
+      "updated_at": "2026-10-24T16:27:09.090923+00:00"
+    },
+    {
+      "activities": [],
+      "id": "campaign-148dc4c99579d419-b677ac89",
+      "ip_name": "明日方舟",
+      "ip_slug": "arknights",
+      "partner": "共鸣GONG",
+      "status": "details_pending",
+      "title": "明日方舟 × 共鸣GONG 超迷你手办企划",
+      "updated_at": "2026-10-24T16:27:09.090923+00:00"
     },
     {
       "activities": [
@@ -281,6 +360,46 @@
     }
   ],
   "cards": [
+    {
+      "activity": {
+        "actions": [],
+        "end_at": null,
+        "end_date": null,
+        "evidence": [
+          {
+            "field_path": "activities[0].title",
+            "quote": "线下活动将于10月26日开启",
+            "source_id": "skland-6412073"
+          },
+          {
+            "field_path": "activities[0].start_date",
+            "quote": "线下活动将于10月26日开启",
+            "source_id": "skland-6412073"
+          }
+        ],
+        "id": "activity-fd760656e9160352",
+        "kind": "other",
+        "related_offers": null,
+        "rules": null,
+        "start_at": null,
+        "start_date": "2026-10-26",
+        "status": "details_pending",
+        "title": "线下活动",
+        "uncertainties": [
+          "线下活动的具体形式、地点及结束时间未说明。"
+        ],
+        "venues": []
+      },
+      "campaign_id": "campaign-5a95cf56417b3340-57ca36df",
+      "campaign_title": "《明日方舟：终末地》×八达岭长城「关塞万里，环带一系」联动",
+      "ip_name": "明日方舟：终末地",
+      "next": {
+        "at": "2026-10-26T00:00:00+08:00",
+        "date": "2026-10-26",
+        "title": "线下活动开始"
+      },
+      "url": "event.html?id=campaign-5a95cf56417b3340-57ca36df#activity-activity-fd760656e9160352"
+    },
     {
       "activity": {
         "actions": [
@@ -792,6 +911,184 @@
       "activity": {
         "actions": [
           {
+            "at": "2026-10-24T00:00:00+08:00",
+            "cancelled": false,
+            "end_at": "2026-11-24T23:59:59+08:00",
+            "end_condition": null,
+            "end_date": null,
+            "ended": false,
+            "evidence": [
+              {
+                "field_path": "activities[0].actions[0].at",
+                "quote": "活动参与时间： 2026年10月24日 - 2026年11月24日 23:59:59",
+                "source_id": "skland-6414284"
+              },
+              {
+                "field_path": "activities[0].actions[0].end_at",
+                "quote": "活动参与时间： 2026年10月24日 - 2026年11月24日 23:59:59",
+                "source_id": "skland-6414284"
+              }
+            ],
+            "id": "action-250e4da71f404e33",
+            "kind": "event_start",
+            "platform": "森空岛",
+            "quantity_limit": null,
+            "requires_reservation": null,
+            "requires_rush": null,
+            "rules": null,
+            "scope": null,
+            "start_date": null,
+            "title": "网页活动参与",
+            "url": null
+          },
+          {
+            "at": null,
+            "cancelled": false,
+            "end_at": null,
+            "end_condition": null,
+            "end_date": null,
+            "ended": false,
+            "evidence": [
+              {
+                "field_path": "activities[0].actions[1].rules",
+                "quote": "完成指定任务，即可获得森空岛限定社区装扮，还能获取活动抽奖券，抽取 Nintendo Switch 2、联名机械键盘、合成玉等丰厚奖励！",
+                "source_id": "skland-6414284"
+              }
+            ],
+            "id": "action-2130c4e5ad5e584e",
+            "kind": "lottery_open",
+            "platform": "森空岛",
+            "quantity_limit": null,
+            "requires_reservation": null,
+            "requires_rush": null,
+            "rules": "完成指定任务获取活动抽奖券，抽取 Nintendo Switch 2、联名机械键盘、合成玉等奖励",
+            "scope": null,
+            "start_date": null,
+            "title": "活动抽奖券抽取奖励",
+            "url": null
+          },
+          {
+            "at": null,
+            "cancelled": false,
+            "end_at": "2026-12-01T23:59:59+08:00",
+            "end_condition": null,
+            "end_date": null,
+            "ended": false,
+            "evidence": [
+              {
+                "field_path": "activities[0].actions[2].end_at",
+                "quote": "兑奖截止时间： 2026年12月1日 23:59:59",
+                "source_id": "skland-6414284"
+              }
+            ],
+            "id": "action-c42b223182305945",
+            "kind": "other",
+            "platform": null,
+            "quantity_limit": null,
+            "requires_reservation": null,
+            "requires_rush": null,
+            "rules": null,
+            "scope": null,
+            "start_date": null,
+            "title": "兑奖",
+            "url": null
+          }
+        ],
+        "end_at": "2026-11-24T23:59:59+08:00",
+        "end_date": null,
+        "evidence": [
+          {
+            "field_path": "activities[0].title",
+            "quote": "《明日方舟》网页活动「燃烧即一切」现已开启！",
+            "source_id": "skland-6414284"
+          },
+          {
+            "field_path": "activities[0].start_at",
+            "quote": "活动参与时间： 2026年10月24日 - 2026年11月24日 23:59:59",
+            "source_id": "skland-6414284"
+          },
+          {
+            "field_path": "activities[0].end_at",
+            "quote": "活动参与时间： 2026年10月24日 - 2026年11月24日 23:59:59",
+            "source_id": "skland-6414284"
+          },
+          {
+            "field_path": "activities[0].rules",
+            "quote": "前往森空岛参与活动，完成指定任务，即可获得森空岛限定社区装扮，还能获取活动抽奖券，抽取 Nintendo Switch 2、联名机械键盘、合成玉等丰厚奖励！",
+            "source_id": "skland-6414284"
+          },
+          {
+            "field_path": "activities[0].venues[0].name",
+            "quote": "前往森空岛参与活动",
+            "source_id": "skland-6414284"
+          },
+          {
+            "field_path": "activities[0].actions[0].at",
+            "quote": "活动参与时间： 2026年10月24日 - 2026年11月24日 23:59:59",
+            "source_id": "skland-6414284"
+          },
+          {
+            "field_path": "activities[0].actions[0].end_at",
+            "quote": "活动参与时间： 2026年10月24日 - 2026年11月24日 23:59:59",
+            "source_id": "skland-6414284"
+          },
+          {
+            "field_path": "activities[0].actions[1].rules",
+            "quote": "完成指定任务，即可获得森空岛限定社区装扮，还能获取活动抽奖券，抽取 Nintendo Switch 2、联名机械键盘、合成玉等丰厚奖励！",
+            "source_id": "skland-6414284"
+          },
+          {
+            "field_path": "activities[0].actions[2].end_at",
+            "quote": "兑奖截止时间： 2026年12月1日 23:59:59",
+            "source_id": "skland-6414284"
+          }
+        ],
+        "id": "activity-b3693f07903c0f27",
+        "kind": "online",
+        "related_offers": null,
+        "rules": "前往森空岛参与活动，完成指定任务，即可获得森空岛限定社区装扮，还能获取活动抽奖券，抽取 Nintendo Switch 2、联名机械键盘、合成玉等丰厚奖励！",
+        "start_at": "2026-10-24T00:00:00+08:00",
+        "start_date": null,
+        "status": "ongoing",
+        "title": "《明日方舟》网页活动「燃烧即一切」",
+        "uncertainties": [
+          "完整奖池清单及活动规则需查看活动页规则，正文未列出。"
+        ],
+        "venues": [
+          {
+            "address": null,
+            "business_hours": null,
+            "city": null,
+            "country": "CN",
+            "evidence": [
+              {
+                "field_path": "activities[0].venues[0].name",
+                "quote": "前往森空岛参与活动",
+                "source_id": "skland-6414284"
+              }
+            ],
+            "id": "venue-061b611858d4ea2d",
+            "name": "森空岛",
+            "nationwide": false,
+            "online_platform": "森空岛",
+            "province": null
+          }
+        ]
+      },
+      "campaign_id": "campaign-abb4d493ebf696a7-3b3da411",
+      "campaign_title": "《明日方舟》网页活动「燃烧即一切」",
+      "ip_name": "明日方舟",
+      "next": {
+        "at": "2026-11-24T23:59:59+08:00",
+        "date": null,
+        "title": "网页活动参与截止"
+      },
+      "url": "event.html?id=campaign-abb4d493ebf696a7-3b3da411#activity-activity-b3693f07903c0f27"
+    },
+    {
+      "activity": {
+        "actions": [
+          {
             "at": null,
             "cancelled": false,
             "end_at": null,
@@ -888,6 +1185,87 @@
         "title": "联动定制头像框「甘甜雪花」兑换截止"
       },
       "url": "event.html?id=campaign-3302d7e79db4b203-62055d07#activity-activity-fbb195125825e5b2"
+    },
+    {
+      "activity": {
+        "actions": [
+          {
+            "at": "2026-10-24T12:00:00+08:00",
+            "cancelled": false,
+            "end_at": null,
+            "end_condition": null,
+            "end_date": null,
+            "ended": false,
+            "evidence": [
+              {
+                "field_path": "activities[0].actions[0].at",
+                "quote": "发放时间：2026/10/24 12:00（UTC+8）",
+                "source_id": "skland-6412085"
+              },
+              {
+                "field_path": "activities[0].actions[0].rules",
+                "quote": "发放条件：2026/11/15 00:00（UTC+8）前登录游戏",
+                "source_id": "skland-6412085"
+              },
+              {
+                "field_path": "activities[0].actions[0].rules",
+                "quote": "奖励将通过【邮件】发送，开启【邮箱】功能后领取，邮件有效期为30天",
+                "source_id": "skland-6412085"
+              }
+            ],
+            "id": "action-7daecb790c690f03",
+            "kind": "gift",
+            "platform": null,
+            "quantity_limit": null,
+            "requires_reservation": null,
+            "requires_rush": null,
+            "rules": "2026/11/15 00:00（UTC+8）前登录游戏；奖励通过邮件发送，开启邮箱功能后领取，邮件有效期30天。",
+            "scope": "游戏内邮件",
+            "start_date": null,
+            "title": "登录领取【贴纸·长城】",
+            "url": null
+          }
+        ],
+        "end_at": null,
+        "end_date": null,
+        "evidence": [
+          {
+            "field_path": "activities[0].title",
+            "quote": "【贴纸·长城】",
+            "source_id": "skland-6412085"
+          },
+          {
+            "field_path": "activities[0].actions[0].at",
+            "quote": "发放时间：2026/10/24 12:00（UTC+8）",
+            "source_id": "skland-6412085"
+          },
+          {
+            "field_path": "activities[0].actions[0].rules",
+            "quote": "发放条件：2026/11/15 00:00（UTC+8）前登录游戏",
+            "source_id": "skland-6412085"
+          },
+          {
+            "field_path": "activities[0].actions[0].rules",
+            "quote": "奖励将通过【邮件】发送，开启【邮箱】功能后领取，邮件有效期为30天",
+            "source_id": "skland-6412085"
+          }
+        ],
+        "id": "activity-0aae94b9f1120702",
+        "kind": "in_game",
+        "related_offers": null,
+        "rules": "2026/11/15 00:00（UTC+8）前登录游戏；奖励通过邮件发送，开启邮箱功能后领取，邮件有效期30天。",
+        "start_at": "2026-10-24T12:00:00+08:00",
+        "start_date": null,
+        "status": "ongoing",
+        "title": "联动定制拍照贴纸道具【贴纸·长城】发放",
+        "uncertainties": [],
+        "venues": []
+      },
+      "campaign_id": "campaign-5a95cf56417b3340-57ca36df",
+      "campaign_title": "《明日方舟：终末地》×八达岭长城「关塞万里，环带一系」联动",
+      "ip_name": "明日方舟：终末地",
+      "next": null,
+      "url": "event.html?id=campaign-5a95cf56417b3340-57ca36df#activity-activity-0aae94b9f1120702"
     },
     {
       "activity": {
@@ -1507,5 +1885,5 @@
       "url": "event.html?id=campaign-cdc53ffc7863c84c-a0db4ca1#activity-activity-dfd55f4c31903c72"
     }
   ],
-  "generated_at": "2026-10-24T05:57:41.050859+08:00"
+  "generated_at": "2026-10-25T00:28:48.602136+08:00"
 }

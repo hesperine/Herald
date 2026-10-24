@@ -59,6 +59,17 @@
         "kind": "sale_close",
         "title": "【罗德岛风尚回顾】限时开启截止"
       }
+    ],
+    "2026-11-24": [
+      {
+        "action_id": "action-250e4da71f404e33--end",
+        "activity_id": "activity-b3693f07903c0f27",
+        "at": "2026-11-24T23:59:59+08:00",
+        "campaign_id": "campaign-abb4d493ebf696a7-3b3da411",
+        "ip_name": "明日方舟",
+        "kind": "event_end",
+        "title": "网页活动参与截止"
+      }
     ]
   }
 }

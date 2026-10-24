@@ -1,0 +1,67 @@
+{
+  "activities": [],
+  "activity_redirects": {},
+  "announced_at": "2026-10-24T13:05:33Z",
+  "fact_provenance": {
+    "partner": {
+      "content_hash": "963c9684fc3edcd13058a8c90d979c0b54b7e5623b6cce8f0a4740d70a3846cb",
+      "observation_id": "skland-6411680",
+      "published_at": "2026-10-24T13:05:33Z",
+      "quote": "明日方舟 × 一番赏",
+      "source_id": "skland-6411680"
+    },
+    "title": {
+      "content_hash": "963c9684fc3edcd13058a8c90d979c0b54b7e5623b6cce8f0a4740d70a3846cb",
+      "observation_id": "skland-6411680",
+      "published_at": "2026-10-24T13:05:33Z",
+      "quote": "〓一番赏 明日方舟 Cuties~罗德岛的甜点时光~ 企划公开〓",
+      "source_id": "skland-6411680"
+    }
+  },
+  "first_seen_at": "2026-10-24T16:27:09.090923Z",
+  "id": "campaign-4758edb88f30ddf3-4147566e",
+  "ip_name": "明日方舟",
+  "ip_slug": "arknights",
+  "media": [
+    {
+      "account_name": "明日方舟朝陇山",
+      "asset_path": "assets/media/a67ab8ea275268a734c03ea4c776e67baff4f2921087efc08cca15c412982411.webp",
+      "content_type": "image/webp",
+      "sha256": "a67ab8ea275268a734c03ea4c776e67baff4f2921087efc08cca15c412982411",
+      "size_bytes": 193052,
+      "source_id": "skland-6411680",
+      "source_media_hash": "7246254e3e059ecb5f7c1d007f5fa3ed0d767e7ac6bdbb027b349f3b1e14e8bb",
+      "source_url": "https://bbs.hycdn.cn/image/common/20261023/107/6adb496115b766b1b8684d8a_96d20048.webp"
+    }
+  ],
+  "partner": "一番赏",
+  "reachability": {},
+  "redirected_to": null,
+  "revision": 1,
+  "sources": [
+    {
+      "account_id": "6168723566526",
+      "account_name": "明日方舟朝陇山",
+      "canonical_content_id": "6411680",
+      "content_hash": "963c9684fc3edcd13058a8c90d979c0b54b7e5623b6cce8f0a4740d70a3846cb",
+      "excerpt": "〓一番赏 明日方舟 Cuties~罗德岛的甜点时光~ 企划公开〓\n明日方舟 × 一番赏\n「Cuties~罗德岛的甜点时光~」企划公开！\n严肃邀请博士加入享用甜点的队列，及时补充更多的糖分> <\n有关企划的进展，博士们可通过 获取！记得关注噢~",
+      "first_seen_at": "2026-10-24T16:27:09.090923Z",
+      "id": "skland-6411680",
+      "is_official": true,
+      "kind": "skland",
+      "media_hashes": [
+        "7246254e3e059ecb5f7c1d007f5fa3ed0d767e7ac6bdbb027b349f3b1e14e8bb"
+      ],
+      "media_urls": [
+        "https://bbs.hycdn.cn/image/common/20261023/107/6adb496115b766b1b8684d8a_96d20048.webp"
+      ],
+      "published_at": "2026-10-24T13:05:33Z",
+      "summary": "明日方舟与一番赏公开「Cuties~罗德岛的甜点时光~」企划，邀请博士关注后续进展。",
+      "updated_at": null,
+      "url": "https://www.skland.com/article?id=6411680"
+    }
+  ],
+  "status": "details_pending",
+  "title": "明日方舟 × 一番赏「Cuties~罗德岛的甜点时光~」",
+  "updated_at": "2026-10-24T16:27:09.090923Z"
+}
