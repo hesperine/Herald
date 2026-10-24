@@ -31,7 +31,11 @@
       "title": "「绚丽异彩」重构寻访#1",
       "uncertainties": [],
       "venues": []
-    },
+    }
+  ],
+  "activity_redirects": {},
+  "announced_at": "2026-09-21T04:00:06Z",
+  "excluded_activities": [
     {
       "actions": [],
       "end_at": null,
@@ -87,9 +91,6 @@
       "venues": []
     }
   ],
-  "activity_redirects": {},
-  "announced_at": "2026-09-21T04:00:06Z",
-  "excluded_activities": [],
   "fact_provenance": {
     "activities.activity-54ac4a1db49186b3.rules": {
       "content_hash": "589915ee2fbc839ef7af746f179ef5861f3a57e74059fab41b7ec44bcf3306a1",
@@ -186,13 +187,24 @@
   ],
   "partner": null,
   "reachability": {
-    "activity-54ac4a1db49186b3": "unknown",
-    "activity-a2fafb4a1e7fd943": "unknown",
-    "activity-c54e303c057e46dc": "unknown"
+    "activity-54ac4a1db49186b3": "unknown"
   },
   "redirected_to": null,
   "revision": 1,
-  "scope_reviews": [],
+  "scope_reviews": [
+    {
+      "activity_id": "activity-c54e303c057e46dc",
+      "observation_id": "skland-6328871",
+      "quote": "官方云游戏《云·终末地》现已开启安卓&iOS端不限量测试",
+      "reason": "《云·终末地》云游戏测试为独立产品测试，与「绚丽异彩」重构寻访企划无关联，属普通更新。"
+    },
+    {
+      "activity_id": "activity-a2fafb4a1e7fd943",
+      "observation_id": "skland-6328871",
+      "quote": "「雪凇幽梦」版本现已开启！",
+      "reason": "「雪凇幽梦」版本更新为独立版本内容，与「绚丽异彩」重构寻访企划无关联，属普通版本更新。"
+    }
+  ],
   "sources": [
     {
       "account_id": "3737967211133",
@@ -215,7 +227,7 @@
         "https://bbs.hycdn.cn/image/common/20260920/113/6aafce7c1add8879b04f4924_65de0095.webp"
       ],
       "published_at": "2026-09-21T04:00:06Z",
-      "summary": "版本更新、云游戏测试及重构寻访活动开启。",
+      "summary": "干员伊冯回顾；宣布「绚丽异彩」重构寻访#1于2026年9月24日12:00开启，6星干员伊冯概率提升；另提及「雪凇幽梦」版本与《云·终末地》不限量测试。",
       "updated_at": null,
       "url": "https://www.skland.com/article?id=6328871"
     }

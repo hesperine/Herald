@@ -1,6 +1,26 @@
 {
   "campaigns": [
     {
+      "activities": [
+        {
+          "end_at": null,
+          "id": "activity-9d7f7f0b48e57906",
+          "kind": "popup",
+          "reachability": "unknown",
+          "start_at": null,
+          "status": "details_pending",
+          "title": "明日方舟2026感谢庆典「故土新程」主题快闪活动"
+        }
+      ],
+      "id": "campaign-f624c9e27ceba257-ebe97034",
+      "ip_name": "明日方舟",
+      "ip_slug": "arknights",
+      "partner": null,
+      "status": "details_pending",
+      "title": "明日方舟 2026感谢庆典「故土新程」主题快闪",
+      "updated_at": "2026-10-24T19:03:03.081490+00:00"
+    },
+    {
       "activities": [],
       "id": "campaign-de00e4b309b316f3-7cd10764",
       "ip_name": "明日方舟",
@@ -8,7 +28,7 @@
       "partner": "万代食玩",
       "status": "details_pending",
       "title": "明日方舟 × 万代食玩 系列第二弹",
-      "updated_at": "2026-10-24T16:27:09.090923+00:00"
+      "updated_at": "2026-10-24T19:03:03.081490+00:00"
     },
     {
       "activities": [
@@ -28,7 +48,27 @@
       "partner": null,
       "status": "ongoing",
       "title": "《明日方舟》网页活动「燃烧即一切」",
-      "updated_at": "2026-10-24T16:27:09.090923+00:00"
+      "updated_at": "2026-10-24T19:03:03.081490+00:00"
+    },
+    {
+      "activities": [],
+      "id": "campaign-4758edb88f30ddf3-4147566e",
+      "ip_name": "明日方舟",
+      "ip_slug": "arknights",
+      "partner": "一番赏",
+      "status": "details_pending",
+      "title": "明日方舟 × 一番赏「Cuties~罗德岛的甜点时光~」",
+      "updated_at": "2026-10-24T19:03:03.081490+00:00"
+    },
+    {
+      "activities": [],
+      "id": "campaign-148dc4c99579d419-b677ac89",
+      "ip_name": "明日方舟",
+      "ip_slug": "arknights",
+      "partner": "共鸣GONG",
+      "status": "details_pending",
+      "title": "明日方舟 × 共鸣GONG 超迷你手办企划",
+      "updated_at": "2026-10-24T19:03:03.081490+00:00"
     },
     {
       "activities": [
@@ -61,32 +101,12 @@
     },
     {
       "activities": [],
-      "id": "campaign-4758edb88f30ddf3-4147566e",
-      "ip_name": "明日方舟",
-      "ip_slug": "arknights",
-      "partner": "一番赏",
-      "status": "details_pending",
-      "title": "明日方舟 × 一番赏「Cuties~罗德岛的甜点时光~」",
-      "updated_at": "2026-10-24T16:27:09.090923+00:00"
-    },
-    {
-      "activities": [],
       "id": "campaign-1786831476040aa0-253f5627",
       "ip_name": "明日方舟",
       "ip_slug": "arknights",
       "partner": "名创优品",
       "status": "details_pending",
       "title": "《明日方舟》× 名创优品「秋意茶话会」",
-      "updated_at": "2026-10-24T16:27:09.090923+00:00"
-    },
-    {
-      "activities": [],
-      "id": "campaign-148dc4c99579d419-b677ac89",
-      "ip_name": "明日方舟",
-      "ip_slug": "arknights",
-      "partner": "共鸣GONG",
-      "status": "details_pending",
-      "title": "明日方舟 × 共鸣GONG 超迷你手办企划",
       "updated_at": "2026-10-24T16:27:09.090923+00:00"
     },
     {
@@ -271,24 +291,6 @@
           "start_at": "2026-09-24T12:00:00+08:00",
           "status": "upcoming",
           "title": "「绚丽异彩」重构寻访#1"
-        },
-        {
-          "end_at": null,
-          "id": "activity-c54e303c057e46dc",
-          "kind": "online",
-          "reachability": "unknown",
-          "start_at": null,
-          "status": "details_pending",
-          "title": "《云·终末地》不限量测试"
-        },
-        {
-          "end_at": null,
-          "id": "activity-a2fafb4a1e7fd943",
-          "kind": "product",
-          "reachability": "unknown",
-          "start_at": null,
-          "status": "details_pending",
-          "title": "「雪凇幽梦」版本"
         }
       ],
       "id": "campaign-c0eb942cf0b13e3a-e6fe958d",
@@ -1725,66 +1727,34 @@
         "end_date": null,
         "evidence": [
           {
-            "field_path": "activities[2].title",
-            "quote": "「雪凇幽梦」版本",
-            "source_id": "skland-6328871"
+            "field_path": "activities[0].title",
+            "quote": "明日方舟2026感谢庆典「故土新程」主题快闪活动即将开启",
+            "source_id": "skland-6415406"
           },
           {
-            "field_path": "activities[2].rules",
-            "quote": "完成活动免费领满潜能干员【噗切娜】及武器【点心时刻】",
-            "source_id": "skland-6328871"
+            "field_path": "activities[0].kind",
+            "quote": "明日方舟2026感谢庆典「故土新程」主题快闪活动即将开启",
+            "source_id": "skland-6415406"
           }
         ],
-        "id": "activity-a2fafb4a1e7fd943",
-        "kind": "product",
+        "id": "activity-9d7f7f0b48e57906",
+        "kind": "popup",
         "related_offers": null,
-        "rules": "完成活动免费领满潜能干员【噗切娜】及武器【点心时刻】",
+        "rules": null,
         "start_at": null,
         "start_date": null,
         "status": "details_pending",
-        "title": "「雪凇幽梦」版本",
-        "uncertainties": [],
-        "venues": []
-      },
-      "campaign_id": "campaign-c0eb942cf0b13e3a-e6fe958d",
-      "campaign_title": "「绚丽异彩」重构寻访#1",
-      "ip_name": "明日方舟：终末地",
-      "next": null,
-      "url": "event.html?id=campaign-c0eb942cf0b13e3a-e6fe958d#activity-activity-a2fafb4a1e7fd943"
-    },
-    {
-      "activity": {
-        "actions": [],
-        "end_at": null,
-        "end_date": null,
-        "evidence": [
-          {
-            "field_path": "activities[1].title",
-            "quote": "《云·终末地》已上线",
-            "source_id": "skland-6328871"
-          },
-          {
-            "field_path": "activities[1].rules",
-            "quote": "官方云游戏《云·终末地》现已开启安卓&iOS端不限量测试",
-            "source_id": "skland-6328871"
-          }
+        "title": "明日方舟2026感谢庆典「故土新程」主题快闪活动",
+        "uncertainties": [
+          "快闪活动具体时间、地点及参与方式尚未公布"
         ],
-        "id": "activity-c54e303c057e46dc",
-        "kind": "online",
-        "related_offers": null,
-        "rules": "安卓&iOS端不限量测试",
-        "start_at": null,
-        "start_date": null,
-        "status": "details_pending",
-        "title": "《云·终末地》不限量测试",
-        "uncertainties": [],
         "venues": []
       },
-      "campaign_id": "campaign-c0eb942cf0b13e3a-e6fe958d",
-      "campaign_title": "「绚丽异彩」重构寻访#1",
-      "ip_name": "明日方舟：终末地",
+      "campaign_id": "campaign-f624c9e27ceba257-ebe97034",
+      "campaign_title": "明日方舟 2026感谢庆典「故土新程」主题快闪",
+      "ip_name": "明日方舟",
       "next": null,
-      "url": "event.html?id=campaign-c0eb942cf0b13e3a-e6fe958d#activity-activity-c54e303c057e46dc"
+      "url": "event.html?id=campaign-f624c9e27ceba257-ebe97034#activity-activity-9d7f7f0b48e57906"
     },
     {
       "activity": {
@@ -1885,5 +1855,5 @@
       "url": "event.html?id=campaign-cdc53ffc7863c84c-a0db4ca1#activity-activity-dfd55f4c31903c72"
     }
   ],
-  "generated_at": "2026-10-25T02:51:43.416097+08:00"
+  "generated_at": "2026-10-25T03:03:52.646347+08:00"
 }

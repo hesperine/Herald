@@ -1,0 +1,204 @@
+{
+  "activities": [
+    {
+      "actions": [],
+      "end_at": null,
+      "end_date": null,
+      "evidence": [
+        {
+          "field_path": "activities[0].title",
+          "quote": "明日方舟2026感谢庆典「故土新程」主题快闪活动即将开启",
+          "source_id": "skland-6415406"
+        },
+        {
+          "field_path": "activities[0].kind",
+          "quote": "明日方舟2026感谢庆典「故土新程」主题快闪活动即将开启",
+          "source_id": "skland-6415406"
+        }
+      ],
+      "id": "activity-9d7f7f0b48e57906",
+      "kind": "popup",
+      "related_offers": null,
+      "rules": null,
+      "start_at": null,
+      "start_date": null,
+      "status": "details_pending",
+      "title": "明日方舟2026感谢庆典「故土新程」主题快闪活动",
+      "uncertainties": [
+        "快闪活动具体时间、地点及参与方式尚未公布"
+      ],
+      "venues": []
+    }
+  ],
+  "activity_redirects": {},
+  "announced_at": "2026-10-24T13:16:13Z",
+  "excluded_activities": [],
+  "fact_provenance": {
+    "activities.activity-9d7f7f0b48e57906.kind": {
+      "content_hash": "091f161c44012defebbb7671faa4d6d8e56f779ab6b0a6767189b1769ee3da44",
+      "observation_id": "skland-6415406",
+      "published_at": "2026-10-24T13:16:13Z",
+      "quote": "明日方舟2026感谢庆典「故土新程」主题快闪活动即将开启",
+      "source_id": "skland-6415406"
+    },
+    "activities.activity-9d7f7f0b48e57906.title": {
+      "content_hash": "091f161c44012defebbb7671faa4d6d8e56f779ab6b0a6767189b1769ee3da44",
+      "observation_id": "skland-6415406",
+      "published_at": "2026-10-24T13:16:13Z",
+      "quote": "明日方舟2026感谢庆典「故土新程」主题快闪活动即将开启",
+      "source_id": "skland-6415406"
+    },
+    "title": {
+      "content_hash": "091f161c44012defebbb7671faa4d6d8e56f779ab6b0a6767189b1769ee3da44",
+      "observation_id": "skland-6415406",
+      "published_at": "2026-10-24T13:16:13Z",
+      "quote": "明日方舟2026感谢庆典「故土新程」主题快闪活动即将开启",
+      "source_id": "skland-6415406"
+    }
+  },
+  "first_seen_at": "2026-10-24T16:27:09.090923Z",
+  "id": "campaign-f624c9e27ceba257-ebe97034",
+  "ip_name": "明日方舟",
+  "ip_slug": "arknights",
+  "media": [
+    {
+      "account_name": "明日方舟Arknights",
+      "asset_path": "assets/media/0998e5841a2f59cbe2517edc703fc1a7d43f341836865734279b49227a015a73.webp",
+      "content_type": "image/webp",
+      "sha256": "0998e5841a2f59cbe2517edc703fc1a7d43f341836865734279b49227a015a73",
+      "size_bytes": 776498,
+      "source_id": "skland-6415406",
+      "source_media_hash": "3c7e70e2abb003fa6aa39f125f23d859190e2c975ec08877a5edac1a39d7060a",
+      "source_url": "https://bbs.hycdn.cn/image/common/20261024/115/6adc9cbced989a2c1f4732f1_004865de.webp"
+    },
+    {
+      "account_name": "明日方舟Arknights",
+      "asset_path": "assets/media/8266ab74c7f02b6cad5ac264feb02161684fea27ff06507fad7faa1b78a081b4.webp",
+      "content_type": "image/webp",
+      "sha256": "8266ab74c7f02b6cad5ac264feb02161684fea27ff06507fad7faa1b78a081b4",
+      "size_bytes": 927142,
+      "source_id": "skland-6415406",
+      "source_media_hash": "0a4f1bb72f6ac445b8c596646300a42bede7ab7f2d5811619f1429640ce457ea",
+      "source_url": "https://bbs.hycdn.cn/image/common/20261024/115/6adc9be78b6b0c26bfc56ee2_65de0095.webp"
+    },
+    {
+      "account_name": "明日方舟Arknights",
+      "asset_path": "assets/media/a1f89164319a0f0875a2bb8accd658d3c90bd11c0fd383dde14281b82ffe4a4a.webp",
+      "content_type": "image/webp",
+      "sha256": "a1f89164319a0f0875a2bb8accd658d3c90bd11c0fd383dde14281b82ffe4a4a",
+      "size_bytes": 406970,
+      "source_id": "skland-6415406",
+      "source_media_hash": "412dee26c5624e162ff185a44c419ac2276ad4de55fd3af92301b721fb1871b1",
+      "source_url": "https://bbs.hycdn.cn/image/common/20261024/115/6adc9be715b766b1b8684e9a_0095c241.webp"
+    },
+    {
+      "account_name": "明日方舟Arknights",
+      "asset_path": "assets/media/32a71e80859fcae61cec70c795ab35c8121135920c32c3a4e20472aa158c1301.webp",
+      "content_type": "image/webp",
+      "sha256": "32a71e80859fcae61cec70c795ab35c8121135920c32c3a4e20472aa158c1301",
+      "size_bytes": 105708,
+      "source_id": "skland-6415406",
+      "source_media_hash": "3a12a8de5fd77d3599c47d31c04bc49d0d01ac391c56185ee65c30c90671d6ba",
+      "source_url": "https://bbs.hycdn.cn/image/common/20261024/115/6adc9be79b052e6236f0cf9d_91c496d2.webp"
+    },
+    {
+      "account_name": "明日方舟Arknights",
+      "asset_path": "assets/media/193a14e5e6b03615ba9ceb80e492995705026949e396747da08d6fbf922722e3.webp",
+      "content_type": "image/webp",
+      "sha256": "193a14e5e6b03615ba9ceb80e492995705026949e396747da08d6fbf922722e3",
+      "size_bytes": 553256,
+      "source_id": "skland-6415406",
+      "source_media_hash": "6ecfc8b4ba914327d31a662114a22c34ef04cd47af543a1bffda67988113e4b9",
+      "source_url": "https://bbs.hycdn.cn/image/common/20261024/115/6adc9be7f6506aa250a6baf8_65de0095.webp"
+    },
+    {
+      "account_name": "明日方舟Arknights",
+      "asset_path": "assets/media/d7e9ef84a3f68ee7d7ca73588de5d20f9fe9976fe54c91f9bb957c6f79200585.webp",
+      "content_type": "image/webp",
+      "sha256": "d7e9ef84a3f68ee7d7ca73588de5d20f9fe9976fe54c91f9bb957c6f79200585",
+      "size_bytes": 771168,
+      "source_id": "skland-6415406",
+      "source_media_hash": "4c1869f3b03e439c83b40654fe743008db5f0983b8a3ad885d89c5c1fd607c50",
+      "source_url": "https://bbs.hycdn.cn/image/common/20261024/115/6adc9be74d8f43a101bef238_96d20048.webp"
+    },
+    {
+      "account_name": "明日方舟Arknights",
+      "asset_path": "assets/media/685f42c9cb1f0a73f3026d34ca48933161e3498f46d3f04ad67e108fb6ad4036.webp",
+      "content_type": "image/webp",
+      "sha256": "685f42c9cb1f0a73f3026d34ca48933161e3498f46d3f04ad67e108fb6ad4036",
+      "size_bytes": 982494,
+      "source_id": "skland-6415406",
+      "source_media_hash": "6909a0cc49b79ea153ad844adb9699cfc89cfad19f32a5aeffdeb3f903ae04d2",
+      "source_url": "https://bbs.hycdn.cn/image/common/20261024/115/6adc9be721f467a0bfca1b7c_65de0095.webp"
+    },
+    {
+      "account_name": "明日方舟Arknights",
+      "asset_path": "assets/media/93ed866661dfbf0aba07f732091c1c064c79c41aa558058000113c7a1313dfa2.webp",
+      "content_type": "image/webp",
+      "sha256": "93ed866661dfbf0aba07f732091c1c064c79c41aa558058000113c7a1313dfa2",
+      "size_bytes": 690204,
+      "source_id": "skland-6415406",
+      "source_media_hash": "7aa00b95672ef94ceef9c2d62bb3c7bbf345b606fd60695cc45b21a4fc7ff634",
+      "source_url": "https://bbs.hycdn.cn/image/common/20261024/115/6adc9be7793f69bb8b468842_ef3391c4.webp"
+    },
+    {
+      "account_name": "明日方舟Arknights",
+      "asset_path": "assets/media/ca57954437b7d03d50537624c0126ab86af845c13d5874d197473a2d53eb1491.webp",
+      "content_type": "image/webp",
+      "sha256": "ca57954437b7d03d50537624c0126ab86af845c13d5874d197473a2d53eb1491",
+      "size_bytes": 1091102,
+      "source_id": "skland-6415406",
+      "source_media_hash": "79b3561c1c5995f98ec4ce5a69321bac448712a791af12b1cafbdf85664e7aaf",
+      "source_url": "https://bbs.hycdn.cn/image/common/20261024/115/6adc9be7ddc0f89b712275fc_004865de.webp"
+    }
+  ],
+  "partner": null,
+  "reachability": {
+    "activity-9d7f7f0b48e57906": "unknown"
+  },
+  "redirected_to": null,
+  "revision": 1,
+  "scope_reviews": [],
+  "sources": [
+    {
+      "account_id": "7779816949641",
+      "account_name": "明日方舟Arknights",
+      "canonical_content_id": "6415406",
+      "content_hash": "091f161c44012defebbb7671faa4d6d8e56f779ab6b0a6767189b1769ee3da44",
+      "excerpt": "《明日方舟》2026感谢庆典前瞻特别节目未来内容预告\n《明日方舟》2026感谢庆典前瞻特别节目现已结束。我们将在之后上传本次节目录像，感谢大家的支持。\n==《明日方舟》2026感谢庆典前瞻特别节目未来内容预告==\nP1-《明日方舟》新活动前瞻，将于后续开启\nP2- 「卫戍协议」、「危机合约」等更多活动将于后续开启\nP3-  明日方舟携手名创优品 ，邀博士共赴茶会，叙一杯焦糖色的午后。\nP4- 《明日方舟》有声剧「风雪过境」现已正式上架喜马拉雅\nP5- 《罗德岛学院》即将开播、《明日方舟:黎明前奏》《明日方舟:冬隐归路》《明日方舟:焰烬曙明》主线动画bilibili全集限时免费播出\nP6- 明日方舟2026感谢庆典「故土新程」主题快闪活动即将开启、「冻土与火种」网页活动、「燃烧即一切」网页活动现已开启\nP7-  官方漫画《序言组曲：火与路》即将上线、《序言组曲：孤行之人》实体漫画正在筹备中、《明日方舟官方美术设定集 VOL.5》即将开售！\nP8-明日方舟 1/7手办 【赤刃明霄陈 精英二ver.】彩模公开、【塔露拉】企划公开！【蕾缪安 布道人ver.】&【史尔特尔 超然序曲ver.】正在",
+      "first_seen_at": "2026-10-24T16:27:09.090923Z",
+      "id": "skland-6415406",
+      "is_official": true,
+      "kind": "skland",
+      "media_hashes": [
+        "3c7e70e2abb003fa6aa39f125f23d859190e2c975ec08877a5edac1a39d7060a",
+        "0a4f1bb72f6ac445b8c596646300a42bede7ab7f2d5811619f1429640ce457ea",
+        "412dee26c5624e162ff185a44c419ac2276ad4de55fd3af92301b721fb1871b1",
+        "3a12a8de5fd77d3599c47d31c04bc49d0d01ac391c56185ee65c30c90671d6ba",
+        "6ecfc8b4ba914327d31a662114a22c34ef04cd47af543a1bffda67988113e4b9",
+        "4c1869f3b03e439c83b40654fe743008db5f0983b8a3ad885d89c5c1fd607c50",
+        "6909a0cc49b79ea153ad844adb9699cfc89cfad19f32a5aeffdeb3f903ae04d2",
+        "7aa00b95672ef94ceef9c2d62bb3c7bbf345b606fd60695cc45b21a4fc7ff634",
+        "79b3561c1c5995f98ec4ce5a69321bac448712a791af12b1cafbdf85664e7aaf"
+      ],
+      "media_urls": [
+        "https://bbs.hycdn.cn/image/common/20261024/115/6adc9cbced989a2c1f4732f1_004865de.webp",
+        "https://bbs.hycdn.cn/image/common/20261024/115/6adc9be78b6b0c26bfc56ee2_65de0095.webp",
+        "https://bbs.hycdn.cn/image/common/20261024/115/6adc9be715b766b1b8684e9a_0095c241.webp",
+        "https://bbs.hycdn.cn/image/common/20261024/115/6adc9be79b052e6236f0cf9d_91c496d2.webp",
+        "https://bbs.hycdn.cn/image/common/20261024/115/6adc9be7f6506aa250a6baf8_65de0095.webp",
+        "https://bbs.hycdn.cn/image/common/20261024/115/6adc9be74d8f43a101bef238_96d20048.webp",
+        "https://bbs.hycdn.cn/image/common/20261024/115/6adc9be721f467a0bfca1b7c_65de0095.webp",
+        "https://bbs.hycdn.cn/image/common/20261024/115/6adc9be7793f69bb8b468842_ef3391c4.webp",
+        "https://bbs.hycdn.cn/image/common/20261024/115/6adc9be7ddc0f89b712275fc_004865de.webp"
+      ],
+      "published_at": "2026-10-24T13:16:13Z",
+      "summary": "《明日方舟》2026感谢庆典前瞻特别节目未来内容预告，公布新活动、联动、动画、周边及2026感谢庆典「故土新程」主题快闪活动即将开启等信息。",
+      "updated_at": null,
+      "url": "https://www.skland.com/article?id=6415406"
+    }
+  ],
+  "status": "details_pending",
+  "title": "明日方舟 2026感谢庆典「故土新程」主题快闪",
+  "updated_at": "2026-10-24T19:03:03.081490Z"
+}

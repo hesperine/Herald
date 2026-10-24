@@ -3,10 +3,10 @@
     {
       "activity": null,
       "activity_id": null,
-      "campaign_id": "candidate-65d2818a595968562b075dec",
+      "campaign_id": "campaign-5bc119dd5397df8e-b8a82c6b",
       "campaign_title": "《明日方舟：终末地》× 神舟传媒「镌宇铭星——共赴星海特别活动」",
       "detail_url": "event.html?id=campaign-5bc119dd5397df8e-b8a82c6b",
-      "extraction_status": "pending",
+      "extraction_status": "structured",
       "ip_name": "明日方舟：终末地",
       "reasons": [
         {
@@ -14,13 +14,13 @@
           "date_only": null,
           "expected_at": null,
           "kind": "announcement",
-          "summary": "联动信息：《明日方舟：终末地》× 神舟传媒「镌宇铭星——共赴星海特别活动」\n参与入口：https://endfield.hypergryph.com/activity/voyage-to-the-stars/?source_from=skland&header=0\n规则：管理员写下的ID与星辰同行\n《明日方舟：终末地》「镌宇铭星-共赴星海」合作纪录 PV（下）\n鹰角网络联合神舟传媒携手《明日方舟：终末地》，见证万千理想与足迹奔赴无垠寰宇。星流不熄，苍穹有铭。\n《镌宇铭星——共赴星海特别活动》现已如期发射入轨。管理员，你写下的ID正与星辰同行。\n坐标查询已开放：https://endfield.hypergryph.com/activity/voyage-to-the-stars/?source_from=skland&header=0"
+          "summary": "联动信息：《明日方舟：终末地》× 神舟传媒「镌宇铭星——共赴星海特别活动」\n参与入口：https://endfield.hypergryph.com/activity/voyage-to-the-stars/?source_from=skland&header=0\n规则：管理员写下的ID与星辰同行"
         }
       ],
       "sources": [
         {
           "account_name": "明日方舟终末地",
-          "summary": null,
+          "summary": "发布《明日方舟：终末地》与神舟传媒合作纪录PV（下），并称「镌宇铭星——共赴星海特别活动」已发射入轨，开放坐标查询。",
           "url": "https://www.skland.com/article?id=6407030"
         }
       ]
