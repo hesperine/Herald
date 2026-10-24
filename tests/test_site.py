@@ -65,6 +65,19 @@ def campaign(
 
 
 class StaticSiteBuilderTests(unittest.TestCase):
+    def test_exclusion_removes_date_reason_from_already_consolidated_card(self):
+        c = campaign('audited')
+        c.excluded_activities.append(c.activities.pop())
+        self.store.save_campaign(c)
+        self.store.save_reminder_snapshot(NOW.date(), {'date': str(NOW.date()), 'cards': [{
+            'campaign_id': c.id, 'activity_id': None, 'campaign_title': c.title,
+            'ip_name': c.ip_name, 'activity': None, 'sources': [],
+            'reasons': [{'kind': 'announcement', 'summary': '联动信息'},
+                        {'kind': 'day_before', 'action_id': 'sale-open', 'summary': '明天开始'}]}]})
+        self.builder.build(store=self.store, output_dir=self.output, now=NOW, watched_ip_slugs={'genshin-impact'})
+        history = json.loads((self.output / 'data/reminders/2026-08-30.json').read_text('utf8'))
+        self.assertEqual(history['cards'][0]['reasons'], [{'kind': 'announcement', 'summary': '联动信息'}])
+
     def test_scope_excluded_activity_is_removed_from_public_reminder_history(self):
         c = campaign('audited')
         activity = c.activities.pop()

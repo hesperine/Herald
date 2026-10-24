@@ -488,6 +488,13 @@ class StaticSiteBuilder:
             card['detail_campaign_id'] = target.id if target else detail_id
             if target and any(a.id == card['activity_id'] for a in target.excluded_activities):
                 continue
+            if target and card['reasons']:
+                excluded_ids = {a.id for a in target.excluded_activities}
+                excluded_actions = {action.id for a in target.excluded_activities for action in a.actions}
+                card['reasons'] = [r for r in card['reasons']
+                    if r.get('activity_id') not in excluded_ids and r.get('action_id') not in excluded_actions]
+                if not card['reasons']:
+                    continue
             if target and (notice is None or notice.status == 'structured'):
                 card['campaign_id'] = target.id
                 if card['activity_id'] is None:
