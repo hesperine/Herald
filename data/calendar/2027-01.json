@@ -10,17 +10,6 @@
         "kind": "event_end",
         "title": "联动定制头像框「甘甜雪花」兑换截止"
       }
-    ],
-    "2027-01-25": [
-      {
-        "action_id": "action-48235225e83a051f--end",
-        "activity_id": "activity-9f065aeabd4eb15e",
-        "at": "2027-01-25T03:59:00+08:00",
-        "campaign_id": "campaign-354e1e728907e326-2cc2bdfc",
-        "ip_name": "明日方舟",
-        "kind": "event_end",
-        "title": "剿灭作战关卡【灰石剧场】开启截止"
-      }
     ]
   }
 }

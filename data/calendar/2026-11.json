@@ -29,35 +29,6 @@
         "ip_name": "明日方舟",
         "kind": "sale_close",
         "title": "新装限时上架截止"
-      },
-      {
-        "action_id": "action-f96b617c7271ceaa--end",
-        "activity_id": "activity-dbb1db2446afc1b7",
-        "at": "2026-11-06T03:59:00+08:00",
-        "campaign_id": "campaign-354e1e728907e326-2cc2bdfc",
-        "ip_name": "明日方舟",
-        "kind": "sale_close",
-        "title": "礼包限时上架截止"
-      }
-    ],
-    "2026-11-21": [
-      {
-        "action_id": "action-3806733594c9dcae--end",
-        "activity_id": "activity-48146dcb6792b14e",
-        "at": "2026-11-21T03:59:00+08:00",
-        "campaign_id": "campaign-354e1e728907e326-2cc2bdfc",
-        "ip_name": "明日方舟",
-        "kind": "sale_close",
-        "title": "复刻时装限时上架截止"
-      },
-      {
-        "action_id": "action-03bd746e193f8780--end",
-        "activity_id": "activity-3aafc3831b8e637f",
-        "at": "2026-11-21T03:59:00+08:00",
-        "campaign_id": "campaign-354e1e728907e326-2cc2bdfc",
-        "ip_name": "明日方舟",
-        "kind": "sale_close",
-        "title": "【罗德岛风尚回顾】限时开启截止"
       }
     ],
     "2026-11-24": [

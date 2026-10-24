@@ -3,6 +3,44 @@
     {
       "activities": [
         {
+          "end_at": "2026-10-30T03:59:00+08:00",
+          "id": "activity-a2b7efa6c2b40d31",
+          "kind": "in_game",
+          "reachability": "unknown",
+          "start_at": "2026-10-16T16:00:00+08:00",
+          "status": "ongoing",
+          "title": "「恒远津梁」限时活动"
+        },
+        {
+          "end_at": "2026-11-06T03:59:00+08:00",
+          "id": "activity-570c6e42f30e1861",
+          "kind": "merchandise",
+          "reachability": "unknown",
+          "start_at": "2026-10-16T16:00:00+08:00",
+          "status": "ongoing",
+          "title": "组合包限时上架"
+        },
+        {
+          "end_at": "2026-11-06T03:59:00+08:00",
+          "id": "activity-c435ce9fe3d4b565",
+          "kind": "merchandise",
+          "reachability": "unknown",
+          "start_at": "2026-10-16T16:00:00+08:00",
+          "status": "ongoing",
+          "title": "新装限时上架"
+        }
+      ],
+      "id": "campaign-354e1e728907e326-2cc2bdfc",
+      "ip_name": "明日方舟",
+      "ip_slug": "arknights",
+      "partner": "国家图书馆",
+      "status": "ongoing",
+      "title": "《明日方舟》× 国家图书馆「恒远津梁」",
+      "updated_at": "2026-10-24T19:09:25.995731+00:00"
+    },
+    {
+      "activities": [
+        {
           "end_at": null,
           "id": "activity-9d7f7f0b48e57906",
           "kind": "popup",
@@ -108,80 +146,6 @@
       "status": "details_pending",
       "title": "《明日方舟》× 名创优品「秋意茶话会」",
       "updated_at": "2026-10-24T16:27:09.090923+00:00"
-    },
-    {
-      "activities": [
-        {
-          "end_at": "2026-10-30T03:59:00+08:00",
-          "id": "activity-a2b7efa6c2b40d31",
-          "kind": "in_game",
-          "reachability": "unknown",
-          "start_at": "2026-10-16T16:00:00+08:00",
-          "status": "ongoing",
-          "title": "「恒远津梁」限时活动"
-        },
-        {
-          "end_at": "2026-11-06T03:59:00+08:00",
-          "id": "activity-570c6e42f30e1861",
-          "kind": "merchandise",
-          "reachability": "unknown",
-          "start_at": "2026-10-16T16:00:00+08:00",
-          "status": "ongoing",
-          "title": "组合包限时上架"
-        },
-        {
-          "end_at": "2026-11-06T03:59:00+08:00",
-          "id": "activity-c435ce9fe3d4b565",
-          "kind": "merchandise",
-          "reachability": "unknown",
-          "start_at": "2026-10-16T16:00:00+08:00",
-          "status": "ongoing",
-          "title": "新装限时上架"
-        },
-        {
-          "end_at": "2026-11-06T03:59:00+08:00",
-          "id": "activity-dbb1db2446afc1b7",
-          "kind": "merchandise",
-          "reachability": "unknown",
-          "start_at": "2026-10-16T16:00:00+08:00",
-          "status": "ongoing",
-          "title": "礼包限时上架"
-        },
-        {
-          "end_at": "2026-11-21T03:59:00+08:00",
-          "id": "activity-48146dcb6792b14e",
-          "kind": "merchandise",
-          "reachability": "unknown",
-          "start_at": "2026-10-24T04:00:00+08:00",
-          "status": "upcoming",
-          "title": "复刻时装限时上架"
-        },
-        {
-          "end_at": "2026-11-21T03:59:00+08:00",
-          "id": "activity-3aafc3831b8e637f",
-          "kind": "merchandise",
-          "reachability": "unknown",
-          "start_at": "2026-10-24T04:00:00+08:00",
-          "status": "upcoming",
-          "title": "【罗德岛风尚回顾】限时开启"
-        },
-        {
-          "end_at": "2027-01-25T03:59:00+08:00",
-          "id": "activity-9f065aeabd4eb15e",
-          "kind": "in_game",
-          "reachability": "unknown",
-          "start_at": "2026-10-26T04:00:00+08:00",
-          "status": "upcoming",
-          "title": "剿灭作战关卡【灰石剧场】追加"
-        }
-      ],
-      "id": "campaign-354e1e728907e326-2cc2bdfc",
-      "ip_name": "明日方舟",
-      "ip_slug": "arknights",
-      "partner": "国家图书馆",
-      "status": "ongoing",
-      "title": "《明日方舟》× 国家图书馆「恒远津梁」",
-      "updated_at": "2026-10-23T17:44:25.376551+00:00"
     },
     {
       "activities": [
@@ -401,70 +365,6 @@
         "title": "线下活动开始"
       },
       "url": "event.html?id=campaign-5a95cf56417b3340-57ca36df#activity-activity-fd760656e9160352"
-    },
-    {
-      "activity": {
-        "actions": [
-          {
-            "at": "2026-10-26T04:00:00+08:00",
-            "cancelled": false,
-            "end_at": "2027-01-25T03:59:00+08:00",
-            "end_condition": null,
-            "end_date": null,
-            "ended": false,
-            "evidence": [],
-            "id": "action-48235225e83a051f",
-            "kind": "event_start",
-            "platform": null,
-            "quantity_limit": null,
-            "requires_reservation": null,
-            "requires_rush": null,
-            "rules": "通关主线2-8",
-            "scope": null,
-            "start_date": null,
-            "title": "剿灭作战关卡【灰石剧场】开启",
-            "url": null
-          }
-        ],
-        "end_at": "2027-01-25T03:59:00+08:00",
-        "end_date": null,
-        "evidence": [
-          {
-            "field_path": "activities[6].start_at",
-            "quote": "开启时间：10月26日 04:00 - 2027年01月25日 03:59",
-            "source_id": "website-arknights-official-1454"
-          },
-          {
-            "field_path": "activities[6].end_at",
-            "quote": "开启时间：10月26日 04:00 - 2027年01月25日 03:59",
-            "source_id": "website-arknights-official-1454"
-          },
-          {
-            "field_path": "activities[6].rules",
-            "quote": "开启条件：通关主线2-8",
-            "source_id": "website-arknights-official-1454"
-          }
-        ],
-        "id": "activity-9f065aeabd4eb15e",
-        "kind": "in_game",
-        "related_offers": null,
-        "rules": "通关主线2-8；新增剿灭委托关卡【灰石剧场】将替换现有剿灭委托关卡【默祷圣祠】",
-        "start_at": "2026-10-26T04:00:00+08:00",
-        "start_date": null,
-        "status": "upcoming",
-        "title": "剿灭作战关卡【灰石剧场】追加",
-        "uncertainties": [],
-        "venues": []
-      },
-      "campaign_id": "campaign-354e1e728907e326-2cc2bdfc",
-      "campaign_title": "《明日方舟》× 国家图书馆「恒远津梁」",
-      "ip_name": "明日方舟",
-      "next": {
-        "at": "2026-10-26T04:00:00+08:00",
-        "date": null,
-        "title": "剿灭作战关卡【灰石剧场】开启"
-      },
-      "url": "event.html?id=campaign-354e1e728907e326-2cc2bdfc#activity-activity-9f065aeabd4eb15e"
     },
     {
       "activity": {
@@ -730,184 +630,6 @@
         "title": "新装限时上架截止"
       },
       "url": "event.html?id=campaign-354e1e728907e326-2cc2bdfc#activity-activity-c435ce9fe3d4b565"
-    },
-    {
-      "activity": {
-        "actions": [
-          {
-            "at": "2026-10-16T16:00:00+08:00",
-            "cancelled": false,
-            "end_at": "2026-11-06T03:59:00+08:00",
-            "end_condition": null,
-            "end_date": null,
-            "ended": false,
-            "evidence": [
-              {
-                "field_path": "activities[3].actions[0].rules",
-                "quote": "【大荒青禾组合包】本次返场将不再享受首次上架优惠",
-                "source_id": "website-arknights-official-1454"
-              }
-            ],
-            "id": "action-f96b617c7271ceaa",
-            "kind": "sale_open",
-            "platform": null,
-            "quantity_limit": null,
-            "requires_reservation": null,
-            "requires_rush": null,
-            "rules": "【大荒青禾组合包】本次返场将不再享受首次上架优惠",
-            "scope": "采购中心",
-            "start_date": null,
-            "title": "礼包限时上架",
-            "url": null
-          }
-        ],
-        "end_at": "2026-11-06T03:59:00+08:00",
-        "end_date": null,
-        "evidence": [
-          {
-            "field_path": "activities[3].rules",
-            "quote": "组合包内容：界面主题【大荒】*1、主题场景【青穰】*1",
-            "source_id": "website-arknights-official-1454"
-          },
-          {
-            "field_path": "activities[3].actions[0].rules",
-            "quote": "【大荒青禾组合包】本次返场将不再享受首次上架优惠",
-            "source_id": "website-arknights-official-1454"
-          }
-        ],
-        "id": "activity-dbb1db2446afc1b7",
-        "kind": "merchandise",
-        "related_offers": null,
-        "rules": "【大荒青禾组合包】内容：界面主题【大荒】*1、主题场景【青穰】*1；本次返场将不再享受首次上架优惠",
-        "start_at": "2026-10-16T16:00:00+08:00",
-        "start_date": null,
-        "status": "ongoing",
-        "title": "礼包限时上架",
-        "uncertainties": [],
-        "venues": []
-      },
-      "campaign_id": "campaign-354e1e728907e326-2cc2bdfc",
-      "campaign_title": "《明日方舟》× 国家图书馆「恒远津梁」",
-      "ip_name": "明日方舟",
-      "next": {
-        "at": "2026-11-06T03:59:00+08:00",
-        "date": null,
-        "title": "礼包限时上架截止"
-      },
-      "url": "event.html?id=campaign-354e1e728907e326-2cc2bdfc#activity-activity-dbb1db2446afc1b7"
-    },
-    {
-      "activity": {
-        "actions": [
-          {
-            "at": "2026-10-24T04:00:00+08:00",
-            "cancelled": false,
-            "end_at": "2026-11-21T03:59:00+08:00",
-            "end_condition": null,
-            "end_date": null,
-            "ended": false,
-            "evidence": [],
-            "id": "action-03bd746e193f8780",
-            "kind": "sale_open",
-            "platform": null,
-            "quantity_limit": null,
-            "requires_reservation": null,
-            "requires_rush": null,
-            "rules": null,
-            "scope": "时装商店",
-            "start_date": null,
-            "title": "【罗德岛风尚回顾】限时开启",
-            "url": null
-          }
-        ],
-        "end_at": "2026-11-21T03:59:00+08:00",
-        "end_date": null,
-        "evidence": [
-          {
-            "field_path": "activities[5].rules",
-            "quote": "【错位巡礼系列 - 沉思之庭 - 赫德雷】、【错位巡礼系列 - 倾听 - 温蒂】等干员时装将在时装商店复刻上架并限时贩售",
-            "source_id": "website-arknights-official-1454"
-          }
-        ],
-        "id": "activity-3aafc3831b8e637f",
-        "kind": "merchandise",
-        "related_offers": null,
-        "rules": "【错位巡礼系列 - 沉思之庭 - 赫德雷】、【错位巡礼系列 - 倾听 - 温蒂】等干员时装将在时装商店复刻上架并限时贩售",
-        "start_at": "2026-10-24T04:00:00+08:00",
-        "start_date": null,
-        "status": "upcoming",
-        "title": "【罗德岛风尚回顾】限时开启",
-        "uncertainties": [],
-        "venues": []
-      },
-      "campaign_id": "campaign-354e1e728907e326-2cc2bdfc",
-      "campaign_title": "《明日方舟》× 国家图书馆「恒远津梁」",
-      "ip_name": "明日方舟",
-      "next": {
-        "at": "2026-11-21T03:59:00+08:00",
-        "date": null,
-        "title": "【罗德岛风尚回顾】限时开启截止"
-      },
-      "url": "event.html?id=campaign-354e1e728907e326-2cc2bdfc#activity-activity-3aafc3831b8e637f"
-    },
-    {
-      "activity": {
-        "actions": [
-          {
-            "at": "2026-10-24T04:00:00+08:00",
-            "cancelled": false,
-            "end_at": "2026-11-21T03:59:00+08:00",
-            "end_condition": null,
-            "end_date": null,
-            "ended": false,
-            "evidence": [],
-            "id": "action-3806733594c9dcae",
-            "kind": "sale_open",
-            "platform": null,
-            "quantity_limit": null,
-            "requires_reservation": null,
-            "requires_rush": null,
-            "rules": null,
-            "scope": "时装商店",
-            "start_date": null,
-            "title": "复刻时装限时上架",
-            "url": null
-          }
-        ],
-        "end_at": "2026-11-21T03:59:00+08:00",
-        "end_date": null,
-        "evidence": [
-          {
-            "field_path": "activities[4].start_at",
-            "quote": "活动时间：10月24日 04:00 - 11月21日 03:59",
-            "source_id": "website-arknights-official-1454"
-          },
-          {
-            "field_path": "activities[4].end_at",
-            "quote": "活动时间：10月24日 04:00 - 11月21日 03:59",
-            "source_id": "website-arknights-official-1454"
-          }
-        ],
-        "id": "activity-48146dcb6792b14e",
-        "kind": "merchandise",
-        "related_offers": null,
-        "rules": "活动期间以下干员时装将在时装商店上架并限时贩售",
-        "start_at": "2026-10-24T04:00:00+08:00",
-        "start_date": null,
-        "status": "upcoming",
-        "title": "复刻时装限时上架",
-        "uncertainties": [],
-        "venues": []
-      },
-      "campaign_id": "campaign-354e1e728907e326-2cc2bdfc",
-      "campaign_title": "《明日方舟》× 国家图书馆「恒远津梁」",
-      "ip_name": "明日方舟",
-      "next": {
-        "at": "2026-11-21T03:59:00+08:00",
-        "date": null,
-        "title": "复刻时装限时上架截止"
-      },
-      "url": "event.html?id=campaign-354e1e728907e326-2cc2bdfc#activity-activity-48146dcb6792b14e"
     },
     {
       "activity": {
@@ -1855,5 +1577,5 @@
       "url": "event.html?id=campaign-cdc53ffc7863c84c-a0db4ca1#activity-activity-dfd55f4c31903c72"
     }
   ],
-  "generated_at": "2026-10-25T03:07:00.351026+08:00"
+  "generated_at": "2026-10-25T03:10:52.803388+08:00"
 }
