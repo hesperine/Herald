@@ -36,7 +36,7 @@
       "campaign_id": "campaign-5a95cf56417b3340-57ca36df",
       "campaign_title": "《明日方舟：终末地》×八达岭长城「关塞万里，环带一系」联动",
       "detail_url": "event.html?id=campaign-5a95cf56417b3340-57ca36df",
-      "extraction_status": "structured",
+      "extraction_status": null,
       "ip_name": "明日方舟：终末地",
       "reasons": [
         {
@@ -45,6 +45,13 @@
           "expected_at": null,
           "kind": "announcement",
           "summary": "联动信息：《明日方舟：终末地》×八达岭长城「关塞万里，环带一系」联动\n开始日期：2026-10-26\n开始时间：2026-10-24T12:00:00+08:00\n规则：2026/11/15 00:00（UTC+8）前登录游戏；奖励通过邮件发送，开启邮箱功能后领取，邮件有效期30天。\n时间：2026-10-24T12:00:00+08:00\n规则：2026/11/15 00:00（UTC+8）前登录游戏；奖励通过邮件发送，开启邮箱功能后领取，邮件有效期30天。\n适用范围：游戏内邮件"
+        },
+        {
+          "action_id": "activity-fd760656e9160352--start",
+          "date_only": "2026-10-26",
+          "expected_at": "2026-10-26T00:00:00+08:00",
+          "kind": "day_before",
+          "summary": "明天开始：线下活动开始"
         }
       ],
       "sources": [
@@ -57,6 +64,11 @@
           "account_name": "明日方舟终末地",
           "summary": "发放联动定制拍照贴纸道具【贴纸·长城】，2026/10/24 12:00发放，2026/11/15 00:00前登录可领，邮件30天有效。",
           "url": "https://www.skland.com/article?id=6412085"
+        },
+        {
+          "account_name": "明日方舟终末地",
+          "summary": "《明日方舟：终末地》宣布与八达岭长城联动「关塞万里，环带一系」，活动即将开启，详情见长图。",
+          "url": "https://www.skland.com/article?id=6409184"
         }
       ]
     },
@@ -214,43 +226,6 @@
           "account_name": "明日方舟Arknights",
           "summary": "复宣明日方舟×国家图书馆CROSSOVER系列三款新装限时上架及售卖时间。",
           "url": "https://www.skland.com/article?id=6411186"
-        }
-      ]
-    },
-    {
-      "activity": {
-        "title": "线下活动"
-      },
-      "activity_id": "activity-fd760656e9160352",
-      "campaign_id": "campaign-5a95cf56417b3340-57ca36df",
-      "campaign_title": "《明日方舟：终末地》×八达岭长城「关塞万里，环带一系」联动",
-      "detail_url": "event.html?id=campaign-5a95cf56417b3340-57ca36df#activity-activity-fd760656e9160352",
-      "extraction_status": null,
-      "ip_name": "明日方舟：终末地",
-      "reasons": [
-        {
-          "action_id": "activity-fd760656e9160352--start",
-          "date_only": "2026-10-26",
-          "expected_at": "2026-10-26T00:00:00+08:00",
-          "kind": "day_before",
-          "summary": "明天开始：线下活动开始"
-        }
-      ],
-      "sources": [
-        {
-          "account_name": "明日方舟终末地",
-          "summary": "《明日方舟：终末地》宣布与八达岭长城联动「关塞万里，环带一系」，活动即将开启，详情见长图。",
-          "url": "https://www.skland.com/article?id=6409184"
-        },
-        {
-          "account_name": "明日方舟终末地",
-          "summary": "《明日方舟：终末地》×八达岭长城合作宣传PV，联动合作已上线，线下活动将于10月26日开启，详情待官方自媒体公布。",
-          "url": "https://www.skland.com/article?id=6412073"
-        },
-        {
-          "account_name": "明日方舟终末地",
-          "summary": "发放联动定制拍照贴纸道具【贴纸·长城】，2026/10/24 12:00发放，2026/11/15 00:00前登录可领，邮件30天有效。",
-          "url": "https://www.skland.com/article?id=6412085"
         }
       ]
     }
