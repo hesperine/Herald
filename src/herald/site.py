@@ -486,8 +486,12 @@ class StaticSiteBuilder:
                 card['activity_id'] = alias.activity_redirects.get(card['activity_id'], card['activity_id'])
             target = store.load_campaign(detail_id) if detail_id else None
             card['detail_campaign_id'] = target.id if target else detail_id
+            if target and any(a.id == card['activity_id'] for a in target.excluded_activities):
+                continue
             if target and (notice is None or notice.status == 'structured'):
                 card['campaign_id'] = target.id
+                if card['activity_id'] is None:
+                    card['campaign_notice'] = True
                 if notice:
                     card['campaign_title'] = target.title
                     card['extraction_status'] = notice.status

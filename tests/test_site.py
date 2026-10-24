@@ -103,6 +103,10 @@ class StaticSiteBuilderTests(unittest.TestCase):
                              'action_id': None, 'expected_at': None, 'date_only': None}]})
         self.store.save_campaign(c)
         yesterday = (NOW - timedelta(days=1)).date()
+        legacy.append({'campaign_id': c.id, 'activity_id': c.activities[0].id,
+            'campaign_title': c.title, 'ip_name': c.ip_name,
+            'activity': {'title': c.activities[0].title}, 'sources': [],
+            'reasons': [{'kind': 'day_before', 'summary': '明天开始'}]})
         for day in (yesterday, NOW.date()):
             self.store.save_reminder_snapshot(day, {'date': str(day), 'cards': legacy})
         for _ in range(2):
@@ -115,7 +119,7 @@ class StaticSiteBuilderTests(unittest.TestCase):
                 card = payload['cards'][0]
                 self.assertEqual(card['campaign_id'], c.id)
                 self.assertEqual(len(card['sources']), 2)
-                self.assertEqual(len(card['reasons']), 1)
+                self.assertEqual(len(card['reasons']), 2)
                 self.assertEqual(card['reasons'][0]['summary'], summary)
                 self.assertEqual(card['detail_url'], 'event.html?id=resolved')
                 saved = self.store.load_reminder_snapshot(day)
