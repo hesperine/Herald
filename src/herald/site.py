@@ -455,6 +455,8 @@ class StaticSiteBuilder:
                 if alias:
                     aid = alias.activity_redirects.get(aid, aid)
                 target = store.load_campaign(detail_id) if detail_id else None
+                if target and aid and any(a.id == aid for a in target.excluded_activities):
+                    continue
                 detail_id = target.id if target else detail_id
                 url = None
                 if detail_id in visible and (not aid or aid in visible[detail_id]):

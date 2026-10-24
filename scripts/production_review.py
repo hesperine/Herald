@@ -5,6 +5,9 @@ import json
 import os
 from pathlib import Path
 import sys
+import io
+import tarfile
+import subprocess
 from datetime import datetime
 import httpx
 from two_pass_review import public_dataset
@@ -19,11 +22,23 @@ from herald.storage import StateStore
 from herald.site import StaticSiteBuilder
 
 
-async def main(directory):
+async def main(directory, audit=False):
     root = Path(directory)
     root.mkdir(parents=True, exist_ok=True)
     store = StateStore(root / 'state')
     store.initialize()
+    if audit and not (root / 'audit-seed.json').exists():
+        revision = subprocess.check_output(['git', 'rev-parse', 'origin/state']).decode().strip()
+        with tarfile.open(fileobj=io.BytesIO(subprocess.check_output(['git', 'archive', revision]))) as archive:
+            for member in archive.getmembers():
+                if not member.isfile() or not member.name.endswith('.json'):
+                    continue
+                target = store.root / member.name
+                if not target.resolve().is_relative_to(store.root.resolve()):
+                    raise ValueError('invalid archive path')
+                target.parent.mkdir(parents=True, exist_ok=True)
+                target.write_bytes(archive.extractfile(member).read())
+        (root / 'audit-seed.json').write_text(json.dumps({'revision': revision}), encoding='utf8')
     data = public_dataset()
     secrets = [v for k, v in os.environ.items() if k in ('AI_API_KEY', 'SMTP_PASSWORD', 'SMTP_USERNAME',
         'NOTIFY_EMAIL', 'WEIBO_COOKIE', 'ORIGIN_CITY', 'REACHABLE_CITIES') and v]
@@ -50,6 +65,25 @@ async def main(directory):
             save(key + '-response.json', result.model_dump(mode='json'))
             return result
         provider._complete = cached
+        if audit:
+            now = datetime.fromisoformat('2026-10-25T12:00:00+08:00')
+            by_ip = {}
+            names = {n.ip_slug: n.ip_name for n in store.list_candidates()}
+            for pending in store.list_pending_extractions():
+                store.save_pending_extraction(pending.model_copy(update={'next_retry_at': None}))
+                for oid in pending.observation_ids:
+                    item = store.load_observation(oid)
+                    if item:
+                        by_ip.setdefault(pending.ip_slug, {})[oid] = item
+            for slug, items in by_ip.items():
+                result = await ObservationPipeline().process(store=store, ip=RegisteredIp(slug=slug, name=names[slug]),
+                    observations=list(items.values()), now=now, provider=provider)
+                print(slug, 'pending', result.pending_extractions, flush=True)
+            save('audit-report.json', {'pending': [p.model_dump(mode='json') for p in store.list_pending_extractions()],
+                                      'diagnostics': provider.diagnostics})
+            for p in store.list_pending_extractions():
+                print(p.ip_slug, p.reason, flush=True)
+            return
         for batch in data['batches']:
             now = datetime.fromisoformat(batch['day'] + 'T12:00:00+08:00')
             by_ip = {}
@@ -101,7 +135,7 @@ async def main(directory):
 
 if __name__ == '__main__':
     try:
-        asyncio.run(main(sys.argv[1]))
+        asyncio.run(main(sys.argv[1], '--audit' in sys.argv[2:]))
     except Exception as error:
         print('Production review failed: ' + type(error).__name__, file=sys.stderr)
         raise SystemExit(1)

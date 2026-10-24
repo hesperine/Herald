@@ -50,7 +50,10 @@ async def process_contextual(pipeline, *, store, ip, observations, now, provider
         for notice in store.list_candidates():
             if notice.ip_slug == ip.slug and tokens.intersection((s.id, s.content_hash) for s in notice.sources):
                 notice.resolution_version = 2
-                notice.status = 'pending'
+                if not notice.campaign_ids:
+                    notice.status = 'pending'
+                elif notice.campaign_id:
+                    notice.status = 'structured'
                 store.save_candidate(notice)
         ready.append((members, pending_id))
     # Whole source groups stay together; bounded batches across official accounts.
@@ -114,8 +117,20 @@ async def process_contextual(pipeline, *, store, ip, observations, now, provider
             for _, pending_id in unit:
                 store.delete_pending_extraction(pending_id)
         except (AIProviderError, ValidationError, ValueError, KeyError) as error:
+            safe_reasons = {'date requires field evidence', 'invalid scope exclusion evidence',
+                'scope exclusion must refer to legacy activity', 'older conflicting fact without provenance',
+                'unverified extraction quote', 'context budget exceeded', 'conflicting contextual partner',
+                'new activity already exists', 'new activity must identify one extracted activity',
+                'same-time conflicting evidence requires review', 'invalid addition target or evidence',
+                'existing campaign requires reconciliation', 'invalid fact target', 'field is not editable',
+                'fact target must identify one existing entity', 'null is not a deletion instruction',
+                'invalid campaign reference', 'date requires field evidence'}
+            code = str(error) if str(error) in safe_reasons else type(error).__name__
             for _, pending_id in unit:
                 record_failure(store, store.load_pending_extraction(pending_id), now,
                                error)
+                pending = store.load_pending_extraction(pending_id)
+                if getattr(error, 'category', None) != 'deferred':
+                    store.save_pending_extraction(pending.model_copy(update={'reason': 'contextual: ' + code}))
             counters['pending_extractions'] += len(unit)
     return PipelineResult(**counters)

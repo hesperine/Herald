@@ -22,6 +22,7 @@ class CliTests(unittest.TestCase):
     def test_no_email_is_explicit_publish_only_mode(self):
         self.assertFalse(_parser().parse_args([]).no_email)
         self.assertTrue(_parser().parse_args(['--phase', 'retry', '--no-email']).no_email)
+        self.assertTrue(_parser().parse_args(['--retry-validation']).retry_validation)
     def test_final_retry_is_explicit_and_only_allowed_for_retry(self):
         self.assertFalse(_parser().parse_args([]).final_retry)
         self.assertTrue(_parser().parse_args(['--phase', 'retry', '--final-retry']).final_retry)

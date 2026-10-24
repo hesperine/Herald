@@ -28,6 +28,24 @@ class Provider:
 
 
 class ContextualPipelineTests(unittest.IsolatedAsyncioTestCase):
+    async def test_scope_audit_failure_preserves_known_association(self):
+        with tempfile.TemporaryDirectory() as directory:
+            store = StateStore(directory)
+            store.initialize()
+            item = observation('a', '原神', digest='a'*64)
+            pipeline, provider = ObservationPipeline(), Provider()
+            ip = RegisteredIp(slug='genshin-impact', name='原神')
+            await pipeline.process(store=store, ip=ip, observations=[item], now=NOW, provider=provider)
+            from herald.models import PendingExtraction
+            store.save_pending_extraction(PendingExtraction(id=pipeline._id('pending-ai', 'a'),
+                observation_ids=['a'], ip_slug=ip.slug, queued_at=NOW, reason='audit'))
+            provider.fail = True
+            # A new plan is required only for this test's audit of the same source.
+            for p in (store.root / 'contextual-plans').glob('*.json'):
+                p.unlink()
+            await pipeline.process(store=store, ip=ip, observations=[item], now=NOW, provider=provider)
+            self.assertEqual(store.list_candidates()[0].status, 'structured')
+
     async def test_new_duplicate_source_does_not_orphan_existing_pending(self):
         from herald.models import PendingExtraction
         with tempfile.TemporaryDirectory() as directory:

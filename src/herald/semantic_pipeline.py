@@ -313,6 +313,8 @@ async def _apply_group(pipeline, store, ip, members, extraction, now, provider,
             outcome.campaign.activities.remove(activity)
             outcome.campaign.excluded_activities.append(activity)
             outcome.campaign.scope_reviews.append(exclusion.model_dump())
+        if resolution.exclusions and outcome.campaign.status != EventStatus.CANCELLED:
+            outcome.campaign.status = pipeline.assembler._campaign_status(outcome.campaign.activities)
     store.save_campaign(outcome.campaign)
     counters['campaigns_created' if matched is None else 'campaigns_updated'] += 1
     for change in outcome.changes:

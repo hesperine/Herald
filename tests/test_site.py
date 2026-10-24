@@ -65,6 +65,20 @@ def campaign(
 
 
 class StaticSiteBuilderTests(unittest.TestCase):
+    def test_scope_excluded_activity_is_removed_from_public_reminder_history(self):
+        c = campaign('audited')
+        activity = c.activities.pop()
+        c.excluded_activities.append(activity)
+        self.store.save_campaign(c)
+        self.store.save_reminder_snapshot(NOW.date(), {'date': str(NOW.date()), 'cards': [{
+            'campaign_id': c.id, 'activity_id': activity.id, 'campaign_title': c.title,
+            'ip_name': c.ip_name, 'activity': {'title': activity.title}, 'sources': [],
+            'reasons': [{'kind': 'day_before', 'summary': '明天开始'}]}]})
+        self.builder.build(store=self.store, output_dir=self.output, now=NOW, watched_ip_slugs={'genshin-impact'})
+        history = json.loads((self.output / 'data/reminders/2026-08-30.json').read_text('utf8'))
+        self.assertEqual(history['cards'], [])
+        self.assertEqual(self.store.load_campaign(c.id).excluded_activities[0].id, activity.id)
+
     def test_legacy_candidate_snapshots_consolidate_resolved_news_and_preserve_all_sources(self):
         from herald.models import CandidateNotice, NotificationKind, QueueJob
         from tests.test_pipeline import observation

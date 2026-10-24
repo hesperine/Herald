@@ -126,7 +126,7 @@ jobs:
         shell: bash
         run: |
           if [[ "$TRIGGER_EVENT" == "push" ]]; then
-            timeout --signal=TERM 16m python -m herald --state-dir _state --page-dir _page --phase retry --no-email
+            timeout --signal=TERM 16m python -m herald --state-dir _state --page-dir _page --phase retry --no-email --retry-validation
           elif [[ "$TRIGGER_EVENT" == "workflow_dispatch" ]]; then
             extra=()
             if [[ "$DISPATCH_EMAIL" != "true" ]]; then extra+=(--no-email); fi

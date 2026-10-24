@@ -144,6 +144,7 @@ def _parser() -> argparse.ArgumentParser:
                         help='isolated public two-day AI experiment; no email or production writes')
     parser.add_argument('--production-review', type=Path,
                         help='replay public two-day sources through production pipeline with in-memory mail')
+    parser.add_argument('--production-audit', type=Path, help='isolated replay of current remote pending state')
     parser.add_argument('--replay', choices=('bootstrap', 'incremental'))
     parser.add_argument('--replay-directory', type=Path)
     parser.add_argument('--replay-cache-media', action='store_true')
@@ -206,7 +207,9 @@ def main(argv: list[str] | None = None) -> int:
         cookie = values.get("WEIBO_COOKIE", "")
         values = {"WEIBO_COOKIE": cookie} if cookie else {}
     child_environment = build_child_environment(values)
-    if args.production_review:
+    if args.production_audit:
+        command = [sys.executable, 'scripts/production_review.py', str(args.production_audit), '--audit']
+    elif args.production_review:
         command = [sys.executable, 'scripts/production_review.py', str(args.production_review)]
     elif args.two_pass_review:
         command = [sys.executable, 'scripts/two_pass_review.py', str(args.two_pass_review)]

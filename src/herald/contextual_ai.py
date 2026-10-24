@@ -125,10 +125,21 @@ async def resolve_campaign(provider, route, packets, existing):
         {'route': route.model_dump(), 'existing_campaign': provider._public_campaign(existing) if existing else None},
         CampaignResolution)
     result = await provider._complete(request, CampaignResolution)
-    validate_dates(result.extraction)
     if existing and (result.merge is None or result.merge.decision != 'update'):
         raise AIProviderError('existing campaign requires reconciliation')
     if not existing and result.merge is not None:
         raise AIProviderError('new campaign cannot update existing entities')
+    if existing:
+        # Only newly stored entities need extraction-array evidence. Existing
+        # scalar edits are independently checked against stable paths and quotes.
+        from .semantic_pipeline import activity_additions
+        result.extraction = activity_additions(result.extraction, result.merge.new_activities)
+        result.extraction.claims = [c for c in result.extraction.claims if c.field_path.startswith('activities[')]
+        result.extraction.partner = existing.partner
+        result.extraction.campaign_title = existing.title
+        result.extraction.relevant = True
+        validate_dates(result.extraction)
+    else:
+        validate_dates(result.extraction)
     result.extraction.candidate_campaign_id = existing.id if existing else None
     return result

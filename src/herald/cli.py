@@ -112,6 +112,7 @@ def _parser() -> argparse.ArgumentParser:
     parser.add_argument('--final-retry', action='store_true',
                         help='send the daily digest even if pending remains (retry only)')
     parser.add_argument('--no-email', action='store_true', help='process and publish without sending email')
+    parser.add_argument('--retry-validation', action='store_true', help='retry validation failures after a code upgrade; keep provider cooldowns')
     return parser
 
 
@@ -119,11 +120,16 @@ async def _run(args: argparse.Namespace) -> dict[str, object]:
     settings = load_settings()
     now = _parse_now(args.now)
     cookie = _secret(settings.private.weibo_cookie)
+    store = StateStore(args.state_dir)
+    if getattr(args, 'retry_validation', False):
+        for pending in store.list_pending_extractions():
+            if pending.error_category == 'validation':
+                store.save_pending_extraction(pending.model_copy(update={'next_retry_at': None}))
     async with httpx.AsyncClient(follow_redirects=True, timeout=30) as source_client:
         async with httpx.AsyncClient(follow_redirects=True, timeout=60) as ai_client:
             result = await DailyRunner(clock=(lambda: now) if args.now else None).run(
                 settings=settings,
-                store=StateStore(args.state_dir),
+                store=store,
                 page_dir=args.page_dir,
                 now=now,
                 weibo_client=WeiboTimelineClient(source_client, cookie=cookie),

@@ -7,6 +7,19 @@ from tests.test_ai import packet
 
 
 class ContextualAITests(unittest.IsolatedAsyncioTestCase):
+    async def test_unchanged_existing_dates_need_not_be_reextracted(self):
+        from herald.contextual_ai import CampaignRoute
+        from herald.models import Campaign
+        from tests.test_pipeline import NOW
+        answer = {'extraction': {'relevant': True, 'activities': [{'kind':'popup','title':'已知快闪','start_date':'2026-10-26'}]},
+                  'merge': {'decision': 'update'}}
+        async with httpx.AsyncClient(transport=httpx.MockTransport(lambda r: httpx.Response(200,
+            json={'choices':[{'message':{'content':json.dumps(answer)}}]}))) as client:
+            provider = OpenAICompatibleProvider(client=client, base_url='https://example.invalid', model='test', api_key='private')
+            existing = Campaign(id='existing', ip_slug='genshin-impact', ip_name='原神', title='已知企划', first_seen_at=NOW, updated_at=NOW)
+            result = await resolve_campaign(provider, CampaignRoute(phrase='已知企划', campaign_id='existing', observation_ids=['weibo-a']), [packet()], existing)
+            self.assertEqual(result.merge.updates, [])
+            self.assertEqual(result.extraction.activities, [])
     def test_contextual_dates_require_field_evidence(self):
         from herald.contextual_ai import validate_dates
         from herald.ai import ExtractionResult, ExtractedActivity
