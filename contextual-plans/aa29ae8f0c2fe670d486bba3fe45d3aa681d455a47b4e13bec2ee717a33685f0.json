@@ -1,5 +1,11 @@
 {
-  "completed": {},
+  "completed": {
+    "0": "campaign-3302d7e79db4b203-62055d07",
+    "1": "campaign-8ef39adc0f9cce18-746c28cd",
+    "2": "campaign-5bc119dd5397df8e-b8a82c6b",
+    "3": "campaign-5a95cf56417b3340-57ca36df",
+    "4": "campaign-c0eb942cf0b13e3a-e6fe958d"
+  },
   "routes": {
     "groups": [
       {

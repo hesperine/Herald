@@ -1,5 +1,13 @@
 {
-  "completed": {},
+  "completed": {
+    "0": "campaign-354e1e728907e326-2cc2bdfc",
+    "1": "campaign-1786831476040aa0-253f5627",
+    "2": "campaign-abb4d493ebf696a7-3b3da411",
+    "3": "campaign-de00e4b309b316f3-7cd10764",
+    "4": "campaign-4758edb88f30ddf3-4147566e",
+    "5": "campaign-148dc4c99579d419-b677ac89",
+    "6": "campaign-f624c9e27ceba257-ebe97034"
+  },
   "routes": {
     "groups": [
       {

@@ -101,6 +101,7 @@
   ],
   "activity_redirects": {},
   "announced_at": "2026-10-22T04:00:17Z",
+  "excluded_activities": [],
   "fact_provenance": {
     "activities.activity-0ffe5b96b6558358.actions.action-7ba954a9d4905633.title": {
       "content_hash": "53938a7bafb108877fd8c06f108fb3b397dcc8b9c6e4ab99833f771adefc9226",
@@ -152,6 +153,7 @@
   "partner": "神舟传媒",
   "redirected_to": null,
   "revision": 1,
+  "scope_reviews": [],
   "sources": [
     {
       "account_id": "3737967211133",

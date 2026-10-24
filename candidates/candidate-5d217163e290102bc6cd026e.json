@@ -1,7 +1,12 @@
 {
   "campaign_id": "campaign-1786831476040aa0-253f5627",
   "campaign_ids": [
-    "campaign-1786831476040aa0-253f5627"
+    "campaign-1786831476040aa0-253f5627",
+    "campaign-abb4d493ebf696a7-3b3da411",
+    "campaign-de00e4b309b316f3-7cd10764",
+    "campaign-4758edb88f30ddf3-4147566e",
+    "campaign-148dc4c99579d419-b677ac89",
+    "campaign-f624c9e27ceba257-ebe97034"
   ],
   "detected_at": "2026-10-24T16:27:09.090923Z",
   "facts": {},
@@ -30,5 +35,5 @@
       "url": "https://www.skland.com/article?id=6415406"
     }
   ],
-  "status": "pending"
+  "status": "structured"
 }

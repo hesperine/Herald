@@ -1,5 +1,8 @@
 {
-  "completed": {},
+  "completed": {
+    "0": "campaign-0451ddb8aea2e952-631416ed",
+    "1": "campaign-088817ae96bf8f7f-afce333c"
+  },
   "routes": {
     "groups": [
       {

@@ -106,6 +106,7 @@
   ],
   "activity_redirects": {},
   "announced_at": "2026-10-23T03:00:13Z",
+  "excluded_activities": [],
   "fact_provenance": {
     "partner": {
       "content_hash": "e935f938be45e2850e997bb061682a8146a79ba1959953499913831d25a0d363",
@@ -129,6 +130,7 @@
   "partner": "八达岭长城",
   "redirected_to": null,
   "revision": 3,
+  "scope_reviews": [],
   "sources": [
     {
       "account_id": "3737967211133",

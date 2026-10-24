@@ -361,6 +361,7 @@
   ],
   "activity_redirects": {},
   "announced_at": "2026-10-11T03:00:38Z",
+  "excluded_activities": [],
   "fact_provenance": {
     "partner": {
       "content_hash": "6ee71d1750c863bb65491b7a8a0c885b7dff413c0821c10ed35710397ec1c274",
@@ -384,6 +385,7 @@
   "partner": "国家图书馆",
   "redirected_to": null,
   "revision": 5,
+  "scope_reviews": [],
   "sources": [
     {
       "account_id": "7779816949641",
@@ -402,7 +404,7 @@
         "https://bbs.hycdn.cn/image/common/20261010/115/6aca4009eac312a50a66686d_ef3391c4.webp"
       ],
       "published_at": "2026-10-11T03:00:38Z",
-      "summary": "《明日方舟》宣布与国家图书馆合作「恒远津梁」，发布合作宣传PV。",
+      "summary": "发布《明日方舟》×国家图书馆「恒远津梁」合作宣传PV，宣布双方合作。",
       "updated_at": null,
       "url": "https://www.skland.com/article?id=6377234"
     },
@@ -445,7 +447,7 @@
         "https://web.hycdn.cn/upload/image/20261008/2ff66891a7ffb02a080225c97c335c36.JPG"
       ],
       "published_at": "2026-10-11T03:00:00Z",
-      "summary": "明日方舟×国家图书馆「恒远津梁」限时活动、组合包、新装与复刻时装上架，以及剿灭作战关卡追加公告。",
+      "summary": "官方公告：明日方舟×国家图书馆「恒远津梁」限时活动、组合包、新装上架，另含复刻时装、罗德岛风尚回顾与剿灭关卡追加。",
       "updated_at": null,
       "url": "https://ak.hypergryph.com/news/1454.html"
     },
@@ -466,7 +468,7 @@
         "https://bbs.hycdn.cn/image/common/20261020/115/6ad76c9e9da5ba571c0224ac_96d20048.webp"
       ],
       "published_at": "2026-10-11T03:05:40Z",
-      "summary": "宣布明日方舟与国家图书馆联动「恒远津梁」限时活动即将开启。",
+      "summary": "宣布明日方舟×国家图书馆「恒远津梁」限时活动即将开启。",
       "updated_at": null,
       "url": "https://www.skland.com/article?id=6377283"
     },
@@ -499,7 +501,7 @@
         "https://bbs.hycdn.cn/image/common/20261012/115/6acc81e3ed989a2c1f471c7a_96d20048.gif"
       ],
       "published_at": "2026-10-12T07:05:22Z",
-      "summary": "公布国家图书馆合作服装「盛世之象-琳琅诗怀雅」新增服饰。",
+      "summary": "公布国家图书馆合作服装「盛世之象-琳琅诗怀雅」新增服饰及介绍。",
       "updated_at": null,
       "url": "https://www.skland.com/article?id=6381246"
     },
@@ -532,7 +534,7 @@
         "https://bbs.hycdn.cn/image/common/20261012/115/6accd086185ed109d66b52e3_65de0095.gif"
       ],
       "published_at": "2026-10-13T07:00:47Z",
-      "summary": "公布国家图书馆合作服装「夜行烛火-烛煌」及服饰介绍。",
+      "summary": "公布国家图书馆合作服装「夜行烛火-烛煌」新增服饰及介绍。",
       "updated_at": null,
       "url": "https://www.skland.com/article?id=6381801"
     },
@@ -565,7 +567,7 @@
         "https://bbs.hycdn.cn/image/common/20261013/115/6ace26a58861f86f358a1a00_0095c241.gif"
       ],
       "published_at": "2026-10-14T07:00:12Z",
-      "summary": "公布国家图书馆合作服装「源远流长-黍」及动态形象时装展示入口。",
+      "summary": "公布国家图书馆合作服装「源远流长-黍」新增服饰及动态形象展示入口。",
       "updated_at": null,
       "url": "https://www.skland.com/article?id=6383812"
     },
@@ -586,7 +588,7 @@
         "https://bbs.hycdn.cn/image/common/20261023/115/6adb023addc0f89b712273b9_96d20048.webp"
       ],
       "published_at": "2026-10-23T08:00:54Z",
-      "summary": "明日方舟×国家图书馆CROSSOVER系列三款新装限时上架，公布时装商店售卖时间。",
+      "summary": "复宣明日方舟×国家图书馆CROSSOVER系列三款新装限时上架及售卖时间。",
       "updated_at": null,
       "url": "https://www.skland.com/article?id=6411186"
     }
