@@ -1,0 +1,29 @@
+{
+  "extracted_media_text": [],
+  "id": "skland-6413514",
+  "media_hashes": [
+    "c1e632f8764e99de7a2a51908c5a570f95a93436632b737735562aa69ffbae36"
+  ],
+  "media_urls": [
+    "https://bbs.hycdn.cn/image/common/20261024/115/6adcad969ace9cf1205e12b8_96d20048.webp"
+  ],
+  "outbound_urls": [],
+  "source": {
+    "account_id": "7779816949641",
+    "account_name": "明日方舟Arknights",
+    "canonical_content_id": "6413514",
+    "content_hash": "526cbcc5aa469696b9530326bb15a0c52dbb5ab9179db3a09100054c4b2510e2",
+    "excerpt": "[明日方舟]10月24日21:30闪断更新公告",
+    "first_seen_at": "2026-10-24T16:27:09.090923Z",
+    "id": "skland-6413514",
+    "is_official": true,
+    "kind": "skland",
+    "media_hashes": [],
+    "media_urls": [],
+    "published_at": "2026-10-24T11:00:41Z",
+    "summary": null,
+    "updated_at": null,
+    "url": "https://www.skland.com/article?id=6413514"
+  },
+  "text": "[明日方舟]10月24日21:30闪断更新公告"
+}

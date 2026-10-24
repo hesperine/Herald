@@ -1,0 +1,14 @@
+{
+  "action_id": "activity-fd760656e9160352--start",
+  "activity_id": "activity-fd760656e9160352",
+  "campaign_id": "campaign-5a95cf56417b3340-57ca36df",
+  "candidate_id": null,
+  "change_id": null,
+  "due_date": "2026-10-25",
+  "expected_at": "2026-10-26T00:00:00+08:00",
+  "expected_date": "2026-10-26",
+  "id": "job-9028a04aba32eba90098",
+  "kind": "day_before",
+  "semantic_key": "schedule:activity-fd760656e9160352:activity-fd760656e9160352--start:day_before:2026-10-26T00:00:00+08:00",
+  "summary": "明天开始：线下活动开始"
+}

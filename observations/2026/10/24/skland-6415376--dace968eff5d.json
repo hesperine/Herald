@@ -1,0 +1,29 @@
+{
+  "extracted_media_text": [],
+  "id": "skland-6415376",
+  "media_hashes": [
+    "ba0d30ca69326379a4e3e54fdcbaba631c7d8fc7ab9ca7f5e1e6159e42e7bb23"
+  ],
+  "media_urls": [
+    "https://bbs.hycdn.cn/image/common/20261024/115/6adcc1d115b766b1b8684ef6_91c496d2.webp"
+  ],
+  "outbound_urls": [],
+  "source": {
+    "account_id": "7779816949641",
+    "account_name": "明日方舟Arknights",
+    "canonical_content_id": "6415376",
+    "content_hash": "dace968eff5d17714c55913a8b02e0500d849e01ab1df75096b3bd07fb2330b7",
+    "excerpt": "2026感谢庆典<重要资源获取指南> ​​​",
+    "first_seen_at": "2026-10-24T16:27:09.090923Z",
+    "id": "skland-6415376",
+    "is_official": true,
+    "kind": "skland",
+    "media_hashes": [],
+    "media_urls": [],
+    "published_at": "2026-10-24T13:15:11Z",
+    "summary": null,
+    "updated_at": null,
+    "url": "https://www.skland.com/article?id=6415376"
+  },
+  "text": "2026感谢庆典<重要资源获取指南> ​​​"
+}

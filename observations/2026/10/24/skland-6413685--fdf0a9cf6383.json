@@ -1,0 +1,33 @@
+{
+  "extracted_media_text": [],
+  "id": "skland-6413685",
+  "media_hashes": [
+    "2f04f3b98a2c23bb729a4225859b585f58ed00674aba0568dd6a4be4ede5ac9f",
+    "d083a16dfe4c94b21ceb3606acee2475d51448c97af03e63ef9a51f633a474f6",
+    "c675d01cbc3241a36ba3158d5fcdebe6c1fd95991f06a691a7529a1e6f8daf41"
+  ],
+  "media_urls": [
+    "https://bbs.hycdn.cn/image/common/20261024/115/6adc7eadddc0f89b712275c9_96d20048.webp",
+    "https://bbs.hycdn.cn/image/common/20261024/115/6adc7ead6d43b9300ea938b9_91c496d2.webp",
+    "https://bbs.hycdn.cn/image/common/20261024/115/6adc7eaded989a2c1f4732a1_ef3391c4.webp"
+  ],
+  "outbound_urls": [],
+  "source": {
+    "account_id": "7779816949641",
+    "account_name": "明日方舟Arknights",
+    "canonical_content_id": "6413685",
+    "content_hash": "fdf0a9cf63836da13a1a7369f7c31f850b32eb5a8530f90a1d54796be1b41e91",
+    "excerpt": "2026感谢庆典即将开启",
+    "first_seen_at": "2026-10-24T16:27:09.090923Z",
+    "id": "skland-6413685",
+    "is_official": true,
+    "kind": "skland",
+    "media_hashes": [],
+    "media_urls": [],
+    "published_at": "2026-10-24T12:30:14Z",
+    "summary": null,
+    "updated_at": null,
+    "url": "https://www.skland.com/article?id=6413685"
+  },
+  "text": "2026感谢庆典即将开启"
+}

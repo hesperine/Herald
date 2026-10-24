@@ -1,0 +1,36 @@
+{
+  "campaign_id": "campaign-5a95cf56417b3340-57ca36df",
+  "detected_at": "2026-10-24T16:27:09.090923Z",
+  "facts": {
+    "action-7daecb790c690f03:时间": "2026-10-24T12:00:00+08:00",
+    "action-7daecb790c690f03:规则": "2026/11/15 00:00（UTC+8）前登录游戏；奖励通过邮件发送，开启邮箱功能后领取，邮件有效期30天。",
+    "action-7daecb790c690f03:适用范围": "游戏内邮件",
+    "activity-0aae94b9f1120702:开始时间": "2026-10-24T12:00:00+08:00",
+    "activity-0aae94b9f1120702:规则": "2026/11/15 00:00（UTC+8）前登录游戏；奖励通过邮件发送，开启邮箱功能后领取，邮件有效期30天。",
+    "activity-fd760656e9160352:开始日期": "2026-10-26"
+  },
+  "id": "candidate-d8cfb478025a1222fc9196e9",
+  "ip_name": "明日方舟：终末地",
+  "ip_slug": "arknights-endfield",
+  "public_text": "联动定制拍照贴纸道具\n【贴纸·长城】\n自“长城”中获得的贴纸。它早已见证了许多历史与风霜。\n_________\n· 发放时间：2026/10/24 12:00（UTC+8）\n· 发放条件：2026/11/15 00:00（UTC+8）前登录游戏\n· 发放说明：奖励将通过【邮件】发送，开启【邮箱】功能后领取，邮件有效期为30天，请管理员及时领取。",
+  "sources": [
+    {
+      "account_id": "3737967211133",
+      "account_name": "明日方舟终末地",
+      "canonical_content_id": "6412085",
+      "content_hash": "5a94fd3d876a3af52f1bd17b37d91cc57fc7cd35b1c414760163f817803c14d1",
+      "excerpt": "联动定制拍照贴纸道具\n【贴纸·长城】\n自“长城”中获得的贴纸。它早已见证了许多历史与风霜。\n_________\n· 发放时间：2026/10/24 12:00（UTC+8）\n· 发放条件：2026/11/15 00:00（UTC+8）前登录游戏\n· 发放说明：奖励将通过【邮件】发送，开启【邮箱】功能后领取，邮件有效期为30天，请管理员及时领取。",
+      "first_seen_at": "2026-10-24T16:27:09.090923Z",
+      "id": "skland-6412085",
+      "is_official": true,
+      "kind": "skland",
+      "media_hashes": [],
+      "media_urls": [],
+      "published_at": "2026-10-24T04:05:15Z",
+      "summary": null,
+      "updated_at": null,
+      "url": "https://www.skland.com/article?id=6412085"
+    }
+  ],
+  "status": "structured"
+}

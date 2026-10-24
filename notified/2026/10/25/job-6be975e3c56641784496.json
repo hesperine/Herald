@@ -1,0 +1,10 @@
+{
+  "candidate_id": null,
+  "channel": "email",
+  "delivery_day": "2026-10-25",
+  "facts": {},
+  "job_id": "job-6be975e3c56641784496",
+  "public_text": "",
+  "semantic_key": "schedule:activity-9f065aeabd4eb15e:action-48235225e83a051f:day_before:2026-10-26T04:00:00+08:00",
+  "sent_at": "2026-10-24T16:28:48.602136Z"
+}

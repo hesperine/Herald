@@ -1,0 +1,14 @@
+{
+  "action_id": null,
+  "activity_id": null,
+  "campaign_id": "campaign-abb4d493ebf696a7-3b3da411",
+  "candidate_id": "candidate-d23f1e69efd2231ca12d24d3",
+  "change_id": null,
+  "due_date": "2026-10-25",
+  "expected_at": null,
+  "expected_date": null,
+  "id": "candidate-d23f1e69efd2231ca12d24d3",
+  "kind": "announcement",
+  "semantic_key": "candidate-d23f1e69efd2231ca12d24d3",
+  "summary": "联动信息：《明日方舟》网页活动「燃烧即一切」\n开始时间：2026-10-24T00:00:00+08:00\n截止时间：2026-11-24T23:59:59+08:00\n规则：前往森空岛参与活动，完成指定任务，即可获得森空岛限定社区装扮，还能获取活动抽奖券，抽取 Nintendo Switch 2、联名机械键盘、合成玉等丰厚奖励！\n截止时间：2026-11-24T23:59:59+08:00\n时间：2026-10-24T00:00:00+08:00\n规则：完成指定任务获取活动抽奖券，抽取 Nintendo Switch 2、联名机械键盘、合成玉等奖励\n截止时间：2026-12-01T23:59:59+08:00\n地点:name：森空岛\n地点:online_platform：森空岛"
+}

@@ -1,0 +1,31 @@
+{
+  "extracted_media_text": [],
+  "id": "website-arknights-official-7353",
+  "media_hashes": [
+    "93401788a4d92ec018dde3386604f601cd8066fc1196fa42ee05f2b5a13824c4"
+  ],
+  "media_urls": [
+    "https://web.hycdn.cn/upload/image/20261022/5a538b47fc30112d2deef81589cf58cc.png"
+  ],
+  "outbound_urls": [
+    "https://hgto.cc/n/wA198M?source_from=official"
+  ],
+  "source": {
+    "account_id": "arknights-official",
+    "account_name": "明日方舟官方公告",
+    "canonical_content_id": "7353",
+    "content_hash": "041ab9859449d7264b0d06923dfe146582a3d5c77855553932dff28d4634659a",
+    "excerpt": "《冻土与火种》网页活动开启\n《冻土与火种》网页活动现已开启，参与活动有机会获取精美实物奖励。\n活动链接：https://hgto.cc/n/wA198M?source_from=official\n活动时间：10月24日20:00~11月24日03:59",
+    "first_seen_at": "2026-10-24T16:27:09.090923Z",
+    "id": "website-arknights-official-7353",
+    "is_official": true,
+    "kind": "website",
+    "media_hashes": [],
+    "media_urls": [],
+    "published_at": "2026-10-24T13:00:00Z",
+    "summary": null,
+    "updated_at": null,
+    "url": "https://ak.hypergryph.com/news/7353.html"
+  },
+  "text": "《冻土与火种》网页活动开启\n《冻土与火种》网页活动现已开启，参与活动有机会获取精美实物奖励。\n活动链接：https://hgto.cc/n/wA198M?source_from=official\n活动时间：10月24日20:00~11月24日03:59"
+}

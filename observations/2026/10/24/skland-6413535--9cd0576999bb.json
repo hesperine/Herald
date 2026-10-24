@@ -1,0 +1,29 @@
+{
+  "extracted_media_text": [],
+  "id": "skland-6413535",
+  "media_hashes": [
+    "878958d0f9ae737eb1afa3f7f45d4268d086a2bcca47d834a0ab86e86135c0ed"
+  ],
+  "media_urls": [
+    "https://bbs.hycdn.cn/image/common/20261024/115/6adc6d3a1b2b52854f817887_ef3391c4.webp"
+  ],
+  "outbound_urls": [],
+  "source": {
+    "account_id": "7779816949641",
+    "account_name": "明日方舟Arknights",
+    "canonical_content_id": "6413535",
+    "content_hash": "9cd0576999bbc34987554a88a59a1860a08bb6e718a0a15e416eded71f3d7a2b",
+    "excerpt": "【冻土与火种】网页活动现已开启\n【冻土与火种】网页活动现已开启，参与活动有机会获取精美实物奖励。\n活动链接：【冻土与火种】网页活动\n活动时间：10月24日20:00~11月24日03:59",
+    "first_seen_at": "2026-10-24T16:27:09.090923Z",
+    "id": "skland-6413535",
+    "is_official": true,
+    "kind": "skland",
+    "media_hashes": [],
+    "media_urls": [],
+    "published_at": "2026-10-24T12:40:07Z",
+    "summary": null,
+    "updated_at": null,
+    "url": "https://www.skland.com/article?id=6413535"
+  },
+  "text": "【冻土与火种】网页活动现已开启\n【冻土与火种】网页活动现已开启，参与活动有机会获取精美实物奖励。\n活动链接：【冻土与火种】网页活动\n活动时间：10月24日20:00~11月24日03:59"
+}

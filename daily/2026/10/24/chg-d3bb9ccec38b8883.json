@@ -1,0 +1,14 @@
+{
+  "activity_id": null,
+  "campaign_id": "campaign-1786831476040aa0-253f5627",
+  "detected_at": "2026-10-24T16:27:09.090923Z",
+  "field_paths": [],
+  "id": "chg-d3bb9ccec38b8883",
+  "kind": "new_campaign",
+  "published_at": "2026-10-24T12:35:09Z",
+  "semantic_key": "campaign-1786831476040aa0-253f5627:new-campaign",
+  "source_ids": [
+    "skland-6413505"
+  ],
+  "summary": "新增联动：《明日方舟》× 名创优品「秋意茶话会」"
+}
