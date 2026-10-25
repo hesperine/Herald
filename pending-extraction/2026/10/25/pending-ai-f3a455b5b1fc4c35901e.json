@@ -1,9 +1,9 @@
 {
-  "attempts": 1,
+  "attempts": 2,
   "error_category": "transient",
   "id": "pending-ai-f3a455b5b1fc4c35901e",
   "ip_slug": "arknights",
-  "next_retry_at": "2026-10-25T19:58:38.560947Z",
+  "next_retry_at": "2026-10-26T03:35:42.510426Z",
   "notify_immediately": true,
   "observation_ids": [
     "skland-6418842"
