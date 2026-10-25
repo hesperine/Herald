@@ -3,11 +3,11 @@
     {
       "activity": null,
       "activity_id": null,
-      "campaign_id": "campaign-1786831476040aa0-253f5627",
+      "campaign_id": "candidate-0c033516bb267cd26d2e2ad3",
       "campaign_notice": false,
-      "campaign_title": "《明日方舟》× 名创优品「秋意茶话会」",
-      "detail_campaign_id": "campaign-1786831476040aa0-253f5627",
-      "extraction_status": "structured",
+      "campaign_title": "明日方舟 · 候选联动信息",
+      "detail_campaign_id": null,
+      "extraction_status": "pending",
       "ip_name": "明日方舟",
       "reasons": [
         {
@@ -15,141 +15,37 @@
           "date_only": null,
           "expected_at": null,
           "kind": "announcement",
-          "summary": "联动信息：《明日方舟》× 名创优品「秋意茶话会」"
+          "summary": "发现联动相关信息（待解析，请以原帖为准）\n明日方舟2026感谢庆典「故土新程」主题快闪活动即将开启\n【活动地点】上海、广州\n【活动时间】\n· 打卡活动：2026年10月29日-11月1日\n· 故土新程主题画廊：2026年10月29日-11月8日\n· 朝陇山休憩处-官方周边快闪店：2026年10月29日-11月8日\n· 博士回归：2026年10月29日-11月8日\n*10月29日所有快闪活动将从13:00开始运营\n*故土新程主题画廊-上海场将特别延长运营至2026年11月15日\n【预约说明】\n本次官方周边快闪店为预约制，提前完成预约的博士可在指定时间进店购物，并享当日画廊优先入场。现场将根据人流情况机动开放临时预约名额。\n预约开启时间：2026年10月25日 20:00\n【预约入口】\n1. 上海场：百联ZX创趣场【META ZX】小程序\n2. 广州场：https://b23.tv/13Ppp1r\n*若点击链接无法自动跳转，请复制链接至浏览器。\n*预约方式及更多活动信息详见配图，周边商品贩售信息请持续关注明日方舟朝陇山官方账号。"
         }
       ],
       "sources": [
         {
           "account_id": "7779816949641",
           "account_name": "明日方舟Arknights",
-          "canonical_content_id": "6413505",
-          "content_hash": "097aee0b2fd264605af7ebcb4d913fa6bf1c9dd77b025a0e6065da36d5a8c1c6",
-          "excerpt": "《明日方舟》× 名创优品「秋意茶话会」合作宣传PV\n暖光浸木，落叶叩窗。\n明日方舟携手名创优品，邀博士共赴茶会，叙一杯焦糖色的午后。\n更多活动详情，请关注名创优品官方自媒体账号。",
-          "first_seen_at": "2026-10-24T16:27:09.090923Z",
-          "id": "skland-6413505",
+          "canonical_content_id": "6418723",
+          "content_hash": "f144fe9b4f27c0bcd9366f165660309ef6d25255479af6a2d3c97a06f4659a2e",
+          "excerpt": "明日方舟2026感谢庆典「故土新程」主题快闪活动即将开启\n【活动地点】上海、广州\n【活动时间】\n· 打卡活动：2026年10月29日-11月1日\n· 故土新程主题画廊：2026年10月29日-11月8日\n· 朝陇山休憩处-官方周边快闪店：2026年10月29日-11月8日\n· 博士回归：2026年10月29日-11月8日\n*10月29日所有快闪活动将从13:00开始运营\n*故土新程主题画廊-上海场将特别延长运营至2026年11月15日\n【预约说明】\n本次官方周边快闪店为预约制，提前完成预约的博士可在指定时间进店购物，并享当日画廊优先入场。现场将根据人流情况机动开放临时预约名额。\n预约开启时间：2026年10月25日 20:00\n【预约入口】\n1. 上海场：百联ZX创趣场【META ZX】小程序\n2. 广州场：https://b23.tv/13Ppp1r\n*若点击链接无法自动跳转，请复制链接至浏览器。\n*预约方式及更多活动信息详见配图，周边商品贩售信息请持续关注明日方舟朝陇山官方账号。",
+          "first_seen_at": "2026-10-25T16:58:38.560947Z",
+          "id": "skland-6418723",
           "is_official": true,
           "kind": "skland",
-          "media_hashes": [
-            "69758c26241900d3ec3552c6bedc1ba91e9a5188e09e74c55ca320a75fb1c529"
-          ],
-          "media_urls": [
-            "https://bbs.hycdn.cn/image/common/20261024/115/6adc68a915b766b1b8684e60_e71aef33.webp"
-          ],
-          "published_at": "2026-10-24T12:35:09Z",
-          "summary": "发布《明日方舟》×名创优品「秋意茶话会」合作宣传PV，宣布双方联动，活动详情待名创优品官方公布。",
+          "media_hashes": [],
+          "media_urls": [],
+          "published_at": "2026-10-25T04:00:05Z",
+          "summary": null,
           "updated_at": null,
-          "url": "https://www.skland.com/article?id=6413505"
-        },
-        {
-          "account_id": "7779816949641",
-          "account_name": "明日方舟Arknights",
-          "canonical_content_id": "6415406",
-          "content_hash": "091f161c44012defebbb7671faa4d6d8e56f779ab6b0a6767189b1769ee3da44",
-          "excerpt": "《明日方舟》2026感谢庆典前瞻特别节目未来内容预告\n《明日方舟》2026感谢庆典前瞻特别节目现已结束。我们将在之后上传本次节目录像，感谢大家的支持。\n==《明日方舟》2026感谢庆典前瞻特别节目未来内容预告==\nP1-《明日方舟》新活动前瞻，将于后续开启\nP2- 「卫戍协议」、「危机合约」等更多活动将于后续开启\nP3-  明日方舟携手名创优品 ，邀博士共赴茶会，叙一杯焦糖色的午后。\nP4- 《明日方舟》有声剧「风雪过境」现已正式上架喜马拉雅\nP5- 《罗德岛学院》即将开播、《明日方舟:黎明前奏》《明日方舟:冬隐归路》《明日方舟:焰烬曙明》主线动画bilibili全集限时免费播出\nP6- 明日方舟2026感谢庆典「故土新程」主题快闪活动即将开启、「冻土与火种」网页活动、「燃烧即一切」网页活动现已开启\nP7-  官方漫画《序言组曲：火与路》即将上线、《序言组曲：孤行之人》实体漫画正在筹备中、《明日方舟官方美术设定集 VOL.5》即将开售！\nP8-明日方舟 1/7手办 【赤刃明霄陈 精英二ver.】彩模公开、【塔露拉】企划公开！【蕾缪安 布道人ver.】&【史尔特尔 超然序曲ver.】正在",
-          "first_seen_at": "2026-10-24T16:27:09.090923Z",
-          "id": "skland-6415406",
-          "is_official": true,
-          "kind": "skland",
-          "media_hashes": [
-            "3c7e70e2abb003fa6aa39f125f23d859190e2c975ec08877a5edac1a39d7060a",
-            "0a4f1bb72f6ac445b8c596646300a42bede7ab7f2d5811619f1429640ce457ea",
-            "412dee26c5624e162ff185a44c419ac2276ad4de55fd3af92301b721fb1871b1",
-            "3a12a8de5fd77d3599c47d31c04bc49d0d01ac391c56185ee65c30c90671d6ba",
-            "6ecfc8b4ba914327d31a662114a22c34ef04cd47af543a1bffda67988113e4b9",
-            "4c1869f3b03e439c83b40654fe743008db5f0983b8a3ad885d89c5c1fd607c50",
-            "6909a0cc49b79ea153ad844adb9699cfc89cfad19f32a5aeffdeb3f903ae04d2",
-            "7aa00b95672ef94ceef9c2d62bb3c7bbf345b606fd60695cc45b21a4fc7ff634",
-            "79b3561c1c5995f98ec4ce5a69321bac448712a791af12b1cafbdf85664e7aaf"
-          ],
-          "media_urls": [
-            "https://bbs.hycdn.cn/image/common/20261024/115/6adc9cbced989a2c1f4732f1_004865de.webp",
-            "https://bbs.hycdn.cn/image/common/20261024/115/6adc9be78b6b0c26bfc56ee2_65de0095.webp",
-            "https://bbs.hycdn.cn/image/common/20261024/115/6adc9be715b766b1b8684e9a_0095c241.webp",
-            "https://bbs.hycdn.cn/image/common/20261024/115/6adc9be79b052e6236f0cf9d_91c496d2.webp",
-            "https://bbs.hycdn.cn/image/common/20261024/115/6adc9be7f6506aa250a6baf8_65de0095.webp",
-            "https://bbs.hycdn.cn/image/common/20261024/115/6adc9be74d8f43a101bef238_96d20048.webp",
-            "https://bbs.hycdn.cn/image/common/20261024/115/6adc9be721f467a0bfca1b7c_65de0095.webp",
-            "https://bbs.hycdn.cn/image/common/20261024/115/6adc9be7793f69bb8b468842_ef3391c4.webp",
-            "https://bbs.hycdn.cn/image/common/20261024/115/6adc9be7ddc0f89b712275fc_004865de.webp"
-          ],
-          "published_at": "2026-10-24T13:16:13Z",
-          "summary": "感谢庆典前瞻节目回顾，其中P3再次提及明日方舟携手名创优品共赴茶会，其余为游戏更新、动画、周边等其他企划内容。",
-          "updated_at": null,
-          "url": "https://www.skland.com/article?id=6415406"
+          "url": "https://www.skland.com/article?id=6418723"
         }
       ]
     },
     {
       "activity": null,
       "activity_id": null,
-      "campaign_id": "campaign-5a95cf56417b3340-57ca36df",
+      "campaign_id": "candidate-7c0b49d5065ce432b734a5b7",
       "campaign_notice": false,
-      "campaign_title": "《明日方舟：终末地》×八达岭长城「关塞万里，环带一系」联动",
-      "detail_campaign_id": "campaign-5a95cf56417b3340-57ca36df",
-      "extraction_status": "structured",
-      "ip_name": "明日方舟：终末地",
-      "reasons": [
-        {
-          "action_id": null,
-          "date_only": null,
-          "expected_at": null,
-          "kind": "announcement",
-          "summary": "联动信息：《明日方舟：终末地》×八达岭长城「关塞万里，环带一系」联动\n开始日期：2026-10-26\n开始时间：2026-10-24T12:00:00+08:00\n规则：2026/11/15 00:00（UTC+8）前登录游戏；奖励通过邮件发送，开启邮箱功能后领取，邮件有效期30天。\n时间：2026-10-24T12:00:00+08:00\n规则：2026/11/15 00:00（UTC+8）前登录游戏；奖励通过邮件发送，开启邮箱功能后领取，邮件有效期30天。\n适用范围：游戏内邮件"
-        }
-      ],
-      "sources": [
-        {
-          "account_id": "3737967211133",
-          "account_name": "明日方舟终末地",
-          "canonical_content_id": "6412073",
-          "content_hash": "6c97f6b9be686a6bdb7da6326c93361fb597491c19ec96bf5c6ab83735fcd0b1",
-          "excerpt": "《明日方舟：终末地》× 八达岭长城「关塞万里，环带一系」合作宣传PV\n青石承古，环带系安。\n终末地携手八达岭长城，邀管理员同守千秋故梦，共续一襟长风。\n联动合作现已上线，线下活动将于10月26日开启。更多活动详情，请关注官方自媒体账号。",
-          "first_seen_at": "2026-10-24T16:27:09.090923Z",
-          "id": "skland-6412073",
-          "is_official": true,
-          "kind": "skland",
-          "media_hashes": [
-            "26d20cb8ef445ce052104138b7a06fea4773de1d0d29c4c9d7a3e5bfb10a2970"
-          ],
-          "media_urls": [
-            "https://bbs.hycdn.cn/image/common/20261023/113/6adb7400aaea22ebc12e9b66_ef3391c4.webp"
-          ],
-          "published_at": "2026-10-24T04:00:03Z",
-          "summary": "《明日方舟：终末地》×八达岭长城合作宣传PV，联动合作已上线，线下活动将于10月26日开启，详情待官方自媒体公布。",
-          "updated_at": null,
-          "url": "https://www.skland.com/article?id=6412073"
-        },
-        {
-          "account_id": "3737967211133",
-          "account_name": "明日方舟终末地",
-          "canonical_content_id": "6412085",
-          "content_hash": "5a94fd3d876a3af52f1bd17b37d91cc57fc7cd35b1c414760163f817803c14d1",
-          "excerpt": "联动定制拍照贴纸道具\n【贴纸·长城】\n自“长城”中获得的贴纸。它早已见证了许多历史与风霜。\n_________\n· 发放时间：2026/10/24 12:00（UTC+8）\n· 发放条件：2026/11/15 00:00（UTC+8）前登录游戏\n· 发放说明：奖励将通过【邮件】发送，开启【邮箱】功能后领取，邮件有效期为30天，请管理员及时领取。",
-          "first_seen_at": "2026-10-24T16:27:09.090923Z",
-          "id": "skland-6412085",
-          "is_official": true,
-          "kind": "skland",
-          "media_hashes": [
-            "23d43e17e86c43bcb4110e48dabed94a065f41dbd8cf8c713e7d55ad78d2377f"
-          ],
-          "media_urls": [
-            "https://bbs.hycdn.cn/image/common/20261023/113/6adb745c3c6f2effb4a4f36b_96d20048.webp"
-          ],
-          "published_at": "2026-10-24T04:05:15Z",
-          "summary": "发放联动定制拍照贴纸道具【贴纸·长城】，2026/10/24 12:00发放，2026/11/15 00:00前登录可领，邮件30天有效。",
-          "updated_at": null,
-          "url": "https://www.skland.com/article?id=6412085"
-        }
-      ]
-    },
-    {
-      "activity": null,
-      "activity_id": null,
-      "campaign_id": "campaign-148dc4c99579d419-b677ac89",
-      "campaign_notice": false,
-      "campaign_title": "明日方舟 × 共鸣GONG 超迷你手办企划",
-      "detail_campaign_id": "campaign-148dc4c99579d419-b677ac89",
-      "extraction_status": "structured",
+      "campaign_title": "明日方舟 · 候选联动信息",
+      "detail_campaign_id": null,
+      "extraction_status": "pending",
       "ip_name": "明日方舟",
       "reasons": [
         {
@@ -157,273 +53,29 @@
           "date_only": null,
           "expected_at": null,
           "kind": "announcement",
-          "summary": "联动信息：明日方舟 × 共鸣GONG 超迷你手办企划"
-        }
-      ],
-      "sources": [
-        {
-          "account_id": "6168723566526",
-          "account_name": "明日方舟朝陇山",
-          "canonical_content_id": "6411690",
-          "content_hash": "3a1042c1e1a2e0c4d053fb8ab7a3ebe69ef50a4d6529df33c57215a8b75a2a3c",
-          "excerpt": "〓明日方舟系列 超迷你手办 企划公开〓\n明日方舟 × 共鸣GONG\n首次合作全新产品企划公开！\n变小以后的大家也都好可爱啊~ 博士们千万不要错过这款商品哦！\n制作：共鸣GONG\n企划的后续进展，请各位博士多多关注 ！",
-          "first_seen_at": "2026-10-24T16:27:09.090923Z",
-          "id": "skland-6411690",
-          "is_official": true,
-          "kind": "skland",
-          "media_hashes": [
-            "f8379ad956d928200047ced81427d9b0abbb6f8856b9f3f39326eeda41282c98"
-          ],
-          "media_urls": [
-            "https://bbs.hycdn.cn/image/common/20261023/107/6adb4afe6d43b9300ea9371c_e71aef33.webp"
-          ],
-          "published_at": "2026-10-24T13:30:59Z",
-          "summary": "明日方舟朝陇山宣布与共鸣GONG首次合作，公开超迷你手办企划，制作方为共鸣GONG，后续进展待公布。",
-          "updated_at": null,
-          "url": "https://www.skland.com/article?id=6411690"
-        }
-      ]
-    },
-    {
-      "activity": null,
-      "activity_id": null,
-      "campaign_id": "campaign-4758edb88f30ddf3-4147566e",
-      "campaign_notice": false,
-      "campaign_title": "明日方舟 × 一番赏「Cuties~罗德岛的甜点时光~」",
-      "detail_campaign_id": "campaign-4758edb88f30ddf3-4147566e",
-      "extraction_status": "structured",
-      "ip_name": "明日方舟",
-      "reasons": [
-        {
-          "action_id": null,
-          "date_only": null,
-          "expected_at": null,
-          "kind": "announcement",
-          "summary": "联动信息：明日方舟 × 一番赏「Cuties~罗德岛的甜点时光~」"
-        }
-      ],
-      "sources": [
-        {
-          "account_id": "6168723566526",
-          "account_name": "明日方舟朝陇山",
-          "canonical_content_id": "6411680",
-          "content_hash": "963c9684fc3edcd13058a8c90d979c0b54b7e5623b6cce8f0a4740d70a3846cb",
-          "excerpt": "〓一番赏 明日方舟 Cuties~罗德岛的甜点时光~ 企划公开〓\n明日方舟 × 一番赏\n「Cuties~罗德岛的甜点时光~」企划公开！\n严肃邀请博士加入享用甜点的队列，及时补充更多的糖分> <\n有关企划的进展，博士们可通过 获取！记得关注噢~",
-          "first_seen_at": "2026-10-24T16:27:09.090923Z",
-          "id": "skland-6411680",
-          "is_official": true,
-          "kind": "skland",
-          "media_hashes": [
-            "7246254e3e059ecb5f7c1d007f5fa3ed0d767e7ac6bdbb027b349f3b1e14e8bb"
-          ],
-          "media_urls": [
-            "https://bbs.hycdn.cn/image/common/20261023/107/6adb496115b766b1b8684d8a_96d20048.webp"
-          ],
-          "published_at": "2026-10-24T13:05:33Z",
-          "summary": "明日方舟朝陇山公开与一番赏合作企划「Cuties~罗德岛的甜点时光~」，邀请博士关注后续进展。",
-          "updated_at": null,
-          "url": "https://www.skland.com/article?id=6411680"
-        }
-      ]
-    },
-    {
-      "activity": null,
-      "activity_id": null,
-      "campaign_id": "campaign-abb4d493ebf696a7-3b3da411",
-      "campaign_notice": false,
-      "campaign_title": "《明日方舟》网页活动「燃烧即一切」",
-      "detail_campaign_id": "campaign-abb4d493ebf696a7-3b3da411",
-      "extraction_status": "structured",
-      "ip_name": "明日方舟",
-      "reasons": [
-        {
-          "action_id": null,
-          "date_only": null,
-          "expected_at": null,
-          "kind": "announcement",
-          "summary": "联动信息：《明日方舟》网页活动「燃烧即一切」\n开始时间：2026-10-24T00:00:00+08:00\n截止时间：2026-11-24T23:59:59+08:00\n规则：前往森空岛参与活动，完成指定任务，即可获得森空岛限定社区装扮，还能获取活动抽奖券，抽取 Nintendo Switch 2、联名机械键盘、合成玉等丰厚奖励！\n截止时间：2026-11-24T23:59:59+08:00\n时间：2026-10-24T00:00:00+08:00\n规则：完成指定任务获取活动抽奖券，抽取 Nintendo Switch 2、联名机械键盘、合成玉等奖励\n截止时间：2026-12-01T23:59:59+08:00\n地点:name：森空岛\n地点:online_platform：森空岛"
+          "summary": "发现联动相关信息（待解析，请以原帖为准）\n【采购凭证区-新增干员】行铃 - 干员展示\n【采购凭证区-新增干员】\n//行铃\n“我叫梅里塔，来这边负责经济动物养殖工作。这是花椰菜，我的——（驮兽，牧人，一起，没办法。没办法！）......我的半自愿合作伙伴。”\n__________________\n你看到她自顾自地把那张镶满发声按钮的垫子铺在了你办公室的门口。一旁的驮兽似乎不满意她摆放的位置，倔强地叼起垫子就不再松嘴，一人一兽就这么在你面前拔起了河。趁行铃重心不稳，跌倒在地的空隙，驮兽立刻把你的茶几拱到一边，把垫子拖到房间正中央，在按钮上骄傲地踩出了声音：“中间，好，好。牧人，坏，坏。”\n行铃立马手脚并用地爬了起来：“花椰菜！我费了这么大力气才找到办法跟你说话，可不是为了听你骂我的！”\n见她俩一时半会儿争不出个所以然，你决定先处理手上的文件。可刚看了没两行，你就感到有异样的目光落在自己身上。\n她们都看着你是什么意思？难道这种事还需要你来仲裁吗？\n你只好开口，试图给她俩提供一个折中的方案：“要不然……铺在书架旁边的角落里？”\n“不行！”她俩一齐抗议。\n还是让她俩自己折腾去吧，你想。"
         }
       ],
       "sources": [
         {
           "account_id": "7779816949641",
           "account_name": "明日方舟Arknights",
-          "canonical_content_id": "6414284",
-          "content_hash": "fe3fa84e9b3515793705594a5dc1d6c4033072ac6e0cc798d3c8a38b09c9e7b8",
-          "excerpt": "《明日方舟》网页活动「燃烧即一切」现已开启！\n前方区域出现大量目标，除了乱窜的源石虫，还有不知为何混入其中的食材——既然送到了眼前，那就一并解决吧。\n前往森空岛参与活动，完成指定任务，即可获得森空岛限定社区装扮，还能获取活动抽奖券，抽取 Nintendo Switch 2、联名机械键盘、合成玉等丰厚奖励！\n活动参与时间： 2026年10月24日 - 2026年11月24日 23:59:59\n兑奖截止时间： 2026年12月1日 23:59:59\n活动链接：《明日方舟》网页活动「燃烧即一切」现已开启！\n（完整奖池清单及活动规则请查看活动页规则）",
-          "first_seen_at": "2026-10-24T16:27:09.090923Z",
-          "id": "skland-6414284",
+          "canonical_content_id": "6418842",
+          "content_hash": "86f63170a006191dd6d1893a339f95157997278dd5d931f9abe4e6bf39f184a9",
+          "excerpt": "【采购凭证区-新增干员】行铃 - 干员展示\n【采购凭证区-新增干员】\n//行铃\n“我叫梅里塔，来这边负责经济动物养殖工作。这是花椰菜，我的——（驮兽，牧人，一起，没办法。没办法！）......我的半自愿合作伙伴。”\n__________________\n你看到她自顾自地把那张镶满发声按钮的垫子铺在了你办公室的门口。一旁的驮兽似乎不满意她摆放的位置，倔强地叼起垫子就不再松嘴，一人一兽就这么在你面前拔起了河。趁行铃重心不稳，跌倒在地的空隙，驮兽立刻把你的茶几拱到一边，把垫子拖到房间正中央，在按钮上骄傲地踩出了声音：“中间，好，好。牧人，坏，坏。”\n行铃立马手脚并用地爬了起来：“花椰菜！我费了这么大力气才找到办法跟你说话，可不是为了听你骂我的！”\n见她俩一时半会儿争不出个所以然，你决定先处理手上的文件。可刚看了没两行，你就感到有异样的目光落在自己身上。\n她们都看着你是什么意思？难道这种事还需要你来仲裁吗？\n你只好开口，试图给她俩提供一个折中的方案：“要不然……铺在书架旁边的角落里？”\n“不行！”她俩一齐抗议。\n还是让她俩自己折腾去吧，你想。",
+          "first_seen_at": "2026-10-25T16:58:38.560947Z",
+          "id": "skland-6418842",
           "is_official": true,
           "kind": "skland",
-          "media_hashes": [
-            "e77c4859b5672de7ef7e3ac11ca9f470498d1e70a69d732027ec74c22d2fe159"
-          ],
-          "media_urls": [
-            "https://bbs.hycdn.cn/image/common/20261024/115/6adc9ad9a22fe7e096ddae6a_004865de.webp"
-          ],
-          "published_at": "2026-10-24T12:45:02Z",
-          "summary": "《明日方舟》网页活动「燃烧即一切」开启，前往森空岛完成任务可获限定社区装扮与抽奖券，抽取Switch 2、联名键盘、合成玉等，含参与与兑奖截止时间。",
+          "media_hashes": [],
+          "media_urls": [],
+          "published_at": "2026-10-25T07:00:24Z",
+          "summary": null,
           "updated_at": null,
-          "url": "https://www.skland.com/article?id=6414284"
-        }
-      ]
-    },
-    {
-      "activity": null,
-      "activity_id": null,
-      "campaign_id": "campaign-de00e4b309b316f3-7cd10764",
-      "campaign_notice": false,
-      "campaign_title": "明日方舟 × 万代食玩 系列第二弹",
-      "detail_campaign_id": "campaign-de00e4b309b316f3-7cd10764",
-      "extraction_status": "structured",
-      "ip_name": "明日方舟",
-      "reasons": [
-        {
-          "action_id": null,
-          "date_only": null,
-          "expected_at": null,
-          "kind": "announcement",
-          "summary": "联动信息：明日方舟 × 万代食玩 系列第二弹"
-        }
-      ],
-      "sources": [
-        {
-          "account_id": "6168723566526",
-          "account_name": "明日方舟朝陇山",
-          "canonical_content_id": "6411673",
-          "content_hash": "77cddcd77fbbf4ea7d29961ac484d89bcb4fb38ab802c8f64dd32e58dda7267f",
-          "excerpt": "〓明日方舟×万代食玩 系列第二弹 情报公开〓\n明日方舟 × 万代食玩\n食玩系列第二弹的企划正在紧锣密鼓地筹备中~\n更多情报，敬请期待！",
-          "first_seen_at": "2026-10-24T16:27:09.090923Z",
-          "id": "skland-6411673",
-          "is_official": true,
-          "kind": "skland",
-          "media_hashes": [
-            "cc8862611196a2aea919db6d2e65b9cd46b0192d9f16502a2082421d3b2cc5c1"
-          ],
-          "media_urls": [
-            "https://bbs.hycdn.cn/image/common/20261023/107/6adb48a41b2b52854f817704_ef3391c4.webp"
-          ],
-          "published_at": "2026-10-24T12:50:03Z",
-          "summary": "明日方舟朝陇山宣布与万代食玩合作系列第二弹企划正在筹备，更多情报待公布。",
-          "updated_at": null,
-          "url": "https://www.skland.com/article?id=6411673"
-        }
-      ]
-    },
-    {
-      "activity": {
-        "actions": [],
-        "end_at": null,
-        "end_date": null,
-        "evidence": [
-          {
-            "field_path": "activities[0].title",
-            "quote": "线下活动将于10月26日开启",
-            "source_id": "skland-6412073"
-          },
-          {
-            "field_path": "activities[0].start_date",
-            "quote": "线下活动将于10月26日开启",
-            "source_id": "skland-6412073"
-          }
-        ],
-        "id": "activity-fd760656e9160352",
-        "kind": "other",
-        "related_offers": null,
-        "rules": null,
-        "start_at": null,
-        "start_date": "2026-10-26",
-        "status": "details_pending",
-        "title": "线下活动",
-        "uncertainties": [
-          "线下活动的具体形式、地点及结束时间未说明。"
-        ],
-        "venues": []
-      },
-      "activity_id": "activity-fd760656e9160352",
-      "campaign_id": "campaign-5a95cf56417b3340-57ca36df",
-      "campaign_notice": false,
-      "campaign_title": "《明日方舟：终末地》×八达岭长城「关塞万里，环带一系」联动",
-      "detail_campaign_id": "campaign-5a95cf56417b3340-57ca36df",
-      "extraction_status": null,
-      "ip_name": "明日方舟：终末地",
-      "reasons": [
-        {
-          "action_id": "activity-fd760656e9160352--start",
-          "date_only": "2026-10-26",
-          "expected_at": "2026-10-26T00:00:00+08:00",
-          "kind": "day_before",
-          "summary": "明天开始：线下活动开始"
-        }
-      ],
-      "sources": [
-        {
-          "account_id": "3737967211133",
-          "account_name": "明日方舟终末地",
-          "canonical_content_id": "6409184",
-          "content_hash": "e935f938be45e2850e997bb061682a8146a79ba1959953499913831d25a0d363",
-          "excerpt": "《明日方舟：终末地》×八达岭长城 联动活动介绍\n终末地携手八达岭长城发起的「关塞万里，环带一系」联动活动即将开启。于青石苍岭间，共赴万里之约。 详情请见长图。",
-          "first_seen_at": "2026-10-23T17:44:25.376551Z",
-          "id": "skland-6409184",
-          "is_official": true,
-          "kind": "skland",
-          "media_hashes": [
-            "8960f14dd3b9eb4383c26e7311ed70956af6d3f942edd0efa5c3af6071d14d39",
-            "8d37b91f31bb0205d6bb6af67f088a4cf4ba6f4ae827bf32c942e5e890f111e8"
-          ],
-          "media_urls": [
-            "https://bbs.hycdn.cn/image/common/20261022/113/6ada036799852dbe740036ad_ef3391c4.webp",
-            "https://bbs.hycdn.cn/image/common/20261022/113/6ada0367ed989a2c1f472c95_65de0095.webp"
-          ],
-          "published_at": "2026-10-23T03:00:13Z",
-          "summary": "《明日方舟：终末地》宣布与八达岭长城联动「关塞万里，环带一系」，活动即将开启，详情见长图。",
-          "updated_at": null,
-          "url": "https://www.skland.com/article?id=6409184"
-        },
-        {
-          "account_id": "3737967211133",
-          "account_name": "明日方舟终末地",
-          "canonical_content_id": "6412073",
-          "content_hash": "6c97f6b9be686a6bdb7da6326c93361fb597491c19ec96bf5c6ab83735fcd0b1",
-          "excerpt": "《明日方舟：终末地》× 八达岭长城「关塞万里，环带一系」合作宣传PV\n青石承古，环带系安。\n终末地携手八达岭长城，邀管理员同守千秋故梦，共续一襟长风。\n联动合作现已上线，线下活动将于10月26日开启。更多活动详情，请关注官方自媒体账号。",
-          "first_seen_at": "2026-10-24T16:27:09.090923Z",
-          "id": "skland-6412073",
-          "is_official": true,
-          "kind": "skland",
-          "media_hashes": [
-            "26d20cb8ef445ce052104138b7a06fea4773de1d0d29c4c9d7a3e5bfb10a2970"
-          ],
-          "media_urls": [
-            "https://bbs.hycdn.cn/image/common/20261023/113/6adb7400aaea22ebc12e9b66_ef3391c4.webp"
-          ],
-          "published_at": "2026-10-24T04:00:03Z",
-          "summary": "《明日方舟：终末地》×八达岭长城合作宣传PV，联动合作已上线，线下活动将于10月26日开启，详情待官方自媒体公布。",
-          "updated_at": null,
-          "url": "https://www.skland.com/article?id=6412073"
-        },
-        {
-          "account_id": "3737967211133",
-          "account_name": "明日方舟终末地",
-          "canonical_content_id": "6412085",
-          "content_hash": "5a94fd3d876a3af52f1bd17b37d91cc57fc7cd35b1c414760163f817803c14d1",
-          "excerpt": "联动定制拍照贴纸道具\n【贴纸·长城】\n自“长城”中获得的贴纸。它早已见证了许多历史与风霜。\n_________\n· 发放时间：2026/10/24 12:00（UTC+8）\n· 发放条件：2026/11/15 00:00（UTC+8）前登录游戏\n· 发放说明：奖励将通过【邮件】发送，开启【邮箱】功能后领取，邮件有效期为30天，请管理员及时领取。",
-          "first_seen_at": "2026-10-24T16:27:09.090923Z",
-          "id": "skland-6412085",
-          "is_official": true,
-          "kind": "skland",
-          "media_hashes": [
-            "23d43e17e86c43bcb4110e48dabed94a065f41dbd8cf8c713e7d55ad78d2377f"
-          ],
-          "media_urls": [
-            "https://bbs.hycdn.cn/image/common/20261023/113/6adb745c3c6f2effb4a4f36b_96d20048.webp"
-          ],
-          "published_at": "2026-10-24T04:05:15Z",
-          "summary": "发放联动定制拍照贴纸道具【贴纸·长城】，2026/10/24 12:00发放，2026/11/15 00:00前登录可领，邮件30天有效。",
-          "updated_at": null,
-          "url": "https://www.skland.com/article?id=6412085"
+          "url": "https://www.skland.com/article?id=6418842"
         }
       ]
     }
   ],
-  "date": "2026-10-25"
+  "date": "2026-10-26"
 }
