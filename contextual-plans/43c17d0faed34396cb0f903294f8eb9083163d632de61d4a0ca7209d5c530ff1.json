@@ -1,0 +1,21 @@
+{
+  "completed": {},
+  "routes": {
+    "groups": [
+      {
+        "campaign_id": "campaign-f624c9e27ceba257-ebe97034",
+        "observation_ids": [
+          "skland-6418723"
+        ],
+        "partner": null,
+        "phrase": "明日方舟 2026感谢庆典「故土新程」主题快闪"
+      }
+    ],
+    "unconfirmed": [
+      {
+        "observation_id": "skland-6418842",
+        "reason": "仅为采购凭证区新增干员展示，属普通游戏内容更新，非联动或线下活动"
+      }
+    ]
+  }
+}

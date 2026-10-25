@@ -1,0 +1,17 @@
+{
+  "action_id": null,
+  "activity_id": null,
+  "campaign_id": null,
+  "campaign_notice": false,
+  "candidate_id": "candidate-0c033516bb267cd26d2e2ad3",
+  "change_id": null,
+  "covered_candidate_ids": [],
+  "due_date": "2026-10-26",
+  "expected_at": null,
+  "expected_date": null,
+  "facts": {},
+  "id": "candidate-0c033516bb267cd26d2e2ad3",
+  "kind": "announcement",
+  "semantic_key": "candidate-0c033516bb267cd26d2e2ad3",
+  "summary": "发现联动相关信息（待解析，请以原帖为准）"
+}

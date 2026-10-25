@@ -1,0 +1,29 @@
+{
+  "extracted_media_text": [],
+  "id": "skland-6419169",
+  "media_hashes": [
+    "13af219d81863535a52f93bca9ace24f962984589fa6139f84951019a99a22f8"
+  ],
+  "media_urls": [
+    "https://bbs.hycdn.cn/image/common/20261025/115/6add998bb25b71376d110840_e71aef33.webp"
+  ],
+  "outbound_urls": [],
+  "source": {
+    "account_id": "7779816949641",
+    "account_name": "明日方舟Arknights",
+    "canonical_content_id": "6419169",
+    "content_hash": "9082029f37c1932961193a746360601c5ff911cdf861de361fcd8139fd879758",
+    "excerpt": "《罗德岛学院》——早八！",
+    "first_seen_at": "2026-10-25T16:58:38.560947Z",
+    "id": "skland-6419169",
+    "is_official": true,
+    "kind": "skland",
+    "media_hashes": [],
+    "media_urls": [],
+    "published_at": "2026-10-25T05:54:20Z",
+    "summary": null,
+    "updated_at": null,
+    "url": "https://www.skland.com/article?id=6419169"
+  },
+  "text": "《罗德岛学院》——早八！"
+}

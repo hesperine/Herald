@@ -1,0 +1,13 @@
+{
+  "attempts": 1,
+  "error_category": "transient",
+  "id": "pending-ai-f6b6203ddfbe7c444b16",
+  "ip_slug": "arknights",
+  "next_retry_at": "2026-10-25T19:58:38.560947Z",
+  "notify_immediately": true,
+  "observation_ids": [
+    "skland-6418723"
+  ],
+  "queued_at": "2026-10-25T16:58:38.560947Z",
+  "reason": "contextual: AIProviderError"
+}

@@ -1,0 +1,29 @@
+{
+  "extracted_media_text": [],
+  "id": "skland-6416399",
+  "media_hashes": [
+    "15464768cd98def6b4ca387278da51e2e83fe0fc7736d89be33c21fac0c98321"
+  ],
+  "media_urls": [
+    "https://bbs.hycdn.cn/image/common/20261024/113/6adcc1e4ae331582bf57f037_96d20048.webp"
+  ],
+  "outbound_urls": [],
+  "source": {
+    "account_id": "3737967211133",
+    "account_name": "明日方舟终末地",
+    "canonical_content_id": "6416399",
+    "content_hash": "dd40ab03b35981dcc29aa60ffc6ee24b73cf958e9d65eb8b756c23cc9e2652d5",
+    "excerpt": "铁痕电台#03 | 仙笔奇缘\n如果你突然进入了一幅画，请遵守以下规则……\n不过比起这些，还是希望画里也能让我们听见一些有意思的音乐。\n等等，这只笔又是从哪掉出来的？",
+    "first_seen_at": "2026-10-25T16:58:38.560947Z",
+    "id": "skland-6416399",
+    "is_official": true,
+    "kind": "skland",
+    "media_hashes": [],
+    "media_urls": [],
+    "published_at": "2026-10-25T12:00:36Z",
+    "summary": null,
+    "updated_at": null,
+    "url": "https://www.skland.com/article?id=6416399"
+  },
+  "text": "铁痕电台#03 | 仙笔奇缘\n如果你突然进入了一幅画，请遵守以下规则……\n不过比起这些，还是希望画里也能让我们听见一些有意思的音乐。\n等等，这只笔又是从哪掉出来的？"
+}
