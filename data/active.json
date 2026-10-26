@@ -328,46 +328,6 @@
   "cards": [
     {
       "activity": {
-        "actions": [],
-        "end_at": null,
-        "end_date": null,
-        "evidence": [
-          {
-            "field_path": "activities[0].title",
-            "quote": "线下活动将于10月26日开启",
-            "source_id": "skland-6412073"
-          },
-          {
-            "field_path": "activities[0].start_date",
-            "quote": "线下活动将于10月26日开启",
-            "source_id": "skland-6412073"
-          }
-        ],
-        "id": "activity-fd760656e9160352",
-        "kind": "other",
-        "related_offers": null,
-        "rules": null,
-        "start_at": null,
-        "start_date": "2026-10-26",
-        "status": "details_pending",
-        "title": "线下活动",
-        "uncertainties": [
-          "线下活动的具体形式、地点及结束时间未说明。"
-        ],
-        "venues": []
-      },
-      "campaign_id": "campaign-5a95cf56417b3340-57ca36df",
-      "campaign_title": "《明日方舟：终末地》×八达岭长城「关塞万里，环带一系」联动",
-      "ip_name": "明日方舟：终末地",
-      "next": {
-        "at": "2026-10-26T00:00:00+08:00",
-        "date": "2026-10-26",
-        "title": "线下活动开始"
-      },
-      "url": "event.html?id=campaign-5a95cf56417b3340-57ca36df#activity-activity-fd760656e9160352"
-    },
-    {
-      "activity": {
         "actions": [
           {
             "at": "2026-10-16T16:00:00+08:00",
@@ -1575,7 +1535,43 @@
       "ip_name": "原神",
       "next": null,
       "url": "event.html?id=campaign-cdc53ffc7863c84c-a0db4ca1#activity-activity-dfd55f4c31903c72"
+    },
+    {
+      "activity": {
+        "actions": [],
+        "end_at": null,
+        "end_date": null,
+        "evidence": [
+          {
+            "field_path": "activities[0].title",
+            "quote": "线下活动将于10月26日开启",
+            "source_id": "skland-6412073"
+          },
+          {
+            "field_path": "activities[0].start_date",
+            "quote": "线下活动将于10月26日开启",
+            "source_id": "skland-6412073"
+          }
+        ],
+        "id": "activity-fd760656e9160352",
+        "kind": "other",
+        "related_offers": null,
+        "rules": null,
+        "start_at": null,
+        "start_date": "2026-10-26",
+        "status": "details_pending",
+        "title": "线下活动",
+        "uncertainties": [
+          "线下活动的具体形式、地点及结束时间未说明。"
+        ],
+        "venues": []
+      },
+      "campaign_id": "campaign-5a95cf56417b3340-57ca36df",
+      "campaign_title": "《明日方舟：终末地》×八达岭长城「关塞万里，环带一系」联动",
+      "ip_name": "明日方舟：终末地",
+      "next": null,
+      "url": "event.html?id=campaign-5a95cf56417b3340-57ca36df#activity-activity-fd760656e9160352"
     }
   ],
-  "generated_at": "2026-10-26T05:36:11.716513+08:00"
+  "generated_at": "2026-10-27T03:03:58.145429+08:00"
 }

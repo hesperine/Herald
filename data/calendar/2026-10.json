@@ -1,16 +1,5 @@
 {
   "days": {
-    "2026-10-26": [
-      {
-        "action_id": "activity-fd760656e9160352--start",
-        "activity_id": "activity-fd760656e9160352",
-        "at": "2026-10-26T00:00:00+08:00",
-        "campaign_id": "campaign-5a95cf56417b3340-57ca36df",
-        "ip_name": "明日方舟：终末地",
-        "kind": "event_start",
-        "title": "线下活动开始"
-      }
-    ],
     "2026-10-30": [
       {
         "action_id": "action-575988781b405f84--end",
