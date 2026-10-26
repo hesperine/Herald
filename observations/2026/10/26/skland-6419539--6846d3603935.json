@@ -1,0 +1,29 @@
+{
+  "extracted_media_text": [],
+  "id": "skland-6419539",
+  "media_hashes": [
+    "98cba1481d45128f6a9c4255e114d830040ecf959a855f9b9f1b34e9e089acef"
+  ],
+  "media_urls": [
+    "https://bbs.hycdn.cn/image/common/20261025/115/6addb3b4a22fe7e096ddaf65_004865de.webp"
+  ],
+  "outbound_urls": [],
+  "source": {
+    "account_id": "7779816949641",
+    "account_name": "明日方舟Arknights",
+    "canonical_content_id": "6419539",
+    "content_hash": "6846d3603935e998f5ce7f09716c00ef76757f4bd420452e00c2bdbfb8ef3951",
+    "excerpt": "《明日方舟》特别映像[维多利亚：很久很久以前]\n不过，对于那些即将上演的童话来说，就没必要再用这句话开头了。",
+    "first_seen_at": "2026-10-26T19:02:49.768954Z",
+    "id": "skland-6419539",
+    "is_official": true,
+    "kind": "skland",
+    "media_hashes": [],
+    "media_urls": [],
+    "published_at": "2026-10-26T03:00:30Z",
+    "summary": null,
+    "updated_at": null,
+    "url": "https://www.skland.com/article?id=6419539"
+  },
+  "text": "《明日方舟》特别映像[维多利亚：很久很久以前]\n不过，对于那些即将上演的童话来说，就没必要再用这句话开头了。"
+}
