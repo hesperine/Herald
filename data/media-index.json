@@ -407,6 +407,34 @@
       "source_url": "https://bbs.hycdn.cn/image/common/20261025/115/6add7b4ab9aaeb999035dfbc_ef3391c4.webp"
     },
     {
+      "asset_path": "assets/media/1a1de7b2b19848fd6fae3ad8d1afb24da8112c7e1ff991ba58c3cec884fa2e9a.webp",
+      "content_type": "image/webp",
+      "sha256": "1a1de7b2b19848fd6fae3ad8d1afb24da8112c7e1ff991ba58c3cec884fa2e9a",
+      "size_bytes": 1870732,
+      "source_url": "https://bbs.hycdn.cn/image/common/20261027/113/6ae01dc70bba2d0e26ae242d_96d20048.webp"
+    },
+    {
+      "asset_path": "assets/media/85b16c03e8d838499b04afd203562b8f7a5e02a0b35fc9c197782dc75b956b55.webp",
+      "content_type": "image/webp",
+      "sha256": "85b16c03e8d838499b04afd203562b8f7a5e02a0b35fc9c197782dc75b956b55",
+      "size_bytes": 2094388,
+      "source_url": "https://bbs.hycdn.cn/image/common/20261027/113/6ae01dd928cbf869859e5f35_e71aef33.webp"
+    },
+    {
+      "asset_path": "assets/media/26f72d6d738aa8e92ad49b489ba42c9471198d4c873a99fd564b639321acf04f.webp",
+      "content_type": "image/webp",
+      "sha256": "26f72d6d738aa8e92ad49b489ba42c9471198d4c873a99fd564b639321acf04f",
+      "size_bytes": 2688080,
+      "source_url": "https://bbs.hycdn.cn/image/common/20261027/113/6ae01f8c8861f86f358a3065_65de0095.webp"
+    },
+    {
+      "asset_path": "assets/media/44f3837f9971036919aeeb84ef676f776d7be446550409be8bf334f7a991c17b.webp",
+      "content_type": "image/webp",
+      "sha256": "44f3837f9971036919aeeb84ef676f776d7be446550409be8bf334f7a991c17b",
+      "size_bytes": 457302,
+      "source_url": "https://bbs.hycdn.cn/image/common/20261027/113/6ae01fb5b47fff85b0ef91d5_e71aef33.webp"
+    },
+    {
       "asset_path": "assets/media/799d97f7c5cdca4eec23f9a44236ffa67ea041d385ac76ce078b117c0012a051.jpg",
       "content_type": "image/jpeg",
       "sha256": "799d97f7c5cdca4eec23f9a44236ffa67ea041d385ac76ce078b117c0012a051",
