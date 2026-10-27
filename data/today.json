@@ -1,4 +1,135 @@
 {
-  "cards": [],
-  "date": "2026-10-27"
+  "cards": [
+    {
+      "activity": null,
+      "activity_id": null,
+      "campaign_id": "candidate-4efbdaacb1d4275e3adb4dd5",
+      "campaign_notice": false,
+      "campaign_title": "明日方舟：终末地 · 候选联动信息",
+      "detail_campaign_id": null,
+      "extraction_status": "pending",
+      "ip_name": "明日方舟：终末地",
+      "reasons": [
+        {
+          "action_id": null,
+          "date_only": null,
+          "expected_at": null,
+          "kind": "announcement",
+          "summary": "发现联动相关信息（待解析，请以原帖为准）\n汉堡王 ×《明日方舟：终末地》联动详情\n汉堡王 ×《明日方舟：终末地》联动详情来了！\n管理员，请查收你的美味指南~\n◆ 联名套餐 ◆\n🛒「美味通行」七件套 🎁毛绒套组（毛绒×1＋透卡×1＋Q版光栅卡×1）\n🛒「堡已就位」四件套 🎁镭射卡套组（角色大镭射卡×3＋贴纸×1＋纸质谷美架×1）\n两套均含联名游戏礼包兑换码1份：头像「可爱堡堡」＋装饰物品「汉堡之王」＋折金票×5000\n联名包材：主题堡盒、主题桶、主题纸袋&无纺布袋\n◆ 特别线下活动 ◆\n11月5日起，全国51家联名主题店换装登场，更可预约参与「美味通行证任务」主题店活动\n11月7日~11月8日，特别快闪「开拓街头 美味据点」限时开启，欢迎预约前往\n◆ 联动表情包 ◆\n联动表情包11月5日即将上线\n更多联动资讯详情，请查看下方图片~"
+        }
+      ],
+      "sources": [
+        {
+          "account_id": "3737967211133",
+          "account_name": "明日方舟终末地",
+          "canonical_content_id": "6424097",
+          "content_hash": "9fea3ebfe41c0a306b398feb8115f482ab6ab4f15953e3e26f63104f50a0a89b",
+          "excerpt": "汉堡王 ×《明日方舟：终末地》联动详情\n汉堡王 ×《明日方舟：终末地》联动详情来了！\n管理员，请查收你的美味指南~\n◆ 联名套餐 ◆\n🛒「美味通行」七件套 🎁毛绒套组（毛绒×1＋透卡×1＋Q版光栅卡×1）\n🛒「堡已就位」四件套 🎁镭射卡套组（角色大镭射卡×3＋贴纸×1＋纸质谷美架×1）\n两套均含联名游戏礼包兑换码1份：头像「可爱堡堡」＋装饰物品「汉堡之王」＋折金票×5000\n联名包材：主题堡盒、主题桶、主题纸袋&无纺布袋\n◆ 特别线下活动 ◆\n11月5日起，全国51家联名主题店换装登场，更可预约参与「美味通行证任务」主题店活动\n11月7日~11月8日，特别快闪「开拓街头 美味据点」限时开启，欢迎预约前往\n◆ 联动表情包 ◆\n联动表情包11月5日即将上线\n更多联动资讯详情，请查看下方图片~",
+          "first_seen_at": "2026-10-27T18:34:16.958329Z",
+          "id": "skland-6424097",
+          "is_official": true,
+          "kind": "skland",
+          "media_hashes": [],
+          "media_urls": [],
+          "published_at": "2026-10-27T04:00:28Z",
+          "summary": null,
+          "updated_at": null,
+          "url": "https://www.skland.com/article?id=6424097"
+        }
+      ]
+    },
+    {
+      "activity": null,
+      "activity_id": null,
+      "campaign_id": "campaign-f624c9e27ceba257-ebe97034",
+      "campaign_notice": true,
+      "campaign_title": "明日方舟 2026感谢庆典「故土新程」主题快闪",
+      "detail_campaign_id": "campaign-f624c9e27ceba257-ebe97034",
+      "extraction_status": null,
+      "ip_name": "明日方舟",
+      "reasons": [
+        {
+          "action_id": "activity-9d7f7f0b48e57906--start",
+          "date_only": "2026-10-29",
+          "expected_at": "2026-10-29T00:00:00+08:00",
+          "kind": "day_before",
+          "summary": "明天开始：明日方舟2026感谢庆典「故土新程」主题快闪活动开始"
+        },
+        {
+          "action_id": null,
+          "date_only": null,
+          "expected_at": null,
+          "kind": "update",
+          "summary": "活动更新\n明日方舟2026感谢庆典「故土新程」主题快闪活动\n开始日期：2026-10-29\n截止日期：2026-11-08\n地点:city：广州\n明日方舟2026感谢庆典「故土新程」主题快闪活动 / 官方周边快闪店预约开启\n开始日期：2026-10-25\n规则：本次官方周边快闪店为预约制，提前完成预约的博士可在指定时间进店购物，并享当日画廊优先入场。现场将根据人流情况机动开放临时预约名额。\n适用范围：上海场：百联ZX创趣场【META ZX】小程序；广州场：https://b23.tv/13Ppp1r\n需预约：是"
+        }
+      ],
+      "sources": [
+        {
+          "account_id": "7779816949641",
+          "account_name": "明日方舟Arknights",
+          "canonical_content_id": "6415406",
+          "content_hash": "091f161c44012defebbb7671faa4d6d8e56f779ab6b0a6767189b1769ee3da44",
+          "excerpt": "《明日方舟》2026感谢庆典前瞻特别节目未来内容预告\n《明日方舟》2026感谢庆典前瞻特别节目现已结束。我们将在之后上传本次节目录像，感谢大家的支持。\n==《明日方舟》2026感谢庆典前瞻特别节目未来内容预告==\nP1-《明日方舟》新活动前瞻，将于后续开启\nP2- 「卫戍协议」、「危机合约」等更多活动将于后续开启\nP3-  明日方舟携手名创优品 ，邀博士共赴茶会，叙一杯焦糖色的午后。\nP4- 《明日方舟》有声剧「风雪过境」现已正式上架喜马拉雅\nP5- 《罗德岛学院》即将开播、《明日方舟:黎明前奏》《明日方舟:冬隐归路》《明日方舟:焰烬曙明》主线动画bilibili全集限时免费播出\nP6- 明日方舟2026感谢庆典「故土新程」主题快闪活动即将开启、「冻土与火种」网页活动、「燃烧即一切」网页活动现已开启\nP7-  官方漫画《序言组曲：火与路》即将上线、《序言组曲：孤行之人》实体漫画正在筹备中、《明日方舟官方美术设定集 VOL.5》即将开售！\nP8-明日方舟 1/7手办 【赤刃明霄陈 精英二ver.】彩模公开、【塔露拉】企划公开！【蕾缪安 布道人ver.】&【史尔特尔 超然序曲ver.】正在",
+          "first_seen_at": "2026-10-24T16:27:09.090923Z",
+          "id": "skland-6415406",
+          "is_official": true,
+          "kind": "skland",
+          "media_hashes": [
+            "3c7e70e2abb003fa6aa39f125f23d859190e2c975ec08877a5edac1a39d7060a",
+            "0a4f1bb72f6ac445b8c596646300a42bede7ab7f2d5811619f1429640ce457ea",
+            "412dee26c5624e162ff185a44c419ac2276ad4de55fd3af92301b721fb1871b1",
+            "3a12a8de5fd77d3599c47d31c04bc49d0d01ac391c56185ee65c30c90671d6ba",
+            "6ecfc8b4ba914327d31a662114a22c34ef04cd47af543a1bffda67988113e4b9",
+            "4c1869f3b03e439c83b40654fe743008db5f0983b8a3ad885d89c5c1fd607c50",
+            "6909a0cc49b79ea153ad844adb9699cfc89cfad19f32a5aeffdeb3f903ae04d2",
+            "7aa00b95672ef94ceef9c2d62bb3c7bbf345b606fd60695cc45b21a4fc7ff634",
+            "79b3561c1c5995f98ec4ce5a69321bac448712a791af12b1cafbdf85664e7aaf"
+          ],
+          "media_urls": [
+            "https://bbs.hycdn.cn/image/common/20261024/115/6adc9cbced989a2c1f4732f1_004865de.webp",
+            "https://bbs.hycdn.cn/image/common/20261024/115/6adc9be78b6b0c26bfc56ee2_65de0095.webp",
+            "https://bbs.hycdn.cn/image/common/20261024/115/6adc9be715b766b1b8684e9a_0095c241.webp",
+            "https://bbs.hycdn.cn/image/common/20261024/115/6adc9be79b052e6236f0cf9d_91c496d2.webp",
+            "https://bbs.hycdn.cn/image/common/20261024/115/6adc9be7f6506aa250a6baf8_65de0095.webp",
+            "https://bbs.hycdn.cn/image/common/20261024/115/6adc9be74d8f43a101bef238_96d20048.webp",
+            "https://bbs.hycdn.cn/image/common/20261024/115/6adc9be721f467a0bfca1b7c_65de0095.webp",
+            "https://bbs.hycdn.cn/image/common/20261024/115/6adc9be7793f69bb8b468842_ef3391c4.webp",
+            "https://bbs.hycdn.cn/image/common/20261024/115/6adc9be7ddc0f89b712275fc_004865de.webp"
+          ],
+          "published_at": "2026-10-24T13:16:13Z",
+          "summary": "《明日方舟》2026感谢庆典前瞻特别节目未来内容预告，公布新活动、联动、动画、周边及2026感谢庆典「故土新程」主题快闪活动即将开启等信息。",
+          "updated_at": null,
+          "url": "https://www.skland.com/article?id=6415406"
+        },
+        {
+          "account_id": "7779816949641",
+          "account_name": "明日方舟Arknights",
+          "canonical_content_id": "6418723",
+          "content_hash": "f144fe9b4f27c0bcd9366f165660309ef6d25255479af6a2d3c97a06f4659a2e",
+          "excerpt": "明日方舟2026感谢庆典「故土新程」主题快闪活动即将开启\n【活动地点】上海、广州\n【活动时间】\n· 打卡活动：2026年10月29日-11月1日\n· 故土新程主题画廊：2026年10月29日-11月8日\n· 朝陇山休憩处-官方周边快闪店：2026年10月29日-11月8日\n· 博士回归：2026年10月29日-11月8日\n*10月29日所有快闪活动将从13:00开始运营\n*故土新程主题画廊-上海场将特别延长运营至2026年11月15日\n【预约说明】\n本次官方周边快闪店为预约制，提前完成预约的博士可在指定时间进店购物，并享当日画廊优先入场。现场将根据人流情况机动开放临时预约名额。\n预约开启时间：2026年10月25日 20:00\n【预约入口】\n1. 上海场：百联ZX创趣场【META ZX】小程序\n2. 广州场：https://b23.tv/13Ppp1r\n*若点击链接无法自动跳转，请复制链接至浏览器。\n*预约方式及更多活动信息详见配图，周边商品贩售信息请持续关注明日方舟朝陇山官方账号。",
+          "first_seen_at": "2026-10-25T16:58:38.560947Z",
+          "id": "skland-6418723",
+          "is_official": true,
+          "kind": "skland",
+          "media_hashes": [
+            "bb5d2b50a3bb92d54c8c484b2fc14cc6ccf99f8a4e12f3321c256dfb509edf1d",
+            "b60db354210dda290a739db0881b39ef7f47a39cb5d0c0dcac96415f5cee404a",
+            "aa504989206731be1f77a4c0044839a38679e3f24dc068082768e58995d3e96c",
+            "c28d387a1f129dcc7aacd5e3f14f98225cfb00130908ea685f4d79070d75b5be"
+          ],
+          "media_urls": [
+            "https://bbs.hycdn.cn/image/common/20261025/115/6add7b3aef44e98a0106a32b_004865de.webp",
+            "https://bbs.hycdn.cn/image/common/20261025/115/6add7b4a3ec4be1dfe8a6ac2_004865de.webp",
+            "https://bbs.hycdn.cn/image/common/20261025/115/6add7b4a28cbf869859e5ddf_96d20048.webp",
+            "https://bbs.hycdn.cn/image/common/20261025/115/6add7b4ab9aaeb999035dfbc_ef3391c4.webp"
+          ],
+          "published_at": "2026-10-25T04:00:05Z",
+          "summary": "公布「故土新程」主题快闪活动地点为上海、广州，列出打卡活动、主题画廊、官方周边快闪店、博士回归等子活动时间，并说明周边快闪店预约制及预约开启时间与入口。",
+          "updated_at": null,
+          "url": "https://www.skland.com/article?id=6418723"
+        }
+      ]
+    }
+  ],
+  "date": "2026-10-28"
 }

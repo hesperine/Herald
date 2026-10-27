@@ -3,10 +3,10 @@
     {
       "activity": null,
       "activity_id": null,
-      "campaign_id": "candidate-0c033516bb267cd26d2e2ad3",
-      "campaign_title": "明日方舟 · 候选联动信息",
-      "detail_url": null,
-      "extraction_status": "pending",
+      "campaign_id": "campaign-f624c9e27ceba257-ebe97034",
+      "campaign_title": "明日方舟 2026感谢庆典「故土新程」主题快闪",
+      "detail_url": "event.html?id=campaign-f624c9e27ceba257-ebe97034",
+      "extraction_status": "structured",
       "ip_name": "明日方舟",
       "reasons": [
         {
@@ -20,7 +20,7 @@
       "sources": [
         {
           "account_name": "明日方舟Arknights",
-          "summary": null,
+          "summary": "公布「故土新程」主题快闪活动地点为上海、广州，列出打卡活动、主题画廊、官方周边快闪店、博士回归等子活动时间，并说明周边快闪店预约制及预约开启时间与入口。",
           "url": "https://www.skland.com/article?id=6418723"
         }
       ]
@@ -31,7 +31,7 @@
       "campaign_id": "candidate-7c0b49d5065ce432b734a5b7",
       "campaign_title": "明日方舟 · 候选联动信息",
       "detail_url": null,
-      "extraction_status": "pending",
+      "extraction_status": "unconfirmed",
       "ip_name": "明日方舟",
       "reasons": [
         {
