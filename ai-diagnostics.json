@@ -1,0 +1,107 @@
+{
+  "entries": [
+    {
+      "attempt": 1,
+      "category": "validation",
+      "code": "schema_validation",
+      "elapsed_seconds": 7.147,
+      "exception_type": "ValidationError",
+      "finish_reason": "stop",
+      "http_status": 200,
+      "operation": "resolve_campaign",
+      "stage": "schema",
+      "usage": {
+        "completion_tokens": 1539,
+        "prompt_tokens": 6317,
+        "total_tokens": 7856
+      },
+      "validation_errors": [
+        {
+          "field": "extraction",
+          "type": "extra_forbidden"
+        },
+        {
+          "field": "merge",
+          "type": "extra_forbidden"
+        }
+      ]
+    },
+    {
+      "attempt": 2,
+      "category": "validation",
+      "code": "schema_validation",
+      "elapsed_seconds": 6.15,
+      "exception_type": "ValidationError",
+      "finish_reason": "stop",
+      "http_status": 200,
+      "operation": "resolve_campaign",
+      "stage": "schema",
+      "usage": {
+        "completion_tokens": 1482,
+        "prompt_tokens": 6317,
+        "total_tokens": 7799
+      },
+      "validation_errors": [
+        {
+          "field": "extraction",
+          "type": "extra_forbidden"
+        },
+        {
+          "field": "merge",
+          "type": "extra_forbidden"
+        }
+      ]
+    },
+    {
+      "attempt": 3,
+      "category": "validation",
+      "code": "schema_validation",
+      "elapsed_seconds": 10.351,
+      "exception_type": "ValidationError",
+      "finish_reason": "stop",
+      "http_status": 200,
+      "operation": "resolve_campaign",
+      "stage": "schema",
+      "usage": {
+        "completion_tokens": 2888,
+        "prompt_tokens": 6317,
+        "total_tokens": 9205
+      },
+      "validation_errors": [
+        {
+          "field": "extraction",
+          "type": "extra_forbidden"
+        },
+        {
+          "field": "extraction",
+          "type": "extra_forbidden"
+        },
+        {
+          "field": "extraction",
+          "type": "extra_forbidden"
+        },
+        {
+          "field": "extraction",
+          "type": "extra_forbidden"
+        },
+        {
+          "field": "extraction",
+          "type": "extra_forbidden"
+        },
+        {
+          "field": "merge",
+          "type": "extra_forbidden"
+        },
+        {
+          "field": "merge",
+          "type": "extra_forbidden"
+        },
+        {
+          "field": "merge",
+          "type": "extra_forbidden"
+        }
+      ]
+    }
+  ],
+  "run_at": "2026-10-27T08:13:26.778423+00:00"
+}
