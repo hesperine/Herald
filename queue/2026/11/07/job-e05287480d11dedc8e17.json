@@ -1,0 +1,17 @@
+{
+  "action_id": "activity-9d7f7f0b48e57906--end",
+  "activity_id": "activity-9d7f7f0b48e57906",
+  "campaign_id": "campaign-f624c9e27ceba257-ebe97034",
+  "campaign_notice": false,
+  "candidate_id": null,
+  "change_id": null,
+  "covered_candidate_ids": [],
+  "due_date": "2026-11-07",
+  "expected_at": "2026-11-08T00:00:00+08:00",
+  "expected_date": "2026-11-08",
+  "facts": {},
+  "id": "job-e05287480d11dedc8e17",
+  "kind": "deadline",
+  "semantic_key": "schedule:activity-9d7f7f0b48e57906:activity-9d7f7f0b48e57906--end:deadline:2026-11-08T00:00:00+08:00",
+  "summary": "明天截止：明日方舟2026感谢庆典「故土新程」主题快闪活动结束"
+}

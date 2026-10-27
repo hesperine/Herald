@@ -1,0 +1,14 @@
+{
+  "activity_id": "activity-9d7f7f0b48e57906",
+  "campaign_id": "campaign-f624c9e27ceba257-ebe97034",
+  "detected_at": "2026-10-27T18:34:16.958329Z",
+  "field_paths": [],
+  "id": "chg-41bd5b1c16162831",
+  "kind": "field_added",
+  "published_at": "2026-10-24T13:16:13Z",
+  "semantic_key": "campaign-f624c9e27ceba257-ebe97034:entity-added-venues-4c454bc9380ac562",
+  "source_ids": [
+    "skland-6418723"
+  ],
+  "summary": "新增：venues"
+}

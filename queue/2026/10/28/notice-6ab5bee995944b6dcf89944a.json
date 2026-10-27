@@ -1,0 +1,34 @@
+{
+  "action_id": null,
+  "activity_id": null,
+  "campaign_id": "campaign-f624c9e27ceba257-ebe97034",
+  "campaign_notice": true,
+  "candidate_id": null,
+  "change_id": null,
+  "covered_candidate_ids": [
+    "candidate-0c033516bb267cd26d2e2ad3",
+    "candidate-5d217163e290102bc6cd026e"
+  ],
+  "due_date": "2026-10-28",
+  "expected_at": null,
+  "expected_date": null,
+  "facts": {
+    "actions-1eabfebae3319f59:事项": "官方周边快闪店预约开启",
+    "actions-1eabfebae3319f59:已取消": "False",
+    "actions-1eabfebae3319f59:已结束": "False",
+    "actions-1eabfebae3319f59:开始日期": "2026-10-25",
+    "actions-1eabfebae3319f59:规则": "本次官方周边快闪店为预约制，提前完成预约的博士可在指定时间进店购物，并享当日画廊优先入场。现场将根据人流情况机动开放临时预约名额。",
+    "actions-1eabfebae3319f59:适用范围": "上海场：百联ZX创趣场【META ZX】小程序；广州场：https://b23.tv/13Ppp1r",
+    "actions-1eabfebae3319f59:需预约": "True",
+    "activity-9d7f7f0b48e57906:地点:city": "广州",
+    "activity-9d7f7f0b48e57906:开始日期": "2026-10-29",
+    "activity-9d7f7f0b48e57906:截止日期": "2026-11-08",
+    "activity-9d7f7f0b48e57906:活动": "明日方舟2026感谢庆典「故土新程」主题快闪活动",
+    "activity-9d7f7f0b48e57906:状态": "active",
+    "campaign:状态": "active"
+  },
+  "id": "notice-6ab5bee995944b6dcf89944a",
+  "kind": "update",
+  "semantic_key": "notice-6ab5bee995944b6dcf89944a",
+  "summary": "活动更新\n明日方舟2026感谢庆典「故土新程」主题快闪活动\n开始日期：2026-10-29\n截止日期：2026-11-08\n地点:city：广州\n明日方舟2026感谢庆典「故土新程」主题快闪活动 / 官方周边快闪店预约开启\n开始日期：2026-10-25\n规则：本次官方周边快闪店为预约制，提前完成预约的博士可在指定时间进店购物，并享当日画廊优先入场。现场将根据人流情况机动开放临时预约名额。\n适用范围：上海场：百联ZX创趣场【META ZX】小程序；广州场：https://b23.tv/13Ppp1r\n需预约：是"
+}

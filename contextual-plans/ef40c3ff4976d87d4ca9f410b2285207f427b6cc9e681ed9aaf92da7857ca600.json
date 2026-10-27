@@ -1,0 +1,16 @@
+{
+  "completed": {},
+  "routes": {
+    "groups": [
+      {
+        "campaign_id": "campaign-8ef39adc0f9cce18-746c28cd",
+        "observation_ids": [
+          "skland-6424097"
+        ],
+        "partner": "汉堡王",
+        "phrase": "汉堡王 ×《明日方舟：终末地》「美味通行，堡已就位」"
+      }
+    ],
+    "unconfirmed": []
+  }
+}

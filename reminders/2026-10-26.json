@@ -3,11 +3,11 @@
     {
       "activity": null,
       "activity_id": null,
-      "campaign_id": "candidate-0c033516bb267cd26d2e2ad3",
-      "campaign_notice": false,
-      "campaign_title": "明日方舟 · 候选联动信息",
-      "detail_campaign_id": null,
-      "extraction_status": "pending",
+      "campaign_id": "campaign-f624c9e27ceba257-ebe97034",
+      "campaign_notice": true,
+      "campaign_title": "明日方舟 2026感谢庆典「故土新程」主题快闪",
+      "detail_campaign_id": "campaign-f624c9e27ceba257-ebe97034",
+      "extraction_status": "structured",
       "ip_name": "明日方舟",
       "reasons": [
         {
@@ -29,10 +29,20 @@
           "id": "skland-6418723",
           "is_official": true,
           "kind": "skland",
-          "media_hashes": [],
-          "media_urls": [],
+          "media_hashes": [
+            "bb5d2b50a3bb92d54c8c484b2fc14cc6ccf99f8a4e12f3321c256dfb509edf1d",
+            "b60db354210dda290a739db0881b39ef7f47a39cb5d0c0dcac96415f5cee404a",
+            "aa504989206731be1f77a4c0044839a38679e3f24dc068082768e58995d3e96c",
+            "c28d387a1f129dcc7aacd5e3f14f98225cfb00130908ea685f4d79070d75b5be"
+          ],
+          "media_urls": [
+            "https://bbs.hycdn.cn/image/common/20261025/115/6add7b3aef44e98a0106a32b_004865de.webp",
+            "https://bbs.hycdn.cn/image/common/20261025/115/6add7b4a3ec4be1dfe8a6ac2_004865de.webp",
+            "https://bbs.hycdn.cn/image/common/20261025/115/6add7b4a28cbf869859e5ddf_96d20048.webp",
+            "https://bbs.hycdn.cn/image/common/20261025/115/6add7b4ab9aaeb999035dfbc_ef3391c4.webp"
+          ],
           "published_at": "2026-10-25T04:00:05Z",
-          "summary": null,
+          "summary": "公布「故土新程」主题快闪活动地点为上海、广州，列出打卡活动、主题画廊、官方周边快闪店、博士回归等子活动时间，并说明周边快闪店预约制及预约开启时间与入口。",
           "updated_at": null,
           "url": "https://www.skland.com/article?id=6418723"
         }

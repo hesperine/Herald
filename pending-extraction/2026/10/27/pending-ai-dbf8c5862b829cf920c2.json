@@ -1,0 +1,24 @@
+{
+  "attempts": 1,
+  "diagnostics": [
+    {
+      "category": "validation",
+      "code": "date_requires_field_evidence",
+      "exception_type": "ValueError",
+      "finish_reason": null,
+      "operation": "resolve_campaign",
+      "stage": "reconciliation"
+    }
+  ],
+  "error_category": "validation",
+  "id": "pending-ai-dbf8c5862b829cf920c2",
+  "ip_slug": "arknights-endfield",
+  "next_retry_at": null,
+  "notify_immediately": true,
+  "observation_ids": [
+    "skland-6424097"
+  ],
+  "queued_at": "2026-10-27T18:34:16.958329Z",
+  "reason": "AI processing failed; retry scheduled",
+  "retry_after_explicit": false
+}
