@@ -147,6 +147,20 @@ class CliTests(unittest.TestCase):
 
 
 class CliSourceWiringTests(unittest.IsolatedAsyncioTestCase):
+    async def test_run_prints_only_allowlisted_ai_diagnostics(self):
+        result = SimpleNamespace(report=SimpleNamespace(model_dump=lambda **kwargs: {}),
+            pipeline_results=(), published_campaigns=0, ai_diagnostics=({
+                'operation': 'resolve_campaign', 'stage': 'completion', 'code': 'incomplete_response',
+                'finish_reason': 'length', 'raw_response': 'PRIVATE-BODY',
+                'usage': {'completion_tokens': 8192, 'PRIVATE-FIELD': 'PRIVATE-BODY'}},))
+        runner = SimpleNamespace(run=AsyncMock(return_value=result))
+        with patch('herald.cli.load_settings', return_value=load_settings({'WATCH_IPS': '原神'})), \
+             patch('herald.cli.DailyRunner', return_value=runner):
+            output = await _run(_parser().parse_args(['--phase', 'retry']))
+        self.assertEqual(output['ai_diagnostics'][0]['finish_reason'], 'length')
+        self.assertEqual(output['ai_diagnostics'][0]['usage'], {'completion_tokens': 8192})
+        self.assertNotIn('PRIVATE', json.dumps(output))
+
     async def test_official_news_adapter_is_wired_into_production_runner(self):
         clients = []
 

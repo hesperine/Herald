@@ -15,7 +15,7 @@ from .merge import CampaignIdentityResolver, CampaignMerger
 from .models import PendingExtraction, SourceObservation, SourceRef
 from .candidate_notices import register_candidates, resolve_candidates
 from .registry import RegisteredIp
-from .retry import record_failure
+from .retry import record_failure, retry_is_due
 from .scheduler import ScheduleCompiler
 from .storage import StateStore
 
@@ -138,7 +138,7 @@ class ObservationPipeline:
             if not selection.accepted:
                 continue
 
-            if pending is not None and not changed_items and pending.next_retry_at and pending.next_retry_at > now:
+            if pending is not None and not changed_items and not retry_is_due(pending, now):
                 counters["pending_extractions"] += 1
                 continue
             pending = pending if pending is not None and not changed_items else PendingExtraction(

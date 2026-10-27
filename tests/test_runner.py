@@ -181,6 +181,41 @@ class DailyRunnerTests(unittest.IsolatedAsyncioTestCase):
         self.page = root / "page"
         self.runner = DailyRunner(registry=registry(), clock=lambda: NOW)
 
+    async def test_ai_diagnostics_publish_safe_state_and_preserve_final_fallback(self):
+        import httpx
+        from herald.ai import OpenAICompatibleProvider
+        item = observation()
+        sender = MemorySender()
+        def handler(request):
+            return httpx.Response(200, json={'choices': [{'finish_reason': 'length',
+                'message': {'content': 'test-ai-key test-smtp-password player@example.com 上海 杭州'}}],
+                'usage': {'completion_tokens': 8192, 'player@example.com': 'test-ai-key'}})
+        async with httpx.AsyncClient(transport=httpx.MockTransport(handler)) as client:
+            provider = OpenAICompatibleProvider(client=client, base_url='https://example.test',
+                model='fixture', api_key='test-ai-key', max_attempts=1)
+            provider.contextual = True
+            result = await self.runner.run(settings=settings(), store=self.store, page_dir=self.page,
+                now=NOW, weibo_client=FakeWeiboClient([FetchBatch(items=(FetchedObservation(item),),
+                    cursor=WeiboCursor(container_id='1076031001', latest_post_id='next'))]),
+                provider=provider, email_sender=sender)
+        self.assertEqual(result.ai_diagnostics[-1]['finish_reason'], 'length')
+        self.assertTrue((self.page / 'index.html').exists())
+        self.assertEqual(sender.messages, [])
+        report = json.loads((self.store.root / 'ai-diagnostics.json').read_text(encoding='utf8'))
+        self.assertEqual(report['entries'][-1]['code'], 'incomplete_response')
+        await self.runner.run(settings=settings(), store=self.store, page_dir=self.page,
+            now=NOW, weibo_client=None, provider=None, email_sender=sender,
+            phase=RunPhase.RETRY, final_retry=True)
+        self.assertEqual(len(sender.messages), 1)
+        self.assertEqual(len(self.store.list_pending_extractions()), 1)
+        self.assertEqual(json.loads((self.store.root / 'ai-diagnostics.json').read_text(encoding='utf8'))['entries'], [])
+        for root in (self.store.root, self.page):
+            for path in root.rglob('*'):
+                if path.is_file() and path.suffix in ('.json', '.html'):
+                    text = path.read_text(encoding='utf8')
+                    for private in ('test-ai-key', 'test-smtp-password', 'player@example.com', '上海', '杭州'):
+                        self.assertNotIn(private, text)
+
     async def test_retry_phase_extracts_publishes_and_sends_one_summary_without_fetch(self):
         item = observation()
         await self.runner.run(settings=settings(), store=self.store, page_dir=self.page,

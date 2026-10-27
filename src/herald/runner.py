@@ -98,6 +98,7 @@ class DailyRunResult:
     pipeline_results: tuple[PipelineResult, ...]
     published_campaigns: int
     delivery: DeliveryResult | None
+    ai_diagnostics: tuple[dict, ...] = ()
 
 
 class DailyRunner:
@@ -145,6 +146,10 @@ class DailyRunner:
 
         if provider is not None:
             provider = BudgetedProvider(provider, store, now, started=started)
+        else:
+            store._atomic_json_write(store.root / 'ai-diagnostics.json', {
+                'run_at': now.isoformat(), 'entries': [],
+            })
 
         warnings = [
             f"unsupported WATCH_IPS entry: {name}" for name in resolution.unsupported
@@ -321,6 +326,7 @@ class DailyRunner:
             pipeline_results=tuple(pipeline_results),
             published_campaigns=len(published),
             delivery=delivery,
+            ai_diagnostics=tuple(provider.diagnostics) if provider is not None else (),
         )
 
     async def _fetch_source(

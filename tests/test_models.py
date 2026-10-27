@@ -10,10 +10,19 @@ from herald.models import (
     EventAction,
     EventStatus,
     ActionKind,
+    PendingExtraction,
 )
 
 
 UTC = timezone.utc
+
+
+class PendingCompatibilityTests(unittest.TestCase):
+    def test_old_pending_records_load_without_new_diagnostic_fields(self):
+        pending = PendingExtraction.model_validate({'id': 'legacy', 'observation_ids': ['source'],
+            'ip_slug': 'genshin-impact', 'queued_at': '2026-10-27T00:00:00Z', 'reason': 'pending'})
+        self.assertEqual(pending.diagnostics, [])
+        self.assertFalse(pending.retry_after_explicit)
 
 
 class VisibilityTests(unittest.TestCase):

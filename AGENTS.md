@@ -67,6 +67,8 @@ python -m compileall -q src tests
 - 无 Key 时必须保存 `pending-extraction`；以后有 Key 时必须能从索引加载旧观察记录重试。
 - 当前可运行版本固定使用纯文本 AI 输入；`AI_VISION` 是预留配置，不得把图片 URL、OCR 或二进制附加到生产 AI 请求。图片只进入生成式 `page` 详情产物。
 - 模型失败必须产生脱敏错误并保留重试状态，不能阻断历史提醒和静态页发布。
+- 普通 AI 失败下一轮定时任务重试，旧普通失败的指数退避时间不再阻塞；明确 Retry-After 继续遵守，429 无有效等待提示时冷却 5 分钟，额度／认证失败至少冷却 24 小时。调用／时间预算耗尽只暂缓本轮。
+- AI 诊断只允许固定枚举和有界数字，写入 `state/ai-diagnostics.json`、pending 及 CLI 输出，不进入 page。禁止保存异常消息／异常链、请求／响应正文、headers、URL、任意 metadata 或 Pydantic 的 input/ctx/未知字段名。
 
 ## 分支与提交
 

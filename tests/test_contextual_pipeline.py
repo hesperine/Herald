@@ -28,6 +28,45 @@ class Provider:
 
 
 class ContextualPipelineTests(unittest.IsolatedAsyncioTestCase):
+    async def test_resolve_failure_diagnostics_persist_and_next_slot_resumes_saved_route(self):
+        import json
+        import httpx
+        from herald.ai import OpenAICompatibleProvider
+        from herald.retry import BudgetedProvider
+        calls = []
+        def handler(request):
+            schema = json.loads(json.loads(request.content)['messages'][-1]['content'])['output_schema']['title']
+            calls.append(schema)
+            if schema == 'RoutingResult':
+                content = {'groups': [{'phrase': '原神品牌联动', 'observation_ids': ['diagnosis']}]}
+            elif calls.count('CampaignResolution') == 1:
+                return httpx.Response(200, json={'choices': [{'finish_reason': 'length',
+                    'message': {'content': 'PRIVATE-BODY'}}]})
+            else:
+                content = {'extraction': {'relevant': True, 'campaign_title': '原神品牌联动'}}
+            return httpx.Response(200, json={'choices': [{'message': {'content': json.dumps(content)}}]})
+        with tempfile.TemporaryDirectory() as directory:
+            store = StateStore(directory)
+            store.initialize()
+            item = observation('diagnosis', '原神', digest='d'*64)
+            ip = RegisteredIp(slug='genshin-impact', name='原神')
+            async with httpx.AsyncClient(transport=httpx.MockTransport(handler)) as client:
+                raw = OpenAICompatibleProvider(client=client, base_url='https://example.test',
+                    model='test', api_key='PRIVATE-KEY', max_attempts=1)
+                raw.contextual = True
+                for slot in (NOW, NOW + timedelta(hours=2)):
+                    await ObservationPipeline().process(store=store, ip=ip, observations=[item], now=slot,
+                        provider=BudgetedProvider(raw, store, slot))
+                    if slot == NOW:
+                        pending = store.list_pending_extractions()[0]
+                        self.assertEqual(pending.diagnostics[-1]['operation'], 'resolve_campaign')
+                        self.assertEqual(pending.diagnostics[-1]['finish_reason'], 'length')
+                        self.assertIsNone(pending.next_retry_at)
+                        for path in store.root.rglob('*.json'):
+                            self.assertNotIn('PRIVATE', path.read_text(encoding='utf8'))
+            self.assertEqual(calls, ['RoutingResult', 'CampaignResolution', 'CampaignResolution'])
+            self.assertEqual(store.list_pending_extractions(), [])
+
     async def test_scope_audit_failure_preserves_known_association(self):
         with tempfile.TemporaryDirectory() as directory:
             store = StateStore(directory)

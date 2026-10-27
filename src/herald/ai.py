@@ -18,6 +18,7 @@ from pydantic import AwareDatetime, BaseModel, ConfigDict, Field, HttpUrl, Valid
 
 from .models import ActionKind, ActivityKind, Campaign
 from .fact_updates import FactUpdate
+from .ai_diagnostics import safe_diagnostic, safe_diagnostics, safe_number, validation_issues, CATEGORIES
 
 
 CODE_FENCE = re.compile(r"^```(?:json)?\s*|\s*```$", re.IGNORECASE)
@@ -151,10 +152,11 @@ class AIProviderError(RuntimeError):
     """A redacted failure safe for run reports."""
 
     def __init__(self, message: str, *, category: str = 'transient',
-                 retry_after_seconds: float | None = None) -> None:
+                 retry_after_seconds: float | None = None, diagnostics: list[dict] | None = None) -> None:
         super().__init__(message)
-        self.category = category
-        self.retry_after_seconds = retry_after_seconds
+        self.category = category if category in CATEGORIES else 'transient'
+        self.retry_after_seconds = safe_number(retry_after_seconds, 31536000)
+        self.diagnostics = safe_diagnostics(diagnostics)
 
 
 class AIProvider(Protocol):
@@ -211,11 +213,16 @@ class OpenAICompatibleProvider:
 
     async def _complete(self, request_payload: dict, result_type: type[BaseModel]):
         from time import monotonic
-        last_error: Exception | None = None
+        operation = {'ExtractionResult': 'extract', 'BatchResult': 'extract_batch',
+            'MergeResult': 'merge_campaign', 'RoutingResult': 'route_campaigns',
+            'CampaignResolution': 'resolve_campaign'}.get(result_type.__name__, 'pipeline')
+        attempts = []
         for attempt in range(self.max_attempts):
             started = monotonic()
             stage = 'request'
             response = None
+            metadata = {}
+            finish_reason = None
             try:
                 response = await self.client.post(
                     f"{self.base_url}/chat/completions",
@@ -230,53 +237,81 @@ class OpenAICompatibleProvider:
                 response.raise_for_status()
                 stage = 'response_json'
                 metadata = response.json()
-                if metadata.get('choices', [{}])[0].get('finish_reason') not in (None, 'stop'):
+                stage = 'response_shape'
+                if not isinstance(metadata, dict):
+                    raise TypeError('invalid response shape')
+                choices = metadata['choices']
+                if not isinstance(choices, list) or not choices or not isinstance(choices[0], dict):
+                    raise TypeError('invalid response shape')
+                content = self._response_content(metadata)
+                stage = 'completion'
+                finish_reason = choices[0].get('finish_reason')
+                if finish_reason not in (None, 'stop'):
                     raise ValueError('incomplete model response')
-                content = self._response_content(response.json())
                 stage = 'schema'
                 result = result_type.model_validate_json(self._strip_fence(content))
-                self.diagnostics.append({'stage': 'validated', 'attempt': attempt + 1,
-                    'finish_reason': metadata.get('choices', [{}])[0].get('finish_reason'),
-                    'usage': metadata.get('usage', {}),
-                    'elapsed_seconds': round(monotonic() - started, 3), 'http_status': response.status_code})
+                self.diagnostics.append(safe_diagnostic({'operation': operation, 'stage': 'validated',
+                    'code': 'ok', 'attempt': attempt + 1, 'finish_reason': finish_reason,
+                    'usage': metadata.get('usage'), 'elapsed_seconds': round(monotonic() - started, 3),
+                    'http_status': response.status_code}))
                 return result
-            except (httpx.HTTPError, ValueError, KeyError, TypeError, ValidationError) as exc:
-                self.diagnostics.append({'stage': stage, 'attempt': attempt + 1,
+            except (httpx.HTTPError, ValueError, KeyError, TypeError, IndexError, AttributeError) as exc:
+                code = {'request': 'transport_error', 'http_status': 'http_error',
+                    'response_json': 'invalid_response_json', 'response_shape': 'invalid_response_shape',
+                    'completion': 'incomplete_response', 'schema': 'schema_validation'}[stage]
+                issues = validation_issues(exc, result_type) if isinstance(exc, ValidationError) else None
+                if issues and any(issue['type'] == 'json_invalid' for issue in issues):
+                    code = 'invalid_json'
+                entry = safe_diagnostic({'operation': operation, 'stage': stage, 'code': code,
+                    'attempt': attempt + 1, 'finish_reason': finish_reason, 'validation_errors': issues,
+                    'usage': metadata.get('usage') if isinstance(metadata, dict) else None,
                     'elapsed_seconds': round(monotonic() - started, 3),
                     'http_status': response.status_code if response is not None else None,
                     'exception_type': type(exc).__name__})
-                last_error = exc
+                category = 'transient' if stage in ('request', 'http_status') else 'validation'
+                retry_after = (self._retry_after_seconds(response) if response is not None
+                               and response.status_code >= 400 else None)
                 if response is not None and response.status_code in (401, 402, 403, 429):
                     category = 'authentication' if response.status_code in (401, 403) else 'quota' if response.status_code == 402 else 'rate_limit'
                     try:
                         error = response.json().get('error', {})
-                        code = error.get('code') or error.get('type') if isinstance(error, dict) else None
-                        if code in ('insufficient_quota', 'quota_exceeded', 'balance_not_enough'):
+                        error_code = error.get('code') or error.get('type') if isinstance(error, dict) else None
+                        if error_code in ('insufficient_quota', 'quota_exceeded', 'balance_not_enough'):
                             category = 'quota'
-                    except (ValueError, AttributeError):
+                    except (ValueError, AttributeError, TypeError):
                         pass
-                    retry_after = None
-                    value = response.headers.get('Retry-After', '')
-                    try:
-                        retry_after = max(0, float(value))
-                    except ValueError:
-                        try:
-                            from email.utils import parsedate_to_datetime
-                            from datetime import datetime, timezone
-                            retry_after = max(0, (parsedate_to_datetime(value) - datetime.now(timezone.utc)).total_seconds())
-                        except (ValueError, TypeError, OverflowError):
-                            pass
+                entry['category'] = category
+                self.diagnostics.append(entry)
+                attempts.append(entry)
+                if category in ('authentication', 'quota', 'rate_limit') or retry_after is not None:
                     raise AIProviderError('AI service requires cooldown', category=category,
-                                          retry_after_seconds=retry_after) from None
+                                          retry_after_seconds=retry_after, diagnostics=attempts) from None
                 if attempt + 1 < self.max_attempts:
                     retry_delay = self._retry_delay(exc, attempt)
                     if retry_delay is None:
                         break
                     await asyncio.sleep(retry_delay)
-        raise AIProviderError("AI extraction failed after redacted retries") from last_error
+        category = 'transient' if stage in ('request', 'http_status') else 'validation'
+        raise AIProviderError("AI extraction failed after redacted retries", category=category,
+                              diagnostics=attempts) from None
 
     def _retry_delay(self, exc: Exception, attempt: int) -> float | None:
         return 0.25 * (2**attempt)
+
+    @staticmethod
+    def _retry_after_seconds(response):
+        import math
+        from datetime import datetime, timezone
+        from email.utils import parsedate_to_datetime
+        value = response.headers.get('Retry-After', '')
+        try:
+            seconds = float(value)
+        except ValueError:
+            try:
+                seconds = (parsedate_to_datetime(value) - datetime.now(timezone.utc)).total_seconds()
+            except (ValueError, TypeError, OverflowError):
+                return None
+        return safe_number(max(0, seconds), 31536000) if math.isfinite(seconds) else None
 
     async def extract_batch(self, packets: list[ExtractionInput], candidates: list[dict]) -> BatchResult:
         if not packets:

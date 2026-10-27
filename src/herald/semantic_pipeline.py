@@ -7,7 +7,7 @@ import json
 from pydantic import ValidationError
 
 from .ai import AIProviderError
-from .retry import record_failure
+from .retry import record_failure, retry_is_due, record_pipeline_error
 from .evidence import quote_matches
 from .candidate_stage import prepare_candidates
 from .fact_updates import apply_fact_updates
@@ -86,7 +86,7 @@ async def process_semantic(pipeline, *, store, ip, observations, now, provider,
         if not selection.accepted:
             store.delete_pending_extraction(pending_id)
             continue
-        if pending is not None and not changed and pending.next_retry_at and pending.next_retry_at > now:
+        if pending is not None and not changed and not retry_is_due(pending, now):
             counters['pending_extractions'] += 1
             continue
         # Persist work before any external request. Failed merge stays retryable.
@@ -139,12 +139,9 @@ async def process_semantic(pipeline, *, store, ip, observations, now, provider,
             for _, pending_id, _ in unit:
                 store.delete_pending_extraction(pending_id)
         except (AIProviderError, ValidationError, ValueError) as exc:
-            if hasattr(provider, 'diagnostics'):
-                safe_reason = str(exc) if str(exc) in {'unverified extraction quote', 'invalid batch source coverage', 'invalid campaign candidate', 'source text exceeds extraction budget'} else None
-                provider.diagnostics.append({'stage': 'semantic_pipeline',
-                    'exception_type': type(exc).__name__, 'reason': safe_reason})
+            diagnostics = record_pipeline_error(provider, exc)
             for _, pending_id, _ in unit:
-                record_failure(store, store.load_pending_extraction(pending_id), now, exc)
+                record_failure(store, store.load_pending_extraction(pending_id), now, exc, diagnostics=diagnostics)
             counters['pending_extractions'] += len(unit)
     return PipelineResult(**counters)
 

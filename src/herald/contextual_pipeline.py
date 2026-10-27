@@ -7,7 +7,7 @@ from .candidate_stage import prepare_candidates
 from .contextual_ai import RoutingResult
 from .models import PendingExtraction
 from .pipeline import PipelineResult, build_extraction_input
-from .retry import record_failure
+from .retry import record_failure, retry_is_due, record_pipeline_error
 from .semantic_pipeline import _apply_group
 from .merge import normalize_name
 
@@ -38,7 +38,7 @@ async def process_contextual(pipeline, *, store, ip, observations, now, provider
         if not changed and pending is None:
             counters['unchanged_observations'] += len(members)
             continue
-        if not changed and pending and pending.next_retry_at and pending.next_retry_at > now:
+        if not changed and pending and not retry_is_due(pending, now):
             counters['pending_extractions'] += 1
             continue
         pending = pending if pending and not changed else PendingExtraction(id=pending_id,
@@ -71,6 +71,7 @@ async def process_contextual(pipeline, *, store, ip, observations, now, provider
         members = {o.id: o for entry in unit for o in entry[0]}
         signature = hashlib.sha256(json.dumps(sorted((o.id, o.source.content_hash) for o in members.values())).encode()).hexdigest()
         path = store.root / 'contextual-plans' / (signature + '.json')
+        operation = 'route_campaigns'
         try:
             if path.exists():
                 plan = json.loads(path.read_text(encoding='utf-8'))
@@ -92,6 +93,7 @@ async def process_contextual(pipeline, *, store, ip, observations, now, provider
                     existing = next((c for c in store.list_campaigns() if c.ip_slug == ip.slug
                         and normalize_name(c.partner) == normalize_name(route.partner)), None)
                 selected = [members[i] for i in route.observation_ids]
+                operation = 'resolve_campaign'
                 counters['ai_calls'] += 1
                 resolution = await provider.resolve_campaign(route,
                     [build_extraction_input(o, ip) for o in selected], existing)
@@ -117,20 +119,9 @@ async def process_contextual(pipeline, *, store, ip, observations, now, provider
             for _, pending_id in unit:
                 store.delete_pending_extraction(pending_id)
         except (AIProviderError, ValidationError, ValueError, KeyError) as error:
-            safe_reasons = {'date requires field evidence', 'invalid scope exclusion evidence',
-                'scope exclusion must refer to legacy activity', 'older conflicting fact without provenance',
-                'unverified extraction quote', 'context budget exceeded', 'conflicting contextual partner',
-                'new activity already exists', 'new activity must identify one extracted activity',
-                'same-time conflicting evidence requires review', 'invalid addition target or evidence',
-                'existing campaign requires reconciliation', 'invalid fact target', 'field is not editable',
-                'fact target must identify one existing entity', 'null is not a deletion instruction',
-                'invalid campaign reference', 'date requires field evidence'}
-            code = str(error) if str(error) in safe_reasons else type(error).__name__
+            diagnostics = record_pipeline_error(provider, error, operation=operation)
             for _, pending_id in unit:
                 record_failure(store, store.load_pending_extraction(pending_id), now,
-                               error)
-                pending = store.load_pending_extraction(pending_id)
-                if getattr(error, 'category', None) != 'deferred':
-                    store.save_pending_extraction(pending.model_copy(update={'reason': 'contextual: ' + code}))
+                               error, diagnostics=diagnostics)
             counters['pending_extractions'] += len(unit)
     return PipelineResult(**counters)

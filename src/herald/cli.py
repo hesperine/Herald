@@ -12,6 +12,7 @@ from pathlib import Path
 import httpx
 
 from .ai import AIProvider, OpenAICompatibleProvider, ZhipuOpenAIProvider
+from .ai_diagnostics import safe_diagnostics
 from .config import RuntimeSettings, load_settings
 from .media import PublicMediaCache
 from .notifications import EmailSender, SmtpEmailSender
@@ -147,6 +148,7 @@ async def _run(args: argparse.Namespace) -> dict[str, object]:
         "report": result.report.model_dump(mode="json"),
         "published_campaigns": result.published_campaigns,
         "ai_calls": sum(item.ai_calls for item in result.pipeline_results),
+        "ai_diagnostics": safe_diagnostics(list(getattr(result, 'ai_diagnostics', ()))),
         "pending_extractions": sum(
             item.pending_extractions for item in result.pipeline_results
         ),

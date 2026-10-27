@@ -335,6 +335,8 @@ class PendingExtraction(StrictModel):
     attempts: int = Field(default=0, ge=0)
     next_retry_at: AwareDatetime | None = None
     error_category: str | None = None
+    retry_after_explicit: bool = False
+    diagnostics: list[dict[str, Any]] = Field(default_factory=list, max_length=8)
 
 
 class PendingExtractionIndexRecord(StrictModel):
