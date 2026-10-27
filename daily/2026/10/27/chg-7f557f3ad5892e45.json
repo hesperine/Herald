@@ -1,0 +1,16 @@
+{
+  "activity_id": null,
+  "campaign_id": "campaign-8ef39adc0f9cce18-746c28cd",
+  "detected_at": "2026-10-27T19:47:55.359777Z",
+  "field_paths": [
+    "status"
+  ],
+  "id": "chg-7f557f3ad5892e45",
+  "kind": "field_updated",
+  "published_at": "2026-10-06T12:40:59Z",
+  "semantic_key": "campaign-8ef39adc0f9cce18-746c28cd:revision-2-status",
+  "source_ids": [
+    "skland-6424097"
+  ],
+  "summary": "更新：status"
+}

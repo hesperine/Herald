@@ -27,6 +27,32 @@
           "start_date": "2026-11-05",
           "title": "联动开启",
           "url": null
+        },
+        {
+          "at": null,
+          "cancelled": false,
+          "end_at": null,
+          "end_condition": null,
+          "end_date": null,
+          "ended": false,
+          "evidence": [
+            {
+              "field_path": "activities.activity-d9b5947c33cb3d2d.actions.actions-030ebf41f487d8aa",
+              "quote": "🛒「美味通行」七件套 🎁毛绒套组（毛绒×1＋透卡×1＋Q版光栅卡×1）",
+              "source_id": "skland-6424097"
+            }
+          ],
+          "id": "actions-030ebf41f487d8aa",
+          "kind": "gift",
+          "platform": null,
+          "quantity_limit": null,
+          "requires_reservation": null,
+          "requires_rush": null,
+          "rules": "「美味通行」七件套赠毛绒套组（毛绒×1＋透卡×1＋Q版光栅卡×1）；「堡已就位」四件套赠镭射卡套组（角色大镭射卡×3＋贴纸×1＋纸质谷美架×1）；两套均含联名游戏礼包兑换码1份",
+          "scope": "汉堡王联名套餐",
+          "start_date": null,
+          "title": "联名套餐赠周边套组",
+          "url": null
         }
       ],
       "end_at": null,
@@ -51,13 +77,205 @@
       "id": "activity-d9b5947c33cb3d2d",
       "kind": "food",
       "related_offers": null,
-      "rules": null,
+      "rules": "「美味通行」七件套赠毛绒套组（毛绒×1＋透卡×1＋Q版光栅卡×1）；「堡已就位」四件套赠镭射卡套组（角色大镭射卡×3＋贴纸×1＋纸质谷美架×1）；两套均含联名游戏礼包兑换码1份：头像「可爱堡堡」＋装饰物品「汉堡之王」＋折金票×5000；联名包材含主题堡盒、主题桶、主题纸袋&无纺布袋",
       "start_at": null,
       "start_date": "2026-11-05",
       "status": "details_pending",
       "title": "汉堡王×《明日方舟：终末地》联动",
       "uncertainties": [
         "具体联动形式、门店范围及任务内容未在正文说明，仅指向汉堡王官方自媒体账号。"
+      ],
+      "venues": []
+    },
+    {
+      "actions": [
+        {
+          "at": null,
+          "cancelled": false,
+          "end_at": null,
+          "end_condition": null,
+          "end_date": null,
+          "ended": false,
+          "evidence": [
+            {
+              "field_path": "activities[0].actions[0].title",
+              "quote": "更可预约参与「美味通行证任务」主题店活动",
+              "source_id": "skland-6424097"
+            },
+            {
+              "field_path": "activities[0].actions[0].requires_reservation",
+              "quote": "更可预约参与「美味通行证任务」主题店活动",
+              "source_id": "skland-6424097"
+            }
+          ],
+          "id": "action-ffa190de832616d6",
+          "kind": "reservation_open",
+          "platform": null,
+          "quantity_limit": null,
+          "requires_reservation": true,
+          "requires_rush": null,
+          "rules": "预约参与「美味通行证任务」主题店活动",
+          "scope": "全国51家联名主题店",
+          "start_date": null,
+          "title": "「美味通行证任务」主题店活动预约",
+          "url": null
+        }
+      ],
+      "end_at": null,
+      "end_date": null,
+      "evidence": [
+        {
+          "field_path": "activities[0].title",
+          "quote": "11月5日起，全国51家联名主题店换装登场，更可预约参与「美味通行证任务」主题店活动",
+          "source_id": "skland-6424097"
+        },
+        {
+          "field_path": "activities[0].start_date",
+          "quote": "11月5日起，全国51家联名主题店换装登场",
+          "source_id": "skland-6424097"
+        },
+        {
+          "field_path": "activities[0].venues[0].nationwide",
+          "quote": "全国51家联名主题店换装登场",
+          "source_id": "skland-6424097"
+        },
+        {
+          "field_path": "activities[0].actions[0].title",
+          "quote": "更可预约参与「美味通行证任务」主题店活动",
+          "source_id": "skland-6424097"
+        },
+        {
+          "field_path": "activities[0].actions[0].requires_reservation",
+          "quote": "更可预约参与「美味通行证任务」主题店活动",
+          "source_id": "skland-6424097"
+        }
+      ],
+      "id": "activity-4dc1b582dbb0f3a8",
+      "kind": "theme_store",
+      "related_offers": null,
+      "rules": "可预约参与「美味通行证任务」主题店活动",
+      "start_at": null,
+      "start_date": "2026-11-05",
+      "status": "details_pending",
+      "title": "全国51家联名主题店「美味通行证任务」",
+      "uncertainties": [
+        "51家主题店具体门店名单及城市未在正文列出",
+        "预约开放时间与名额未说明"
+      ],
+      "venues": [
+        {
+          "address": null,
+          "business_hours": null,
+          "city": null,
+          "country": "CN",
+          "evidence": [
+            {
+              "field_path": "activities[0].venues[0].nationwide",
+              "quote": "全国51家联名主题店换装登场",
+              "source_id": "skland-6424097"
+            }
+          ],
+          "id": "venue-c5d396871c670632",
+          "name": null,
+          "nationwide": true,
+          "online_platform": null,
+          "province": null
+        }
+      ]
+    },
+    {
+      "actions": [
+        {
+          "at": null,
+          "cancelled": false,
+          "end_at": null,
+          "end_condition": null,
+          "end_date": null,
+          "ended": false,
+          "evidence": [
+            {
+              "field_path": "activities[1].actions[0].requires_reservation",
+              "quote": "欢迎预约前往",
+              "source_id": "skland-6424097"
+            }
+          ],
+          "id": "action-bc58390e44c02962",
+          "kind": "reservation_open",
+          "platform": null,
+          "quantity_limit": null,
+          "requires_reservation": true,
+          "requires_rush": null,
+          "rules": "欢迎预约前往",
+          "scope": "特别快闪「开拓街头 美味据点」",
+          "start_date": null,
+          "title": "快闪「开拓街头 美味据点」预约",
+          "url": null
+        }
+      ],
+      "end_at": null,
+      "end_date": "2026-11-08",
+      "evidence": [
+        {
+          "field_path": "activities[1].title",
+          "quote": "11月7日~11月8日，特别快闪「开拓街头 美味据点」限时开启，欢迎预约前往",
+          "source_id": "skland-6424097"
+        },
+        {
+          "field_path": "activities[1].start_date",
+          "quote": "11月7日~11月8日，特别快闪「开拓街头 美味据点」限时开启",
+          "source_id": "skland-6424097"
+        },
+        {
+          "field_path": "activities[1].end_date",
+          "quote": "11月7日~11月8日，特别快闪「开拓街头 美味据点」限时开启",
+          "source_id": "skland-6424097"
+        },
+        {
+          "field_path": "activities[1].actions[0].requires_reservation",
+          "quote": "欢迎预约前往",
+          "source_id": "skland-6424097"
+        }
+      ],
+      "id": "activity-717c6c2b49c05cf3",
+      "kind": "popup",
+      "related_offers": null,
+      "rules": "欢迎预约前往",
+      "start_at": null,
+      "start_date": "2026-11-07",
+      "status": "details_pending",
+      "title": "特别快闪「开拓街头 美味据点」",
+      "uncertainties": [
+        "快闪举办城市与具体场地未在正文说明",
+        "预约开放时间未说明"
+      ],
+      "venues": []
+    },
+    {
+      "actions": [],
+      "end_at": null,
+      "end_date": null,
+      "evidence": [
+        {
+          "field_path": "activities[2].title",
+          "quote": "联动表情包11月5日即将上线",
+          "source_id": "skland-6424097"
+        },
+        {
+          "field_path": "activities[2].start_date",
+          "quote": "联动表情包11月5日即将上线",
+          "source_id": "skland-6424097"
+        }
+      ],
+      "id": "activity-61f1009f0cdcb64f",
+      "kind": "online",
+      "related_offers": null,
+      "rules": null,
+      "start_at": null,
+      "start_date": "2026-11-05",
+      "status": "details_pending",
+      "title": "联动表情包上线",
+      "uncertainties": [
+        "表情包获取平台未在正文说明"
       ],
       "venues": []
     }
@@ -72,6 +290,13 @@
       "published_at": "2026-10-06T12:40:59Z",
       "quote": "11月5日，汉堡王×《明日方舟：终末地》联动开启",
       "source_id": "skland-6366130"
+    },
+    "activities.activity-d9b5947c33cb3d2d.rules": {
+      "content_hash": "9fea3ebfe41c0a306b398feb8115f482ab6ab4f15953e3e26f63104f50a0a89b",
+      "observation_id": "skland-6424097",
+      "published_at": "2026-10-27T04:00:28Z",
+      "quote": "🛒「美味通行」七件套 🎁毛绒套组（毛绒×1＋透卡×1＋Q版光栅卡×1）",
+      "source_id": "skland-6424097"
     },
     "activities.activity-d9b5947c33cb3d2d.start_date": {
       "content_hash": "81418b4bec7f36907400d19e602ad8ec17666f06e44ab7d476063e61d55e1237",
@@ -94,6 +319,13 @@
       "quote": "汉堡王×《明日方舟：终末地》联动开启",
       "source_id": "skland-6366130"
     },
+    "status": {
+      "content_hash": "9fea3ebfe41c0a306b398feb8115f482ab6ab4f15953e3e26f63104f50a0a89b",
+      "observation_id": "skland-6424097",
+      "published_at": "2026-10-27T04:00:28Z",
+      "quote": "汉堡王 ×《明日方舟：终末地》联动详情来了！",
+      "source_id": "skland-6424097"
+    },
     "title": {
       "content_hash": "81418b4bec7f36907400d19e602ad8ec17666f06e44ab7d476063e61d55e1237",
       "observation_id": "skland-6366130",
@@ -108,7 +340,7 @@
   "ip_slug": "arknights-endfield",
   "partner": "汉堡王",
   "redirected_to": null,
-  "revision": 1,
+  "revision": 2,
   "scope_reviews": [],
   "sources": [
     {
@@ -131,9 +363,36 @@
       "summary": "发布汉堡王×《明日方舟：终末地》「美味通行，堡已就位」合作宣传PV，宣布11月5日联动开启，邀请玩家前往汉堡王完成特别任务，详情待汉堡王官方账号公布。",
       "updated_at": null,
       "url": "https://www.skland.com/article?id=6366130"
+    },
+    {
+      "account_id": "3737967211133",
+      "account_name": "明日方舟终末地",
+      "canonical_content_id": "6424097",
+      "content_hash": "9fea3ebfe41c0a306b398feb8115f482ab6ab4f15953e3e26f63104f50a0a89b",
+      "excerpt": "汉堡王 ×《明日方舟：终末地》联动详情\n汉堡王 ×《明日方舟：终末地》联动详情来了！\n管理员，请查收你的美味指南~\n◆ 联名套餐 ◆\n🛒「美味通行」七件套 🎁毛绒套组（毛绒×1＋透卡×1＋Q版光栅卡×1）\n🛒「堡已就位」四件套 🎁镭射卡套组（角色大镭射卡×3＋贴纸×1＋纸质谷美架×1）\n两套均含联名游戏礼包兑换码1份：头像「可爱堡堡」＋装饰物品「汉堡之王」＋折金票×5000\n联名包材：主题堡盒、主题桶、主题纸袋&无纺布袋\n◆ 特别线下活动 ◆\n11月5日起，全国51家联名主题店换装登场，更可预约参与「美味通行证任务」主题店活动\n11月7日~11月8日，特别快闪「开拓街头 美味据点」限时开启，欢迎预约前往\n◆ 联动表情包 ◆\n联动表情包11月5日即将上线\n更多联动资讯详情，请查看下方图片~",
+      "first_seen_at": "2026-10-27T18:34:16.958329Z",
+      "id": "skland-6424097",
+      "is_official": true,
+      "kind": "skland",
+      "media_hashes": [
+        "7b2b1c0bd4867893d233789133001a3a6a84b783fc7077d35b6008ed45eb6adb",
+        "9137ebfe7f8613266482c6a7340504c539022fc340854f235b6d2bd017ba6aa7",
+        "713e17af6875646e465448d6b6cbc1a1f4ccb2952d5077e7a16be07762aaee9d",
+        "04a18afc0336f3abf5671250f48ac57066e5c179b3be3ff20594e6eac40e7dbd"
+      ],
+      "media_urls": [
+        "https://bbs.hycdn.cn/image/common/20261027/113/6ae01dc70bba2d0e26ae242d_96d20048.webp",
+        "https://bbs.hycdn.cn/image/common/20261027/113/6ae01dd928cbf869859e5f35_e71aef33.webp",
+        "https://bbs.hycdn.cn/image/common/20261027/113/6ae01f8c8861f86f358a3065_65de0095.webp",
+        "https://bbs.hycdn.cn/image/common/20261027/113/6ae01fb5b47fff85b0ef91d5_e71aef33.webp"
+      ],
+      "published_at": "2026-10-27T04:00:28Z",
+      "summary": null,
+      "updated_at": null,
+      "url": "https://www.skland.com/article?id=6424097"
     }
   ],
-  "status": "details_pending",
+  "status": "announced",
   "title": "汉堡王 ×《明日方舟：终末地》「美味通行，堡已就位」",
-  "updated_at": "2026-10-06T18:48:23.889661Z"
+  "updated_at": "2026-10-27T19:47:55.359777Z"
 }

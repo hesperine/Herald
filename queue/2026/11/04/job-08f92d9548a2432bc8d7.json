@@ -1,0 +1,17 @@
+{
+  "action_id": "activity-4dc1b582dbb0f3a8--start",
+  "activity_id": "activity-4dc1b582dbb0f3a8",
+  "campaign_id": "campaign-8ef39adc0f9cce18-746c28cd",
+  "campaign_notice": false,
+  "candidate_id": null,
+  "change_id": null,
+  "covered_candidate_ids": [],
+  "due_date": "2026-11-04",
+  "expected_at": "2026-11-05T00:00:00+08:00",
+  "expected_date": "2026-11-05",
+  "facts": {},
+  "id": "job-08f92d9548a2432bc8d7",
+  "kind": "day_before",
+  "semantic_key": "schedule:activity-4dc1b582dbb0f3a8:activity-4dc1b582dbb0f3a8--start:day_before:2026-11-05T00:00:00+08:00",
+  "summary": "明天开始：全国51家联名主题店「美味通行证任务」开始"
+}

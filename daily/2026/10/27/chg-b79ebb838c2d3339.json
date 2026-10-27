@@ -1,0 +1,14 @@
+{
+  "activity_id": "activity-d9b5947c33cb3d2d",
+  "campaign_id": "campaign-8ef39adc0f9cce18-746c28cd",
+  "detected_at": "2026-10-27T19:47:55.359777Z",
+  "field_paths": [],
+  "id": "chg-b79ebb838c2d3339",
+  "kind": "field_added",
+  "published_at": "2026-10-06T12:40:59Z",
+  "semantic_key": "campaign-8ef39adc0f9cce18-746c28cd:entity-added-actions-030ebf41f487d8aa",
+  "source_ids": [
+    "skland-6424097"
+  ],
+  "summary": "新增：联名套餐赠周边套组"
+}

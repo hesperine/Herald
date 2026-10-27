@@ -1,0 +1,12 @@
+{
+  "activity_id": "activity-61f1009f0cdcb64f",
+  "campaign_id": "campaign-8ef39adc0f9cce18-746c28cd",
+  "detected_at": "2026-10-27T19:47:55.359777Z",
+  "field_paths": [],
+  "id": "chg-bc20bfc0e1fb3b60",
+  "kind": "new_activity",
+  "published_at": "2026-10-06T12:40:59Z",
+  "semantic_key": "campaign-8ef39adc0f9cce18-746c28cd:new-activity-activity-61f1009f0cdcb64f",
+  "source_ids": [],
+  "summary": "新增活动：联动表情包上线"
+}

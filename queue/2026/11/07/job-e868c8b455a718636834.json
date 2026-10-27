@@ -1,0 +1,17 @@
+{
+  "action_id": "activity-717c6c2b49c05cf3--end",
+  "activity_id": "activity-717c6c2b49c05cf3",
+  "campaign_id": "campaign-8ef39adc0f9cce18-746c28cd",
+  "campaign_notice": false,
+  "candidate_id": null,
+  "change_id": null,
+  "covered_candidate_ids": [],
+  "due_date": "2026-11-07",
+  "expected_at": "2026-11-08T00:00:00+08:00",
+  "expected_date": "2026-11-08",
+  "facts": {},
+  "id": "job-e868c8b455a718636834",
+  "kind": "deadline",
+  "semantic_key": "schedule:activity-717c6c2b49c05cf3:activity-717c6c2b49c05cf3--end:deadline:2026-11-08T00:00:00+08:00",
+  "summary": "明天截止：特别快闪「开拓街头 美味据点」结束"
+}

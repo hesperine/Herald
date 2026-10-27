@@ -1,0 +1,17 @@
+{
+  "action_id": "activity-61f1009f0cdcb64f--start",
+  "activity_id": "activity-61f1009f0cdcb64f",
+  "campaign_id": "campaign-8ef39adc0f9cce18-746c28cd",
+  "campaign_notice": false,
+  "candidate_id": null,
+  "change_id": null,
+  "covered_candidate_ids": [],
+  "due_date": "2026-11-04",
+  "expected_at": "2026-11-05T00:00:00+08:00",
+  "expected_date": "2026-11-05",
+  "facts": {},
+  "id": "job-7f48eb879bbfeaa8fa82",
+  "kind": "day_before",
+  "semantic_key": "schedule:activity-61f1009f0cdcb64f:activity-61f1009f0cdcb64f--start:day_before:2026-11-05T00:00:00+08:00",
+  "summary": "明天开始：联动表情包上线开始"
+}

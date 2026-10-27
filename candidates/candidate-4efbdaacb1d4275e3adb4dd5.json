@@ -1,6 +1,8 @@
 {
-  "campaign_id": null,
-  "campaign_ids": [],
+  "campaign_id": "campaign-8ef39adc0f9cce18-746c28cd",
+  "campaign_ids": [
+    "campaign-8ef39adc0f9cce18-746c28cd"
+  ],
   "detected_at": "2026-10-27T18:34:16.958329Z",
   "facts": {},
   "id": "candidate-4efbdaacb1d4275e3adb4dd5",
@@ -28,5 +30,5 @@
       "url": "https://www.skland.com/article?id=6424097"
     }
   ],
-  "status": "pending"
+  "status": "structured"
 }
