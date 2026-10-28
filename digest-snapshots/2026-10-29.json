@@ -1,0 +1,35 @@
+{
+  "html": "<!doctype html><html lang=\"zh-CN\"><head><meta charset=\"utf-8\"><meta name=\"viewport\" content=\"width=device-width,initial-scale=1\"><title>HERALD 每日提醒</title></head><body style=\"margin:0;background:#f6f7f8;color:#263238;font-family:Arial,sans-serif;font-size:15px;line-height:1.6;\"><table role=\"presentation\" width=\"100%\" cellspacing=\"0\" cellpadding=\"0\" bgcolor=\"#f6f7f8\"><tr><td align=\"center\" style=\"padding:24px 12px;\"><table role=\"presentation\" width=\"640\" cellspacing=\"0\" cellpadding=\"0\" style=\"width:100%;max-width:640px;\"><tr><td><p style=\"margin:0;color:#146c59;font-size:12px;letter-spacing:2px;font-weight:bold;\">HERALD</p><h1 style=\"margin:6px 0;font-size:26px;\">游戏联动日报</h1><p style=\"margin:0;color:#617170;\">2026-10-29 · 1 项活动需要关注</p><h2 style=\"margin:24px 0 12px;font-size:17px;color:#146c59;\">即将开始或结束</h2><table role=\"presentation\" width=\"100%\" cellspacing=\"0\" cellpadding=\"0\"><tr><td style=\"padding:20px;border:1px solid #dfe5e5;border-radius:10px;background:#ffffff;\"><p style=\"margin:0 0 6px;color:#617170;font-size:12px;\">明日方舟 · 《明日方舟》× 国家图书馆「恒远津梁」</p><h3 style=\"margin:0 0 12px;font-size:19px;line-height:1.5;\">「恒远津梁」限时活动</h3><p style=\"margin:8px 0;line-height:1.7;overflow-wrap:anywhere;font-weight:600;color:#933743;\">明天截止：「恒远津梁」限时活动开启截止 · 2026-10-30 03:59</p><p style=\"margin:8px 0;line-height:1.7;overflow-wrap:anywhere;\">活动期间内，玩家累计活动签到3日可获得【绒毛读书伴侣】等活动家具奖励</p><p style=\"margin:8px 0;line-height:1.7;overflow-wrap:anywhere;\">「恒远津梁」限时活动开启 · 2026-10-16 16:00</p><p style=\"margin:8px 0;line-height:1.7;overflow-wrap:anywhere;font-weight:600;color:#933743;\">截止：2026-10-30 03:59</p><p style=\"margin:8px 0;line-height:1.7;overflow-wrap:anywhere;\">活动期间内，玩家累计活动签到3日可获得【绒毛读书伴侣】等活动家具奖励</p><p style=\"margin:16px 0 0;padding-top:12px;border-top:1px solid #e3e9e8;color:#617170;font-size:13px;\">信息依据：<a href=\"https://www.skland.com/article?id=6377234\" style=\"color:#146c59;text-decoration:underline;\">发布《明日方舟》×国家图书馆「恒远津梁」合作宣传PV，宣布双方合作。</a> · <a href=\"https://ak.hypergryph.com/news/1454.html\" style=\"color:#146c59;text-decoration:underline;\">官方公告：明日方舟×国家图书馆「恒远津梁」限时活动、组合包、新装上架，另含复刻时装、罗德岛风尚回顾与剿灭关卡追加。</a> · <a href=\"https://www.skland.com/article?id=6377283\" style=\"color:#146c59;text-decoration:underline;\">宣布明日方舟×国家图书馆「恒远津梁」限时活动即将开启。</a> · <a href=\"https://www.skland.com/article?id=6381246\" style=\"color:#146c59;text-decoration:underline;\">公布国家图书馆合作服装「盛世之象-琳琅诗怀雅」新增服饰及介绍。</a> · <a href=\"https://www.skland.com/article?id=6381801\" style=\"color:#146c59;text-decoration:underline;\">公布国家图书馆合作服装「夜行烛火-烛煌」新增服饰及介绍。</a> · <a href=\"https://www.skland.com/article?id=6383812\" style=\"color:#146c59;text-decoration:underline;\">公布国家图书馆合作服装「源远流长-黍」新增服饰及动态形象展示入口。</a> · <a href=\"https://www.skland.com/article?id=6411186\" style=\"color:#146c59;text-decoration:underline;\">复宣明日方舟×国家图书馆CROSSOVER系列三款新装限时上架及售卖时间。</a></p></td></tr><tr><td height=\"14\"></td></tr></table><p style=\"margin-top:24px;padding-top:16px;border-top:1px solid #dfe5e5;color:#617170;font-size:12px;\">信息整理自官方公告，参与条件与最终安排请以原帖为准。<br>时间以 Asia/Shanghai 显示；未公布时刻的日期不代表零点开始。</p></td></tr></table></td></tr></table></body></html>",
+  "jobs": [
+    {
+      "action_id": "action-575988781b405f84--end",
+      "activity_id": "activity-a2b7efa6c2b40d31",
+      "campaign_id": "campaign-354e1e728907e326-2cc2bdfc",
+      "campaign_notice": false,
+      "candidate_id": null,
+      "change_id": null,
+      "covered_candidate_ids": [],
+      "due_date": "2026-10-29",
+      "expected_at": "2026-10-30T03:59:00+08:00",
+      "expected_date": null,
+      "facts": {},
+      "id": "job-1729c11079552c872959",
+      "kind": "deadline",
+      "semantic_key": "schedule:activity-a2b7efa6c2b40d31:action-575988781b405f84--end:deadline:2026-10-30T03:59:00+08:00",
+      "summary": "明天截止：「恒远津梁」限时活动开启截止"
+    }
+  ],
+  "receipts": [
+    {
+      "campaign_id": null,
+      "candidate_id": null,
+      "covered_candidate_ids": [],
+      "facts": {},
+      "job_id": "job-1729c11079552c872959",
+      "public_text": "",
+      "semantic_key": "schedule:activity-a2b7efa6c2b40d31:action-575988781b405f84--end:deadline:2026-10-30T03:59:00+08:00"
+    }
+  ],
+  "subject": "游戏联动提醒：1 项需要关注",
+  "text": "游戏联动提醒 · 2026-10-29\n\n【「恒远津梁」限时活动】\n《明日方舟》× 国家图书馆「恒远津梁」\n明天截止：「恒远津梁」限时活动开启截止\n「恒远津梁」限时活动开启：2026-10-16 16:00\n截止：2026-10-30 03:59\n活动期间内，玩家累计活动签到3日可获得【绒毛读书伴侣】等活动家具奖励\n信息依据：发布《明日方舟》×国家图书馆「恒远津梁」合作宣传PV，宣布双方合作。 https://www.skland.com/article?id=6377234\n信息依据：官方公告：明日方舟×国家图书馆「恒远津梁」限时活动、组合包、新装上架，另含复刻时装、罗德岛风尚回顾与剿灭关卡追加。 https://ak.hypergryph.com/news/1454.html\n信息依据：宣布明日方舟×国家图书馆「恒远津梁」限时活动即将开启。 https://www.skland.com/article?id=6377283\n信息依据：公布国家图书馆合作服装「盛世之象-琳琅诗怀雅」新增服饰及介绍。 https://www.skland.com/article?id=6381246\n信息依据：公布国家图书馆合作服装「夜行烛火-烛煌」新增服饰及介绍。 https://www.skland.com/article?id=6381801\n信息依据：公布国家图书馆合作服装「源远流长-黍」新增服饰及动态形象展示入口。 https://www.skland.com/article?id=6383812\n信息依据：复宣明日方舟×国家图书馆CROSSOVER系列三款新装限时上架及售卖时间。 https://www.skland.com/article?id=6411186\n"
+}
