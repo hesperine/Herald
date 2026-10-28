@@ -1,166 +1,283 @@
 {
   "cards": [
     {
-      "activity": null,
-      "activity_id": null,
-      "campaign_id": "campaign-f624c9e27ceba257-ebe97034",
-      "campaign_notice": true,
-      "campaign_title": "明日方舟 2026感谢庆典「故土新程」主题快闪",
-      "detail_campaign_id": "campaign-f624c9e27ceba257-ebe97034",
+      "activity": {
+        "actions": [
+          {
+            "at": "2026-10-16T16:00:00+08:00",
+            "cancelled": false,
+            "end_at": "2026-10-30T03:59:00+08:00",
+            "end_condition": null,
+            "end_date": null,
+            "ended": false,
+            "evidence": [],
+            "id": "action-575988781b405f84",
+            "kind": "event_start",
+            "platform": null,
+            "quantity_limit": null,
+            "requires_reservation": null,
+            "requires_rush": null,
+            "rules": "活动期间内，玩家累计活动签到3日可获得【绒毛读书伴侣】等活动家具奖励",
+            "scope": null,
+            "start_date": null,
+            "title": "「恒远津梁」限时活动开启",
+            "url": null
+          }
+        ],
+        "end_at": "2026-10-30T03:59:00+08:00",
+        "end_date": null,
+        "evidence": [
+          {
+            "field_path": "activities[0].start_at",
+            "quote": "活动时间：10月16日 16:00 - 10月30日 03:59",
+            "source_id": "website-arknights-official-1454"
+          },
+          {
+            "field_path": "activities[0].end_at",
+            "quote": "活动时间：10月16日 16:00 - 10月30日 03:59",
+            "source_id": "website-arknights-official-1454"
+          },
+          {
+            "field_path": "activities[0].rules",
+            "quote": "活动期间内，玩家累计活动签到3日可获得【绒毛读书伴侣】等活动家具奖励",
+            "source_id": "website-arknights-official-1454"
+          }
+        ],
+        "id": "activity-a2b7efa6c2b40d31",
+        "kind": "in_game",
+        "related_offers": null,
+        "rules": "活动期间内，玩家累计活动签到3日可获得【绒毛读书伴侣】等活动家具奖励",
+        "start_at": "2026-10-16T16:00:00+08:00",
+        "start_date": null,
+        "status": "ongoing",
+        "title": "「恒远津梁」限时活动",
+        "uncertainties": [],
+        "venues": []
+      },
+      "activity_id": "activity-a2b7efa6c2b40d31",
+      "campaign_id": "campaign-354e1e728907e326-2cc2bdfc",
+      "campaign_notice": false,
+      "campaign_title": "《明日方舟》× 国家图书馆「恒远津梁」",
+      "detail_campaign_id": "campaign-354e1e728907e326-2cc2bdfc",
       "extraction_status": null,
       "ip_name": "明日方舟",
       "reasons": [
         {
-          "action_id": "activity-9d7f7f0b48e57906--start",
-          "date_only": "2026-10-29",
-          "expected_at": "2026-10-29T00:00:00+08:00",
-          "kind": "day_before",
-          "summary": "明天开始：明日方舟2026感谢庆典「故土新程」主题快闪活动开始"
-        },
-        {
-          "action_id": null,
+          "action_id": "action-575988781b405f84--end",
           "date_only": null,
-          "expected_at": null,
-          "kind": "update",
-          "summary": "活动更新\n明日方舟2026感谢庆典「故土新程」主题快闪活动\n开始日期：2026-10-29\n截止日期：2026-11-08\n地点:city：广州\n明日方舟2026感谢庆典「故土新程」主题快闪活动 / 官方周边快闪店预约开启\n开始日期：2026-10-25\n规则：本次官方周边快闪店为预约制，提前完成预约的博士可在指定时间进店购物，并享当日画廊优先入场。现场将根据人流情况机动开放临时预约名额。\n适用范围：上海场：百联ZX创趣场【META ZX】小程序；广州场：https://b23.tv/13Ppp1r\n需预约：是"
+          "expected_at": "2026-10-30T03:59:00+08:00",
+          "kind": "deadline",
+          "summary": "明天截止：「恒远津梁」限时活动开启截止"
         }
       ],
       "sources": [
         {
           "account_id": "7779816949641",
           "account_name": "明日方舟Arknights",
-          "canonical_content_id": "6415406",
-          "content_hash": "091f161c44012defebbb7671faa4d6d8e56f779ab6b0a6767189b1769ee3da44",
-          "excerpt": "《明日方舟》2026感谢庆典前瞻特别节目未来内容预告\n《明日方舟》2026感谢庆典前瞻特别节目现已结束。我们将在之后上传本次节目录像，感谢大家的支持。\n==《明日方舟》2026感谢庆典前瞻特别节目未来内容预告==\nP1-《明日方舟》新活动前瞻，将于后续开启\nP2- 「卫戍协议」、「危机合约」等更多活动将于后续开启\nP3-  明日方舟携手名创优品 ，邀博士共赴茶会，叙一杯焦糖色的午后。\nP4- 《明日方舟》有声剧「风雪过境」现已正式上架喜马拉雅\nP5- 《罗德岛学院》即将开播、《明日方舟:黎明前奏》《明日方舟:冬隐归路》《明日方舟:焰烬曙明》主线动画bilibili全集限时免费播出\nP6- 明日方舟2026感谢庆典「故土新程」主题快闪活动即将开启、「冻土与火种」网页活动、「燃烧即一切」网页活动现已开启\nP7-  官方漫画《序言组曲：火与路》即将上线、《序言组曲：孤行之人》实体漫画正在筹备中、《明日方舟官方美术设定集 VOL.5》即将开售！\nP8-明日方舟 1/7手办 【赤刃明霄陈 精英二ver.】彩模公开、【塔露拉】企划公开！【蕾缪安 布道人ver.】&【史尔特尔 超然序曲ver.】正在",
-          "first_seen_at": "2026-10-24T16:27:09.090923Z",
-          "id": "skland-6415406",
+          "canonical_content_id": "6377234",
+          "content_hash": "6ee71d1750c863bb65491b7a8a0c885b7dff413c0821c10ed35710397ec1c274",
+          "excerpt": "《明日方舟》× 国家图书馆「恒远津梁」合作宣传PV\n思想以典籍为舟，横渡岁月，沿流千载。\n亘古的文明先声，于今时回荡不绝。\n明日方舟携手国家图书馆，邀博士共览书卷，踏上今昔记忆的津梁。",
+          "first_seen_at": "2026-10-23T17:44:25.376551Z",
+          "id": "skland-6377234",
           "is_official": true,
           "kind": "skland",
           "media_hashes": [
-            "3c7e70e2abb003fa6aa39f125f23d859190e2c975ec08877a5edac1a39d7060a",
-            "0a4f1bb72f6ac445b8c596646300a42bede7ab7f2d5811619f1429640ce457ea",
-            "412dee26c5624e162ff185a44c419ac2276ad4de55fd3af92301b721fb1871b1",
-            "3a12a8de5fd77d3599c47d31c04bc49d0d01ac391c56185ee65c30c90671d6ba",
-            "6ecfc8b4ba914327d31a662114a22c34ef04cd47af543a1bffda67988113e4b9",
-            "4c1869f3b03e439c83b40654fe743008db5f0983b8a3ad885d89c5c1fd607c50",
-            "6909a0cc49b79ea153ad844adb9699cfc89cfad19f32a5aeffdeb3f903ae04d2",
-            "7aa00b95672ef94ceef9c2d62bb3c7bbf345b606fd60695cc45b21a4fc7ff634",
-            "79b3561c1c5995f98ec4ce5a69321bac448712a791af12b1cafbdf85664e7aaf"
+            "e2c9d082cf42edbae816cb5914dec5ac39187798d99e34a1a68b4e9133c3c479"
           ],
           "media_urls": [
-            "https://bbs.hycdn.cn/image/common/20261024/115/6adc9cbced989a2c1f4732f1_004865de.webp",
-            "https://bbs.hycdn.cn/image/common/20261024/115/6adc9be78b6b0c26bfc56ee2_65de0095.webp",
-            "https://bbs.hycdn.cn/image/common/20261024/115/6adc9be715b766b1b8684e9a_0095c241.webp",
-            "https://bbs.hycdn.cn/image/common/20261024/115/6adc9be79b052e6236f0cf9d_91c496d2.webp",
-            "https://bbs.hycdn.cn/image/common/20261024/115/6adc9be7f6506aa250a6baf8_65de0095.webp",
-            "https://bbs.hycdn.cn/image/common/20261024/115/6adc9be74d8f43a101bef238_96d20048.webp",
-            "https://bbs.hycdn.cn/image/common/20261024/115/6adc9be721f467a0bfca1b7c_65de0095.webp",
-            "https://bbs.hycdn.cn/image/common/20261024/115/6adc9be7793f69bb8b468842_ef3391c4.webp",
-            "https://bbs.hycdn.cn/image/common/20261024/115/6adc9be7ddc0f89b712275fc_004865de.webp"
+            "https://bbs.hycdn.cn/image/common/20261010/115/6aca4009eac312a50a66686d_ef3391c4.webp"
           ],
-          "published_at": "2026-10-24T13:16:13Z",
-          "summary": "《明日方舟》2026感谢庆典前瞻特别节目未来内容预告，公布新活动、联动、动画、周边及2026感谢庆典「故土新程」主题快闪活动即将开启等信息。",
+          "published_at": "2026-10-11T03:00:38Z",
+          "summary": "发布《明日方舟》×国家图书馆「恒远津梁」合作宣传PV，宣布双方合作。",
           "updated_at": null,
-          "url": "https://www.skland.com/article?id=6415406"
+          "url": "https://www.skland.com/article?id=6377234"
+        },
+        {
+          "account_id": "arknights-official",
+          "account_name": "明日方舟官方公告",
+          "canonical_content_id": "1454",
+          "content_hash": "502e02302f67e37fbc19b71af4e10221d03858521a6e6b9ed856060b694148bf",
+          "excerpt": "【明日方舟×国家图书馆】「恒远津梁」限时活动即将开启\n一、【明日方舟×国家图书馆】，「恒远津梁」限时活动开启\n活动时间：10月16日 16:00 - 10月30日 03:59\n活动说明：活动期间内，玩家累计活动签到3日可获得【绒毛读书伴侣】等活动家具奖励\n二、【明日方舟×国家图书馆】，组合包限时上架\n活动时间：10月16日 16:00 - 11月06日 03:59\n活动说明：活动期间，采购中心将限时售卖以下组合包\n[博览群书组合包]\n组合包内容：合成玉*800、头像“山海踏夜”*1、头像“永乐长安”*1、头像“探源开物”*1\n三、【明日方舟×国家图书馆】，新装限时上架\n活动时间：10月16日 16:00 - 11月06日 03:59\n活动说明：活动期间以下干员新增时装将在时装商店上架并限时贩售\n◆【CROSSOVER】系列 - 源远流长 - 黍\n◆【CROSSOVER】系列 - 夜行烛火 - 烛煌\n◆【CROSSOVER】系列 - 盛世之象 - 琳琅诗怀雅\n注意：\n◆以上【明日方舟×国家图书馆】时装不可使用【时装自选凭证】道具兑换\n四、礼包限时上架\n售卖时间：10月16日 16:00 ",
+          "first_seen_at": "2026-10-23T17:44:25.376551Z",
+          "id": "website-arknights-official-1454",
+          "is_official": true,
+          "kind": "website",
+          "media_hashes": [
+            "7f7775bd75f64a6045c1472e92847ecf82247d8946247c95746e46d12fdd2c11",
+            "2201e639e44c2764295c58fe6bf2a7d496451f28ff2755bf1a5259d59fd6f84b",
+            "c85b2250c8ee005b3d9e7c519c03013bd85643e9727f265014902aec844199a2",
+            "f1f67a5418e3087b429067376e058dc7a94ea443b8fbf6f3babb07e7651a6091",
+            "d8ba50ce17875cea3747b38a32d4a297d8a814c75b407429b4fbbd29826f9ca2",
+            "be669c24e46bbfad7973ab42494405e2e0a8962ff4166d4c9ed63d4143e19a3e",
+            "bb3fc4a807003aca8867ab14a6f4cb70444ecea5023e7f4c88cb7351052061cd",
+            "8246c83c77ff24120a1d895c8f4da12e202f0046780b515f0a63910926a185ac",
+            "8cc14ed279bdc32d26a2a77c207a4e707c3389127073e19082afa8fa4aaded50",
+            "da9e33e356d4b7ce5e1d7b2e27a72809883c7c9791572fb00092ce590984c4d5",
+            "5ebdaaa1258e83fac738211fce70381b7f1c22836d052d77f53abc7fe626e140",
+            "640a3ce34cd415fa027795d30179b4499ca15fdc06dc750ae30ca5afff313c8b"
+          ],
+          "media_urls": [
+            "https://web.hycdn.cn/upload/image/20261008/e493ee34fe5d994546ee11d40ee56ccd.JPG",
+            "https://web.hycdn.cn/upload/image/20261008/1a8259ede784619b266e01186e1e3e06.JPG",
+            "https://web.hycdn.cn/upload/image/20261008/e934f0669849f8da1602e740ee322793.JPG",
+            "https://web.hycdn.cn/upload/image/20261008/64609196d5f0752fd774deb7e479921b.JPG",
+            "https://web.hycdn.cn/upload/image/20261008/6ad9824105c1761c2668e60d8c281ba9.JPG",
+            "https://web.hycdn.cn/upload/image/20261008/5914c3bbe423671504263bc58c5c3938.JPG",
+            "https://web.hycdn.cn/upload/image/20261008/7d0f8afd2b0ff1358cbe3b47336eba84.JPG",
+            "https://web.hycdn.cn/upload/image/20261008/d907a9308056522435154b70857f5a8e.JPG",
+            "https://web.hycdn.cn/upload/image/20261008/a56ffebc5f44dc9d1fe2e98a25807958.JPG",
+            "https://web.hycdn.cn/upload/image/20261008/7866ceee7d4167d317d1db496adae760.JPG",
+            "https://web.hycdn.cn/upload/image/20261008/9fdb67c6667984ea4fa1be6633cdc4af.JPG",
+            "https://web.hycdn.cn/upload/image/20261008/2ff66891a7ffb02a080225c97c335c36.JPG"
+          ],
+          "published_at": "2026-10-11T03:00:00Z",
+          "summary": "官方公告：明日方舟×国家图书馆「恒远津梁」限时活动、组合包、新装上架，另含复刻时装、罗德岛风尚回顾与剿灭关卡追加。",
+          "updated_at": null,
+          "url": "https://ak.hypergryph.com/news/1454.html"
         },
         {
           "account_id": "7779816949641",
           "account_name": "明日方舟Arknights",
-          "canonical_content_id": "6418723",
-          "content_hash": "f144fe9b4f27c0bcd9366f165660309ef6d25255479af6a2d3c97a06f4659a2e",
-          "excerpt": "明日方舟2026感谢庆典「故土新程」主题快闪活动即将开启\n【活动地点】上海、广州\n【活动时间】\n· 打卡活动：2026年10月29日-11月1日\n· 故土新程主题画廊：2026年10月29日-11月8日\n· 朝陇山休憩处-官方周边快闪店：2026年10月29日-11月8日\n· 博士回归：2026年10月29日-11月8日\n*10月29日所有快闪活动将从13:00开始运营\n*故土新程主题画廊-上海场将特别延长运营至2026年11月15日\n【预约说明】\n本次官方周边快闪店为预约制，提前完成预约的博士可在指定时间进店购物，并享当日画廊优先入场。现场将根据人流情况机动开放临时预约名额。\n预约开启时间：2026年10月25日 20:00\n【预约入口】\n1. 上海场：百联ZX创趣场【META ZX】小程序\n2. 广州场：https://b23.tv/13Ppp1r\n*若点击链接无法自动跳转，请复制链接至浏览器。\n*预约方式及更多活动信息详见配图，周边商品贩售信息请持续关注明日方舟朝陇山官方账号。",
-          "first_seen_at": "2026-10-25T16:58:38.560947Z",
-          "id": "skland-6418723",
+          "canonical_content_id": "6377283",
+          "content_hash": "8bf1ded446c278e33d5f06cd67c0a9585083f3be53ddc799a1f3a5c36115cce1",
+          "excerpt": "【明日方舟×国家图书馆】「恒远津梁」限时活动即将开启",
+          "first_seen_at": "2026-10-23T17:44:25.376551Z",
+          "id": "skland-6377283",
           "is_official": true,
           "kind": "skland",
           "media_hashes": [
-            "bb5d2b50a3bb92d54c8c484b2fc14cc6ccf99f8a4e12f3321c256dfb509edf1d",
-            "b60db354210dda290a739db0881b39ef7f47a39cb5d0c0dcac96415f5cee404a",
-            "aa504989206731be1f77a4c0044839a38679e3f24dc068082768e58995d3e96c",
-            "c28d387a1f129dcc7aacd5e3f14f98225cfb00130908ea685f4d79070d75b5be"
+            "e1a951dc151a56a2891cb1aa69a8f786c6e3a88579d8b920789ee69370c2bbd4"
           ],
           "media_urls": [
-            "https://bbs.hycdn.cn/image/common/20261025/115/6add7b3aef44e98a0106a32b_004865de.webp",
-            "https://bbs.hycdn.cn/image/common/20261025/115/6add7b4a3ec4be1dfe8a6ac2_004865de.webp",
-            "https://bbs.hycdn.cn/image/common/20261025/115/6add7b4a28cbf869859e5ddf_96d20048.webp",
-            "https://bbs.hycdn.cn/image/common/20261025/115/6add7b4ab9aaeb999035dfbc_ef3391c4.webp"
+            "https://bbs.hycdn.cn/image/common/20261020/115/6ad76c9e9da5ba571c0224ac_96d20048.webp"
           ],
-          "published_at": "2026-10-25T04:00:05Z",
-          "summary": "公布「故土新程」主题快闪活动地点为上海、广州，列出打卡活动、主题画廊、官方周边快闪店、博士回归等子活动时间，并说明周边快闪店预约制及预约开启时间与入口。",
+          "published_at": "2026-10-11T03:05:40Z",
+          "summary": "宣布明日方舟×国家图书馆「恒远津梁」限时活动即将开启。",
           "updated_at": null,
-          "url": "https://www.skland.com/article?id=6418723"
-        }
-      ]
-    },
-    {
-      "activity": null,
-      "activity_id": null,
-      "campaign_id": "campaign-8ef39adc0f9cce18-746c28cd",
-      "campaign_notice": true,
-      "campaign_title": "汉堡王 ×《明日方舟：终末地》「美味通行，堡已就位」",
-      "detail_campaign_id": "campaign-8ef39adc0f9cce18-746c28cd",
-      "extraction_status": null,
-      "ip_name": "明日方舟：终末地",
-      "reasons": [
-        {
-          "action_id": null,
-          "date_only": null,
-          "expected_at": null,
-          "kind": "update",
-          "summary": "活动更新\n汉堡王×《明日方舟：终末地》联动\n规则：「美味通行」七件套赠毛绒套组（毛绒×1＋透卡×1＋Q版光栅卡×1）；「堡已就位」四件套赠镭射卡套组（角色大镭射卡×3＋贴纸×1＋纸质谷美架×1）；两套均含联名游戏礼包兑换码1份：头像「可爱堡堡」＋装饰物品「汉堡之王」＋折金票×5000；联名包材含主题堡盒、主题桶、主题纸袋&无纺布袋\n汉堡王×《明日方舟：终末地》联动 / 联名套餐赠周边套组\n规则：「美味通行」七件套赠毛绒套组（毛绒×1＋透卡×1＋Q版光栅卡×1）；「堡已就位」四件套赠镭射卡套组（角色大镭射卡×3＋贴纸×1＋纸质谷美架×1）；两套均含联名游戏礼包兑换码1份\n适用范围：汉堡王联名套餐\n全国51家联名主题店「美味通行证任务」\n规则：可预约参与「美味通行证任务」主题店活动\n全国51家联名主题店「美味通行证任务」 / 「美味通行证任务」主题店活动预约\n规则：预约参与「美味通行证任务」主题店活动\n适用范围：全国51家联名主题店\n需预约：是\n特别快闪「开拓街头 美味据点」\n开始日期：2026-11-07\n截止日期：2026-11-08\n规则：欢迎预约前往\n特别快闪「开拓街头 美味据点」 / 快闪「开拓街头 美味据点」预约\n适用范围：特别快闪「开拓街头 美味据点」\n需预约：是\n联动表情包上线（详情待公布）"
-        }
-      ],
-      "sources": [
-        {
-          "account_id": "3737967211133",
-          "account_name": "明日方舟终末地",
-          "canonical_content_id": "6366130",
-          "content_hash": "81418b4bec7f36907400d19e602ad8ec17666f06e44ab7d476063e61d55e1237",
-          "excerpt": "汉堡王 ×《明日方舟：终末地》「美味通行，堡已就位」合作宣传PV\n美味通行，堡已就位！\n11月5日，汉堡王×《明日方舟：终末地》联动开启，\n和干员们相约汉堡王、完成美味特别任务吧~\n更多联动详情敬请关注汉堡王官方自媒体账号。",
-          "first_seen_at": "2026-10-06T18:48:23.889661Z",
-          "id": "skland-6366130",
-          "is_official": true,
-          "kind": "skland",
-          "media_hashes": [
-            "16b6b643fa91055a51719ff668824d4a306122d4fa0e2c2b6a034f18398586a1"
-          ],
-          "media_urls": [
-            "https://bbs.hycdn.cn/image/common/20261006/113/6ac4bd980bba2d0e26ae09a7_65de0095.webp"
-          ],
-          "published_at": "2026-10-06T12:40:59Z",
-          "summary": "发布汉堡王×《明日方舟：终末地》「美味通行，堡已就位」合作宣传PV，宣布11月5日联动开启，邀请玩家前往汉堡王完成特别任务，详情待汉堡王官方账号公布。",
-          "updated_at": null,
-          "url": "https://www.skland.com/article?id=6366130"
+          "url": "https://www.skland.com/article?id=6377283"
         },
         {
-          "account_id": "3737967211133",
-          "account_name": "明日方舟终末地",
-          "canonical_content_id": "6424097",
-          "content_hash": "9fea3ebfe41c0a306b398feb8115f482ab6ab4f15953e3e26f63104f50a0a89b",
-          "excerpt": "汉堡王 ×《明日方舟：终末地》联动详情\n汉堡王 ×《明日方舟：终末地》联动详情来了！\n管理员，请查收你的美味指南~\n◆ 联名套餐 ◆\n🛒「美味通行」七件套 🎁毛绒套组（毛绒×1＋透卡×1＋Q版光栅卡×1）\n🛒「堡已就位」四件套 🎁镭射卡套组（角色大镭射卡×3＋贴纸×1＋纸质谷美架×1）\n两套均含联名游戏礼包兑换码1份：头像「可爱堡堡」＋装饰物品「汉堡之王」＋折金票×5000\n联名包材：主题堡盒、主题桶、主题纸袋&无纺布袋\n◆ 特别线下活动 ◆\n11月5日起，全国51家联名主题店换装登场，更可预约参与「美味通行证任务」主题店活动\n11月7日~11月8日，特别快闪「开拓街头 美味据点」限时开启，欢迎预约前往\n◆ 联动表情包 ◆\n联动表情包11月5日即将上线\n更多联动资讯详情，请查看下方图片~",
-          "first_seen_at": "2026-10-27T18:34:16.958329Z",
-          "id": "skland-6424097",
+          "account_id": "7779816949641",
+          "account_name": "明日方舟Arknights",
+          "canonical_content_id": "6381246",
+          "content_hash": "97586d38e6a635645d364eed33714e4781e12b37603d12dd7dec0ff765d04685",
+          "excerpt": "【新增服饰】国家图书馆合作服装-盛世之象-琳琅诗怀雅\n【新增服饰】\n//盛世之象 - 琳琅诗怀雅\n国家图书馆合作服装/盛世之象。诗怀雅在参加文化庆典时穿着的服装。医、技、艺、工，各个展位被她装点得琳琅满目，她将历史穿在身上，盛迎天下贵宾。\n_____________\n“古人编纂典籍记录知识，今人承继智慧，我要做的就是贯通融会，古为今用，让龙门再多点新光景！怎么样，不赖吧？”",
+          "first_seen_at": "2026-10-23T17:44:25.376551Z",
+          "id": "skland-6381246",
           "is_official": true,
           "kind": "skland",
           "media_hashes": [
-            "7b2b1c0bd4867893d233789133001a3a6a84b783fc7077d35b6008ed45eb6adb",
-            "9137ebfe7f8613266482c6a7340504c539022fc340854f235b6d2bd017ba6aa7",
-            "713e17af6875646e465448d6b6cbc1a1f4ccb2952d5077e7a16be07762aaee9d",
-            "04a18afc0336f3abf5671250f48ac57066e5c179b3be3ff20594e6eac40e7dbd"
+            "ad01af21c421d53d6cd1c7901c439c4f32b1837dc4b8f0307534a541ec9dfa0c",
+            "0fd9e909af5003a15911bd3ffe870db61e689bc2ce89acda99414231f0f51222",
+            "78603137f2a6e86c19fb226300d4fde337f506ef31ca7cacb7afa11b9ceeb6cc",
+            "461431f402a5767e4474b5fa80c959cb054d0c49ab73bc9632a1663b959a0ac6",
+            "fb18fe340983e9beef964c406a17607748f3cd81b8091c43067b3f187a71f229",
+            "ab1a7dfa770886db6f2c7e598305f8b404615d74112ed9e1749d50ea5e4bb8e9",
+            "4e251047c20c4826d9a9e948aa8525de19b4a1a507f16a429229aeb7fdbab6fd"
           ],
           "media_urls": [
-            "https://bbs.hycdn.cn/image/common/20261027/113/6ae01dc70bba2d0e26ae242d_96d20048.webp",
-            "https://bbs.hycdn.cn/image/common/20261027/113/6ae01dd928cbf869859e5f35_e71aef33.webp",
-            "https://bbs.hycdn.cn/image/common/20261027/113/6ae01f8c8861f86f358a3065_65de0095.webp",
-            "https://bbs.hycdn.cn/image/common/20261027/113/6ae01fb5b47fff85b0ef91d5_e71aef33.webp"
+            "https://bbs.hycdn.cn/image/common/20261012/115/6acc819d36696a39d3c3533f_004865de.webp",
+            "https://bbs.hycdn.cn/image/common/20261012/115/6acc81b135923f25b275ce46_65de0095.gif",
+            "https://bbs.hycdn.cn/image/common/20261012/115/6acc81b60bba2d0e26ae11bc_0095c241.gif",
+            "https://bbs.hycdn.cn/image/common/20261012/115/6acc81c48861f86f358a17ea_65de0095.gif",
+            "https://bbs.hycdn.cn/image/common/20261012/115/6acc81d5eac312a50a666a71_65de0095.gif",
+            "https://bbs.hycdn.cn/image/common/20261012/115/6acc81db8af11c747f2e2e6b_e71aef33.gif",
+            "https://bbs.hycdn.cn/image/common/20261012/115/6acc81e3ed989a2c1f471c7a_96d20048.gif"
           ],
-          "published_at": "2026-10-27T04:00:28Z",
-          "summary": null,
+          "published_at": "2026-10-12T07:05:22Z",
+          "summary": "公布国家图书馆合作服装「盛世之象-琳琅诗怀雅」新增服饰及介绍。",
           "updated_at": null,
-          "url": "https://www.skland.com/article?id=6424097"
+          "url": "https://www.skland.com/article?id=6381246"
+        },
+        {
+          "account_id": "7779816949641",
+          "account_name": "明日方舟Arknights",
+          "canonical_content_id": "6381801",
+          "content_hash": "16ab14d33b96d73b876ffb83017819569668858fa28db5acfe79bdc9e6e7cca3",
+          "excerpt": "【新增服饰】国家图书馆合作服装-夜行烛火-烛煌\n【新增服饰】\n//夜行烛火 - 烛煌\n国家图书馆合作服装/夜行烛火。煌在游历炎国各方异域时所穿的服装。书中山海万象，手中炽焰长明，奇珍瑞兽相伴身侧，她踏焰前行。\n_____________\n顺着书上的描述，跨越五方山川，渡去四海之外，煌终于见到了传说中的生物。“你的名字应该是，呃......这个古字怎么念来着？”",
+          "first_seen_at": "2026-10-23T17:44:25.376551Z",
+          "id": "skland-6381801",
+          "is_official": true,
+          "kind": "skland",
+          "media_hashes": [
+            "b9653870776df0271251e91e37515579adad0daf094fd5ea4ab489fe90b1404c",
+            "da2a51f2c14d01f889e0848df923114f8d2db4368349e90c7aef073ccb8f61b2",
+            "af544c3ab5c0345032316e70d450b9ad28b44a85cfd3184a3f3107eae39cb887",
+            "45d843a06b0071437f9f12a03cb13a56e875c3c3b285e58be38011ef93f6384a",
+            "cba02b73d26bdb99dffbbecac2abf5d33cd65d62b916dc8ef29ee917d306d764",
+            "2a39fa2468742ce66e86176a1f349bd2a5085ddda437eb2611149e0bd4d1aae2",
+            "26244a936f2071e467383bd7cdf6a43e86040c946ee0e88d0bd82fb45e98f310"
+          ],
+          "media_urls": [
+            "https://bbs.hycdn.cn/image/common/20261012/115/6accd035eac312a50a666ac7_91c496d2.webp",
+            "https://bbs.hycdn.cn/image/common/20261012/115/6accd042ed989a2c1f471cb7_65de0095.gif",
+            "https://bbs.hycdn.cn/image/common/20261012/115/6accd0470fae4186b1e90b30_004865de.gif",
+            "https://bbs.hycdn.cn/image/common/20261012/115/6accd059d2041cf262b2217d_96d20048.gif",
+            "https://bbs.hycdn.cn/image/common/20261012/115/6accd0743ec4be1dfe8a5c31_96d20048.gif",
+            "https://bbs.hycdn.cn/image/common/20261012/115/6accd07b1add8879b04f60b4_91c496d2.gif",
+            "https://bbs.hycdn.cn/image/common/20261012/115/6accd086185ed109d66b52e3_65de0095.gif"
+          ],
+          "published_at": "2026-10-13T07:00:47Z",
+          "summary": "公布国家图书馆合作服装「夜行烛火-烛煌」新增服饰及介绍。",
+          "updated_at": null,
+          "url": "https://www.skland.com/article?id=6381801"
+        },
+        {
+          "account_id": "7779816949641",
+          "account_name": "明日方舟Arknights",
+          "canonical_content_id": "6383812",
+          "content_hash": "28fdfbbabbe3ec342b2d2ba4699f70fece7f8641b24b91ed9d805cbb3f825648",
+          "excerpt": "【新增服饰】国家图书馆合作服装-源远流长-黍\n【新增服饰】\n//源远流长 - 黍\n国家图书馆合作服装/源远流长。黍在天师府工作时穿着的服装。古卷在她的面前展开，代代相传的智慧浮现纸上，一如脚下长河奔流不息，一径向前。\n_____________\n“春雨少，用水浇；夏雨多，开渠道。”黍还记得很久以前她和人们一同将这则农谚记录在书卷上的情景。如今，当年的纸张已经泛黄，而她脚下稻谷青青，浓绿一片。\n点击查看动态形象时装「源远流长」动态动作展示",
+          "first_seen_at": "2026-10-23T17:44:25.376551Z",
+          "id": "skland-6383812",
+          "is_official": true,
+          "kind": "skland",
+          "media_hashes": [
+            "7eb1fedab0cf5e484cb7257acfb707db7e83da4afb10229c56baa81bd4a0badd",
+            "ce6351fdb23a082c3ff3183f711aff9513832f559b7150d7f7e71e2d8949fc2c",
+            "96d07a31b005baf7cbc1c889152cedb5baee0ad9c017da439f059d6c02c5a6d4",
+            "7483e0fe82ee5292455b1a6e335117097ac762c1dc1018d15a6fe06cafb28471",
+            "bb9ef0df0207217bfdf6877f29b6b1fa7b6ace681b66dc2d88af3492f86e15f8",
+            "fdf6dcfd0e9b2c9bad9b915a2bc21ab5815ed60dbd9cbfa56e78479a8f85b622",
+            "652319a6beea8132b608aba9ee85c1be41d98dc08d5d6efa24e1a7b83d0ce1be"
+          ],
+          "media_urls": [
+            "https://bbs.hycdn.cn/image/common/20261013/115/6ace26400bba2d0e26ae133e_004865de.webp",
+            "https://bbs.hycdn.cn/image/common/20261013/115/6ace265c3ec4be1dfe8a5d19_96d20048.gif",
+            "https://bbs.hycdn.cn/image/common/20261013/115/6ace26619da5ba571c02151c_e71aef33.gif",
+            "https://bbs.hycdn.cn/image/common/20261013/115/6ace26688861f86f358a19ff_96d20048.gif",
+            "https://bbs.hycdn.cn/image/common/20261013/115/6ace2693185ed109d66b53ef_96d20048.gif",
+            "https://bbs.hycdn.cn/image/common/20261013/115/6ace2697d2041cf262b22265_0095c241.gif",
+            "https://bbs.hycdn.cn/image/common/20261013/115/6ace26a58861f86f358a1a00_0095c241.gif"
+          ],
+          "published_at": "2026-10-14T07:00:12Z",
+          "summary": "公布国家图书馆合作服装「源远流长-黍」新增服饰及动态形象展示入口。",
+          "updated_at": null,
+          "url": "https://www.skland.com/article?id=6383812"
+        },
+        {
+          "account_id": "7779816949641",
+          "account_name": "明日方舟Arknights",
+          "canonical_content_id": "6411186",
+          "content_hash": "8e9ee535585d795f841c6df00fbb9054b67704d77c0007cd1fb3c9e0e29698d8",
+          "excerpt": "【明日方舟×国家图书馆】，新装限时上架\n◆【CROSSOVER】系列 - 源远流长 - 黍\n◆【CROSSOVER】系列 - 夜行烛火 - 烛煌\n◆【CROSSOVER】系列 - 盛世之象 - 琳琅诗怀雅\n_____________\n时装商店售卖时间：2026年10月16日 16:00 - 2026年11月6日 03:59",
+          "first_seen_at": "2026-10-23T17:44:25.376551Z",
+          "id": "skland-6411186",
+          "is_official": true,
+          "kind": "skland",
+          "media_hashes": [
+            "90500082ab2e4527785dc9cfea3d4a107580dff2e354e6cdfefafebef82f2025"
+          ],
+          "media_urls": [
+            "https://bbs.hycdn.cn/image/common/20261023/115/6adb023addc0f89b712273b9_96d20048.webp"
+          ],
+          "published_at": "2026-10-23T08:00:54Z",
+          "summary": "复宣明日方舟×国家图书馆CROSSOVER系列三款新装限时上架及售卖时间。",
+          "updated_at": null,
+          "url": "https://www.skland.com/article?id=6411186"
         }
       ]
     }
   ],
-  "date": "2026-10-28"
+  "date": "2026-10-29"
 }

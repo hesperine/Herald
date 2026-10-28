@@ -1,0 +1,62 @@
+{
+  "cards": [
+    {
+      "activity": {
+        "title": "「恒远津梁」限时活动"
+      },
+      "activity_id": "activity-a2b7efa6c2b40d31",
+      "campaign_id": "campaign-354e1e728907e326-2cc2bdfc",
+      "campaign_title": "《明日方舟》× 国家图书馆「恒远津梁」",
+      "detail_url": "event.html?id=campaign-354e1e728907e326-2cc2bdfc#activity-activity-a2b7efa6c2b40d31",
+      "extraction_status": null,
+      "ip_name": "明日方舟",
+      "reasons": [
+        {
+          "action_id": "action-575988781b405f84--end",
+          "date_only": null,
+          "expected_at": "2026-10-30T03:59:00+08:00",
+          "kind": "deadline",
+          "summary": "明天截止：「恒远津梁」限时活动开启截止"
+        }
+      ],
+      "sources": [
+        {
+          "account_name": "明日方舟Arknights",
+          "summary": "发布《明日方舟》×国家图书馆「恒远津梁」合作宣传PV，宣布双方合作。",
+          "url": "https://www.skland.com/article?id=6377234"
+        },
+        {
+          "account_name": "明日方舟官方公告",
+          "summary": "官方公告：明日方舟×国家图书馆「恒远津梁」限时活动、组合包、新装上架，另含复刻时装、罗德岛风尚回顾与剿灭关卡追加。",
+          "url": "https://ak.hypergryph.com/news/1454.html"
+        },
+        {
+          "account_name": "明日方舟Arknights",
+          "summary": "宣布明日方舟×国家图书馆「恒远津梁」限时活动即将开启。",
+          "url": "https://www.skland.com/article?id=6377283"
+        },
+        {
+          "account_name": "明日方舟Arknights",
+          "summary": "公布国家图书馆合作服装「盛世之象-琳琅诗怀雅」新增服饰及介绍。",
+          "url": "https://www.skland.com/article?id=6381246"
+        },
+        {
+          "account_name": "明日方舟Arknights",
+          "summary": "公布国家图书馆合作服装「夜行烛火-烛煌」新增服饰及介绍。",
+          "url": "https://www.skland.com/article?id=6381801"
+        },
+        {
+          "account_name": "明日方舟Arknights",
+          "summary": "公布国家图书馆合作服装「源远流长-黍」新增服饰及动态形象展示入口。",
+          "url": "https://www.skland.com/article?id=6383812"
+        },
+        {
+          "account_name": "明日方舟Arknights",
+          "summary": "复宣明日方舟×国家图书馆CROSSOVER系列三款新装限时上架及售卖时间。",
+          "url": "https://www.skland.com/article?id=6411186"
+        }
+      ]
+    }
+  ],
+  "date": "2026-10-29"
+}
