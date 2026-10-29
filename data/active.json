@@ -70,15 +70,6 @@
     {
       "activities": [
         {
-          "end_at": "2026-10-30T03:59:00+08:00",
-          "id": "activity-a2b7efa6c2b40d31",
-          "kind": "in_game",
-          "reachability": "unknown",
-          "start_at": "2026-10-16T16:00:00+08:00",
-          "status": "ongoing",
-          "title": "「恒远津梁」限时活动"
-        },
-        {
           "end_at": "2026-11-06T03:59:00+08:00",
           "id": "activity-570c6e42f30e1861",
           "kind": "merchandise",
@@ -353,70 +344,6 @@
     }
   ],
   "cards": [
-    {
-      "activity": {
-        "actions": [
-          {
-            "at": "2026-10-16T16:00:00+08:00",
-            "cancelled": false,
-            "end_at": "2026-10-30T03:59:00+08:00",
-            "end_condition": null,
-            "end_date": null,
-            "ended": false,
-            "evidence": [],
-            "id": "action-575988781b405f84",
-            "kind": "event_start",
-            "platform": null,
-            "quantity_limit": null,
-            "requires_reservation": null,
-            "requires_rush": null,
-            "rules": "活动期间内，玩家累计活动签到3日可获得【绒毛读书伴侣】等活动家具奖励",
-            "scope": null,
-            "start_date": null,
-            "title": "「恒远津梁」限时活动开启",
-            "url": null
-          }
-        ],
-        "end_at": "2026-10-30T03:59:00+08:00",
-        "end_date": null,
-        "evidence": [
-          {
-            "field_path": "activities[0].start_at",
-            "quote": "活动时间：10月16日 16:00 - 10月30日 03:59",
-            "source_id": "website-arknights-official-1454"
-          },
-          {
-            "field_path": "activities[0].end_at",
-            "quote": "活动时间：10月16日 16:00 - 10月30日 03:59",
-            "source_id": "website-arknights-official-1454"
-          },
-          {
-            "field_path": "activities[0].rules",
-            "quote": "活动期间内，玩家累计活动签到3日可获得【绒毛读书伴侣】等活动家具奖励",
-            "source_id": "website-arknights-official-1454"
-          }
-        ],
-        "id": "activity-a2b7efa6c2b40d31",
-        "kind": "in_game",
-        "related_offers": null,
-        "rules": "活动期间内，玩家累计活动签到3日可获得【绒毛读书伴侣】等活动家具奖励",
-        "start_at": "2026-10-16T16:00:00+08:00",
-        "start_date": null,
-        "status": "ongoing",
-        "title": "「恒远津梁」限时活动",
-        "uncertainties": [],
-        "venues": []
-      },
-      "campaign_id": "campaign-354e1e728907e326-2cc2bdfc",
-      "campaign_title": "《明日方舟》× 国家图书馆「恒远津梁」",
-      "ip_name": "明日方舟",
-      "next": {
-        "at": "2026-10-30T03:59:00+08:00",
-        "date": null,
-        "title": "「恒远津梁」限时活动开启截止"
-      },
-      "url": "event.html?id=campaign-354e1e728907e326-2cc2bdfc#activity-activity-a2b7efa6c2b40d31"
-    },
     {
       "activity": {
         "actions": [
@@ -1919,5 +1846,5 @@
       "url": "event.html?id=campaign-5a95cf56417b3340-57ca36df#activity-activity-fd760656e9160352"
     }
   ],
-  "generated_at": "2026-10-30T02:49:45.293090+08:00"
+  "generated_at": "2026-10-30T04:03:04.704258+08:00"
 }
