@@ -1,16 +1,5 @@
 {
   "days": {
-    "2026-10-29": [
-      {
-        "action_id": "activity-9d7f7f0b48e57906--start",
-        "activity_id": "activity-9d7f7f0b48e57906",
-        "at": "2026-10-29T00:00:00+08:00",
-        "campaign_id": "campaign-f624c9e27ceba257-ebe97034",
-        "ip_name": "明日方舟",
-        "kind": "event_start",
-        "title": "明日方舟2026感谢庆典「故土新程」主题快闪活动开始"
-      }
-    ],
     "2026-10-30": [
       {
         "action_id": "action-575988781b405f84--end",

@@ -357,110 +357,6 @@
       "activity": {
         "actions": [
           {
-            "at": null,
-            "cancelled": false,
-            "end_at": null,
-            "end_condition": null,
-            "end_date": null,
-            "ended": false,
-            "evidence": [
-              {
-                "field_path": "activities.activity-9d7f7f0b48e57906.actions.actions-1eabfebae3319f59",
-                "quote": "本次官方周边快闪店为预约制，提前完成预约的博士可在指定时间进店购物，并享当日画廊优先入场。现场将根据人流情况机动开放临时预约名额。\n预约开启时间：2026年10月25日 20:00",
-                "source_id": "skland-6418723"
-              }
-            ],
-            "id": "actions-1eabfebae3319f59",
-            "kind": "reservation_open",
-            "platform": null,
-            "quantity_limit": null,
-            "requires_reservation": true,
-            "requires_rush": null,
-            "rules": "本次官方周边快闪店为预约制，提前完成预约的博士可在指定时间进店购物，并享当日画廊优先入场。现场将根据人流情况机动开放临时预约名额。",
-            "scope": "上海场：百联ZX创趣场【META ZX】小程序；广州场：https://b23.tv/13Ppp1r",
-            "start_date": "2026-10-25",
-            "title": "官方周边快闪店预约开启",
-            "url": null
-          }
-        ],
-        "end_at": null,
-        "end_date": "2026-11-08",
-        "evidence": [
-          {
-            "field_path": "activities[0].title",
-            "quote": "明日方舟2026感谢庆典「故土新程」主题快闪活动即将开启",
-            "source_id": "skland-6415406"
-          },
-          {
-            "field_path": "activities[0].kind",
-            "quote": "明日方舟2026感谢庆典「故土新程」主题快闪活动即将开启",
-            "source_id": "skland-6415406"
-          }
-        ],
-        "id": "activity-9d7f7f0b48e57906",
-        "kind": "popup",
-        "related_offers": null,
-        "rules": null,
-        "start_at": null,
-        "start_date": "2026-10-29",
-        "status": "announced",
-        "title": "明日方舟2026感谢庆典「故土新程」主题快闪活动",
-        "uncertainties": [
-          "快闪活动具体时间、地点及参与方式尚未公布"
-        ],
-        "venues": [
-          {
-            "address": null,
-            "business_hours": null,
-            "city": "上海",
-            "country": "CN",
-            "evidence": [
-              {
-                "field_path": "activities.activity-9d7f7f0b48e57906.venues.venues-ace03388c12340a1",
-                "quote": "【活动地点】上海、广州",
-                "source_id": "skland-6418723"
-              }
-            ],
-            "id": "venues-ace03388c12340a1",
-            "name": null,
-            "nationwide": false,
-            "online_platform": null,
-            "province": null
-          },
-          {
-            "address": null,
-            "business_hours": null,
-            "city": "广州",
-            "country": "CN",
-            "evidence": [
-              {
-                "field_path": "activities.activity-9d7f7f0b48e57906.venues.venues-4c454bc9380ac562",
-                "quote": "【活动地点】上海、广州",
-                "source_id": "skland-6418723"
-              }
-            ],
-            "id": "venues-4c454bc9380ac562",
-            "name": null,
-            "nationwide": false,
-            "online_platform": null,
-            "province": null
-          }
-        ]
-      },
-      "campaign_id": "campaign-f624c9e27ceba257-ebe97034",
-      "campaign_title": "明日方舟 2026感谢庆典「故土新程」主题快闪",
-      "ip_name": "明日方舟",
-      "next": {
-        "at": "2026-10-29T00:00:00+08:00",
-        "date": "2026-10-29",
-        "title": "明日方舟2026感谢庆典「故土新程」主题快闪活动开始"
-      },
-      "url": "event.html?id=campaign-f624c9e27ceba257-ebe97034#activity-activity-9d7f7f0b48e57906"
-    },
-    {
-      "activity": {
-        "actions": [
-          {
             "at": "2026-10-16T16:00:00+08:00",
             "cancelled": false,
             "end_at": "2026-10-30T03:59:00+08:00",
@@ -972,6 +868,110 @@
         "title": "特别快闪「开拓街头 美味据点」开始"
       },
       "url": "event.html?id=campaign-8ef39adc0f9cce18-746c28cd#activity-activity-717c6c2b49c05cf3"
+    },
+    {
+      "activity": {
+        "actions": [
+          {
+            "at": null,
+            "cancelled": false,
+            "end_at": null,
+            "end_condition": null,
+            "end_date": null,
+            "ended": false,
+            "evidence": [
+              {
+                "field_path": "activities.activity-9d7f7f0b48e57906.actions.actions-1eabfebae3319f59",
+                "quote": "本次官方周边快闪店为预约制，提前完成预约的博士可在指定时间进店购物，并享当日画廊优先入场。现场将根据人流情况机动开放临时预约名额。\n预约开启时间：2026年10月25日 20:00",
+                "source_id": "skland-6418723"
+              }
+            ],
+            "id": "actions-1eabfebae3319f59",
+            "kind": "reservation_open",
+            "platform": null,
+            "quantity_limit": null,
+            "requires_reservation": true,
+            "requires_rush": null,
+            "rules": "本次官方周边快闪店为预约制，提前完成预约的博士可在指定时间进店购物，并享当日画廊优先入场。现场将根据人流情况机动开放临时预约名额。",
+            "scope": "上海场：百联ZX创趣场【META ZX】小程序；广州场：https://b23.tv/13Ppp1r",
+            "start_date": "2026-10-25",
+            "title": "官方周边快闪店预约开启",
+            "url": null
+          }
+        ],
+        "end_at": null,
+        "end_date": "2026-11-08",
+        "evidence": [
+          {
+            "field_path": "activities[0].title",
+            "quote": "明日方舟2026感谢庆典「故土新程」主题快闪活动即将开启",
+            "source_id": "skland-6415406"
+          },
+          {
+            "field_path": "activities[0].kind",
+            "quote": "明日方舟2026感谢庆典「故土新程」主题快闪活动即将开启",
+            "source_id": "skland-6415406"
+          }
+        ],
+        "id": "activity-9d7f7f0b48e57906",
+        "kind": "popup",
+        "related_offers": null,
+        "rules": null,
+        "start_at": null,
+        "start_date": "2026-10-29",
+        "status": "announced",
+        "title": "明日方舟2026感谢庆典「故土新程」主题快闪活动",
+        "uncertainties": [
+          "快闪活动具体时间、地点及参与方式尚未公布"
+        ],
+        "venues": [
+          {
+            "address": null,
+            "business_hours": null,
+            "city": "上海",
+            "country": "CN",
+            "evidence": [
+              {
+                "field_path": "activities.activity-9d7f7f0b48e57906.venues.venues-ace03388c12340a1",
+                "quote": "【活动地点】上海、广州",
+                "source_id": "skland-6418723"
+              }
+            ],
+            "id": "venues-ace03388c12340a1",
+            "name": null,
+            "nationwide": false,
+            "online_platform": null,
+            "province": null
+          },
+          {
+            "address": null,
+            "business_hours": null,
+            "city": "广州",
+            "country": "CN",
+            "evidence": [
+              {
+                "field_path": "activities.activity-9d7f7f0b48e57906.venues.venues-4c454bc9380ac562",
+                "quote": "【活动地点】上海、广州",
+                "source_id": "skland-6418723"
+              }
+            ],
+            "id": "venues-4c454bc9380ac562",
+            "name": null,
+            "nationwide": false,
+            "online_platform": null,
+            "province": null
+          }
+        ]
+      },
+      "campaign_id": "campaign-f624c9e27ceba257-ebe97034",
+      "campaign_title": "明日方舟 2026感谢庆典「故土新程」主题快闪",
+      "ip_name": "明日方舟",
+      "next": {
+        "at": "2026-11-08T00:00:00+08:00",
+        "date": "2026-11-08",
+        "title": "明日方舟2026感谢庆典「故土新程」主题快闪活动结束"
+      },
+      "url": "event.html?id=campaign-f624c9e27ceba257-ebe97034#activity-activity-9d7f7f0b48e57906"
     },
     {
       "activity": {
@@ -1919,5 +1919,5 @@
       "url": "event.html?id=campaign-5a95cf56417b3340-57ca36df#activity-activity-fd760656e9160352"
     }
   ],
-  "generated_at": "2026-10-29T07:04:06.300869+08:00"
+  "generated_at": "2026-10-30T02:49:45.293090+08:00"
 }
