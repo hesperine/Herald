@@ -3,10 +3,6 @@
   "campaign_revision": 6,
   "jobs": [
     {
-      "due_date": "2026-10-29",
-      "job_id": "job-1729c11079552c872959"
-    },
-    {
       "due_date": "2026-11-05",
       "job_id": "job-176e250d692ab96da12d"
     },
