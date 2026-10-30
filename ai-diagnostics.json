@@ -1,47 +1,4 @@
 {
-  "entries": [
-    {
-      "attempt": 1,
-      "code": "ok",
-      "elapsed_seconds": 1.379,
-      "finish_reason": "stop",
-      "http_status": 200,
-      "operation": "route_campaigns",
-      "stage": "validated",
-      "usage": {
-        "completion_tokens": 75,
-        "prompt_tokens": 1767,
-        "total_tokens": 1842
-      }
-    },
-    {
-      "attempt": 1,
-      "code": "ok",
-      "elapsed_seconds": 7.556,
-      "finish_reason": "stop",
-      "http_status": 200,
-      "operation": "resolve_campaign",
-      "stage": "validated",
-      "usage": {
-        "completion_tokens": 2066,
-        "prompt_tokens": 9067,
-        "total_tokens": 11133
-      }
-    },
-    {
-      "attempt": 1,
-      "code": "ok",
-      "elapsed_seconds": 1.423,
-      "finish_reason": "stop",
-      "http_status": 200,
-      "operation": "route_campaigns",
-      "stage": "validated",
-      "usage": {
-        "completion_tokens": 81,
-        "prompt_tokens": 2992,
-        "total_tokens": 3073
-      }
-    }
-  ],
-  "run_at": "2026-10-30T18:26:48.161359+00:00"
+  "entries": [],
+  "run_at": "2026-10-30T19:50:02.251321+00:00"
 }
