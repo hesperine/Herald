@@ -119,10 +119,62 @@
           "start_date": null,
           "title": "「美味通行证任务」主题店活动预约",
           "url": null
+        },
+        {
+          "at": "2026-11-02T13:00:00+08:00",
+          "cancelled": false,
+          "end_at": null,
+          "end_condition": null,
+          "end_date": null,
+          "ended": false,
+          "evidence": [
+            {
+              "field_path": "activities.activity-4dc1b582dbb0f3a8.actions.actions-a7c6f05108dd2e99",
+              "quote": "2026年11月2日 13:00起",
+              "source_id": "skland-6430913"
+            }
+          ],
+          "id": "actions-a7c6f05108dd2e99",
+          "kind": "reservation_open",
+          "platform": "【汉堡王+】微信小程序",
+          "quantity_limit": null,
+          "requires_reservation": true,
+          "requires_rush": null,
+          "rules": "通过【汉堡王+】微信小程序-首页热门活动-点击预约",
+          "scope": "全国51家联名主题店",
+          "start_date": "2026-11-02",
+          "title": "第一阶段主题店联名套餐+打卡活动预约",
+          "url": null
+        },
+        {
+          "at": null,
+          "cancelled": false,
+          "end_at": null,
+          "end_condition": null,
+          "end_date": "2026-11-08",
+          "ended": false,
+          "evidence": [
+            {
+              "field_path": "activities.activity-4dc1b582dbb0f3a8.actions.actions-6f81f5e38431c5d9",
+              "quote": "⏰️核销时间\n2026年11月5日 - 2026年11月8日",
+              "source_id": "skland-6430913"
+            }
+          ],
+          "id": "actions-6f81f5e38431c5d9",
+          "kind": "event_start",
+          "platform": null,
+          "quantity_limit": null,
+          "requires_reservation": true,
+          "requires_rush": null,
+          "rules": null,
+          "scope": "全国51家联名主题店",
+          "start_date": "2026-11-05",
+          "title": "主题店联名套餐+打卡活动核销",
+          "url": null
         }
       ],
       "end_at": null,
-      "end_date": null,
+      "end_date": "2026-11-08",
       "evidence": [
         {
           "field_path": "activities[0].title",
@@ -153,7 +205,7 @@
       "id": "activity-4dc1b582dbb0f3a8",
       "kind": "theme_store",
       "related_offers": null,
-      "rules": "可预约参与「美味通行证任务」主题店活动",
+      "rules": "联名套餐+打卡活动需通过【汉堡王+】微信小程序预约；全国1000+常规门店联名套餐无需预约、可直接购买",
       "start_at": null,
       "start_date": "2026-11-05",
       "status": "details_pending",
@@ -210,6 +262,32 @@
           "start_date": null,
           "title": "快闪「开拓街头 美味据点」预约",
           "url": null
+        },
+        {
+          "at": "2026-11-03T13:00:00+08:00",
+          "cancelled": false,
+          "end_at": null,
+          "end_condition": null,
+          "end_date": null,
+          "ended": false,
+          "evidence": [
+            {
+              "field_path": "activities.activity-717c6c2b49c05cf3.actions.actions-317261d0d21e5eff",
+              "quote": "2026年11月3日 13:00起",
+              "source_id": "skland-6430913"
+            }
+          ],
+          "id": "actions-317261d0d21e5eff",
+          "kind": "reservation_open",
+          "platform": "【汉堡王+】微信小程序",
+          "quantity_limit": null,
+          "requires_reservation": true,
+          "requires_rush": null,
+          "rules": "通过【汉堡王+】微信小程序-首页热门活动-点击预约",
+          "scope": "特别快闪「开拓街头 美味据点」",
+          "start_date": "2026-11-03",
+          "title": "特别快闪活动预约",
+          "url": null
         }
       ],
       "end_at": null,
@@ -239,7 +317,7 @@
       "id": "activity-717c6c2b49c05cf3",
       "kind": "popup",
       "related_offers": null,
-      "rules": "欢迎预约前往",
+      "rules": "需通过【汉堡王+】微信小程序预约前往",
       "start_at": null,
       "start_date": "2026-11-07",
       "status": "details_pending",
@@ -284,6 +362,27 @@
   "announced_at": "2026-10-06T12:40:59Z",
   "excluded_activities": [],
   "fact_provenance": {
+    "activities.activity-4dc1b582dbb0f3a8.end_date": {
+      "content_hash": "6fd9536d9c3230b4240ab5b28212503732c00e07c707dd8fc64bd5722f55e43e",
+      "observation_id": "skland-6430913",
+      "published_at": "2026-10-30T11:00:11Z",
+      "quote": "⏰️核销时间\n2026年11月5日 - 2026年11月8日",
+      "source_id": "skland-6430913"
+    },
+    "activities.activity-4dc1b582dbb0f3a8.rules": {
+      "content_hash": "6fd9536d9c3230b4240ab5b28212503732c00e07c707dd8fc64bd5722f55e43e",
+      "observation_id": "skland-6430913",
+      "published_at": "2026-10-30T11:00:11Z",
+      "quote": "*全国1000+常规门店联名套餐无需预约、可直接购买",
+      "source_id": "skland-6430913"
+    },
+    "activities.activity-717c6c2b49c05cf3.rules": {
+      "content_hash": "6fd9536d9c3230b4240ab5b28212503732c00e07c707dd8fc64bd5722f55e43e",
+      "observation_id": "skland-6430913",
+      "published_at": "2026-10-30T11:00:11Z",
+      "quote": "【汉堡王+】微信小程序-首页热门活动-点击预约",
+      "source_id": "skland-6430913"
+    },
     "activities.activity-d9b5947c33cb3d2d.actions.action-64dddfd3e38ec25c.start_date": {
       "content_hash": "81418b4bec7f36907400d19e602ad8ec17666f06e44ab7d476063e61d55e1237",
       "observation_id": "skland-6366130",
@@ -388,6 +487,96 @@
       "source_id": "skland-6424097",
       "source_media_hash": "04a18afc0336f3abf5671250f48ac57066e5c179b3be3ff20594e6eac40e7dbd",
       "source_url": "https://bbs.hycdn.cn/image/common/20261027/113/6ae01fb5b47fff85b0ef91d5_e71aef33.webp"
+    },
+    {
+      "account_name": "明日方舟终末地",
+      "asset_path": "assets/media/38d2e0410e3b4cb0b3570e0d3eb58d0691b9cc103534a40c098caba5d993b877.webp",
+      "content_type": "image/webp",
+      "sha256": "38d2e0410e3b4cb0b3570e0d3eb58d0691b9cc103534a40c098caba5d993b877",
+      "size_bytes": 86214,
+      "source_id": "skland-6430913",
+      "source_media_hash": "f1945db54923efe57159cd9908ba69299c7b9c8cb2a05c67e7bad15121ac1b72",
+      "source_url": "https://bbs.hycdn.cn/image/common/20261030/113/6ae45bdc9da5ba571c022ee3_96d20048.webp"
+    },
+    {
+      "account_name": "明日方舟终末地",
+      "asset_path": "assets/media/5cc70635a75088dba2433f6b121a1a9cf1380aac097fc268077d94885dc8dd9f.webp",
+      "content_type": "image/webp",
+      "sha256": "5cc70635a75088dba2433f6b121a1a9cf1380aac097fc268077d94885dc8dd9f",
+      "size_bytes": 131074,
+      "source_id": "skland-6430913",
+      "source_media_hash": "a8c360b68d04902328a60f64912d611c968b29fb81db5e0ef524146108d83566",
+      "source_url": "https://bbs.hycdn.cn/image/common/20261030/113/6ae45bdc0fae4186b1e92435_96d20048.webp"
+    },
+    {
+      "account_name": "明日方舟终末地",
+      "asset_path": "assets/media/7beb8daf4dfdd9d872ce921638fd0e795c83d4557b6fc1ef9d184a7720875887.webp",
+      "content_type": "image/webp",
+      "sha256": "7beb8daf4dfdd9d872ce921638fd0e795c83d4557b6fc1ef9d184a7720875887",
+      "size_bytes": 356030,
+      "source_id": "skland-6430913",
+      "source_media_hash": "4105a8a2944a57d77a031967b36658db56dfd926635dbad3b4d5fdba02785d93",
+      "source_url": "https://bbs.hycdn.cn/image/common/20261030/113/6ae45bdc0fae4186b1e92433_ef3391c4.webp"
+    },
+    {
+      "account_name": "明日方舟终末地",
+      "asset_path": "assets/media/0133e7ab7e5e85d92df82ca8840b8471332d976d1960a37f08fe7b3473135ae3.webp",
+      "content_type": "image/webp",
+      "sha256": "0133e7ab7e5e85d92df82ca8840b8471332d976d1960a37f08fe7b3473135ae3",
+      "size_bytes": 485438,
+      "source_id": "skland-6430913",
+      "source_media_hash": "3ba3193eb5edcefff32ffd7979d6b2952cd090e418afc166b6aee3cae464d36c",
+      "source_url": "https://bbs.hycdn.cn/image/common/20261030/113/6ae45bdcb8edfebe3af535ce_ef3391c4.webp"
+    },
+    {
+      "account_name": "明日方舟终末地",
+      "asset_path": "assets/media/7841d05598aa32e9d43055861e027308f23d5671611d4bb5f976f8a5db6c9798.webp",
+      "content_type": "image/webp",
+      "sha256": "7841d05598aa32e9d43055861e027308f23d5671611d4bb5f976f8a5db6c9798",
+      "size_bytes": 439556,
+      "source_id": "skland-6430913",
+      "source_media_hash": "f4eccde0f3ecefa01ad266cc4aebf1a95e3848ea4f7fdfecd4314f6be3ea656d",
+      "source_url": "https://bbs.hycdn.cn/image/common/20261030/113/6ae45bdc36696a39d3c368cf_91c496d2.webp"
+    },
+    {
+      "account_name": "明日方舟终末地",
+      "asset_path": "assets/media/dfec87e76be653844e7894ae6b2588242cfb1cd73f771fb4b4900187304c9792.webp",
+      "content_type": "image/webp",
+      "sha256": "dfec87e76be653844e7894ae6b2588242cfb1cd73f771fb4b4900187304c9792",
+      "size_bytes": 331692,
+      "source_id": "skland-6430913",
+      "source_media_hash": "d89990b9df3c1d54cb03aa597d5d781c4fe9cb9135f65a6688957d37213e72bc",
+      "source_url": "https://bbs.hycdn.cn/image/common/20261030/113/6ae45bdcc9639c798c038df3_65de0095.webp"
+    },
+    {
+      "account_name": "明日方舟终末地",
+      "asset_path": "assets/media/6eba96379244a5f6684e9cc3e1891b90aa7bf4f85b8ea46bd5421d3c868a169e.webp",
+      "content_type": "image/webp",
+      "sha256": "6eba96379244a5f6684e9cc3e1891b90aa7bf4f85b8ea46bd5421d3c868a169e",
+      "size_bytes": 486222,
+      "source_id": "skland-6430913",
+      "source_media_hash": "dca60b664661d0bb06fc8801da9fb7ebb0802be6b52b25bfe165b66a5502121d",
+      "source_url": "https://bbs.hycdn.cn/image/common/20261030/113/6ae45bdc0fae4186b1e92434_96d20048.webp"
+    },
+    {
+      "account_name": "明日方舟终末地",
+      "asset_path": "assets/media/ae1a71da648d766229ff0ee79ab390d051d57563fea4c7895abd17e6f212644f.webp",
+      "content_type": "image/webp",
+      "sha256": "ae1a71da648d766229ff0ee79ab390d051d57563fea4c7895abd17e6f212644f",
+      "size_bytes": 527366,
+      "source_id": "skland-6430913",
+      "source_media_hash": "49d00cffe00e550e8bfb362bbc34c0c30d531b7a9a2cc64d9b16b66633592cf2",
+      "source_url": "https://bbs.hycdn.cn/image/common/20261030/113/6ae45bdcd2041cf262b23489_0095c241.webp"
+    },
+    {
+      "account_name": "明日方舟终末地",
+      "asset_path": "assets/media/ef9c600ce0d3aa48d7bdb0d9a6b3d75eb6439ab9d163ac9a5cb4e4da84686ea3.webp",
+      "content_type": "image/webp",
+      "sha256": "ef9c600ce0d3aa48d7bdb0d9a6b3d75eb6439ab9d163ac9a5cb4e4da84686ea3",
+      "size_bytes": 490882,
+      "source_id": "skland-6430913",
+      "source_media_hash": "d66d0de782871fad24162a711a042cdc1a97d63e6892bb63cc23fbcef429b38f",
+      "source_url": "https://bbs.hycdn.cn/image/common/20261030/113/6ae460ed36696a39d3c368d1_004865de.webp"
     }
   ],
   "partner": "汉堡王",
@@ -398,7 +587,7 @@
     "activity-d9b5947c33cb3d2d": "unknown"
   },
   "redirected_to": null,
-  "revision": 2,
+  "revision": 3,
   "scope_reviews": [],
   "sources": [
     {
@@ -448,9 +637,46 @@
       "summary": null,
       "updated_at": null,
       "url": "https://www.skland.com/article?id=6424097"
+    },
+    {
+      "account_id": "3737967211133",
+      "account_name": "明日方舟终末地",
+      "canonical_content_id": "6430913",
+      "content_hash": "6fd9536d9c3230b4240ab5b28212503732c00e07c707dd8fc64bd5722f55e43e",
+      "excerpt": "11月2日起预约！汉堡王×《明日方舟：终末地》预约指南\n11月2日13:00起！\n51家联名主题店、特别快闪活动预约即将开启！\n◆ 第一阶段主题店 ◆ 联名套餐+打卡活动预约：\n📍预约渠道\n【汉堡王+】微信小程序-首页热门活动-点击预约\n*全国1000+常规门店联名套餐无需预约、可直接购买\n⏰️预约时间\n2026年11月2日 13:00起\n⏰️核销时间\n2026年11月5日 - 2026年11月8日\n◆ 特别快闪活动 ◆ 预约：\n📍预约渠道\n【汉堡王+】微信小程序-首页热门活动-点击预约\n⏰️预约时间\n2026年11月3日 13:00起\n⏰️活动时间\n2026年11月7日 - 2026年11月8日\n详情请查看图片~",
+      "first_seen_at": "2026-10-30T18:26:48.161359Z",
+      "id": "skland-6430913",
+      "is_official": true,
+      "kind": "skland",
+      "media_hashes": [
+        "f1945db54923efe57159cd9908ba69299c7b9c8cb2a05c67e7bad15121ac1b72",
+        "a8c360b68d04902328a60f64912d611c968b29fb81db5e0ef524146108d83566",
+        "4105a8a2944a57d77a031967b36658db56dfd926635dbad3b4d5fdba02785d93",
+        "3ba3193eb5edcefff32ffd7979d6b2952cd090e418afc166b6aee3cae464d36c",
+        "f4eccde0f3ecefa01ad266cc4aebf1a95e3848ea4f7fdfecd4314f6be3ea656d",
+        "d89990b9df3c1d54cb03aa597d5d781c4fe9cb9135f65a6688957d37213e72bc",
+        "dca60b664661d0bb06fc8801da9fb7ebb0802be6b52b25bfe165b66a5502121d",
+        "49d00cffe00e550e8bfb362bbc34c0c30d531b7a9a2cc64d9b16b66633592cf2",
+        "d66d0de782871fad24162a711a042cdc1a97d63e6892bb63cc23fbcef429b38f"
+      ],
+      "media_urls": [
+        "https://bbs.hycdn.cn/image/common/20261030/113/6ae45bdc9da5ba571c022ee3_96d20048.webp",
+        "https://bbs.hycdn.cn/image/common/20261030/113/6ae45bdc0fae4186b1e92435_96d20048.webp",
+        "https://bbs.hycdn.cn/image/common/20261030/113/6ae45bdc0fae4186b1e92433_ef3391c4.webp",
+        "https://bbs.hycdn.cn/image/common/20261030/113/6ae45bdcb8edfebe3af535ce_ef3391c4.webp",
+        "https://bbs.hycdn.cn/image/common/20261030/113/6ae45bdc36696a39d3c368cf_91c496d2.webp",
+        "https://bbs.hycdn.cn/image/common/20261030/113/6ae45bdcc9639c798c038df3_65de0095.webp",
+        "https://bbs.hycdn.cn/image/common/20261030/113/6ae45bdc0fae4186b1e92434_96d20048.webp",
+        "https://bbs.hycdn.cn/image/common/20261030/113/6ae45bdcd2041cf262b23489_0095c241.webp",
+        "https://bbs.hycdn.cn/image/common/20261030/113/6ae460ed36696a39d3c368d1_004865de.webp"
+      ],
+      "published_at": "2026-10-30T11:00:11Z",
+      "summary": "发布汉堡王联动预约指南：11月2日13:00起开放51家主题店联名套餐及打卡活动预约，核销11月5日至8日；11月3日13:00起开放特别快闪预约，活动11月7日至8日；常规门店套餐免预约。",
+      "updated_at": null,
+      "url": "https://www.skland.com/article?id=6430913"
     }
   ],
-  "status": "announced",
+  "status": "details_pending",
   "title": "汉堡王 ×《明日方舟：终末地》「美味通行，堡已就位」",
-  "updated_at": "2026-10-27T19:47:55.359777Z"
+  "updated_at": "2026-10-30T18:26:48.161359Z"
 }

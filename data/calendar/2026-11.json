@@ -1,5 +1,27 @@
 {
   "days": {
+    "2026-11-02": [
+      {
+        "action_id": "actions-a7c6f05108dd2e99",
+        "activity_id": "activity-4dc1b582dbb0f3a8",
+        "at": "2026-11-02T13:00:00+08:00",
+        "campaign_id": "campaign-8ef39adc0f9cce18-746c28cd",
+        "ip_name": "明日方舟：终末地",
+        "kind": "reservation_open",
+        "title": "第一阶段主题店联名套餐+打卡活动预约"
+      }
+    ],
+    "2026-11-03": [
+      {
+        "action_id": "actions-317261d0d21e5eff",
+        "activity_id": "activity-717c6c2b49c05cf3",
+        "at": "2026-11-03T13:00:00+08:00",
+        "campaign_id": "campaign-8ef39adc0f9cce18-746c28cd",
+        "ip_name": "明日方舟：终末地",
+        "kind": "reservation_open",
+        "title": "特别快闪活动预约"
+      }
+    ],
     "2026-11-05": [
       {
         "action_id": "action-64dddfd3e38ec25c",
@@ -11,13 +33,13 @@
         "title": "联动开启"
       },
       {
-        "action_id": "activity-4dc1b582dbb0f3a8--start",
+        "action_id": "actions-6f81f5e38431c5d9",
         "activity_id": "activity-4dc1b582dbb0f3a8",
         "at": "2026-11-05T00:00:00+08:00",
         "campaign_id": "campaign-8ef39adc0f9cce18-746c28cd",
         "ip_name": "明日方舟：终末地",
         "kind": "event_start",
-        "title": "全国51家联名主题店「美味通行证任务」开始"
+        "title": "主题店联名套餐+打卡活动核销"
       },
       {
         "action_id": "activity-61f1009f0cdcb64f--start",
@@ -61,6 +83,15 @@
       }
     ],
     "2026-11-08": [
+      {
+        "action_id": "actions-6f81f5e38431c5d9--end",
+        "activity_id": "activity-4dc1b582dbb0f3a8",
+        "at": "2026-11-08T00:00:00+08:00",
+        "campaign_id": "campaign-8ef39adc0f9cce18-746c28cd",
+        "ip_name": "明日方舟：终末地",
+        "kind": "event_end",
+        "title": "主题店联名套餐+打卡活动核销截止"
+      },
       {
         "action_id": "activity-717c6c2b49c05cf3--end",
         "activity_id": "activity-717c6c2b49c05cf3",

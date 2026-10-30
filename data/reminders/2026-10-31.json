@@ -1,0 +1,65 @@
+{
+  "cards": [
+    {
+      "activity": null,
+      "activity_id": null,
+      "campaign_id": "candidate-0a3c35199e14ed1da66ae509",
+      "campaign_title": "崩坏：星穹铁道 · 候选联动信息",
+      "detail_url": null,
+      "extraction_status": "unconfirmed",
+      "ip_name": "崩坏：星穹铁道",
+      "reasons": [
+        {
+          "action_id": null,
+          "date_only": null,
+          "expected_at": null,
+          "kind": "announcement",
+          "summary": "原帖核查：内容为4.7版本商店上新、限时礼包、活动与兑换商店更新，属于普通版本更新与游戏内售卖，未涉及IP联动、快闪、漫展、演出等范围内活动，无法归入任何企划。"
+        }
+      ],
+      "sources": [
+        {
+          "account_name": "崩坏：星穹铁道官方公告",
+          "summary": null,
+          "url": "https://sr.mihoyo.com/news/167108"
+        }
+      ]
+    },
+    {
+      "activity": null,
+      "activity_id": null,
+      "campaign_id": "campaign-8ef39adc0f9cce18-746c28cd",
+      "campaign_title": "汉堡王 ×《明日方舟：终末地》「美味通行，堡已就位」",
+      "detail_url": "event.html?id=campaign-8ef39adc0f9cce18-746c28cd",
+      "extraction_status": null,
+      "ip_name": "明日方舟：终末地",
+      "reasons": [
+        {
+          "action_id": null,
+          "date_only": null,
+          "expected_at": null,
+          "kind": "update",
+          "summary": "活动更新\n全国51家联名主题店「美味通行证任务」\n截止日期：2026-11-08\n规则：可预约参与「美味通行证任务」主题店活动 → 联名套餐+打卡活动需通过【汉堡王+】微信小程序预约；全国1000+常规门店联名套餐无需预约、可直接购买\n全国51家联名主题店「美味通行证任务」 / 第一阶段主题店联名套餐+打卡活动预约\n开始日期：2026-11-02\n时间：2026-11-02T13:00:00+08:00\n规则：通过【汉堡王+】微信小程序-首页热门活动-点击预约\n适用范围：全国51家联名主题店\n需预约：是\n全国51家联名主题店「美味通行证任务」 / 主题店联名套餐+打卡活动核销\n开始日期：2026-11-05\n特别快闪「开拓街头 美味据点」\n规则：欢迎预约前往 → 需通过【汉堡王+】微信小程序预约前往\n特别快闪「开拓街头 美味据点」 / 特别快闪活动预约\n开始日期：2026-11-03\n时间：2026-11-03T13:00:00+08:00\n规则：通过【汉堡王+】微信小程序-首页热门活动-点击预约\n适用范围：特别快闪「开拓街头 美味据点」\n需预约：是"
+        }
+      ],
+      "sources": [
+        {
+          "account_name": "明日方舟终末地",
+          "summary": "发布汉堡王×《明日方舟：终末地》「美味通行，堡已就位」合作宣传PV，宣布11月5日联动开启，邀请玩家前往汉堡王完成特别任务，详情待汉堡王官方账号公布。",
+          "url": "https://www.skland.com/article?id=6366130"
+        },
+        {
+          "account_name": "明日方舟终末地",
+          "summary": null,
+          "url": "https://www.skland.com/article?id=6424097"
+        },
+        {
+          "account_name": "明日方舟终末地",
+          "summary": "发布汉堡王联动预约指南：11月2日13:00起开放51家主题店联名套餐及打卡活动预约，核销11月5日至8日；11月3日13:00起开放特别快闪预约，活动11月7日至8日；常规门店套餐免预约。",
+          "url": "https://www.skland.com/article?id=6430913"
+        }
+      ]
+    }
+  ],
+  "date": "2026-10-31"
+}
