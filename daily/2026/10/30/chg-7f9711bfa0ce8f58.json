@@ -1,0 +1,14 @@
+{
+  "activity_id": "activity-717c6c2b49c05cf3",
+  "campaign_id": "campaign-8ef39adc0f9cce18-746c28cd",
+  "detected_at": "2026-10-30T18:26:48.161359Z",
+  "field_paths": [],
+  "id": "chg-7f9711bfa0ce8f58",
+  "kind": "field_added",
+  "published_at": "2026-10-06T12:40:59Z",
+  "semantic_key": "campaign-8ef39adc0f9cce18-746c28cd:entity-added-actions-317261d0d21e5eff",
+  "source_ids": [
+    "skland-6430913"
+  ],
+  "summary": "新增：特别快闪活动预约"
+}

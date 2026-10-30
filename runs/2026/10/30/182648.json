@@ -1,0 +1,14 @@
+{
+  "campaigns_created": 0,
+  "campaigns_updated": 1,
+  "duplicates": 0,
+  "emails_sent": 1,
+  "finished_at": "2026-10-30T18:28:40.886252Z",
+  "jobs_created": 6,
+  "notifications_sent": 2,
+  "observations": 27,
+  "started_at": "2026-10-30T18:26:48.161359Z",
+  "warnings": [
+    "official source fetch failed: website-genshin-impact-official"
+  ]
+}

@@ -1,0 +1,14 @@
+{
+  "activity_id": "activity-4dc1b582dbb0f3a8",
+  "campaign_id": "campaign-8ef39adc0f9cce18-746c28cd",
+  "detected_at": "2026-10-30T18:26:48.161359Z",
+  "field_paths": [],
+  "id": "chg-653a5e2efbc9313e",
+  "kind": "field_added",
+  "published_at": "2026-10-06T12:40:59Z",
+  "semantic_key": "campaign-8ef39adc0f9cce18-746c28cd:entity-added-actions-a7c6f05108dd2e99",
+  "source_ids": [
+    "skland-6430913"
+  ],
+  "summary": "新增：第一阶段主题店联名套餐+打卡活动预约"
+}

@@ -1,0 +1,29 @@
+{
+  "extracted_media_text": [],
+  "id": "skland-6430409",
+  "media_hashes": [
+    "5afeb683189fe2eeed4580422e7f9f9c7c5e452682d0d8d72c555139d4c76ce0"
+  ],
+  "media_urls": [
+    "https://bbs.hycdn.cn/image/common/20261030/115/6ae40bc8185ed109d66b67d3_004865de.webp"
+  ],
+  "outbound_urls": [],
+  "source": {
+    "account_id": "7779816949641",
+    "account_name": "明日方舟Arknights",
+    "canonical_content_id": "6430409",
+    "content_hash": "52617b5c83ccb610755c585d26d768d9d45907eae0ce9e24c1ac1137e70da979",
+    "excerpt": "[明日方舟]11月01日06:00版本更新停机维护公告",
+    "first_seen_at": "2026-10-30T18:26:48.161359Z",
+    "id": "skland-6430409",
+    "is_official": true,
+    "kind": "skland",
+    "media_hashes": [],
+    "media_urls": [],
+    "published_at": "2026-10-30T04:10:04Z",
+    "summary": null,
+    "updated_at": null,
+    "url": "https://www.skland.com/article?id=6430409"
+  },
+  "text": "[明日方舟]11月01日06:00版本更新停机维护公告"
+}

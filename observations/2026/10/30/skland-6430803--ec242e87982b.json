@@ -1,0 +1,29 @@
+{
+  "extracted_media_text": [],
+  "id": "skland-6430803",
+  "media_hashes": [
+    "579351c6b11470da6d8efaf36f34da66c19076e4b464d1b7e486db9158ada25a"
+  ],
+  "media_urls": [
+    "https://bbs.hycdn.cn/image/common/20261030/115/6ae43b99b0ed338fc74ada45_e71aef33.webp"
+  ],
+  "outbound_urls": [],
+  "source": {
+    "account_id": "7779816949641",
+    "account_name": "明日方舟Arknights",
+    "canonical_content_id": "6430803",
+    "content_hash": "ec242e87982b8e8ef94a4651b04ba7965e8567f6cf03de0e0170134747a5a14f",
+    "excerpt": "◤模组升级效果前瞻◢",
+    "first_seen_at": "2026-10-30T18:26:48.161359Z",
+    "id": "skland-6430803",
+    "is_official": true,
+    "kind": "skland",
+    "media_hashes": [],
+    "media_urls": [],
+    "published_at": "2026-10-30T08:00:00Z",
+    "summary": null,
+    "updated_at": null,
+    "url": "https://www.skland.com/article?id=6430803"
+  },
+  "text": "◤模组升级效果前瞻◢"
+}

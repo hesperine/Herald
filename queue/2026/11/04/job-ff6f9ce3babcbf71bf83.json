@@ -1,0 +1,17 @@
+{
+  "action_id": "actions-6f81f5e38431c5d9",
+  "activity_id": "activity-4dc1b582dbb0f3a8",
+  "campaign_id": "campaign-8ef39adc0f9cce18-746c28cd",
+  "campaign_notice": false,
+  "candidate_id": null,
+  "change_id": null,
+  "covered_candidate_ids": [],
+  "due_date": "2026-11-04",
+  "expected_at": "2026-11-05T00:00:00+08:00",
+  "expected_date": "2026-11-05",
+  "facts": {},
+  "id": "job-ff6f9ce3babcbf71bf83",
+  "kind": "day_before",
+  "semantic_key": "schedule:activity-4dc1b582dbb0f3a8:actions-6f81f5e38431c5d9:day_before:2026-11-05T00:00:00+08:00",
+  "summary": "明天开始：主题店联名套餐+打卡活动核销"
+}

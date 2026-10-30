@@ -1,0 +1,17 @@
+{
+  "action_id": "actions-a7c6f05108dd2e99",
+  "activity_id": "activity-4dc1b582dbb0f3a8",
+  "campaign_id": "campaign-8ef39adc0f9cce18-746c28cd",
+  "campaign_notice": false,
+  "candidate_id": null,
+  "change_id": null,
+  "covered_candidate_ids": [],
+  "due_date": "2026-11-01",
+  "expected_at": "2026-11-02T13:00:00+08:00",
+  "expected_date": "2026-11-02",
+  "facts": {},
+  "id": "job-0cd4359b757d69b19d02",
+  "kind": "day_before",
+  "semantic_key": "schedule:activity-4dc1b582dbb0f3a8:actions-a7c6f05108dd2e99:day_before:2026-11-02T13:00:00+08:00",
+  "summary": "明天开放预约：第一阶段主题店联名套餐+打卡活动预约"
+}

@@ -119,10 +119,62 @@
           "start_date": null,
           "title": "「美味通行证任务」主题店活动预约",
           "url": null
+        },
+        {
+          "at": "2026-11-02T13:00:00+08:00",
+          "cancelled": false,
+          "end_at": null,
+          "end_condition": null,
+          "end_date": null,
+          "ended": false,
+          "evidence": [
+            {
+              "field_path": "activities.activity-4dc1b582dbb0f3a8.actions.actions-a7c6f05108dd2e99",
+              "quote": "2026年11月2日 13:00起",
+              "source_id": "skland-6430913"
+            }
+          ],
+          "id": "actions-a7c6f05108dd2e99",
+          "kind": "reservation_open",
+          "platform": "【汉堡王+】微信小程序",
+          "quantity_limit": null,
+          "requires_reservation": true,
+          "requires_rush": null,
+          "rules": "通过【汉堡王+】微信小程序-首页热门活动-点击预约",
+          "scope": "全国51家联名主题店",
+          "start_date": "2026-11-02",
+          "title": "第一阶段主题店联名套餐+打卡活动预约",
+          "url": null
+        },
+        {
+          "at": null,
+          "cancelled": false,
+          "end_at": null,
+          "end_condition": null,
+          "end_date": "2026-11-08",
+          "ended": false,
+          "evidence": [
+            {
+              "field_path": "activities.activity-4dc1b582dbb0f3a8.actions.actions-6f81f5e38431c5d9",
+              "quote": "⏰️核销时间\n2026年11月5日 - 2026年11月8日",
+              "source_id": "skland-6430913"
+            }
+          ],
+          "id": "actions-6f81f5e38431c5d9",
+          "kind": "event_start",
+          "platform": null,
+          "quantity_limit": null,
+          "requires_reservation": true,
+          "requires_rush": null,
+          "rules": null,
+          "scope": "全国51家联名主题店",
+          "start_date": "2026-11-05",
+          "title": "主题店联名套餐+打卡活动核销",
+          "url": null
         }
       ],
       "end_at": null,
-      "end_date": null,
+      "end_date": "2026-11-08",
       "evidence": [
         {
           "field_path": "activities[0].title",
@@ -153,7 +205,7 @@
       "id": "activity-4dc1b582dbb0f3a8",
       "kind": "theme_store",
       "related_offers": null,
-      "rules": "可预约参与「美味通行证任务」主题店活动",
+      "rules": "联名套餐+打卡活动需通过【汉堡王+】微信小程序预约；全国1000+常规门店联名套餐无需预约、可直接购买",
       "start_at": null,
       "start_date": "2026-11-05",
       "status": "details_pending",
@@ -210,6 +262,32 @@
           "start_date": null,
           "title": "快闪「开拓街头 美味据点」预约",
           "url": null
+        },
+        {
+          "at": "2026-11-03T13:00:00+08:00",
+          "cancelled": false,
+          "end_at": null,
+          "end_condition": null,
+          "end_date": null,
+          "ended": false,
+          "evidence": [
+            {
+              "field_path": "activities.activity-717c6c2b49c05cf3.actions.actions-317261d0d21e5eff",
+              "quote": "2026年11月3日 13:00起",
+              "source_id": "skland-6430913"
+            }
+          ],
+          "id": "actions-317261d0d21e5eff",
+          "kind": "reservation_open",
+          "platform": "【汉堡王+】微信小程序",
+          "quantity_limit": null,
+          "requires_reservation": true,
+          "requires_rush": null,
+          "rules": "通过【汉堡王+】微信小程序-首页热门活动-点击预约",
+          "scope": "特别快闪「开拓街头 美味据点」",
+          "start_date": "2026-11-03",
+          "title": "特别快闪活动预约",
+          "url": null
         }
       ],
       "end_at": null,
@@ -239,7 +317,7 @@
       "id": "activity-717c6c2b49c05cf3",
       "kind": "popup",
       "related_offers": null,
-      "rules": "欢迎预约前往",
+      "rules": "需通过【汉堡王+】微信小程序预约前往",
       "start_at": null,
       "start_date": "2026-11-07",
       "status": "details_pending",
@@ -284,6 +362,27 @@
   "announced_at": "2026-10-06T12:40:59Z",
   "excluded_activities": [],
   "fact_provenance": {
+    "activities.activity-4dc1b582dbb0f3a8.end_date": {
+      "content_hash": "6fd9536d9c3230b4240ab5b28212503732c00e07c707dd8fc64bd5722f55e43e",
+      "observation_id": "skland-6430913",
+      "published_at": "2026-10-30T11:00:11Z",
+      "quote": "⏰️核销时间\n2026年11月5日 - 2026年11月8日",
+      "source_id": "skland-6430913"
+    },
+    "activities.activity-4dc1b582dbb0f3a8.rules": {
+      "content_hash": "6fd9536d9c3230b4240ab5b28212503732c00e07c707dd8fc64bd5722f55e43e",
+      "observation_id": "skland-6430913",
+      "published_at": "2026-10-30T11:00:11Z",
+      "quote": "*全国1000+常规门店联名套餐无需预约、可直接购买",
+      "source_id": "skland-6430913"
+    },
+    "activities.activity-717c6c2b49c05cf3.rules": {
+      "content_hash": "6fd9536d9c3230b4240ab5b28212503732c00e07c707dd8fc64bd5722f55e43e",
+      "observation_id": "skland-6430913",
+      "published_at": "2026-10-30T11:00:11Z",
+      "quote": "【汉堡王+】微信小程序-首页热门活动-点击预约",
+      "source_id": "skland-6430913"
+    },
     "activities.activity-d9b5947c33cb3d2d.actions.action-64dddfd3e38ec25c.start_date": {
       "content_hash": "81418b4bec7f36907400d19e602ad8ec17666f06e44ab7d476063e61d55e1237",
       "observation_id": "skland-6366130",
@@ -340,7 +439,7 @@
   "ip_slug": "arknights-endfield",
   "partner": "汉堡王",
   "redirected_to": null,
-  "revision": 2,
+  "revision": 3,
   "scope_reviews": [],
   "sources": [
     {
@@ -390,9 +489,46 @@
       "summary": null,
       "updated_at": null,
       "url": "https://www.skland.com/article?id=6424097"
+    },
+    {
+      "account_id": "3737967211133",
+      "account_name": "明日方舟终末地",
+      "canonical_content_id": "6430913",
+      "content_hash": "6fd9536d9c3230b4240ab5b28212503732c00e07c707dd8fc64bd5722f55e43e",
+      "excerpt": "11月2日起预约！汉堡王×《明日方舟：终末地》预约指南\n11月2日13:00起！\n51家联名主题店、特别快闪活动预约即将开启！\n◆ 第一阶段主题店 ◆ 联名套餐+打卡活动预约：\n📍预约渠道\n【汉堡王+】微信小程序-首页热门活动-点击预约\n*全国1000+常规门店联名套餐无需预约、可直接购买\n⏰️预约时间\n2026年11月2日 13:00起\n⏰️核销时间\n2026年11月5日 - 2026年11月8日\n◆ 特别快闪活动 ◆ 预约：\n📍预约渠道\n【汉堡王+】微信小程序-首页热门活动-点击预约\n⏰️预约时间\n2026年11月3日 13:00起\n⏰️活动时间\n2026年11月7日 - 2026年11月8日\n详情请查看图片~",
+      "first_seen_at": "2026-10-30T18:26:48.161359Z",
+      "id": "skland-6430913",
+      "is_official": true,
+      "kind": "skland",
+      "media_hashes": [
+        "f1945db54923efe57159cd9908ba69299c7b9c8cb2a05c67e7bad15121ac1b72",
+        "a8c360b68d04902328a60f64912d611c968b29fb81db5e0ef524146108d83566",
+        "4105a8a2944a57d77a031967b36658db56dfd926635dbad3b4d5fdba02785d93",
+        "3ba3193eb5edcefff32ffd7979d6b2952cd090e418afc166b6aee3cae464d36c",
+        "f4eccde0f3ecefa01ad266cc4aebf1a95e3848ea4f7fdfecd4314f6be3ea656d",
+        "d89990b9df3c1d54cb03aa597d5d781c4fe9cb9135f65a6688957d37213e72bc",
+        "dca60b664661d0bb06fc8801da9fb7ebb0802be6b52b25bfe165b66a5502121d",
+        "49d00cffe00e550e8bfb362bbc34c0c30d531b7a9a2cc64d9b16b66633592cf2",
+        "d66d0de782871fad24162a711a042cdc1a97d63e6892bb63cc23fbcef429b38f"
+      ],
+      "media_urls": [
+        "https://bbs.hycdn.cn/image/common/20261030/113/6ae45bdc9da5ba571c022ee3_96d20048.webp",
+        "https://bbs.hycdn.cn/image/common/20261030/113/6ae45bdc0fae4186b1e92435_96d20048.webp",
+        "https://bbs.hycdn.cn/image/common/20261030/113/6ae45bdc0fae4186b1e92433_ef3391c4.webp",
+        "https://bbs.hycdn.cn/image/common/20261030/113/6ae45bdcb8edfebe3af535ce_ef3391c4.webp",
+        "https://bbs.hycdn.cn/image/common/20261030/113/6ae45bdc36696a39d3c368cf_91c496d2.webp",
+        "https://bbs.hycdn.cn/image/common/20261030/113/6ae45bdcc9639c798c038df3_65de0095.webp",
+        "https://bbs.hycdn.cn/image/common/20261030/113/6ae45bdc0fae4186b1e92434_96d20048.webp",
+        "https://bbs.hycdn.cn/image/common/20261030/113/6ae45bdcd2041cf262b23489_0095c241.webp",
+        "https://bbs.hycdn.cn/image/common/20261030/113/6ae460ed36696a39d3c368d1_004865de.webp"
+      ],
+      "published_at": "2026-10-30T11:00:11Z",
+      "summary": "发布汉堡王联动预约指南：11月2日13:00起开放51家主题店联名套餐及打卡活动预约，核销11月5日至8日；11月3日13:00起开放特别快闪预约，活动11月7日至8日；常规门店套餐免预约。",
+      "updated_at": null,
+      "url": "https://www.skland.com/article?id=6430913"
     }
   ],
-  "status": "announced",
+  "status": "details_pending",
   "title": "汉堡王 ×《明日方舟：终末地》「美味通行，堡已就位」",
-  "updated_at": "2026-10-27T19:47:55.359777Z"
+  "updated_at": "2026-10-30T18:26:48.161359Z"
 }

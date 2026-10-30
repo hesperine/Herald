@@ -1,0 +1,31 @@
+{
+  "extracted_media_text": [],
+  "id": "website-honkai-star-rail-official-167106",
+  "media_hashes": [
+    "1351b2bb3b915b363301f792d20e3f8149f5229eaa1483425684ae5cc4d8754e"
+  ],
+  "media_urls": [
+    "https://fastcdn.mihoyo.com/content-v2/hkrpg/167106/c59f32a545a39a3fe27d7e328527a39c_4569406697606720090.jpg"
+  ],
+  "outbound_urls": [
+    "https://act.mihoyo.com/puzzle/hkrpg/e20261024version_2142940ddd/index.html?game_biz=hkrpg_cn&mhy_presentation_style=fullscreen&mhy_landscape=true&mhy_hide_status_bar=true&mode=fullscreen&win_mode=fullscreen&utm_source=mkt&utm_medium=gw"
+  ],
+  "source": {
+    "account_id": "honkai-star-rail-official",
+    "account_name": "崩坏：星穹铁道官方公告",
+    "canonical_content_id": "167106",
+    "content_hash": "5d17a260bf4bc94471b8718b21bcae75afcd36444967946858df7293795d60cd",
+    "excerpt": "4.7版本「此刻，将群星付之一笑」专题展示页现已上线\n亲爱的开拓者，4.7版本「此刻，将群星付之一笑」专题展示页现已上线，一起看看新版本都有哪些内容吧！\n>>>点击前往<<<\n疯狂的寂静中，有声音说：「笑吧，让祂听见你的存在。」于是，群星不再沉默，他们将所有的光明付于一声欢笑。",
+    "first_seen_at": "2026-10-30T18:26:48.161359Z",
+    "id": "website-honkai-star-rail-official-167106",
+    "is_official": true,
+    "kind": "website",
+    "media_hashes": [],
+    "media_urls": [],
+    "published_at": "2026-10-30T20:35:00+08:00",
+    "summary": null,
+    "updated_at": null,
+    "url": "https://sr.mihoyo.com/news/167106"
+  },
+  "text": "4.7版本「此刻，将群星付之一笑」专题展示页现已上线\n亲爱的开拓者，4.7版本「此刻，将群星付之一笑」专题展示页现已上线，一起看看新版本都有哪些内容吧！\n>>>点击前往<<<\n疯狂的寂静中，有声音说：「笑吧，让祂听见你的存在。」于是，群星不再沉默，他们将所有的光明付于一声欢笑。"
+}

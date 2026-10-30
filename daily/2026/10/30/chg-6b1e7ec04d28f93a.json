@@ -1,0 +1,16 @@
+{
+  "activity_id": "activity-717c6c2b49c05cf3",
+  "campaign_id": "campaign-8ef39adc0f9cce18-746c28cd",
+  "detected_at": "2026-10-30T18:26:48.161359Z",
+  "field_paths": [
+    "activities.activity-717c6c2b49c05cf3.rules"
+  ],
+  "id": "chg-6b1e7ec04d28f93a",
+  "kind": "field_updated",
+  "published_at": "2026-10-06T12:40:59Z",
+  "semantic_key": "campaign-8ef39adc0f9cce18-746c28cd:revision-3-activities.activity-717c6c2b49c05cf3.rules",
+  "source_ids": [
+    "skland-6430913"
+  ],
+  "summary": "更新：activities.activity-717c6c2b49c05cf3.rules"
+}
