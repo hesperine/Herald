@@ -1,59 +1,168 @@
 {
   "cards": [
     {
-      "activity": null,
-      "activity_id": null,
-      "campaign_id": "candidate-0a3c35199e14ed1da66ae509",
-      "campaign_notice": false,
-      "campaign_title": "崩坏：星穹铁道 · 候选联动信息",
-      "detail_campaign_id": null,
-      "extraction_status": "unconfirmed",
-      "ip_name": "崩坏：星穹铁道",
-      "reasons": [
-        {
-          "action_id": null,
-          "date_only": null,
-          "expected_at": null,
-          "kind": "announcement",
-          "summary": "原帖核查：内容为4.7版本商店上新、限时礼包、活动与兑换商店更新，属于普通版本更新与游戏内售卖，未涉及IP联动、快闪、漫展、演出等范围内活动，无法归入任何企划。"
-        }
-      ],
-      "sources": [
-        {
-          "account_id": "honkai-star-rail-official",
-          "account_name": "崩坏：星穹铁道官方公告",
-          "canonical_content_id": "167108",
-          "content_hash": "8a34185d25144d973471fcdb3816525b731795d7cc65d581ada6fd65ef3817f6",
-          "excerpt": "4.7版本商店上新\n4.7版本更新后，6元、30元与98元超值礼包将会限时上架！消耗「星轨专票」或在「幻乐秀场」消耗星琼参与时装抽取活动，可获得「回响」领取「奇缘星魂」。此外，兑换商店「星尘之礼」中，将新增开拓穿搭等内容！\n▌限时礼包「特惠车票」\n购买礼包可获取星轨专票*1、星轨通票*1及信用点*30000！\n■礼包价格\n6元\n■上架时间\n2026/11/11 4.7版本更新后 - 2026/12/23 03:59\n■礼包说明\n● 购买后，开拓者可立即获得星轨专票*1、星轨通票*1及信用点*30000。\n● 上架期间该礼包限购1次。如果因特殊情况导致重复购买，将直接返还古老梦华*60。\n● 通过游戏外购买礼包（如网页充值中心）的开拓者请在完成购买后及时登录游戏领取，若在礼包下架后登录游戏，将直接返还古老梦华*60。\n▌限时礼包「开拓助力」\n每日登录解锁奖励，登录5日总计可获取古老梦华*320、星轨专票*4及燃料*10！\n■礼包价格\n30元\n■上架时间\n2026/11/11 4.7版本更新后 - 2026/12/23 03:59\n■礼包说明\n● 购买后，开拓者可立即获得古老梦华*320和",
-          "first_seen_at": "2026-10-30T18:26:48.161359Z",
-          "id": "website-honkai-star-rail-official-167108",
-          "is_official": true,
-          "kind": "website",
-          "media_hashes": [],
-          "media_urls": [],
-          "published_at": "2026-10-30T20:55:00+08:00",
-          "summary": null,
-          "updated_at": null,
-          "url": "https://sr.mihoyo.com/news/167108"
-        }
-      ]
-    },
-    {
-      "activity": null,
-      "activity_id": null,
+      "activity": {
+        "actions": [
+          {
+            "at": null,
+            "cancelled": false,
+            "end_at": null,
+            "end_condition": null,
+            "end_date": null,
+            "ended": false,
+            "evidence": [
+              {
+                "field_path": "activities[0].actions[0].title",
+                "quote": "更可预约参与「美味通行证任务」主题店活动",
+                "source_id": "skland-6424097"
+              },
+              {
+                "field_path": "activities[0].actions[0].requires_reservation",
+                "quote": "更可预约参与「美味通行证任务」主题店活动",
+                "source_id": "skland-6424097"
+              }
+            ],
+            "id": "action-ffa190de832616d6",
+            "kind": "reservation_open",
+            "platform": null,
+            "quantity_limit": null,
+            "requires_reservation": true,
+            "requires_rush": null,
+            "rules": "预约参与「美味通行证任务」主题店活动",
+            "scope": "全国51家联名主题店",
+            "start_date": null,
+            "title": "「美味通行证任务」主题店活动预约",
+            "url": null
+          },
+          {
+            "at": "2026-11-02T13:00:00+08:00",
+            "cancelled": false,
+            "end_at": null,
+            "end_condition": null,
+            "end_date": null,
+            "ended": false,
+            "evidence": [
+              {
+                "field_path": "activities.activity-4dc1b582dbb0f3a8.actions.actions-a7c6f05108dd2e99",
+                "quote": "2026年11月2日 13:00起",
+                "source_id": "skland-6430913"
+              }
+            ],
+            "id": "actions-a7c6f05108dd2e99",
+            "kind": "reservation_open",
+            "platform": "【汉堡王+】微信小程序",
+            "quantity_limit": null,
+            "requires_reservation": true,
+            "requires_rush": null,
+            "rules": "通过【汉堡王+】微信小程序-首页热门活动-点击预约",
+            "scope": "全国51家联名主题店",
+            "start_date": "2026-11-02",
+            "title": "第一阶段主题店联名套餐+打卡活动预约",
+            "url": null
+          },
+          {
+            "at": null,
+            "cancelled": false,
+            "end_at": null,
+            "end_condition": null,
+            "end_date": "2026-11-08",
+            "ended": false,
+            "evidence": [
+              {
+                "field_path": "activities.activity-4dc1b582dbb0f3a8.actions.actions-6f81f5e38431c5d9",
+                "quote": "⏰️核销时间\n2026年11月5日 - 2026年11月8日",
+                "source_id": "skland-6430913"
+              }
+            ],
+            "id": "actions-6f81f5e38431c5d9",
+            "kind": "event_start",
+            "platform": null,
+            "quantity_limit": null,
+            "requires_reservation": true,
+            "requires_rush": null,
+            "rules": null,
+            "scope": "全国51家联名主题店",
+            "start_date": "2026-11-05",
+            "title": "主题店联名套餐+打卡活动核销",
+            "url": null
+          }
+        ],
+        "end_at": null,
+        "end_date": "2026-11-08",
+        "evidence": [
+          {
+            "field_path": "activities[0].title",
+            "quote": "11月5日起，全国51家联名主题店换装登场，更可预约参与「美味通行证任务」主题店活动",
+            "source_id": "skland-6424097"
+          },
+          {
+            "field_path": "activities[0].start_date",
+            "quote": "11月5日起，全国51家联名主题店换装登场",
+            "source_id": "skland-6424097"
+          },
+          {
+            "field_path": "activities[0].venues[0].nationwide",
+            "quote": "全国51家联名主题店换装登场",
+            "source_id": "skland-6424097"
+          },
+          {
+            "field_path": "activities[0].actions[0].title",
+            "quote": "更可预约参与「美味通行证任务」主题店活动",
+            "source_id": "skland-6424097"
+          },
+          {
+            "field_path": "activities[0].actions[0].requires_reservation",
+            "quote": "更可预约参与「美味通行证任务」主题店活动",
+            "source_id": "skland-6424097"
+          }
+        ],
+        "id": "activity-4dc1b582dbb0f3a8",
+        "kind": "theme_store",
+        "related_offers": null,
+        "rules": "联名套餐+打卡活动需通过【汉堡王+】微信小程序预约；全国1000+常规门店联名套餐无需预约、可直接购买",
+        "start_at": null,
+        "start_date": "2026-11-05",
+        "status": "details_pending",
+        "title": "全国51家联名主题店「美味通行证任务」",
+        "uncertainties": [
+          "51家主题店具体门店名单及城市未在正文列出",
+          "预约开放时间与名额未说明"
+        ],
+        "venues": [
+          {
+            "address": null,
+            "business_hours": null,
+            "city": null,
+            "country": "CN",
+            "evidence": [
+              {
+                "field_path": "activities[0].venues[0].nationwide",
+                "quote": "全国51家联名主题店换装登场",
+                "source_id": "skland-6424097"
+              }
+            ],
+            "id": "venue-c5d396871c670632",
+            "name": null,
+            "nationwide": true,
+            "online_platform": null,
+            "province": null
+          }
+        ]
+      },
+      "activity_id": "activity-4dc1b582dbb0f3a8",
       "campaign_id": "campaign-8ef39adc0f9cce18-746c28cd",
-      "campaign_notice": true,
+      "campaign_notice": false,
       "campaign_title": "汉堡王 ×《明日方舟：终末地》「美味通行，堡已就位」",
       "detail_campaign_id": "campaign-8ef39adc0f9cce18-746c28cd",
       "extraction_status": null,
       "ip_name": "明日方舟：终末地",
       "reasons": [
         {
-          "action_id": null,
-          "date_only": null,
-          "expected_at": null,
-          "kind": "update",
-          "summary": "活动更新\n全国51家联名主题店「美味通行证任务」\n截止日期：2026-11-08\n规则：可预约参与「美味通行证任务」主题店活动 → 联名套餐+打卡活动需通过【汉堡王+】微信小程序预约；全国1000+常规门店联名套餐无需预约、可直接购买\n全国51家联名主题店「美味通行证任务」 / 第一阶段主题店联名套餐+打卡活动预约\n开始日期：2026-11-02\n时间：2026-11-02T13:00:00+08:00\n规则：通过【汉堡王+】微信小程序-首页热门活动-点击预约\n适用范围：全国51家联名主题店\n需预约：是\n全国51家联名主题店「美味通行证任务」 / 主题店联名套餐+打卡活动核销\n开始日期：2026-11-05\n特别快闪「开拓街头 美味据点」\n规则：欢迎预约前往 → 需通过【汉堡王+】微信小程序预约前往\n特别快闪「开拓街头 美味据点」 / 特别快闪活动预约\n开始日期：2026-11-03\n时间：2026-11-03T13:00:00+08:00\n规则：通过【汉堡王+】微信小程序-首页热门活动-点击预约\n适用范围：特别快闪「开拓街头 美味据点」\n需预约：是"
+          "action_id": "actions-a7c6f05108dd2e99",
+          "date_only": "2026-11-02",
+          "expected_at": "2026-11-02T13:00:00+08:00",
+          "kind": "day_before",
+          "summary": "明天开放预约：第一阶段主题店联名套餐+打卡活动预约"
         }
       ],
       "sources": [
@@ -145,5 +254,5 @@
       ]
     }
   ],
-  "date": "2026-10-31"
+  "date": "2026-11-01"
 }
