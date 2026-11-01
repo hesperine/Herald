@@ -1,20 +1,20 @@
 {
-  "attempts": 1,
+  "attempts": 2,
   "diagnostics": [
     {
       "attempt": 1,
       "category": "validation",
       "code": "schema_validation",
-      "elapsed_seconds": 4.077,
+      "elapsed_seconds": 3.335,
       "exception_type": "ValidationError",
       "finish_reason": "stop",
       "http_status": 200,
       "operation": "resolve_campaign",
       "stage": "schema",
       "usage": {
-        "completion_tokens": 775,
+        "completion_tokens": 589,
         "prompt_tokens": 5738,
-        "total_tokens": 6513
+        "total_tokens": 6327
       },
       "validation_errors": [
         {
@@ -27,16 +27,16 @@
       "attempt": 2,
       "category": "validation",
       "code": "schema_validation",
-      "elapsed_seconds": 3.276,
+      "elapsed_seconds": 4.131,
       "exception_type": "ValidationError",
       "finish_reason": "stop",
       "http_status": 200,
       "operation": "resolve_campaign",
       "stage": "schema",
       "usage": {
-        "completion_tokens": 673,
+        "completion_tokens": 767,
         "prompt_tokens": 5738,
-        "total_tokens": 6411
+        "total_tokens": 6505
       },
       "validation_errors": [
         {
@@ -49,16 +49,16 @@
       "attempt": 3,
       "category": "validation",
       "code": "schema_validation",
-      "elapsed_seconds": 3.17,
+      "elapsed_seconds": 3.203,
       "exception_type": "ValidationError",
       "finish_reason": "stop",
       "http_status": 200,
       "operation": "resolve_campaign",
       "stage": "schema",
       "usage": {
-        "completion_tokens": 593,
+        "completion_tokens": 598,
         "prompt_tokens": 5738,
-        "total_tokens": 6331
+        "total_tokens": 6336
       },
       "validation_errors": [
         {
