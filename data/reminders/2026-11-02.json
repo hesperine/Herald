@@ -3,10 +3,10 @@
     {
       "activity": null,
       "activity_id": null,
-      "campaign_id": "candidate-62c5be4e0bea86a1112a0dc8",
-      "campaign_title": "崩坏：星穹铁道 · 候选联动信息",
-      "detail_url": null,
-      "extraction_status": "pending",
+      "campaign_id": "campaign-65e6776cd100285d-f9d83366",
+      "campaign_title": "货币战争•入画奇航",
+      "detail_url": "event.html?id=campaign-65e6776cd100285d-f9d83366",
+      "extraction_status": null,
       "ip_name": "崩坏：星穹铁道",
       "reasons": [
         {
@@ -15,37 +15,31 @@
           "expected_at": null,
           "kind": "announcement",
           "summary": "发现联动相关信息（待解析，请以原帖为准）\n「货币战争•入画奇航」全新赛季来袭！\n4.7版本更新后，公司和绒绒号漫画的版权所有人达成了合作，将推出全新赛季「货币战争•入画奇航」！快来体验不一样的游玩策略吧！"
-        }
-      ],
-      "sources": [
-        {
-          "account_name": "崩坏星穹铁道",
-          "summary": null,
-          "url": "https://www.miyoushe.com/sr/article/79258370"
-        }
-      ]
-    },
-    {
-      "activity": null,
-      "activity_id": null,
-      "campaign_id": "candidate-e2f65f33fc5ccd0f1ce1f2f6",
-      "campaign_title": "崩坏：星穹铁道 · 候选联动信息",
-      "detail_url": null,
-      "extraction_status": "pending",
-      "ip_name": "崩坏：星穹铁道",
-      "reasons": [
+        },
         {
           "action_id": null,
           "date_only": null,
           "expected_at": null,
           "kind": "announcement",
           "summary": "发现联动相关信息（待解析，请以原帖为准）\n「货币战争•入画奇航」全新赛季说明\n4.7版本更新后，公司和绒绒号漫画的版权所有人达成了合作，将推出全新赛季「货币战争•入画奇航」！游玩可获得星琼*4000、变量骰子*2、自塑尘脂*2、命运的足迹*3等奖励！\n新赛季带来了超大型重磅更新，可体验全新赛季主题玩法「奇遇」与「主角光环」。\n同时，羁绊进行了全量重制，员工们的羁绊、费用、前后台定位、角色赋能也一并重新制作。\n还有全新装备、投资环境与策略等待你选择，快来体验不一样的游玩策略吧！\n\n▌新赛季开放时间\n2026/11/11 4.7版本更新后\n\n▌参与条件\n开拓等级≥21级\n※本内容支持通过「终末视界」功能提前体验。\n※建议开拓者完成开拓任务「匹诺康尼」-「异乡异客」后体验本内容。\n\n▌「货币战争•入画奇航」奖励预览\n\n▌全新赛季内容概览\n■全新赛季主题玩法「奇遇」\n● 对局开始时，将随机为开拓者揭晓一位「苍天航路绒绒号」中的奇遇伙伴。奇遇伙伴会随机带来一种特殊效果，为本场对局提供增益。\n● 每位奇遇伙伴拥有独特的漫画形象与增益倾向，如同不同风格的漫画篇章：有的偏爱装备，有的擅长经济补给，有的会让你的节点发生意想不到的改变。\n\n■全新"
+        },
+        {
+          "action_id": null,
+          "date_only": null,
+          "expected_at": null,
+          "kind": "announcement",
+          "summary": "新联动\n「货币战争•入画奇航」全新赛季\n开始日期：2026-11-11\n规则：开拓等级≥21级；支持通过「终末视界」功能提前体验；建议完成开拓任务「匹诺康尼」-「异乡异客」后体验。"
         }
       ],
       "sources": [
         {
           "account_name": "崩坏星穹铁道",
-          "summary": null,
+          "summary": "官方宣布4.7版本更新后与绒绒号漫画版权方合作，推出「货币战争•入画奇航」全新赛季。",
+          "url": "https://www.miyoushe.com/sr/article/79258370"
+        },
+        {
+          "account_name": "崩坏星穹铁道",
+          "summary": "介绍「货币战争•入画奇航」新赛季：2026/11/11 4.7版本更新后开放，含奇遇、主角光环玩法、员工羁绊重制及奖励说明。",
           "url": "https://www.miyoushe.com/sr/article/79258376"
         }
       ]

@@ -568,6 +568,69 @@
       "source_url": "https://upload-bbs.miyoushe.com/upload/2026/09/24/75276539/3ba9459675f3d689cdad76f7b2ca07b3_891506167028452654.jpg"
     },
     {
+      "asset_path": "assets/media/a0fc7ecb4789c77031d51257a31939ac7b17870fa7f250a3064a28629e92001b.png",
+      "content_type": "image/png",
+      "sha256": "a0fc7ecb4789c77031d51257a31939ac7b17870fa7f250a3064a28629e92001b",
+      "size_bytes": 176668,
+      "source_url": "https://upload-bbs.miyoushe.com/upload/2026/10/30/288909600/2a3afb6d6b8d4efa5ca03adb368852ec_7907570310713243510.png"
+    },
+    {
+      "asset_path": "assets/media/d93ad3d63aa97f4d0085871dfcb628b7d93e291a01eef2c76a055d9beb9808fe.png",
+      "content_type": "image/png",
+      "sha256": "d93ad3d63aa97f4d0085871dfcb628b7d93e291a01eef2c76a055d9beb9808fe",
+      "size_bytes": 1983368,
+      "source_url": "https://upload-bbs.miyoushe.com/upload/2026/10/30/288909600/399dd9672ea10939c97df45e82f6b262_9091256808493263359.png"
+    },
+    {
+      "asset_path": "assets/media/d9d1e88d1e03e97a96289933395746556c1408212e77e5c2d6e18728ccf59315.png",
+      "content_type": "image/png",
+      "sha256": "d9d1e88d1e03e97a96289933395746556c1408212e77e5c2d6e18728ccf59315",
+      "size_bytes": 4066997,
+      "source_url": "https://upload-bbs.miyoushe.com/upload/2026/10/30/288909600/60708e0564c60236aede7f07e80caed7_1843352679286338271.png"
+    },
+    {
+      "asset_path": "assets/media/e95816e4d3549d8cfaa8a158633a7cb54f774510c2fd24b16ad05459cf3ff75d.png",
+      "content_type": "image/png",
+      "sha256": "e95816e4d3549d8cfaa8a158633a7cb54f774510c2fd24b16ad05459cf3ff75d",
+      "size_bytes": 1567103,
+      "source_url": "https://upload-bbs.miyoushe.com/upload/2026/10/30/288909600/6881a7dd604ee3c42dc4ff9f51307c1d_956534954477228231.png"
+    },
+    {
+      "asset_path": "assets/media/b32044aba35d809b49ae50c06f211c8c37da7cd061e0be538e6c50b450a998e9.png",
+      "content_type": "image/png",
+      "sha256": "b32044aba35d809b49ae50c06f211c8c37da7cd061e0be538e6c50b450a998e9",
+      "size_bytes": 322071,
+      "source_url": "https://upload-bbs.miyoushe.com/upload/2026/10/30/288909600/9daf170ebc33f459417bd357aead10e7_6480594731022421810.png"
+    },
+    {
+      "asset_path": "assets/media/01a784176423467cf5b071e810518e2c308011e366c020849e2abd4e0ca9d086.png",
+      "content_type": "image/png",
+      "sha256": "01a784176423467cf5b071e810518e2c308011e366c020849e2abd4e0ca9d086",
+      "size_bytes": 1713104,
+      "source_url": "https://upload-bbs.miyoushe.com/upload/2026/10/30/288909600/be19408a9e29f4057a276cd74c513097_7373981070066459999.png"
+    },
+    {
+      "asset_path": "assets/media/615a91247b7687fe6056ed971b99424ba20ff55f7ebcd6df625446fefe2d3615.png",
+      "content_type": "image/png",
+      "sha256": "615a91247b7687fe6056ed971b99424ba20ff55f7ebcd6df625446fefe2d3615",
+      "size_bytes": 322805,
+      "source_url": "https://upload-bbs.miyoushe.com/upload/2026/10/30/288909600/c7d049fa3756a68dc9882c3f91bbb6d7_2002024351616739422.png"
+    },
+    {
+      "asset_path": "assets/media/ce6662cb87718f3f711047ea656207eb634b438cd82811efe3870b88047d1e16.png",
+      "content_type": "image/png",
+      "sha256": "ce6662cb87718f3f711047ea656207eb634b438cd82811efe3870b88047d1e16",
+      "size_bytes": 2008120,
+      "source_url": "https://upload-bbs.miyoushe.com/upload/2026/10/30/288909600/dd970584b0b8a6aa281274f4180ed383_6991804569476827507.png"
+    },
+    {
+      "asset_path": "assets/media/b0b46c4fddf5cc949dc3c1f46e43cb9c7e88f127cd24450856d7fdfa9ed7a3aa.png",
+      "content_type": "image/png",
+      "sha256": "b0b46c4fddf5cc949dc3c1f46e43cb9c7e88f127cd24450856d7fdfa9ed7a3aa",
+      "size_bytes": 2990787,
+      "source_url": "https://upload-bbs.miyoushe.com/upload/2026/10/30/288909600/eaf377d24a43db3cd8df19cdbcc02400_676432330838005937.png"
+    },
+    {
       "asset_path": "assets/media/9f59bbc41c8c1d88a9af412caa1746973a3d967e78b82ebfaa96b919d2f64fda.jpg",
       "content_type": "image/jpeg",
       "sha256": "9f59bbc41c8c1d88a9af412caa1746973a3d967e78b82ebfaa96b919d2f64fda",
