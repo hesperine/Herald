@@ -1,0 +1,32 @@
+{
+  "campaign_id": null,
+  "campaign_ids": [],
+  "detected_at": "2026-11-01T18:16:38.611282Z",
+  "facts": {},
+  "id": "candidate-62c5be4e0bea86a1112a0dc8",
+  "ip_name": "崩坏：星穹铁道",
+  "ip_slug": "honkai-star-rail",
+  "public_text": "「货币战争•入画奇航」全新赛季来袭！\n4.7版本更新后，公司和绒绒号漫画的版权所有人达成了合作，将推出全新赛季「货币战争•入画奇航」！快来体验不一样的游玩策略吧！",
+  "resolution_version": 2,
+  "review_reason": null,
+  "sources": [
+    {
+      "account_id": "288909600",
+      "account_name": "崩坏星穹铁道",
+      "canonical_content_id": "79258370",
+      "content_hash": "4033db1fca4bd7ff982e0fe1067478aefa27376155ba0170c2298cc21e51ba5f",
+      "excerpt": "「货币战争•入画奇航」全新赛季来袭！\n4.7版本更新后，公司和绒绒号漫画的版权所有人达成了合作，将推出全新赛季「货币战争•入画奇航」！快来体验不一样的游玩策略吧！",
+      "first_seen_at": "2026-11-01T18:16:38.611282Z",
+      "id": "miyoushe-79258370",
+      "is_official": true,
+      "kind": "miyoushe",
+      "media_hashes": [],
+      "media_urls": [],
+      "published_at": "2026-11-01T04:00:15Z",
+      "summary": null,
+      "updated_at": null,
+      "url": "https://www.miyoushe.com/sr/article/79258370"
+    }
+  ],
+  "status": "pending"
+}

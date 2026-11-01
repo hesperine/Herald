@@ -1,0 +1,29 @@
+{
+  "extracted_media_text": [],
+  "id": "skland-6424165",
+  "media_hashes": [
+    "ff838c7f2248352b4bd16904a0f1fe272ba9ad58c434f17926f9748947bda024"
+  ],
+  "media_urls": [
+    "https://bbs.hycdn.cn/image/common/20261027/107/6ae022e128cbf869859e5f3e_004865de.webp"
+  ],
+  "outbound_urls": [],
+  "source": {
+    "account_id": "6168723566526",
+    "account_name": "明日方舟朝陇山",
+    "canonical_content_id": "6424165",
+    "content_hash": "c5d0b5391ea0a4bfa908b5e67bc3feb51843b0a5ed925072faf952555e458e77",
+    "excerpt": "感谢庆典已开启，祝博士的旅途愉快！\n伴随着一个时代的落幕，冬天终将会过去，变革才刚刚开始。\n博士，感谢庆典已经开启，成为这段历史的参与者与见证者吧！",
+    "first_seen_at": "2026-11-01T18:16:38.611282Z",
+    "id": "skland-6424165",
+    "is_official": true,
+    "kind": "skland",
+    "media_hashes": [],
+    "media_urls": [],
+    "published_at": "2026-11-01T08:00:02Z",
+    "summary": null,
+    "updated_at": null,
+    "url": "https://www.skland.com/article?id=6424165"
+  },
+  "text": "感谢庆典已开启，祝博士的旅途愉快！\n伴随着一个时代的落幕，冬天终将会过去，变革才刚刚开始。\n博士，感谢庆典已经开启，成为这段历史的参与者与见证者吧！"
+}

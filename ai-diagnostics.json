@@ -1,4 +1,85 @@
 {
-  "entries": [],
-  "run_at": "2026-10-31T22:23:25.681609+00:00"
+  "entries": [
+    {
+      "attempt": 1,
+      "code": "ok",
+      "elapsed_seconds": 1.416,
+      "finish_reason": "stop",
+      "http_status": 200,
+      "operation": "route_campaigns",
+      "stage": "validated",
+      "usage": {
+        "completion_tokens": 70,
+        "prompt_tokens": 2485,
+        "total_tokens": 2555
+      }
+    },
+    {
+      "attempt": 1,
+      "category": "validation",
+      "code": "schema_validation",
+      "elapsed_seconds": 4.077,
+      "exception_type": "ValidationError",
+      "finish_reason": "stop",
+      "http_status": 200,
+      "operation": "resolve_campaign",
+      "stage": "schema",
+      "usage": {
+        "completion_tokens": 775,
+        "prompt_tokens": 5738,
+        "total_tokens": 6513
+      },
+      "validation_errors": [
+        {
+          "field": "extraction",
+          "type": "extra_forbidden"
+        }
+      ]
+    },
+    {
+      "attempt": 2,
+      "category": "validation",
+      "code": "schema_validation",
+      "elapsed_seconds": 3.276,
+      "exception_type": "ValidationError",
+      "finish_reason": "stop",
+      "http_status": 200,
+      "operation": "resolve_campaign",
+      "stage": "schema",
+      "usage": {
+        "completion_tokens": 673,
+        "prompt_tokens": 5738,
+        "total_tokens": 6411
+      },
+      "validation_errors": [
+        {
+          "field": "extraction",
+          "type": "extra_forbidden"
+        }
+      ]
+    },
+    {
+      "attempt": 3,
+      "category": "validation",
+      "code": "schema_validation",
+      "elapsed_seconds": 3.17,
+      "exception_type": "ValidationError",
+      "finish_reason": "stop",
+      "http_status": 200,
+      "operation": "resolve_campaign",
+      "stage": "schema",
+      "usage": {
+        "completion_tokens": 593,
+        "prompt_tokens": 5738,
+        "total_tokens": 6331
+      },
+      "validation_errors": [
+        {
+          "field": "extraction",
+          "type": "extra_forbidden"
+        }
+      ]
+    }
+  ],
+  "run_at": "2026-11-01T18:16:38.611282+00:00"
 }

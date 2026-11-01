@@ -1,0 +1,41 @@
+{
+  "extracted_media_text": [],
+  "id": "miyoushe-79258370",
+  "media_hashes": [
+    "1e3a1ff1210b1e4410e8a890bea3962938fe796d6f25adc5895c324173110f38",
+    "11d11d9a1466729e439156da8fc53ea2088c3b75c199676b59b4e6b1783eaa97",
+    "d7c63f4108e2554e3c15b92ef8e94039d1115b9790bcd231e17dff9e2c38e5ce",
+    "3a594de98ddbcef1847f3ee694a7b74bacd3f0fd66d72705df99fae523d41755",
+    "94abc1dd8772f0315bffb748bc8603c459c0b39e1c1a24dcf98c2d438cc94e73",
+    "8cea710247c0fd6b63d5c04a447389eb054a296bb74e40d606fbcabdab6fff94",
+    "2624889e3675b5ccbf741934f782f3e89921cf0612161ed3f2d361b6cba16d51"
+  ],
+  "media_urls": [
+    "https://upload-bbs.miyoushe.com/upload/2026/10/30/288909600/9daf170ebc33f459417bd357aead10e7_6480594731022421810.png",
+    "https://upload-bbs.miyoushe.com/upload/2026/10/30/288909600/dd970584b0b8a6aa281274f4180ed383_6991804569476827507.png",
+    "https://upload-bbs.miyoushe.com/upload/2026/10/30/288909600/399dd9672ea10939c97df45e82f6b262_9091256808493263359.png",
+    "https://upload-bbs.miyoushe.com/upload/2026/10/30/288909600/be19408a9e29f4057a276cd74c513097_7373981070066459999.png",
+    "https://upload-bbs.miyoushe.com/upload/2026/10/30/288909600/eaf377d24a43db3cd8df19cdbcc02400_676432330838005937.png",
+    "https://upload-bbs.miyoushe.com/upload/2026/10/30/288909600/60708e0564c60236aede7f07e80caed7_1843352679286338271.png",
+    "https://upload-bbs.miyoushe.com/upload/2026/10/30/288909600/6881a7dd604ee3c42dc4ff9f51307c1d_956534954477228231.png"
+  ],
+  "outbound_urls": [],
+  "source": {
+    "account_id": "288909600",
+    "account_name": "崩坏星穹铁道",
+    "canonical_content_id": "79258370",
+    "content_hash": "4033db1fca4bd7ff982e0fe1067478aefa27376155ba0170c2298cc21e51ba5f",
+    "excerpt": "「货币战争•入画奇航」全新赛季来袭！\n4.7版本更新后，公司和绒绒号漫画的版权所有人达成了合作，将推出全新赛季「货币战争•入画奇航」！快来体验不一样的游玩策略吧！",
+    "first_seen_at": "2026-11-01T18:16:38.611282Z",
+    "id": "miyoushe-79258370",
+    "is_official": true,
+    "kind": "miyoushe",
+    "media_hashes": [],
+    "media_urls": [],
+    "published_at": "2026-11-01T04:00:15Z",
+    "summary": null,
+    "updated_at": null,
+    "url": "https://www.miyoushe.com/sr/article/79258370"
+  },
+  "text": "「货币战争•入画奇航」全新赛季来袭！\n4.7版本更新后，公司和绒绒号漫画的版权所有人达成了合作，将推出全新赛季「货币战争•入画奇航」！快来体验不一样的游玩策略吧！"
+}
