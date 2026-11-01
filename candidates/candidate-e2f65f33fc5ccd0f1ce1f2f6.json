@@ -1,6 +1,8 @@
 {
-  "campaign_id": null,
-  "campaign_ids": [],
+  "campaign_id": "campaign-65e6776cd100285d-f9d83366",
+  "campaign_ids": [
+    "campaign-65e6776cd100285d-f9d83366"
+  ],
   "detected_at": "2026-11-01T18:16:38.611282Z",
   "facts": {},
   "id": "candidate-e2f65f33fc5ccd0f1ce1f2f6",
@@ -28,5 +30,5 @@
       "url": "https://www.miyoushe.com/sr/article/79258376"
     }
   ],
-  "status": "pending"
+  "status": "structured"
 }

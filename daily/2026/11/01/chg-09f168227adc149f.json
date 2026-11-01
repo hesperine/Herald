@@ -1,0 +1,15 @@
+{
+  "activity_id": null,
+  "campaign_id": "campaign-65e6776cd100285d-f9d83366",
+  "detected_at": "2026-11-01T22:40:17.949091Z",
+  "field_paths": [],
+  "id": "chg-09f168227adc149f",
+  "kind": "new_campaign",
+  "published_at": "2026-11-01T04:00:15Z",
+  "semantic_key": "campaign-65e6776cd100285d-f9d83366:new-campaign",
+  "source_ids": [
+    "miyoushe-79258370",
+    "miyoushe-79258376"
+  ],
+  "summary": "新增联动：货币战争•入画奇航"
+}

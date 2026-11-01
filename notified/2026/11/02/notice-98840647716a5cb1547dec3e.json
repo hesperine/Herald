@@ -1,0 +1,21 @@
+{
+  "campaign_id": "campaign-65e6776cd100285d-f9d83366",
+  "candidate_id": null,
+  "channel": "email",
+  "covered_candidate_ids": [
+    "candidate-62c5be4e0bea86a1112a0dc8",
+    "candidate-e2f65f33fc5ccd0f1ce1f2f6"
+  ],
+  "delivery_day": "2026-11-02",
+  "facts": {
+    "activity-8a243b37a280c80a:开始日期": "2026-11-11",
+    "activity-8a243b37a280c80a:活动": "「货币战争•入画奇航」全新赛季",
+    "activity-8a243b37a280c80a:状态": "active",
+    "activity-8a243b37a280c80a:规则": "开拓等级≥21级；支持通过「终末视界」功能提前体验；建议完成开拓任务「匹诺康尼」-「异乡异客」后体验。",
+    "campaign:状态": "active"
+  },
+  "job_id": "notice-98840647716a5cb1547dec3e",
+  "public_text": "",
+  "semantic_key": "notice-98840647716a5cb1547dec3e",
+  "sent_at": "2026-11-01T22:40:21.597697Z"
+}

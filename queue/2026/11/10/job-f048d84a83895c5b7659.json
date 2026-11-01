@@ -1,0 +1,17 @@
+{
+  "action_id": "activity-8a243b37a280c80a--start",
+  "activity_id": "activity-8a243b37a280c80a",
+  "campaign_id": "campaign-65e6776cd100285d-f9d83366",
+  "campaign_notice": false,
+  "candidate_id": null,
+  "change_id": null,
+  "covered_candidate_ids": [],
+  "due_date": "2026-11-10",
+  "expected_at": "2026-11-11T00:00:00+08:00",
+  "expected_date": "2026-11-11",
+  "facts": {},
+  "id": "job-f048d84a83895c5b7659",
+  "kind": "day_before",
+  "semantic_key": "schedule:activity-8a243b37a280c80a:activity-8a243b37a280c80a--start:day_before:2026-11-11T00:00:00+08:00",
+  "summary": "明天开始：「货币战争•入画奇航」全新赛季开始"
+}
