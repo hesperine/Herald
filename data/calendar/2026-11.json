@@ -1,16 +1,5 @@
 {
   "days": {
-    "2026-11-02": [
-      {
-        "action_id": "actions-a7c6f05108dd2e99",
-        "activity_id": "activity-4dc1b582dbb0f3a8",
-        "at": "2026-11-02T13:00:00+08:00",
-        "campaign_id": "campaign-8ef39adc0f9cce18-746c28cd",
-        "ip_name": "明日方舟：终末地",
-        "kind": "reservation_open",
-        "title": "第一阶段主题店联名套餐+打卡活动预约"
-      }
-    ],
     "2026-11-03": [
       {
         "action_id": "actions-317261d0d21e5eff",

@@ -1,0 +1,30 @@
+{
+  "cards": [
+    {
+      "activity": null,
+      "activity_id": null,
+      "campaign_id": "candidate-50efa68c6efeb74dc9cec70c",
+      "campaign_title": "明日方舟：终末地 · 候选联动信息",
+      "detail_url": null,
+      "extraction_status": "pending",
+      "ip_name": "明日方舟：终末地",
+      "reasons": [
+        {
+          "action_id": null,
+          "date_only": null,
+          "expected_at": null,
+          "kind": "announcement",
+          "summary": "发现联动相关信息（待解析，请以原帖为准）\n▼明日方舟：终末地×八达岭长城▼上新：#关塞万里#周边介绍\n管理员——在这条长长长长长长长长的产线的终点等着我们的是……（眯眼）（盯）\n塔卫二最会拉线之人？！\n▽满赠特典、店铺立减、包邮活动限时开启！活动详情请管理员点击长图查看～\n▽天猫店铺：明日方舟终末地旗舰店"
+        }
+      ],
+      "sources": [
+        {
+          "account_name": "明日方舟终末地山团团",
+          "summary": null,
+          "url": "https://www.skland.com/article?id=6444993"
+        }
+      ]
+    }
+  ],
+  "date": "2026-11-03"
+}
