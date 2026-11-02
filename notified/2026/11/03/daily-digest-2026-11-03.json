@@ -1,0 +1,12 @@
+{
+  "campaign_id": null,
+  "candidate_id": null,
+  "channel": "email",
+  "covered_candidate_ids": [],
+  "delivery_day": "2026-11-03",
+  "facts": {},
+  "job_id": "daily-digest-2026-11-03",
+  "public_text": "",
+  "semantic_key": "daily-digest:2026-11-03",
+  "sent_at": "2026-11-02T22:59:00.157565Z"
+}
