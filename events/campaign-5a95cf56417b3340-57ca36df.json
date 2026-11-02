@@ -102,6 +102,158 @@
       "title": "联动定制拍照贴纸道具【贴纸·长城】发放",
       "uncertainties": [],
       "venues": []
+    },
+    {
+      "actions": [
+        {
+          "at": null,
+          "cancelled": false,
+          "end_at": null,
+          "end_condition": null,
+          "end_date": null,
+          "ended": false,
+          "evidence": [
+            {
+              "field_path": "activities[0].actions[0].title",
+              "quote": "▽满赠特典、店铺立减、包邮活动限时开启！",
+              "source_id": "skland-6444993"
+            }
+          ],
+          "id": "action-13ac9895eb930e98",
+          "kind": "gift",
+          "platform": null,
+          "quantity_limit": null,
+          "requires_reservation": null,
+          "requires_rush": null,
+          "rules": null,
+          "scope": null,
+          "start_date": null,
+          "title": "满赠特典",
+          "url": null
+        },
+        {
+          "at": null,
+          "cancelled": false,
+          "end_at": null,
+          "end_condition": null,
+          "end_date": null,
+          "ended": false,
+          "evidence": [
+            {
+              "field_path": "activities[0].actions[1].title",
+              "quote": "▽满赠特典、店铺立减、包邮活动限时开启！",
+              "source_id": "skland-6444993"
+            }
+          ],
+          "id": "action-994ad61e47936c3a",
+          "kind": "discount",
+          "platform": "天猫",
+          "quantity_limit": null,
+          "requires_reservation": null,
+          "requires_rush": null,
+          "rules": null,
+          "scope": "天猫店铺：明日方舟终末地旗舰店",
+          "start_date": null,
+          "title": "店铺立减",
+          "url": null
+        },
+        {
+          "at": null,
+          "cancelled": false,
+          "end_at": null,
+          "end_condition": null,
+          "end_date": null,
+          "ended": false,
+          "evidence": [
+            {
+              "field_path": "activities[0].actions[2].title",
+              "quote": "▽满赠特典、店铺立减、包邮活动限时开启！",
+              "source_id": "skland-6444993"
+            }
+          ],
+          "id": "action-d8e3278b33be0491",
+          "kind": "discount",
+          "platform": "天猫",
+          "quantity_limit": null,
+          "requires_reservation": null,
+          "requires_rush": null,
+          "rules": null,
+          "scope": "天猫店铺：明日方舟终末地旗舰店",
+          "start_date": null,
+          "title": "包邮活动",
+          "url": null
+        }
+      ],
+      "end_at": null,
+      "end_date": null,
+      "evidence": [
+        {
+          "field_path": "activities[0].title",
+          "quote": "▼明日方舟：终末地×八达岭长城▼上新：#关塞万里#周边介绍",
+          "source_id": "skland-6444993"
+        },
+        {
+          "field_path": "activities[0].venues[0].name",
+          "quote": "▽天猫店铺：明日方舟终末地旗舰店",
+          "source_id": "skland-6444993"
+        },
+        {
+          "field_path": "activities[0].venues[0].online_platform",
+          "quote": "▽天猫店铺：明日方舟终末地旗舰店",
+          "source_id": "skland-6444993"
+        },
+        {
+          "field_path": "activities[0].actions[0].title",
+          "quote": "▽满赠特典、店铺立减、包邮活动限时开启！",
+          "source_id": "skland-6444993"
+        },
+        {
+          "field_path": "activities[0].actions[1].title",
+          "quote": "▽满赠特典、店铺立减、包邮活动限时开启！",
+          "source_id": "skland-6444993"
+        },
+        {
+          "field_path": "activities[0].actions[2].title",
+          "quote": "▽满赠特典、店铺立减、包邮活动限时开启！",
+          "source_id": "skland-6444993"
+        }
+      ],
+      "id": "activity-375fc8bcac960a80",
+      "kind": "merchandise",
+      "related_offers": null,
+      "rules": null,
+      "start_at": null,
+      "start_date": null,
+      "status": "details_pending",
+      "title": "「关塞万里」联动周边上新",
+      "uncertainties": [
+        "周边具体商品、开售时间及活动期限未在正文说明，详情指向长图。"
+      ],
+      "venues": [
+        {
+          "address": null,
+          "business_hours": null,
+          "city": null,
+          "country": "CN",
+          "evidence": [
+            {
+              "field_path": "activities[0].venues[0].name",
+              "quote": "▽天猫店铺：明日方舟终末地旗舰店",
+              "source_id": "skland-6444993"
+            },
+            {
+              "field_path": "activities[0].venues[0].online_platform",
+              "quote": "▽天猫店铺：明日方舟终末地旗舰店",
+              "source_id": "skland-6444993"
+            }
+          ],
+          "id": "venue-5afa949d460f4237",
+          "name": "明日方舟终末地旗舰店",
+          "nationwide": false,
+          "online_platform": "天猫",
+          "province": null
+        }
+      ]
     }
   ],
   "activity_redirects": {},
@@ -167,15 +319,76 @@
       "source_id": "skland-6412085",
       "source_media_hash": "23d43e17e86c43bcb4110e48dabed94a065f41dbd8cf8c713e7d55ad78d2377f",
       "source_url": "https://bbs.hycdn.cn/image/common/20261023/113/6adb745c3c6f2effb4a4f36b_96d20048.webp"
+    },
+    {
+      "account_name": "明日方舟终末地山团团",
+      "asset_path": "assets/media/b595b62968de082850a417cbea598a93412ce4a655c4d46457a4b2a5043123b4.webp",
+      "content_type": "image/webp",
+      "sha256": "b595b62968de082850a417cbea598a93412ce4a655c4d46457a4b2a5043123b4",
+      "size_bytes": 129688,
+      "source_id": "skland-6444993",
+      "source_media_hash": "fd15f643c5609a69e5f2ce56c9f52e22b261237a7bc6fa575897c6f8ee86093a",
+      "source_url": "https://bbs.hycdn.cn/image/common/20261102/130/6ae7fb2175c533734341dcd7_65de0095.webp"
+    },
+    {
+      "account_name": "明日方舟终末地山团团",
+      "asset_path": "assets/media/d27c3c19370a5365b940d88d297a0af2bb38eaf2464f84efc86d6100a7bc31bd.webp",
+      "content_type": "image/webp",
+      "sha256": "d27c3c19370a5365b940d88d297a0af2bb38eaf2464f84efc86d6100a7bc31bd",
+      "size_bytes": 168316,
+      "source_id": "skland-6444993",
+      "source_media_hash": "6d284d9474a0051452e1d785d21a0b3dcef69221c4ca99fd1dc0b795b700294f",
+      "source_url": "https://bbs.hycdn.cn/image/common/20261102/130/6ae7fc21eac312a50a6687b8_65de0095.webp"
+    },
+    {
+      "account_name": "明日方舟终末地山团团",
+      "asset_path": "assets/media/00dd981bf9dd2577f4b1c4ff3f5ba6c747f4a641a9a93c03024c22d84fc92539.webp",
+      "content_type": "image/webp",
+      "sha256": "00dd981bf9dd2577f4b1c4ff3f5ba6c747f4a641a9a93c03024c22d84fc92539",
+      "size_bytes": 171084,
+      "source_id": "skland-6444993",
+      "source_media_hash": "7149b7a61a3b1e1276bcc7007bfc1f02fe6a5ddf0d2a11718ab55e3411b3c618",
+      "source_url": "https://bbs.hycdn.cn/image/common/20261102/130/6ae7feda75c533734341dce2_ef3391c4.webp"
+    },
+    {
+      "account_name": "明日方舟终末地山团团",
+      "asset_path": "assets/media/07384c5eb0725ffd7487610208becfb21f5329073c3c4b9a983e24113323f3a0.webp",
+      "content_type": "image/webp",
+      "sha256": "07384c5eb0725ffd7487610208becfb21f5329073c3c4b9a983e24113323f3a0",
+      "size_bytes": 451278,
+      "source_id": "skland-6444993",
+      "source_media_hash": "0258fe8cf3e30cfafbafa39226589cd15581b38c54b3d4a8198222e43fce552c",
+      "source_url": "https://bbs.hycdn.cn/image/common/20261102/130/6ae7fb2f35923f25b275ee8f_96d20048.webp"
+    },
+    {
+      "account_name": "明日方舟终末地山团团",
+      "asset_path": "assets/media/5c867a8db6881bd8f04d064bfb49f29b2bb48c40def170e4a4744f57a9941a92.webp",
+      "content_type": "image/webp",
+      "sha256": "5c867a8db6881bd8f04d064bfb49f29b2bb48c40def170e4a4744f57a9941a92",
+      "size_bytes": 1252846,
+      "source_id": "skland-6444993",
+      "source_media_hash": "615c21d6bc1cc0fa5fb6cf4d076fc8b3a0e7bed5448951a62bab97c556d776ff",
+      "source_url": "https://bbs.hycdn.cn/image/common/20261102/130/6ae7fb34c9639c798c0395b9_91c496d2.webp"
+    },
+    {
+      "account_name": "明日方舟终末地山团团",
+      "asset_path": "assets/media/e8b3f13ca32ad4a4bf97f74f3f384c0920d35cb160c5380441937612755db1b2.webp",
+      "content_type": "image/webp",
+      "sha256": "e8b3f13ca32ad4a4bf97f74f3f384c0920d35cb160c5380441937612755db1b2",
+      "size_bytes": 1219842,
+      "source_id": "skland-6444993",
+      "source_media_hash": "499d9e5906700abf1ecbfae7c2b57d098185cb6e7885f349b40ab5114d70f13a",
+      "source_url": "https://bbs.hycdn.cn/image/common/20261102/130/6ae7fb34b0ed338fc74ae1e2_91c496d2.webp"
     }
   ],
   "partner": "八达岭长城",
   "reachability": {
     "activity-0aae94b9f1120702": "unknown",
+    "activity-375fc8bcac960a80": "online",
     "activity-fd760656e9160352": "unknown"
   },
   "redirected_to": null,
-  "revision": 3,
+  "revision": 4,
   "scope_reviews": [],
   "sources": [
     {
@@ -242,9 +455,40 @@
       "summary": "发放联动定制拍照贴纸道具【贴纸·长城】，2026/10/24 12:00发放，2026/11/15 00:00前登录可领，邮件30天有效。",
       "updated_at": null,
       "url": "https://www.skland.com/article?id=6412085"
+    },
+    {
+      "account_id": "7232373607086",
+      "account_name": "明日方舟终末地山团团",
+      "canonical_content_id": "6444993",
+      "content_hash": "22cb906409e0aed7b8a15be238b3f99e2388cb2d4f589309e215d8ee072b3f68",
+      "excerpt": "▼明日方舟：终末地×八达岭长城▼上新：#关塞万里#周边介绍\n管理员——在这条长长长长长长长长的产线的终点等着我们的是……（眯眼）（盯）\n塔卫二最会拉线之人？！\n▽满赠特典、店铺立减、包邮活动限时开启！活动详情请管理员点击长图查看～\n▽天猫店铺：明日方舟终末地旗舰店",
+      "first_seen_at": "2026-11-02T22:11:07.815989Z",
+      "id": "skland-6444993",
+      "is_official": true,
+      "kind": "skland",
+      "media_hashes": [
+        "fd15f643c5609a69e5f2ce56c9f52e22b261237a7bc6fa575897c6f8ee86093a",
+        "6d284d9474a0051452e1d785d21a0b3dcef69221c4ca99fd1dc0b795b700294f",
+        "7149b7a61a3b1e1276bcc7007bfc1f02fe6a5ddf0d2a11718ab55e3411b3c618",
+        "0258fe8cf3e30cfafbafa39226589cd15581b38c54b3d4a8198222e43fce552c",
+        "615c21d6bc1cc0fa5fb6cf4d076fc8b3a0e7bed5448951a62bab97c556d776ff",
+        "499d9e5906700abf1ecbfae7c2b57d098185cb6e7885f349b40ab5114d70f13a"
+      ],
+      "media_urls": [
+        "https://bbs.hycdn.cn/image/common/20261102/130/6ae7fb2175c533734341dcd7_65de0095.webp",
+        "https://bbs.hycdn.cn/image/common/20261102/130/6ae7fc21eac312a50a6687b8_65de0095.webp",
+        "https://bbs.hycdn.cn/image/common/20261102/130/6ae7feda75c533734341dce2_ef3391c4.webp",
+        "https://bbs.hycdn.cn/image/common/20261102/130/6ae7fb2f35923f25b275ee8f_96d20048.webp",
+        "https://bbs.hycdn.cn/image/common/20261102/130/6ae7fb34c9639c798c0395b9_91c496d2.webp",
+        "https://bbs.hycdn.cn/image/common/20261102/130/6ae7fb34b0ed338fc74ae1e2_91c496d2.webp"
+      ],
+      "published_at": "2026-11-02T04:00:12Z",
+      "summary": "《明日方舟：终末地》×八达岭长城「关塞万里」周边上新介绍，提及满赠特典、店铺立减、包邮活动限时开启，详情见长图，天猫店铺为明日方舟终末地旗舰店。",
+      "updated_at": null,
+      "url": "https://www.skland.com/article?id=6444993"
     }
   ],
   "status": "ongoing",
   "title": "《明日方舟：终末地》×八达岭长城「关塞万里，环带一系」联动",
-  "updated_at": "2026-10-24T16:27:09.090923Z"
+  "updated_at": "2026-11-02T22:58:54.748214Z"
 }

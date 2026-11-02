@@ -498,6 +498,48 @@
       "source_url": "https://bbs.hycdn.cn/image/common/20261030/113/6ae460ed36696a39d3c368d1_004865de.webp"
     },
     {
+      "asset_path": "assets/media/b595b62968de082850a417cbea598a93412ce4a655c4d46457a4b2a5043123b4.webp",
+      "content_type": "image/webp",
+      "sha256": "b595b62968de082850a417cbea598a93412ce4a655c4d46457a4b2a5043123b4",
+      "size_bytes": 129688,
+      "source_url": "https://bbs.hycdn.cn/image/common/20261102/130/6ae7fb2175c533734341dcd7_65de0095.webp"
+    },
+    {
+      "asset_path": "assets/media/07384c5eb0725ffd7487610208becfb21f5329073c3c4b9a983e24113323f3a0.webp",
+      "content_type": "image/webp",
+      "sha256": "07384c5eb0725ffd7487610208becfb21f5329073c3c4b9a983e24113323f3a0",
+      "size_bytes": 451278,
+      "source_url": "https://bbs.hycdn.cn/image/common/20261102/130/6ae7fb2f35923f25b275ee8f_96d20048.webp"
+    },
+    {
+      "asset_path": "assets/media/e8b3f13ca32ad4a4bf97f74f3f384c0920d35cb160c5380441937612755db1b2.webp",
+      "content_type": "image/webp",
+      "sha256": "e8b3f13ca32ad4a4bf97f74f3f384c0920d35cb160c5380441937612755db1b2",
+      "size_bytes": 1219842,
+      "source_url": "https://bbs.hycdn.cn/image/common/20261102/130/6ae7fb34b0ed338fc74ae1e2_91c496d2.webp"
+    },
+    {
+      "asset_path": "assets/media/5c867a8db6881bd8f04d064bfb49f29b2bb48c40def170e4a4744f57a9941a92.webp",
+      "content_type": "image/webp",
+      "sha256": "5c867a8db6881bd8f04d064bfb49f29b2bb48c40def170e4a4744f57a9941a92",
+      "size_bytes": 1252846,
+      "source_url": "https://bbs.hycdn.cn/image/common/20261102/130/6ae7fb34c9639c798c0395b9_91c496d2.webp"
+    },
+    {
+      "asset_path": "assets/media/d27c3c19370a5365b940d88d297a0af2bb38eaf2464f84efc86d6100a7bc31bd.webp",
+      "content_type": "image/webp",
+      "sha256": "d27c3c19370a5365b940d88d297a0af2bb38eaf2464f84efc86d6100a7bc31bd",
+      "size_bytes": 168316,
+      "source_url": "https://bbs.hycdn.cn/image/common/20261102/130/6ae7fc21eac312a50a6687b8_65de0095.webp"
+    },
+    {
+      "asset_path": "assets/media/00dd981bf9dd2577f4b1c4ff3f5ba6c747f4a641a9a93c03024c22d84fc92539.webp",
+      "content_type": "image/webp",
+      "sha256": "00dd981bf9dd2577f4b1c4ff3f5ba6c747f4a641a9a93c03024c22d84fc92539",
+      "size_bytes": 171084,
+      "source_url": "https://bbs.hycdn.cn/image/common/20261102/130/6ae7feda75c533734341dce2_ef3391c4.webp"
+    },
+    {
       "asset_path": "assets/media/799d97f7c5cdca4eec23f9a44236ffa67ea041d385ac76ce078b117c0012a051.jpg",
       "content_type": "image/jpeg",
       "sha256": "799d97f7c5cdca4eec23f9a44236ffa67ea041d385ac76ce078b117c0012a051",

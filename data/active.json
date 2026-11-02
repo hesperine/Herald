@@ -4,6 +4,44 @@
       "activities": [
         {
           "end_at": null,
+          "id": "activity-fd760656e9160352",
+          "kind": "other",
+          "reachability": "unknown",
+          "start_at": null,
+          "status": "details_pending",
+          "title": "线下活动"
+        },
+        {
+          "end_at": null,
+          "id": "activity-0aae94b9f1120702",
+          "kind": "in_game",
+          "reachability": "unknown",
+          "start_at": "2026-10-24T12:00:00+08:00",
+          "status": "ongoing",
+          "title": "联动定制拍照贴纸道具【贴纸·长城】发放"
+        },
+        {
+          "end_at": null,
+          "id": "activity-375fc8bcac960a80",
+          "kind": "merchandise",
+          "reachability": "online",
+          "start_at": null,
+          "status": "details_pending",
+          "title": "「关塞万里」联动周边上新"
+        }
+      ],
+      "id": "campaign-5a95cf56417b3340-57ca36df",
+      "ip_name": "明日方舟：终末地",
+      "ip_slug": "arknights-endfield",
+      "partner": "八达岭长城",
+      "status": "ongoing",
+      "title": "《明日方舟：终末地》×八达岭长城「关塞万里，环带一系」联动",
+      "updated_at": "2026-11-02T22:58:54.748214+00:00"
+    },
+    {
+      "activities": [
+        {
+          "end_at": null,
           "id": "activity-8a243b37a280c80a",
           "kind": "in_game",
           "reachability": "unknown",
@@ -165,35 +203,6 @@
       "status": "details_pending",
       "title": "明日方舟 × 共鸣GONG 超迷你手办企划",
       "updated_at": "2026-10-24T19:03:03.081490+00:00"
-    },
-    {
-      "activities": [
-        {
-          "end_at": null,
-          "id": "activity-fd760656e9160352",
-          "kind": "other",
-          "reachability": "unknown",
-          "start_at": null,
-          "status": "details_pending",
-          "title": "线下活动"
-        },
-        {
-          "end_at": null,
-          "id": "activity-0aae94b9f1120702",
-          "kind": "in_game",
-          "reachability": "unknown",
-          "start_at": "2026-10-24T12:00:00+08:00",
-          "status": "ongoing",
-          "title": "联动定制拍照贴纸道具【贴纸·长城】发放"
-        }
-      ],
-      "id": "campaign-5a95cf56417b3340-57ca36df",
-      "ip_name": "明日方舟：终末地",
-      "ip_slug": "arknights-endfield",
-      "partner": "八达岭长城",
-      "status": "ongoing",
-      "title": "《明日方舟：终末地》×八达岭长城「关塞万里，环带一系」联动",
-      "updated_at": "2026-10-24T16:27:09.090923+00:00"
     },
     {
       "activities": [],
@@ -1622,6 +1631,165 @@
     },
     {
       "activity": {
+        "actions": [
+          {
+            "at": null,
+            "cancelled": false,
+            "end_at": null,
+            "end_condition": null,
+            "end_date": null,
+            "ended": false,
+            "evidence": [
+              {
+                "field_path": "activities[0].actions[0].title",
+                "quote": "▽满赠特典、店铺立减、包邮活动限时开启！",
+                "source_id": "skland-6444993"
+              }
+            ],
+            "id": "action-13ac9895eb930e98",
+            "kind": "gift",
+            "platform": null,
+            "quantity_limit": null,
+            "requires_reservation": null,
+            "requires_rush": null,
+            "rules": null,
+            "scope": null,
+            "start_date": null,
+            "title": "满赠特典",
+            "url": null
+          },
+          {
+            "at": null,
+            "cancelled": false,
+            "end_at": null,
+            "end_condition": null,
+            "end_date": null,
+            "ended": false,
+            "evidence": [
+              {
+                "field_path": "activities[0].actions[1].title",
+                "quote": "▽满赠特典、店铺立减、包邮活动限时开启！",
+                "source_id": "skland-6444993"
+              }
+            ],
+            "id": "action-994ad61e47936c3a",
+            "kind": "discount",
+            "platform": "天猫",
+            "quantity_limit": null,
+            "requires_reservation": null,
+            "requires_rush": null,
+            "rules": null,
+            "scope": "天猫店铺：明日方舟终末地旗舰店",
+            "start_date": null,
+            "title": "店铺立减",
+            "url": null
+          },
+          {
+            "at": null,
+            "cancelled": false,
+            "end_at": null,
+            "end_condition": null,
+            "end_date": null,
+            "ended": false,
+            "evidence": [
+              {
+                "field_path": "activities[0].actions[2].title",
+                "quote": "▽满赠特典、店铺立减、包邮活动限时开启！",
+                "source_id": "skland-6444993"
+              }
+            ],
+            "id": "action-d8e3278b33be0491",
+            "kind": "discount",
+            "platform": "天猫",
+            "quantity_limit": null,
+            "requires_reservation": null,
+            "requires_rush": null,
+            "rules": null,
+            "scope": "天猫店铺：明日方舟终末地旗舰店",
+            "start_date": null,
+            "title": "包邮活动",
+            "url": null
+          }
+        ],
+        "end_at": null,
+        "end_date": null,
+        "evidence": [
+          {
+            "field_path": "activities[0].title",
+            "quote": "▼明日方舟：终末地×八达岭长城▼上新：#关塞万里#周边介绍",
+            "source_id": "skland-6444993"
+          },
+          {
+            "field_path": "activities[0].venues[0].name",
+            "quote": "▽天猫店铺：明日方舟终末地旗舰店",
+            "source_id": "skland-6444993"
+          },
+          {
+            "field_path": "activities[0].venues[0].online_platform",
+            "quote": "▽天猫店铺：明日方舟终末地旗舰店",
+            "source_id": "skland-6444993"
+          },
+          {
+            "field_path": "activities[0].actions[0].title",
+            "quote": "▽满赠特典、店铺立减、包邮活动限时开启！",
+            "source_id": "skland-6444993"
+          },
+          {
+            "field_path": "activities[0].actions[1].title",
+            "quote": "▽满赠特典、店铺立减、包邮活动限时开启！",
+            "source_id": "skland-6444993"
+          },
+          {
+            "field_path": "activities[0].actions[2].title",
+            "quote": "▽满赠特典、店铺立减、包邮活动限时开启！",
+            "source_id": "skland-6444993"
+          }
+        ],
+        "id": "activity-375fc8bcac960a80",
+        "kind": "merchandise",
+        "related_offers": null,
+        "rules": null,
+        "start_at": null,
+        "start_date": null,
+        "status": "details_pending",
+        "title": "「关塞万里」联动周边上新",
+        "uncertainties": [
+          "周边具体商品、开售时间及活动期限未在正文说明，详情指向长图。"
+        ],
+        "venues": [
+          {
+            "address": null,
+            "business_hours": null,
+            "city": null,
+            "country": "CN",
+            "evidence": [
+              {
+                "field_path": "activities[0].venues[0].name",
+                "quote": "▽天猫店铺：明日方舟终末地旗舰店",
+                "source_id": "skland-6444993"
+              },
+              {
+                "field_path": "activities[0].venues[0].online_platform",
+                "quote": "▽天猫店铺：明日方舟终末地旗舰店",
+                "source_id": "skland-6444993"
+              }
+            ],
+            "id": "venue-5afa949d460f4237",
+            "name": "明日方舟终末地旗舰店",
+            "nationwide": false,
+            "online_platform": "天猫",
+            "province": null
+          }
+        ]
+      },
+      "campaign_id": "campaign-5a95cf56417b3340-57ca36df",
+      "campaign_title": "《明日方舟：终末地》×八达岭长城「关塞万里，环带一系」联动",
+      "ip_name": "明日方舟：终末地",
+      "next": null,
+      "url": "event.html?id=campaign-5a95cf56417b3340-57ca36df#activity-activity-375fc8bcac960a80"
+    },
+    {
+      "activity": {
         "actions": [],
         "end_at": null,
         "end_date": null,
@@ -1995,5 +2163,5 @@
       "url": "event.html?id=campaign-5a95cf56417b3340-57ca36df#activity-activity-fd760656e9160352"
     }
   ],
-  "generated_at": "2026-11-03T06:12:39.104907+08:00"
+  "generated_at": "2026-11-03T06:59:00.157565+08:00"
 }
