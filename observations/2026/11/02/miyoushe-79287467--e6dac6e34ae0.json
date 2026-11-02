@@ -1,0 +1,41 @@
+{
+  "extracted_media_text": [],
+  "id": "miyoushe-79287467",
+  "media_hashes": [
+    "9dfa408cf93136583fe7b8977065ccc814449343ea1895aee707ecf125373151",
+    "977aba0ff16df69446e5cde00f543dba6aee6e962abb07a5b41abfc893c8ec13",
+    "4f72745b1f96a627f1babe831840e12f6295a30f1ce77ccce4cd3fba49b74fdd",
+    "5908f41a79391e4db1b048efbad0a3747aed8f5131ee4af1729173e309c03a76",
+    "0d8634d89f05a9e97495cd88debf842b18523830b691240f5c90a1bcec69d499",
+    "b5d5957bcabcc45d0c43dbb7d05b10c240dfee6a2273724d48213fcd212dd0fb",
+    "3747f43f527f605a39a010bb2bc992d42088a395eecf802aac53b4e2366afd86"
+  ],
+  "media_urls": [
+    "https://upload-bbs.miyoushe.com/upload/2026/10/30/75276539/7a5651795d88fff602060f04ecf20713_4233735126490360867.jpg",
+    "https://upload-bbs.miyoushe.com/upload/2026/10/30/75276539/871e1663d2493dbe38d9cb81e1ed4768_2089402956167815607.jpg",
+    "https://upload-bbs.miyoushe.com/upload/2026/10/30/75276539/a3ccd1d752c3e1a42db0d6b062aab3bc_5585813479585463511.jpg",
+    "https://upload-bbs.miyoushe.com/upload/2026/10/30/75276539/aa5bfa6e9091d38dea57c1fefb0a6531_6713492987553810302.jpg",
+    "https://upload-bbs.miyoushe.com/upload/2026/10/30/75276539/ff0ec9eaaaaacfd00aafbc918289d7c5_8152686779746868686.jpg",
+    "https://upload-bbs.miyoushe.com/upload/2026/10/30/75276539/350945f4bad0fcce69265062c8d3c015_7929313289956953760.gif",
+    "https://upload-bbs.miyoushe.com/upload/2026/10/30/75276539/46d0b8191fc69274e95a3234b4c8ec03_2913105457874850890.jpg"
+  ],
+  "outbound_urls": [],
+  "source": {
+    "account_id": "75276539",
+    "account_name": "原神",
+    "canonical_content_id": "79287467",
+    "content_hash": "e6dac6e34ae0bd0697a5f61592c1a2363b8cfa57835d408a656ec72e875d2707",
+    "excerpt": "「坏灭肇始之时」7.2版本活动速递第一期\n旅行者好呀~7.2版本「坏灭肇始之时」即将开启，一起来看看新版本中有哪些福利和活动吧！\n*更多详情内容可见7.2版本公告。",
+    "first_seen_at": "2026-11-02T22:11:07.815989Z",
+    "id": "miyoushe-79287467",
+    "is_official": true,
+    "kind": "miyoushe",
+    "media_hashes": [],
+    "media_urls": [],
+    "published_at": "2026-11-02T04:10:09Z",
+    "summary": null,
+    "updated_at": null,
+    "url": "https://www.miyoushe.com/ys/article/79287467"
+  },
+  "text": "「坏灭肇始之时」7.2版本活动速递第一期\n旅行者好呀~7.2版本「坏灭肇始之时」即将开启，一起来看看新版本中有哪些福利和活动吧！\n*更多详情内容可见7.2版本公告。"
+}

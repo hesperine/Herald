@@ -1,0 +1,43 @@
+{
+  "cards": [
+    {
+      "activity": null,
+      "activity_id": null,
+      "campaign_id": "candidate-50efa68c6efeb74dc9cec70c",
+      "campaign_notice": false,
+      "campaign_title": "明日方舟：终末地 · 候选联动信息",
+      "detail_campaign_id": null,
+      "extraction_status": "pending",
+      "ip_name": "明日方舟：终末地",
+      "reasons": [
+        {
+          "action_id": null,
+          "date_only": null,
+          "expected_at": null,
+          "kind": "announcement",
+          "summary": "发现联动相关信息（待解析，请以原帖为准）\n▼明日方舟：终末地×八达岭长城▼上新：#关塞万里#周边介绍\n管理员——在这条长长长长长长长长的产线的终点等着我们的是……（眯眼）（盯）\n塔卫二最会拉线之人？！\n▽满赠特典、店铺立减、包邮活动限时开启！活动详情请管理员点击长图查看～\n▽天猫店铺：明日方舟终末地旗舰店"
+        }
+      ],
+      "sources": [
+        {
+          "account_id": "7232373607086",
+          "account_name": "明日方舟终末地山团团",
+          "canonical_content_id": "6444993",
+          "content_hash": "22cb906409e0aed7b8a15be238b3f99e2388cb2d4f589309e215d8ee072b3f68",
+          "excerpt": "▼明日方舟：终末地×八达岭长城▼上新：#关塞万里#周边介绍\n管理员——在这条长长长长长长长长的产线的终点等着我们的是……（眯眼）（盯）\n塔卫二最会拉线之人？！\n▽满赠特典、店铺立减、包邮活动限时开启！活动详情请管理员点击长图查看～\n▽天猫店铺：明日方舟终末地旗舰店",
+          "first_seen_at": "2026-11-02T22:11:07.815989Z",
+          "id": "skland-6444993",
+          "is_official": true,
+          "kind": "skland",
+          "media_hashes": [],
+          "media_urls": [],
+          "published_at": "2026-11-02T04:00:12Z",
+          "summary": null,
+          "updated_at": null,
+          "url": "https://www.skland.com/article?id=6444993"
+        }
+      ]
+    }
+  ],
+  "date": "2026-11-03"
+}
