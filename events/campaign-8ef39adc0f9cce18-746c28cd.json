@@ -53,6 +53,32 @@
           "start_date": null,
           "title": "联名套餐赠周边套组",
           "url": null
+        },
+        {
+          "at": null,
+          "cancelled": false,
+          "end_at": null,
+          "end_condition": null,
+          "end_date": null,
+          "ended": false,
+          "evidence": [
+            {
+              "field_path": "activities.activity-d9b5947c33cb3d2d.actions.actions-18f955a7e9e6a850",
+              "quote": "联动定制头像“可爱堡堡”、联动定制装饰物品“汉堡之王”，购买汉堡王 ×《明日方舟：终末地》联名套餐获取。",
+              "source_id": "skland-6447428"
+            }
+          ],
+          "id": "actions-18f955a7e9e6a850",
+          "kind": "gift",
+          "platform": null,
+          "quantity_limit": null,
+          "requires_reservation": null,
+          "requires_rush": null,
+          "rules": "购买汉堡王 ×《明日方舟：终末地》联名套餐获取联动定制头像「可爱堡堡」、联动定制装饰物品「汉堡之王」；兑换有效期：2026年11月5日 00:00:00 - 2027年3月5日 00:00:00",
+          "scope": "汉堡王 ×《明日方舟：终末地》联名套餐",
+          "start_date": null,
+          "title": "联名套餐赠联动定制头像与装饰物品兑换码",
+          "url": null
         }
       ],
       "end_at": null,
@@ -439,7 +465,7 @@
   "ip_slug": "arknights-endfield",
   "partner": "汉堡王",
   "redirected_to": null,
-  "revision": 3,
+  "revision": 4,
   "scope_reviews": [],
   "sources": [
     {
@@ -526,9 +552,30 @@
       "summary": "发布汉堡王联动预约指南：11月2日13:00起开放51家主题店联名套餐及打卡活动预约，核销11月5日至8日；11月3日13:00起开放特别快闪预约，活动11月7日至8日；常规门店套餐免预约。",
       "updated_at": null,
       "url": "https://www.skland.com/article?id=6430913"
+    },
+    {
+      "account_id": "3737967211133",
+      "account_name": "明日方舟终末地",
+      "canonical_content_id": "6447428",
+      "content_hash": "3623481ae1d65de8925b1fe9b1cd4def031991816e1e3d2d4c9deebcaa45d6f6",
+      "excerpt": "联动定制头像&装饰物品\n联动定制头像\n“可爱堡堡”\n都严肃些，我们可爱的堡堡之王要向它忠实的臣民宣讲美味之道了！\n联动定制装饰物品\n“汉堡之王”\n巨大的汉堡，拥有雄浑气势……呃，您也在餐盘中？\n————————\n联动定制头像“可爱堡堡”、联动定制装饰物品“汉堡之王”，购买汉堡王 ×《明日方舟：终末地》联名套餐获取。\n兑换有效期：2026年11月5日 00:00:00 - 2027年3月5日 00:00:00",
+      "first_seen_at": "2026-11-03T19:59:39.455361Z",
+      "id": "skland-6447428",
+      "is_official": true,
+      "kind": "skland",
+      "media_hashes": [
+        "9b83db32b5be9c04d347d7f05b0b7dea06b395f5665c68a85b59e94e90ceedd0"
+      ],
+      "media_urls": [
+        "https://bbs.hycdn.cn/image/common/20261103/113/6ae8b8bf37e0c7c7cc8f653e_ef3391c4.webp"
+      ],
+      "published_at": "2026-11-03T04:00:48Z",
+      "summary": "介绍联动定制头像「可爱堡堡」与装饰物品「汉堡之王」，说明购买汉堡王×《明日方舟：终末地》联名套餐获取，兑换有效期2026年11月5日至2027年3月5日。",
+      "updated_at": null,
+      "url": "https://www.skland.com/article?id=6447428"
     }
   ],
   "status": "details_pending",
   "title": "汉堡王 ×《明日方舟：终末地》「美味通行，堡已就位」",
-  "updated_at": "2026-10-30T18:26:48.161359Z"
+  "updated_at": "2026-11-03T19:59:39.455361Z"
 }

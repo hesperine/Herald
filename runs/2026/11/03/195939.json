@@ -1,0 +1,15 @@
+{
+  "campaigns_created": 0,
+  "campaigns_updated": 1,
+  "duplicates": 2,
+  "emails_sent": 1,
+  "finished_at": "2026-11-03T20:02:42.469426Z",
+  "jobs_created": 1,
+  "notifications_sent": 4,
+  "observations": 11,
+  "started_at": "2026-11-03T19:59:39.455361Z",
+  "warnings": [
+    "official source fetch failed: website-genshin-impact-official",
+    "official source fetch failed: website-honkai-star-rail-official"
+  ]
+}

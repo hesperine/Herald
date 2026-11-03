@@ -1,0 +1,29 @@
+{
+  "extracted_media_text": [],
+  "id": "skland-6449240",
+  "media_hashes": [
+    "1d6751f8092702907f3e4b078935c0827d21e5dcdf55c19b24c64900c8f955f9"
+  ],
+  "media_urls": [
+    "https://bbs.hycdn.cn/image/common/20261103/130/6ae9ace4ed989a2c1f4746a6_65de0095.webp"
+  ],
+  "outbound_urls": [],
+  "source": {
+    "account_id": "7232373607086",
+    "account_name": "明日方舟终末地山团团",
+    "canonical_content_id": "6449240",
+    "content_hash": "e69af3234c62e5710b63190ba7acc223bde4e59d9f31560feac184151cccf68f",
+    "excerpt": "▼管理员亲自点单送菜还推销周边？根本没有这样的客栈！\n有啊有啊～这不是说着管理员，管理员就来了（盯）\n管理员！！来都来了！！带一份大师墨宝回家吧！！",
+    "first_seen_at": "2026-11-03T19:59:39.455361Z",
+    "id": "skland-6449240",
+    "is_official": true,
+    "kind": "skland",
+    "media_hashes": [],
+    "media_urls": [],
+    "published_at": "2026-11-03T10:00:12Z",
+    "summary": null,
+    "updated_at": null,
+    "url": "https://www.skland.com/article?id=6449240"
+  },
+  "text": "▼管理员亲自点单送菜还推销周边？根本没有这样的客栈！\n有啊有啊～这不是说着管理员，管理员就来了（盯）\n管理员！！来都来了！！带一份大师墨宝回家吧！！"
+}

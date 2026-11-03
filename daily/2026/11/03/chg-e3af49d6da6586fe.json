@@ -1,0 +1,14 @@
+{
+  "activity_id": "activity-d9b5947c33cb3d2d",
+  "campaign_id": "campaign-8ef39adc0f9cce18-746c28cd",
+  "detected_at": "2026-11-03T19:59:39.455361Z",
+  "field_paths": [],
+  "id": "chg-e3af49d6da6586fe",
+  "kind": "field_added",
+  "published_at": "2026-10-06T12:40:59Z",
+  "semantic_key": "campaign-8ef39adc0f9cce18-746c28cd:entity-added-actions-18f955a7e9e6a850",
+  "source_ids": [
+    "skland-6447428"
+  ],
+  "summary": "新增：联名套餐赠联动定制头像与装饰物品兑换码"
+}
