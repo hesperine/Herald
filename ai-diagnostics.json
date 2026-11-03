@@ -1,19 +1,4 @@
 {
-  "entries": [
-    {
-      "attempt": 1,
-      "code": "ok",
-      "elapsed_seconds": 4.69,
-      "finish_reason": "stop",
-      "http_status": 200,
-      "operation": "resolve_campaign",
-      "stage": "validated",
-      "usage": {
-        "completion_tokens": 1194,
-        "prompt_tokens": 7018,
-        "total_tokens": 8212
-      }
-    }
-  ],
-  "run_at": "2026-11-02T22:58:54.748214+00:00"
+  "entries": [],
+  "run_at": "2026-11-03T01:29:31.909558+00:00"
 }
