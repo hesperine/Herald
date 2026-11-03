@@ -540,6 +540,13 @@
       "source_url": "https://bbs.hycdn.cn/image/common/20261102/130/6ae7feda75c533734341dce2_ef3391c4.webp"
     },
     {
+      "asset_path": "assets/media/18ac0a324341e3defbd4f803465b83c43ed6b07be8ced322716b2de6bb6d4fa2.webp",
+      "content_type": "image/webp",
+      "sha256": "18ac0a324341e3defbd4f803465b83c43ed6b07be8ced322716b2de6bb6d4fa2",
+      "size_bytes": 293688,
+      "source_url": "https://bbs.hycdn.cn/image/common/20261103/113/6ae8b8bf37e0c7c7cc8f653e_ef3391c4.webp"
+    },
+    {
       "asset_path": "assets/media/799d97f7c5cdca4eec23f9a44236ffa67ea041d385ac76ce078b117c0012a051.jpg",
       "content_type": "image/jpeg",
       "sha256": "799d97f7c5cdca4eec23f9a44236ffa67ea041d385ac76ce078b117c0012a051",
