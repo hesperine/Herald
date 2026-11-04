@@ -4,6 +4,26 @@
       "activities": [
         {
           "end_at": null,
+          "id": "activity-8a243b37a280c80a",
+          "kind": "in_game",
+          "reachability": "unknown",
+          "start_at": null,
+          "status": "details_pending",
+          "title": "「货币战争•入画奇航」全新赛季"
+        }
+      ],
+      "id": "campaign-65e6776cd100285d-f9d83366",
+      "ip_name": "崩坏：星穹铁道",
+      "ip_slug": "honkai-star-rail",
+      "partner": "绒绒号漫画",
+      "status": "details_pending",
+      "title": "货币战争•入画奇航",
+      "updated_at": "2026-11-04T20:18:02.901564+00:00"
+    },
+    {
+      "activities": [
+        {
+          "end_at": null,
           "id": "activity-d9b5947c33cb3d2d",
           "kind": "food",
           "reachability": "unknown",
@@ -84,26 +104,6 @@
       "status": "ongoing",
       "title": "《明日方舟：终末地》×八达岭长城「关塞万里，环带一系」联动",
       "updated_at": "2026-11-02T22:58:54.748214+00:00"
-    },
-    {
-      "activities": [
-        {
-          "end_at": null,
-          "id": "activity-8a243b37a280c80a",
-          "kind": "in_game",
-          "reachability": "unknown",
-          "start_at": null,
-          "status": "details_pending",
-          "title": "「货币战争•入画奇航」全新赛季"
-        }
-      ],
-      "id": "campaign-65e6776cd100285d-f9d83366",
-      "ip_name": "崩坏：星穹铁道",
-      "ip_slug": "honkai-star-rail",
-      "partner": "绒绒号漫画",
-      "status": "details_pending",
-      "title": "货币战争•入画奇航",
-      "updated_at": "2026-11-01T22:40:17.949091+00:00"
     },
     {
       "activities": [
@@ -2189,5 +2189,5 @@
       "url": "event.html?id=campaign-5a95cf56417b3340-57ca36df#activity-activity-fd760656e9160352"
     }
   ],
-  "generated_at": "2026-11-04T07:55:49.615897+08:00"
+  "generated_at": "2026-11-05T04:18:56.293483+08:00"
 }

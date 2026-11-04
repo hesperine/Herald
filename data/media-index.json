@@ -547,6 +547,20 @@
       "source_url": "https://bbs.hycdn.cn/image/common/20261103/113/6ae8b8bf37e0c7c7cc8f653e_ef3391c4.webp"
     },
     {
+      "asset_path": "assets/media/b654cd319390dc8321b2f4a456dc7a5cfc260aa2af31925106b50bde54cd1fe3.png",
+      "content_type": "image/png",
+      "sha256": "b654cd319390dc8321b2f4a456dc7a5cfc260aa2af31925106b50bde54cd1fe3",
+      "size_bytes": 41260,
+      "source_url": "https://fastcdn.mihoyo.com/content-v2/hkrpg/167179/03d21f7fff231ebb332e820ebe5b8216_7878220084526250881.png"
+    },
+    {
+      "asset_path": "assets/media/82190dbaa7e49b3df9db27ddeae9bb6602fecca9c6e72cdf11834bbd591e5c94.jpg",
+      "content_type": "image/jpeg",
+      "sha256": "82190dbaa7e49b3df9db27ddeae9bb6602fecca9c6e72cdf11834bbd591e5c94",
+      "size_bytes": 77347,
+      "source_url": "https://fastcdn.mihoyo.com/content-v2/hkrpg/167179/c3fb169de9594eeb0a3e3e11ed18fec7_6492603280718012438.jpg"
+    },
+    {
       "asset_path": "assets/media/799d97f7c5cdca4eec23f9a44236ffa67ea041d385ac76ce078b117c0012a051.jpg",
       "content_type": "image/jpeg",
       "sha256": "799d97f7c5cdca4eec23f9a44236ffa67ea041d385ac76ce078b117c0012a051",
