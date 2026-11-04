@@ -1,0 +1,32 @@
+{
+  "campaign_id": null,
+  "campaign_ids": [],
+  "detected_at": "2026-11-04T20:18:02.901564Z",
+  "facts": {},
+  "id": "candidate-80db5834b9cde4c1b5467e26",
+  "ip_name": "崩坏：星穹铁道",
+  "ip_slug": "honkai-star-rail",
+  "public_text": "即兴巡演PV：「当阿哈来敲门」\n假如生活欺骗了你，不要悲伤，不要心急——\n在每一个沮丧的时刻，阿哈都在注视着你。\n \n中文CV：\n星神★阿哈——子音",
+  "resolution_version": 2,
+  "review_reason": "与官网PV内容相同，仅为游戏内PV发布，未涉及品牌或其他IP联动，也无快闪、演出、预约、门票或周边售卖等线下活动信息。",
+  "sources": [
+    {
+      "account_id": "288909600",
+      "account_name": "崩坏星穹铁道",
+      "canonical_content_id": "79327798",
+      "content_hash": "0c19d5e89113ec4c898df2d46fbf29c5b43319515a5b358851c1a4098c433c2a",
+      "excerpt": "即兴巡演PV：「当阿哈来敲门」\n假如生活欺骗了你，不要悲伤，不要心急——\n在每一个沮丧的时刻，阿哈都在注视着你。\n \n中文CV：\n星神★阿哈——子音",
+      "first_seen_at": "2026-11-04T20:18:02.901564Z",
+      "id": "miyoushe-79327798",
+      "is_official": true,
+      "kind": "miyoushe",
+      "media_hashes": [],
+      "media_urls": [],
+      "published_at": "2026-11-04T04:00:13Z",
+      "summary": null,
+      "updated_at": null,
+      "url": "https://www.miyoushe.com/sr/article/79327798"
+    }
+  ],
+  "status": "unconfirmed"
+}

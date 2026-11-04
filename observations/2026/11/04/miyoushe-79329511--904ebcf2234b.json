@@ -1,0 +1,31 @@
+{
+  "extracted_media_text": [],
+  "id": "miyoushe-79329511",
+  "media_hashes": [
+    "abcf01cc9c118cfde189d351ba523aea693e2f0bd8f84140454b90a2fac3879d",
+    "d6e036dbde7c84abd54352924bfab080e6180479b7addcb28b5cb60384ed9c98"
+  ],
+  "media_urls": [
+    "https://upload-bbs.miyoushe.com/upload/2026/11/03/288909600/6af0996fb34f70ec458ada05416c181f_6248270572314371450.jpg",
+    "https://upload-bbs.miyoushe.com/upload/2026/11/03/288909600/9e315b1d7ede0f42c486f300c03c4c66_5581774522063726798.jpg"
+  ],
+  "outbound_urls": [],
+  "source": {
+    "account_id": "288909600",
+    "account_name": "崩坏星穹铁道",
+    "canonical_content_id": "79329511",
+    "content_hash": "904ebcf2234bbb961e7926b2de4c69a17c63ca73e7b463bace81b88d41abee95",
+    "excerpt": "光锥前瞻 | 4.7版本「此刻，将群星付之一笑」\n开拓者好呀，一起来看看4.7版本「此刻，将群星付之一笑」新增的光锥「在世界尽头相会吧！（欢愉）」~",
+    "first_seen_at": "2026-11-04T20:18:02.901564Z",
+    "id": "miyoushe-79329511",
+    "is_official": true,
+    "kind": "miyoushe",
+    "media_hashes": [],
+    "media_urls": [],
+    "published_at": "2026-11-04T05:00:10Z",
+    "summary": null,
+    "updated_at": null,
+    "url": "https://www.miyoushe.com/sr/article/79329511"
+  },
+  "text": "光锥前瞻 | 4.7版本「此刻，将群星付之一笑」\n开拓者好呀，一起来看看4.7版本「此刻，将群星付之一笑」新增的光锥「在世界尽头相会吧！（欢愉）」~"
+}

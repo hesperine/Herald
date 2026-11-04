@@ -1,4 +1,33 @@
 {
-  "entries": [],
-  "run_at": "2026-11-03T23:55:48.608451+00:00"
+  "entries": [
+    {
+      "attempt": 1,
+      "code": "ok",
+      "elapsed_seconds": 1.561,
+      "finish_reason": "stop",
+      "http_status": 200,
+      "operation": "route_campaigns",
+      "stage": "validated",
+      "usage": {
+        "completion_tokens": 180,
+        "prompt_tokens": 2719,
+        "total_tokens": 2899
+      }
+    },
+    {
+      "attempt": 1,
+      "code": "ok",
+      "elapsed_seconds": 2.833,
+      "finish_reason": "stop",
+      "http_status": 200,
+      "operation": "resolve_campaign",
+      "stage": "validated",
+      "usage": {
+        "completion_tokens": 515,
+        "prompt_tokens": 7685,
+        "total_tokens": 8200
+      }
+    }
+  ],
+  "run_at": "2026-11-04T20:18:02.901564+00:00"
 }

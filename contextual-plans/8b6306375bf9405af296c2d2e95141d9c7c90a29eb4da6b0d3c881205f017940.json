@@ -1,0 +1,27 @@
+{
+  "completed": {
+    "0": "campaign-65e6776cd100285d-f9d83366"
+  },
+  "routes": {
+    "groups": [
+      {
+        "campaign_id": "campaign-65e6776cd100285d-f9d83366",
+        "observation_ids": [
+          "website-honkai-star-rail-official-167179"
+        ],
+        "partner": "绒绒号漫画",
+        "phrase": "崩坏：星穹铁道 × 绒绒号漫画「货币战争•入画奇航」"
+      }
+    ],
+    "unconfirmed": [
+      {
+        "observation_id": "website-honkai-star-rail-official-167234",
+        "reason": "仅为游戏内PV发布，未涉及品牌或其他IP联动，也无快闪、演出、预约、门票或周边售卖等线下活动信息。"
+      },
+      {
+        "observation_id": "miyoushe-79327798",
+        "reason": "与官网PV内容相同，仅为游戏内PV发布，未涉及品牌或其他IP联动，也无快闪、演出、预约、门票或周边售卖等线下活动信息。"
+      }
+    ]
+  }
+}
