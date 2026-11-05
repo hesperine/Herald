@@ -1,0 +1,72 @@
+{
+  "cards": [
+    {
+      "activity": null,
+      "activity_id": null,
+      "campaign_id": "candidate-0b3d0738e9b9774dfd409b1c",
+      "campaign_title": "崩坏：星穹铁道 · 候选联动信息",
+      "detail_url": null,
+      "extraction_status": "unconfirmed",
+      "ip_name": "崩坏：星穹铁道",
+      "reasons": [
+        {
+          "action_id": null,
+          "date_only": null,
+          "expected_at": null,
+          "kind": "announcement",
+          "summary": "原帖核查：该帖为游戏内虚构刊物《狸了个大谱》的趣味内容，未公布任何IP联动、快闪、漫展、演出或周边售卖等企划信息，无法归入任何联动或活动企划。"
+        }
+      ],
+      "sources": [
+        {
+          "account_name": "崩坏星穹铁道",
+          "summary": null,
+          "url": "https://www.miyoushe.com/sr/article/79361922"
+        }
+      ]
+    },
+    {
+      "activity": {
+        "title": "特别快闪「开拓街头 美味据点」"
+      },
+      "activity_id": "activity-717c6c2b49c05cf3",
+      "campaign_id": "campaign-8ef39adc0f9cce18-746c28cd",
+      "campaign_title": "汉堡王 ×《明日方舟：终末地》「美味通行，堡已就位」",
+      "detail_url": "event.html?id=campaign-8ef39adc0f9cce18-746c28cd#activity-activity-717c6c2b49c05cf3",
+      "extraction_status": null,
+      "ip_name": "明日方舟：终末地",
+      "reasons": [
+        {
+          "action_id": "activity-717c6c2b49c05cf3--start",
+          "date_only": "2026-11-07",
+          "expected_at": "2026-11-07T00:00:00+08:00",
+          "kind": "day_before",
+          "summary": "明天开始：特别快闪「开拓街头 美味据点」开始"
+        }
+      ],
+      "sources": [
+        {
+          "account_name": "明日方舟终末地",
+          "summary": "发布汉堡王×《明日方舟：终末地》「美味通行，堡已就位」合作宣传PV，宣布11月5日联动开启，邀请玩家前往汉堡王完成特别任务，详情待汉堡王官方账号公布。",
+          "url": "https://www.skland.com/article?id=6366130"
+        },
+        {
+          "account_name": "明日方舟终末地",
+          "summary": null,
+          "url": "https://www.skland.com/article?id=6424097"
+        },
+        {
+          "account_name": "明日方舟终末地",
+          "summary": "发布汉堡王联动预约指南：11月2日13:00起开放51家主题店联名套餐及打卡活动预约，核销11月5日至8日；11月3日13:00起开放特别快闪预约，活动11月7日至8日；常规门店套餐免预约。",
+          "url": "https://www.skland.com/article?id=6430913"
+        },
+        {
+          "account_name": "明日方舟终末地",
+          "summary": "介绍联动定制头像「可爱堡堡」与装饰物品「汉堡之王」，说明购买汉堡王×《明日方舟：终末地》联名套餐获取，兑换有效期2026年11月5日至2027年3月5日。",
+          "url": "https://www.skland.com/article?id=6447428"
+        }
+      ]
+    }
+  ],
+  "date": "2026-11-06"
+}

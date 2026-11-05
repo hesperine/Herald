@@ -126,35 +126,6 @@
       "updated_at": "2026-10-27T18:34:16.958329+00:00"
     },
     {
-      "activities": [
-        {
-          "end_at": "2026-11-06T03:59:00+08:00",
-          "id": "activity-570c6e42f30e1861",
-          "kind": "merchandise",
-          "reachability": "unknown",
-          "start_at": "2026-10-16T16:00:00+08:00",
-          "status": "ongoing",
-          "title": "组合包限时上架"
-        },
-        {
-          "end_at": "2026-11-06T03:59:00+08:00",
-          "id": "activity-c435ce9fe3d4b565",
-          "kind": "merchandise",
-          "reachability": "unknown",
-          "start_at": "2026-10-16T16:00:00+08:00",
-          "status": "ongoing",
-          "title": "新装限时上架"
-        }
-      ],
-      "id": "campaign-354e1e728907e326-2cc2bdfc",
-      "ip_name": "明日方舟",
-      "ip_slug": "arknights",
-      "partner": "国家图书馆",
-      "status": "ongoing",
-      "title": "《明日方舟》× 国家图书馆「恒远津梁」",
-      "updated_at": "2026-10-24T19:09:25.995731+00:00"
-    },
-    {
       "activities": [],
       "id": "campaign-de00e4b309b316f3-7cd10764",
       "ip_name": "明日方舟",
@@ -385,6 +356,110 @@
             "ended": false,
             "evidence": [
               {
+                "field_path": "activities[1].actions[0].requires_reservation",
+                "quote": "欢迎预约前往",
+                "source_id": "skland-6424097"
+              }
+            ],
+            "id": "action-bc58390e44c02962",
+            "kind": "reservation_open",
+            "platform": null,
+            "quantity_limit": null,
+            "requires_reservation": true,
+            "requires_rush": null,
+            "rules": "欢迎预约前往",
+            "scope": "特别快闪「开拓街头 美味据点」",
+            "start_date": null,
+            "title": "快闪「开拓街头 美味据点」预约",
+            "url": null
+          },
+          {
+            "at": "2026-11-03T13:00:00+08:00",
+            "cancelled": false,
+            "end_at": null,
+            "end_condition": null,
+            "end_date": null,
+            "ended": false,
+            "evidence": [
+              {
+                "field_path": "activities.activity-717c6c2b49c05cf3.actions.actions-317261d0d21e5eff",
+                "quote": "2026年11月3日 13:00起",
+                "source_id": "skland-6430913"
+              }
+            ],
+            "id": "actions-317261d0d21e5eff",
+            "kind": "reservation_open",
+            "platform": "【汉堡王+】微信小程序",
+            "quantity_limit": null,
+            "requires_reservation": true,
+            "requires_rush": null,
+            "rules": "通过【汉堡王+】微信小程序-首页热门活动-点击预约",
+            "scope": "特别快闪「开拓街头 美味据点」",
+            "start_date": "2026-11-03",
+            "title": "特别快闪活动预约",
+            "url": null
+          }
+        ],
+        "end_at": null,
+        "end_date": "2026-11-08",
+        "evidence": [
+          {
+            "field_path": "activities[1].title",
+            "quote": "11月7日~11月8日，特别快闪「开拓街头 美味据点」限时开启，欢迎预约前往",
+            "source_id": "skland-6424097"
+          },
+          {
+            "field_path": "activities[1].start_date",
+            "quote": "11月7日~11月8日，特别快闪「开拓街头 美味据点」限时开启",
+            "source_id": "skland-6424097"
+          },
+          {
+            "field_path": "activities[1].end_date",
+            "quote": "11月7日~11月8日，特别快闪「开拓街头 美味据点」限时开启",
+            "source_id": "skland-6424097"
+          },
+          {
+            "field_path": "activities[1].actions[0].requires_reservation",
+            "quote": "欢迎预约前往",
+            "source_id": "skland-6424097"
+          }
+        ],
+        "id": "activity-717c6c2b49c05cf3",
+        "kind": "popup",
+        "related_offers": null,
+        "rules": "需通过【汉堡王+】微信小程序预约前往",
+        "start_at": null,
+        "start_date": "2026-11-07",
+        "status": "details_pending",
+        "title": "特别快闪「开拓街头 美味据点」",
+        "uncertainties": [
+          "快闪举办城市与具体场地未在正文说明",
+          "预约开放时间未说明"
+        ],
+        "venues": []
+      },
+      "campaign_id": "campaign-8ef39adc0f9cce18-746c28cd",
+      "campaign_title": "汉堡王 ×《明日方舟：终末地》「美味通行，堡已就位」",
+      "ip_name": "明日方舟：终末地",
+      "next": {
+        "at": "2026-11-07T00:00:00+08:00",
+        "date": "2026-11-07",
+        "title": "特别快闪「开拓街头 美味据点」开始"
+      },
+      "url": "event.html?id=campaign-8ef39adc0f9cce18-746c28cd#activity-activity-717c6c2b49c05cf3"
+    },
+    {
+      "activity": {
+        "actions": [
+          {
+            "at": null,
+            "cancelled": false,
+            "end_at": null,
+            "end_condition": null,
+            "end_date": null,
+            "ended": false,
+            "evidence": [
+              {
                 "field_path": "activities[0].actions[0].title",
                 "quote": "更可预约参与「美味通行证任务」主题店活动",
                 "source_id": "skland-6424097"
@@ -526,408 +601,11 @@
       "campaign_title": "汉堡王 ×《明日方舟：终末地》「美味通行，堡已就位」",
       "ip_name": "明日方舟：终末地",
       "next": {
-        "at": "2026-11-05T00:00:00+08:00",
-        "date": "2026-11-05",
-        "title": "主题店联名套餐+打卡活动核销"
+        "at": "2026-11-08T00:00:00+08:00",
+        "date": "2026-11-08",
+        "title": "主题店联名套餐+打卡活动核销截止"
       },
       "url": "event.html?id=campaign-8ef39adc0f9cce18-746c28cd#activity-activity-4dc1b582dbb0f3a8"
-    },
-    {
-      "activity": {
-        "actions": [],
-        "end_at": null,
-        "end_date": null,
-        "evidence": [
-          {
-            "field_path": "activities[2].title",
-            "quote": "联动表情包11月5日即将上线",
-            "source_id": "skland-6424097"
-          },
-          {
-            "field_path": "activities[2].start_date",
-            "quote": "联动表情包11月5日即将上线",
-            "source_id": "skland-6424097"
-          }
-        ],
-        "id": "activity-61f1009f0cdcb64f",
-        "kind": "online",
-        "related_offers": null,
-        "rules": null,
-        "start_at": null,
-        "start_date": "2026-11-05",
-        "status": "details_pending",
-        "title": "联动表情包上线",
-        "uncertainties": [
-          "表情包获取平台未在正文说明"
-        ],
-        "venues": []
-      },
-      "campaign_id": "campaign-8ef39adc0f9cce18-746c28cd",
-      "campaign_title": "汉堡王 ×《明日方舟：终末地》「美味通行，堡已就位」",
-      "ip_name": "明日方舟：终末地",
-      "next": {
-        "at": "2026-11-05T00:00:00+08:00",
-        "date": "2026-11-05",
-        "title": "联动表情包上线开始"
-      },
-      "url": "event.html?id=campaign-8ef39adc0f9cce18-746c28cd#activity-activity-61f1009f0cdcb64f"
-    },
-    {
-      "activity": {
-        "actions": [
-          {
-            "at": null,
-            "cancelled": false,
-            "end_at": null,
-            "end_condition": null,
-            "end_date": null,
-            "ended": false,
-            "evidence": [
-              {
-                "field_path": "activities[0].actions[0].start_date",
-                "quote": "11月5日，汉堡王×《明日方舟：终末地》联动开启",
-                "source_id": "skland-6366130"
-              }
-            ],
-            "id": "action-64dddfd3e38ec25c",
-            "kind": "event_start",
-            "platform": null,
-            "quantity_limit": null,
-            "requires_reservation": null,
-            "requires_rush": null,
-            "rules": null,
-            "scope": null,
-            "start_date": "2026-11-05",
-            "title": "联动开启",
-            "url": null
-          },
-          {
-            "at": null,
-            "cancelled": false,
-            "end_at": null,
-            "end_condition": null,
-            "end_date": null,
-            "ended": false,
-            "evidence": [
-              {
-                "field_path": "activities.activity-d9b5947c33cb3d2d.actions.actions-030ebf41f487d8aa",
-                "quote": "🛒「美味通行」七件套 🎁毛绒套组（毛绒×1＋透卡×1＋Q版光栅卡×1）",
-                "source_id": "skland-6424097"
-              }
-            ],
-            "id": "actions-030ebf41f487d8aa",
-            "kind": "gift",
-            "platform": null,
-            "quantity_limit": null,
-            "requires_reservation": null,
-            "requires_rush": null,
-            "rules": "「美味通行」七件套赠毛绒套组（毛绒×1＋透卡×1＋Q版光栅卡×1）；「堡已就位」四件套赠镭射卡套组（角色大镭射卡×3＋贴纸×1＋纸质谷美架×1）；两套均含联名游戏礼包兑换码1份",
-            "scope": "汉堡王联名套餐",
-            "start_date": null,
-            "title": "联名套餐赠周边套组",
-            "url": null
-          },
-          {
-            "at": null,
-            "cancelled": false,
-            "end_at": null,
-            "end_condition": null,
-            "end_date": null,
-            "ended": false,
-            "evidence": [
-              {
-                "field_path": "activities.activity-d9b5947c33cb3d2d.actions.actions-18f955a7e9e6a850",
-                "quote": "联动定制头像“可爱堡堡”、联动定制装饰物品“汉堡之王”，购买汉堡王 ×《明日方舟：终末地》联名套餐获取。",
-                "source_id": "skland-6447428"
-              }
-            ],
-            "id": "actions-18f955a7e9e6a850",
-            "kind": "gift",
-            "platform": null,
-            "quantity_limit": null,
-            "requires_reservation": null,
-            "requires_rush": null,
-            "rules": "购买汉堡王 ×《明日方舟：终末地》联名套餐获取联动定制头像「可爱堡堡」、联动定制装饰物品「汉堡之王」；兑换有效期：2026年11月5日 00:00:00 - 2027年3月5日 00:00:00",
-            "scope": "汉堡王 ×《明日方舟：终末地》联名套餐",
-            "start_date": null,
-            "title": "联名套餐赠联动定制头像与装饰物品兑换码",
-            "url": null
-          }
-        ],
-        "end_at": null,
-        "end_date": null,
-        "evidence": [
-          {
-            "field_path": "activities[0].title",
-            "quote": "汉堡王×《明日方舟：终末地》联动开启",
-            "source_id": "skland-6366130"
-          },
-          {
-            "field_path": "activities[0].start_date",
-            "quote": "11月5日，汉堡王×《明日方舟：终末地》联动开启",
-            "source_id": "skland-6366130"
-          },
-          {
-            "field_path": "activities[0].actions[0].start_date",
-            "quote": "11月5日，汉堡王×《明日方舟：终末地》联动开启",
-            "source_id": "skland-6366130"
-          }
-        ],
-        "id": "activity-d9b5947c33cb3d2d",
-        "kind": "food",
-        "related_offers": null,
-        "rules": "「美味通行」七件套赠毛绒套组（毛绒×1＋透卡×1＋Q版光栅卡×1）；「堡已就位」四件套赠镭射卡套组（角色大镭射卡×3＋贴纸×1＋纸质谷美架×1）；两套均含联名游戏礼包兑换码1份：头像「可爱堡堡」＋装饰物品「汉堡之王」＋折金票×5000；联名包材含主题堡盒、主题桶、主题纸袋&无纺布袋",
-        "start_at": null,
-        "start_date": "2026-11-05",
-        "status": "details_pending",
-        "title": "汉堡王×《明日方舟：终末地》联动",
-        "uncertainties": [
-          "具体联动形式、门店范围及任务内容未在正文说明，仅指向汉堡王官方自媒体账号。"
-        ],
-        "venues": []
-      },
-      "campaign_id": "campaign-8ef39adc0f9cce18-746c28cd",
-      "campaign_title": "汉堡王 ×《明日方舟：终末地》「美味通行，堡已就位」",
-      "ip_name": "明日方舟：终末地",
-      "next": {
-        "at": "2026-11-05T00:00:00+08:00",
-        "date": "2026-11-05",
-        "title": "联动开启"
-      },
-      "url": "event.html?id=campaign-8ef39adc0f9cce18-746c28cd#activity-activity-d9b5947c33cb3d2d"
-    },
-    {
-      "activity": {
-        "actions": [
-          {
-            "at": "2026-10-16T16:00:00+08:00",
-            "cancelled": false,
-            "end_at": "2026-11-06T03:59:00+08:00",
-            "end_condition": null,
-            "end_date": null,
-            "ended": false,
-            "evidence": [],
-            "id": "action-83b3e676ab0e2564",
-            "kind": "sale_open",
-            "platform": null,
-            "quantity_limit": null,
-            "requires_reservation": null,
-            "requires_rush": null,
-            "rules": "采购中心将限时售卖[博览群书组合包]",
-            "scope": "采购中心",
-            "start_date": null,
-            "title": "组合包限时上架",
-            "url": null
-          }
-        ],
-        "end_at": "2026-11-06T03:59:00+08:00",
-        "end_date": null,
-        "evidence": [
-          {
-            "field_path": "activities[1].start_at",
-            "quote": "活动时间：10月16日 16:00 - 11月06日 03:59",
-            "source_id": "website-arknights-official-1454"
-          },
-          {
-            "field_path": "activities[1].end_at",
-            "quote": "活动时间：10月16日 16:00 - 11月06日 03:59",
-            "source_id": "website-arknights-official-1454"
-          },
-          {
-            "field_path": "activities[1].rules",
-            "quote": "组合包内容：合成玉*800、头像“山海踏夜”*1、头像“永乐长安”*1、头像“探源开物”*1",
-            "source_id": "website-arknights-official-1454"
-          }
-        ],
-        "id": "activity-570c6e42f30e1861",
-        "kind": "merchandise",
-        "related_offers": null,
-        "rules": "采购中心将限时售卖[博览群书组合包]：合成玉*800、头像“山海踏夜”*1、头像“永乐长安”*1、头像“探源开物”*1",
-        "start_at": "2026-10-16T16:00:00+08:00",
-        "start_date": null,
-        "status": "ongoing",
-        "title": "组合包限时上架",
-        "uncertainties": [],
-        "venues": []
-      },
-      "campaign_id": "campaign-354e1e728907e326-2cc2bdfc",
-      "campaign_title": "《明日方舟》× 国家图书馆「恒远津梁」",
-      "ip_name": "明日方舟",
-      "next": {
-        "at": "2026-11-06T03:59:00+08:00",
-        "date": null,
-        "title": "组合包限时上架截止"
-      },
-      "url": "event.html?id=campaign-354e1e728907e326-2cc2bdfc#activity-activity-570c6e42f30e1861"
-    },
-    {
-      "activity": {
-        "actions": [
-          {
-            "at": "2026-10-16T16:00:00+08:00",
-            "cancelled": false,
-            "end_at": "2026-11-06T03:59:00+08:00",
-            "end_condition": null,
-            "end_date": null,
-            "ended": false,
-            "evidence": [
-              {
-                "field_path": "activities[2].actions[0].rules",
-                "quote": "以上【明日方舟×国家图书馆】时装不可使用【时装自选凭证】道具兑换",
-                "source_id": "website-arknights-official-1454"
-              }
-            ],
-            "id": "action-113cbbf53c837e30",
-            "kind": "sale_open",
-            "platform": null,
-            "quantity_limit": null,
-            "requires_reservation": null,
-            "requires_rush": null,
-            "rules": "以上【明日方舟×国家图书馆】时装不可使用【时装自选凭证】道具兑换",
-            "scope": "时装商店",
-            "start_date": null,
-            "title": "新装限时上架",
-            "url": null
-          }
-        ],
-        "end_at": "2026-11-06T03:59:00+08:00",
-        "end_date": null,
-        "evidence": [
-          {
-            "field_path": "activities[2].rules",
-            "quote": "◆【CROSSOVER】系列 - 源远流长 - 黍",
-            "source_id": "website-arknights-official-1454"
-          },
-          {
-            "field_path": "activities[2].actions[0].rules",
-            "quote": "以上【明日方舟×国家图书馆】时装不可使用【时装自选凭证】道具兑换",
-            "source_id": "website-arknights-official-1454"
-          }
-        ],
-        "id": "activity-c435ce9fe3d4b565",
-        "kind": "merchandise",
-        "related_offers": null,
-        "rules": "【CROSSOVER】系列 - 源远流长 - 黍、【CROSSOVER】系列 - 夜行烛火 - 烛煌、【CROSSOVER】系列 - 盛世之象 - 琳琅诗怀雅；不可使用【时装自选凭证】道具兑换",
-        "start_at": "2026-10-16T16:00:00+08:00",
-        "start_date": null,
-        "status": "ongoing",
-        "title": "新装限时上架",
-        "uncertainties": [],
-        "venues": []
-      },
-      "campaign_id": "campaign-354e1e728907e326-2cc2bdfc",
-      "campaign_title": "《明日方舟》× 国家图书馆「恒远津梁」",
-      "ip_name": "明日方舟",
-      "next": {
-        "at": "2026-11-06T03:59:00+08:00",
-        "date": null,
-        "title": "新装限时上架截止"
-      },
-      "url": "event.html?id=campaign-354e1e728907e326-2cc2bdfc#activity-activity-c435ce9fe3d4b565"
-    },
-    {
-      "activity": {
-        "actions": [
-          {
-            "at": null,
-            "cancelled": false,
-            "end_at": null,
-            "end_condition": null,
-            "end_date": null,
-            "ended": false,
-            "evidence": [
-              {
-                "field_path": "activities[1].actions[0].requires_reservation",
-                "quote": "欢迎预约前往",
-                "source_id": "skland-6424097"
-              }
-            ],
-            "id": "action-bc58390e44c02962",
-            "kind": "reservation_open",
-            "platform": null,
-            "quantity_limit": null,
-            "requires_reservation": true,
-            "requires_rush": null,
-            "rules": "欢迎预约前往",
-            "scope": "特别快闪「开拓街头 美味据点」",
-            "start_date": null,
-            "title": "快闪「开拓街头 美味据点」预约",
-            "url": null
-          },
-          {
-            "at": "2026-11-03T13:00:00+08:00",
-            "cancelled": false,
-            "end_at": null,
-            "end_condition": null,
-            "end_date": null,
-            "ended": false,
-            "evidence": [
-              {
-                "field_path": "activities.activity-717c6c2b49c05cf3.actions.actions-317261d0d21e5eff",
-                "quote": "2026年11月3日 13:00起",
-                "source_id": "skland-6430913"
-              }
-            ],
-            "id": "actions-317261d0d21e5eff",
-            "kind": "reservation_open",
-            "platform": "【汉堡王+】微信小程序",
-            "quantity_limit": null,
-            "requires_reservation": true,
-            "requires_rush": null,
-            "rules": "通过【汉堡王+】微信小程序-首页热门活动-点击预约",
-            "scope": "特别快闪「开拓街头 美味据点」",
-            "start_date": "2026-11-03",
-            "title": "特别快闪活动预约",
-            "url": null
-          }
-        ],
-        "end_at": null,
-        "end_date": "2026-11-08",
-        "evidence": [
-          {
-            "field_path": "activities[1].title",
-            "quote": "11月7日~11月8日，特别快闪「开拓街头 美味据点」限时开启，欢迎预约前往",
-            "source_id": "skland-6424097"
-          },
-          {
-            "field_path": "activities[1].start_date",
-            "quote": "11月7日~11月8日，特别快闪「开拓街头 美味据点」限时开启",
-            "source_id": "skland-6424097"
-          },
-          {
-            "field_path": "activities[1].end_date",
-            "quote": "11月7日~11月8日，特别快闪「开拓街头 美味据点」限时开启",
-            "source_id": "skland-6424097"
-          },
-          {
-            "field_path": "activities[1].actions[0].requires_reservation",
-            "quote": "欢迎预约前往",
-            "source_id": "skland-6424097"
-          }
-        ],
-        "id": "activity-717c6c2b49c05cf3",
-        "kind": "popup",
-        "related_offers": null,
-        "rules": "需通过【汉堡王+】微信小程序预约前往",
-        "start_at": null,
-        "start_date": "2026-11-07",
-        "status": "details_pending",
-        "title": "特别快闪「开拓街头 美味据点」",
-        "uncertainties": [
-          "快闪举办城市与具体场地未在正文说明",
-          "预约开放时间未说明"
-        ],
-        "venues": []
-      },
-      "campaign_id": "campaign-8ef39adc0f9cce18-746c28cd",
-      "campaign_title": "汉堡王 ×《明日方舟：终末地》「美味通行，堡已就位」",
-      "ip_name": "明日方舟：终末地",
-      "next": {
-        "at": "2026-11-07T00:00:00+08:00",
-        "date": "2026-11-07",
-        "title": "特别快闪「开拓街头 美味据点」开始"
-      },
-      "url": "event.html?id=campaign-8ef39adc0f9cce18-746c28cd#activity-activity-717c6c2b49c05cf3"
     },
     {
       "activity": {
@@ -1855,6 +1533,42 @@
     },
     {
       "activity": {
+        "actions": [],
+        "end_at": null,
+        "end_date": null,
+        "evidence": [
+          {
+            "field_path": "activities[2].title",
+            "quote": "联动表情包11月5日即将上线",
+            "source_id": "skland-6424097"
+          },
+          {
+            "field_path": "activities[2].start_date",
+            "quote": "联动表情包11月5日即将上线",
+            "source_id": "skland-6424097"
+          }
+        ],
+        "id": "activity-61f1009f0cdcb64f",
+        "kind": "online",
+        "related_offers": null,
+        "rules": null,
+        "start_at": null,
+        "start_date": "2026-11-05",
+        "status": "details_pending",
+        "title": "联动表情包上线",
+        "uncertainties": [
+          "表情包获取平台未在正文说明"
+        ],
+        "venues": []
+      },
+      "campaign_id": "campaign-8ef39adc0f9cce18-746c28cd",
+      "campaign_title": "汉堡王 ×《明日方舟：终末地》「美味通行，堡已就位」",
+      "ip_name": "明日方舟：终末地",
+      "next": null,
+      "url": "event.html?id=campaign-8ef39adc0f9cce18-746c28cd#activity-activity-61f1009f0cdcb64f"
+    },
+    {
+      "activity": {
         "actions": [
           {
             "at": null,
@@ -2066,6 +1780,126 @@
             "ended": false,
             "evidence": [
               {
+                "field_path": "activities[0].actions[0].start_date",
+                "quote": "11月5日，汉堡王×《明日方舟：终末地》联动开启",
+                "source_id": "skland-6366130"
+              }
+            ],
+            "id": "action-64dddfd3e38ec25c",
+            "kind": "event_start",
+            "platform": null,
+            "quantity_limit": null,
+            "requires_reservation": null,
+            "requires_rush": null,
+            "rules": null,
+            "scope": null,
+            "start_date": "2026-11-05",
+            "title": "联动开启",
+            "url": null
+          },
+          {
+            "at": null,
+            "cancelled": false,
+            "end_at": null,
+            "end_condition": null,
+            "end_date": null,
+            "ended": false,
+            "evidence": [
+              {
+                "field_path": "activities.activity-d9b5947c33cb3d2d.actions.actions-030ebf41f487d8aa",
+                "quote": "🛒「美味通行」七件套 🎁毛绒套组（毛绒×1＋透卡×1＋Q版光栅卡×1）",
+                "source_id": "skland-6424097"
+              }
+            ],
+            "id": "actions-030ebf41f487d8aa",
+            "kind": "gift",
+            "platform": null,
+            "quantity_limit": null,
+            "requires_reservation": null,
+            "requires_rush": null,
+            "rules": "「美味通行」七件套赠毛绒套组（毛绒×1＋透卡×1＋Q版光栅卡×1）；「堡已就位」四件套赠镭射卡套组（角色大镭射卡×3＋贴纸×1＋纸质谷美架×1）；两套均含联名游戏礼包兑换码1份",
+            "scope": "汉堡王联名套餐",
+            "start_date": null,
+            "title": "联名套餐赠周边套组",
+            "url": null
+          },
+          {
+            "at": null,
+            "cancelled": false,
+            "end_at": null,
+            "end_condition": null,
+            "end_date": null,
+            "ended": false,
+            "evidence": [
+              {
+                "field_path": "activities.activity-d9b5947c33cb3d2d.actions.actions-18f955a7e9e6a850",
+                "quote": "联动定制头像“可爱堡堡”、联动定制装饰物品“汉堡之王”，购买汉堡王 ×《明日方舟：终末地》联名套餐获取。",
+                "source_id": "skland-6447428"
+              }
+            ],
+            "id": "actions-18f955a7e9e6a850",
+            "kind": "gift",
+            "platform": null,
+            "quantity_limit": null,
+            "requires_reservation": null,
+            "requires_rush": null,
+            "rules": "购买汉堡王 ×《明日方舟：终末地》联名套餐获取联动定制头像「可爱堡堡」、联动定制装饰物品「汉堡之王」；兑换有效期：2026年11月5日 00:00:00 - 2027年3月5日 00:00:00",
+            "scope": "汉堡王 ×《明日方舟：终末地》联名套餐",
+            "start_date": null,
+            "title": "联名套餐赠联动定制头像与装饰物品兑换码",
+            "url": null
+          }
+        ],
+        "end_at": null,
+        "end_date": null,
+        "evidence": [
+          {
+            "field_path": "activities[0].title",
+            "quote": "汉堡王×《明日方舟：终末地》联动开启",
+            "source_id": "skland-6366130"
+          },
+          {
+            "field_path": "activities[0].start_date",
+            "quote": "11月5日，汉堡王×《明日方舟：终末地》联动开启",
+            "source_id": "skland-6366130"
+          },
+          {
+            "field_path": "activities[0].actions[0].start_date",
+            "quote": "11月5日，汉堡王×《明日方舟：终末地》联动开启",
+            "source_id": "skland-6366130"
+          }
+        ],
+        "id": "activity-d9b5947c33cb3d2d",
+        "kind": "food",
+        "related_offers": null,
+        "rules": "「美味通行」七件套赠毛绒套组（毛绒×1＋透卡×1＋Q版光栅卡×1）；「堡已就位」四件套赠镭射卡套组（角色大镭射卡×3＋贴纸×1＋纸质谷美架×1）；两套均含联名游戏礼包兑换码1份：头像「可爱堡堡」＋装饰物品「汉堡之王」＋折金票×5000；联名包材含主题堡盒、主题桶、主题纸袋&无纺布袋",
+        "start_at": null,
+        "start_date": "2026-11-05",
+        "status": "details_pending",
+        "title": "汉堡王×《明日方舟：终末地》联动",
+        "uncertainties": [
+          "具体联动形式、门店范围及任务内容未在正文说明，仅指向汉堡王官方自媒体账号。"
+        ],
+        "venues": []
+      },
+      "campaign_id": "campaign-8ef39adc0f9cce18-746c28cd",
+      "campaign_title": "汉堡王 ×《明日方舟：终末地》「美味通行，堡已就位」",
+      "ip_name": "明日方舟：终末地",
+      "next": null,
+      "url": "event.html?id=campaign-8ef39adc0f9cce18-746c28cd#activity-activity-d9b5947c33cb3d2d"
+    },
+    {
+      "activity": {
+        "actions": [
+          {
+            "at": null,
+            "cancelled": false,
+            "end_at": null,
+            "end_condition": null,
+            "end_date": null,
+            "ended": false,
+            "evidence": [
+              {
                 "field_path": "activities[0].actions[0].title",
                 "quote": "「拾音邮局」原神六周年特别公益行动正式开启！",
                 "source_id": "miyoushe-78446193"
@@ -2189,5 +2023,5 @@
       "url": "event.html?id=campaign-5a95cf56417b3340-57ca36df#activity-activity-fd760656e9160352"
     }
   ],
-  "generated_at": "2026-11-05T08:15:48.018360+08:00"
+  "generated_at": "2026-11-06T04:29:37.649449+08:00"
 }
