@@ -1,0 +1,32 @@
+{
+  "campaign_id": null,
+  "campaign_ids": [],
+  "detected_at": "2026-11-05T20:28:57.634733Z",
+  "facts": {},
+  "id": "candidate-0b3d0738e9b9774dfd409b1c",
+  "ip_name": "崩坏：星穹铁道",
+  "ip_slug": "honkai-star-rail",
+  "public_text": "《狸了个大谱》虚一直照 | 阿哈：魔术巡演\n虚照女士首登狸狸八卦封面，报社推出「虚一直照」限定刊，阿哈真有面子哩~\n贪饕神战一手消息、星神谒者最新动向，尽在本期狸了个大谱！\n\n独家正版，请认准狸猫头水印，仿冒必究。\n\n本期记者：普狸策（魔术助狸版）\n本期编辑：狸狸记者众\n\n✧ 最终解释权归狸狸周刊所有 ✧\n✧ 如有雷同，阿哈全责 ✧",
+  "resolution_version": 2,
+  "review_reason": "该帖为游戏内虚构刊物《狸了个大谱》的趣味内容，未公布任何IP联动、快闪、漫展、演出或周边售卖等企划信息，无法归入任何联动或活动企划。",
+  "sources": [
+    {
+      "account_id": "288909600",
+      "account_name": "崩坏星穹铁道",
+      "canonical_content_id": "79361922",
+      "content_hash": "5067c60959b3d0cb18b810370dbc73293ae6e05ac202cc1004bef17eb3ae5731",
+      "excerpt": "《狸了个大谱》虚一直照 | 阿哈：魔术巡演\n虚照女士首登狸狸八卦封面，报社推出「虚一直照」限定刊，阿哈真有面子哩~\n贪饕神战一手消息、星神谒者最新动向，尽在本期狸了个大谱！\n\n独家正版，请认准狸猫头水印，仿冒必究。\n\n本期记者：普狸策（魔术助狸版）\n本期编辑：狸狸记者众\n\n✧ 最终解释权归狸狸周刊所有 ✧\n✧ 如有雷同，阿哈全责 ✧",
+      "first_seen_at": "2026-11-05T20:28:57.634733Z",
+      "id": "miyoushe-79361922",
+      "is_official": true,
+      "kind": "miyoushe",
+      "media_hashes": [],
+      "media_urls": [],
+      "published_at": "2026-11-05T10:00:15Z",
+      "summary": null,
+      "updated_at": null,
+      "url": "https://www.miyoushe.com/sr/article/79361922"
+    }
+  ],
+  "status": "unconfirmed"
+}
