@@ -1,0 +1,31 @@
+{
+  "extracted_media_text": [],
+  "id": "skland-6458460",
+  "media_hashes": [
+    "c3aef4e44ddfe94709efad5578cfe4e34629cd168d929b0997d6901656291a72",
+    "470e2a3b945f2883c4c2c9364296e60443c22bcb415ba35a202f813ffea8cc48"
+  ],
+  "media_urls": [
+    "https://bbs.hycdn.cn/image/common/20261106/115/6aed46aa6d47fbbd64037f98_0095c241.webp",
+    "https://bbs.hycdn.cn/image/common/20261106/115/6aed46b067a9e3212338114c_004865de.gif"
+  ],
+  "outbound_urls": [],
+  "source": {
+    "account_id": "7779816949641",
+    "account_name": "明日方舟Arknights",
+    "canonical_content_id": "6458460",
+    "content_hash": "a3165c64103295cc7c186f029ea1824927c9565c67a456168a15063621b98534",
+    "excerpt": "【新增卫戍协议终端主题】乌萨斯齐心团\n【新增卫戍协议终端主题】\n//乌萨斯齐心团\n卫戍协议模拟中的乌萨斯工人团体，每个人都是大嗓门。",
+    "first_seen_at": "2026-11-06T19:51:43.763805Z",
+    "id": "skland-6458460",
+    "is_official": true,
+    "kind": "skland",
+    "media_hashes": [],
+    "media_urls": [],
+    "published_at": "2026-11-06T09:00:15Z",
+    "summary": null,
+    "updated_at": null,
+    "url": "https://www.skland.com/article?id=6458460"
+  },
+  "text": "【新增卫戍协议终端主题】乌萨斯齐心团\n【新增卫戍协议终端主题】\n//乌萨斯齐心团\n卫戍协议模拟中的乌萨斯工人团体，每个人都是大嗓门。"
+}

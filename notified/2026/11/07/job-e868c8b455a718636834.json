@@ -1,0 +1,12 @@
+{
+  "campaign_id": null,
+  "candidate_id": null,
+  "channel": "email",
+  "covered_candidate_ids": [],
+  "delivery_day": "2026-11-07",
+  "facts": {},
+  "job_id": "job-e868c8b455a718636834",
+  "public_text": "",
+  "semantic_key": "schedule:activity-717c6c2b49c05cf3:activity-717c6c2b49c05cf3--end:deadline:2026-11-08T00:00:00+08:00",
+  "sent_at": "2026-11-06T19:52:25.314139Z"
+}

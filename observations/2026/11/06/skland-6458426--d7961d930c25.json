@@ -1,0 +1,31 @@
+{
+  "extracted_media_text": [],
+  "id": "skland-6458426",
+  "media_hashes": [
+    "e81e6194631d46fcb1b98c2bb3c0318defe359928d76d767412d3600a788d687",
+    "ccd99436baeb5567d88c1d93aa3a00bc697e55fcca6c15e1e10dd7a471b7458f"
+  ],
+  "media_urls": [
+    "https://bbs.hycdn.cn/image/common/20261106/115/6aed4389738e3fe4cb7ab642_e71aef33.webp",
+    "https://bbs.hycdn.cn/image/common/20261106/115/6aed43896d47fbbd64037f8e_65de0095.webp"
+  ],
+  "outbound_urls": [],
+  "source": {
+    "account_id": "7779816949641",
+    "account_name": "明日方舟Arknights",
+    "canonical_content_id": "6458426",
+    "content_hash": "d7961d930c252976df4cbc896192f286ea3843cff46dffef24e6e61f90ea90af",
+    "excerpt": "「卫戍协议：规程」常驻奖励系统前瞻",
+    "first_seen_at": "2026-11-06T19:51:43.763805Z",
+    "id": "skland-6458426",
+    "is_official": true,
+    "kind": "skland",
+    "media_hashes": [],
+    "media_urls": [],
+    "published_at": "2026-11-06T08:00:53Z",
+    "summary": null,
+    "updated_at": null,
+    "url": "https://www.skland.com/article?id=6458426"
+  },
+  "text": "「卫戍协议：规程」常驻奖励系统前瞻"
+}

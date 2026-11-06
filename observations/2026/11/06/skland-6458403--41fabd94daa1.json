@@ -1,0 +1,31 @@
+{
+  "extracted_media_text": [],
+  "id": "skland-6458403",
+  "media_hashes": [
+    "5a5e863bfb1988c054b9febd263cdb9c04d5df30b7567c7d3fd0642c8f0646e9",
+    "22dbff118d7ad66b5a872546606e291d2e68ec3f7f26a043d1ec59b50d70d665"
+  ],
+  "media_urls": [
+    "https://bbs.hycdn.cn/image/common/20261106/115/6aed7f4e738e3fe4cb7ab6a9_e71aef33.webp",
+    "https://bbs.hycdn.cn/image/common/20261106/115/6aed7f536eac5d49bbfe10b1_ef3391c4.webp"
+  ],
+  "outbound_urls": [],
+  "source": {
+    "account_id": "7779816949641",
+    "account_name": "明日方舟Arknights",
+    "canonical_content_id": "6458403",
+    "content_hash": "41fabd94daa16ef043149bce94d68ac0f663ec07cde1710cd8379496197db8bb",
+    "excerpt": "「卫戍协议：规程」玩法介绍",
+    "first_seen_at": "2026-11-06T19:51:43.763805Z",
+    "id": "skland-6458403",
+    "is_official": true,
+    "kind": "skland",
+    "media_hashes": [],
+    "media_urls": [],
+    "published_at": "2026-11-06T07:00:04Z",
+    "summary": null,
+    "updated_at": null,
+    "url": "https://www.skland.com/article?id=6458403"
+  },
+  "text": "「卫戍协议：规程」玩法介绍"
+}
