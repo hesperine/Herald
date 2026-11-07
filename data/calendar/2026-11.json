@@ -1,16 +1,5 @@
 {
   "days": {
-    "2026-11-07": [
-      {
-        "action_id": "activity-717c6c2b49c05cf3--start",
-        "activity_id": "activity-717c6c2b49c05cf3",
-        "at": "2026-11-07T00:00:00+08:00",
-        "campaign_id": "campaign-8ef39adc0f9cce18-746c28cd",
-        "ip_name": "明日方舟：终末地",
-        "kind": "event_start",
-        "title": "特别快闪「开拓街头 美味据点」开始"
-      }
-    ],
     "2026-11-08": [
       {
         "action_id": "actions-6f81f5e38431c5d9--end",
