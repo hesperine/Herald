@@ -1,0 +1,39 @@
+{
+  "extracted_media_text": [],
+  "id": "miyoushe-79401974",
+  "media_hashes": [
+    "e5b01ef7e70dc52a15a2f5f81285c0a7617b43bf7fa9d0f6d4afccbbd4ba71aa",
+    "9937d07520abd16286c6d243656c28ff0eabc8b93dc1c604f63adbc7d8b73814",
+    "7538a6bc2398f5d1c8be6267b4d768219571540a2969cbd4cb818d2eef9fba81",
+    "cfd90784bc8ab8e15b6b81ccc1ded3f7a4d2689f996d2df347d7f35a1549bdc9",
+    "bcc381064073604e0eba7c0537bdbdb0ecfecd7a1e5a35426e3c6b5570b62b4e",
+    "0a349f7b8d5cf8517f7c9e5e643bf5e0b29d96685005f8870c069935d5825490"
+  ],
+  "media_urls": [
+    "https://upload-bbs.miyoushe.com/upload/2026/11/06/288909600/1bb4cb7e9ebcf51cb7552a9004524596_8042405278217184383.jpg",
+    "https://upload-bbs.miyoushe.com/upload/2026/11/06/288909600/fe2ba47151fdc06572d216b8f07d4f45_930947187089814728.jpg",
+    "https://upload-bbs.miyoushe.com/upload/2026/11/06/288909600/5a729ffeca41b235bbac419970c309ed_5419312271585669482.jpg",
+    "https://upload-bbs.miyoushe.com/upload/2026/11/06/288909600/ed129fcfb8a2b82823b0a9a39c7a55f9_3645346760760316739.jpg",
+    "https://upload-bbs.miyoushe.com/upload/2026/11/06/288909600/44d49bd263894032c0a8f39ae84b1ddc_3591633698223352632.jpg",
+    "https://upload-bbs.miyoushe.com/upload/2026/11/06/288909600/bb0ba299abe1df621061dd53d2cdfc5d_3903959777378651561.jpg"
+  ],
+  "outbound_urls": [],
+  "source": {
+    "account_id": "288909600",
+    "account_name": "崩坏星穹铁道",
+    "canonical_content_id": "79401974",
+    "content_hash": "8bc3690884e5c1e4cd7d464a1249a07789c5b35ee1c7f8c623434c3e3ffd52ce",
+    "excerpt": "「此刻，将群星付之一笑」4.7版本速览\n开拓者好呀！帕姆带来了4.7版本中的新内容速览帕~快来看看都有什么帕！",
+    "first_seen_at": "2026-11-07T17:57:01.571154Z",
+    "id": "miyoushe-79401974",
+    "is_official": true,
+    "kind": "miyoushe",
+    "media_hashes": [],
+    "media_urls": [],
+    "published_at": "2026-11-07T04:00:12Z",
+    "summary": null,
+    "updated_at": null,
+    "url": "https://www.miyoushe.com/sr/article/79401974"
+  },
+  "text": "「此刻，将群星付之一笑」4.7版本速览\n开拓者好呀！帕姆带来了4.7版本中的新内容速览帕~快来看看都有什么帕！"
+}
