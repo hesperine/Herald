@@ -1,0 +1,31 @@
+{
+  "extracted_media_text": [],
+  "id": "skland-6459911",
+  "media_hashes": [
+    "3f16ca82e63ad579ce8150205109ddf6a30e5c0ef816931384c6fc6260fb12a5",
+    "43c219ed4539a9a1bcf19d92885e69d685ef49b0b2ad246cc9fe7999ca2e477f"
+  ],
+  "media_urls": [
+    "https://bbs.hycdn.cn/image/common/20261106/107/6aedb7be868fe95b59877612_96d20048.webp",
+    "https://bbs.hycdn.cn/image/common/20261106/107/6aedb7be9361bcbe8ead53fb_65de0095.webp"
+  ],
+  "outbound_urls": [],
+  "source": {
+    "account_id": "6168723566526",
+    "account_name": "明日方舟朝陇山",
+    "canonical_content_id": "6459911",
+    "content_hash": "956887f8e46609f0127d525bcc6011c5ecabf58e8def771b3498c38408382a8e",
+    "excerpt": "新的周记表来了！有两张！\n上午好呀，博士。\n本周也为博士们更新了两张周记表，兔兔已经送来了！\n就用它们来记录近期的安排吧！\n(\\ (\\\n(՞˶ ' ' ˶)՞",
+    "first_seen_at": "2026-11-08T18:13:44.216380Z",
+    "id": "skland-6459911",
+    "is_official": true,
+    "kind": "skland",
+    "media_hashes": [],
+    "media_urls": [],
+    "published_at": "2026-11-08T02:00:05Z",
+    "summary": null,
+    "updated_at": null,
+    "url": "https://www.skland.com/article?id=6459911"
+  },
+  "text": "新的周记表来了！有两张！\n上午好呀，博士。\n本周也为博士们更新了两张周记表，兔兔已经送来了！\n就用它们来记录近期的安排吧！\n(\\ (\\\n(՞˶ ' ' ˶)՞"
+}

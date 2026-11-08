@@ -1,0 +1,29 @@
+{
+  "extracted_media_text": [],
+  "id": "skland-6463081",
+  "media_hashes": [
+    "93128ee01ef332d5e73d795cbcfec5fb07274f7c930e1cb5a27bc8d9c53dfffe"
+  ],
+  "media_urls": [
+    "https://bbs.hycdn.cn/image/common/20261107/115/6aeef6247c212eb1c61551ba_0095c241.webp"
+  ],
+  "outbound_urls": [],
+  "source": {
+    "account_id": "7779816949641",
+    "account_name": "明日方舟Arknights",
+    "canonical_content_id": "6463081",
+    "content_hash": "80c86705ddf7f83c8ef817e648982a95efcadee54772bf125e2229a7a1b1907b",
+    "excerpt": "[明日方舟]11月08日16:00服务器停机维护公告",
+    "first_seen_at": "2026-11-08T18:13:44.216380Z",
+    "id": "skland-6463081",
+    "is_official": true,
+    "kind": "skland",
+    "media_hashes": [],
+    "media_urls": [],
+    "published_at": "2026-11-08T03:00:07Z",
+    "summary": null,
+    "updated_at": null,
+    "url": "https://www.skland.com/article?id=6463081"
+  },
+  "text": "[明日方舟]11月08日16:00服务器停机维护公告"
+}

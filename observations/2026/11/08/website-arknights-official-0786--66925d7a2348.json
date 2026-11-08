@@ -1,0 +1,25 @@
+{
+  "extracted_media_text": [],
+  "id": "website-arknights-official-0786",
+  "media_hashes": [],
+  "media_urls": [],
+  "outbound_urls": [],
+  "source": {
+    "account_id": "arknights-official",
+    "account_name": "明日方舟官方公告",
+    "canonical_content_id": "0786",
+    "content_hash": "66925d7a23481404ca72dec342a2d2c47212d48b4b880b43fb797abf88b34d70",
+    "excerpt": "[明日方舟]11月08日服务器延迟开启公告\n感谢您对《明日方舟》的关注与支持，《明日方舟》原计划于2026年11月08日16:00至17:00开启的服务器停机维护，因需要更多时间进行调整与测试，服务器将延迟开启，维护结束时间等详细信息请关注后续公告。\n维护期间玩家将无法登录游戏，给各位玩家带来的不便，我们深表歉意！还请各位玩家相互转告。\n【明日方舟】运营组\n2026年11月08日",
+    "first_seen_at": "2026-11-08T18:13:44.216380Z",
+    "id": "website-arknights-official-0786",
+    "is_official": true,
+    "kind": "website",
+    "media_hashes": [],
+    "media_urls": [],
+    "published_at": "2026-11-08T08:45:00Z",
+    "summary": null,
+    "updated_at": null,
+    "url": "https://ak.hypergryph.com/news/0786.html"
+  },
+  "text": "[明日方舟]11月08日服务器延迟开启公告\n感谢您对《明日方舟》的关注与支持，《明日方舟》原计划于2026年11月08日16:00至17:00开启的服务器停机维护，因需要更多时间进行调整与测试，服务器将延迟开启，维护结束时间等详细信息请关注后续公告。\n维护期间玩家将无法登录游戏，给各位玩家带来的不便，我们深表歉意！还请各位玩家相互转告。\n【明日方舟】运营组\n2026年11月08日"
+}
