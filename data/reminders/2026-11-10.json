@@ -1,0 +1,42 @@
+{
+  "cards": [
+    {
+      "activity": {
+        "title": "「货币战争•入画奇航」全新赛季"
+      },
+      "activity_id": "activity-8a243b37a280c80a",
+      "campaign_id": "campaign-65e6776cd100285d-f9d83366",
+      "campaign_title": "货币战争•入画奇航",
+      "detail_url": "event.html?id=campaign-65e6776cd100285d-f9d83366#activity-activity-8a243b37a280c80a",
+      "extraction_status": null,
+      "ip_name": "崩坏：星穹铁道",
+      "reasons": [
+        {
+          "action_id": "activity-8a243b37a280c80a--start",
+          "date_only": "2026-11-11",
+          "expected_at": "2026-11-11T00:00:00+08:00",
+          "kind": "day_before",
+          "summary": "明天开始：「货币战争•入画奇航」全新赛季开始"
+        }
+      ],
+      "sources": [
+        {
+          "account_name": "崩坏星穹铁道",
+          "summary": "官方宣布4.7版本更新后与绒绒号漫画版权方合作，推出「货币战争•入画奇航」全新赛季。",
+          "url": "https://www.miyoushe.com/sr/article/79258370"
+        },
+        {
+          "account_name": "崩坏星穹铁道",
+          "summary": "介绍「货币战争•入画奇航」新赛季：2026/11/11 4.7版本更新后开放，含奇遇、主角光环玩法、员工羁绊重制及奖励说明。",
+          "url": "https://www.miyoushe.com/sr/article/79258376"
+        },
+        {
+          "account_name": "崩坏：星穹铁道官方公告",
+          "summary": "官方说明「货币战争•入画奇航」新赛季：4.7版本更新后开放，含奇遇、主角光环玩法、员工羁绊重制、奖励与参与条件。",
+          "url": "https://sr.mihoyo.com/news/167179"
+        }
+      ]
+    }
+  ],
+  "date": "2026-11-10"
+}
