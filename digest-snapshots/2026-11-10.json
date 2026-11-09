@@ -1,0 +1,35 @@
+{
+  "html": "<!doctype html><html lang=\"zh-CN\"><head><meta charset=\"utf-8\"><meta name=\"viewport\" content=\"width=device-width,initial-scale=1\"><title>HERALD 每日提醒</title></head><body style=\"margin:0;background:#f6f7f8;color:#263238;font-family:Arial,sans-serif;font-size:15px;line-height:1.6;\"><table role=\"presentation\" width=\"100%\" cellspacing=\"0\" cellpadding=\"0\" bgcolor=\"#f6f7f8\"><tr><td align=\"center\" style=\"padding:24px 12px;\"><table role=\"presentation\" width=\"640\" cellspacing=\"0\" cellpadding=\"0\" style=\"width:100%;max-width:640px;\"><tr><td><p style=\"margin:0;color:#146c59;font-size:12px;letter-spacing:2px;font-weight:bold;\">HERALD</p><h1 style=\"margin:6px 0;font-size:26px;\">游戏联动日报</h1><p style=\"margin:0;color:#617170;\">2026-11-10 · 1 项活动需要关注</p><h2 style=\"margin:24px 0 12px;font-size:17px;color:#146c59;\">即将开始或结束</h2><table role=\"presentation\" width=\"100%\" cellspacing=\"0\" cellpadding=\"0\"><tr><td style=\"padding:20px;border:1px solid #dfe5e5;border-radius:10px;background:#ffffff;\"><p style=\"margin:0 0 6px;color:#617170;font-size:12px;\">崩坏：星穹铁道 · 货币战争•入画奇航</p><h3 style=\"margin:0 0 12px;font-size:19px;line-height:1.5;\">「货币战争•入画奇航」全新赛季</h3><p style=\"margin:8px 0;line-height:1.7;overflow-wrap:anywhere;font-weight:600;color:#933743;\">明天开始：「货币战争•入画奇航」全新赛季开始 · 2026-11-11（时刻待公布）</p><p style=\"margin:8px 0;line-height:1.7;overflow-wrap:anywhere;\">开拓等级≥21级；支持通过「终末视界」功能提前体验；建议完成开拓任务「匹诺康尼」-「异乡异客」后体验。</p><p style=\"margin:16px 0 0;padding-top:12px;border-top:1px solid #e3e9e8;color:#617170;font-size:13px;\">信息依据：<a href=\"https://www.miyoushe.com/sr/article/79258370\" style=\"color:#146c59;text-decoration:underline;\">官方宣布4.7版本更新后与绒绒号漫画版权方合作，推出「货币战争•入画奇航」全新赛季。</a> · <a href=\"https://www.miyoushe.com/sr/article/79258376\" style=\"color:#146c59;text-decoration:underline;\">介绍「货币战争•入画奇航」新赛季：2026/11/11 4.7版本更新后开放，含奇遇、主角光环玩法、员工羁绊重制及奖励说明。</a> · <a href=\"https://sr.mihoyo.com/news/167179\" style=\"color:#146c59;text-decoration:underline;\">官方说明「货币战争•入画奇航」新赛季：4.7版本更新后开放，含奇遇、主角光环玩法、员工羁绊重制、奖励与参与条件。</a></p></td></tr><tr><td height=\"14\"></td></tr></table><p style=\"margin-top:24px;padding-top:16px;border-top:1px solid #dfe5e5;color:#617170;font-size:12px;\">信息整理自官方公告，参与条件与最终安排请以原帖为准。<br>时间以 Asia/Shanghai 显示；未公布时刻的日期不代表零点开始。</p></td></tr></table></td></tr></table></body></html>",
+  "jobs": [
+    {
+      "action_id": "activity-8a243b37a280c80a--start",
+      "activity_id": "activity-8a243b37a280c80a",
+      "campaign_id": "campaign-65e6776cd100285d-f9d83366",
+      "campaign_notice": false,
+      "candidate_id": null,
+      "change_id": null,
+      "covered_candidate_ids": [],
+      "due_date": "2026-11-10",
+      "expected_at": "2026-11-11T00:00:00+08:00",
+      "expected_date": "2026-11-11",
+      "facts": {},
+      "id": "job-f048d84a83895c5b7659",
+      "kind": "day_before",
+      "semantic_key": "schedule:activity-8a243b37a280c80a:activity-8a243b37a280c80a--start:day_before:2026-11-11T00:00:00+08:00",
+      "summary": "明天开始：「货币战争•入画奇航」全新赛季开始"
+    }
+  ],
+  "receipts": [
+    {
+      "campaign_id": null,
+      "candidate_id": null,
+      "covered_candidate_ids": [],
+      "facts": {},
+      "job_id": "job-f048d84a83895c5b7659",
+      "public_text": "",
+      "semantic_key": "schedule:activity-8a243b37a280c80a:activity-8a243b37a280c80a--start:day_before:2026-11-11T00:00:00+08:00"
+    }
+  ],
+  "subject": "游戏联动提醒：1 项需要关注",
+  "text": "游戏联动提醒 · 2026-11-10\n\n【「货币战争•入画奇航」全新赛季】\n货币战争•入画奇航\n明天开始：「货币战争•入画奇航」全新赛季开始\n信息依据：官方宣布4.7版本更新后与绒绒号漫画版权方合作，推出「货币战争•入画奇航」全新赛季。 https://www.miyoushe.com/sr/article/79258370\n信息依据：介绍「货币战争•入画奇航」新赛季：2026/11/11 4.7版本更新后开放，含奇遇、主角光环玩法、员工羁绊重制及奖励说明。 https://www.miyoushe.com/sr/article/79258376\n信息依据：官方说明「货币战争•入画奇航」新赛季：4.7版本更新后开放，含奇遇、主角光环玩法、员工羁绊重制、奖励与参与条件。 https://sr.mihoyo.com/news/167179\n"
+}
