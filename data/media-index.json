@@ -496,6 +496,13 @@
       "sha256": "b0b46c4fddf5cc949dc3c1f46e43cb9c7e88f127cd24450856d7fdfa9ed7a3aa",
       "size_bytes": 2990787,
       "source_url": "https://upload-bbs.miyoushe.com/upload/2026/10/30/288909600/eaf377d24a43db3cd8df19cdbcc02400_676432330838005937.png"
+    },
+    {
+      "asset_path": "assets/media/b7edd5a49286bce292aa00841eea245a135a135707b3913bdbaa8a13a385db16.png",
+      "content_type": "image/png",
+      "sha256": "b7edd5a49286bce292aa00841eea245a135a135707b3913bdbaa8a13a385db16",
+      "size_bytes": 3984134,
+      "source_url": "https://upload-bbs.miyoushe.com/upload/2026/11/10/288909600/a87b7f88049fcbc9beb9d41d54794a01_8717321300774648509.png"
     }
   ]
 }
