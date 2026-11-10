@@ -1,0 +1,31 @@
+{
+  "extracted_media_text": [],
+  "id": "miyoushe-79469418",
+  "media_hashes": [
+    "e8d702364bbe47d0776e1adb9a1afac33d1bb1f8faa6b470eedae944700b2609",
+    "c768358d2b6035383f69703ebb7ac374069066d0de94ed74a4b52ad65b1382ca"
+  ],
+  "media_urls": [
+    "https://upload-bbs.miyoushe.com/upload/2026/11/09/288909600/a4769d07a59ec20ee7a5161102e18678_7764735194159256670.jpg",
+    "https://upload-bbs.miyoushe.com/upload/2026/11/09/288909600/0788e2850b8b3327a40764ad6a3e40a7_1439872150772611976.jpg"
+  ],
+  "outbound_urls": [],
+  "source": {
+    "account_id": "288909600",
+    "account_name": "崩坏星穹铁道",
+    "canonical_content_id": "79469418",
+    "content_hash": "bac6c93d8ba9f6ede43aeea01f9ef44f947be1e187f98087268d1fc538004733",
+    "excerpt": "「星际和平盛典：成名之路」活动介绍\n想成为万众瞩目的秀场新星吗？登上舞台，击败强敌，用你的出色表现赢得欢呼与掌声吧！",
+    "first_seen_at": "2026-11-10T20:16:28.983055Z",
+    "id": "miyoushe-79469418",
+    "is_official": true,
+    "kind": "miyoushe",
+    "media_hashes": [],
+    "media_urls": [],
+    "published_at": "2026-11-10T07:00:10Z",
+    "summary": null,
+    "updated_at": null,
+    "url": "https://www.miyoushe.com/sr/article/79469418"
+  },
+  "text": "「星际和平盛典：成名之路」活动介绍\n想成为万众瞩目的秀场新星吗？登上舞台，击败强敌，用你的出色表现赢得欢呼与掌声吧！"
+}

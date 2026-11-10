@@ -1,0 +1,19 @@
+{
+  "completed": {
+    "0": "campaign-65e6776cd100285d-f9d83366"
+  },
+  "routes": {
+    "groups": [
+      {
+        "campaign_id": "campaign-65e6776cd100285d-f9d83366",
+        "observation_ids": [
+          "website-honkai-star-rail-official-167301",
+          "miyoushe-79467095"
+        ],
+        "partner": "苍天航路绒绒号",
+        "phrase": "崩坏：星穹铁道 × 苍天航路绒绒号「货币战争•入画奇航」联动"
+      }
+    ],
+    "unconfirmed": []
+  }
+}

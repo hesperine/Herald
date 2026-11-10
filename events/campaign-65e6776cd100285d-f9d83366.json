@@ -94,7 +94,7 @@
   "ip_slug": "honkai-star-rail",
   "partner": "绒绒号漫画",
   "redirected_to": null,
-  "revision": 2,
+  "revision": 3,
   "scope_reviews": [],
   "sources": [
     {
@@ -175,9 +175,47 @@
       "summary": "官方说明「货币战争•入画奇航」新赛季：4.7版本更新后开放，含奇遇、主角光环玩法、员工羁绊重制、奖励与参与条件。",
       "updated_at": null,
       "url": "https://sr.mihoyo.com/news/167179"
+    },
+    {
+      "account_id": "honkai-star-rail-official",
+      "account_name": "崩坏：星穹铁道官方公告",
+      "canonical_content_id": "167301",
+      "content_hash": "bb568a4071bde8bff31e4fa963591a3e45a7ffe2d82d559380c790b404402d26",
+      "excerpt": "《崩坏：星穹铁道》走近星穹——「货币战争•入画奇航」特别节目\n号外号外！「苍天航路绒绒号」即将与「货币战争」展开深度合作！\n绒绒号伙伴强势加入「货币战争」，搭配全新「主角光环」与全新调整的角色、装备与羁绊，带来全新的游玩体验！\n欲知更多详情，还请关注本期的《走近星穹》特别节目！\n※画面演示具体数值与机制仅供参考，请开拓者以上线版本为准。\n中文CV：\n叽米——刘北辰\n真珠——苏婉\n虚照——子音\n绯英——溯浔",
+      "first_seen_at": "2026-11-10T20:16:28.983055Z",
+      "id": "website-honkai-star-rail-official-167301",
+      "is_official": true,
+      "kind": "website",
+      "media_hashes": [],
+      "media_urls": [],
+      "published_at": "2026-11-10T12:00:00+08:00",
+      "summary": "《走近星穹》特别节目预告「苍天航路绒绒号」与「货币战争」深度合作，绒绒号伙伴加入，搭配新主角光环与调整后的角色、装备、羁绊。",
+      "updated_at": null,
+      "url": "https://sr.mihoyo.com/news/167301"
+    },
+    {
+      "account_id": "288909600",
+      "account_name": "崩坏星穹铁道",
+      "canonical_content_id": "79467095",
+      "content_hash": "2c3d3715814a7d6a6fe964ffbeec7bab059f1bc083380f44cad6ad670c4982fa",
+      "excerpt": "走近星穹：「货币战争•入画奇航」特别节目\n号外号外！「苍天航路绒绒号」即将与「货币战争」展开深度合作！\n绒绒号伙伴强势加入「货币战争」，搭配全新「主角光环」与全新调整的角色、装备与羁绊，带来全新的游玩体验！\n欲知更多详情，还请关注本期的《走近星穹》特别节目！\n \n※画面演示具体数值与机制仅供参考，请开拓者以上线版本为准。\n \n中文CV：\n叽米——刘北辰\n真珠——苏婉\n虚照——子音\n绯英——溯浔",
+      "first_seen_at": "2026-11-10T20:16:28.983055Z",
+      "id": "miyoushe-79467095",
+      "is_official": true,
+      "kind": "miyoushe",
+      "media_hashes": [
+        "d81200f34cb8b76cc50004f8ad5cf23581571185ee3d0eb91d682a148bcc6d60"
+      ],
+      "media_urls": [
+        "https://upload-bbs.miyoushe.com/upload/2026/11/10/288909600/a87b7f88049fcbc9beb9d41d54794a01_8717321300774648509.png"
+      ],
+      "published_at": "2026-11-10T04:00:17Z",
+      "summary": "《走近星穹》特别节目预告「苍天航路绒绒号」与「货币战争」深度合作，绒绒号伙伴加入，搭配新主角光环与调整后的角色、装备、羁绊。",
+      "updated_at": null,
+      "url": "https://www.miyoushe.com/sr/article/79467095"
     }
   ],
   "status": "details_pending",
   "title": "货币战争•入画奇航",
-  "updated_at": "2026-11-04T20:18:02.901564Z"
+  "updated_at": "2026-11-10T20:16:28.983055Z"
 }
