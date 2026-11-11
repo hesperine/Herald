@@ -1,4 +1,60 @@
 {
-  "cards": [],
-  "date": "2026-11-11"
+  "cards": [
+    {
+      "activity": null,
+      "activity_id": null,
+      "campaign_id": "candidate-db71d23f10787084531cd8fd",
+      "campaign_notice": false,
+      "campaign_title": "崩坏：星穹铁道 · 候选联动信息",
+      "detail_campaign_id": null,
+      "extraction_status": "unconfirmed",
+      "ip_name": "崩坏：星穹铁道",
+      "reasons": [
+        {
+          "action_id": null,
+          "date_only": null,
+          "expected_at": null,
+          "kind": "announcement",
+          "summary": "原帖核查：4.7版本更新说明，内容为版本更新、角色/光锥/活动/赛季等常规游戏内容，未涉及品牌或其他IP联动、线下快闪/漫展/演出等范围活动。"
+        }
+      ],
+      "sources": [
+        {
+          "account_id": "honkai-star-rail-official",
+          "account_name": "崩坏：星穹铁道官方公告",
+          "canonical_content_id": "167300",
+          "content_hash": "20e23580227e50cdbd417ab1a49448f9d9ab94809a82cf4ff49af41ba62f0f05",
+          "excerpt": "4.7版本「此刻，将群星付之一笑」版本更新说明\n疯狂的寂静中，有声音说：「笑吧，让祂听见你的存在。」于是，群星不再沉默，他们将所有的光明付于一声欢笑。\n亲爱的开拓者：\n欢迎来到4.7版本「此刻，将群星付之一笑」！\n▌更新及补偿说明\n4.7版本的持续时间为 2026/11/11 4.7版本更新后 - 2026/12/23 06:00。\n■更新时间\n2026/11/11 06:00开始，预计5个小时完成。\n■补偿说明\n●停服更新补偿\n补偿内容：星琼*300\n补偿对象：2026/11/11 06:00前，开拓等级≥4级的开拓者\n※领取时间截至4.7版本结束前。\n●问题修复补偿\n补偿内容：星琼*300\n补偿对象：2026/11/11 06:00前，开拓等级≥4级的开拓者\n※请开拓者于 2026/12/11 23:59 前上线收取邮件。\n以上补偿列车组将在更新完成后的5小时内，以游戏内邮件的形式为开拓者发放，请及时领取补偿。\n■更新方式\n●PC端：关闭游戏后，重启启动器并点击更新\n●安卓端：进入游戏后，按照游戏内弹窗提示完成更新\n●iOS端：进入App Store，点击更新\n▌版本全新内容\n1、",
+          "first_seen_at": "2026-11-11T20:02:14.781283Z",
+          "id": "website-honkai-star-rail-official-167300",
+          "is_official": true,
+          "kind": "website",
+          "media_hashes": [],
+          "media_urls": [],
+          "published_at": "2026-11-11T07:00:00+08:00",
+          "summary": null,
+          "updated_at": null,
+          "url": "https://sr.mihoyo.com/news/167300"
+        },
+        {
+          "account_id": "288909600",
+          "account_name": "崩坏星穹铁道",
+          "canonical_content_id": "79482327",
+          "content_hash": "bf969ad6e0e45aa78ba15c060b3149e3aa13d385b5d01ae332288dab80124705",
+          "excerpt": "4.7版本「此刻，将群星付之一笑」版本更新说明\n疯狂的寂静中，有声音说：「笑吧，让祂听见你的存在。」于是，群星不再沉默，他们将所有的光明付于一声欢笑。\n\n亲爱的开拓者：\n欢迎来到4.7版本「此刻，将群星付之一笑」！\n\n▌更新及补偿说明\n4.7版本的持续时间为 2026/11/11 4.7版本更新后 - 2026/12/23 06:00。\n\n■更新时间\n2026/11/11 06:00开始，预计5个小时完成。\n\n■补偿说明\n●停服更新补偿\n补偿内容：星琼*300\n补偿对象：2026/11/11 06:00前，开拓等级≥4级的开拓者\n※领取时间截至4.7版本结束前。\n\n●问题修复补偿\n补偿内容：星琼*300\n补偿对象：2026/11/11 06:00前，开拓等级≥4级的开拓者\n※请开拓者于 2026/12/11 23:59 前上线收取邮件。\n\n以上补偿列车组将在更新完成后的5小时内，以游戏内邮件的形式为开拓者发放，请及时领取补偿。\n\n■更新方式\n●PC端：关闭游戏后，重启启动器并点击更新\n●安卓端：进入游戏后，按照游戏内弹窗提示完成更新\n●iOS端：进入App Store，点击更新\n\n▌版",
+          "first_seen_at": "2026-11-11T20:02:14.781283Z",
+          "id": "miyoushe-79482327",
+          "is_official": true,
+          "kind": "miyoushe",
+          "media_hashes": [],
+          "media_urls": [],
+          "published_at": "2026-11-10T23:00:11Z",
+          "summary": null,
+          "updated_at": null,
+          "url": "https://www.miyoushe.com/sr/article/79482327"
+        }
+      ]
+    }
+  ],
+  "date": "2026-11-12"
 }

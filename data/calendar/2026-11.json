@@ -1,16 +1,5 @@
 {
   "days": {
-    "2026-11-11": [
-      {
-        "action_id": "activity-8a243b37a280c80a--start",
-        "activity_id": "activity-8a243b37a280c80a",
-        "at": "2026-11-11T00:00:00+08:00",
-        "campaign_id": "campaign-65e6776cd100285d-f9d83366",
-        "ip_name": "崩坏：星穹铁道",
-        "kind": "event_start",
-        "title": "「货币战争•入画奇航」全新赛季开始"
-      }
-    ],
     "2026-11-24": [
       {
         "action_id": "action-250e4da71f404e33--end",

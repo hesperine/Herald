@@ -308,57 +308,6 @@
   "cards": [
     {
       "activity": {
-        "actions": [],
-        "end_at": null,
-        "end_date": null,
-        "evidence": [
-          {
-            "field_path": "activities[0].title",
-            "quote": "将推出全新赛季「货币战争•入画奇航」！",
-            "source_id": "miyoushe-79258370"
-          },
-          {
-            "field_path": "activities[0].kind",
-            "quote": "可体验全新赛季主题玩法「奇遇」与「主角光环」",
-            "source_id": "miyoushe-79258370"
-          },
-          {
-            "field_path": "activities[0].start_date",
-            "quote": "2026/11/11 4.7版本更新后",
-            "source_id": "miyoushe-79258370"
-          },
-          {
-            "field_path": "activities[0].rules",
-            "quote": "开拓等级≥21级",
-            "source_id": "miyoushe-79258370"
-          }
-        ],
-        "id": "activity-8a243b37a280c80a",
-        "kind": "in_game",
-        "related_offers": null,
-        "rules": "开拓等级≥21级；支持通过「终末视界」功能提前体验；建议完成开拓任务「匹诺康尼」-「异乡异客」后体验。",
-        "start_at": null,
-        "start_date": "2026-11-11",
-        "status": "details_pending",
-        "title": "「货币战争•入画奇航」全新赛季",
-        "uncertainties": [
-          "开放时间仅表述为“2026/11/11 4.7版本更新后”，具体时刻未知",
-          "奖励预览仅见标题，正文未列明具体奖励清单"
-        ],
-        "venues": []
-      },
-      "campaign_id": "campaign-65e6776cd100285d-f9d83366",
-      "campaign_title": "货币战争•入画奇航",
-      "ip_name": "崩坏：星穹铁道",
-      "next": {
-        "at": "2026-11-11T00:00:00+08:00",
-        "date": "2026-11-11",
-        "title": "「货币战争•入画奇航」全新赛季开始"
-      },
-      "url": "event.html?id=campaign-65e6776cd100285d-f9d83366#activity-activity-8a243b37a280c80a"
-    },
-    {
-      "activity": {
         "actions": [
           {
             "at": "2026-10-24T00:00:00+08:00",
@@ -1365,6 +1314,53 @@
     },
     {
       "activity": {
+        "actions": [],
+        "end_at": null,
+        "end_date": null,
+        "evidence": [
+          {
+            "field_path": "activities[0].title",
+            "quote": "将推出全新赛季「货币战争•入画奇航」！",
+            "source_id": "miyoushe-79258370"
+          },
+          {
+            "field_path": "activities[0].kind",
+            "quote": "可体验全新赛季主题玩法「奇遇」与「主角光环」",
+            "source_id": "miyoushe-79258370"
+          },
+          {
+            "field_path": "activities[0].start_date",
+            "quote": "2026/11/11 4.7版本更新后",
+            "source_id": "miyoushe-79258370"
+          },
+          {
+            "field_path": "activities[0].rules",
+            "quote": "开拓等级≥21级",
+            "source_id": "miyoushe-79258370"
+          }
+        ],
+        "id": "activity-8a243b37a280c80a",
+        "kind": "in_game",
+        "related_offers": null,
+        "rules": "开拓等级≥21级；支持通过「终末视界」功能提前体验；建议完成开拓任务「匹诺康尼」-「异乡异客」后体验。",
+        "start_at": null,
+        "start_date": "2026-11-11",
+        "status": "details_pending",
+        "title": "「货币战争•入画奇航」全新赛季",
+        "uncertainties": [
+          "开放时间仅表述为“2026/11/11 4.7版本更新后”，具体时刻未知",
+          "奖励预览仅见标题，正文未列明具体奖励清单"
+        ],
+        "venues": []
+      },
+      "campaign_id": "campaign-65e6776cd100285d-f9d83366",
+      "campaign_title": "货币战争•入画奇航",
+      "ip_name": "崩坏：星穹铁道",
+      "next": null,
+      "url": "event.html?id=campaign-65e6776cd100285d-f9d83366#activity-activity-8a243b37a280c80a"
+    },
+    {
+      "activity": {
         "actions": [
           {
             "at": null,
@@ -1618,5 +1614,5 @@
       "url": "event.html?id=campaign-5a95cf56417b3340-57ca36df#activity-activity-fd760656e9160352"
     }
   ],
-  "generated_at": "2026-11-11T07:57:51.989604+08:00"
+  "generated_at": "2026-11-12T04:04:10.341278+08:00"
 }

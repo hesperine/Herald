@@ -1,0 +1,35 @@
+{
+  "cards": [
+    {
+      "activity": null,
+      "activity_id": null,
+      "campaign_id": "candidate-db71d23f10787084531cd8fd",
+      "campaign_title": "崩坏：星穹铁道 · 候选联动信息",
+      "detail_url": null,
+      "extraction_status": "unconfirmed",
+      "ip_name": "崩坏：星穹铁道",
+      "reasons": [
+        {
+          "action_id": null,
+          "date_only": null,
+          "expected_at": null,
+          "kind": "announcement",
+          "summary": "原帖核查：4.7版本更新说明，内容为版本更新、角色/光锥/活动/赛季等常规游戏内容，未涉及品牌或其他IP联动、线下快闪/漫展/演出等范围活动。"
+        }
+      ],
+      "sources": [
+        {
+          "account_name": "崩坏：星穹铁道官方公告",
+          "summary": null,
+          "url": "https://sr.mihoyo.com/news/167300"
+        },
+        {
+          "account_name": "崩坏星穹铁道",
+          "summary": null,
+          "url": "https://www.miyoushe.com/sr/article/79482327"
+        }
+      ]
+    }
+  ],
+  "date": "2026-11-12"
+}
