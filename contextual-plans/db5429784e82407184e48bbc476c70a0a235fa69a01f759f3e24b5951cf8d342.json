@@ -1,0 +1,16 @@
+{
+  "completed": {},
+  "routes": {
+    "groups": [],
+    "unconfirmed": [
+      {
+        "observation_id": "website-honkai-star-rail-official-167300",
+        "reason": "4.7版本更新说明，内容为版本更新、角色/光锥/活动/赛季等常规游戏内容，未涉及品牌或其他IP联动、线下快闪/漫展/演出等范围活动。"
+      },
+      {
+        "observation_id": "miyoushe-79482327",
+        "reason": "与官网同篇4.7版本更新说明，属常规版本更新与游戏内活动，无跨IP联动或线下活动信息。"
+      }
+    ]
+  }
+}
