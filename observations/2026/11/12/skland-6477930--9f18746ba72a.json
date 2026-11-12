@@ -1,0 +1,29 @@
+{
+  "extracted_media_text": [],
+  "id": "skland-6477930",
+  "media_hashes": [
+    "f107c1de963e400d895f2f0fb28a843b76ed8ab8afe0f3700991b9b71f0e1fb9"
+  ],
+  "media_urls": [
+    "https://bbs.hycdn.cn/image/common/20261112/113/6af4d1e57c212eb1c6155986_91c496d2.webp"
+  ],
+  "outbound_urls": [],
+  "source": {
+    "account_id": "3737967211133",
+    "account_name": "明日方舟终末地",
+    "canonical_content_id": "6477930",
+    "content_hash": "9f18746ba72aa2598337f01e15824d1cde87f22bde8360f212a73d7193abc5b9",
+    "excerpt": "铁痕电台游离信号 | 离离剑上尘\n这里是铁痕电台。错误的频道，正确的质感。\n还真收到我们的信号了？看来画出这个世界的人还舍不得把音乐擦掉。",
+    "first_seen_at": "2026-11-12T20:40:07.498239Z",
+    "id": "skland-6477930",
+    "is_official": true,
+    "kind": "skland",
+    "media_hashes": [],
+    "media_urls": [],
+    "published_at": "2026-11-12T04:30:34Z",
+    "summary": null,
+    "updated_at": null,
+    "url": "https://www.skland.com/article?id=6477930"
+  },
+  "text": "铁痕电台游离信号 | 离离剑上尘\n这里是铁痕电台。错误的频道，正确的质感。\n还真收到我们的信号了？看来画出这个世界的人还舍不得把音乐擦掉。"
+}
