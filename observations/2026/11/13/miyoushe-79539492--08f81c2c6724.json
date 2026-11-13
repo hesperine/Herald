@@ -1,0 +1,29 @@
+{
+  "extracted_media_text": [],
+  "id": "miyoushe-79539492",
+  "media_hashes": [
+    "de833756142c604f0051fb84bcdac85a8b35a5e9f11b8f81e5a8d9c19ee2fe3a"
+  ],
+  "media_urls": [
+    "https://upload-bbs.miyoushe.com/upload/2026/11/13/288909600/05ca9bafbbebe5e473c0345f79b78b6e_1855150942395392212.png"
+  ],
+  "outbound_urls": [],
+  "source": {
+    "account_id": "288909600",
+    "account_name": "崩坏星穹铁道",
+    "canonical_content_id": "79539492",
+    "content_hash": "08f81c2c672435a65948b12ee09e38bdc9a9e697bff0e2369db86bf81077e218",
+    "excerpt": "星穹美学速递：星神★阿哈\n「享受吧，阿哈时刻！」",
+    "first_seen_at": "2026-11-13T20:21:13.643539Z",
+    "id": "miyoushe-79539492",
+    "is_official": true,
+    "kind": "miyoushe",
+    "media_hashes": [],
+    "media_urls": [],
+    "published_at": "2026-11-13T04:25:39Z",
+    "summary": null,
+    "updated_at": null,
+    "url": "https://www.miyoushe.com/sr/article/79539492"
+  },
+  "text": "星穹美学速递：星神★阿哈\n「享受吧，阿哈时刻！」"
+}

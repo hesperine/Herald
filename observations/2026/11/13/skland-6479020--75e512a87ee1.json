@@ -1,0 +1,31 @@
+{
+  "extracted_media_text": [],
+  "id": "skland-6479020",
+  "media_hashes": [
+    "4cf982bc9f25c3bea177084a1e447ad4e31a3ca7d0eee4743e20f27c44b09c61",
+    "4453700cb91808b8cab07f6d7f52c3ea33d8c388f59a573169df54b3fcbe6c58"
+  ],
+  "media_urls": [
+    "https://bbs.hycdn.cn/image/common/20261112/115/6af5618fdcfdf7103131a8aa_96d20048.webp",
+    "https://bbs.hycdn.cn/image/common/20261112/115/6af5618f738e3fe4cb7ac318_65de0095.webp"
+  ],
+  "outbound_urls": [],
+  "source": {
+    "account_id": "7779816949641",
+    "account_name": "明日方舟Arknights",
+    "canonical_content_id": "6479020",
+    "content_hash": "75e512a87ee15203e8b26e6509f9b128a7a54f02af472dbf8383f3ef2fc73714",
+    "excerpt": "《日出之后》",
+    "first_seen_at": "2026-11-13T20:21:13.643539Z",
+    "id": "skland-6479020",
+    "is_official": true,
+    "kind": "skland",
+    "media_hashes": [],
+    "media_urls": [],
+    "published_at": "2026-11-13T08:00:13Z",
+    "summary": null,
+    "updated_at": null,
+    "url": "https://www.skland.com/article?id=6479020"
+  },
+  "text": "《日出之后》"
+}
