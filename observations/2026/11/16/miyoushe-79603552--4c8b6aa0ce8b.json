@@ -1,0 +1,31 @@
+{
+  "extracted_media_text": [],
+  "id": "miyoushe-79603552",
+  "media_hashes": [
+    "018d52550fa27c72e0a1b6bb130c8d0b4b92cbcaf187f42362ba39f7fe60c198",
+    "afb46ed41aa48a87d999dee9e5e207a38d7dfe9171ffad2873626d9c7c581686"
+  ],
+  "media_urls": [
+    "https://upload-bbs.miyoushe.com/upload/2026/11/16/75276539/2e5486980dda39773d5cedb667ef9dab_4576420218084099735.jpg",
+    "https://upload-bbs.miyoushe.com/upload/2026/11/16/75276539/9b51f8fea05d968de7328a11ee57b4c5_4016711632161844795.jpg"
+  ],
+  "outbound_urls": [],
+  "source": {
+    "account_id": "75276539",
+    "account_name": "原神",
+    "canonical_content_id": "79603552",
+    "content_hash": "4c8b6aa0ce8bc58874aed4595e8165440ae17f71af49f5a9a0c8692bd9bd8ce9",
+    "excerpt": "《原神》7.2版本表情包「派蒙的画作第54弹」现已上线\n亲爱的旅行者，「派蒙的画作第54弹」表情包即将上线米游社啦！欢迎旅行者使用~",
+    "first_seen_at": "2026-11-16T22:45:12.963223Z",
+    "id": "miyoushe-79603552",
+    "is_official": true,
+    "kind": "miyoushe",
+    "media_hashes": [],
+    "media_urls": [],
+    "published_at": "2026-11-16T04:00:20Z",
+    "summary": null,
+    "updated_at": null,
+    "url": "https://www.miyoushe.com/ys/article/79603552"
+  },
+  "text": "《原神》7.2版本表情包「派蒙的画作第54弹」现已上线\n亲爱的旅行者，「派蒙的画作第54弹」表情包即将上线米游社啦！欢迎旅行者使用~"
+}
