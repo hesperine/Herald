@@ -1,0 +1,29 @@
+{
+  "extracted_media_text": [],
+  "id": "skland-6494618",
+  "media_hashes": [
+    "0bd70c65c91836b8ddbf6da318faaeb1aa8533f0607c348451c05b6232ffcec8"
+  ],
+  "media_urls": [
+    "https://bbs.hycdn.cn/image/common/20261117/115/6afc0b4cdcfdf7103131b004_e71aef33.webp"
+  ],
+  "outbound_urls": [],
+  "source": {
+    "account_id": "7779816949641",
+    "account_name": "明日方舟Arknights",
+    "canonical_content_id": "6494618",
+    "content_hash": "d0f1ee57a3957920c2ccb472c9f8e7954c869043cdd895547caf42074c31a877",
+    "excerpt": "SideStory「雪山降临1101」复刻即将开启",
+    "first_seen_at": "2026-11-17T21:31:38.615873Z",
+    "id": "skland-6494618",
+    "is_official": true,
+    "kind": "skland",
+    "media_hashes": [],
+    "media_urls": [],
+    "published_at": "2026-11-17T09:00:12Z",
+    "summary": null,
+    "updated_at": null,
+    "url": "https://www.skland.com/article?id=6494618"
+  },
+  "text": "SideStory「雪山降临1101」复刻即将开启"
+}
