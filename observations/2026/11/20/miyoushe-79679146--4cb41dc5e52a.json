@@ -1,0 +1,29 @@
+{
+  "extracted_media_text": [],
+  "id": "miyoushe-79679146",
+  "media_hashes": [
+    "4d990868dd34b6dc6e15aadacf69634267e17128750a6dcaaf5ab09639382cd5"
+  ],
+  "media_urls": [
+    "https://upload-bbs.miyoushe.com/upload/2026/11/19/288909600/cfff7b0ba3c0506c638d2867673980a2_6531378273101584003.jpg"
+  ],
+  "outbound_urls": [],
+  "source": {
+    "account_id": "288909600",
+    "account_name": "崩坏星穹铁道",
+    "canonical_content_id": "79679146",
+    "content_hash": "4cb41dc5e52ac91bd127192b9485c03fca9c1958e62878b297bf51a8e2668dfd",
+    "excerpt": "限定5星角色登录即领\n开拓者好呀~4.8版本更新后到5.0版本结束前，登录游戏即可领取限定5星角色「耀嘉音（同谐•量子）」*1及其直升60级养成材料补给！",
+    "first_seen_at": "2026-11-20T20:56:24.650094Z",
+    "id": "miyoushe-79679146",
+    "is_official": true,
+    "kind": "miyoushe",
+    "media_hashes": [],
+    "media_urls": [],
+    "published_at": "2026-11-20T11:15:09Z",
+    "summary": null,
+    "updated_at": null,
+    "url": "https://www.miyoushe.com/sr/article/79679146"
+  },
+  "text": "限定5星角色登录即领\n开拓者好呀~4.8版本更新后到5.0版本结束前，登录游戏即可领取限定5星角色「耀嘉音（同谐•量子）」*1及其直升60级养成材料补给！"
+}

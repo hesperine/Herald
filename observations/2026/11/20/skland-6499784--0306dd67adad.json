@@ -1,0 +1,29 @@
+{
+  "extracted_media_text": [],
+  "id": "skland-6499784",
+  "media_hashes": [
+    "8d1acc9123c18500c30a2c436758d145a33c84e077e1db41bf2bcf2d21259135"
+  ],
+  "media_urls": [
+    "https://bbs.hycdn.cn/image/common/20261119/113/6afef4df385c2221141a2893_96d20048.webp"
+  ],
+  "outbound_urls": [],
+  "source": {
+    "account_id": "3737967211133",
+    "account_name": "明日方舟终末地",
+    "canonical_content_id": "6499784",
+    "content_hash": "0306dd67adadd869e2c48f6044a5c1d18db906547273e08a05b460ccd54a2658",
+    "excerpt": "新章揭幕，火种未熄。\n新章揭幕，火种未熄。\n《明日方舟：终末地》全新版本&2.0揭幕前瞻特别节目即将于11月21日19:30播出。",
+    "first_seen_at": "2026-11-20T20:56:24.650094Z",
+    "id": "skland-6499784",
+    "is_official": true,
+    "kind": "skland",
+    "media_hashes": [],
+    "media_urls": [],
+    "published_at": "2026-11-20T04:00:03Z",
+    "summary": null,
+    "updated_at": null,
+    "url": "https://www.skland.com/article?id=6499784"
+  },
+  "text": "新章揭幕，火种未熄。\n新章揭幕，火种未熄。\n《明日方舟：终末地》全新版本&2.0揭幕前瞻特别节目即将于11月21日19:30播出。"
+}
