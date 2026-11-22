@@ -1,0 +1,35 @@
+{
+  "html": "<!doctype html><html lang=\"zh-CN\"><head><meta charset=\"utf-8\"><meta name=\"viewport\" content=\"width=device-width,initial-scale=1\"><title>HERALD 每日提醒</title></head><body style=\"margin:0;background:#f6f7f8;color:#263238;font-family:Arial,sans-serif;font-size:15px;line-height:1.6;\"><table role=\"presentation\" width=\"100%\" cellspacing=\"0\" cellpadding=\"0\" bgcolor=\"#f6f7f8\"><tr><td align=\"center\" style=\"padding:24px 12px;\"><table role=\"presentation\" width=\"640\" cellspacing=\"0\" cellpadding=\"0\" style=\"width:100%;max-width:640px;\"><tr><td><p style=\"margin:0;color:#146c59;font-size:12px;letter-spacing:2px;font-weight:bold;\">HERALD</p><h1 style=\"margin:6px 0;font-size:26px;\">游戏联动日报</h1><p style=\"margin:0;color:#617170;\">2026-11-23 · 1 项活动需要关注</p><h2 style=\"margin:24px 0 12px;font-size:17px;color:#146c59;\">即将开始或结束</h2><table role=\"presentation\" width=\"100%\" cellspacing=\"0\" cellpadding=\"0\"><tr><td style=\"padding:20px;border:1px solid #dfe5e5;border-radius:10px;background:#ffffff;\"><p style=\"margin:0 0 6px;color:#617170;font-size:12px;\">明日方舟 · 《明日方舟》网页活动「燃烧即一切」</p><h3 style=\"margin:0 0 12px;font-size:19px;line-height:1.5;\">《明日方舟》网页活动「燃烧即一切」</h3><p style=\"margin:8px 0;line-height:1.7;overflow-wrap:anywhere;font-weight:600;color:#933743;\">明天截止：网页活动参与截止 · 2026-11-24 23:59</p><p style=\"margin:8px 0;line-height:1.7;overflow-wrap:anywhere;\">地点：森空岛 · 森空岛</p><p style=\"margin:8px 0;line-height:1.7;overflow-wrap:anywhere;\">前往森空岛参与活动，完成指定任务，即可获得森空岛限定社区装扮，还能获取活动抽奖券，抽取 Nintendo Switch 2、联名机械键盘、合成玉等丰厚奖励！</p><p style=\"margin:8px 0;line-height:1.7;overflow-wrap:anywhere;\">网页活动参与 · 2026-10-24 00:00</p><p style=\"margin:8px 0;line-height:1.7;overflow-wrap:anywhere;font-weight:600;color:#933743;\">截止：2026-11-24 23:59</p><p style=\"margin:8px 0;line-height:1.7;overflow-wrap:anywhere;\">活动抽奖券抽取奖励 · 时间待公布</p><p style=\"margin:8px 0;line-height:1.7;overflow-wrap:anywhere;\">完成指定任务获取活动抽奖券，抽取 Nintendo Switch 2、联名机械键盘、合成玉等奖励</p><p style=\"margin:8px 0;line-height:1.7;overflow-wrap:anywhere;\">兑奖 · 时间待公布</p><p style=\"margin:8px 0;line-height:1.7;overflow-wrap:anywhere;font-weight:600;color:#933743;\">截止：2026-12-01 23:59</p><p style=\"margin:16px 0 0;padding-top:12px;border-top:1px solid #e3e9e8;color:#617170;font-size:13px;\">信息依据：<a href=\"https://www.skland.com/article?id=6414284\" style=\"color:#146c59;text-decoration:underline;\">《明日方舟》网页活动「燃烧即一切」开启，前往森空岛完成任务可获限定社区装扮与抽奖券，抽取Switch 2、联名键盘、合成玉等，含参与与兑奖截止时间。</a> · <a href=\"https://www.skland.com/article?id=6415406\" style=\"color:#146c59;text-decoration:underline;\">2026感谢庆典前瞻节目未来内容预告，提及「燃烧即一切」网页活动现已开启，并列出新活动、联动、快闪、周边等多条后续信息。</a></p></td></tr><tr><td height=\"14\"></td></tr></table><p style=\"margin-top:24px;padding-top:16px;border-top:1px solid #dfe5e5;color:#617170;font-size:12px;\">信息整理自官方公告，参与条件与最终安排请以原帖为准。<br>时间以 Asia/Shanghai 显示；未公布时刻的日期不代表零点开始。</p></td></tr></table></td></tr></table></body></html>",
+  "jobs": [
+    {
+      "action_id": "action-250e4da71f404e33--end",
+      "activity_id": "activity-b3693f07903c0f27",
+      "campaign_id": "campaign-abb4d493ebf696a7-3b3da411",
+      "campaign_notice": false,
+      "candidate_id": null,
+      "change_id": null,
+      "covered_candidate_ids": [],
+      "due_date": "2026-11-23",
+      "expected_at": "2026-11-24T23:59:59+08:00",
+      "expected_date": null,
+      "facts": {},
+      "id": "job-5bfec3fa6670043e521d",
+      "kind": "deadline",
+      "semantic_key": "schedule:activity-b3693f07903c0f27:action-250e4da71f404e33--end:deadline:2026-11-24T23:59:59+08:00",
+      "summary": "明天截止：网页活动参与截止"
+    }
+  ],
+  "receipts": [
+    {
+      "campaign_id": null,
+      "candidate_id": null,
+      "covered_candidate_ids": [],
+      "facts": {},
+      "job_id": "job-5bfec3fa6670043e521d",
+      "public_text": "",
+      "semantic_key": "schedule:activity-b3693f07903c0f27:action-250e4da71f404e33--end:deadline:2026-11-24T23:59:59+08:00"
+    }
+  ],
+  "subject": "游戏联动提醒：1 项需要关注",
+  "text": "游戏联动提醒 · 2026-11-23\n\n【《明日方舟》网页活动「燃烧即一切」】\n明天截止：网页活动参与截止\n地点：森空岛 · 森空岛\n网页活动参与：2026-10-24 00:00\n截止：2026-11-24 23:59\n活动抽奖券抽取奖励：时间待公布\n完成指定任务获取活动抽奖券，抽取 Nintendo Switch 2、联名机械键盘、合成玉等奖励\n兑奖：时间待公布\n截止：2026-12-01 23:59\n信息依据：《明日方舟》网页活动「燃烧即一切」开启，前往森空岛完成任务可获限定社区装扮与抽奖券，抽取Switch 2、联名键盘、合成玉等，含参与与兑奖截止时间。 https://www.skland.com/article?id=6414284\n信息依据：2026感谢庆典前瞻节目未来内容预告，提及「燃烧即一切」网页活动现已开启，并列出新活动、联动、快闪、周边等多条后续信息。 https://www.skland.com/article?id=6415406\n"
+}
