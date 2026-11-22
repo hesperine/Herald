@@ -1,0 +1,37 @@
+{
+  "cards": [
+    {
+      "activity": {
+        "title": "《明日方舟》网页活动「燃烧即一切」"
+      },
+      "activity_id": "activity-b3693f07903c0f27",
+      "campaign_id": "campaign-abb4d493ebf696a7-3b3da411",
+      "campaign_title": "《明日方舟》网页活动「燃烧即一切」",
+      "detail_url": "event.html?id=campaign-abb4d493ebf696a7-3b3da411#activity-activity-b3693f07903c0f27",
+      "extraction_status": null,
+      "ip_name": "明日方舟",
+      "reasons": [
+        {
+          "action_id": "action-250e4da71f404e33--end",
+          "date_only": null,
+          "expected_at": "2026-11-24T23:59:59+08:00",
+          "kind": "deadline",
+          "summary": "明天截止：网页活动参与截止"
+        }
+      ],
+      "sources": [
+        {
+          "account_name": "明日方舟Arknights",
+          "summary": "《明日方舟》网页活动「燃烧即一切」开启，前往森空岛完成任务可获限定社区装扮与抽奖券，抽取Switch 2、联名键盘、合成玉等，含参与与兑奖截止时间。",
+          "url": "https://www.skland.com/article?id=6414284"
+        },
+        {
+          "account_name": "明日方舟Arknights",
+          "summary": "2026感谢庆典前瞻节目未来内容预告，提及「燃烧即一切」网页活动现已开启，并列出新活动、联动、快闪、周边等多条后续信息。",
+          "url": "https://www.skland.com/article?id=6415406"
+        }
+      ]
+    }
+  ],
+  "date": "2026-11-23"
+}
