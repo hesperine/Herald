@@ -1,0 +1,29 @@
+{
+  "extracted_media_text": [],
+  "id": "skland-6518683",
+  "media_hashes": [
+    "c643f2291f599d36f3b22c552534034f05425c2a2c8d625cb904c67038dfe188"
+  ],
+  "media_urls": [
+    "https://bbs.hycdn.cn/image/common/20261126/115/6b0844e57d601508626f33fc_e71aef33.webp"
+  ],
+  "outbound_urls": [],
+  "source": {
+    "account_id": "7779816949641",
+    "account_name": "明日方舟Arknights",
+    "canonical_content_id": "6518683",
+    "content_hash": "c3b7422b42e104f51cf2f9d557ab0951e5ebbb80d7a96d5ee836a197ddc0b1dd",
+    "excerpt": "SideStory「星星不愿入睡」限时活动即将开启",
+    "first_seen_at": "2026-11-27T21:49:26.091052Z",
+    "id": "skland-6518683",
+    "is_official": true,
+    "kind": "skland",
+    "media_hashes": [],
+    "media_urls": [],
+    "published_at": "2026-11-27T03:05:50Z",
+    "summary": null,
+    "updated_at": null,
+    "url": "https://www.skland.com/article?id=6518683"
+  },
+  "text": "SideStory「星星不愿入睡」限时活动即将开启"
+}

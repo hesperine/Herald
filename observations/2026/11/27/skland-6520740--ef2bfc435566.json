@@ -1,0 +1,29 @@
+{
+  "extracted_media_text": [],
+  "id": "skland-6520740",
+  "media_hashes": [
+    "bcc0792dc4cd9930931a2918b3f3005c974e2cc91cfe4f3b1b992403a74d2c04"
+  ],
+  "media_urls": [
+    "https://bbs.hycdn.cn/image/common/20261127/115/6b0960bff00eaac19457ab4a_e71aef33.webp"
+  ],
+  "outbound_urls": [],
+  "source": {
+    "account_id": "7779816949641",
+    "account_name": "明日方舟Arknights",
+    "canonical_content_id": "6520740",
+    "content_hash": "ef2bfc435566097c4256201de35cd3d6c447cc6613acc09a98ed1ab574285340",
+    "excerpt": "卫戍协议：规程 协议前瞻\n卫戍协议：规程周期常规更新前瞻如上，各阶段起始时间及调整详见上图。\n后续内容更新可能随版本状况调整，详情请以游戏内公告为准。\n首次平衡性调整目前正在筹备中，相关详情及后续安排敬请关注近期官方公告。",
+    "first_seen_at": "2026-11-27T21:49:26.091052Z",
+    "id": "skland-6520740",
+    "is_official": true,
+    "kind": "skland",
+    "media_hashes": [],
+    "media_urls": [],
+    "published_at": "2026-11-27T11:00:20Z",
+    "summary": null,
+    "updated_at": null,
+    "url": "https://www.skland.com/article?id=6520740"
+  },
+  "text": "卫戍协议：规程 协议前瞻\n卫戍协议：规程周期常规更新前瞻如上，各阶段起始时间及调整详见上图。\n后续内容更新可能随版本状况调整，详情请以游戏内公告为准。\n首次平衡性调整目前正在筹备中，相关详情及后续安排敬请关注近期官方公告。"
+}
